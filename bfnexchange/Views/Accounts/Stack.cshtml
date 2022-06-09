@@ -1,0 +1,160 @@
+﻿@model IEnumerable<bfnexchange.Models.BetSlipKeys>
+
+@{
+    ViewBag.Title = "Stack";
+    Layout = "~/Views/Shared/_AccountsLayout.cshtml";
+}
+
+<div class="page-container">
+    <div class="page-content">
+        <div>
+            <div class="page-body">
+                <div class="col-xs-push-12">
+                    
+@using (Html.BeginForm("Stack", "Accounts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+  
+                        <br />
+                        <table id="simplebit">
+                                <tr><th style="margin-right:30px;text-align:left">Simple Bet</th></tr>
+                                <tr><td>Default Stake Back1: <input type="text" id="SimpleBtn10" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn10.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn10.Replace("+", "")" /></td></tr>
+                            <tr><td>Default Stake Back1: <input type="text" id="SimpleBtn11" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn11.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn11.Replace("+", "")" /></td></tr>
+                                <tr><td>Default Stake Lay1: <input type="text" id="SimpleBtn12" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn12.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn12.Replace("+", "")" /></td></tr>
+                                <tr>
+                                    <td>1: <input type="text" id="SimpleBtn1" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+", "")" /></td>
+                                    <td>2: <input type="text" id="SimpleBtn2" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+", "")" /></td>
+                                </tr>
+                                <tr>
+                                    <td>3: <input type="text" id="SimpleBtn3" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+", "")" /></td>
+                                    <td>4: <input type="text" id="SimpleBtn4" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+", "")" /></td>
+                                </tr>
+                                <tr>
+                                    <td>5: <input type="text" id="SimpleBtn5" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", "")" /></td>
+                                    <td>6: <input type="text" id="SimpleBtn6" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", "")" /></td>
+                                </tr>
+                                <tr>
+                                    <td>7: <input type="text" id="SimpleBtn7" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", "")" /></td>
+                                    <td>8: <input type="text" id="SimpleBtn8" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", "")" /></td>
+                                </tr>
+                                <tr>
+                                    <td>9: <input type="text" id="SimpleBtn9" value="@((LoggedinUserDetail.objBetSlipKeys.SimpleBtn9.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn9.Replace("+", "")" /></td>
+                                </tr>
+
+                            </table>
+
+                    <br />
+
+
+
+
+                    <table id="joribit">
+                            <tr><th style="margin-right:30px;text-align:left">Jori Bet</th></tr>
+                            <tr><td>Default Stake Back<input type="text" id="MutipleBtn10" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn10.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn10.Replace("+", "")" /></td></tr>
+                            <tr><td>Default Stake Lay<input type="text" id="MutipleBtn11" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn11.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn11.Replace("+", "")" /></td></tr>
+                        <tr><td>Default Stake Lay<input type="text" id="MutipleBtn12" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn12.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn12.Replace("+", "")" /></td></tr>
+
+                            <tr>
+                                <td>1: <input type="text" id="MutipleBtn1" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+", "")" /></td>
+                                <td>2: <input type="text" id="MutipleBtn2" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+", "")" /></td>
+                            </tr>
+                            <tr>
+                                <td>3: <input type="text" id="MutipleBtn3" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+", "")" /></td>
+                                <td>4: <input type="text" id="MutipleBtn4" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+", "")" /></td>
+                            </tr>
+                            <tr>
+                                <td>5: <input type="text" id="MutipleBtn5" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+", "")" /></td>
+                                <td>6: <input type="text" id="MutipleBtn6" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+", "")" /></td>
+                            </tr>
+                            <tr>
+                                <td>7: <input type="text" id="MutipleBtn7" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+", "")" /></td>
+                                <td>8: <input type="text" id="MutipleBtn8" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+", "")" /></td>
+                            </tr>
+                            <tr>
+                                <td>9: <input type="text" id="MutipleBtn9" value="@((LoggedinUserDetail.objBetSlipKeys.MutipleBtn9.Replace("+", "")))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn9.Replace("+", "")" /></td>
+                            </tr>
+                        </table>
+
+                
+                    <p>
+                        <input id="btnSubmit" type="submit" value="Save"  />
+
+                        @*<input type="submit" id="btn1" value="Save" class="btn btn-default" />*@
+                    </p>
+}
+
+                </div>
+
+     
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
+<script language="javascript" type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+           // debugger;
+
+            var betslipkeys= { SimpleBtn1: $("#SimpleBtn1").val(), SimpleBtn2: $("#SimpleBtn2").val(), SimpleBtn3: $("#SimpleBtn3").val(), SimpleBtn4: $("#SimpleBtn4").val(), SimpleBtn5: $("#SimpleBtn5").val(), SimpleBtn6: $("#SimpleBtn6").val(), SimpleBtn7: $("#SimpleBtn7").val(), SimpleBtn8: $("#SimpleBtn8").val(), SimpleBtn9: $("#SimpleBtn9").val(), SimpleBtn10: $("#SimpleBtn10").val(), SimpleBtn11: $("#SimpleBtn11").val(), SimpleBtn12: $("#SimpleBtn12").val(), MutipleBtn1: $("#MutipleBtn1").val(), MutipleBtn2: $("#MutipleBtn2").val(), MutipleBtn3: $("#MutipleBtn3").val(), MutipleBtn4: $("#MutipleBtn4").val(), MutipleBtn5: $("#MutipleBtn5").val(), MutipleBtn6: $("#MutipleBtn6").val(), MutipleBtn7: $("#MutipleBtn7").val(), MutipleBtn8: $("#MutipleBtn8").val(), MutipleBtn9: $("#MutipleBtn9").val(), MutipleBtn10: $("#MutipleBtn10").val(), MutipleBtn11: $("#MutipleBtn11").val(), MutipleBtn12: $("#MutipleBtn12").val() };
+            $.ajax({
+                url: '/Accounts/UpdateBetSlipKeys',
+                async: true,
+                type: "POST",
+                //data: "{'SimpleBtn1':$('#SimpleBtn1').val(), 'SimpleBtn2':$('#SimpleBtn2').val(), 'SimpleBtn3':$('#SimpleBtn3').val(), 'SimpleBtn4':$('#SimpleBtn4').val(), 'SimpleBtn5':$('#SimpleBtn5').val(), 'SimpleBtn6':$('#SimpleBtn6').val(), 'SimpleBtn7':$('#SimpleBtn7').val(), 'SimpleBtn8':$('#SimpleBtn8').val(), 'SimpleBtn9':$('#SimpleBtn9').val(), 'MutipleBtn1':$('#MutipleBtn1').val(), 'MutipleBtn2':$('#MutipleBtn2').val(), 'MutipleBtn3':$('#MutipleBtn3').val(), 'MutipleBtn4':$('#MutipleBtn4').val(), 'MutipleBtn5':$('#MutipleBtn5').val(), 'MutipleBtn6':$('#MutipleBtn6').val(), 'MutipleBtn7':$('#MutipleBtn7').val(), 'MutipleBtn8':$('#MutipleBtn8').val(), 'MutipleBtn9':$('#MutipleBtn9').val()}"
+                data: betslipkeys,
+
+                complete: function () { },
+                success: function (data) {
+                  //  debugger;
+                    if (data == "True") {
+                        HideLoader();
+                        ShowErrorMsg("User Status updated successfully.");
+                        $("#SimpleBtn1").val('');
+                        $("#SimpleBtn2").val('');
+                        $("#SimpleBtn3").val('');
+                        $("#SimpleBtn4").val('');
+                        $("#SimpleBtn5").val('');
+                        $("#SimpleBtn6").val('');
+                        $("#SimpleBtn7").val('');
+                        $("#SimpleBtn8").val('');
+                        $("#SimpleBtn9").val('');
+                        $("#SimpleBtn10").val('');
+                        $("#SimpleBtn11").val('');
+                        $("#SimpleBtn12").val('');
+                        $("#MutipleBtn1").val('');
+                        $("#MutipleBtn2").val('');
+                        $("#MutipleBtn3").val('');
+                        $("#MutipleBtn4").val('');
+                        $("#MutipleBtn5").val('');
+                        $("#MutipleBtn6").val('');
+                        $("#MutipleBtn7").val('');
+                        $("#MutipleBtn8").val('');
+                        $("#MutipleBtn9").val('');
+                        $("#MutipleBtn10").val('');
+                        $("#MutipleBtn11").val('');
+                        $("#MutipleBtn12").val('');
+
+                        //alert("Data Saved Successfully");
+                        reload.page();
+                    }
+                    else {
+                        HideLoader();
+                        ShowErrorMsg(data);
+                    }
+                }
+                
+            });
+              
+            });
+
+        });
+    
+
+</script> 
+          

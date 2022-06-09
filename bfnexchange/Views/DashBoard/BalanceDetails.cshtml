@@ -1,0 +1,35 @@
+﻿@model bfnexchange.Models.AccessRightsbyUserType
+
+<div class="col-md-12 no-padding">
+   	
+	<div class="col-lg-4 col-sm-12">		
+		<div class="input-group">
+			Upline:
+			
+			@if (Convert.ToDouble(@Model.NetBalance) > 0)
+			{
+				<label>@Model.NetBalance</label>
+			}
+			else
+			{
+				<label style="color:red">@Model.NetBalance</label>
+			}
+		</div>
+	</div>
+
+	<div class="col-lg-5 col-sm-12">
+		
+		<div class="input-group">
+			Avail Balance:<label>@Model.CurrentAvailableBalance</label>
+		</div>
+	</div>
+
+	@*<div class="col-lg-3 col-sm-12">
+	
+		<div class="input-group">
+			Liab:<label>@Model.CurrentLiabality</label>
+		</div>
+	</div>*@
+           
+</div>
+

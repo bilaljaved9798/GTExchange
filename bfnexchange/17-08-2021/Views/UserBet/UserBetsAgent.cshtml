@@ -1,0 +1,195 @@
+﻿@model IEnumerable<bfnexchange.Models.UserBetsforAgent>
+@{
+    List<bfnexchange.Models.UserBetsforAgent>
+        lstMatchedBets = Model.Where(a => a.isMatched == true).ToList();
+    lstMatchedBets = lstMatchedBets.OrderByDescending(item => item.ID).ToList();
+    List<bfnexchange.Models.UserBetsforAgent>
+lstUnMatchedBets = Model.Where(a => a.isMatched == false).ToList();
+
+    <div class="user-betsagents-wrapper">
+        <h4 style="color:white">Bets
+		  <button id="Allbet" style="background-color:#030317;color:white">AllBets</button></h4>
+
+        @*@{string totamount = lstMatchedBets.Sum(item1 => Convert.ToDecimal(item1.Liabality)).ToString("F2");*@
+        <input type="hidden" id="lbltotLiabality" value="@ViewData["liabality"]">
+        <input type="hidden" id="lblallLiabality" value="@ViewData["totliabality"]">
+        <div class="unmatched-bets">
+            <div class="matched-unmatched-heading">
+
+                <label>@lstUnMatchedBets.Count Un-Matched Bets</label>
+               
+            </div>
+            @if (lstUnMatchedBets.Count > 0)
+            {
+                <div class="bets-header">
+                    <div class="selection" style="background-color:#030317">
+                        <label style="color:white">Selection</label>
+                    </div>
+                    <div class="Odd"style="background-color:#030317">
+                        <label style="color:white">Odd</label>
+                    </div>
+                    <div class="Amount" style="background-color:#030317">
+                        <label style="color:white">Amount</label>
+                    </div>
+                    <div class="customername" style="background-color:#030317">
+                        <label style="color:white">Customer</label>
+                    </div>
+                </div>
+                foreach (var item in lstUnMatchedBets)
+                {
+                    if (item.BetType == "lay")
+                    {
+                        <div class="bets-items back" >
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label >@item.Amount</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.Name</label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bets-items lay" >
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label >@item.Amount</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.Name</label>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+
+        <div class="matched-bets">
+            <div class="matched-unmatched-heading">
+                <label>@lstMatchedBets.Count Matched Bets</label>
+				 <input type="button" id="btnShowAllmatchedBets"  value="View All" class="btn-default" />
+            </div>
+            @if (lstMatchedBets.Count > 0)
+            {
+
+
+                <div class="bets-header">
+                    <div class="selection" style="background-color:#030317">
+                        <label style="color:white">Selection</label>
+                    </div>
+                    <div class="Odd" style="background-color:#030317">
+                        <label style="color:white">Odd</label>
+                    </div>
+                    <div class="Amount" style="background-color:#030317">
+                        <label style="color:white">Amount</label>
+                    </div>
+                    <div class="customername" style="background-color:#030317">
+                        <label style="color:white">Customer</label>
+                    </div>
+                </div>
+                foreach (var item in lstMatchedBets.Take(4))
+                {
+
+                    if (item.BetType == "lay")
+                    {
+                        <div class="bets-items back" >
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label >@item.Amount</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.Name</label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bets-items lay" >
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label >@item.Amount</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.Name</label>
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+
+        </div>
+
+
+
+
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+		
+		 $("#btnShowAllmatchedBets").click(function(){
+                $.ajax({
+                    url: '/UserBet/UserBetsAll',
+                    type: 'GET',
+
+                    async: true,
+                    complete: function () {
+               
+
+                    },
+                    success: function (data) {
+
+                        $("#completedmatcedbetscontent").html(data);
+                        $("#myModalCompletedMatchedBets").modal('show');
+                       
+                    }
+                });
+                //$("#completedmatcedbetscontent").html($(".allmatchedbets").html());
+                //$("#myModalCompletedMatchedBets").modal('show');
+            });
+
+        
+            if($("#AccountBalanceShow").val() != undefined){
+                var currentliablity = "" + $("#lbltotLiabality").val();
+
+                var Totliablity = "" + $("#lblallLiabality").val();
+
+                var currentbalance = $("#AccountBalanceShow").val().trim().split(":");
+                var newbalance = parseInt(currentbalance[1]) + parseInt($("#lblallLiabality").val());
+                $("#CurrentUserBalance").html("Balance: " + newbalance.toString());
+
+                // var currentliablity = "Current Liabality: " 
+                $("#CurrentUserLiabality").html(currentliablity);
+                $("#TotalLiabality").html(Totliablity);
+            }
+
+
+
+        });
+    </script>
+} 
+
+
+       

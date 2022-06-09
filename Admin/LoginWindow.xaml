@@ -1,0 +1,153 @@
+﻿<Window x:Class="globaltraders.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:globaltraders"
+         xmlns:wpfTool="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Login" Height="400" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" FontSize="17" FontFamily="Times New Roman" AutomationProperties.IsRowHeader="True" Background="White" Loaded="Window_Loaded" BorderThickness="1" BorderBrush="#FF243875" >
+    <Window.Resources>
+        <Style TargetType="{x:Type PasswordBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border Name="MainBorder"
+                     Background="{TemplateBinding Background}"
+                     BorderBrush="{TemplateBinding BorderBrush}"
+                     BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Margin="1" />
+                                <TextBlock x:Name="PlaceHolder"
+                                Text="{TemplateBinding local:PlaceHolderHelper.PlaceHolderText}"
+                                Foreground="#FF243875" IsHitTestVisible="False"
+                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="local:PlaceHolderHelper.HasPassword" Value="True">
+                                <Setter TargetName="PlaceHolder" Property="Opacity" Value="0" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="#FF243875" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="#FF243875" />
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+
+
+        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="20,0" />
+        </Style>
+
+    </Window.Resources>
+    <Grid Margin="0,0,0,0" >
+
+        <wpfTool:BusyIndicator x:Name="bsyindicator"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,10,0" Width="330" Panel.ZIndex="1205" VerticalAlignment="Center" VerticalContentAlignment="Center" BusyContent="Please wait ......">
+            <wpfTool:BusyIndicator.BusyContentTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <Image gif:ImageBehavior.AnimatedSource="ajax-loader.gif" Width="100" Height="100" />
+                    </StackPanel>
+                </DataTemplate>
+            </wpfTool:BusyIndicator.BusyContentTemplate>
+            <wpfTool:BusyIndicator.OverlayStyle>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill" Value="#00FDFDFD"/>
+                </Style>
+            </wpfTool:BusyIndicator.OverlayStyle>
+            <wpfTool:BusyIndicator.ProgressBarStyle>
+                <Style TargetType="ProgressBar">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Style>
+            </wpfTool:BusyIndicator.ProgressBarStyle>
+        </wpfTool:BusyIndicator>
+
+
+        <StackPanel Background="#8cded2" Orientation="Horizontal" VerticalAlignment="Top" >
+            <TextBlock  FontSize="24" Width="500" Margin="0,5" >
+                               
+                            <TextBlock x:Name="txtMarketHeading" Width="230" Padding="15,0,0,0" FontSize="20" Foreground="Black" FontFamily="Times New Roman" TextAlignment="Left" Margin="2,-3,0,0">
+                                <Image gif:ImageBehavior.AnimatedSource="GT-LOGO .png"  Width="193" Height="49"/> 
+                            </TextBlock>
+                  
+                           
+                          
+                          
+                             <Button x:Name="button1" Content="X" Margin="170,-50,0,0" VerticalAlignment="Top" HorizontalAlignment="Right"  FontFamily="Times New Roman" Width="28.87" Click="button1_Click" Background="{x:Null}" RenderTransformOrigin="-0.316,0.634" Foreground="Red"/>
+           
+                       
+                            </TextBlock>
+
+
+
+        </StackPanel>
+        <StackPanel x:Name="stkpnlmaincontent" HorizontalAlignment="Center" Margin="35,55,35,37"   Visibility="Visible" Width="428">
+            <StackPanel HorizontalAlignment="Center">
+
+
+                <TextBlock x:Name="lblError" Text="Unable to login.&#x0a; Please verify username or password." HorizontalAlignment="Center" FontSize="14" FontWeight="Light" Margin="0,0,0,10" Width="292.68" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FFF30808" Visibility="Hidden"/>
+                <TextBlock Text="Please enter your login name and password" HorizontalAlignment="Center" FontSize="14" FontStyle="Italic" FontWeight="Light" Margin="0,0,0,10"></TextBlock>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center">
+                <Grid Grid.Row="0"  Style="{StaticResource EntryFieldStyle}" Background="White" >
+                    <TextBlock Margin="5,2" Text="Username" Foreground="{StaticResource brushWatermarkForeground}"
+                       Visibility="{Binding ElementName=txtUsername,  Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center" VerticalAlignment="Center" Background="White" />
+
+                    <TextBox x:Name="txtUsername" TextWrapping="Wrap" FontStyle="Normal" FontWeight="Black" Text="" Width="350" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,5" Height="40" HorizontalContentAlignment="Center"   VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"/>
+                </Grid>
+                <Grid Grid.Row="1" Background="White"  Style="{StaticResource EntryFieldStyle}" Margin="20,10,20,0" >
+
+                    <PasswordBox x:Name="txtPassword"  Width="350" HorizontalAlignment="Center"  Padding="0,5" Height="40" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="0,0,0,0"  />
+                </Grid>
+
+
+
+            </StackPanel>
+            <!--Background="#FF243875"-->
+            <StackPanel>
+
+                <StackPanel Width="350" Height="40" Margin="0,20,0,0">
+                    <Border 
+  x:Name="TopAndLeft" 
+  BorderThickness="3,3,0,0" 
+  BorderBrush="{x:Static SystemColors.ControlLightBrush}">
+                        <Border 
+  x:Name="BottomAndRight" 
+  BorderThickness="0,0,3,3" 
+  BorderBrush="{x:Static SystemColors.ControlDarkBrush}">
+
+
+                            <Button x:Name="button" Content="LOGIN" Width="350"  Foreground="Black" Margin="0,0,0,0" Height="40" FontSize="25" FontWeight="Bold" Background="#8cded2" Click="button_Click" IsDefault="True" ></Button>
+                        </Border>
+                    </Border>
+                </StackPanel>
+                <CheckBox x:Name="checkBox" Content="Remember Username ?"  Width="250"  Margin="0,10,0,0" IsChecked="True" FontSize="14"/>
+            </StackPanel>
+
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Label x:Name="lblFooter1" Content="Powered By" FontSize="14" Width="85" Height="42" ></Label>
+                <Image Source="betfair-logo.png" Height="50" Cursor="Hand" />
+            </TextBlock>
+
+
+
+
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom">
+            <Label x:Name="lblFooter" Content="Global Traders @ 2021" Background="#FFF7F7F7" FontSize="10" Padding="5,10"></Label>
+        </StackPanel>
+        <MediaElement x:Name="MediaPlayer" MediaEnded="MediaPlayer_MediaEnded" UnloadedBehavior="Manual" HorizontalAlignment="Left" Margin="57,108,0,190" Width="233" Source="Loader.gif" Panel.ZIndex="10" Stretch="Fill" Visibility="Collapsed" />
+        <Image x:Name="stkpnlLoader" gif:ImageBehavior.RepeatBehavior="Forever"
+           gif:ImageBehavior.AnimatedSource="Loader.gif" Height="368.962" Panel.ZIndex="10" Visibility="Collapsed" />
+    </Grid>
+</Window>

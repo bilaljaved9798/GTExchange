@@ -1,0 +1,90 @@
+﻿@model IEnumerable<bfnexchange.Models.PlusMinussummarybyEventTypeandUser>
+
+<table class="table">
+
+    <tr>
+        <th>
+            User Name
+        </th>
+        <th>
+            Plus
+        </th>
+        <th>
+            Minus
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+      
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td class="ledgerdebit">
+                    @Html.DisplayFor(modelItem => item.Plus)
+                </td>
+
+                <td class="ledgercredit">
+                    @Html.DisplayFor(modelItem => item.Minus)
+                </td>
+               
+
+            </tr>
+        }
+        @*else
+        {
+            <tr onclick="showcompleteduserbets('@item.','@item.MarketBookID')">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plus)
+                </td>
+                <td class="ledgerdebit">
+                    @Html.DisplayFor(modelItem => item.Minus)
+                </td>
+                <td class="ledgercredit">
+                    @Html.DisplayFor(modelItem => item.Credit)
+                </td>
+
+                <td class="ledgerbalance">
+                    @Html.DisplayFor(modelItem => item.OpeningBalance)
+                </td>
+
+            </tr>
+        }*@
+
+
+
+    @*}
+
+
+    @{
+        decimal NetProfitorLoss = 0;
+        if (ViewBag.NetProfitorLoss1 != null)
+        {
+            NetProfitorLoss = ViewBag.NetProfitorLoss1;
+        }
+        // if (Model.Count() > 0) { NetProfitorLoss = Model.Last().OpeningBalance - Model.First().OpeningBalance; };
+        if (NetProfitorLoss > 0)
+        {
+            <tr style="text-align:right">
+                <td>Net Profit or Loss</td>
+                <td class="ledgerdebit">@NetProfitorLoss</td>
+            </tr>
+        }
+        else
+        {
+            <tr style="text-align:right">
+                <td>Net Profit or Loss</td>
+                <td class="ledgercredit" style="text-align:right">@NetProfitorLoss</td>
+            </tr>
+        }
+    }*@
+
+
+
+</table>
+

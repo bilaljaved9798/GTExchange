@@ -1,0 +1,44 @@
+﻿<Window x:Class="globaltraders.VideoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+       xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="VideoWindow" Height="295" Width="470" WindowStyle="ToolWindow" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged" Closing="Window_Closing" LocationChanged="Window_LocationChanged" Deactivated="Window_Deactivated" Activated="Window_Activated" ScrollViewer.HorizontalScrollBarVisibility="Auto" ResizeMode="NoResize">
+
+    <Grid>
+        <Popup x:Name="popupheading"  Height="30" Width="100"  Visibility="Visible" Panel.ZIndex="500" Placement="Top" IsOpen="False" PlacementTarget="{Binding ElementName=host}" HorizontalAlignment="Left">
+
+            <Label x:Name="lbllogo" Content="Global Traders"  Background="Black" Foreground="White" FontSize="14"  VerticalAlignment="Top" Margin="0,0"/>
+
+
+        </Popup>
+       
+       
+        <!--<StackPanel x:Name="stkpnlVideo" VerticalAlignment="Bottom" Margin="0,0,0,0" >-->
+        <Label x:Name="lbllogoNew" Content="Global Traders"  Background="Black" Foreground="White" FontSize="14" Panel.ZIndex="500"  VerticalAlignment="Top" Margin="0,0" HorizontalAlignment="Left" Visibility="Collapsed"/>
+        <WebBrowser x:Name="wbNew" Navigated="wbNew_Navigated" ScrollViewer.HorizontalScrollBarVisibility="Visible" Visibility="Collapsed">
+            
+        </WebBrowser>
+        <WindowsFormsHost Name="wfhSample" Height="260" Width="470" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible"  VerticalAlignment="Top" Visibility="Visible" Margin="0,-20,0,0" Background="Transparent">
+            <WindowsFormsHost.Child>
+              
+                   
+                <wf:WebBrowser x:Name="wb" DocumentCompleted="wb_DocumentCompleted_1"     Dock="Fill" />
+             
+               
+            </WindowsFormsHost.Child>
+        </WindowsFormsHost>
+
+        <!--<Menu x:Name="menuChannels" VerticalContentAlignment="Bottom" VerticalAlignment="Bottom" FontSize="16">
+            <MenuItem Header="Refresh" Click="MenuItem_Click"></MenuItem>
+            <MenuItem x:Name="menuitemoptop" Header="On Top" Click="MenuItem_Click_1"></MenuItem>
+        </Menu>-->
+        <!--</StackPanel>-->
+
+
+
+    </Grid>
+</Window>

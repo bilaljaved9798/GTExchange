@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="SP_Users_GetTransferAdminAmount_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TransferAdminAmount" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferAdminAmountGreyHound" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferAdminAmountHorse" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferAdminAmountSoccer" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferAdminAmountTennis" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TransferAgentID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Users_GetTransferAdminAmount_Result" nillable="true" type="tns:SP_Users_GetTransferAdminAmount_Result" />
+  <xs:complexType name="ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" nillable="true" type="tns:SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" nillable="true" type="tns:ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
+  <xs:complexType name="SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReferrerID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferrerRate" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" nillable="true" type="tns:SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
+  <xs:complexType name="SP_UserMarket_GetToWinTheTossbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetToWinTheTossbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetToWinTheTossbyEventID_Result" />
+  <xs:complexType name="SP_UserMarket_GetToTiedMarketbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetToTiedMarketbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetToTiedMarketbyEventID_Result" />
+  <xs:complexType name="ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserMarket_GetSoccergoalbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetSoccergoalbyEventID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" nillable="true" type="tns:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
+  <xs:complexType name="SP_UserMarket_GetSoccergoalbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetSoccergoalbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetSoccergoalbyEventID_Result" />
+  <xs:complexType name="SP_Users_GetCommissionAccountIDandBookAccountID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookAccountID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CommisionAccountID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Users_GetCommissionAccountIDandBookAccountID_Result" nillable="true" type="tns:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
+  <xs:complexType name="SP_Users_GetReferrerRateandReferrerIDbyUserID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReferrerID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferrerRate" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" nillable="true" type="tns:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
+  <xs:complexType name="ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserMarket_GetMarketForAllowedBetting_Result" nillable="true" type="tns:SP_UserMarket_GetMarketForAllowedBetting_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" nillable="true" type="tns:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
+  <xs:complexType name="SP_UserMarket_GetMarketForAllowedBetting_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventOpenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Market" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetMarketForAllowedBetting_Result" nillable="true" type="tns:SP_UserMarket_GetMarketForAllowedBetting_Result" />
+  <xs:complexType name="SP_UserMarket_GetEventDetailsbyMarketID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventOpenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="associateeventID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetEventDetailsbyMarketID_Result" nillable="true" type="tns:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
+  <xs:complexType name="SP_Users_GetMaxOddBackandLay_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckforMaxOddBack" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CheckforMaxOddLay" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxOddBack" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MaxOddLay" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Users_GetMaxOddBackandLay_Result" nillable="true" type="tns:SP_Users_GetMaxOddBackandLay_Result" />
+  <xs:complexType name="ArrayOfSP_MarketCatalogueSelections_Get_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_MarketCatalogueSelections_Get_Result" nillable="true" type="tns:SP_MarketCatalogueSelections_Get_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_MarketCatalogueSelections_Get_Result" nillable="true" type="tns:ArrayOfSP_MarketCatalogueSelections_Get_Result" />
+  <xs:complexType name="SP_MarketCatalogueSelections_Get_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClothNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JockeyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectionID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StallDraw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wearing" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WearingDesc" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_MarketCatalogueSelections_Get_Result" nillable="true" type="tns:SP_MarketCatalogueSelections_Get_Result" />
+</xs:schema>

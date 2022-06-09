@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e22b58a7-48da-4c4b-84bd-1114a905db0f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceGrayHoundWin.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceGrayHoundWin.xsd" MetadataType="Schema" ID="a36cb36d-adac-4075-823c-fa8bb3e3d1f0" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundWin.svc?xsd=xsd0" />
+    <MetadataFile FileName="BettingServiceGrayHoundWin1.xsd" MetadataType="Schema" ID="17babcfd-f88b-4a13-a72c-3e712197c147" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundWin.svc?xsd=xsd1" />
+    <MetadataFile FileName="BettingServiceGrayHoundWin.disco" MetadataType="Disco" ID="13c21ebe-0fa4-404a-aa73-af302f46af2d" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundWin.svc?disco" />
+    <MetadataFile FileName="BettingServiceGrayHoundWin.wsdl" MetadataType="Wsdl" ID="52ff5105-3101-4f8f-94fe-3c8efb1daf48" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundWin.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

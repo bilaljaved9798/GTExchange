@@ -1,0 +1,27 @@
+﻿<Window x:Class="globaltraders.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        mc:Ignorable="d"
+        Title="Window1" Height="300" Width="800" FontFamily="Trebuchet MS">
+    <Grid>
+        <StackPanel x:Name="stkpnlVideo">
+            <TextBlock>
+                <Label x:Name="lblName" Content="Video" Width="305">
+                    
+                </Label>
+                
+               <Button Content="X" Background="Red" Foreground="White" Padding="10" Width="30" Height="25" Margin="0,5,0,0" FontSize="20" HorizontalContentAlignment="Right" HorizontalAlignment="Right" ></Button>
+            </TextBlock>
+            <WebBrowser x:Name="webBrowser1" Width="400" Height="200"></WebBrowser>
+            <Menu VerticalContentAlignment="Bottom" VerticalAlignment="Bottom">
+                <MenuItem Header="Refresh"></MenuItem>
+                <MenuItem Header="On Top"></MenuItem>
+            </Menu>
+        </StackPanel>
+
+      
+    </Grid>
+</Window>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8368261d-63ea-4e49-83e8-f8c6185d1df9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceCricketInningsRuns.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceCricketInningsRuns.xsd" MetadataType="Schema" ID="112278f5-dccb-4679-8297-253670b43462" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketInningsRuns.svc?xsd=xsd1" />
+    <MetadataFile FileName="BettingServiceCricketInningsRuns.disco" MetadataType="Disco" ID="7bcc4575-0608-498f-9ad4-52edc643d54e" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketInningsRuns.svc?disco" />
+    <MetadataFile FileName="BettingServiceCricketInningsRuns.wsdl" MetadataType="Wsdl" ID="c74e63b4-4ffb-4dbc-a2c1-b8b9681e1cc7" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketInningsRuns.svc?wsdl" />
+    <MetadataFile FileName="BettingServiceCricketInningsRuns1.xsd" MetadataType="Schema" ID="f0a9d32c-fdb9-47a8-837d-0e36bdec51dd" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketInningsRuns.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

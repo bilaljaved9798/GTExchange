@@ -1,0 +1,19 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      //"http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc",
+      "http://78.110.160.52:8960/bfnexchangeServices/Services/BettingServiceCricketMatchOdds.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "internalTypeAccess": true,
+    "namespaceMappings": [
+      "*, BettingServiceCricketMatchOddsReference"
+    ],
+    "sync": true,
+    "targetFramework": "net5.0",
+    "typeReuseMode": "All"
+  }
+}

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<bfnexchange.Models.Event>
+  @foreach (var item in Model)
+  {
+      if (!(item.Name.Contains("Line v") || item.Name.Contains("Lines v")))
+      {
+                        <li class="dropdown-submenu">
+                            <a class="fourthlevellink"  >
+                          <label  id="eventitem@(item.ID)" onclick="LoadMarketCatalogue('@item.ID')" >@item.Name</label>
+                             @if (LoggedinUserDetail.GetUserTypeID() != 1)
+                             {
+                                 if (item.isFavorite == true)
+                                 {
+                                    <img id="eventitemimg@(item.ID)" class="favoriteitem" title="Remvoe from favorites" onclick="addorremovefromfavouritesevents('@item.ID')" src="../Content/Images/favoriteChecked.png" />
+                                 }
+                                 else
+                                 {
+                                    <img id="eventitemimg@(item.ID)" class="favoriteitem" title="Add to favorites" onclick="addorremovefromfavouritesevents('@item.ID')" src="../Content/Images/FavoriteUncheck.png" />
+                                 }
+                             }
+                               
+                            </a>
+                            <ul  id="MarketCatalogue@(item.ID)" class="dropdown-menu marketcatalogue" style="display:none">
+
+                            </ul>
+                           
+                        </li>
+      }
+  }
+<script type="text/javascript">
+ 
+   
+</script>
+             
+            
+

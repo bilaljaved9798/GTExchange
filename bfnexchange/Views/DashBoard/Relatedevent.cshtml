@@ -1,0 +1,62 @@
+﻿@model IEnumerable<bfnexchange.Models.InPlayMatches>
+
+
+          
+               
+				<div class="headingcaption" style="font-weight:100 !important;background: #075E54;color: white;margin-top: 2px;margin-bottom: 2px;width: 100%;">
+                     Related Event
+                </div>
+          
+
+            <div class="sporthighlightsuldiv">
+
+                <div class="col-md-12 no-padding">
+
+                    @foreach (var item in Model)
+                    {
+
+                        DateTime marketnameandtype = Convert.ToDateTime(item.EventOpenDate);
+                        marketnameandtype=marketnameandtype.AddHours(5);
+
+                        <div class="inplaydatarow">
+                            <div class="inplaymatchnamerelated relatedname" style="height: auto;">
+                                <a onclick="lastLevelBreadcrumb('@item.MarketCatalogueID.ToString()')">@item.EventName<br></a>
+                            </div>
+							
+							@if (item.EventTypeName == "Horse Racing" || item.EventTypeName == "Greyhound Racing")
+							{
+							<div class="relatedtime">
+								<span class="relatedspan" style="margin-right: 12px;">@marketnameandtype.ToString("dd/MM")</span> <br />
+								<span class="relatedspan"> @marketnameandtype.ToString(" hh:mm tt")</span>
+							@*@marketnameandtype*@
+
+							</div>
+							}
+							else
+							{
+							<div class="relatedtime" >
+
+								<span class="relatedspan" style="margin-right: 12px;"> @marketnameandtype.ToString("dd/MM") </span> <br />
+								<span class="relatedspan"> @marketnameandtype.ToString(" hh:mm tt")</span>
+								@*@marketnameandtype*@
+
+							</div>
+							}
+
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+
+
+
+
+      
+
+
+
+

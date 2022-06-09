@@ -1,0 +1,889 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75459056-FAAC-41DF-B345-1A289531D1BC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>bfnexchange.Services</RootNamespace>
+    <AssemblyName>bfnexchange.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\bfTradelineWPFFinalWithoutSuperAgent 30-11-2018\bfTradelineWPFFinalWithoutSuperAgent\bfTradeLineWPF\bfnexchange\bfnexchange.Services\bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.7\lib\net40\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.3.0\lib\net40\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.3.0\lib\net40\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.3.0\lib\net40\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.3.0\lib\net40\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.3.0\lib\net40\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.3.0\lib\net40\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Diagnostics.Tracing.EventSource, Version=1.1.28.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Diagnostics.Tracing.EventSource.Redist.1.1.28\lib\net40\Microsoft.Diagnostics.Tracing.EventSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Selectors" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Services\AccountsService.svc" />
+    <Content Include="Services\BettingService.svc" />
+    <Content Include="DBModel\NEDBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NEDBModel.edmx</DependentUpon>
+      <LastGenOutput>NEDBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBModel\NEDBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NEDBModel.edmx</DependentUpon>
+      <LastGenOutput>NEDBModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Services\APIConfigService.svc" />
+    <Content Include="Services\BettingServiceCricketCompletedMatch.svc" />
+    <Content Include="Services\BettingServiceCricketInningsRuns.svc" />
+    <Content Include="Services\BettingServiceCricketMatchOdds.svc" />
+    <Content Include="Services\BettingServiceGrayHoundPlace.svc" />
+    <Content Include="Services\BettingServiceGrayHoundWin.svc" />
+    <Content Include="Services\BettingServiceHorseRacePlace.svc" />
+    <Content Include="Services\BettingServiceHorseWin.svc" />
+    <Content Include="Services\BettingServiceRest.svc" />
+    <Content Include="Services\BettingServiceSoccer.svc" />
+    <Content Include="Services\BettingServiceTennis.svc" />
+    <Content Include="Services\BettingServiceWinner.svc" />
+    <Content Include="Services\BettingWebServiceOld.asmx" />
+    <Content Include="Services\Service123.svc" />
+    <Content Include="Services\UserServices.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+      <BrowseToURL>
+      </BrowseToURL>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AllMatches.cs" />
+    <Compile Include="APIConfig.cs" />
+    <Compile Include="APIConfigData.cs" />
+    <Compile Include="APIConfigforResults.cs" />
+    <Compile Include="BalanceSheet.cs" />
+    <Compile Include="BFBallabyBallSummary.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Class3.cs" />
+    <Compile Include="Class4.cs" />
+    <Compile Include="CricketAPIConfig.cs" />
+    <Compile Include="DBModel\AdminAmount.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\AmountReceiveable.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\BallbyBallSummary.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\BetPlaceWaitandInterval.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\BetSlipKey.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\EmailConfig.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\LiveTVChanel.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\MarketCatalogueSelection.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\MarketRule.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\ResultPostSetting.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_AmountReceiveables_GetDatabyDate_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BallbyBallSummary_GetResultsbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BallbyBallSummary_GetScoresbyEventIDbyInningsandOvers_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BallbyBallSummary_GetScoresbyEventIDbyInnings_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BallbyBallSummary_GetScoresbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BetPlaceWaitandInterval_GetAllData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_BetSlipKeys_Get_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_CricketAPIConfig_GetData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_EMAILConfig_GetData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetFigureOdds1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetFigureOdds_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetFigureOdd_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetKalijut1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetKalijutodds_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetKalijuts_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Sp_GetKalijut_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_LiveTVChanels_GetAlldata_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_MarketRules_GetData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_URLsData_GetAllData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetCommission_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyAdminID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyAgentIDForCommisionbyEventtype_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCommission_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCreatedByIDandEventType_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCreatedByIDForSamiadmin_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCreatedByIDForsuper_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyCreatedByID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyEventNameandDateRangeFancywithMarketName_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyEventNameandDateRange_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyEventTypeandDateRange_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabySuperID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDistinctEventTypes_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDistinctMarket_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetAllMatchesbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyAgentIDLimit_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyAgentIDWithRefererZero_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabySamiAdminByID1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabySamiAdminByID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabySuperID2_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyUserIDandMArketIDIN_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyUserIDandMArketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDataForAdminLimit_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDataForAdmin_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDistinctMarket_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetInPlayMatcheswithRunnersbyUserID1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetInPlayMatcheswithRunnersbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctKJMarketsbyEventID11_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctKJMarketsbyEventID1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctKJMarketsbyEventID2_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctKJMarketsbyEventIDs_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctKJMarketsbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctLinevMarketsbyEventID2_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctLinevMarketsbyEventIDIN1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctLinevMarketsbyEventIDIN_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctLinevMarketsbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctLinevMarkets_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctMarketsOpenedNewFancy_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetDistinctMarketsOpenedNew_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventDetailsbyEventOpenDateMatchOddsOnly_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventDetailsbyMarketIDIN1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventDetailsbyMarketIDIN_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventDetailsbyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventLineMarketandOddsForAssociation_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketCatalogueIDsOpendByUserandSelectionNames_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketForAllowedBetting_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetSoccergoalbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetTodaysHorseRacingauto_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetTodaysHorseRacing_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetToTiedMarketbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetToWinTheTossbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetUserMarketbyEventID11_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetUserMarketbyEventID1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetUserMarketbyEventID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_SetMarketCatalogueIDOpendByUserandGet_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UsersAccounts_Insert_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetAllCuttingUsers_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetAllowedMarketsbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetAllUsersbyUserTypeNew_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetCommissionAccountIDandBookAccountID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetMaxOddBackandLay_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetReferrerRateandReferrerIDbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetTransferAdminAmount_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword2_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword3_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPasswordNEW1_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPasswordNew2_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPasswordNew_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPasswordWeb_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword_Result1.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyUsernameandPassword_Result2.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserIDsforAllowedGrayHoundRace_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserIDsforAllowedHorseRace_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserIDsforAllowedSoccer_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserIDsforAllowedTennis_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUSernamebyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UserAccount.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetData.cs" />
+    <Compile Include="GetDataFromOtherSource.cs" />
+    <Compile Include="MatchScoreCard.cs" />
+    <Compile Include="MatchSummary.cs" />
+    <Compile Include="OverSummary.cs" />
+    <Compile Include="ResponseFromServer.cs" />
+    <Compile Include="Root.cs" />
+    <Compile Include="Root1.cs" />
+    <Compile Include="RootObject.cs" />
+    <Compile Include="DBModel\CommisionAccount.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_APIConfig_GetCommisionRate_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_APIConfig_GetPoundRate_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_MarketCatalogueSelections_Get_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserAccounts_GetDatabyUserIDandDateRange_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetCompletedMatchedBetsbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetCurrentLiabality_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyAgentID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyUserIDandSelectionID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyUserIDbyAgentID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetDatabyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetInPlayMatchesbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetUnCompleteMarketIDandUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetUnCompleteMarketIDbyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserBets_GetUnMatchedBets_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Userbets_GetUserIDsbyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventNamebyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketCatalogueIDsOpendByUsersforAdmin_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketCatalogueIDsOpendByUsersofAgent_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketCatalogueIDsOpendByUser_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetSportsIDbyMarketID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UsersMarket_GetAllDatabyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetAgentRate_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetBlockStatus_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetCreatedbyIDbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetLastLoginTimes_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UserBet.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AccountsService.svc.cs">
+      <DependentUpon>AccountsService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingService.svc.cs">
+      <DependentUpon>BettingService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Crypto.cs" />
+    <Compile Include="DBModel\APIConfig.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_APIConfig_GetData_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_FavoriteCompetitions_GetdatabyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_FavoriteEvents_GetdatabyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_FavoriteEventTypes_GetdatabyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetCompetitionIDs_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventIDs_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetEventypeIDs_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketAssignedtoUser_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetMarketCatalogueIDs_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_UserMarket_GetUserMarketbyUserID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUserbyCreatedbyID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UserMarket.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceCricketCompletedMatch.svc.cs">
+      <DependentUpon>BettingServiceCricketCompletedMatch.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceCricketInningsRuns.svc.cs">
+      <DependentUpon>BettingServiceCricketInningsRuns.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceCricketMatchOdds.svc.cs">
+      <DependentUpon>BettingServiceCricketMatchOdds.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceGrayHoundPlace.svc.cs">
+      <DependentUpon>BettingServiceGrayHoundPlace.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceGrayHoundWin.svc.cs">
+      <DependentUpon>BettingServiceGrayHoundWin.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceHorseRacePlace.svc.cs">
+      <DependentUpon>BettingServiceHorseRacePlace.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceHorseWin.svc.cs">
+      <DependentUpon>BettingServiceHorseWin.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceRest.svc.cs">
+      <DependentUpon>BettingServiceRest.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceSoccer.svc.cs">
+      <DependentUpon>BettingServiceSoccer.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceTennis.svc.cs">
+      <DependentUpon>BettingServiceTennis.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingServiceWinner.svc.cs">
+      <DependentUpon>BettingServiceWinner.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\BettingWebServiceOld.asmx.cs">
+      <DependentUpon>BettingWebServiceOld.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\IAccountsService.cs" />
+    <Compile Include="Services\IBettingService.cs" />
+    <Compile Include="Services\APIConfigService.svc.cs">
+      <DependentUpon>APIConfigService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IAPIConfigService.cs" />
+    <Compile Include="Services\IBettingServiceCricketCompletedMatch.cs" />
+    <Compile Include="Services\IBettingServiceCricketInningsRuns.cs" />
+    <Compile Include="Services\IBettingServiceCricketMatchOdds.cs" />
+    <Compile Include="Services\IBettingServiceGrayHoundPlace.cs" />
+    <Compile Include="Services\IBettingServiceGrayHoundWin.cs" />
+    <Compile Include="Services\IBettingServiceHorseRacePlace.cs" />
+    <Compile Include="Services\IBettingServiceHorseWin.cs" />
+    <Compile Include="Services\IBettingServiceRest.cs" />
+    <Compile Include="Services\IBettingServiceRestFancy.cs" />
+    <Compile Include="Services\IBettingServiceSoccer.cs" />
+    <Compile Include="Services\IBettingServiceTennis.cs" />
+    <Compile Include="Services\IBettingServiceWinner.cs" />
+    <Compile Include="Services\IService123.cs" />
+    <Compile Include="Services\Service123.svc.cs">
+      <DependentUpon>Service123.svc</DependentUpon>
+    </Compile>
+    <Compile Include="UserBetInsertionHelper.cs" />
+    <Compile Include="ValidateUser.cs" />
+    <Compile Include="DBModel\AccessRight.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\ActivityLog.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\GetAccessRightsbyUserType_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\GetUserbyUsernameandpassword_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\NEDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\NEDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\NEDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NEDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_AccessRigths_GetAccessRightsbyUserTypeID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetAllUsersbyUserType_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetCurrentBalance_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetCurrentBalance_Result1.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetDetailsofUserbyID_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_GetUSernamebyUsername_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_Users_Insert_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\User.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UsersAmountHistory.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\Users_ChangePasswordHistory.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UserType.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\UserType_AccessRights_Mapping.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IUserServices.cs" />
+    <Compile Include="Services\UserServices.svc.cs">
+      <DependentUpon>UserServices.svc</DependentUpon>
+    </Compile>
+    <Compile Include="wrBF1\AvailableToBack.cs" />
+    <Compile Include="wrBF1\AvailableToLay.cs" />
+    <Compile Include="wrBF1\Ex.cs" />
+    <Compile Include="wrBF1\Runner.cs" />
+    <Compile Include="wrBF\ExchangePrices.cs" />
+    <Compile Include="wrBF\GD0CompletedEventArgs.cs" />
+    <Compile Include="wrBF\GD0CompletedEventHandler.cs" />
+    <Compile Include="wrBF\GD1CompletedEventArgs.cs" />
+    <Compile Include="wrBF\GD1CompletedEventHandler.cs" />
+    <Compile Include="wrBF\GDCompletedEventArgs.cs" />
+    <Compile Include="wrBF\GDCompletedEventHandler.cs" />
+    <Compile Include="wrBF\GDLBFCompletedEventArgs.cs" />
+    <Compile Include="wrBF\GDLBFCompletedEventHandler.cs" />
+    <Compile Include="wrBF\GDLTCompletedEventArgs.cs" />
+    <Compile Include="wrBF\GDLTCompletedEventHandler.cs" />
+    <Compile Include="wrBF\MarketBook.cs" />
+    <Compile Include="wrBF\MarketStatus.cs" />
+    <Compile Include="wrBF\Match.cs" />
+    <Compile Include="wrBF\Order.cs" />
+    <Compile Include="wrBF\OrderStatus.cs" />
+    <Compile Include="wrBF\OrderType.cs" />
+    <Compile Include="wrBF\PersistenceType.cs" />
+    <Compile Include="wrBF\PriceSize.cs" />
+    <Compile Include="wrBF\Runner.cs" />
+    <Compile Include="wrBF\RunnerStatus.cs" />
+    <Compile Include="wrBF\Side.cs" />
+    <Compile Include="wrBF\StartingPrices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Authentication\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="DBModel\NEDBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NEDBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DBModel\NEDBModel.edmx.diagram">
+      <DependentUpon>NEDBModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\bfnexchangeServices.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExternalAPI\ExternalAPI.csproj">
+      <Project>{ef7248a6-745f-40e2-82cd-70687861343c}</Project>
+      <Name>ExternalAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54524</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54524/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

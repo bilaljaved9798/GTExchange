@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" />
+  <xs:element name="listMarketCatalogue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lstMarketCatalogues" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element minOccurs="0" name="isInPlay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listMarketCatalogueResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listMarketCatalogueResult" nillable="true" type="q2:ArrayOfMarketCatalogue" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listMarketBookALL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q3:ArrayOfstring" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserTypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listMarketBookALLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listMarketBookALLResult" nillable="true" type="q4:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listMarketBook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserTypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listMarketBookResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listMarketBookResult" nillable="true" type="q5:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEventTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isInPlay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEventTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listEventTypesResult" nillable="true" type="q6:ArrayOfEventTypeResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEventTypesWithMarketFilter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isInPlay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEventTypesWithMarketFilterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listEventTypesWithMarketFilterResult" nillable="true" type="q7:ArrayOfEventTypeResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listCompetitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isInPlay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listCompetitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listCompetitionsResult" nillable="true" type="q8:ArrayOfCompetitionResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isInPlay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="listEventsResult" nillable="true" type="q9:ArrayOfEventResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyIDResultsOnly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marketID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyIDResultsOnlyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetMarketDatabyIDResultsOnlyResult" nillable="true" type="q10:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketID" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element minOccurs="0" name="sheetname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrignalOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="MainSportsCategory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetMarketDatabyIDResult" nillable="true" type="q12:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromBetfairReadOnly">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataFromBetfairReadOnlyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBallbyBallSummary">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBallbyBallSummaryResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentMarketBookNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marketid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sheetname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MainSportsCategory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketopendate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="OldRunners" nillable="true" type="q13:ArrayOfRunner" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="currentmarketobject" nillable="true" type="q14:MarketBook" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentMarketBookNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" minOccurs="0" name="GetCurrentMarketBookNewResult" nillable="true" type="q15:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyIDLive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketID" nillable="true" type="q16:ArrayOfstring" />
+        <xs:element minOccurs="0" name="sheetname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OrignalOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="MainSportsCategory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketDatabyIDLiveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetMarketDatabyIDLiveResult" nillable="true" type="q17:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsBP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketIDs" nillable="true" type="q18:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsBPResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllMarketsBPResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsOthers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketIDs" nillable="true" type="q19:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsOthersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" minOccurs="0" name="GetAllMarketsOthersResult" nillable="true" type="q20:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsOthersFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketIDs" nillable="true" type="q21:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsOthersFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" minOccurs="0" name="GetAllMarketsOthersFancyResult" nillable="true" type="q22:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsBPFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketIDs" nillable="true" type="q23:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsBPFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllMarketsBPFancyResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="marketIDs" nillable="true" type="q24:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarketsFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetAllMarketsFancyResult" nillable="true" type="q25:ArrayOfMarketBook" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

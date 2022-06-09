@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ExternalAPI.TO.EventTypeResult>
+
+@{
+                bfnexchange.BettingServiceReference.BettingServiceClient client = new bfnexchange.BettingServiceReference.BettingServiceClient();
+                foreach (var eventtypeitem in Model)
+                {
+        <li class="dropdown-submenu">
+            <a>
+                @eventtypeitem.EventType.Name
+
+            </a>
+            <ul class="nav dropdown-menu">
+                @{
+                    var lstCompetitions = client.listCompetitions(eventtypeitem.EventType.Id, true);
+        }
+                @foreach (var competitionitem in lstCompetitions)
+        {
+                    <li class="dropdown-submenu">
+                        <a>
+                            @competitionitem.Competition.Name
+                        </a>
+                        <ul class="dropdown-menu">
+                            @{var lstEvents = client.listEvents(competitionitem.Competition.Id, true);
+    }
+                            @foreach (var eventitem in lstEvents)
+    {
+                                <li class="dropdown-submenu">
+                                    <a>
+                                        @eventitem.Event.Name
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                      
+                                                    @{ 
+                                                        List <string> lstMarketCatalogueIDs = new List<string>();
+                                                        var lstMarketCatalogues = client.listMarketCatalogue(eventitem.Event.Id, lstMarketCatalogueIDs.ToArray(), true);
+                                                    }
+                                                    @foreach (var marketcatalogueitem in lstMarketCatalogues)
+                                                    {
+                                                        <li>
+                                                            <a class="active" onclick="lastLevelBreadcrumb('@marketcatalogueitem.MarketId.ToString()')">@marketcatalogueitem.MarketName</a>
+
+                                                        </li>
+                                                    }
+</ul>
+                                </li>
+                                            }
+
+                        </ul>
+
+                    </li>
+                                            }
+            </ul>
+        </li>
+                                            }
+}
+
+

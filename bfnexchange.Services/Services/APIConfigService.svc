@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="bfnexchange.Services.Services.APIConfigService" CodeBehind="APIConfigService.svc.cs" %>

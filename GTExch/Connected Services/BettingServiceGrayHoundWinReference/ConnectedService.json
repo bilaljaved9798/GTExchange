@@ -1,0 +1,19 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      //"http://localhost:54524/Services/BettingServiceGrayHoundWin.svc",
+      "http://78.110.160.52:8960/bfnexchangeServices/Services/BettingServiceGrayHoundWin.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "internalTypeAccess": true,
+    "namespaceMappings": [
+      "*, BettingServiceGrayHoundWinReference"
+    ],
+    "sync": true,
+    "targetFramework": "net5.0",
+    "typeReuseMode": "All"
+  }
+}

@@ -1,0 +1,120 @@
+﻿<Window x:Class="globaltraders.PlusMinusSummaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        mc:Ignorable="d"
+        Title="PlusMinusSummaryWindow" Height="600" WindowStyle="None" FontFamily="Trebuchet MS" Width="830" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel   >
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
+                    <GradientStop Color="#FF000000" Offset="1"/>
+                    <GradientStop Color="#FF243875" Offset="-1"/>
+
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock>
+                    <Label x:Name="lblHeading" Content="Today Summary" Foreground="White"  FontSize="16" FontWeight="Medium" Width="540"></Label>
+                  <Label x:Name="lblBalanceSheet" Content="Agent" Foreground="White"  FontSize="16" FontWeight="Medium" Visibility="Hidden"></Label>
+                <ComboBox x:Name="cmbUsersforBalanceSheet" VerticalContentAlignment="Center" VerticalAlignment="Center" Height="24.933" Width="175"  Visibility="Hidden"></ComboBox>
+               
+          <Button Content="X" Background="Red" Foreground="White" Padding="10" Width="30" Height="30" Margin="5,5,0,0" FontSize="20" Click="Button_Click_1"></Button>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+
+                <TextBlock>
+                    <Label Content="From" Foreground="White"  FontSize="12" FontWeight="Medium"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpFrom"
+
+            VerticalAlignment="Top" Width="115" />
+                </TextBlock>
+                <TextBlock>
+                    <Label Content="To" Foreground="White"  FontSize="12" FontWeight="Medium"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpTo"
+
+            VerticalAlignment="Top" Width="115" />
+                </TextBlock>
+                <Button Content="Load" Width="100" Background="#ccc" Foreground="#FF243875" Margin="0" Click="btnLoadLedger_Click" FontWeight="Bold" FontSize="16"></Button>
+                <TextBlock><Run Text=" "/></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <DataGrid x:Name="dgvPlus" AutoGenerateColumns="False" Height="500" Margin="0,0,10,5"  IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FFC9C9C9" VerticalGridLinesBrush="#FFC5C5C5" Width="400" >
+
+                    <DataGrid.Columns>
+
+
+
+                        <DataGridTemplateColumn Width="160" Header="Username" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="115" Header="Plus" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Plus}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="Green" FontWeight="Bold" ></TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="115" Header="Minus" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Minus, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold"  >
+
+                                    </TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid x:Name="DGVMinus" AutoGenerateColumns="False" Height="500" Margin="0,0,0,5"  IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FFC9C9C9" VerticalGridLinesBrush="#FFC5C5C5" Width="400">
+
+                    <DataGrid.Columns>
+
+
+
+                        <DataGridTemplateColumn Width="160" Header="Username" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="115" Header="Plus" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Plus}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="Green" FontWeight="Bold" ></TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="115" Header="Minus" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Minus, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold"  >
+
+                                    </TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

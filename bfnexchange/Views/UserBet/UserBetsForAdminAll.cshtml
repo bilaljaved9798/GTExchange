@@ -1,0 +1,100 @@
+﻿
+@model IEnumerable<bfnexchange.Models.UserBetsForAdmin>
+@{
+
+    List<bfnexchange.Models.UserBetsForAdmin>
+        lstMatchedBets = Model.Where(a => a.isMatched == true).ToList();
+
+
+
+    <div class="user-betsadmin-wrapper">
+       
+        <div class="matched-bets">
+            <div class="matched-unmatched-heading">
+                <label>@lstMatchedBets.Count Matched Bets</label>
+            </div>
+            @if (lstMatchedBets.Count > 0)
+            {
+
+
+                <div class="bets-header">
+                    <div class="selection" style="background-color:aqua">
+                        <label style="color:white">Selection</label>
+                    </div>
+                    <div class="Odd">
+                        <label>Odd</label>
+                    </div>
+                    <div class="Amount">
+                        <label>Amount</label>
+                    </div>
+                    <div class="Odd">
+                        <label>Live</label>
+                    </div>
+                    <div class="customername">
+                        <label>Customer</label>
+                    </div>
+                    <div class="dealername">
+                        <label>Dealer</label>
+                    </div>
+                </div>
+                foreach (var item in lstMatchedBets)
+                {
+
+                    if (item.BetType == "lay")
+                    {
+                        <div class="bets-items back">
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label>@item.Amount</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.LiveOdd</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.CustomerName</label>
+                            </div>
+                            <div class="dealername">
+                                <label>@item.DealerName</label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="bets-items lay">
+                            <div class="selection">
+                                <label>@item.SelectionName</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.UserOdd</label>
+                            </div>
+                            <div class="Amount">
+                                <label>@item.Amount</label>
+                            </div>
+                            <div class="Odd">
+                                <label>@item.LiveOdd</label>
+                            </div>
+                            <div class="customername">
+                                <label>@item.CustomerName</label>
+                            </div>
+                            <div class="dealername">
+                                <label>@item.DealerName</label>
+                            </div>
+                        </div>
+                    }
+
+                }
+            }
+
+        </div>
+
+
+
+
+    </div>
+   
+} 

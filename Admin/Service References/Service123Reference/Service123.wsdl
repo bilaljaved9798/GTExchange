@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service123" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService123_GetMarketDatabyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyID" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetMarketDatabyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetMarketDatabyIDIndianFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDIndianFancy" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetMarketDatabyIDIndianFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDIndianFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetRunnersForFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunnersForFancy" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetRunnersForFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRunnersForFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetEventIDFancyMarket_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventIDFancyMarket" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetEventIDFancyMarket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEventIDFancyMarketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateNew" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdate2_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdate2" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdate2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdate2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateSCT_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateSCT" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateSCT_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateSCTResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsFancyString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyString" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsFancyString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsString" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsBP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBP" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsBP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsBPFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancy" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetAllMarketsBPFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService123">
+    <wsdl:operation name="GetMarketDatabyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetMarketDatabyID" message="tns:IService123_GetMarketDatabyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetMarketDatabyIDResponse" message="tns:IService123_GetMarketDatabyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDIndianFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetMarketDatabyIDIndianFancy" message="tns:IService123_GetMarketDatabyIDIndianFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetMarketDatabyIDIndianFancyResponse" message="tns:IService123_GetMarketDatabyIDIndianFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRunnersForFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetRunnersForFancy" message="tns:IService123_GetRunnersForFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetRunnersForFancyResponse" message="tns:IService123_GetRunnersForFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEventIDFancyMarket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetEventIDFancyMarket" message="tns:IService123_GetEventIDFancyMarket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetEventIDFancyMarketResponse" message="tns:IService123_GetEventIDFancyMarket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdate" message="tns:IService123_GetUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdateResponse" message="tns:IService123_GetUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdateNew" message="tns:IService123_GetUpdateNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdateNewResponse" message="tns:IService123_GetUpdateNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdate2" message="tns:IService123_GetUpdate2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdate2Response" message="tns:IService123_GetUpdate2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSCT">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdateSCT" message="tns:IService123_GetUpdateSCT_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdateSCTResponse" message="tns:IService123_GetUpdateSCT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancyString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetAllMarketsFancyString" message="tns:IService123_GetAllMarketsFancyString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetAllMarketsFancyStringResponse" message="tns:IService123_GetAllMarketsFancyString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetAllMarketsString" message="tns:IService123_GetAllMarketsString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetAllMarketsStringResponse" message="tns:IService123_GetAllMarketsString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetAllMarketsBP" message="tns:IService123_GetAllMarketsBP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetAllMarketsBPResponse" message="tns:IService123_GetAllMarketsBP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBPFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetAllMarketsBPFancy" message="tns:IService123_GetAllMarketsBPFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetAllMarketsBPFancyResponse" message="tns:IService123_GetAllMarketsBPFancy_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService123" type="tns:IService123">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMarketDatabyID">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetMarketDatabyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDIndianFancy">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetMarketDatabyIDIndianFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRunnersForFancy">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetRunnersForFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEventIDFancyMarket">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetEventIDFancyMarket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateNew">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetUpdateNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdate2">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetUpdate2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateSCT">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetUpdateSCT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancyString">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetAllMarketsFancyString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsString">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetAllMarketsString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBP">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetAllMarketsBP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBPFancy">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetAllMarketsBPFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service123">
+    <wsdl:port name="BasicHttpBinding_IService123" binding="tns:BasicHttpBinding_IService123">
+      <soap:address location="http://localhost:54524/Services/Service123.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

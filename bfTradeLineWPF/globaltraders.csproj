@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{25F9019F-01B2-44E5-93FC-06A5B9726A80}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>globaltraders</RootNamespace>
+    <AssemblyName>globaltraders</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>D:\globaltradersPublishlatest\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>true</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://78.110.160.52:6980/</InstallUrl>
+    <ProductName>Global Traders</ProductName>
+    <PublisherName>Global Traders</PublisherName>
+    <MinimumRequiredVersion>1.0.0.447</MinimumRequiredVersion>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>448</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>globaltraders.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>DF4AE08E06D01FD3F93F119B1F281194B15F642E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>globaltraders_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\bfTradelineWPFFinalWithoutSuperAgent 30-11-2018\bfTradelineWPFFinalWithoutSuperAgent\bfTradeLineWPF\bfnexchange\bfTradeLineWPF\bin\Debug\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Litzscore">
+      <HintPath>..\..\..\..\bfTradelineWPFFinalWithoutSuperAgent 30-11-2018\bfTradelineWPFFinalWithoutSuperAgent\bfTradeLineWPF\bfnexchange\bfTradeLineWPF\bin\Debug\Litzscore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RestSharp, Version=104.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.17.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.17\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.3.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AccountsReceiveableWindow.xaml.cs">
+      <DependentUpon>AccountsReceiveableWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminBetsWindow.xaml.cs">
+      <DependentUpon>AdminBetsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanelWindow.xaml.cs">
+      <DependentUpon>AdminPanelWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BetPlaceWaitandInterval.cs" />
+    <Compile Include="BookPostionForIN.xaml.cs">
+      <DependentUpon>BookPostionForIN.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Class3.cs" />
+    <Compile Include="ClosableTab.cs" />
+    <Compile Include="CloseableHeader.xaml.cs">
+      <DependentUpon>CloseableHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommissionSummery.xaml.cs">
+      <DependentUpon>CommissionSummery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CompletedBetsWindow.xaml.cs">
+      <DependentUpon>CompletedBetsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HelperClasses\AllMarketsInPlay.cs" />
+    <Compile Include="HelperClasses\AllowedMarkets.cs" />
+    <Compile Include="HelperClasses\BetSlipKeys.cs" />
+    <Compile Include="HelperClasses\Class1.cs" />
+    <Compile Include="HelperClasses\CuttingUsers.cs" />
+    <Compile Include="HelperClasses\PlusMinussummarybyEventTypeandUser.cs" />
+    <Compile Include="HelperClasses\ProfitandLoss.cs" />
+    <Compile Include="HelperClasses\ProfitandLossEventType.cs" />
+    <Compile Include="HelperClasses\UserBetHelper.cs" />
+    <Compile Include="LedgerWindow.xaml.cs">
+      <DependentUpon>LedgerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MarketWindowUserControl.xaml.cs">
+      <DependentUpon>MarketWindowUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccessRightsbyUserType.cs" />
+    <Compile Include="Models\AddCredit.cs" />
+    <Compile Include="Models\AllUserMarkets.cs" />
+    <Compile Include="Models\AmountReceivables.cs" />
+    <Compile Include="Models\APIConfigData.cs" />
+    <Compile Include="Models\BalanceSheet.cs" />
+    <Compile Include="Models\BlockDeleteResetPassword.cs" />
+    <Compile Include="Models\CompletedUserBets.cs" />
+    <Compile Include="Models\CreateUser.cs" />
+    <Compile Include="Models\EventType.cs" />
+    <Compile Include="Models\FavoriteCompetitions.cs" />
+    <Compile Include="Models\FavoriteEvents.cs" />
+    <Compile Include="Models\FavoriteEventType.cs" />
+    <Compile Include="Models\InPlayMatches.cs" />
+    <Compile Include="Models\KeepAliveLogoutResponse.cs" />
+    <Compile Include="Models\LastLoginTimes.cs" />
+    <Compile Include="Models\LiabalitybyMarket.cs" />
+    <Compile Include="Models\LinevMarkets.cs" />
+    <Compile Include="Models\LiveTVChannels.cs" />
+    <Compile Include="Models\LoginResponse.cs" />
+    <Compile Include="Models\ManageUser.cs" />
+    <Compile Include="Models\MarketBookForindianFancy.cs" />
+    <Compile Include="Models\MarketRules.cs" />
+    <Compile Include="Models\MatchScores.cs" />
+    <Compile Include="Models\MyMarket.cs" />
+    <Compile Include="Models\PoundRates.cs" />
+    <Compile Include="Models\RunnerForIndianFancy.cs" />
+    <Compile Include="Models\TodayHorseRacing.cs" />
+    <Compile Include="Models\UpdateCricket.cs" />
+    <Compile Include="Models\UserAccounts.cs" />
+    <Compile Include="Models\UserBets.cs" />
+    <Compile Include="Models\UserBetsForAdmin.cs" />
+    <Compile Include="Models\UserBetsforSamiAdmin.cs" />
+    <Compile Include="Models\UserBetsforSuper.cs" />
+    <Compile Include="Models\UserBetsforAgent.cs" />
+    <Compile Include="Models\UserDetails.cs" />
+    <Compile Include="Models\UserIDandUserType.cs" />
+    <Compile Include="Models\UserLiabality.cs" />
+    <Compile Include="Models\UserMarket.cs" />
+    <Compile Include="Models\UserMarketSelection.cs" />
+    <Compile Include="Models\UserStatus.cs" />
+    <Compile Include="OddsData.cs" />
+    <Compile Include="PlusMinusSummaryWindow.xaml.cs">
+      <DependentUpon>PlusMinusSummaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfitLossWindow.xaml.cs">
+      <DependentUpon>ProfitLossWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ResponseFromServer.cs" />
+    <Compile Include="RulesWindow.xaml.cs">
+      <DependentUpon>RulesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\AccountsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\APIConfigServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\CricketScoreServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Service123Reference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\UserServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ShowIndianFancy.cs" />
+    <Compile Include="UserBetsUpdateUnmatcedBets.cs" />
+    <Compile Include="VideoWindow.xaml.cs">
+      <DependentUpon>VideoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowResizer.cs" />
+    <Compile Include="wrBF1\AvailableToBack.cs" />
+    <Compile Include="wrBF1\AvailableToLay.cs" />
+    <Compile Include="wrBF1\Ex.cs" />
+    <Compile Include="wrBF1\Runner.cs" />
+    <Compile Include="wrBF\ExchangePrices.cs" />
+    <Compile Include="wrBF\MarketBook.cs" />
+    <Compile Include="wrBF\MarketStatus.cs" />
+    <Compile Include="wrBF\Match.cs" />
+    <Compile Include="wrBF\Order.cs" />
+    <Compile Include="wrBF\OrderStatus.cs" />
+    <Compile Include="wrBF\OrderType.cs" />
+    <Compile Include="wrBF\PersistenceType.cs" />
+    <Compile Include="wrBF\PriceSize.cs" />
+    <Compile Include="wrBF\Runner.cs" />
+    <Compile Include="wrBF\RunnerStatus.cs" />
+    <Compile Include="wrBF\Side.cs" />
+    <Compile Include="wrBF\StartingPrices.cs" />
+    <Page Include="AccountsReceiveableWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminBetsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminPanelWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookPostionForIN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CloseableHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommissionSummery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CompletedBetsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LedgerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Crypto.cs" />
+    <Compile Include="LoggedinUserDetail.cs" />
+    <Compile Include="MarketBookDataGrid.cs" />
+    <Compile Include="MarketWindow.xaml.cs">
+      <DependentUpon>MarketWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlaceHolderHelper.cs" />
+    <Compile Include="TextInputToVisibilityConverter.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MarketWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MarketWindowUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlusMinusSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfitLossWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RulesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VideoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bfnexchange.Services.APIResponse.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_BetPlaceWaitandInterval_GetAllData_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_MarketCatalogueSelections_Get_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_UserAccounts_GetDistinctEventTypes_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_UserMarket_GetEventDetailsbyMarketID_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_Users_GetMaxOddBackandLay_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_Users_GetReferrerRateandReferrerIDbyUserID_Result.datasource" />
+    <None Include="bfnexchange.Services.DBModel.SP_Users_GetTransferAdminAmount_Result.datasource" />
+    <None Include="bfnexchange.Services.MatchScoreCard.datasource" />
+    <None Include="bfnexchange.Services.SampleResponse1.datasource" />
+    <None Include="bfnexchange.Services.Services.UserServices.datasource" />
+    <None Include="bfnexchange.wrBF.MarketBook.datasource" />
+    <None Include="ExternalAPI.TO.CompetitionResult.datasource" />
+    <None Include="ExternalAPI.TO.EventResult.datasource" />
+    <None Include="ExternalAPI.TO.EventTypeResult.datasource" />
+    <None Include="ExternalAPI.TO.GetDataFancy.datasource" />
+    <None Include="ExternalAPI.TO.Home.datasource" />
+    <None Include="ExternalAPI.TO.LinevMarkets.datasource" />
+    <None Include="ExternalAPI.TO.MarketBook.datasource" />
+    <None Include="ExternalAPI.TO.MarketBookForindianFancy.datasource" />
+    <None Include="ExternalAPI.TO.MarketBookString.datasource" />
+    <None Include="ExternalAPI.TO.MarketCatalogue.datasource" />
+    <None Include="ExternalAPI.TO.Root.datasource" />
+    <None Include="ExternalAPI.TO.RootSCT.datasource" />
+    <None Include="globaltraders_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\AccountsServiceReference\AccountsService.wsdl" />
+    <None Include="Service References\AccountsServiceReference\AccountsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountsServiceReference\AccountsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountsServiceReference\AccountsService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountsServiceReference\globaltraders.AccountsServiceReference.SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountsServiceReference\globaltraders.AccountsServiceReference.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountsServiceReference\globaltraders.AccountsServiceReference.SP_UserAccounts_GetDistinctEventTypes_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\APIConfigServiceReference\APIConfigService.wsdl" />
+    <None Include="Service References\APIConfigServiceReference\APIConfigService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\APIConfigServiceReference\APIConfigService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CricketScoreServiceReference\globaltraders.CricketScoreServiceReference.CricketData_GetMatchKeys_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\CricketScoreServiceReference\Service1.wsdl" />
+    <None Include="Service References\CricketScoreServiceReference\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CricketScoreServiceReference\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CricketScoreServiceReference\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Service123Reference\Service123.wsdl" />
+    <None Include="Service References\Service123Reference\Service123.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Service123Reference\Service1231.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Service123Reference\Service1232.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Service123Reference\Service1233.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Service123Reference\Service1234.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.APIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_MarketCatalogueSelections_Get_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetEventDetailsbyMarketID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetSoccergoalbyEventID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetToTiedMarketbyEventID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetToWinTheTossbyEventID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_Users_GetCommissionAccountIDandBookAccountID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_Users_GetMaxOddBackandLay_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_Users_GetReferrerRateandReferrerIDbyUserID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_Users_GetTransferAdminAmount_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices.wsdl" />
+    <None Include="Service References\UserServiceReference\UserServices.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServiceReference\UserServices5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnitedBet.appref-ms" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AccountsServiceReference\" />
+    <WCFMetadataStorage Include="Service References\APIConfigServiceReference\" />
+    <WCFMetadataStorage Include="Service References\CricketScoreServiceReference\" />
+    <WCFMetadataStorage Include="Service References\Service123Reference\" />
+    <WCFMetadataStorage Include="Service References\UserServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExternalAPI\ExternalAPI.csproj">
+      <Project>{ef7248a6-745f-40e2-82cd-70687861343c}</Project>
+      <Name>ExternalAPI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="settings-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logout-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cricket.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Cricket.png" />
+    <Resource Include="Resources\GRace.png" />
+    <Resource Include="Resources\HRace.png" />
+    <Resource Include="Resources\Soccer.png" />
+    <Resource Include="Resources\Tennis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Soccer.png" />
+    <Resource Include="Tennis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Loader.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="clock_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dark-green-marker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Loader.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pin-normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pin-hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Loader1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ws7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ws4339.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ws4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ws1.png" />
+    <Resource Include="Resources\ws2.png" />
+    <Resource Include="Resources\ws4.png" />
+    <Resource Include="Resources\ws4339.png" />
+    <Resource Include="Resources\ws7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ws1.png" />
+    <Resource Include="ws2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dark-green-marker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dark-orange-marker.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\update_delay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="update_delay.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GlobalTrader1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AD.gif" />
+    <Resource Include="Resources\AE.gif" />
+    <Resource Include="Resources\AF.gif" />
+    <Resource Include="Resources\AG.gif" />
+    <Resource Include="Resources\AL.gif" />
+    <Resource Include="Resources\AM.gif" />
+    <Resource Include="Resources\AO.gif" />
+    <Resource Include="Resources\AR.gif" />
+    <Resource Include="Resources\AT.gif" />
+    <Resource Include="Resources\AU.gif" />
+    <Resource Include="Resources\AZ.gif" />
+    <Resource Include="Resources\BA.gif" />
+    <Resource Include="Resources\BB.gif" />
+    <Resource Include="Resources\BD.gif" />
+    <Resource Include="Resources\BE.gif" />
+    <Resource Include="Resources\BF.gif" />
+    <Resource Include="Resources\BG.gif" />
+    <Resource Include="Resources\BH.gif" />
+    <Resource Include="Resources\BI.gif" />
+    <Resource Include="Resources\BJ.gif" />
+    <Resource Include="Resources\BN.gif" />
+    <Resource Include="Resources\BO.gif" />
+    <Resource Include="Resources\BR.gif" />
+    <Resource Include="Resources\BS.gif" />
+    <Resource Include="Resources\BT.gif" />
+    <Resource Include="Resources\BW.gif" />
+    <Resource Include="Resources\BY.gif" />
+    <Resource Include="Resources\BZ.gif" />
+    <Resource Include="Resources\CA.gif" />
+    <Resource Include="Resources\CD.gif" />
+    <Resource Include="Resources\CF.gif" />
+    <Resource Include="Resources\CH.gif" />
+    <Resource Include="Resources\chart.png" />
+    <Resource Include="Resources\CI.gif" />
+    <Resource Include="Resources\CL.gif" />
+    <Resource Include="Resources\clock_white.png" />
+    <Resource Include="Resources\CM.gif" />
+    <Resource Include="Resources\CN.gif" />
+    <Resource Include="Resources\CO.gif" />
+    <Resource Include="Resources\CR.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CU.gif" />
+    <Resource Include="Resources\CV.gif" />
+    <Resource Include="Resources\CY.gif" />
+    <Resource Include="Resources\CZ.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DE.gif" />
+    <Resource Include="Resources\DJ.gif" />
+    <Resource Include="Resources\DK.gif" />
+    <Resource Include="Resources\DM.gif" />
+    <Resource Include="Resources\DO.gif" />
+    <Resource Include="Resources\DZ.gif" />
+    <Resource Include="Resources\EC.gif" />
+    <Resource Include="Resources\EE.gif" />
+    <Resource Include="Resources\EG.gif" />
+    <Resource Include="Resources\EH.gif" />
+    <Resource Include="Resources\ER.gif" />
+    <Resource Include="Resources\ES.gif" />
+    <Resource Include="Resources\ET.gif" />
+    <Resource Include="Resources\FI.gif" />
+    <Resource Include="Resources\FJ.gif" />
+    <Resource Include="Resources\FM.gif" />
+    <Resource Include="Resources\FR.gif" />
+    <Resource Include="Resources\GA.gif" />
+    <Resource Include="Resources\GB.gif" />
+    <Resource Include="Resources\GD.gif" />
+    <Resource Include="Resources\GE.gif" />
+    <Resource Include="Resources\GH.gif" />
+    <Resource Include="Resources\GI.gif" />
+    <Resource Include="Resources\GL.gif" />
+    <Resource Include="Resources\GM.gif" />
+    <Resource Include="Resources\GN.gif" />
+    <Resource Include="Resources\GP.gif" />
+    <Resource Include="Resources\GQ.gif" />
+    <Resource Include="Resources\GR.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GT.gif" />
+    <Resource Include="Resources\GW.gif" />
+    <Resource Include="Resources\GY.gif" />
+    <Resource Include="Resources\HK.gif" />
+    <Resource Include="Resources\HN.gif" />
+    <Resource Include="Resources\HR.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HT.gif" />
+    <Resource Include="Resources\HU %281%29.gif" />
+    <Resource Include="Resources\HU.gif" />
+    <Resource Include="Resources\ID.gif" />
+    <Resource Include="Resources\IE.gif" />
+    <Resource Include="Resources\IL.gif" />
+    <Resource Include="Resources\IN.gif" />
+    <Resource Include="Resources\IQ.gif" />
+    <Resource Include="Resources\IR.gif" />
+    <Resource Include="Resources\IS.gif" />
+    <Resource Include="Resources\IT.gif" />
+    <Resource Include="Resources\JM.gif" />
+    <Resource Include="Resources\JO.gif" />
+    <Resource Include="Resources\JP.gif" />
+    <Resource Include="Resources\KE.gif" />
+    <Resource Include="Resources\KG.gif" />
+    <Resource Include="Resources\KH.gif" />
+    <Resource Include="Resources\KI.gif" />
+    <Resource Include="Resources\KM.gif" />
+    <Resource Include="Resources\KN.gif" />
+    <Resource Include="Resources\KP.gif" />
+    <Resource Include="Resources\KR.gif" />
+    <Resource Include="Resources\KW.gif" />
+    <Resource Include="Resources\KZ.gif" />
+    <Resource Include="Resources\LA.gif" />
+    <Resource Include="Resources\LB.gif" />
+    <Resource Include="Resources\LC.gif" />
+    <Resource Include="Resources\LI.gif" />
+    <Resource Include="Resources\LK.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LR.gif" />
+    <Resource Include="Resources\LS.gif" />
+    <Resource Include="Resources\LT.gif" />
+    <Resource Include="Resources\LU.gif" />
+    <Resource Include="Resources\LV.gif" />
+    <Resource Include="Resources\LY.gif" />
+    <Resource Include="Resources\MA.gif" />
+    <Resource Include="Resources\MC.gif" />
+    <Resource Include="Resources\MD.gif" />
+    <Resource Include="Resources\ME.gif" />
+    <Resource Include="Resources\MG.gif" />
+    <Resource Include="Resources\MH.gif" />
+    <Resource Include="Resources\MK.gif" />
+    <Resource Include="Resources\ML.gif" />
+    <Resource Include="Resources\MM.gif" />
+    <Resource Include="Resources\MN.gif" />
+    <Resource Include="Resources\MO.gif" />
+    <Resource Include="Resources\MP.gif" />
+    <Resource Include="Resources\MQ %281%29.gif" />
+    <Resource Include="Resources\MQ.gif" />
+    <Resource Include="Resources\MR.gif" />
+    <Resource Include="Resources\MT.gif" />
+    <Resource Include="Resources\MU.gif" />
+    <Resource Include="Resources\MV.gif" />
+    <Resource Include="Resources\MW.gif" />
+    <Resource Include="Resources\MX.gif" />
+    <Resource Include="Resources\MY.gif" />
+    <Resource Include="Resources\MZ.gif" />
+    <Resource Include="Resources\NA.gif" />
+    <Resource Include="Resources\NC.gif" />
+    <Resource Include="Resources\NE.gif" />
+    <Resource Include="Resources\NG.gif" />
+    <Resource Include="Resources\NI.gif" />
+    <Resource Include="Resources\NL.gif" />
+    <Resource Include="Resources\NO.gif" />
+    <Resource Include="Resources\NP.gif" />
+    <Resource Include="Resources\NR.gif" />
+    <Resource Include="Resources\NZ.gif" />
+    <Resource Include="Resources\OM.gif" />
+    <Resource Include="Resources\PA.gif" />
+    <Resource Include="Resources\PE.gif" />
+    <Resource Include="Resources\PF.gif" />
+    <Resource Include="Resources\PG.gif" />
+    <Resource Include="Resources\PH.gif" />
+    <Resource Include="Resources\PK.gif" />
+    <Resource Include="Resources\PL.gif" />
+    <Resource Include="Resources\PR.gif" />
+    <Resource Include="Resources\PS.gif" />
+    <Resource Include="Resources\PT.gif" />
+    <Resource Include="Resources\PW.gif" />
+    <Resource Include="Resources\PY %281%29.gif" />
+    <Resource Include="Resources\PY.gif" />
+    <Resource Include="Resources\QA.gif" />
+    <Resource Include="Resources\RE.gif" />
+    <Resource Include="Resources\RO.gif" />
+    <Resource Include="Resources\RS.gif" />
+    <Resource Include="Resources\RU.gif" />
+    <Resource Include="Resources\RW.gif" />
+    <Resource Include="Resources\SA.gif" />
+    <Resource Include="Resources\SB.gif" />
+    <Resource Include="Resources\SC.gif" />
+    <Resource Include="Resources\SD.gif" />
+    <Resource Include="Resources\SE.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SG.gif" />
+    <Resource Include="Resources\SI.gif" />
+    <Resource Include="Resources\SK.gif" />
+    <Resource Include="Resources\SL.gif" />
+    <Resource Include="Resources\SM.gif" />
+    <Resource Include="Resources\SN.gif" />
+    <Resource Include="Resources\SO.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SR.gif" />
+    <Resource Include="Resources\ST.gif" />
+    <Resource Include="Resources\SV.gif" />
+    <Resource Include="Resources\SY.gif" />
+    <Resource Include="Resources\SZ.gif" />
+    <Resource Include="Resources\TD.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TG.gif" />
+    <Resource Include="Resources\TH.gif" />
+    <Resource Include="Resources\TJ.gif" />
+    <Resource Include="Resources\TL.gif" />
+    <Resource Include="Resources\TM.gif" />
+    <Resource Include="Resources\TN.gif" />
+    <Resource Include="Resources\TO.gif" />
+    <Resource Include="Resources\TR.gif" />
+    <Resource Include="Resources\TT.gif" />
+    <Resource Include="Resources\TV.gif" />
+    <Resource Include="Resources\TW.gif" />
+    <Resource Include="Resources\TZ.gif" />
+    <Resource Include="Resources\UA.gif" />
+    <Resource Include="Resources\UG.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\US.gif" />
+    <Resource Include="Resources\UY.gif" />
+    <Resource Include="Resources\UZ.gif" />
+    <Resource Include="Resources\VA.gif" />
+    <Resource Include="Resources\VC.gif" />
+    <Resource Include="Resources\VE.gif" />
+    <Resource Include="Resources\VG.gif" />
+    <Resource Include="Resources\VI.gif" />
+    <Resource Include="Resources\VN.gif" />
+    <Resource Include="Resources\VU.gif" />
+    <Resource Include="Resources\WS.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\YE.gif" />
+    <Resource Include="Resources\ZA.gif" />
+    <Resource Include="Resources\ZM.gif" />
+    <Resource Include="Resources\ZW.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ledger1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="profitloss1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="adminpanel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="profitloss3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="eye_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\accreceiable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="accreceiable1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="76cd22f1-0a3f-464a-bd0a-52c60e5fbac3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="whitelogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iladder_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="iladder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1b5264fc-4108-4a00-a132-52be521b469e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserServiceReference\UserServices.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\UserServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountsServiceReference\AccountsService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountsServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountsServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\APIConfigServiceReference\APIConfigService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\APIConfigServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\APIConfigServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\APIConfigServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CricketScoreServiceReference\Service1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CricketScoreServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CricketScoreServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CricketScoreServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="23f57d90-0462-4350-8c9a-5fa37aeb979e.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="2cbdd0a5-481b-4858-96dc-caef19c23984.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon-32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\45.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Service123Reference\Service123.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Service123Reference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Service123Reference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Service123Reference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="refresh-2-xxl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="refresh-2-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Loadernew.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="inplay2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="accreceiablenew1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="inplaystatus.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="inplay.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="globalblue1 %281%29.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="globalblue.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="globalblue1 %282%291.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="globalblue2.gif" />
+    <Resource Include="globalblue22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="tick.png" />
+    <Resource Include="accounting.png" />
+    <Resource Include="betfair-logo.png" />
+    <Resource Include="checked.png" />
+    <Resource Include="ajax-loader.gif" />
+    <Content Include="Cricket.jfif" />
+    <Resource Include="dog.png" />
+    <Content Include="Footbal.jfif" />
+    <Resource Include="horse %282%29.png" />
+    <Resource Include="football.png" />
+    <Resource Include="greyhound.png" />
+    <Resource Include="horse.png" />
+    <Resource Include="GT-LOGO.png" />
+    <Resource Include="GT-LOGO .png" />
+    <Content Include="Hourse.jfif" />
+    <Resource Include="ledger.png" />
+    <Resource Include="pl-file-format-variant.png" />
+    <Resource Include="settings.png" />
+    <Content Include="tens.jfif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

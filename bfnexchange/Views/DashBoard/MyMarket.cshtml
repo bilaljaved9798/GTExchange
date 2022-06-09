@@ -1,0 +1,45 @@
+﻿@model IEnumerable<bfnexchange.Models.Event>
+<div class="mymarketitems">
+    <label class="srnum">Sr No.</label>
+    <div class="nameandimg">
+        <label>Market Name</label>
+        </div>
+    <label class="liability">Liability</label>
+    </div>
+   
+ @foreach(var item in Model)
+ {
+     if (item.isFavorite == true)
+     {
+
+
+        <div class="mymarketitems">
+            <label class="srnum">@item.SrNum</label>
+            <div class="nameandimg">
+                <label class="name">@item.Name</label>
+                @if (LoggedinUserDetail.GetUserTypeID() != 1)
+                {
+                    if (item.isFavorite == true)
+                    {
+                        <img id="eventitemimg@(item.ID)" class="favoriteitem" title="Remvoe from favorites" onclick="addorremovefromfavouritesevents('@item.ID')" src="../Content/Images/favoriteChecked.png" />
+                    }
+                    else
+                    {
+                        <img id="eventitemimg@(item.ID)" class="favoriteitem" title="Add to favorites" onclick="addorremovefromfavouritesevents('@item.ID')" src="../Content/Images/FavoriteUncheck.png" />
+                    }
+                }
+            </div>
+            <label class="liability">Liability</label>
+        </div>
+     }
+ }
+<script type="text/javascript">
+    $(document).ready(function () {
+        var numItems = $('.mymarketitems').length;
+      
+        if (numItems == 1) {
+            $("#myModalContent").html('No favorite market to display');
+
+        }
+    });
+</script>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="51f315a0-e56d-4621-a8ce-447de87d1bac" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceGrayHoundPlace.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceGrayHoundPlace.wsdl" MetadataType="Wsdl" ID="bd21b11e-bf39-4c97-944f-80d49b2d3830" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundPlace.svc?wsdl" />
+    <MetadataFile FileName="BettingServiceGrayHoundPlace.xsd" MetadataType="Schema" ID="be62800d-d214-420e-af6a-6199b911b6a5" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundPlace.svc?xsd=xsd0" />
+    <MetadataFile FileName="BettingServiceGrayHoundPlace.disco" MetadataType="Disco" ID="3f5f9b5a-b94e-467f-ad89-207863a13628" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundPlace.svc?disco" />
+    <MetadataFile FileName="BettingServiceGrayHoundPlace1.xsd" MetadataType="Schema" ID="498d6b19-cb6b-4f8c-b6f7-8526cc9e26b1" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceGrayHoundPlace.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

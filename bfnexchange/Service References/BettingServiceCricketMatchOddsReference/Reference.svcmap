@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="13effe76-c185-4125-8443-dce9df01717b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceCricketMatchOdds.disco" MetadataType="Disco" ID="e9f33070-f7d4-4a89-8152-95569864feaf" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc?disco" />
+    <MetadataFile FileName="BettingServiceCricketMatchOdds.wsdl" MetadataType="Wsdl" ID="dc8221e4-c994-4b19-a1c5-0470f508e550" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc?wsdl" />
+    <MetadataFile FileName="BettingServiceCricketMatchOdds.xsd" MetadataType="Schema" ID="4b705d99-ab78-4352-99cb-4160df470f70" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc?xsd=xsd0" />
+    <MetadataFile FileName="BettingServiceCricketMatchOdds1.xsd" MetadataType="Schema" ID="57c348be-8741-4603-8f15-79d34195b858" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceCricketMatchOdds.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

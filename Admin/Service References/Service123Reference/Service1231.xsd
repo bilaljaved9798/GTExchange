@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54524/Services/Service123.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:complexType name="ArrayOfMarketBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MarketBook" nillable="true" type="tns:MarketBook" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMarketBook" nillable="true" type="tns:ArrayOfMarketBook" />
+  <xs:complexType name="MarketBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BetDelay" type="xs:int" />
+      <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BettingAllowedOverAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CricketAPIMatchKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CricketMatchKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DebitCredit" nillable="true" type="tns:ArrayOfDebitCredit" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteBack" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteBackSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteLay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteLaySize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteSelectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FigureMarkets" nillable="true" type="tns:ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+      <xs:element minOccurs="0" name="GetMatchUpdatesFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBspReconciled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsComplete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCrossMatching" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInplay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMarketDataDelayed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRunnersVoidable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KJMarkets" nillable="true" type="tns:ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+      <xs:element minOccurs="0" name="LastMatchTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LineVMarkets" nillable="true" type="tns:ArrayOfLinevMarkets" />
+      <xs:element minOccurs="0" name="LineVMarketsIN" nillable="true" type="tns:ArrayOfLinevMarketsIN" />
+      <xs:element minOccurs="0" name="MainSportsname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketBookName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketStatusstr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfActiveRunners" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfRunners" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfWinners" type="xs:int" />
+      <xs:element minOccurs="0" name="OpenDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrignalOpenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PoundRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Runners" nillable="true" type="tns:ArrayOfRunner" />
+      <xs:element minOccurs="0" name="SFigMarkets" nillable="true" type="tns:ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+      <xs:element minOccurs="0" name="SheetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:MarketStatus" />
+      <xs:element minOccurs="0" name="TotalAvailable" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalMatched" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOvers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsAdmin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsAgent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsEndUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" type="xs:long" />
+      <xs:element minOccurs="0" name="isOpenExternally" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isWinTheTossMarket" type="xs:boolean" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lstMultipleSelectionforBets" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="marketsopened" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MarketBook" nillable="true" type="tns:MarketBook" />
+  <xs:complexType name="ArrayOfDebitCredit">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DebitCredit" nillable="true" type="tns:DebitCredit" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDebitCredit" nillable="true" type="tns:ArrayOfDebitCredit" />
+  <xs:complexType name="DebitCredit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Credit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Debit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SelectionID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DebitCredit" nillable="true" type="tns:DebitCredit" />
+  <xs:complexType name="ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserMarket_GetDistinctKJMarketsbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result" nillable="true" type="tns:ArrayOfSP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+  <xs:complexType name="SP_UserMarket_GetDistinctKJMarketsbyEventID_Result">
+    <xs:sequence>
+      <xs:element name="_x003C_BettingAllowed_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_CompetitionID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CompetitionName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EventID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EventName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MarketCatalogueID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MarketCatalogueName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_isOpenedbyUser_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetDistinctKJMarketsbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetDistinctKJMarketsbyEventID_Result" />
+  <xs:complexType name="ArrayOfLinevMarkets">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LinevMarkets" nillable="true" type="tns:LinevMarkets" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLinevMarkets" nillable="true" type="tns:ArrayOfLinevMarkets" />
+  <xs:complexType name="LinevMarkets">
+    <xs:sequence>
+      <xs:element name="_x003C_AssociateeventID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_BettingAllowed_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_CompetitionID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_CompetitionName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EventID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_EventName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MarketCatalogueID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MarketCatalogueName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SelectionID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SelectionName_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_isOpenedbyUser_x003E_k__BackingField" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LinevMarkets" nillable="true" type="tns:LinevMarkets" />
+  <xs:complexType name="ArrayOfLinevMarketsIN">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LinevMarketsIN" nillable="true" type="tns:LinevMarketsIN" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLinevMarketsIN" nillable="true" type="tns:ArrayOfLinevMarketsIN" />
+  <xs:complexType name="LinevMarketsIN">
+    <xs:sequence>
+      <xs:element name="_x003C_MarketBookID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SelectionID_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_SelectionName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LinevMarketsIN" nillable="true" type="tns:LinevMarketsIN" />
+  <xs:complexType name="ArrayOfRunner">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Runner" nillable="true" type="tns:Runner" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunner" nillable="true" type="tns:ArrayOfRunner" />
+  <xs:complexType name="Runner">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdjustmentFactor" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Average" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Clothnumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExchangePrices" nillable="true" type="tns:ExchangePrices" />
+      <xs:element minOccurs="0" name="Handicap" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="JockeyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastPriceTraded" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Loss" type="xs:long" />
+      <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketStatusStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Matches" nillable="true" type="tns:ArrayOfMatch" />
+      <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="ProfitandLoss" type="xs:long" />
+      <xs:element minOccurs="0" name="RemovalDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RunnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StallDraw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartingPrices" nillable="true" type="tns:StartingPrices" />
+      <xs:element minOccurs="0" name="Status" type="tns:RunnerStatus" />
+      <xs:element minOccurs="0" name="StatusStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalMatched" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalMatchedStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WearingDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WearingURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isShow" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Runner" nillable="true" type="tns:Runner" />
+  <xs:complexType name="ExchangePrices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvailableToBack" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element minOccurs="0" name="AvailableToLay" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element minOccurs="0" name="TradedVolume" nillable="true" type="tns:ArrayOfPriceSize" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExchangePrices" nillable="true" type="tns:ExchangePrices" />
+  <xs:complexType name="ArrayOfPriceSize">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PriceSize" nillable="true" type="tns:PriceSize" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPriceSize" nillable="true" type="tns:ArrayOfPriceSize" />
+  <xs:complexType name="PriceSize">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrignalSize" type="xs:double" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Size" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeStr" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PriceSize" nillable="true" type="tns:PriceSize" />
+  <xs:complexType name="ArrayOfMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Match" nillable="true" type="tns:Match" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMatch" nillable="true" type="tns:ArrayOfMatch" />
+  <xs:complexType name="Match">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Side" type="tns:Side" />
+      <xs:element minOccurs="0" name="Size" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:simpleType name="Side">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BACK" />
+      <xs:enumeration value="LAY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Side" nillable="true" type="tns:Side" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvgPriceMatched" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="BetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BspLiability" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="OrderType" type="tns:OrderType" />
+      <xs:element minOccurs="0" name="PersistenceType" type="tns:PersistenceType" />
+      <xs:element minOccurs="0" name="PlacedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="Side" type="tns:Side" />
+      <xs:element minOccurs="0" name="Size" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeCancelled" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeLapsed" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeMatched" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeRemaining" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="SizeVoided" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Status" type="tns:OrderStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:simpleType name="OrderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LIMIT" />
+      <xs:enumeration value="LIMIT_ON_CLOSE" />
+      <xs:enumeration value="MARKET_ON_CLOSE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderType" nillable="true" type="tns:OrderType" />
+  <xs:simpleType name="PersistenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LAPSE" />
+      <xs:enumeration value="PERSIST" />
+      <xs:enumeration value="MARKET_ON_CLOSE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PersistenceType" nillable="true" type="tns:PersistenceType" />
+  <xs:simpleType name="OrderStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EXECUTION_COMPLETE" />
+      <xs:enumeration value="EXECUTABLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderStatus" nillable="true" type="tns:OrderStatus" />
+  <xs:complexType name="StartingPrices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActualSP" type="xs:double" />
+      <xs:element minOccurs="0" name="BackStakeTaken" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element minOccurs="0" name="FarPrice" type="xs:double" />
+      <xs:element minOccurs="0" name="LayLiabilityTaken" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element minOccurs="0" name="NearPrice" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StartingPrices" nillable="true" type="tns:StartingPrices" />
+  <xs:simpleType name="RunnerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="WINNER" />
+      <xs:enumeration value="LOSER" />
+      <xs:enumeration value="REMOVED_VACANT" />
+      <xs:enumeration value="REMOVED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RunnerStatus" nillable="true" type="tns:RunnerStatus" />
+  <xs:simpleType name="MarketStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INACTIVE" />
+      <xs:enumeration value="OPEN" />
+      <xs:enumeration value="SUSPENDED" />
+      <xs:enumeration value="CLOSED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MarketStatus" nillable="true" type="tns:MarketStatus" />
+  <xs:complexType name="MarketBookForindianFancy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BetDelay" type="xs:int" />
+      <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="BettingAllowedOverAll" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CricketAPIMatchKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CricketMatchKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DebitCredit" nillable="true" type="tns:ArrayOfDebitCredit" />
+      <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteBack" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteBackSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteLay" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteLaySize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FavoriteSelectionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GetMatchUpdatesFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBspReconciled" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsComplete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCrossMatching" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInplay" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMarketDataDelayed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRunnersVoidable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastMatchTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LineVMarkets" nillable="true" type="tns:ArrayOfLinevMarkets" />
+      <xs:element minOccurs="0" name="MainSportsname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketBookName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketStatusstr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfActiveRunners" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfRunners" type="xs:int" />
+      <xs:element minOccurs="0" name="NumberOfWinners" type="xs:int" />
+      <xs:element minOccurs="0" name="OpenDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrignalOpenDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PoundRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RunnersForindianFancy" nillable="true" type="tns:ArrayOfRunnerForIndianFancy" />
+      <xs:element minOccurs="0" name="SheetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="tns:MarketStatus" />
+      <xs:element minOccurs="0" name="TotalAvailable" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalMatched" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalOvers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsAdmin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsAgent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserBetsEndUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Version" type="xs:long" />
+      <xs:element minOccurs="0" name="isOpenExternally" type="xs:boolean" />
+      <xs:element minOccurs="0" name="isWinTheTossMarket" type="xs:boolean" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="lstMultipleSelectionforBets" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="marketsopened" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MarketBookForindianFancy" nillable="true" type="tns:MarketBookForindianFancy" />
+  <xs:complexType name="ArrayOfRunnerForIndianFancy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RunnerForIndianFancy" nillable="true" type="tns:RunnerForIndianFancy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunnerForIndianFancy" nillable="true" type="tns:ArrayOfRunnerForIndianFancy" />
+  <xs:complexType name="RunnerForIndianFancy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdjustmentFactor" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Average" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BackSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Backprice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BettingAllowed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Clothnumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExchangePrices" nillable="true" type="tns:ExchangePrices" />
+      <xs:element minOccurs="0" name="Handicap" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="JockeyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastPriceTraded" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="LaySize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Layprice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Loss" type="xs:double" />
+      <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketStatusStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Matches" nillable="true" type="tns:ArrayOfMatch" />
+      <xs:element minOccurs="0" name="Orders" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element minOccurs="0" name="ProfitandLoss" type="xs:double" />
+      <xs:element minOccurs="0" name="RemovalDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RunnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StallDraw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartingPrices" nillable="true" type="tns:StartingPrices" />
+      <xs:element minOccurs="0" name="Status" type="tns:RunnerStatus" />
+      <xs:element minOccurs="0" name="StatusStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalMatched" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalMatchedStr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WearingDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WearingURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isShow" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RunnerForIndianFancy" nillable="true" type="tns:RunnerForIndianFancy" />
+  <xs:complexType name="Home">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ao" type="xs:long" />
+      <xs:element minOccurs="0" name="B1S" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2S" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Con" nillable="true" type="tns:Con" />
+      <xs:element minOccurs="0" name="Cs" nillable="true" type="tns:Cs" />
+      <xs:element minOccurs="0" name="Day" type="xs:long" />
+      <xs:element minOccurs="0" name="Hms" type="xs:long" />
+      <xs:element minOccurs="0" name="I" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I1" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I1B" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I2" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I3" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I3B" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I4" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="Iov" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Md" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mit" type="xs:long" />
+      <xs:element minOccurs="0" name="Mk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Os" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ssns" type="xs:long" />
+      <xs:element minOccurs="0" name="T1" nillable="true" type="tns:T1" />
+      <xs:element minOccurs="0" name="T2" nillable="true" type="tns:T1" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tt" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Home" nillable="true" type="tns:Home" />
+  <xs:complexType name="Con">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="G" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mstus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mtm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ostus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sr" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Con" nillable="true" type="tns:Con" />
+  <xs:complexType name="Cs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ts" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cs" nillable="true" type="tns:Cs" />
+  <xs:complexType name="I1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Ov" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sc" type="xs:long" />
+      <xs:element minOccurs="0" name="Tr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wk" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="I1" nillable="true" type="tns:I1" />
+  <xs:complexType name="T1">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="F" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="N" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="T1" nillable="true" type="tns:T1" />
+  <xs:complexType name="UpdateNew">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Home" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" type="xs:long" />
+      <xs:element minOccurs="0" name="Tv" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UpdateNew" nillable="true" type="tns:UpdateNew" />
+  <xs:complexType name="Root">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="tns:Result" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Root" nillable="true" type="tns:Root" />
+  <xs:complexType name="Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Home" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" type="xs:long" />
+      <xs:element minOccurs="0" name="P2" type="xs:long" />
+      <xs:element minOccurs="0" name="Room" type="xs:long" />
+      <xs:element minOccurs="0" name="Tv" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Result" nillable="true" type="tns:Result" />
+  <xs:complexType name="ArrayOfRootSCT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RootSCT" nillable="true" type="tns:RootSCT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRootSCT" nillable="true" type="tns:ArrayOfRootSCT" />
+  <xs:complexType name="RootSCT">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AwayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Broadcasts" nillable="true" type="tns:Broadcasts" />
+      <xs:element minOccurs="0" name="CompetitionId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompetitionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="HomeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InPlayBettingStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchInfo" nillable="true" type="tns:MatchInfo" />
+      <xs:element minOccurs="0" name="NumberOfRunners" type="xs:long" />
+      <xs:element minOccurs="0" name="Relevance" type="xs:long" />
+      <xs:element minOccurs="0" name="Runners" nillable="true" type="tns:Runners" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartTime" type="q3:DateTimeOffset" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="tns:State" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RootSCT" nillable="true" type="tns:RootSCT" />
+  <xs:complexType name="Broadcasts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BfLiveVideo" nillable="true" type="tns:MatchInfo" />
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDataVisualizationAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLiveVideoAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPaddockViewAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Radio" nillable="true" type="tns:Radio" />
+      <xs:element minOccurs="0" name="Tv" nillable="true" type="tns:ArrayOfTv" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Broadcasts" nillable="true" type="tns:Broadcasts" />
+  <xs:complexType name="MatchInfo">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="MatchInfo" nillable="true" type="tns:MatchInfo" />
+  <xs:complexType name="Radio">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Url" nillable="true" type="xs:anyURI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Radio" nillable="true" type="tns:Radio" />
+  <xs:complexType name="ArrayOfTv">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tv" nillable="true" type="tns:Tv" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTv" nillable="true" type="tns:ArrayOfTv" />
+  <xs:complexType name="Tv">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="EndTime" type="q4:DateTimeOffset" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartTime" type="q5:DateTimeOffset" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tv" nillable="true" type="tns:Tv" />
+  <xs:complexType name="Runners">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DrawName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DrawSelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner1Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Runner1SelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner2Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Runner2SelectionId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Runners" nillable="true" type="tns:Runners" />
+  <xs:complexType name="State">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ElapsedAddedTime" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ElapsedRegularTime" type="xs:long" />
+      <xs:element minOccurs="0" name="EventId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
+      <xs:element minOccurs="0" name="HasSets" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MatchStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" nillable="true" type="tns:Score" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeElapsed" type="xs:long" />
+      <xs:element minOccurs="0" name="TimeElapsedSeconds" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="State" nillable="true" type="tns:State" />
+  <xs:complexType name="FullTimeElapsed">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Hour" type="xs:long" />
+      <xs:element minOccurs="0" name="Min" type="xs:long" />
+      <xs:element minOccurs="0" name="Sec" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
+  <xs:complexType name="Score">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Away" nillable="true" type="tns:Away" />
+      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q6:ArrayOflong" />
+      <xs:element minOccurs="0" name="Home" nillable="true" type="tns:Away" />
+      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Score" nillable="true" type="tns:Score" />
+  <xs:complexType name="Away">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element minOccurs="0" name="FullTimeScore" nillable="true" type="xs:string" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q7:ArrayOflong" />
+      <xs:element minOccurs="0" name="Games" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HalfTimeScore" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Highlight" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
+      <xs:element minOccurs="0" name="PenaltiesScore" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PenaltiesSequence" nillable="true" type="q8:ArrayOfanyType" />
+      <xs:element minOccurs="0" name="Score" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+      <xs:element minOccurs="0" name="Sets" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Away" nillable="true" type="tns:Away" />
+</xs:schema>

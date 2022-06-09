@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="569a4055-f4ff-491a-a930-a34235bd7e95" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceRest.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceRest.xsd" MetadataType="Schema" ID="96be2ed1-38c3-4685-bc8b-19e90a2fd764" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd1" />
+    <MetadataFile FileName="BettingServiceRest.wsdl" MetadataType="Wsdl" ID="6cc12da5-39ab-4e22-baa1-99fca1cf32d7" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?wsdl" />
+    <MetadataFile FileName="BettingServiceRest1.xsd" MetadataType="Schema" ID="31a1b8e5-a6a7-4f10-89f2-51b81b67a2e5" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd0" />
+    <MetadataFile FileName="BettingServiceRest.disco" MetadataType="Disco" ID="4382d7b4-7ca0-4bfa-afea-1ec156fbbc6c" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?disco" />
+    <MetadataFile FileName="BettingServiceRest2.xsd" MetadataType="Schema" ID="30001159-5841-45a6-a195-d774837b1d55" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd3" />
+    <MetadataFile FileName="BettingServiceRest3.xsd" MetadataType="Schema" ID="54a58908-af67-4946-9673-23cc9a8bccd7" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

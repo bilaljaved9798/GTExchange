@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BettingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBettingService_listMarketCatalogue_InputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketCatalogue" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listMarketCatalogue_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketCatalogueResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listMarketBookALL_InputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketBookALL" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listMarketBookALL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketBookALLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listMarketBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketBook" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listMarketBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listMarketBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEventTypes_InputMessage">
+    <wsdl:part name="parameters" element="tns:listEventTypes" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEventTypes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listEventTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEventTypesWithMarketFilter_InputMessage">
+    <wsdl:part name="parameters" element="tns:listEventTypesWithMarketFilter" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEventTypesWithMarketFilter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listEventTypesWithMarketFilterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listCompetitions_InputMessage">
+    <wsdl:part name="parameters" element="tns:listCompetitions" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listCompetitions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listCompetitionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEvents_InputMessage">
+    <wsdl:part name="parameters" element="tns:listEvents" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_listEvents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listEventsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDResultsOnly_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDResultsOnly" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDResultsOnly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDResultsOnlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyID" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDIndianFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDIndianFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDIndianFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDIndianFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetDataFromBetfairReadOnly_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromBetfairReadOnly" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetDataFromBetfairReadOnly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataFromBetfairReadOnlyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetBallbyBallSummary_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBallbyBallSummary" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetBallbyBallSummary_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBallbyBallSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetCurrentMarketBookNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentMarketBookNew" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetCurrentMarketBookNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentMarketBookNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDLive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDLive" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetMarketDatabyIDLive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsBP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBP" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsBP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsOthers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthers" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsOthers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsOthersFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsOthersFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsBPFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsBPFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetAllMarketsFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBettingService">
+    <wsdl:operation name="listMarketCatalogue">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listMarketCatalogue" message="tns:IBettingService_listMarketCatalogue_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listMarketCatalogueResponse" message="tns:IBettingService_listMarketCatalogue_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listMarketBookALL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listMarketBookALL" message="tns:IBettingService_listMarketBookALL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listMarketBookALLResponse" message="tns:IBettingService_listMarketBookALL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listMarketBook">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listMarketBook" message="tns:IBettingService_listMarketBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listMarketBookResponse" message="tns:IBettingService_listMarketBook_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listEventTypes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listEventTypes" message="tns:IBettingService_listEventTypes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listEventTypesResponse" message="tns:IBettingService_listEventTypes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listEventTypesWithMarketFilter">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listEventTypesWithMarketFilter" message="tns:IBettingService_listEventTypesWithMarketFilter_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listEventTypesWithMarketFilterResponse" message="tns:IBettingService_listEventTypesWithMarketFilter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listCompetitions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listCompetitions" message="tns:IBettingService_listCompetitions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listCompetitionsResponse" message="tns:IBettingService_listCompetitions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listEvents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/listEvents" message="tns:IBettingService_listEvents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/listEventsResponse" message="tns:IBettingService_listEvents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDResultsOnly">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDResultsOnly" message="tns:IBettingService_GetMarketDatabyIDResultsOnly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDResultsOnlyResponse" message="tns:IBettingService_GetMarketDatabyIDResultsOnly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyID" message="tns:IBettingService_GetMarketDatabyID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDResponse" message="tns:IBettingService_GetMarketDatabyID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDIndianFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDIndianFancy" message="tns:IBettingService_GetMarketDatabyIDIndianFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDIndianFancyResponse" message="tns:IBettingService_GetMarketDatabyIDIndianFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromBetfairReadOnly">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetDataFromBetfairReadOnly" message="tns:IBettingService_GetDataFromBetfairReadOnly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetDataFromBetfairReadOnlyResponse" message="tns:IBettingService_GetDataFromBetfairReadOnly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBallbyBallSummary">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetBallbyBallSummary" message="tns:IBettingService_GetBallbyBallSummary_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetBallbyBallSummaryResponse" message="tns:IBettingService_GetBallbyBallSummary_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentMarketBookNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetCurrentMarketBookNew" message="tns:IBettingService_GetCurrentMarketBookNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetCurrentMarketBookNewResponse" message="tns:IBettingService_GetCurrentMarketBookNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDLive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDLive" message="tns:IBettingService_GetMarketDatabyIDLive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetMarketDatabyIDLiveResponse" message="tns:IBettingService_GetMarketDatabyIDLive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsBP" message="tns:IBettingService_GetAllMarketsBP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsBPResponse" message="tns:IBettingService_GetAllMarketsBP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsOthers" message="tns:IBettingService_GetAllMarketsOthers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsOthersResponse" message="tns:IBettingService_GetAllMarketsOthers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthersFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsOthersFancy" message="tns:IBettingService_GetAllMarketsOthersFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsOthersFancyResponse" message="tns:IBettingService_GetAllMarketsOthersFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBPFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsBPFancy" message="tns:IBettingService_GetAllMarketsBPFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsBPFancyResponse" message="tns:IBettingService_GetAllMarketsBPFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsFancy" message="tns:IBettingService_GetAllMarketsFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetAllMarketsFancyResponse" message="tns:IBettingService_GetAllMarketsFancy_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IUserServices" type="tns:IBettingService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="listMarketCatalogue">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listMarketCatalogue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listMarketBookALL">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listMarketBookALL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listMarketBook">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listMarketBook" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listEventTypes">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listEventTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listEventTypesWithMarketFilter">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listEventTypesWithMarketFilter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listCompetitions">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listCompetitions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listEvents">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/listEvents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDResultsOnly">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetMarketDatabyIDResultsOnly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyID">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetMarketDatabyID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDIndianFancy">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetMarketDatabyIDIndianFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataFromBetfairReadOnly">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetDataFromBetfairReadOnly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBallbyBallSummary">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetBallbyBallSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentMarketBookNew">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetCurrentMarketBookNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarketDatabyIDLive">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetMarketDatabyIDLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBP">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetAllMarketsBP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthers">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetAllMarketsOthers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthersFancy">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetAllMarketsOthersFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBPFancy">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetAllMarketsBPFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancy">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetAllMarketsFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BettingService">
+    <wsdl:port name="BasicHttpBinding_IUserServices" binding="tns:BasicHttpBinding_IUserServices">
+      <soap:address location="http://localhost:54524/Services/BettingService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

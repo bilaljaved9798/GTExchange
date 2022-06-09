@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ExternalAPI.TO.MarketBookForindianFancy>
+
+<ul id="eventtypes">
+	@foreach (var item1 in Model)
+	{
+
+		foreach (var item in item1.RunnersForindianFancy)
+		{
+		<li data-value="@(item1.MarketId)">
+
+			<input type="checkbox" id="eventypeitem@(item.SelectionId)" title="" value="@item.SelectionId" />
+			<label><input type="checkbox" id="eventypeitem@(item.SelectionId)" value="@item.SelectionId" /><span></span></label>
+			<label for="eventypeitem@(item.SelectionId)" onclick="LoadCompetitions('@item.SelectionId')">
+
+				@item.RunnerName
+			</label>
+
+			<ul id="competition@(item.SelectionId)"></ul>
+
+
+		</li>
+
+			}
+		}
+</ul>
+
+
+<script type="text/javascript">
+
+
+    function LoadCompetitions(id) {
+
+        if ($("#competition" + id + " li").length == 0) {
+
+            ShowLoader();
+            var partialviewname = "/DashBoard/Competiion/" + id;
+
+            $.ajax({
+                url: partialviewname,
+
+                type: 'POST',
+
+                async: true,
+
+                complete: function () {
+
+
+                },
+                success: function (data) {
+
+                    $("#competition" + id).html(data);
+                    HideLoader();
+
+                }
+            });
+        }
+        else {
+            CheckSelectedMarket();
+            HideLoader();
+        }
+
+
+    }
+    function LoadEvents(id) {
+
+        if ($("#Events" + id + " li").length == 0) {
+
+
+            ShowLoader();
+
+            var partialviewname = "/DashBoard/Events/" + id;
+
+
+            $("#Events" + id).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+                HideLoader();
+
+
+            });
+        }
+    }
+    function LoadMarketCatalogue(id) {
+
+        if ($("#MarketCatalogue" + id + " li").length == 0) {
+            ShowLoader();
+            var partialviewname = "/DashBoard/MarketCatalogue/" + id;
+            $("#MarketCatalogue" + id).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+                HideLoader();
+                if (statusTxt == "success") {
+                    HideLoader();
+                }
+            });
+        }
+        else {
+    HideLoader();
+        }
+    }
+    function LoadMarketType(id) {
+        var old = id.toString();
+        var newid = old.replace('.', '');
+        var marketcatalogueitemname = $("#marketcatalogueitem" + newid).html();
+
+        var competitionnameandeventname = $("#detailsselecteditem").html().split("<br>");
+
+        if (competitionnameandeventname[2]) {
+
+            marketcatalogueitemname = competitionnameandeventname[0] + "<br/>" + competitionnameandeventname[1] + "<br/><span class='breadcrumbmarkettypename'> > " + marketcatalogueitemname + "</span>";
+            $("#detailsselecteditem").html(marketcatalogueitemname);
+        }
+        else {
+            marketcatalogueitemname = $("#detailsselecteditem").html() + "<br/><span class='breadcrumbmarkettypename'> > " + marketcatalogueitemname + "</span>";
+            $("#detailsselecteditem").html(marketcatalogueitemname);
+        }
+
+    }
+
+</script>
+<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-submenu.js"></script>

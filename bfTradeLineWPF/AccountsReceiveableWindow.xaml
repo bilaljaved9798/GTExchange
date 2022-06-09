@@ -1,0 +1,111 @@
+﻿<Window x:Class="globaltraders.AccountsReceiveableWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+          xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+        mc:Ignorable="d"
+        Title="Accounts Receiveable" Height="535" Width="1200" WindowStyle="ToolWindow" FontFamily="Trebuchet MS" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" BorderThickness="2" BorderBrush="#FF243875">
+    <Grid>
+      
+        <StackPanel Orientation="Horizontal">
+           
+            <StackPanel>
+                <TextBlock>
+                    <Label Content="Punter" Width="60"></Label>
+                    <ComboBox x:Name="cmbPunters" SelectedIndex="0" Width="205" SelectionChanged="cmbPunters_SelectionChanged"></ComboBox>
+                </TextBlock>
+                <TextBlock Margin="0,0,0,3">
+                    <Label Content="Amount" Width="60"></Label>
+                    <TextBox x:Name="txtAmoundAdd"  Width="205" Text="0" FontSize="16"></TextBox>
+                </TextBlock>
+                <TextBlock>
+                    <Label Content="Due Date" Width="60"></Label>
+                       <wpfTool:DateTimePicker x:Name="dtpDueDateAdd"  Width="205" Format="Custom" FormatString="dd/MM/yyyy HH:mm"></wpfTool:DateTimePicker>
+                  
+                </TextBlock>
+                <TextBlock Margin="0,10,0,0" >
+                     <Label Content="" Width="60"></Label>
+                    <Button Content="Add" x:Name="btnAddReceiveables" Width="95" Height="30" Click="btnAddReceiveables_Click"></Button>
+                      <Button Content="Search" x:Name="btnSearchReceiveables" Width="95" Height="30" Margin="10,0,0,0" Click="btnSearchReceiveables_Click" MouseLeftButtonUp="btnSearchReceiveables_MouseLeftButtonUp"></Button>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Margin="20,0,0,0">
+                <DataGrid x:Name="dgvPunters" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="300" Width="891.383" SelectedIndex="0" FontSize="16" FontWeight="Bold" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" MouseLeftButtonUp="dgvPunters_MouseLeftButtonUp"  >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding ID}" Visibility="Collapsed"></DataGridTextColumn>
+
+
+                        <DataGridTemplateColumn Width="*" Header="Punter" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding UserName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Amount" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Amount}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Amount Received" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding AmountReceived}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Balance" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Balance}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Due Date" MinWidth="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding DueDateStr}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Status" MinWidth="80">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Status}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Margin="0,5,0,0">
+                    <TextBlock>
+                    <Label Content="Punter" Width="105" HorizontalContentAlignment="Right"></Label>
+                    <Label x:Name="txtPunterName" Width="205"></Label>
+                    </TextBlock>
+                    <TextBlock Margin="0,0,0,3">
+                    <Label Content="Amount" Width="105" HorizontalContentAlignment="Right"></Label>
+                    <TextBox x:Name="txtAmountActual" IsReadOnly="True"  Width="205" Text="0" FontSize="16"></TextBox>
+                    </TextBlock>
+                    <TextBlock Margin="0,0,0,5">
+                    <Label Content="Amount Received" Width="105" HorizontalContentAlignment="Right"></Label>
+                    <TextBox x:Name="txtAmountReceived"   Width="205" Text="0" FontSize="16"></TextBox>
+                    </TextBlock>
+                    <TextBlock>
+                    <Label Content="Due Date" Width="105" HorizontalContentAlignment="Right"></Label>
+                    <wpfTool:DateTimePicker x:Name="dateTimePicker2"  Width="205" Format="Custom" FormatString="dd/MM/yyyy hh:mm"></wpfTool:DateTimePicker>
+                    </TextBlock>
+                    <TextBlock Margin="0,5,0,0" >
+                     <Label Content="" Width="105"></Label>
+                    <Button Content="Update" x:Name="btnupdate" Width="95" Height="30" Click="btnupdate_Click"></Button>
+
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

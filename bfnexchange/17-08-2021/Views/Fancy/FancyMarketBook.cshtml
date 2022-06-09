@@ -1,0 +1,436 @@
+﻿@**
+
+@model IEnumerable<ExternalAPI.TO.MarketBook>
+
+
+
+
+@{
+
+
+    <div id="fancyclose" style="display:none">
+        <span class="widget-caption">
+            You have Closed Fancy Market Area.! &nbsp; &nbsp;
+            <span id="undobutton" class="btn btn-sm btn-primary">
+                <i class="fa fa-undo"></i>
+                Undo
+            </span>
+        </span>
+        <div class="widget-buttons">
+
+            <a href="#" data-toggle="dispose" style="display: none;">
+                <i class="fa fa-times danger"></i>
+            </a>
+        </div>
+    </div>
+    <div id="maindiv">
+        <div id="fancyopen" >
+            <span class="widget-caption"></span>
+            
+        </div>
+      
+	  <div class="marketstatusrulesandmarkettype" id="markettype" style="margin-top:-2px">
+            <label class="markettype">LINE MARKET</label>
+            @*<label class="marketrules" onclick="showmarketrules('','','1')">Rules</label>*@
+        </div>
+
+        <div class="col-md-12 col-sm-12 pull-left no-padding runnerswrapper runnerwrapperhead" id="backandlay">
+            <div class="col-md-2 col-sm-8 no-padding runnernamediv ">
+                <label class="markettotalmatched">
+
+                </label>
+
+            </div>
+            <div class="col-md-1 col-sm-1 no-padding runnerlastpricediv" style="display:none">
+                <label class="runnerslastprice" style="font-size:9px">
+
+                </label><br />
+                <label class="runnerstotalmatched" style="font-size:9px">
+
+                </label>
+            </div>
+            <div class="col-md-1 col-sm-1">
+                &nbsp;
+            </div>
+			
+		@*	 <div id="TotalMatchedBackandlay" class="col-md-12 col-sm-12 pull-left no-padding runnerswrapper runnerwrapperhead">
+                       <div class="col-md-2 col-sm-8 no-padding runnernamediv ">
+										<label class="markettotalmatched" >
+											Total Matched:0
+										</label>
+
+
+
+									</div> 
+
+									<div id="lastpricediv" class="col-md-1 col-sm-1 no-padding runnerlastpricediv">
+										<label class="runnerslastprice" style="font-size:9px">
+											Last Price /
+										</label><br />
+										<label class="runnerstotalmatched" style="font-size:9px">
+											Total Match
+										</label>
+									</div>
+              <div class="col-md-7 col-sm-4 no-padding  runnerbackandlaydiv">
+                                    <div class="col-md-12 col-sm-12 no-padding">
+                                        <div class="col-md-6 col-sm-12 no-padding backhead">
+                                            <div id="BackDiv" class="col-md-12 col-sm-12 no-padding">
+                                                <div class="col-md-4 col-sm-4 no-padding">
+                                                    <label></label>
+                                                </div>
+                                                <div class="col-md-4 no-padding">
+                                                    <label></label>
+                                                </div>
+                                                <div class="col-md-4 col-sm-12 no-padding">
+                                                    <label>Back</label>
+                                                    <i class="backcircle fa fa-arrow-circle-down"></i>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 no-padding layhead">
+                                            <div id="LayDiv" class="col-md-12 col-sm-12 no-padding">
+                                                <div class="col-md-4 col-sm-12 no-padding">
+                                                    <label>Lay</label>
+                                                    <i class="laycircle fa fa-arrow-circle-down"></i>
+                                                </div>
+                                                <div class="col-md-4 no-padding">
+                                                    <label></label>
+                                                </div>
+                                                <div class="col-md-4 no-padding">
+                                                    <label></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                       </div>*@
+        </div> 
+    </div>
+
+    foreach (var item in Model)
+
+    {  <input type="hidden" id="marketbookCategory@(item.MarketId.ToString().Replace(".", ""))" value="@item.MainSportsname" />
+    <input type="hidden" id="marketbookorignalopendate@(item.MarketId.ToString().Replace(".", ""))" value="@item.OrignalOpenDate" />
+            <input type="hidden" id="marketbookname@(item.MarketId.ToString().Replace(".", ""))" value="@item.MarketBookName" />
+            <input type="hidden" id="marketbookstatus@(item.MarketId.ToString().Replace(".", ""))" value="@item.MarketStatusstr" />
+                    <input type="hidden" id="marketbookAllowedBetting@(item.MarketId.ToString().Replace(".", ""))" value="@Convert.ToInt32(item.BettingAllowed).ToString()" />
+                    <input type="hidden" id="marketbookAllowedBettingOverAll@(item.MarketId.ToString().Replace(".", ""))" value="@Convert.ToInt32(item.BettingAllowedOverAll).ToString()" />
+                    <input type="hidden" id="marketbookrunners@(item.MarketId.ToString().Replace(".", ""))" value="@item.Runners.Count.ToString()" />
+                    <input type="hidden" id="marketbookTotalMatched@(item.MarketId.ToString().Replace(".", ""))" value="@item.TotalMatched.ToString()" />
+        int valueid = 0;
+        <div id="maindata" class="hideit">
+            <div id="marketbook@(item.MarketId.ToString().Replace(".", ""))" data-marketid="@item.MarketId">
+
+                @foreach (var runner in item.Runners)
+                {
+
+                <div id="selection@(runner.SelectionId.Replace(" ", ""))" class="col-md-12 pull-left col-sm-12 no-padding runnerswrapper" style="border-top: 1px #eeeeee solid;">
+
+                   
+                                    
+                    <div id="nameProfitandlossdiv">
+					 
+					
+                        <div id="runnernamediv" class="no-padding runnernamediv runnerswrapper">
+						  
+                            <label for="chkselection@(runner.SelectionId)" data-value="@runner.SelectionId" class="runners runnersname" id="lblSelectionName@(runner.SelectionId)" style="float: left;">
+                                @item.MarketBookName
+                            </label>
+							
+							<div class="bookbutton" onclick="showcompleteduserbetsFacny('@item.MarketId')">
+                            Book
+                        </div>
+							
+                            <div class="runnerprofitandlossdivMobile" style="width:0px; display:inline-block">
+                                @if (runner.ProfitandLoss >= 0)
+                                {
+                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossgreen">
+                                        @runner.ProfitandLoss
+                                    </label>
+                                }
+                                else
+                                {
+                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossred">
+                                        @runner.ProfitandLoss
+                                    </label>
+                                }
+
+                                @if (runner.Loss >= 0)
+                                {
+                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreen">
+                                        @runner.Loss
+                                    </label>
+                                }
+                                else
+                                {
+                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
+                                        @runner.Loss
+                                    </label>
+                                }
+
+                             
+
+                            </div>
+                           
+                        </div>
+                    </div>
+                     <div id="lastpricebackandlaydiv">
+                            <div id="lastpricedivval" class="no-padding runnerlastpricediv">
+												<label id="lblrunnerlastprice@(runner.SelectionId)" class="runnerslastprice">
+													@runner.LastPriceTraded
+												</label>
+												<label id="lblrunnertotalmatched@(runner.SelectionId)" class="runnertotalmatch">
+													@runner.TotalMatched
+												</label>
+
+											</div>          
+						     
+
+                       <div id="backandlaydivMain" class="no-padding priceandsize matchcolors runnerbackandlaydiv">
+                         <div id="backandlaydivsecond" class="no-padding">
+                                       <div id="backandlaydivthird" class="no-padding">
+                               
+
+                                    @for (int i = 2; i >= 0; i--)
+                                        {
+                                            if (runner.ExchangePrices.AvailableToBack.Count - 1 >= i && runner.ExchangePrices.AvailableToBack.Count > 0 && runner.ExchangePrices.AvailableToBack[i].Price > 0)
+                                            {
+                                                if (i == 0)
+                                                {
+                                        <div class="col-md-4 col-sm-12 no-padding backitem" style="display:block">
+                                            <label id="lblbackprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','back',' @runner.ExchangePrices.AvailableToBack[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToBack[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToBack[i].Price
+                                            </label><br />
+                                            <label id="lblbacksize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','back',' @runner.ExchangePrices.AvailableToBack[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToBack[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToBack[i].Size
+                                            </label>
+
+                                        </div>
+                                                }
+                                                else
+                                                {
+
+                                        <div class="col-md-4 col-sm-12 no-padding backitem">
+                                            <label id="lblbackprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','back',' @runner.ExchangePrices.AvailableToBack[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToBack[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToBack[i].Price
+                                            </label><br />
+                                            <label id="lblbacksize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','back',' @runner.ExchangePrices.AvailableToBack[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToBack[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToBack[i].Size
+                                            </label>
+
+                                        </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (i == 0)
+                                                {
+                                        <div class="col-md-4 col-sm-12 no-padding backitem" style="display:block">
+                                            <label id="lblbackprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice">
+
+                                            </label><br />
+                                            <label id="lblbacksize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize">
+
+                                            </label>
+                                        </div>
+                                                }
+                                                else
+                                                {
+                                        <div class="col-md-4 col-sm-12 no-padding backitem">
+                                            <label id="lblbackprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice">
+
+                                            </label><br />
+                                            <label id="lblbacksize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize">
+
+                                            </label>
+                                        </div>
+                                                }
+                                            }
+                                        }
+                                               </div>
+                               
+                                         <div id="ExchangePricesmain" class="no-padding">
+                               
+                                    @for (int i = 0; i < 3; i++)
+                                        {
+                                            if (runner.ExchangePrices.AvailableToLay.Count > i && runner.ExchangePrices.AvailableToLay.Count > 0 && runner.ExchangePrices.AvailableToLay[i].Price > 0)
+                                            {
+                                                if (i == 0)
+                                                {
+                                       <div id="layitemmain" class="no-padding layitem">
+
+                                            <label id="lbllayprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','lay',' @runner.ExchangePrices.AvailableToLay[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToLay[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToLay[i].Price
+                                            </label><br />
+                                            <label id="lbllaysize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','lay',' @runner.ExchangePrices.AvailableToLay[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToLay[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToLay[i].Size
+                                            </label>
+
+
+                                        </div>
+
+                                                }
+                                                else
+                                                {
+
+                                       
+										<div id="layitemelse" class="no-padding layitem">
+
+                                            <label id="lbllayprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','lay',' @runner.ExchangePrices.AvailableToLay[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToLay[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToLay[i].Price
+                                            </label><br />
+                                            <label id="lbllaysize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize" onclick="showbetslip('@runner.RunnerName.Replace(" ", "")','lay',' @runner.ExchangePrices.AvailableToLay[i].Price','2000','0','@item.MarketId','@item.MarketBookName','@runner.ExchangePrices.AvailableToLay[i].Size','@i','0')">
+                                                @runner.ExchangePrices.AvailableToLay[i].Size
+                                            </label>
+
+
+                                        </div>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (i == 0)
+                                                {
+
+                                        <div class="col-md-4 col-sm-12 no-padding layitem" style="display:block">
+                                            <label id="lbllayprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice">
+
+                                            </label><br />
+                                            <label id="lbllaysize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize">
+
+                                            </label>
+                                        </div>
+                                                }
+                                                else
+                                                {
+                                        <div class="col-md-4 col-sm-12 no-padding layitem">
+                                            <label id="lbllayprice@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionprice">
+
+                                            </label><br />
+                                            <label id="lbllaysize@(i.ToString() + runner.SelectionId.ToString().Replace(" ", ""))" class="selectionsize">
+
+                                            </label>
+                                        </div>
+                                                }
+                                            }
+
+                                        }
+                                </div>
+
+                            </div>
+                       
+                    </div>
+                  </div>
+
+                </div>
+                    valueid = valueid + 1;
+
+
+                }
+
+
+
+
+            </div>
+
+        </div>
+
+    }
+
+}
+
+<script type="text/javascript">
+
+      $("#closebutton").click(function () {
+
+        $("#markettype").hide();
+        $("#backandlay").hide();
+        $("#maindata").hide();
+        $(".hideit").hide();
+        $("#fancyclose").show();
+        $("#fancyopen").hide();
+    });
+
+    $("#undobutton").click(function () {
+        $("#markettype").show();
+        $("#backandlay").show();
+        $("#maindata").show();
+        $(".hideit").show();
+        $("#fancyclose").hide();
+        $("#fancyopen").show();
+    });
+
+    $(document).ready(function () {
+
+        if ($("#maindata").is(":visible")) {
+            $("#fancymarketbook").show();
+         
+            
+        } else {
+            $("#fancymarketbook").hide();
+        }
+        function showcompleteduserbetsFacny(marketbookID) {
+            if (marketbookID != "") {
+                $.ajax({
+                    type: "GET",
+                    url: "/DashBoard/showcompleteduserbetsFancy",
+
+                    data: {  'marektbookID': marketbookID },
+                    success: function (result) {
+                        //debugger;
+                        $("#completedmatcedbetscontentFancy").html(result);
+                        $("#myModalCompletedMatchedBetsFacny").modal('show');
+
+                    }
+
+                });
+            }
+
+        }
+
+
+
+
+
+        //$.ajax({
+        //    url: '/DashBoard/CuttingUsers',
+        //    async: false,
+        //    type: 'POST',
+
+
+        //    complete: function () {
+        //        $('.selectpicker').selectpicker();
+
+
+        //        HideLoader();
+        //    },
+        //    success: function (data) {
+
+        //        $("#allusersCuttingUsers").html(data);
+
+        //        //// $form.html(data);
+        //        // $form.removeData('validator');
+        //        // $form.removeData('unobtrusiveValidation');
+        //        // $.validator.unobtrusive.parse($form);
+        //    }
+        //});
+        $(".runners").each(function () {
+
+            var id = $(this).attr("data-value");
+            //LoadRunnername(id);
+
+            if ($("#openedbetslipid").val() == id) {
+
+                SetBackandlayonbetslip(id);
+            }
+
+        });
+
+    });
+
+</script>
+
+
+**@

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80e168a1a5714a8ca5d69ee6595fa7a8" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="NExchangeModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NExchangeModel.UserType" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <AssociationConnector Association="NExchangeModel.FK_Users_UserType" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NExchangeModel.AccessRight" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="NExchangeModel.ActivityLog" PointX="5.375" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="NExchangeModel.UserType_AccessRights_Mapping" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="NExchangeModel.UsersAmountHistory" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="NExchangeModel.Users_ChangePasswordHistory" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="NExchangeModel.UserMarket" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="NExchangeModel.APIConfig" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="NExchangeModel.CommisionAccount" Width="1.5" PointX="8.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NExchangeModel.UserBet" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="NExchangeModel.BetPlaceWaitandInterval" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="NExchangeModel.BetSlipKey" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NExchangeModel.EmailConfig" Width="1.5" PointX="11.375" PointY="7.75" />
+        <EntityTypeShape EntityType="NExchangeModel.BallbyBallSummary" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="NExchangeModel.MarketRule" Width="1.5" PointX="5.375" PointY="12.75" />
+        <EntityTypeShape EntityType="NExchangeModel.LiveTVChanel" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NExchangeModel.ResultPostSetting" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="NExchangeModel.AmountReceiveable" Width="1.5" PointX="13.375" PointY="9.75" />
+        <EntityTypeShape EntityType="NExchangeModel.MarketCatalogueSelection" Width="1.5" PointX="13.375" PointY="12.75" />
+        <EntityTypeShape EntityType="NExchangeModel.AdminAmount" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NExchangeModel.UserAccount" Width="1.5" PointX="15.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

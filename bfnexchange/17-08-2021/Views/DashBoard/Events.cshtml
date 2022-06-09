@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ExternalAPI.TO.EventResult>
+
+
+
+   
+              
+                    @foreach (var item in Model)
+                    {
+                       
+
+                       
+                        <li data-value="@(item.Event.Id)" data-opendate="@(item.Event.OpenDate)">
+                             <input type="checkbox" id="eventitem@(item.Event.Id)" value="@(item.Event.Id)" />
+                            <label><input type="checkbox"   id="eventitem@(item.Event.Id)" value="@(item.Event.Id)"/><span></span></label>
+                            <label for="eventitem@(item.Event.Id)" onclick="LoadMarketCatalogue('@item.Event.Id')">@item.Event.Name</label>
+
+                            <ul id="MarketCatalogue@(item.Event.Id)"></ul>
+
+</li>
+                        
+
+                    }
+             
+            
+

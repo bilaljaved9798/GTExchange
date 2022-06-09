@@ -1,0 +1,3282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:element name="UpdateFancyResultPostSetting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fancyresultpost" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateFancyResultPostSettingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatebyUserIDFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatebyUserIDFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCommissionRatebyUserIDFancyResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommissionRatebyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="CommisionrateFancy" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCommissionRatebyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCricketAPIMatchKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CricketAPIMatchKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCricketAPIMatchKeyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFancyResultsFrom">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFancyResultsFromResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFancyResultsFromResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGetFancyResultsFrom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResultsFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGetFancyResultsFromResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentMatchesFromCricketAPI">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentMatchesFromCricketAPIResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRecentMatchesFromCricketAPIResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGetDataFromForLoggingData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetDataFrom" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateGetDataFromForLoggingDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventNameuserIDandDateRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventNameuserIDandDateRangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyEventNameuserIDandDateRangeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventNameuserIDandDateRangeFancywithMArketName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventNameuserIDandDateRangeFancywithMArketNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyEventNameuserIDandDateRangeFancywithMArketNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransferAdminAmount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="TransferAdminAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="TransferAgentID" type="xs:int" />
+        <xs:element minOccurs="0" name="TransferAdminAmountSoccer" type="xs:boolean" />
+        <xs:element minOccurs="0" name="TransferAdminAmountTennis" type="xs:boolean" />
+        <xs:element minOccurs="0" name="TransferAdminAmountHorse" type="xs:boolean" />
+        <xs:element minOccurs="0" name="TransferAdminAmountGreyHound" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransferAdminAmountResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferAdminAmount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferAdminAmountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetTransferAdminAmountResult" nillable="true" type="q1:SP_Users_GetTransferAdminAmount_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPendingAmountsbyDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllPendingAmountsbyDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllPendingAmountsbyDateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAmountReceviables">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AmountReceived" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAmountReceviablesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAmountReceviables">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:int" />
+        <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="DueDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAmountReceviablesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBettingAllowedbyMarketIDandUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBettingAllowedbyMarketIDandUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBettingAllowedbyMarketIDandUserIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBettingAllowedbyMarketIDandUserIDInplay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBettingAllowedbyMarketIDandUserIDInplayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBettingAllowedbyMarketIDandUserIDInplayResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddReferrerUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="ReferrerID" type="xs:int" />
+        <xs:element minOccurs="0" name="ReferrerRate" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddReferrerUsersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletReffererUSers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletReffererUSersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReferrerRatesbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReferrerRatesbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRatesbyUserIDResult" nillable="true" type="q2:ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBetNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userodd" type="xs:decimal" />
+        <xs:element minOccurs="0" name="SelectionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Selectionname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nupdownAmount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="betslipamountlabel" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MaxOddBack" type="xs:decimal" />
+        <xs:element minOccurs="0" name="MaxOddLay" type="xs:decimal" />
+        <xs:element minOccurs="0" name="CheckforMaxOddBack" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CheckforMaxOddLay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Clickedlocation" type="xs:int" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Betslipsize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketbookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Marketbookname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GetData" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBetNewResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctMarketsFromBets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctMarketsFromBetsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDistinctMarketsFromBetsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctMarketsFromAccounts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctMarketsFromAccountsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDistinctMarketsFromAccountsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnPostUserAccountsbyUserIDandMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnPostUserAccountsbyUserIDandMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UnPostUserAccountsbyUserIDandMarketIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetsStatusbyMarketIDandUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetsStatusbyMarketIDandUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserBetsStatusbyMarketIDandUserIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTotalOversbyMarket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TotalOvers" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTotalOversbyMarketResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBlockedStatusofUserBMS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="isBlocked" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBlockedStatusofUserBMSResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetBlockedStatusofUserBMSResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchScoreCard">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="strMatchKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMatchScoreCardResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/bfnexchange.Services" minOccurs="0" name="GetMatchScoreCardResult" nillable="true" type="q3:APIResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCricketMatchKey">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCricketMatchKeyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCricketMatchKeyResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketsForView">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="isAllowedGrayHound" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isAllowedHorse" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isTennisAllowed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isSoccerAllowed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketsForViewResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAllMarketClosedbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAllMarketClosedbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetURLsData">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetURLsDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetURLsDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferAgnetCommision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTransferAgnetCommisionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTransferAgnetCommisionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransferAgnetCommision">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="TranserAgentCommision" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTransferAgnetCommisionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateFancySyncONorOFF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isopenenedbyuser" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateFancySyncONorOFFResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxBalanceTransferLimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxBalanceTransferLimitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMaxBalanceTransferLimitResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxBalanceTransferLimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MaxBalanceTransferLimit" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxBalanceTransferLimitResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxAgentRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxAgentRateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMaxAgentRateResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxAgentRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MaxAgentRate" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxAgentRateResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateFancySyncONorOFFbyMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="MarektID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isopenenedbyuser" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateFancySyncONorOFFbyMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateKJSyncONorOFFbyMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="MarektID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isopenenedbyuser" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateKJSyncONorOFFbyMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTotalAgentCommissionbyAgentID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTotalAgentCommissionbyAgentIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTotalAgentCommissionbyAgentIDResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetToWintheTossbyeventId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetToWintheTossbyeventIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToWintheTossbyeventIdResult" nillable="true" type="q4:SP_UserMarket_GetToWinTheTossbyEventID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSoccergoalbyeventId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSoccergoalbyeventIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSoccergoalbyeventIdResult" nillable="true" type="q5:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketOpenedbyuserinAPP">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketOpenedbyuserinAPPResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllMatchesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCricketMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCricketMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllCricketMatchesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSoccerMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSoccerMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllSoccerMatchesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTennisMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTennisMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllTennisMatchesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserbetamountbyParentID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="userodd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserbetamountbyParentIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserbetamountbyParentIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbyAgentID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgentID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbyAgentIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserBetsbyAgentIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbySuperID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SuperID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbySuperIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserBetsbySuperIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbySamiAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SuperID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbySamiAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserBetsbySamiAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbyAgentIDwithZeroReferer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgentID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserBetsbyAgentIDwithZeroRefererResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserBetsbyAgentIDwithZeroRefererResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserIDandAgentID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgentID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserIDandAgentIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbetsbyUserIDandAgentIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsForAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsForAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbetsForAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUsersofAgent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AgentID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUsersofAgentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketsOpenedbyUsersofAgentResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUsersForAdmin">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUsersForAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketsOpenedbyUsersForAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetLoggedinStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="LoggedIn" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetLoggedinStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedMatchedBetsbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketbookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedMatchedBetsbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCompletedMatchedBetsbyUserIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserMarketbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUserMarketbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllUserMarketbyUserIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserStatusResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastLoginTimes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLastLoginTimesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLastLoginTimesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetSizebyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="BetSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetSizebyIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnMatchedBets">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUnMatchedBetsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUnMatchedBetsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSheetNamebyMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marketbookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSheetNamebyMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSheetNamebyMarketIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetLowerLimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="BetLowerLimit" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimit" type="xs:decimal" />
+        <xs:element minOccurs="0" name="isAllowedGrayHound" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isAllowedHorse" type="xs:boolean" />
+        <xs:element minOccurs="0" name="BetLowerLimitHorsePlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitHorsePlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitGrayHoundWin" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitGrayHoundWin" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitGrayHoundPlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitGrayHoundPlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOdds" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOdds" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitInningsRunns" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitInningsRunns" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitCompletedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitCompletedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="isTennisAllowed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isSoccerAllowed" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CommissionRate" type="xs:int" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOddsSoccer" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOddsSoccer" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOddsTennis" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOddsTennis" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitTiedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitTiedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitWinner" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitWinner" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetUpperLimitFancy" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitFancy" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetLowerLimitResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCheckConditionforPlaceBet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="CheckConditionforPlaceBet" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCheckConditionforPlaceBetResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodayHorseRacing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="EventTypeID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodayHorseRacingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTodayHorseRacingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodayHorseRacingNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTodayHorseRacingNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTodayHorseRacingNewResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctmarketopened">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctmarketopenedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDistinctmarketopenedResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOddsData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="oddsdata" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Oddtype" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateOddsDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatebyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionRatebyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCommissionRatebyUserIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserPhoneandNamebyUserId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userId" type="xs:int" />
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserPhoneandNamebyUserIdResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventtypeuserIDandDateRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyEventtypeuserIDandDateRangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyEventtypeuserIDandDateRangeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatabyAgentIDForCommisionandDateRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatabyAgentIDForCommisionandDateRangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDatabyAgentIDForCommisionandDateRangeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatabyAgentIDForCommisionandDateRangeByEventtype">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDatabyAgentIDForCommisionandDateRangeByEventtypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDatabyAgentIDForCommisionandDateRangeByEventtypeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserAccountsGetCommission">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UserAccountsGetCommissionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserAccountsGetCommissionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventTypeNamebyMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marketBookId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventTypeNamebyMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetEventTypeNamebyMarketIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLiveOddbyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="liveOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLiveOddbyIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserOddbyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="UserOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserOddbyIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllowedMarketsbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllowedMarketsbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllowedMarketsbyUserIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAllowedMarketsbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="isCricketMatchOddsAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isCricketTiedMatchAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isCricketCompletedMatchAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isCricketInningsRunsAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isSoccerAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isTennisAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isHorseRaceWinAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isHorseRacePlaceAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isGrayHoundRaceWinAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="isGrayHoundRacePlaceAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="isWinnerMarketAllowedForBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isFancyAllowed" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAllowedMarketsbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionaccountIdandBookAccountbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommissionaccountIdandBookAccountbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetCommissionaccountIdandBookAccountbyUserIDResult" nillable="true" type="q6:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReferrerRateandIDbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetReferrerRateandIDbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRateandIDbyUserIDResult" nillable="true" type="q7:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRefererRateandIDbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="ReffereID" type="xs:int" />
+        <xs:element minOccurs="0" name="ReferrerRate" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateRefererRateandIDbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUsersAllBlock">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUsersAllBlockResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUsersAllLoggedOut">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUsersAllLoggedOutResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxOddBackandLay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MaxOddBack" type="xs:decimal" />
+        <xs:element minOccurs="0" name="CheckForMaxOddBack" type="xs:boolean" />
+        <xs:element minOccurs="0" name="MaxOddLay" type="xs:decimal" />
+        <xs:element minOccurs="0" name="CheckForMaxOddLay" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMaxOddBackandLayResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIntervalandBetPlaceTimings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIntervalandBetPlaceTimingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetIntervalandBetPlaceTimingsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIntervalandBetPlaceTimings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HorseRaceTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="HorseRaceBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="GrayHoundTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="GrayHoundBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="CricketMatchOddsTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="CricketMatchOddsBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="CompletedMatchTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="CompletedMatchBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="TiedMatchTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="TiedMatchBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="InningsRunsTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="InningsRunsBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="WinnerTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="WinnerBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="TennisTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="TennisBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="SoccerTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="SoccerBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="PoundRate" type="xs:decimal" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="FancyTimerInterval" type="xs:int" />
+        <xs:element minOccurs="0" name="FancyBetPlaceWait" type="xs:int" />
+        <xs:element minOccurs="0" name="RaceMinutesBeforeStart" type="xs:int" />
+        <xs:element minOccurs="0" name="CancelBetTime" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIntervalandBetPlaceTimingsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHawalaAccountIDbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHawalaAccountIDbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetHawalaAccountIDbyUserIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCreatedbyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCreatedbyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCreatedbyIDResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHawalaIDbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="ParentID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHawalaIDbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsforBettingAllowed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsforBettingAllowedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketsforBettingAllowedResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketAllowedBetting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketbookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AllowedBetting" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketAllowedBettingResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketAllowedBettingForAllAgents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserIds" nillable="true" type="q8:ArrayOfint" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="lstMarkets" nillable="true" type="q9:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketAllowedBettingForAllAgentsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBetSlipKeys">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBetSlipKeysResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBetSlipKeysResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetSlipKeys">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="SimpleBtn1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn4" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn5" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn6" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn7" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn8" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn9" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn10" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn11" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SimpleBtn12" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn3" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn4" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn5" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn6" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn7" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn8" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn9" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn10" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn11" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MutipleBtn12" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBetSlipKeysResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBettingAllowed">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BettingAllowed" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBettingAllowedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPoundRatebyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPoundRatebyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPoundRatebyUserIDResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarqueeText">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarqueeTextResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarqueeTextResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarqueeText">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marqueetext" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarqueeTextResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBalanceSheettoEmail">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBalanceSheettoEmailResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBalanceSheettoEmailAutomatic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendBalanceSheettoEmailAutomaticResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShowTV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetShowTVResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetShowTVResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateShowTV">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="ShowTV" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateShowTVResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventDetailsbyMarketBook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketbookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventDetailsbyMarketBookResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetEventDetailsbyMarketBookResult" nillable="true" type="q10:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLinevMarketsbyEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLinevMarketsbyEventIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLinevMarketsbyEventIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KJMarketsbyEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KJMarketsbyEventIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="KJMarketsbyEventIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLinevMarketsbyEventIDIN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLinevMarketsbyEventIDINResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLinevMarketsbyEventIDINResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetKalijut">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetKalijutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetKalijutResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFigureOdds">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFigureOddsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFigureOddsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScoresbyEventIDandDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScoresbyEventIDandDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScoresbyEventIDandDateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketRules">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketRulesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketRulesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLineandMatchOddsforAssociation">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLineandMatchOddsforAssociationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLineandMatchOddsforAssociationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAssociateEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="associateventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAssociateEventIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveTVChanels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Passkey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveTVChanelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLiveTVChanelsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScorebyEventIDandInnings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Innings" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScorebyEventIDandInningsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScorebyEventIDandInningsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScorebyEventIDandInningsandOvers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Innings" type="xs:int" />
+        <xs:element minOccurs="0" name="Overs" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetScorebyEventIDandInningsandOversResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetScorebyEventIDandInningsandOversResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddScoreToBallbyBallsummary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="over" type="xs:double" />
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+        <xs:element minOccurs="0" name="innings" type="xs:int" />
+        <xs:element minOccurs="0" name="EventOpenDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="wickets" type="xs:int" />
+        <xs:element minOccurs="0" name="teamname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="matchstatus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddScoreToBallbyBallsummaryResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyIN">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Marketname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyINResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyKJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selectionID" type="xs:int" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyKJResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedSmallFig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selectionID" type="xs:int" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedSmallFigResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyFig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selectionID" type="xs:int" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedFancyFigResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserAccountsFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="marketbookstatus" nillable="true" type="q11:ArrayOfMarketBook" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserAccountsFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserAccountsFancyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIsComAllowbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIsComAllowbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetIsComAllowbyUserIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketStatusbyMarketBookID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MarketStatus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketStatusbyMarketBookIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFancyResultPostSetting">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFancyResultPostSettingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFancyResultPostSettingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbyUsernameandPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbyUsernameandPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbyUsernameandPasswordResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbyUsernameandPasswordNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbyUsernameandPasswordNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbyUsernameandPasswordNewResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCurrentLoggedInIDbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCurrentLoggedInIDbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Activityname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ActivityTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="IPAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Deviceinfo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserActivityResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccessRightsbyUserType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserTypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccessRightsbyUserTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccessRightsbyUserTypeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Phonenumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Accountbalance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="usertypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="createdByID" type="xs:int" />
+        <xs:element minOccurs="0" name="RatePercent" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetLowerLimit" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimit" type="xs:decimal" />
+        <xs:element minOccurs="0" name="CheckConditionsforPlacingBet" type="xs:boolean" />
+        <xs:element minOccurs="0" name="BetLowerLimitHorsePlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitHorsePlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitGrayHoundWin" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitGrayHoundWin" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitGrayHoundPlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitGrayHoundPlace" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOdds" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOdds" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitInningsRunns" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitInningsRunns" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitCompletedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitCompletedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOddsSoccer" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOddsSoccer" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitMatchOddsTennis" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitMatchOddsTennis" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitTiedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitTiedMatch" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetUpperLimitWinner" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitWinner" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Passwordforvalidate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetUpperLimitFancy" type="xs:decimal" />
+        <xs:element minOccurs="0" name="BetLowerLimitFancy" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckifUserExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckifUserExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckifUserExistsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCredittoUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="AddedbyID" type="xs:int" />
+        <xs:element minOccurs="0" name="addedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Amountremoved" type="xs:decimal" />
+        <xs:element minOccurs="0" name="AddtoUserAccounts" type="xs:boolean" />
+        <xs:element minOccurs="0" name="AccountsTitle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCredittoUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAdminAmountForSuper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AccountsTitle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="debit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Credit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="marketid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="addedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddAdminAmountForSuperResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStartBalancebyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="newBalance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateStartBalancebyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountsOpeningBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="Balance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountsOpeningBalanceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentBalancebyUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentBalancebyUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCurrentBalancebyUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStartingBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStartingBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetStartingBalanceResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddKalijut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="eventTypeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="competitonID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketCatalogue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="updatedbyID" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="eventTypeName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="competitionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eventName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketCatalogueName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="eventOpenDate" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sheetName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="associateEventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddKalijutResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MarketCatalogueSelectionskalijut">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="marketCatalogueID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selectionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="selectionName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jockeyName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wearing" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="wearingDesc" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="clothnumber" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="stallDraw" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MarketCatalogueSelectionskalijutResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountBalacnebyUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userid" type="xs:int" />
+        <xs:element minOccurs="0" name="AccountBalance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateAccountBalacnebyUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCuttingUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Passwordforvalidate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCuttingUsersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllCuttingUsersResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersbyUserType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="usertypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersbyUserTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllUsersbyUserTypeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersbyUserTypeNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="usertypeID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllUsersbyUserTypeNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAllUsersbyUserTypeNewResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDetailsbyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserDetailsbyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserDetailsbyIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketbyEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketbyEventIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketbyEventIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketbyEventID1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketbyEventID1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketbyEventID1Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDeleteStatusofUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="isDeleted" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDeleteStatusofUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetDeleteStatusofUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBlockedStatusofUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="isBlocked" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBlockedStatusofUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetBlockedStatusofUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetPasswordofUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Updatedby" type="xs:int" />
+        <xs:element minOccurs="0" name="updatedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Passwordforvalidate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetPasswordofUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResetPasswordofUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMArket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMArketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserMArketResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="allmarketitems" nillable="true" type="q12:ArrayOfstring" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
+        <xs:element minOccurs="0" name="DeleteOldMarkets" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserMarketResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketKJ">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kalijutt" nillable="true" type="q13:ArrayOfstring" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="KaliCatelogIDs" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q16:ArrayOfint" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketKJResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserMarketKJResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketSFig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SmallFig" nillable="true" type="q17:ArrayOfstring" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="smallFigCatelogIDs" nillable="true" type="q18:ArrayOfstring" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q19:ArrayOfstring" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q20:ArrayOfint" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketSFigResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserMarketSFigResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketFigure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figure" nillable="true" type="q21:ArrayOfstring" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureCatelogIDs" nillable="true" type="q22:ArrayOfstring" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figureselections" nillable="true" type="q23:ArrayOfstring" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureselectionsName" nillable="true" type="q24:ArrayOfstring" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q25:ArrayOfint" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserMarketFigureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserMarketFigureResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertIndainFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="allmarkets" nillable="true" type="q26:ArrayOfMarketBookForindianFancy" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="runners" nillable="true" type="q27:ArrayOfRunnerForIndianFancy" />
+        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q28:ArrayOfint" />
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertIndainFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertIndainFancyResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMarketforSelection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserMarketforSelectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserMarketforSelectionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteEventTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteEventTypesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFavoriteEventTypesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteEventTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventTypeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteEventTypesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteEventTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventTypeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteEventTypesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteEventsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFavoriteEventsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteEventsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteEvents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteEventsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteCompetitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFavoriteCompetitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFavoriteCompetitionsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteCompetitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoFavoriteCompetitionsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteCompetitions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFromFavoriteCompetitionsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventTypeIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventTypeIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetEventTypeIDsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getlistuserids">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="createdid" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getlistuseridsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getlistuseridsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompetitionIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventTypeID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompetitionIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCompetitionIDsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventsIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompetitionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEventsIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetEventsIDsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketCatalogueIDs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketCatalogueIDsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketCatalogueIDsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SelectionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bettype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LiveOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ismatched" type="xs:boolean" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketbookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="createddate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="updatedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Selectionname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Marketbookname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Liability" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PendingAmount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParentID" type="xs:long" />
+        <xs:element minOccurs="0" name="MaxOddBack" type="xs:decimal" />
+        <xs:element minOccurs="0" name="MaxOddLay" type="xs:decimal" />
+        <xs:element minOccurs="0" name="CheckforMaxOddBack" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CheckforMaxOddLay" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserBetResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBetAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SelectionID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bettype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LiveOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ismatched" type="xs:boolean" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketbookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="createddate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="updatedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Selectionname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Marketbookname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Liability" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PendingAmount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParentID" type="xs:long" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserBetAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserBetAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="UserOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="amount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bettype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LiveOdd" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ismatched" type="xs:boolean" />
+        <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marketbookId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="createddate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="updatedtime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Liabality" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BetSize" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PendingAmount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserBetResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserIDandMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserIDandMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbetsbyUserIDandMarketIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxOddBackandLay">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxOddBackandLayResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetMaxOddBackandLayResult" nillable="true" type="q29:SP_Users_GetMaxOddBackandLay_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxOddBackandLayStr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMaxOddBackandLayStrResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMaxOddBackandLayStrResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUserbetsbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetUserbetsbyUserIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetMatched">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q30:ArrayOflong" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetMatchedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentLiabality">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrentLiabalityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCurrentLiabalityResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAgentRate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAgentRateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAgentRateResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSuperName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSuperNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSuperNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompleted">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckforMatchCompletedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseAllClosedMarkets">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CloseAllClosedMarketsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetAgentRateofUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="AgentRate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetAgentRateofUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetAgentRateofUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetUnMatchedStatusTocomplete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q31:ArrayOflong" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetUnMatchedStatusTocompleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetUnMatchedStatusTocompleteforCuttingUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserBetUnMatchedStatusTocompleteforCuttingUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketsOpenedbyUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketsOpenedbyUserResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetMarketBookOpenbyUSerandGetResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet0">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet0Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetMarketBookOpenbyUSerandGet0Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetMarketBookOpenbyUSerandGet1Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet2">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookOpenbyUSerandGet2Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetMarketBookOpenbyUSerandGet2Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookClosedbyUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketBookClosedbyUserResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketClosedAllUsers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketbookID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetMarketClosedAllUsersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSelectionNamesbyMarketID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSelectionNamesbyMarketIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSelectionNamesbyMarketIDResult" nillable="true" type="q32:ArrayOfSP_MarketCatalogueSelections_Get_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyUserIDandDateRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyUserIDandDateRangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyUserIDandDateRangeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyCreatedByIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByIDForSuper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByIDForSuperResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyCreatedByIDForSuperResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByIDForSamiAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyCreatedByIDForSamiAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDatabyCreatedByIDForSamiAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDataForAdmin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDataForAdminResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDataForAdminResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfitorLossbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfitorLossbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProfitorLossbyUserIDResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfitorLossforSuper">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProfitorLossforSuperResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetProfitorLossforSuperResult" type="xs:decimal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDataForCommisionaccount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDataForCommisionaccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountsDataForCommisionaccountResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadAllMarketHorseRace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadAllMarketHorseRaceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadAllMarketGrayHoundRace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadAllMarketGrayHoundRaceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserbetamountbyID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" type="xs:long" />
+        <xs:element minOccurs="0" name="amount" type="xs:decimal" />
+        <xs:element minOccurs="0" name="ismatched" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateUserbetamountbyIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateUserbetamountbyIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetInPlayMatchesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunnersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunnersResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunners1Result" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

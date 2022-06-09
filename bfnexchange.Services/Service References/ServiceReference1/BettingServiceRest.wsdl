@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BettingServiceRest" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/BettingServiceRest.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBettingServiceRest_GetMarketDatabyIDJsonString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDJsonString" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetMarketDatabyIDJsonString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketDatabyIDJsonStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserbetsForAdmin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserbetsForAdmin" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserbetsForAdmin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserbetsForAdminResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserBetsbyAgentIDwithZeroReferer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBetsbyAgentIDwithZeroReferer" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserBetsbyAgentIDwithZeroReferer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBetsbyAgentIDwithZeroRefererResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsBP_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBP" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsBP_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsBPFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsBPFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsBPFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsOthers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthers" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsOthers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsOthersFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsOthersFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsOthersFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarkets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarkets" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarkets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancy" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetScoresbyEventIDandDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScoresbyEventIDandDate" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetScoresbyEventIDandDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScoresbyEventIDandDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsFancyString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyString" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsFancyString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsFancyStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsString_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsString" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetAllMarketsString_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarketsStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserBetsbyAgentIDNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBetsbyAgentIDNew" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserBetsbyAgentIDNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserBetsbyAgentIDNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserbetsbyUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserbetsbyUserID" />
+  </wsdl:message>
+  <wsdl:message name="IBettingServiceRest_GetUserbetsbyUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserbetsbyUserIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBettingServiceRest">
+    <wsdl:operation name="GetMarketDatabyIDJsonString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetMarketDatabyIDJsonString" message="tns:IBettingServiceRest_GetMarketDatabyIDJsonString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetMarketDatabyIDJsonStringResponse" message="tns:IBettingServiceRest_GetMarketDatabyIDJsonString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserbetsForAdmin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserbetsForAdmin" message="tns:IBettingServiceRest_GetUserbetsForAdmin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserbetsForAdminResponse" message="tns:IBettingServiceRest_GetUserbetsForAdmin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBetsbyAgentIDwithZeroReferer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserBetsbyAgentIDwithZeroReferer" message="tns:IBettingServiceRest_GetUserBetsbyAgentIDwithZeroReferer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserBetsbyAgentIDwithZeroRefererResponse" message="tns:IBettingServiceRest_GetUserBetsbyAgentIDwithZeroReferer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBP">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsBP" message="tns:IBettingServiceRest_GetAllMarketsBP_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsBPResponse" message="tns:IBettingServiceRest_GetAllMarketsBP_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsBPFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsBPFancy" message="tns:IBettingServiceRest_GetAllMarketsBPFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsBPFancyResponse" message="tns:IBettingServiceRest_GetAllMarketsBPFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsOthers" message="tns:IBettingServiceRest_GetAllMarketsOthers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsOthersResponse" message="tns:IBettingServiceRest_GetAllMarketsOthers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsOthersFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsOthersFancy" message="tns:IBettingServiceRest_GetAllMarketsOthersFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsOthersFancyResponse" message="tns:IBettingServiceRest_GetAllMarketsOthersFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarkets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarkets" message="tns:IBettingServiceRest_GetAllMarkets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsResponse" message="tns:IBettingServiceRest_GetAllMarkets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsFancy" message="tns:IBettingServiceRest_GetAllMarketsFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsFancyResponse" message="tns:IBettingServiceRest_GetAllMarketsFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScoresbyEventIDandDate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetScoresbyEventIDandDate" message="tns:IBettingServiceRest_GetScoresbyEventIDandDate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetScoresbyEventIDandDateResponse" message="tns:IBettingServiceRest_GetScoresbyEventIDandDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsFancyString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsFancyString" message="tns:IBettingServiceRest_GetAllMarketsFancyString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsFancyStringResponse" message="tns:IBettingServiceRest_GetAllMarketsFancyString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarketsString">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsString" message="tns:IBettingServiceRest_GetAllMarketsString_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetAllMarketsStringResponse" message="tns:IBettingServiceRest_GetAllMarketsString_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserBetsbyAgentIDNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserBetsbyAgentIDNew" message="tns:IBettingServiceRest_GetUserBetsbyAgentIDNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserBetsbyAgentIDNewResponse" message="tns:IBettingServiceRest_GetUserBetsbyAgentIDNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserbetsbyUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserbetsbyUserID" message="tns:IBettingServiceRest_GetUserbetsbyUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingServiceRest/GetUserbetsbyUserIDResponse" message="tns:IBettingServiceRest_GetUserbetsbyUserID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="BettingServiceRest" />
+</wsdl:definitions>

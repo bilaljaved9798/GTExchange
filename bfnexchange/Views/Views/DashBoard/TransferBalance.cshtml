@@ -1,0 +1,106 @@
+﻿@model IEnumerable<bfnexchange.Models.UserIDandUserType>
+<div class="form-horizontal">
+    <h4>Transfer Balance</h4>
+    <hr />
+    <div class="col-md-12">
+        <div class="col-md-3 no-padding">
+            <div id="allusersFrom">
+                <label class="control-label col-md-12">Plus Party</label>
+                <div class="col-md-12 no-padding">
+
+
+                    @Html.DropDownList("ddlUsersTo", Model.Select(item => new SelectListItem
+   {
+       Value = item.ID.ToString(),
+       Text = item.UserName.ToString()
+
+   }), new { @class = "selectpicker", data_live_search = "true" })
+                </div>
+
+            </div>
+            <label id="lblToBlanace" class="control-label col-md-12">0.00</label>
+        </div>
+
+        <div class="col-md-6 no-padding">
+            <div class="form-group">
+                <label class="control-label col-md-4">Balance</label>
+
+                <div class="col-md-8">
+                    <input type="text" id="AccountBalance" class="form-control" />
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-4">Accounts Title</label>
+
+                <div class="col-md-8">
+                    <input type="text" id="AccountsTitle" class="form-control" />
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3 no-padding">
+            <div id="allusersTo">
+                <label class="control-label col-md-12">Minus Party</label>
+                <div class="col-md-12">
+
+
+                    @Html.DropDownList("ddlUsersFrom", Model.Select(item => new SelectListItem
+   {
+       Value = item.ID.ToString(),
+       Text = item.UserName.ToString()
+
+   }), new { @class = "selectpicker", data_live_search = "true" })
+                </div>
+                <label id="lblFromBlanace" class="control-label col-md-12">0.00</label>
+            </div>
+        </div>
+    </div>
+       
+      
+      
+     
+   
+   
+</div>
+<div class="col-md-12">
+    <div class="form-group text-center" >
+        <div class="col-md-10">
+            <input type="button" id="btnTransferBalance" value="Transfer Balance" class="btn btn-default" />
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.selectpicker').selectpicker();
+            $("#btnTransferBalance").click(function () {
+
+                if ($("#AccountsTitle").val() == "") {
+                    ShowErrorMsg("Please enter Accounts Title.");
+                    return false;
+                }
+                if ($("#AccountBalance").val() > 0 && $("#ddlUsersFrom").val() > 0 && $("#ddlUsersTo").val() > 0) {
+                    if ($("#ddlUsersFrom").val() == $("#ddlUsersTo").val()) {
+                        ShowErrorMsg("Please Select different users.");
+                        return false;
+                    }
+                    $("#callerfunction").val("transferbalance");
+                    $("#myModalPassword").modal('show');
+                    $("#txtAdminPassword").focus();
+
+                }
+
+
+            });
+          
+            $("#ddlUsersFrom").change(function () {
+                GetcurrentbalancebyUserIDFrom();
+            });
+            $("#ddlUsersTo").change(function () {
+                GetcurrentbalancebyUserIDTo();
+            });
+        });
+</script>

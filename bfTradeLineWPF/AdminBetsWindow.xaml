@@ -1,0 +1,352 @@
+﻿<Window x:Class="globaltraders.AdminBetsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:local="clr-namespace:globaltraders"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      
+        mc:Ignorable="d"
+        Title="AdminBetsWindow" x:Name="AdminBetsWin" Width="520" Loaded="Window_Loaded" Height="292"  FontFamily="Times New Roman" WindowStyle="None" ResizeMode="NoResize" Unloaded="Window_Unloaded" LocationChanged="AdminBetsWin_LocationChanged">
+    <Window.Resources>
+        <local:TextAmounttoNumber x:Key="PLConverter"></local:TextAmounttoNumber>
+        <local:TextAmounttoNumber x:Key="TxtToNumber"></local:TextAmounttoNumber>
+    </Window.Resources>
+    <Grid>
+        <local:DraggablePopup x:Name="popupAllBets"  Placement="Center"
+		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		                     >
+            <Border  BorderBrush="#FF243890" BorderThickness="5" 
+
+                Background="White">
+                <StackPanel Margin="0" >
+
+                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical" Margin="0">
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,5" >
+                            <Label x:Name="lblAllMatchedBets" Content="Matched Bets" Width="151" FontSize="16" FontWeight="Bold"></Label>
+                            <Button x:Name="btnAllBetsRefresh" Content="Refresh" Width="50" Height="20"  Margin="20,3,340,5" Click="btnAllBetsRefresh_Click"   ></Button>
+                            <Button Content="X" Width="30" Height="20" Background="Red" Foreground="White" Margin="5,0,0,5" Click="Button_Click_18"  ></Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"  >
+                          
+                            <DataGrid x:Name="DGVMatchedBetsAdminAll" AutoGenerateColumns="False" Margin="0" Height="350" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" Width="600">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding BetType}" Value="back">
+                                                <Setter Property="Background" Value="Pink"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                                <Setter Property="Background" Value="LightBlue"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+
+
+
+                                    <DataGridTemplateColumn Width="*" Header="Selection">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="3" FontSize="14" FontWeight="Bold" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="50" Header="Odd"  >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding UserOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Stretch" Width="50" VerticalAlignment="Center" Padding="2" FontFamily="Times New Roman" />
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn Width="70" Header="Amount" >
+                                        <DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBlock  Text="{Binding Amount,Converter={StaticResource TxtToNumber}}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2" FontFamily="Times New Roman" FontSize="14" FontWeight="Bold"  />
+
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="50" Header="Live"  >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding LiveOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Padding="2" FontFamily="Times New Roman" />
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="100" Header="Customer" >
+                                        <DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="100" Header="Dealer" >
+                                        <DataGridTemplateColumn.CellTemplate >
+                                            <DataTemplate >
+                                                <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+                </StackPanel>
+            </Border>
+
+        </local:DraggablePopup>
+        <StackPanel>
+            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Background="#FF243875" Margin="0,0,0,0" Visibility="Collapsed">
+                <StackPanel x:Name="stkpnlmarketname" HorizontalAlignment="Left" Width="445" MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown"  Margin="0">
+                    <Label x:Name="lblMarketName" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" >Admin Bets</Label>
+                    
+                </StackPanel>
+
+                
+            </StackPanel>
+            <StackPanel x:Name="stkpnlBets"  Margin="0,0,0,0"  >
+
+                <TextBlock  FontSize="16" Margin="0,0,0,3" Background="#8cded2">
+                   
+                            <Label  Foreground="Black" Margin="0,0,0,3" Content="UnMatched Bets"  MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown"/>
+                       <Run Text=" "/><InlineUIContainer>
+                            <Label x:Name="lblUnMatchBetsCount"  Foreground="Black" Margin="0,0,0,3" Width="320" Content="0"/>
+                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center"  Orientation="Horizontal">
+
+                    <TextBlock x:Name="txtTopMost" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp_3" Tag="0" RenderTransformOrigin="0.5,0.5" >
+                                 <Image x:Name="pinTopMost" Source="pin-hover.png" Width="20" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,5,0,0" RenderTransformOrigin="0.5,0.5">
+                                     <Image.RenderTransform>
+                                         <TransformGroup>
+                                             <ScaleTransform/>
+                                             <SkewTransform/>
+                                             <RotateTransform Angle="90"/>
+                                             <TranslateTransform/>
+                                         </TransformGroup>
+                                     </Image.RenderTransform>
+                                 </Image>
+                    </TextBlock>
+                    <TextBlock Text="-" FontSize="26" Foreground="Black" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" TextAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" Cursor="Hand" ></TextBlock>
+                   
+                    <TextBlock Text="X" FontSize="20"   Foreground="Red" Margin="0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" TextAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp_2" Cursor="Hand" ></TextBlock>
+
+                </StackPanel>
+                        </InlineUIContainer>
+                </TextBlock>
+
+
+
+                <DataGrid x:Name="DGVUnMatchedAdmin" AutoGenerateColumns="False" Margin="0,0,0,5" Height="80" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="None" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding BetType}" Value="back">
+                                    <Setter Property="Background" Value="Pink"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn  Visibility="Hidden" Binding="{Binding ID}"/>
+
+                        <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Padding="1" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50" Header="Odd" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding UserOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Width="45"/>
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="100" Header="Amount" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"  Padding="2"  />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding LiveOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Width="48" Padding="2"/>
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="100" Header="Customer" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="100" Header="Dealer" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBlock FontSize="16" Margin="0,0,0,3" Background="#8cded2">
+                    
+                          <Label  Foreground="Black" Margin="0,0,0,3" Content="Matched Bets" VerticalAlignment="Top"/>
+                    
+                          <Label x:Name="lblMatchBetsCount"  Foreground="Black" Margin="0,0,0,3" Width="300" Content="0"/>
+                     
+                         <Button Content="All Bets" x:Name="btnAllBets"  Width="100" Height="25" Visibility="Visible" Click="btnAllBets_Click" VerticalAlignment="Center" Margin="0,3" BorderBrush="White" >
+                               <Button.Template>
+   <ControlTemplate TargetType="{x:Type Button}">
+   <Border BorderThickness="{TemplateBinding BorderThickness}"
+    Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    SnapsToDevicePixels="true">
+    <ContentPresenter Margin="{TemplateBinding Padding}"
+      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+      RecognizesAccessKey="True"
+      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+   </Border>
+   
+   </ControlTemplate>
+  </Button.Template>
+                         </Button>
+                     
+               
+                </TextBlock>
+
+                <DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="0" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding BetType}" Value="back">
+                                    <Setter Property="Background" Value="Pink"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+
+
+
+                        <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"  />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50" Header="Odd" MinWidth="50" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding UserOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Stretch" Width="45" VerticalAlignment="Center" Padding="2"/>
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="*" Header="Amount" MinWidth="100" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"   />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding LiveOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Padding="2"/>
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Customer" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="Dealer" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+      
+    </Grid>
+</Window>

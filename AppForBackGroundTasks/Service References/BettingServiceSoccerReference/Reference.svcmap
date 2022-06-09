@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d45e003e-dd0a-4861-b736-bac61eaffe2e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:54524/Services/BettingServiceSoccer.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BettingServiceSoccer.xsd" MetadataType="Schema" ID="00b6a97c-3eab-4c37-bd9f-2bcb818be5ae" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceSoccer.svc?xsd=xsd1" />
+    <MetadataFile FileName="BettingServiceSoccer.wsdl" MetadataType="Wsdl" ID="0fa8c39b-f76c-46a5-b18e-ba1734f8e9d8" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceSoccer.svc?wsdl" />
+    <MetadataFile FileName="BettingServiceSoccer.disco" MetadataType="Disco" ID="973066fd-61c1-4587-94f7-8d809c0be557" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceSoccer.svc?disco" />
+    <MetadataFile FileName="BettingServiceSoccer1.xsd" MetadataType="Schema" ID="62fa3a46-ffc0-4d68-9b25-f481f9499c24" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingServiceSoccer.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

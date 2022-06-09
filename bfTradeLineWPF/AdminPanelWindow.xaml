@@ -1,0 +1,1417 @@
+﻿<Window x:Class="globaltraders.AdminPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Admin Panel" Height="700" Width="1230" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontFamily="Trebuchet MS" Loaded="Window_Loaded" >
+    <Grid>
+        <StackPanel>
+            <TextBlock Background="#8cded2">
+               
+                <Label Content="Admin Panel" Width="1190" Foreground="Black" MouseDown="Label_MouseDown" MouseLeftButtonDown="Label_MouseLeftButtonDown"></Label>
+                 <Button Content="X" Background="Red" Foreground="White" Padding="10" Width="30" Height="25" Margin="0,5,0,0" FontSize="20" Click="Button_Click_12"></Button>
+            </TextBlock>
+            <TabControl x:Name="tabControlAdminpanel" BorderThickness="0">
+                <TabItem Header="Profile">
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock><InlineUIContainer>
+                                <Label Content="Name" Width="62"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox Text="" x:Name="txtUsernameupdate" Width="227" IsReadOnly="True" Padding="5"/>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock Margin="0,5"><InlineUIContainer>
+                                <Label Content="Phone" Width="62"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox Text="" x:Name="txtUserPhoneUpdate" Width="227" Padding="5"/>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Label Content="Password" Width="62"/>
+                          
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                          
+                                <TextBox Text="" x:Name="txtPassword" Width="227"  Padding="5"/>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock Margin="65,10,0,0"><InlineUIContainer>
+                                <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click"/>
+                            </InlineUIContainer></TextBlock>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Customer Maintenance" Height="18.933" VerticalAlignment="Top">
+                    <TabControl x:Name="tabControl2" Loaded="tabControl2_Loaded" BorderThickness="0" Margin="5">
+                        <TabItem Header="New Customer">
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="Name" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtName" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Phone" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtPhone" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="Email" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtEmail" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="User Name" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtUsername" Width="227"  Padding="5" Margin="0,5,0,0"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Password" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtPasswordAdd" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="Location" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtLocation" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Account Balance" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtAccountBalance" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="Agent %" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox Text="" x:Name="txtAgentrate" Width="227"  Padding="5"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="User Type" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbUserType" Width="224"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="103,10,0,0"><InlineUIContainer>
+                                        <Button Content="Create" Width="100" Height="30" x:Name="btnCreateUser" Click="btnCreateUser_Click"/>
+                                    </InlineUIContainer></TextBlock>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Customer Details">
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <StackPanel Margin="0,0,5,0">
+
+
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Customers" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbUsers" Width="224" SelectionChanged="cmbUsers_SelectionChanged" SelectedIndex="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock x:Name="txtblocktransferagentcommision" Visibility="Collapsed" Margin="5,0,0,0" ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkTransferAgentCommision" Content="Transfer Agent Commision" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateTransferAgentCommision" Click="btnUpdateTransferAgentCommision_Click"/>
+                                        </InlineUIContainer></TextBlock>
+
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkBlockUser" Content="Block User" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkBlockUserBMS" Content="Block BMS" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkLoggedIn" Content="Logged In" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkGrayHoundRacing" Content="GreyHound Racing" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkHorseRacing" Content="Horse Racing" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkTennis" Content="Tennis" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkSoccer" Content="Soccer" VerticalContentAlignment="Center"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock x:Name="txtblockMaxBalanceTransferLimit" Visibility="Collapsed" Margin="5,0,0,0" ><InlineUIContainer>
+                                            <Label Content="Max Transfer Limit" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox Text="" x:Name="txtMaxBalanceTransferLimit" Width="150"  Padding="5"/>     
+                              
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>     
+                              
+                                            <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateMaxBalanceTransferLimit" Click="btnUpdateMaxBalanceTransferLimit_Click"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock x:Name="txtblockMaxAgentRate" Visibility="Collapsed" Margin="5,0,0,0" ><InlineUIContainer>
+                                            <Label Content="Max Agent Rate Limit" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox Text="" x:Name="txtMaxAgentRate" Width="150"  Padding="5"/>     
+                              
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>     
+                              
+                                            <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateMaxAgentRate" Click="btnUpdateMaxAgentRate_Click"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Agent %" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox Text="" x:Name="txtAgentRateUpate" Width="150"  Padding="5" Margin="0,5"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Password" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox Text="" x:Name="txtPasswordUpdate" Width="150"  Padding="5"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock Margin="103,10,0,0"><InlineUIContainer>
+                                            <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateUser" Click="btnUpdateUser_Click"/>
+                                        </InlineUIContainer></TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Name" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Name" x:Name="lblName"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Username" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Username" x:Name="lblUserName"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Phone" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Phone" x:Name="lblPhone"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Account Balance" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="AC" x:Name="lblAccountBalance"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Last Login Time" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LG" x:Name="lblLastLoginTime"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Status" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Status" x:Name="lblStatus"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Profit/Loss" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="PL" x:Name="lblProfitandLoss"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Last Amount Added" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LA" x:Name="lblLastAmoundAdd"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Last Amount Removed" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LR" x:Name="lblLastAmountRemoved"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Agent Rate %" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="AR" x:Name="lblAgentRate"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Comission %" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="AC" x:Name="lblcommissionRate"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Last Location" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LL" x:Name="lblLastLocation"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Last IP Address" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LIP" x:Name="lblIpAddress"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Created By" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="PL" x:Name="lblCreatedBy"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Created Date" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="LA" x:Name="lblCreatedDateDetails"/>
+                                        </InlineUIContainer></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Balance Transfer">
+                            <StackPanel Width="694" HorizontalAlignment="Left" >
+
+                                <StackPanel Margin="0,5">
+                                    <Label Content="Add Remove Credit" FontSize="18" FontWeight="Bold"/>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="Customers" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbUsersCredit" Width="229" FontSize="16" SelectedIndex="0" SelectionChanged="cmbUsersCredit_SelectionChanged"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Credit" FontSize="14" FontWeight="Bold" Width="120"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label x:Name="lblCredit" FontSize="14" FontWeight="Bold" Content="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock ><InlineUIContainer>
+                                            <Label Content="Amount" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox x:Name="txtBalanceAdd" Width="229" FontSize="16"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Account Balance" FontSize="14" FontWeight="Bold" Width="120"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label x:Name="lblAccountBalanceAddRemove" FontSize="14" FontWeight="Bold" Content="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" ><InlineUIContainer>
+                                            <Label Content="Title" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+<!--<TextBox x:Name="txtAccountsTitle" Width="229" FontSize="16"></TextBox>-->
+                                            <ComboBox x:Name="txtAccountsTitle" Width="229" FontSize="16" IsTextSearchEnabled="True" IsDropDownOpen="True" IsEditable="True" >
+                                             
+                                                <ComboBoxItem Content="Cash Received"/>
+                                                <ComboBoxItem Content="Cash Paid"/>
+                                            </ComboBox>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" ><InlineUIContainer>
+                                            <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkIsCredit" Width="229" FontSize="16" Content="is Credit (Awaz / Limit)"/>
+
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Margin="0,10,0,0" ><InlineUIContainer>
+                                            <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Plus" x:Name="btnAddCredit" Width="112" Height="40" Background="DarkGreen" FontSize="16" Click="btnAddCredit_Click" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Minus" x:Name="btnRemovecredit" Width="112" Height="40" Background="LightCoral" FontSize="16" Click="btnRemovecredit_Click" />
+
+                                        </InlineUIContainer></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Width="694" HorizontalAlignment="Left">
+                                    <StackPanel Width="229" Margin="0,0,10,0">
+                                        <Label Content="Plus Party" FontSize="14" FontWeight="Bold" />
+                                        <ComboBox x:Name="cmbTransferBalanceTo" SelectionChanged="cmbTransferBalanceTo_SelectionChanged"/>
+                                        <Label x:Name="lblCurrentBalanceTo" Content="0" FontSize="14" FontWeight="Bold" />
+                                    </StackPanel>
+                                    <StackPanel Width="210" Margin="0,0,10,0">
+                                        <Label Content="Amount" FontSize="14" FontWeight="Bold" Width="210" HorizontalContentAlignment="Center" />
+                                        <TextBox x:Name="txtAmountTransfer" FontSize="14" />
+                                        <Label Content="Description" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Width="229" Margin="0,0,10,0">
+                                        <Label Content="Minus Party" FontSize="14" FontWeight="Bold"/>
+                                        <ComboBox x:Name="cmbTransferBalanceFrom" SelectionChanged="cmbTransferBalanceFrom_SelectionChanged"/>
+                                        <Label x:Name="lblCurrentbalanceFrom" Content="0" FontSize="14" FontWeight="Bold" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <TextBox x:Name="txtAccounttitleTransferBalance" Width="694" HorizontalAlignment="Left" FontSize="14"/>
+                                <Button x:Name="btnTransferamount" Height="40" Width="150" Content="Update Trans" FontSize="16" HorizontalAlignment="Right" Margin="0,10,0,0" Click="btnTransferamount_Click"/>
+                            </StackPanel>
+                        </TabItem>
+                      
+                        <TabItem Header="Allowed Markets">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel >
+
+                                    <TextBlock FontSize="14"><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <xctk:CheckComboBox Width="250"  x:Name="cmbCustomerAllowedMarketsNew" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                DisplayMemberPath="UserName"
+                                                ValueMemberPath="ID"
+                                                SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbCustomerAllowedMarketsNew_ItemSelectionChanged"
+                              />
+                                      
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                      
+                                            <ComboBox x:Name="cmbCustomerAllowedMarkets" Width="249" SelectionChanged="cmbCustomerAllowedMarkets_SelectionChanged"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Width="219">
+                                            <TextBlock><InlineUIContainer>
+                                                    <Label Content="Allowed Markets" FontSize="16" FontWeight="Bold"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Match Odds" x:Name="chkAllowedCricketOdds" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Innings Runs" x:Name="chkAllowedInningsRuns" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Completed Match" x:Name="chkCompletedMatchAllowed" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Tied Match" x:Name="chkTiedMatchAllowed" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="GreyHound Racing Win" x:Name="chkGrayHoundAllowedWin" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="GreyHound Racing Place" x:Name="chkGrayHoundPlaceAllowed" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Horse Racing Win" x:Name="chkAllowdHorseWin" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Horse Racing Place" x:Name="chkHorseRacePlaceAllowed" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Tennis" x:Name="chkAllowedTenis" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Soccer" x:Name="chkAllowdSoccer" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Winner" x:Name="chkWinnerForAllowedBet" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Margin="0,0,0,3"><InlineUIContainer>
+                                                    <CheckBox Content="Fancy" x:Name="chkFancyForAllowedBet" VerticalContentAlignment="Center"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock><InlineUIContainer>
+                                                    <Button Content="Update" Width="100" Height="30"  FontSize="16" Click="Button_Click_1"/>
+                                                </InlineUIContainer></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock><InlineUIContainer>
+                                                    <Label Content="Checks For Max Odds" FontSize="16" FontWeight="Bold"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Background="LightSkyBlue" Padding="5"><InlineUIContainer>
+                                                    <CheckBox Content="Check for Max Odd Back" x:Name="chkCheckforMaxOddBack" VerticalContentAlignment="Center" />
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock><InlineUIContainer>
+                                                    <Label Content="Max Odd Back"/>
+                                                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                    <TextBox x:Name="txtMaxOddBack" Width="75" FontSize="16"/>
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock Background="LightPink" Padding="5" Margin="0,5,0,0"><InlineUIContainer>
+                                                    <CheckBox Content="Check for Max Odd Lay" x:Name="chkCheckForMaxOddLay" VerticalContentAlignment="Center" />
+                                                </InlineUIContainer></TextBlock>
+                                            <TextBlock><InlineUIContainer>
+                                                    <Label Content="Max Odd Lay" Width="85"/>
+                                                </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                    <TextBox x:Name="txtMaxOddLay" Width="75" FontSize="16"/>
+                                                </InlineUIContainer></TextBlock>
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock FontSize="14" Padding="0,0,0,5"><InlineUIContainer>
+                                            <Label Content="Event Type"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="comboBox1" Width="249" SelectedIndex="1" SelectionChanged="comboBox1_SelectionChanged">
+                                                <ComboBoxItem Content="Please Select"/>
+                                                <ComboBoxItem Content="Cricket"/>
+                                                <ComboBoxItem Content="Tennis"/>
+                                                <ComboBoxItem Content="Soccer"/>
+                                                <ComboBoxItem Content="Horse Racing"/>
+                                                <ComboBoxItem Content="Greyhound Racing"/></ComboBox>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkDateFilter" Content="From Today" Checked="chkDateFilter_Checked" Unchecked="chkDateFilter_Unchecked"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock FontSize="14" Padding="0,0,0,5"><InlineUIContainer>
+                                            <Label Content="Event Name"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbEventsforMarketAllowed" Width="249" SelectionChanged="cmbEventsforMarketAllowed_SelectionChanged"/>
+                                       
+                                        </InlineUIContainer></TextBlock>
+                                    <DataGrid x:Name="dgvAllowedMarkets" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="420" Width="500" SelectedIndex="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False"  >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding MarketCatalogueID}" Visibility="Collapsed"/>
+                                            <DataGridTemplateColumn Width="25" IsReadOnly="True" Header="Betting Open">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding BettingAllowed}"  Tag="{Binding MarketCatalogueID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn Width="*" Header="Event Name" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Market}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <TextBlock HorizontalAlignment="Right" Margin="0,5,0,0"><InlineUIContainer>
+                                            <CheckBox x:Name="chkSTartFancySyncAllowed" Content="Fancy Sync ON/OFF"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update" Width="100" Height="30"  FontSize="16" Click="Button_Click_2"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Image x:Name="stkpnlLoaderHorse" gif:ImageBehavior.RepeatBehavior="Forever"
+                                                Panel.ZIndex="10" Height="24" Margin="0,0,0,0" Visibility="Collapsed" />
+                                        </InlineUIContainer></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Limits">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock FontSize="14"><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbCustomersForLimits" Width="169" SelectionChanged="cmbCustomersForLimits_SelectionChanged"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Hisa"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox x:Name="txtReferreRate" Width="59" FontSize="16"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="%"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Punter"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbReferrerUser" Width="229"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Add to List" Width="100" Height="30" Click="Button_Click_4"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <StackPanel>
+                                        <TextBlock><InlineUIContainer>
+                                                <Label Content="Commision Rate %" Width="142"/>
+                                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                <TextBox x:Name="txtCommissionRateUpdate" FontSize="16" Width="139"/>
+                                            </InlineUIContainer></TextBlock>
+                                        <TextBlock><InlineUIContainer>
+                                                <Label Content="Commision Rate Fancy %" Width="142"/>
+                                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                <TextBox x:Name="txtCommissionRateFancyUpdate" FontSize="16" Width="139"/>
+                                            </InlineUIContainer></TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Width="284">
+                                                <Label Content="Cricket" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Match Odds Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtMatchOddsLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Match Odds Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtMatchOddsUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Completed Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtCompletedLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Completed Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtCompletedUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Tied Match Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTiedMatchLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Tied Match Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTiedMatchUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Innings Runs Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtInnsRunsLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Innings Runs Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtInnsRunsUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Winner Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtWinnerLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Winner Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtWinnerUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Fancy Lower Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtFancyLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Fancy Upper Limit" Width="145"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtFancyUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="Horse Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Win Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorseWinLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Win Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorseWinUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Place Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorsePlaceLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Place Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorsePlaceUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="" Width="80"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <CheckBox x:Name="chkHorseRaceAllowedForViewMarket" FontSize="12" Width="130" Content="Horse Race for View" VerticalContentAlignment="Center"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Label Content="Soccer" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtSoccerLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtSoccerUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="" Width="80"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <CheckBox x:Name="chkSoccerForView" FontSize="12" Width="130" Content="Soccer for View" VerticalContentAlignment="Center"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Button Content="Update" Height="30" FontSize="16" Margin="72.5,20,25,0" Click="Button_Click_3"/>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="GreyHound Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Win Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundWinLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Win Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundWinUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Place Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundPlaceLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Place Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundPlaceUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="" Width="61"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <CheckBox x:Name="chkGrayHoundForView" FontSize="12" Width="171" Content="Gray Hound Racing for View" VerticalContentAlignment="Center"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Label Content="Tennis" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Lower Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTennisLower" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Upper Limit" Width="110"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTennisUpper" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="" Width="91"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTennisForView" FontSize="12" Width="130" Content="Tennis for View" VerticalContentAlignment="Center"/>
+                                                    </InlineUIContainer></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel>
+                                    <DataGrid x:Name="DGVHisaPunters" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="220" Width="421" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" MouseLeftButtonUp="DGVHisaPunters_MouseLeftButtonUp">
+                                        <DataGrid.Columns>
+
+                                            <DataGridTextColumn x:Name="BetID" Visibility="Hidden" Binding="{Binding ReferrerID}"/>
+
+                                            <DataGridTemplateColumn Width="*" Header="Punter Name" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RefferrerName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Hisa" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding ReferrerRate}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Delete" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Delete" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Background="Red" Foreground="White" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button Content="Update" Height="30" FontSize="16" Margin="10" Width="156" Click="Button_Click_5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Block/UnBlock Users">
+                            <StackPanel Margin="0,10,0,0">
+                                <TextBlock><InlineUIContainer>
+                                        <Button x:Name="btnBlockAllUsers" Content="Block All Users" Height="30" FontSize="16" Width="134" Click="btnBlockAllUsers_Click" />
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button  Content="Logged Out All Users" Height="30" FontSize="16" Width="184" Margin="10,0,0,0" Click="Button_Click_6" />
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button x:Name="btnRefresh" Content="Refresh" Height="30" FontSize="16" Width="104" Margin="10,0,0,0" Click="btnRefresh_Click" />
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock VerticalAlignment="Top"><InlineUIContainer>
+                                        <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+                                            <DataGrid x:Name="dgvUnBlockUsers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="377.133" Width="749" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                                <DataGrid.Columns>
+
+                                                    <DataGridTemplateColumn Width="50" IsReadOnly="True" Header="Blocked">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox IsChecked="{Binding isBlocked}" Tag="{Binding ID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1" />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Width="50" IsReadOnly="True" Header="Logged In">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <CheckBox IsChecked="{Binding Loggedin}"  Tag="{Binding ID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Width="*" Header="Username" MinWidth="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding UserName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                        
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                   
+                                        </StackPanel>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Height="375.734">
+                                            <Button  Content="Update Block Status" Height="45.733" FontSize="16" Width="197" Margin="10,0,0,20" VerticalContentAlignment="Top" VerticalAlignment="Top" Click="Button_Click_7" />
+                                            <Button  Content="Update Logged In Status" Height="50" FontSize="16" Width="197.383" Margin="10,0,0,0" VerticalContentAlignment="Top" VerticalAlignment="Top" Click="Button_Click_8" />
+                                        </StackPanel>
+                                    </InlineUIContainer></TextBlock>
+
+                            </StackPanel>
+                        </TabItem>
+                     
+                        <TabItem Header="Timer Markets">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock FontSize="14"><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbCustomersForTimers" Width="214" SelectionChanged="cmbCustomersForTimers_SelectionChanged"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Marquee Text"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox x:Name="txtMarquee" Width="549" FontSize="16"/>
+                                        
+                                      
+                                        
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        
+                                      
+                                        
+                                            <Button Content="Update" Width="100" Height="30" Click="Button_Click_11"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Padding="0,5"><InlineUIContainer>
+                                             
+                                                <TextBlock Padding="0,5"/>
+                                           
+                                           
+                                            </InlineUIContainer></TextBlock>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Width="284">
+                                                <Label Content="Cricket" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Match Odds Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtMatchOddsInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Match Odds Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtMatchOddsBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Completed Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtCompletedBetInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Completed Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtCompletedBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Tied Match Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTiedMatchInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Tied Match Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTiedMatchBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Innings Runs Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtInnsrunsInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Innings Runs Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtInnsRunsBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Winner Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtWinnerInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Winner Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtWinnerBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Fancy Interval" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtFancyInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Fancy Bet Place" Width="130"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtFancyBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="Horse Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Interval" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorseRacingInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Bet Place" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtHorseRacingBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+
+
+                                                <Label Content="Soccer" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Interval" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtSoccerInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Bet Place" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtSoccerBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Label Content="Race Allowed Before Minute" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Time" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtRaceBeforeAllowedMinute" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Label Content="Cancel Bet Time" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Bet Place" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtCancelBetTime" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <Button Content="Update" Height="30" FontSize="16" Margin="72.5,20,25,0" Click="Button_Click_10"/>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="GreyHound Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Interval" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Bet Place" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtGrayHoundBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+
+
+                                                <Label Content="Tennis" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Interval" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTennisInterval" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Bet Place" Width="70"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtTennisBetPlace" FontSize="16" Width="125"/>
+                                                    </InlineUIContainer></TextBlock>
+
+                                            </StackPanel>
+                                            <StackPanel>
+                                                <Label Content="Transer Admin" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"/>
+                                                <TextBlock><InlineUIContainer>
+                                                        <Label Content="Pound Rate" Width="74"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <TextBox x:Name="txtPoundRateUser" FontSize="16" Width="139"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                                        <Label Content="Agent" Width="74"/>
+                                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                        <ComboBox x:Name="cmbAgentForTransferAdmin" Width="172" />
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTrsnferAdminamount" Content="Transfer Admin Cricket" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTrsnferAdminamountSoccer" Content="Transfer Admin Soccer" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTrsnferAdminamountTennis" Content="Transfer Admin Tennis" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTrsnferAdminamountHorse" Content="Transfer Admin Horse" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkTrsnferAdminamountGreyHound" Content="Transfer Admin Greyhound" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+                                                    </InlineUIContainer></TextBlock>
+                                                <TextBlock><InlineUIContainer>
+                                                        <CheckBox x:Name="chkShowTV" Content="Show TV" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"/>
+                                     
+                                                    </InlineUIContainer></TextBlock>
+                                                <Button Content="Update" Width="100" Height="30" Click="Button_Click_9"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Assign Fancy" Margin="3,3,-3,-3" >
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock><InlineUIContainer>
+                                        <Label Content="Line v Markets" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbLinevMarkets" Width="764" FontSize="20" SelectedIndex="0"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Events" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbEvents" Width="764" FontSize="20" SelectedIndex="0"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Cricket API Key" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbCricketAPIKeys" Width="764" FontSize="20" SelectedIndex="0"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Get Match Score" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbGetUpdateFrom" Width="200" FontSize="20" SelectedIndex="0">
+                                            <ComboBoxItem Content="Local"/>
+                                            <ComboBoxItem Content="Other"/>
+                                        </ComboBox>
+                                    </InlineUIContainer></TextBlock>
+
+                                <TextBlock Margin="0,5" >
+                                    <InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer FontSize="14">
+                                            <xctk:CheckComboBox Width="250" Margin="40,0,0,0"  x:Name="cmbCustomerAllowedMarketskalijutt" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                DisplayMemberPath="UserName"
+                                                ValueMemberPath="ID"
+                                                SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbCustomerAllowedMarketskalijutt_ItemSelectionChanged" />                            
+                                    
+                                        
+                                    
+                                    </InlineUIContainer>
+                                    <!--<InlineUIContainer FontSize="14">
+                                      <xctk:CheckComboBox Width="250" Margin="40,0,0,0"  x:Name="cmbmarket" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                DisplayMemberPath="mname"
+                                                ValueMemberPath="ID"
+                                                SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbmarket_ItemSelectionChanged" />                            
+                                       </InlineUIContainer>-->
+                                    
+                                    
+                                    
+                                    
+                                    
+                                <InlineUIContainer>
+                                        <ComboBox x:Name="cmbkalijut" Width="560" FontSize="20" SelectedIndex="0">
+                                            <ComboBoxItem Content="T20"/>
+                                            <ComboBoxItem Content="ODI"/>
+                                             <ComboBoxItem Content="Test"/>
+                                        </ComboBox>
+                                    </InlineUIContainer>
+
+                                </TextBlock>
+
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Total Overs" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <TextBox x:Name="txtTotalOvers" Width="100" FontSize="20"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                        <CheckBox x:Name="chkSTartFancySync" Content="Fancy Sync ON/OFF"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Start Fancy Sync ON/OFF" Padding="10" Width="256" Height="30" FontSize="16" Click="Button_Click_24" />
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Update Line/Fancy" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_13"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Update Cricket API Key" Padding="10" Width="170" Height="30" FontSize="16" Click="Button_Click_23"  />
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Update Total Overs" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_21" />
+                                    </InlineUIContainer><Run Text=" "/>
+                                    <InlineUIContainer>
+                                        <Button Content="Update Get Match Updates From" Padding="10" Width="256" Height="30" FontSize="16" Click="Button_Click_22" />
+                                   
+                                    </InlineUIContainer>
+                                
+                                    <InlineUIContainer>
+                                        <Button Content="Kali Download" Padding="10" Width="116" Height="30" FontSize="16" Click="Button_Click_28" />                             
+                                    </InlineUIContainer>
+                                     <InlineUIContainer>
+                                        <Button Content="Figure Download" Padding="10" Width="126" Height="30" FontSize="16" Click="Button_Click_29" />                             
+                                    </InlineUIContainer>
+                                     <InlineUIContainer>
+                                        <Button Content="SmFig Download" Padding="10" Width="116" Height="30" FontSize="16" Click="Button_Click_30" />                             
+                                    </InlineUIContainer>
+                                    
+                                    
+                                </TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <CheckBox x:Name="chkAutomaticResultPostFancy" Content="Automatic Result Post Fancy" FontSize="20" VerticalContentAlignment="Center"/>
+                                    </InlineUIContainer></TextBlock>
+                                <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Update" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_14"/>
+
+                                    </InlineUIContainer></TextBlock>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Download Fancy">
+                            <StackPanel Margin="0,5,0,0">
+                               
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Events" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbEventss" Width="764" FontSize="20" SelectedIndex="0" SelectionChanged="cmbEventss_SelectionChanged" />
+                                    </InlineUIContainer></TextBlock>
+
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="Events" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <ComboBox x:Name="cmbINFancy" Width="764" FontSize="20" SelectedIndex="0" />
+                                    </InlineUIContainer></TextBlock>
+
+                                <TextBlock Margin="0,5" >
+                                    <InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/>
+                                    <InlineUIContainer FontSize="14">
+                                            <xctk:CheckComboBox Width="250" Margin="40,0,0,0"  x:Name="cmbCustomerAllowedMarketsInFancy" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                DisplayMemberPath="UserName"
+                                                ValueMemberPath="ID"
+                                                SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbCustomerAllowedMarketsInFancy_ItemSelectionChanged" />                            
+                                        </InlineUIContainer>                                                            
+                                <InlineUIContainer>
+                                       <Label Content="Fancy"/>
+                                    </InlineUIContainer>
+                                     <InlineUIContainer FontSize="14">
+                                            <xctk:CheckComboBox Width="250" Margin="40,0,0,0"  x:Name="cmbfancy" 
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center" 
+                                                DisplayMemberPath="RunnerName"
+                                                ValueMemberPath="RunnerName"
+                                                SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbCustomerAllowedMarketsInFancy_ItemSelectionChanged" />                            
+                                        </InlineUIContainer>
+                                    <InlineUIContainer>
+                                        <Button Content="Get Fancy" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_32"/>                                 
+                                    </InlineUIContainer>
+
+                                </TextBlock>
+
+                                <TextBlock><InlineUIContainer>
+                                            <Label Content="Score" Width="100"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox Text="" x:Name="txtscore" Width="150"  Padding="5" Margin="0,5"/>
+                                        </InlineUIContainer></TextBlock>
+                                <TextBlock><InlineUIContainer>
+                                            <Label Content="EventID" Width="130"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Eventid" x:Name="lbleventid"/>
+                                        </InlineUIContainer></TextBlock>
+
+
+
+
+                                <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                        <Button Content="Update Line/Fancy" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_27"/>                                 
+                                    </InlineUIContainer>
+                                    <InlineUIContainer>
+                                        <Button Content="Indian Fancy Post" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_31"/>                                 
+                                    </InlineUIContainer>
+                                    <Run Text=" "/><Run Text=" "/><Run Text=" "/></TextBlock>
+                                <TextBlock Margin="0,5"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/></TextBlock>
+                                <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                        <Label Content="" Width="100"/>
+                                    </InlineUIContainer><Run Text=" "/></TextBlock>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Update Results" Loaded="TabItem_Loaded_1">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Margin="0,5,0,0">
+                                    <Label Content="Load Markets From User Bets" FontSize="18" HorizontalContentAlignment="Center"/>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="From"   FontSize="12" FontWeight="Medium" Width="65"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpFromBets"
+
+                                                VerticalAlignment="Top" Width="115" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="To"   FontSize="12" FontWeight="Medium"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpToBets"
+
+                                                VerticalAlignment="Top" Width="115" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Load" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_15"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock/>
+                                    <TextBlock Margin="0,0,0,5"><InlineUIContainer>
+                                            <Label Content="Markets" Width="65"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbMarketsbyBets" Width="415" FontSize="20" SelectedIndex="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbCustomersForUpdateResultsBets" Width="214" SelectedIndex="0" />
+                                        </InlineUIContainer></TextBlock>
+
+                                    <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                            <Label Content="" Width="65"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="UnPost Results" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_17"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Bets Status" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_18"/>
+
+                                        </InlineUIContainer></TextBlock>
+
+
+                                </StackPanel>
+                                <StackPanel Margin="20,5,0,0">
+                                    <Label Content="Load Markets From UserAccounts" FontSize="18" HorizontalContentAlignment="Center" Margin="0"/>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="From"   FontSize="12" FontWeight="Medium" Width="66.383"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpFromAccounts"
+
+                                                VerticalAlignment="Top" Width="115" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="To"   FontSize="12" FontWeight="Medium"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpToAccounts"
+
+                                                VerticalAlignment="Top" Width="115" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Load" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_16"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock/>
+                                    <TextBlock Margin="0,0,0,5"><InlineUIContainer>
+                                            <Label Content="Markets" Width="65"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbMarketsbyAccounts" Width="540" FontSize="20" SelectedIndex="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbCustomersForUpdateResultsAccounts" Width="214" SelectedIndex="0" />
+                                        </InlineUIContainer></TextBlock>
+                                    <TextBlock Padding="0,5,0,0"><InlineUIContainer>
+                                            <Label Content="" Width="65"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="UnPost Results" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_19" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Bets Status" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_20"/>
+
+                                        </InlineUIContainer></TextBlock>
+
+
+                                </StackPanel>
+                            </StackPanel>
+
+                        </TabItem>
+
+                        <TabItem Header="Hissa" HorizontalAlignment="Left" Width="53.29" Height="18.933" VerticalAlignment="Top">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock FontSize="14"><InlineUIContainer>
+                                            <Label Content="Customers"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                       <!--cmbCustomersForLimitsagent-->
+                                            <ComboBox x:Name="cmbCustomersForhissa" Width="169" SelectionChanged="cmbCustomersForhissa_SelectionChanged_1"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Hisa"/>
+                                        </InlineUIContainer><Run Text=" "/><Run Text=" "/><Run Text=" "/><Run Text=" "/><InlineUIContainer>
+                                            <TextBox x:Name="txtReferrehisasa" Width="59" FontSize="16"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="%"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Punter"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbReferrerUserhissa" Width="229"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Add to List" Width="100" Height="30" Click="Button_Click_25"/>
+                                        </InlineUIContainer></TextBlock>
+                                    <StackPanel Margin="0,25,0,0" HorizontalAlignment="Left">
+                                        <StackPanel>
+                                            <DataGrid x:Name="DGVHisaPuntershissa" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="220" Width="421" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" MouseLeftButtonUp="DGVHisaPuntershissa_MouseLeftButtonUp">
+                                                <DataGrid.Columns>
+
+                                                    <DataGridTextColumn x:Name="BetIDagent" Visibility="Hidden" Binding="{Binding ReferrerID}"/>
+
+                                                    <DataGridTemplateColumn Width="*" Header="Punter Name" MinWidth="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding RefferrerName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Width="100" Header="Hisa" MinWidth="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding ReferrerRate}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+                                                    <DataGridTemplateColumn Width="100" Header="Delete" MinWidth="100">
+                                                        <DataGridTemplateColumn.CellTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="Delete" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Background="Red" Foreground="White" />
+                                                            </DataTemplate>
+                                                        </DataGridTemplateColumn.CellTemplate>
+                                                    </DataGridTemplateColumn>
+
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+
+
+                                        </StackPanel>
+                                        <Button Content="Updatehissa" Height="30" FontSize="16" Margin="10" Width="156" Click="Button_Click_26"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <StackPanel Margin="-50,60,0,0">
+
+                                    <Label FontFamily="calbari" FontSize="25" FontWeight="Bold" Content="HISSA Instructions"/>
+                                    <Label Content="1. Select your Customer from first Dropdown of which you want to Put Hissa"/>
+                                    <Label Content="2. Input Hissa Percent in hissa Box Like 10,20,25 etc according to your client"/>
+                                    <Label Content="deal, Make sure you cannot enter more then your agnet rate of the first"/>
+                                    <Label Content="selected client"/>
+                                    <Label Content="3. Select the user to which you want the hissa ammount added or minus"/>
+                                    <Label Content="4. Then Click on Addtolist button and it will add the details"/>
+                                    <Label Content="in the pennal below"/>
+                                    <Label Content="5. Then Click on the Update Hissa Button and the Hissa Will"/>
+                                    <Label Content="be active Successfully"/>
+
+                                </StackPanel>
+
+                            </StackPanel>
+                        </TabItem>
+
+
+                    </TabControl>
+                </TabItem>
+                
+                <TabItem Header="Balance Sheet" Loaded="TabItem_Loaded" Height="18.933" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock FontSize="14"><InlineUIContainer>
+                                <Label Content="Users" x:Name="lblBalanceSheet"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <ComboBox x:Name="cmbUsersforBalanceSheet" Width="217" Height="26.19"/>
+                                       
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                       
+                                <Button Content="Load" x:Name="btnLoadBalanceSheet" Width="100" Height="30" Click="btnLoadBalanceSheet_Click"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <Button Content="Export to PDF" Width="100" Height="30" Click="Button_Click"/>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock Margin="0,5,0,0"><InlineUIContainer>
+                                <DataGrid x:Name="DGVPlusCustomers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="515" Width="445" MouseLeftButtonUp="DGVPlusCustomers_MouseLeftButtonUp" HorizontalScrollBarVisibility="Visible" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+
+                                          
+
+                                        <DataGridTemplateColumn Width="*" Header="Customer" MinWidth="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100" Header="Plus" MinWidth="120">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Profit}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="DarkGreen" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100" Header="Starting Balance" MinWidth="120">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding StartingBalance}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <DataGrid x:Name="dgvMinusCustomers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="515" Width="445" MouseLeftButtonUp="dgvMinusCustomers_MouseLeftButtonUp" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+
+                                          
+
+                                        <DataGridTemplateColumn Width="*" Header="Customer" MinWidth="100">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100" Header="Minus" MinWidth="120">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding Loss}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="Red" />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Width="100" Header="Starting Balance" MinWidth="120">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding StartingBalance}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Label Content="Total" Width="262" HorizontalContentAlignment="Right"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox x:Name="txtTotalPlus" Foreground="Green" Width="177" FontSize="16" FontWeight="Bold"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <Label Content="Total" Width="262" HorizontalContentAlignment="Right"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox x:Name="txtTotalMinus" Foreground="Red" Width="177" FontSize="16" FontWeight="Bold"/>
+                            </InlineUIContainer></TextBlock>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Cash Received/Paid">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock><InlineUIContainer>
+                                <Label Content="From"  FontSize="12" FontWeight="Medium" Width="40"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpFromCash"
+
+                                    VerticalAlignment="Top" Width="115" />
+                     
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock><InlineUIContainer>
+                                <Label Content="To"   FontSize="12" FontWeight="Medium" Width="40"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <DatePicker Height="25" HorizontalAlignment="Left"  x:Name="dtpToCash"
+
+                                    VerticalAlignment="Top" Width="115" />
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <Button Content="Load" Width="80"  Margin="0" Click="btnGetDatabyCashRecieved_Click" FontWeight="Bold" FontSize="16" Height="27.154"/>
+                            </InlineUIContainer></TextBlock>
+
+                        <TextBlock Margin="0,5,0,0"><InlineUIContainer>
+                                <Label Content="Total Cash Received" Width="158" HorizontalContentAlignment="Right" FontSize="16"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox x:Name="txtTotalCashReceived" Foreground="Green" Width="228" FontSize="25" FontWeight="Bold"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <Label Content="Total Cash Paid" Width="130" HorizontalContentAlignment="Right" FontSize="16"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <TextBox x:Name="txtTotalCashPaid" Foreground="Red" Width="228" FontSize="25" FontWeight="Bold"/>
+                            </InlineUIContainer></TextBlock>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Window>

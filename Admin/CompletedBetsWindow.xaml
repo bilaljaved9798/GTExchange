@@ -1,0 +1,107 @@
+﻿<Window x:Class="globaltraders.CompletedBetsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        mc:Ignorable="d"
+        Title="CompletedBetsWindow" Height="602" Width="594" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowStyle="None" FontFamily="Trebuchet MS" ResizeMode="NoResize" BorderBrush="Black" BorderThickness="2">
+    <Grid>
+        <StackPanel>
+
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
+                    <GradientStop Color="#FF000000" Offset="1"/>
+                    <GradientStop Color="#FF243875" Offset="-1"/>
+
+                </LinearGradientBrush>
+            </StackPanel.Background>
+
+            <TextBlock VerticalAlignment="Center">
+                    <Label Content="User Bets" Foreground="White"  FontSize="16" FontWeight="Medium" Width="555"></Label>
+                 
+          <Button Content="X" Background="Red" Foreground="White"  Width="30" Height="20" Margin="0,-30,0,0" FontSize="14" Click="Button_Click_1"></Button>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+
+                <TextBlock x:Name="lblMarketname" Foreground="White" Text="test" TextAlignment="Center" HorizontalAlignment="Center" Width="585" FontWeight="Thin" FontSize="14">
+                  
+                </TextBlock>
+               
+              
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <DataGrid x:Name="DGVBetsCompleted" AutoGenerateColumns="False" Height="535.167" Margin="0,0,0,5"  IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#000033
+                          " VerticalGridLinesBrush="#000033" Width="585">
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding BetType}" Value="back">
+                                    <Setter Property="Background" Value="#000033"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                    <Setter Property="Background" Value="Pink"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+
+                       
+
+                        <DataGridTemplateColumn Width="*" Header="Selection" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="50" Header="Odd" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding UserOdd}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="100" Header="Amount" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Amount, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Green" FontWeight="Bold"  >
+
+                                    </TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="100" Header="Stake" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding Steak, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" >
+
+                                    </TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="150" Header="Date" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate >
+                                    <TextBlock  Text="{Binding CreatedDate, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontWeight="Bold" >
+
+                                    </TextBlock>
+
+
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,43 @@
+﻿<Window x:Class="globaltraders.BookPosition"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        mc:Ignorable="d"
+        Title="BookPosition" Height="Auto" x:Name="BookPositionWin" Width="300" WindowStyle="ToolWindow" Loaded="Window_Loaded" Topmost="True" Unloaded="Window_Unloaded" >
+    <Window.Resources>
+        <local:ProfitLossColorConverter x:Key="PLConverter"></local:ProfitLossColorConverter>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <Button Content="Refresh" Height="30" Width="150" Margin="5" Click="Button_Click"></Button>
+            <DataGrid x:Name="DGVBookitems" FontSize="16" FontFamily="Trebuchet MS" GridLinesVisibility="Horizontal" HeadersVisibility="Column" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" FontWeight="Bold" Height="200" HorizontalScrollBarVisibility="Disabled"  VerticalScrollBarVisibility="Auto" ItemsSource="{Binding}">
+                <DataGrid.Columns>
+
+                  
+
+                    <DataGridTemplateColumn Width="*" Header="Score" MinWidth="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Score}" HorizontalAlignment="Center" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Width="150" Header="Position" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Position}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Padding="2" Foreground="{Binding Position,Converter={StaticResource PLConverter}}"  ></TextBlock>
+
+
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Window>

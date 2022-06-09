@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/bfnexchange.wrBF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfMarketBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MarketBook" nillable="true" type="tns:MarketBook" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMarketBook" nillable="true" type="tns:ArrayOfMarketBook" />
+  <xs:complexType name="MarketBook">
+    <xs:sequence>
+      <xs:element name="betDelayField" type="xs:int" />
+      <xs:element name="isBspReconciledField" type="xs:boolean" />
+      <xs:element name="isCompleteField" type="xs:boolean" />
+      <xs:element name="isCrossMatchingField" type="xs:boolean" />
+      <xs:element name="isInplayField" type="xs:boolean" />
+      <xs:element name="isMarketDataDelayedField" type="xs:boolean" />
+      <xs:element name="isRunnersVoidableField" type="xs:boolean" />
+      <xs:element name="lastMatchTimeField" nillable="true" type="xs:dateTime" />
+      <xs:element name="marketIdField" nillable="true" type="xs:string" />
+      <xs:element name="numberOfActiveRunnersField" type="xs:int" />
+      <xs:element name="numberOfRunnersField" type="xs:int" />
+      <xs:element name="numberOfWinnersField" type="xs:int" />
+      <xs:element name="runnersField" nillable="true" type="tns:ArrayOfRunner" />
+      <xs:element name="sPricesField" nillable="true" type="xs:string" />
+      <xs:element name="statusField" type="tns:MarketStatus" />
+      <xs:element name="totalAvailableField" type="xs:double" />
+      <xs:element name="totalMatchedField" type="xs:double" />
+      <xs:element name="versionField" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MarketBook" nillable="true" type="tns:MarketBook" />
+  <xs:complexType name="ArrayOfRunner">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Runner" nillable="true" type="tns:Runner" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRunner" nillable="true" type="tns:ArrayOfRunner" />
+  <xs:complexType name="Runner">
+    <xs:sequence>
+      <xs:element name="adjustmentFactorField" nillable="true" type="xs:double" />
+      <xs:element name="exchangePricesField" nillable="true" type="tns:ExchangePrices" />
+      <xs:element name="handicapField" nillable="true" type="xs:double" />
+      <xs:element name="lastPriceTradedField" nillable="true" type="xs:double" />
+      <xs:element name="matchesField" nillable="true" type="tns:ArrayOfMatch" />
+      <xs:element name="ordersField" nillable="true" type="tns:ArrayOfOrder" />
+      <xs:element name="removalDateField" nillable="true" type="xs:dateTime" />
+      <xs:element name="selectionIdField" type="xs:long" />
+      <xs:element name="startingPricesField" nillable="true" type="tns:StartingPrices" />
+      <xs:element name="statusField" type="tns:RunnerStatus" />
+      <xs:element name="totalMatchedField" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Runner" nillable="true" type="tns:Runner" />
+  <xs:complexType name="ExchangePrices">
+    <xs:sequence>
+      <xs:element name="availableToBackField" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element name="availableToLayField" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element name="tradedVolumeField" nillable="true" type="tns:ArrayOfPriceSize" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExchangePrices" nillable="true" type="tns:ExchangePrices" />
+  <xs:complexType name="ArrayOfPriceSize">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PriceSize" nillable="true" type="tns:PriceSize" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPriceSize" nillable="true" type="tns:ArrayOfPriceSize" />
+  <xs:complexType name="PriceSize">
+    <xs:sequence>
+      <xs:element name="priceField" type="xs:double" />
+      <xs:element name="sizeField" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PriceSize" nillable="true" type="tns:PriceSize" />
+  <xs:complexType name="ArrayOfMatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Match" nillable="true" type="tns:Match" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMatch" nillable="true" type="tns:ArrayOfMatch" />
+  <xs:complexType name="Match">
+    <xs:sequence>
+      <xs:element name="betIdField" nillable="true" type="xs:string" />
+      <xs:element name="matchDateField" type="xs:dateTime" />
+      <xs:element name="priceField" type="xs:double" />
+      <xs:element name="sideField" type="tns:Side" />
+      <xs:element name="sizeField" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Match" nillable="true" type="tns:Match" />
+  <xs:simpleType name="Side">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BACK" />
+      <xs:enumeration value="LAY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Side" nillable="true" type="tns:Side" />
+  <xs:complexType name="ArrayOfOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Order" nillable="true" type="tns:Order" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrder" nillable="true" type="tns:ArrayOfOrder" />
+  <xs:complexType name="Order">
+    <xs:sequence>
+      <xs:element name="avgPriceMatchedField" nillable="true" type="xs:double" />
+      <xs:element name="betIdField" nillable="true" type="xs:string" />
+      <xs:element name="bspLiabilityField" nillable="true" type="xs:double" />
+      <xs:element name="orderTypeField" type="tns:OrderType" />
+      <xs:element name="persistenceTypeField" type="tns:PersistenceType" />
+      <xs:element name="placedDateField" nillable="true" type="xs:dateTime" />
+      <xs:element name="priceField" type="xs:double" />
+      <xs:element name="sideField" type="tns:Side" />
+      <xs:element name="sizeCancelledField" nillable="true" type="xs:double" />
+      <xs:element name="sizeField" type="xs:double" />
+      <xs:element name="sizeLapsedField" nillable="true" type="xs:double" />
+      <xs:element name="sizeMatchedField" nillable="true" type="xs:double" />
+      <xs:element name="sizeRemainingField" nillable="true" type="xs:double" />
+      <xs:element name="sizeVoidedField" nillable="true" type="xs:double" />
+      <xs:element name="statusField" type="tns:OrderStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Order" nillable="true" type="tns:Order" />
+  <xs:simpleType name="OrderType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LIMIT" />
+      <xs:enumeration value="LIMIT_ON_CLOSE" />
+      <xs:enumeration value="MARKET_ON_CLOSE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderType" nillable="true" type="tns:OrderType" />
+  <xs:simpleType name="PersistenceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="LAPSE" />
+      <xs:enumeration value="PERSIST" />
+      <xs:enumeration value="MARKET_ON_CLOSE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PersistenceType" nillable="true" type="tns:PersistenceType" />
+  <xs:simpleType name="OrderStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EXECUTION_COMPLETE" />
+      <xs:enumeration value="EXECUTABLE" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OrderStatus" nillable="true" type="tns:OrderStatus" />
+  <xs:complexType name="StartingPrices">
+    <xs:sequence>
+      <xs:element name="actualSPField" type="xs:double" />
+      <xs:element name="backStakeTakenField" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element name="farPriceField" type="xs:double" />
+      <xs:element name="layLiabilityTakenField" nillable="true" type="tns:ArrayOfPriceSize" />
+      <xs:element name="nearPriceField" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StartingPrices" nillable="true" type="tns:StartingPrices" />
+  <xs:simpleType name="RunnerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE" />
+      <xs:enumeration value="WINNER" />
+      <xs:enumeration value="LOSER" />
+      <xs:enumeration value="REMOVED_VACANT" />
+      <xs:enumeration value="REMOVED" />
+      <xs:enumeration value="HIDDEN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RunnerStatus" nillable="true" type="tns:RunnerStatus" />
+  <xs:simpleType name="MarketStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INACTIVE" />
+      <xs:enumeration value="OPEN" />
+      <xs:enumeration value="SUSPENDED" />
+      <xs:enumeration value="CLOSED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MarketStatus" nillable="true" type="tns:MarketStatus" />
+</xs:schema>

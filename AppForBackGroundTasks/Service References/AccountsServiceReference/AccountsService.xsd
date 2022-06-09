@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54524/Services/AccountsService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
+  <xs:element name="AddtoUsersAccounts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AccountsTitle" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Debit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Credit" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedDate" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="AgentRate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ComissionRate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OpeningBalance" type="xs:decimal" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="EventType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WinnerName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MarketBookName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddtoUsersAccountsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddtoUsersAccountsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyUserIdDateRangeandEventType">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isCreditAmount" type="xs:boolean" />
+        <xs:element minOccurs="0" name="Eventtype" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsDatabyUserIdDateRangeandEventTypeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetAccountsDatabyUserIdDateRangeandEventTypeResult" nillable="true" type="q1:ArrayOfSP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctEventTypesfromAccounts">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDistinctEventTypesfromAccountsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetDistinctEventTypesfromAccountsResult" nillable="true" type="q2:ArrayOfSP_UserAccounts_GetDistinctEventTypes_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsCashReceivedorPaidbyDataRange">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="From" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAccountsCashReceivedorPaidbyDataRangeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetAccountsCashReceivedorPaidbyDataRangeResult" nillable="true" type="q3:SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
