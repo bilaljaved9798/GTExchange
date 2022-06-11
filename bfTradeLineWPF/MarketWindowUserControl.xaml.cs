@@ -3432,14 +3432,18 @@ namespace globaltraders
                         {
                             if (LoggedinUserDetail.GetUserTypeID() == 1)
                             {
-
+                                
                                 List<UserBetsForAdmin> lstMatchbets = LoggedinUserDetail.CurrentAdminBets.ToList().Where(item => item.isMatched == true).ToList();
+                                 
                                 lstMatchbets = lstMatchbets.OrderByDescending(item => item.ID).ToList();
-                                var result = lstMatchbets.Take(20).Where(p => !lstCurrentBetsAdmin.Any(p2 => p2.ID == p.ID && p2.Amount == p.Amount));
+                                
+                                //lstMatchbets = lstMatchbets.Where(x => x.location != "9").ToList();
+                                var result = lstMatchbets.Take(20).Where(p => !lstCurrentBetsAdmin.Any(p2 => p2.ID == p.ID && p2.Amount == p.Amount ));
                                 var result1 = lstCurrentBetsAdmin.Where(p => !lstMatchbets.Take(20).Any(p2 => p2.ID == p.ID && p2.Amount == p.Amount));
 
                                 if (result.Count() > 0 || result1.Count() > 0)
                                 {
+
 
                                     lstCurrentBetsAdmin.Clear();
                                     foreach (var item in lstMatchbets.Take(20))
@@ -3448,9 +3452,15 @@ namespace globaltraders
                                         {
                                             item.DealerName = item.AgentName;
                                         }
-
-                                        lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
-                                    }
+                                        if (item.location == "9")
+                                        {
+                                            lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                        }
+                                        else
+                                        {
+                                            lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                        }
+                                        }
                                     LoggedinUserDetail.RefreshLiabality = true;
 
                                 }

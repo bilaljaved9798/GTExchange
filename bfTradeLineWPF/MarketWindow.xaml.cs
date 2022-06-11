@@ -1686,13 +1686,6 @@ namespace globaltraders
                     lblMatchBetsCount.Content = totmatchedbets.ToString();
 
                     // DGVMatchedBets.ItemsSource = lstMatchbets.Take(10).ToList();
-
-
-
-
-
-
-
                 }
                 else
                 {
@@ -1716,10 +1709,6 @@ namespace globaltraders
                             LoggedinUserDetail.RefreshLiabality = true;
                         }
                         lblMatchBetsCount.Content = LoggedinUserDetail.CurrentAgentBets.Where(item => item.isMatched == true).Count().ToString();
-
-
-
-
                     }
                     else
                     {
@@ -1741,7 +1730,14 @@ namespace globaltraders
                                     {
                                         item.DealerName = item.AgentName;
                                     }
-                                    lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                    if (item.location == "9")
+                                    {
+                                        lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                    }
+                                    else
+                                    {
+                                        lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                    }
                                 }
                                 LoggedinUserDetail.RefreshLiabality = true;
                             }

@@ -29,10 +29,10 @@
     <InstallUrl>http://78.110.160.52:6990/</InstallUrl>
     <ProductName>Administrator</ProductName>
     <PublisherName>Global Traders</PublisherName>
-    <MinimumRequiredVersion>1.0.0.67</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.69</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>68</ApplicationRevision>
+    <ApplicationRevision>70</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
