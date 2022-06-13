@@ -3061,7 +3061,8 @@ namespace bfnexchange.Controllers
                      lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                      lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                     List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
-                   
+                    ViewBag.backgrod = "#1D9BF0 !important";
+                    ViewBag.color = "white";
                     foreach (var item in lstIds)
                     {
                         try
