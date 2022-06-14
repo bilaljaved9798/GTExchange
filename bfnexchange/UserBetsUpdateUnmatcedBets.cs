@@ -1687,7 +1687,7 @@ namespace bfnexchange
             long LastProfitandLoss = 0;
             //List<UserBets> lstUserBet = JsonConvert.DeserializeObject<List<Models.UserBets>>(objUsersServiceCleint.GetUserbetsbyUserID(userID));
             List<UserBets> lstUserBets = lstUserBet.Where(item => item.isMatched == true).ToList();
-            var lstMarketIDS = lstUserBets.Select(item => item.MarketBookID).Distinct().ToArray();
+            var lstMarketIDS = lstUserBets.Select(item => item.MarketBookname).Distinct().ToArray();
             List<LiabalitybyMarket> lstLiabalitybyMarket = new List<LiabalitybyMarket>();
             foreach (var item in lstMarketIDS)
             {
@@ -1704,90 +1704,58 @@ namespace bfnexchange
                 if (objMarketbook != null)
                 {
                     objMarketbook.MarketId = item;
-                    objMarketbook.DebitCredit = ceckProfitandLossfancy(objMarketbook, lstUserBets);
+                    objMarketbook.DebitCredit = ceckProfitandLossfancy2(objMarketbook, lstUserBets);
                 }
                 List<UserBets> marketbooknames = new List<UserBets>();
                 if (lstUserBets.Count > 0)
                 {
-                    marketbooknames = lstUserBets.Where(item2 => item2.MarketBookID == objMarketbook.MarketId).ToList();
+                    marketbooknames = lstUserBets.Where(item2 => item2.MarketBookname == objMarketbook.MarketId).ToList();
                 }
                 var marketbookname = "";
                 if (marketbooknames.Count > 0)
                 {
                     marketbookname = marketbooknames[0].MarketBookname;
                 }
-                if (marketbookname.Contains("To Be Placed"))
-                {
-                    long profitandloss = 0;
-                    foreach (var runner in objMarketbook.Runners)
-                    {
-                        long Profit = 0;
-                        long Loss = 0;
-                        Profit = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Debit));
-                        Loss = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Credit));
 
-                        if (Profit > Loss)
+                //foreach (var runner in objMarketbook.Runners)
+                //{
+                    long ProfitandLoss = 0;
+                    ProfitandLoss = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == marketbooknames[0].SelectionID).Sum(item2 => item2.Debit) - objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == marketbooknames[0].SelectionID).Sum(item2 => item2.Credit));
+                    
+                        if (ProfitandLoss > 0)
                         {
-                            profitandloss += Loss;
+                            ProfitandLoss = -1 * ProfitandLoss;
                         }
-                        else
-                        {
-                            profitandloss += Profit;
-                        }
-                        // return LastProfitandLoss;
-                    }
-                    objMarketLiabality.MarketBookID = item;
-                    objMarketLiabality.MarketBookName = marketbookname;
-                    objMarketLiabality.Liabality = profitandloss;
-                    lstLiabalitybyMarket.Add(objMarketLiabality);
-                    LastProfitandLoss = profitandloss;
-                    OverAllLiabality += LastProfitandLoss;
-                    LastProfitandLoss = 0;
-                }
-                else
-                {
-                    if (objMarketbook.Runners.Count == 1)
+                    
+
+                    if (LastProfitandLoss > ProfitandLoss)
                     {
-                        long ProfitandLoss = 0;
-                        ExternalAPI.TO.MarketBook CurrentMarketProfitandloss = GetBookPosition(objMarketbook.MarketId, new List<UserBetsForAdmin>(), new List<UserBetsforSuper>(), new List<UserBetsforAgent>(), lstUserBets);
-                        if (CurrentMarketProfitandloss.Runners != null)
-                        {
-                            ProfitandLoss = CurrentMarketProfitandloss.Runners.Min(t => t.ProfitandLoss);
-                        }
                         LastProfitandLoss = ProfitandLoss;
-                        objMarketLiabality.MarketBookID = item;
-                        objMarketLiabality.MarketBookName = marketbookname;
-                        objMarketLiabality.Liabality = LastProfitandLoss;
-                        lstLiabalitybyMarket.Add(objMarketLiabality);
-                        OverAllLiabality += LastProfitandLoss;
-                        LastProfitandLoss = 0;
                     }
-                    else
-                    {
-                        foreach (var runner in objMarketbook.Runners)
-                        {
-                            long ProfitandLoss = 0;
-                            ProfitandLoss = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Debit) - objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Credit));
-                            if (objMarketbook.Runners.Count == 1)
-                            {
-                                if (ProfitandLoss > 0)
-                                {
-                                    ProfitandLoss = -1 * ProfitandLoss;
-                                }
-                            }
-                            if (LastProfitandLoss > ProfitandLoss)
-                            {
-                                LastProfitandLoss = ProfitandLoss;
-                            }
-                        }
-                        objMarketLiabality.MarketBookID = item;
-                        objMarketLiabality.MarketBookName = marketbookname;
-                        objMarketLiabality.Liabality = LastProfitandLoss;
-                        lstLiabalitybyMarket.Add(objMarketLiabality);
-                        OverAllLiabality += LastProfitandLoss;
-                        LastProfitandLoss = 0;
-                    }
-                }
+             //   }
+                objMarketLiabality.MarketBookID = item;
+                objMarketLiabality.MarketBookName = marketbookname;
+                objMarketLiabality.Liabality = LastProfitandLoss;
+                lstLiabalitybyMarket.Add(objMarketLiabality);
+                OverAllLiabality += LastProfitandLoss;
+                LastProfitandLoss = 0;
+
+                //long ProfitandLoss = 0;
+                //ExternalAPI.TO.MarketBook CurrentMarketProfitandloss = GetBookPosition(objMarketbook.MarketId, new List<UserBetsForAdmin>(), new List<UserBetsforSuper>(), new List<UserBetsforAgent>(), lstUserBets);
+                //if (CurrentMarketProfitandloss.Runners != null)
+                //{
+                //    ProfitandLoss = CurrentMarketProfitandloss.Runners.Min(t => t.ProfitandLoss);
+                //}
+                //LastProfitandLoss = ProfitandLoss;
+                //objMarketLiabality.MarketBookID = item;
+                //objMarketLiabality.MarketBookName = marketbookname;
+                //objMarketLiabality.Liabality = LastProfitandLoss;
+                //lstLiabalitybyMarket.Add(objMarketLiabality);
+                //OverAllLiabality += LastProfitandLoss;
+                //LastProfitandLoss = 0;
+
+
+
             }
 
             return lstLiabalitybyMarket;
@@ -3438,137 +3406,43 @@ namespace bfnexchange
                     }
                 }
                 return lstDebitCredit;
+            }
+            else
+            {
+                return lstDebitCredit;
+            }
+
+        }
+
+        public List<ExternalAPI.TO.DebitCredit> ceckProfitandLossfancy2(ExternalAPI.TO.MarketBook marketbookstatus, List<UserBets> lstUserBets)
+        {
+
+            List<ExternalAPI.TO.DebitCredit> lstDebitCredit = new List<ExternalAPI.TO.DebitCredit>();
+
+            var lstUserbetsbyMarketID = lstUserBets.Where(item => item.MarketBookname == marketbookstatus.MarketId).ToList();
+            if (lstUserbetsbyMarketID != null)
+            {
 
 
-
-                //    if (marketbookstatus.Runners[0].Handicap < 0)
-                //    {
-                //        foreach (var userbet in lstUserbetsbyMarketID)
-                //        {
-
-                //            var totamount = (Convert.ToDecimal(userbet.Amount) * Convert.ToDecimal(userbet.BetSize)/100) - Convert.ToDecimal(userbet.Amount);
-                //            var objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //            if (userbet.BetType == "back")
-                //            {
-                //                double handicap = marketbookstatus.Runners.Where(item => item.SelectionId == userbet.SelectionID).Select(item => item.Handicap).First().Value;
-                //                objDebitCredit.SelectionID = userbet.SelectionID;
-                //                objDebitCredit.Debit = totamount;
-                //                objDebitCredit.Credit = 0;
-                //                lstDebitCredit.Add(objDebitCredit);
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.Handicap < handicap && runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = totamount;
-                //                        objDebitCredit.Credit = 0;
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.Handicap > handicap && runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = 0;
-                //                        objDebitCredit.Credit = Convert.ToDecimal(userbet.Amount);
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-
-                //            }
-                //            else
-                //            {
-                //                double handicap = marketbookstatus.Runners.Where(item => item.SelectionId == userbet.SelectionID).Select(item => item.Handicap).First().Value;
-                //                objDebitCredit.SelectionID = userbet.SelectionID;
-                //                objDebitCredit.Debit = 0;
-                //                objDebitCredit.Credit = totamount;
-                //                lstDebitCredit.Add(objDebitCredit);
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.Handicap < handicap && runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = 0;
-                //                        objDebitCredit.Credit = totamount;
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.Handicap > handicap && runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = Convert.ToDecimal(userbet.Amount);
-                //                        objDebitCredit.Credit = 0;
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-
-
-                //            }
-
-
-
-                //        }
-                //        return lstDebitCredit;
-                //    }
-                //    else
-                //    {
-
-                //        foreach (var userbet in lstUserbetsbyMarketID)
-                //        {
-
-                //            var totamount = (Convert.ToDecimal(userbet.Amount) * Convert.ToDecimal(userbet.BetSize))/100;
-                //            var objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //            if (userbet.BetType == "back")
-                //            {
-
-                //                objDebitCredit.SelectionID = userbet.SelectionID;
-                //                objDebitCredit.Debit = totamount;
-                //                objDebitCredit.Credit = 0;
-                //                lstDebitCredit.Add(objDebitCredit);
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = 0;
-                //                        objDebitCredit.Credit = Convert.ToDecimal(userbet.Amount);
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-
-                //            }
-                //            else
-                //            {
-                //                objDebitCredit.SelectionID = userbet.SelectionID;
-                //                objDebitCredit.Debit = 0;
-                //                objDebitCredit.Credit = totamount;
-                //                lstDebitCredit.Add(objDebitCredit);
-                //                foreach (var runneritem in marketbookstatus.Runners)
-                //                {
-                //                    if (runneritem.SelectionId != userbet.SelectionID)
-                //                    {
-                //                        objDebitCredit = new ExternalAPI.TO.DebitCredit();
-                //                        objDebitCredit.SelectionID = runneritem.SelectionId;
-                //                        objDebitCredit.Debit = Convert.ToDecimal(userbet.Amount);
-                //                        objDebitCredit.Credit = 0;
-                //                        lstDebitCredit.Add(objDebitCredit);
-                //                    }
-                //                }
-
-                //            }
-
-                //        }
-                //        return lstDebitCredit;
-                //    }
-
+                foreach (var userbet in lstUserbetsbyMarketID)
+                {
+                    var objDebitCredit = new ExternalAPI.TO.DebitCredit();
+                    if (userbet.BetType == "back")
+                    {
+                        objDebitCredit.Debit = Convert.ToDecimal(userbet.Amount);
+                        objDebitCredit.Credit = 0;
+                        objDebitCredit.SelectionID = userbet.SelectionID;
+                        lstDebitCredit.Add(objDebitCredit);
+                    }
+                    else
+                    {
+                        objDebitCredit.Debit = 0;
+                        objDebitCredit.Credit = Convert.ToDecimal(userbet.Amount);
+                        objDebitCredit.SelectionID = userbet.SelectionID;
+                        lstDebitCredit.Add(objDebitCredit);
+                    }
+                }
+                return lstDebitCredit;
             }
             else
             {

@@ -3,7 +3,7 @@
 @foreach (var item in Model)
 {
     <li>
-        <a class="active fifthlevellink" onclick="lastLevelBreadcrumb('@item.MarketBookID.ToString()')"><i class="fa TRUE fa-check-square"></i>@item.MarketBookName <br />@item.Liabality</a>
+        <a class="active fifthlevellink" style="padding: 0px; padding-left:0px !important" onclick="lastLevelBreadcrumb('@item.MarketBookID.ToString()')">@item.MarketBookName @item.Liabality</a>
 
     </li>
 }

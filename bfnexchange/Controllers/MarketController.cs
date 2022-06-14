@@ -337,7 +337,7 @@ namespace bfnexchange.Controllers
                     List<UserBets> lstuserbet = lstUserBets.Where(item => item.location != "9" && item.location != "8").ToList();
                     UserBetsUpdateUnmatcedBets objUserbet = new UserBetsUpdateUnmatcedBets();
                     lstLibalitybymrakets = objUserBets.GetLiabalityofCurrentUserbyMarkets(LoggedinUserDetail.GetUserID(), lstuserbet);
-                    //lstLibalitybymrakets.AddRange(objUserBets.GetLiabalityofCurrentUserbyMarketsfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy));
+                    lstLibalitybymrakets.AddRange(objUserBets.GetLiabalityofCurrentUserbyMarketsfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy));
                     //return RenderRazorViewToString("LiabalitybyMarket", lstLibalitybymrakets);
                     return PartialView("LiabalitybyMarket", lstLibalitybymrakets);
 
