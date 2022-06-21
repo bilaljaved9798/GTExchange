@@ -14,6 +14,8 @@ namespace bfnexchange.Controllers
         UserServicesClient objUsersServiceCleint = new UserServicesClient();            
         public List<string> CheckforSoccergoalMarket(string EventID)
         {
+            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
             List<string> data = new List<string>();
             int UserIDforLinevmarkets = 0;
             if (LoggedinUserDetail.GetUserTypeID() == 1)

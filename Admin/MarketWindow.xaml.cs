@@ -5807,7 +5807,10 @@ namespace globaltraders
             }
             catch (System.Exception ex)
             {
-                backgroundWorkerUpdateFigData.RunWorkerAsync();
+                backgroundWorkerUpdateFigData.Dispose();
+               
+
+               // backgroundWorkerUpdateFigData.RunWorkerAsync();
             }
 
         }
@@ -6478,6 +6481,7 @@ namespace globaltraders
         {
 
             this.Close();
+           
         }
         public void Resizewindow()
         {

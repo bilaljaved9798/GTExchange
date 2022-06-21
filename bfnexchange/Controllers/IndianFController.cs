@@ -20,7 +20,10 @@ namespace bfnexchange.Controllers
         BettingServiceClient objBettingClient = new BettingServiceClient();
         // GET: IndianF
         public ActionResult Index()
-        {
+        { 
+         ViewBag.backgrod = "#1D9BF0";
+         ViewBag.color = "white";
+
             return View();
         }
 
@@ -37,7 +40,12 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult GetInFancyMarket(string EventID, string MarketBookID)
         {
-           
+            if (LoggedinUserDetail.GetUserTypeID() != 3)
+            {
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+            }
+
             int UserIDforLinevmarkets = 0;
             if (LoggedinUserDetail.GetUserTypeID() == 1)
             {

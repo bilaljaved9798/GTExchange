@@ -247,7 +247,7 @@ namespace bfnexchange.Controllers
                         LoggedinUserDetail.objBetSlipKeys.SimpleBtn11 = result.SimpleBtn11;
                         LoggedinUserDetail.objBetSlipKeys.SimpleBtn12 = result.SimpleBtn12;
                         LoggedinUserDetail.objBetSlipKeys.UserID = result.ID;
-                        ViewBag["color"] = "Red";
+                        //ViewBag["color"] = "Red";
                         ViewBag.color = "Red";
                         Session["Runnserdata"] =null;
                        result.PoundRate = result.PoundRate;

@@ -42,6 +42,8 @@ namespace bfnexchange.Controllers
         public static wsnew wsFancy = new wsnew();
 
         private wsnew wsBFMatch = new wsnew();
+
+       
         public void SetURLsData()
         {
             LoggedinUserDetail.URLsData = JsonConvert.DeserializeObject<List<bfnexchange.Services.DBModel.SP_URLsData_GetAllData_Result>>(objUsersServiceCleint.GetURLsData());
@@ -173,6 +175,7 @@ namespace bfnexchange.Controllers
     
         public ActionResult UserPosition(string marektbookID)
         {           
+
             var results = objUsersServiceCleint.GetSelectionNamesbyMarketID(marektbookID);
            
             List<MarketRunner> lstUsers = new List<MarketRunner>();
@@ -987,7 +990,7 @@ namespace bfnexchange.Controllers
         
         public PartialViewResult Index()
         {
-            
+           
             if (LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
                 ViewBag.backgrod = "#1D9BF0";
@@ -2896,7 +2899,8 @@ namespace bfnexchange.Controllers
                 {
                     if (LoggedinUserDetail.GetUserTypeID() == 2)
                     {
-
+                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.color = "white";
                         var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
                         if (results != null)
                         {
@@ -3077,7 +3081,8 @@ namespace bfnexchange.Controllers
                     {
                         if (LoggedinUserDetail.GetUserTypeID() == 1)
                         {
-
+                            ViewBag.backgrod = "#1D9BF0";
+                            ViewBag.color = "white";
                             var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                             if (results != null)
                             {
@@ -3262,7 +3267,8 @@ namespace bfnexchange.Controllers
                         {
                             if (LoggedinUserDetail.GetUserTypeID() == 8 )
                             {
-
+                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.color = "white";
                                 var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                                 if (results != null)
                                 {
@@ -3434,7 +3440,8 @@ namespace bfnexchange.Controllers
                             }
                             if ( LoggedinUserDetail.GetUserTypeID() == 9)
                             {
-
+                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.color = "white";
                                 var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                                 if (results != null)
                                 {

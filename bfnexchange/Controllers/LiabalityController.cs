@@ -18,6 +18,8 @@ namespace bfnexchange.Controllers
         // GET: Liabality
         public ActionResult Index()
         {
+            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
             return View();
         }
 

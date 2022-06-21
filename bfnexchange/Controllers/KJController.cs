@@ -19,6 +19,8 @@ namespace bfnexchange.Controllers
         // GET: KJ
         public ActionResult Index()
         {
+            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
             return View();
         }
         List<MarketBookForindianFancy> lstMarketBookRunnersKJ = new List<MarketBookForindianFancy>();

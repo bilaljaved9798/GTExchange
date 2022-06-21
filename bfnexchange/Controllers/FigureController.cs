@@ -28,8 +28,12 @@ namespace bfnexchange.Controllers
 
         public PartialViewResult GetMarketFigure(string EventID, bool Boolf)
         {
-          
-                int id = LoggedinUserDetail.GetUserID();
+            if (LoggedinUserDetail.GetUserTypeID() != 3)
+            {
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+            }
+            int id = LoggedinUserDetail.GetUserID();
                 var Figurevmarket = JsonConvert.DeserializeObject<List<ExternalAPI.TO.SP_UserMarket_GetDistinctKJMarketsbyEventID_Result>>(objUsersServiceCleint.KJMarketsbyEventID(EventID, LoggedinUserDetail.GetUserID()));
                 Session["Allmarkets"] = Figurevmarket;
                 if (Figurevmarket.Count > 0)

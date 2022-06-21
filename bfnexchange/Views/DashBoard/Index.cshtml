@@ -428,7 +428,7 @@
     $(document).ready(function () {
 
         function CheckUserStatus(){
-            @*try{
+            try{
 
                 if(@LoggedinUserDetail.GetUserTypeID()==3 || @LoggedinUserDetail.GetUserTypeID()==2 ){
                     $.ajax({
@@ -458,7 +458,7 @@
             {
 
                 setTimeout(function(){ CheckUserStatus(),2000});
-            }*@
+            }
         }
        //CheckUserStatus();
 

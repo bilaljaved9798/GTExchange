@@ -243,6 +243,8 @@ namespace bfnexchange.Controllers
                     {
                         if (LoggedinUserDetail.GetUserTypeID() == 2)
                         {
+                            ViewBag.backgrod = "#1D9BF0";
+                           ViewBag.color = "white";
                             //LoggedinUserDetail.NetBalance = objUsersServiceCleint.GetProfitorLossbyUserID(LoggedinUserDetail.user.ID, false, LoggedinUserDetail.PasswordForValidate);
 
                             decimal TotAdminAmount = 0;
@@ -326,6 +328,8 @@ namespace bfnexchange.Controllers
                         {
                             if (LoggedinUserDetail.GetUserTypeID() == 9)
                             {
+                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.color = "white";
                                 decimal TotAdminAmount = 0;
                                 decimal TotAdmincommession = 0;
                                 decimal TotalAdminAmountWithoutMarkets = 0;
@@ -1519,6 +1523,9 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult UserBetsbyAgent()
         {
+             ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
             if (LoggedinUserDetail.GetUserTypeID() != 3)
             {
                 if (LoggedinUserDetail.GetUserTypeID() == 2)
@@ -1568,6 +1575,9 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult showcompleteduserbets(string userid, string marektbookID)
         {
+             ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
             LoggedinUserDetail.CheckifUserLogin();
             List<CompletedUserBets> lstCompletedUserBets = JsonConvert.DeserializeObject<List<CompletedUserBets>>(objUsersServiceCleint.GetCompletedMatchedBetsbyUserID(Convert.ToInt32(userid), marektbookID)).ToList();
             
@@ -1583,6 +1593,9 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2)
             {
+                 ViewBag.backgrod = "#1D9BF0";
+                 ViewBag.color = "white";
+                   
                 LoggedinUserDetail.CheckifUserLogin();
 
                 UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
@@ -1609,7 +1622,9 @@ namespace bfnexchange.Controllers
             {
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-
+                     ViewBag.backgrod = "#1D9BF0";
+                     ViewBag.color = "white";
+                   
                     LoggedinUserDetail.CheckifUserLogin();
                     UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
                     List<Models.UserBets> lstUserBets = (List<Models.UserBets>)Session["userbet"];
@@ -1665,6 +1680,9 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2)
             {
+                 ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+                   
                 LoggedinUserDetail.CheckifUserLogin();
 
                 UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
@@ -1690,7 +1708,9 @@ namespace bfnexchange.Controllers
             {
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                     LoggedinUserDetail.CheckifUserLogin();
                     UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
                     List<Models.UserBetsforSuper> lstUserBets = JsonConvert.DeserializeObject<List<Models.UserBetsforSuper>>(objUsersServiceCleint.GetUserBetsbySuperID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -1715,7 +1735,9 @@ namespace bfnexchange.Controllers
                 {
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
-
+                         ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         LoggedinUserDetail.CheckifUserLogin();
                         UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
                         List<Models.UserBetsforSamiadmin> lstUserBets = JsonConvert.DeserializeObject<List<Models.UserBetsforSamiadmin>>(objUsersServiceCleint.GetUserBetsbySamiAdmin(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -1839,6 +1861,9 @@ namespace bfnexchange.Controllers
                 List<Services.DBModel.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result> results = new List<Services.DBModel.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result>();
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
+                     ViewBag.backgrod = "#1D9BF0";
+                     ViewBag.color = "white";
+                   
                     results = objAccountsService.GetAccountsDatabyUserIdDateRangeandEventType(Convert.ToInt32(useridd), DateFrom, DateTo, false, eventtype).ToList();
 
                 }
@@ -2009,6 +2034,9 @@ namespace bfnexchange.Controllers
                 List<ProfitandLossEventType> lstProfitandlossEventtype = new List<ProfitandLossEventType>();
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                     Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                     lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.BookAccountID), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                     List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2020,7 +2048,10 @@ namespace bfnexchange.Controllers
                 }
                
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
-                {                       
+                {       
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
                         lstProfitandlossEventtypeCommission = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.UserAccountsGetCommission(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -2031,6 +2062,9 @@ namespace bfnexchange.Controllers
                 }
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2080,6 +2114,9 @@ namespace bfnexchange.Controllers
                     List<ProfitandLossEventType> lstProfitandlossEventtype = new List<ProfitandLossEventType>();
                     if (LoggedinUserDetail.GetUserTypeID() == 1)
                     {
+                         ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventNameuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.BookAccountID), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2095,6 +2132,9 @@ namespace bfnexchange.Controllers
 
                     if (LoggedinUserDetail.GetUserTypeID() == 8)
                     {
+                         ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventNameuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2109,6 +2149,9 @@ namespace bfnexchange.Controllers
                     }
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
+                         ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventNameuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2274,6 +2317,9 @@ namespace bfnexchange.Controllers
             //return PartialView("EventType", lstClientlist);
             if (LoggedinUserDetail.GetUserID() != 1)
             {
+                 ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                 List<UserMarket> lstUserMarket = new List<UserMarket>();
                 lstUserMarket = JsonConvert.DeserializeObject<List<UserMarket>>(objUsersServiceCleint.GetUserMArket(LoggedinUserDetail.GetUserID()));
                 Session["usermarket"] = lstUserMarket;
@@ -2641,6 +2687,9 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                     List<BalanceSheet> objBalanceSheetforsuper = new List<Models.BalanceSheet>();
                     Decimal TotAdminAmount = 0;
                     var results = objUsersServiceCleint.GetAllUsersbyUserType(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"]);
@@ -2756,6 +2805,9 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 9)
                 {
+                     ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
+                   
                     List<BalanceSheet> objBalanceSheetforsuper = new List<Models.BalanceSheet>();
                     Decimal TotAdminAmount = 0;
                     var results = objUsersServiceCleint.GetAllUsersbyUserType(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"]);
@@ -3126,15 +3178,20 @@ namespace bfnexchange.Controllers
         {
             try
             {
-                
+                 if (LoggedinUserDetail.GetUserTypeID() != 3) { 
+                 ViewBag.backgrod = "#1D9BF0";
+                     ViewBag.color = "white";
+                }
                 int userid = LoggedinUserDetail.GetUserID();
                 if (userid == 1)
                 {
+                    
+                   
                     userid = 73;
                 }
                 var results = objUsersServiceCleint.GetInPlayMatcheswithRunners1(userid);
-                    List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
-                    lstInPlayMatches = lstInPlayMatches.Where(item => item.EventTypeName == eventtype).ToList();
+                List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
+                lstInPlayMatches = lstInPlayMatches.Where(item => item.EventTypeName == eventtype).ToList();
                 lstInPlayMatches = lstInPlayMatches.GroupBy(car => car.MarketCatalogueID).Select(g => g.First()).ToList();
                // var sd = lstInPlayMatches.GroupBy(x=>x.MarketCatalogueID).Select(b=>b.ToList()).ToList();
               //  lstInPlayMatches2 = dd.Skip(3).ToList();

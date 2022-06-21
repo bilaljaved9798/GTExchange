@@ -13,6 +13,7 @@ namespace bfnexchange.Controllers
     [Authorize]
     public class ManageController : Controller
     {
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -54,6 +55,8 @@ namespace bfnexchange.Controllers
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
+            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.color = "white";
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."

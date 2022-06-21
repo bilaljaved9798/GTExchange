@@ -16,6 +16,7 @@ namespace bfnexchange.Controllers
         // GET: SmallFig
         public ActionResult Index()
         {
+           
             return View();
         }
      
