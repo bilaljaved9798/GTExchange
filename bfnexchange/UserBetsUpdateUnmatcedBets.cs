@@ -1246,22 +1246,35 @@ namespace bfnexchange
                     }
                     else
                     {
-                        long ProfitandLoss = 0;
-                        ProfitandLoss = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == selectionID).Sum(item2 => item2.Debit) - objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == selectionID).Sum(item2 => item2.Credit));
-                        //ProfitandLoss = ProfitandLoss + Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID != runner.SelectionId).Sum(item2 => item2.Debit) - objMarketbook.DebitCredit.Where(item2 => item2.SelectionID != runner.SelectionId).Sum(item2 => item2.Credit));
-                        if (objMarketbook.Runners.Count == 1)
+                        foreach (var runner in objMarketbook.Runners)
                         {
-                            if (ProfitandLoss > 0)
+                            if (runner.SelectionId != selectionID)
                             {
-                                ProfitandLoss = ProfitandLoss * 1;
+                                long ProfitandLoss = 0;
+                                ProfitandLoss = Convert.ToInt64(objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Debit) - objMarketbook.DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Credit));
+                                if (LastProfitandLoss == "")
+                                {
+                                    LastProfitandLoss = ProfitandLoss.ToString();
+                                }
+                                else
+                                {
+                                    if (objMarketbook.Runners.Count == 1)
+                                    {
+                                        if (ProfitandLoss > 0)
+                                        {
+                                            ProfitandLoss = ProfitandLoss * 1;
+                                        }
+                                    }
+                                    if (Convert.ToInt64(LastProfitandLoss) > ProfitandLoss)
+                                    {
+                                        LastProfitandLoss = ProfitandLoss.ToString();
+                                    }
+                                }
+
+                                // return LastProfitandLoss;
                             }
+
                         }
-                        LastProfitandLoss = ProfitandLoss.ToString();
-                        // return LastProfitandLoss;
-                        //if (LastProfitandLoss < ProfitandLoss)
-                        //{
-                        //    LastProfitandLoss = ProfitandLoss;
-                        //}
                     }
                     //}
 
