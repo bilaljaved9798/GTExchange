@@ -443,9 +443,7 @@ namespace bfnexchange.Controllers
                 return false;
             }
             UserStatus objUserStatus = JsonConvert.DeserializeObject<UserStatus>(objUsersServiceCleint.GetUserStatus(LoggedinUserDetail.GetUserID()));
-
-            
-            if (objUserStatus.GTLogin == true || objUserStatus.isDeleted == true || objUserStatus.Loggedin == false )
+            if (objUserStatus.isBlocked == true || objUserStatus.GTLogin == true || objUserStatus.isDeleted == true || objUserStatus.Loggedin == false)
             {
                 return false;
             }
