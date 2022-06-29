@@ -3300,12 +3300,12 @@ namespace bfnexchange.Controllers
             }
         }
 
-        private void ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted(object sender, GetInPlayMatcheswithRunnersCompletedEventArgs e)
-        {
-            objUsersServiceCleint.GetInPlayMatcheswithRunnersCompleted -= ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted;
+        //private void ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted(object sender, GetInPlayMatcheswithRunnersCompletedEventArgs e)
+        //{
+        //    objUsersServiceCleint.GetInPlayMatcheswithRunnersCompleted -= ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted;
            
            
-        }
+        //}
 
 
     }

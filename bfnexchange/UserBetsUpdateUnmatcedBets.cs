@@ -1745,8 +1745,11 @@ namespace bfnexchange
                     {
                         LastProfitandLoss = ProfitandLoss;
                     }
-             //   }
-                objMarketLiabality.MarketBookID = item;
+                //   }
+
+                var result1 = lstUserBets.Where(x => x.MarketBookname == item).FirstOrDefault();
+                 var result = JsonConvert.DeserializeObject(objUsersServiceCleint.GetMarketIDbyEventID(result1.MarketBookID));
+                objMarketLiabality.MarketBookID = result.ToString();
                 objMarketLiabality.MarketBookName = marketbookname;
                 objMarketLiabality.Liabality = LastProfitandLoss;
                 lstLiabalitybyMarket.Add(objMarketLiabality);
@@ -1766,10 +1769,8 @@ namespace bfnexchange
                 //lstLiabalitybyMarket.Add(objMarketLiabality);
                 //OverAllLiabality += LastProfitandLoss;
                 //LastProfitandLoss = 0;
-
-
-
             }
+
 
             return lstLiabalitybyMarket;
         }

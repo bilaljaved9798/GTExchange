@@ -6504,6 +6504,10 @@ namespace bfnexchange.Services.Services
         {
             return ConverttoJSONString(dbEntities.SP_UserMarket_GetDistinctLinevMarketsbyEventIDIN(EventID).ToList());
         }
+        public string GetMarketIDbyEventID(string EventID)
+        {
+            return ConverttoJSONString(dbEntities.SP_UserMarket_GetDistinctMarketIDByEventID(EventID).FirstOrDefault());
+        }
 
         public string GetKalijut()
         {

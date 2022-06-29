@@ -1001,7 +1001,11 @@ namespace globaltraders
                         CurrentMarketProfitandLoss = objProfitandloss.CalculateProfitandLossAdmin(MarketBookForProfitandloss, LoggedinUserDetail.CurrentAdminBets.ToList());
                         try
                         {
-                            CurrentMarketProfitandLossToFigre = objProfitandloss.CalculateProfitandLossAdminFig(MarketBookFigure, LoggedinUserDetail.CurrentAdminBets.ToList());
+                            List<UserBetsForAdmin> listfigurebets = LoggedinUserDetail.CurrentAdminBets.Where(x => x.location == "8").ToList();
+                            if (listfigurebets.Count > 0)
+                            {
+                                CurrentMarketProfitandLossToFigre = objProfitandloss.CalculateProfitandLossAdminFig(MarketBookFigure, listfigurebets);
+                            }
                         }
                         catch (System.Exception ex)
                         {
@@ -8533,14 +8537,14 @@ namespace globaltraders
 
         private void cmbBetTypeFancy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
-                cmbCuttingUserFancy.Focus();
-            }
-            catch (System.Exception ex)
-            {
+            //try
+            //{
+            //    cmbCuttingUserFancy.Focus();
+            //}
+            //catch (System.Exception ex)
+            //{
 
-            }
+            //}
 
 
         }

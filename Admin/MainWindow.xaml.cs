@@ -3834,8 +3834,10 @@ namespace globaltraders
 
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-
-                    lstLibalitybymrakets = objUserBets.GetLiabalityofAdminbyMarkets(LoggedinUserDetail.CurrentAdminBets.ToList());
+                    List<UserBetsForAdmin> oddmarkets = LoggedinUserDetail.CurrentAdminBets.Where(x => x.location != "9").ToList();
+                    List<UserBetsForAdmin> fancybet = LoggedinUserDetail.CurrentAdminBets.Where(x => x.location == "9").ToList();
+                    lstLibalitybymrakets = objUserBets.GetLiabalityofAdminbyMarkets(oddmarkets);
+                    lstLibalitybymrakets.AddRange(objUserBets.GetLiabalityofAdminbyMarketsFancy(fancybet));
                     DGVLiabalites.ItemsSource = lstLibalitybymrakets;
 
 

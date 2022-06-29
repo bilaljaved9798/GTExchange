@@ -194,7 +194,7 @@ namespace globaltraders
                             }
                             if (item.location == "9")
                             {
-                                lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID });
+                                lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID, location = item.location }); ;
                             }
                             else
                             {
@@ -461,9 +461,17 @@ namespace globaltraders
                     int currcellindx = objSender.CurrentCell.Column.DisplayIndex;
                     if (currcellindx == 0)
                     {
-
-                        UserBetsForAdmin objselectedmarket = (UserBetsForAdmin)objSender.SelectedItem;
-
+                        UserBetsForAdmin objselectedmarket = new UserBetsForAdmin();
+                        objselectedmarket = null;
+                        objselectedmarket = (UserBetsForAdmin)objSender.SelectedItem;
+                        if (objselectedmarket.location == "9")
+                        {
+                            var result = JsonConvert.DeserializeObject(objUsersServiceCleint.GetMarketIDbyEventID(objselectedmarket.MarketBookID));
+                            if (result != null)
+                            {
+                                objselectedmarket.MarketBookID = result.ToString();
+                            }
+                        }
 
                         foreach (Window win in App.Current.Windows)
                         {
@@ -475,6 +483,7 @@ namespace globaltraders
 
                                 window.MarketBook(objselectedmarket.MarketBookID);
                                 return;
+
 
                             }
 
