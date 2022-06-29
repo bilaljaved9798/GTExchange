@@ -31,6 +31,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SP_UserMarket_GetToWinTheTossbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetToWinTheTossbyEventID_Result" />
+  <xs:complexType name="SP_UserMarket_GetToTiedMarketbyEventID_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MarketCatalogueID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketCatalogueName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserMarket_GetToTiedMarketbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetToTiedMarketbyEventID_Result" />
   <xs:complexType name="ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserMarket_GetSoccergoalbyEventID_Result" nillable="true" type="tns:SP_UserMarket_GetSoccergoalbyEventID_Result" />

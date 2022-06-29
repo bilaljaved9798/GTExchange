@@ -29,10 +29,10 @@
     <InstallUrl>http://78.110.160.52:6990/</InstallUrl>
     <ProductName>Administrator</ProductName>
     <PublisherName>Global Traders</PublisherName>
-    <MinimumRequiredVersion>1.0.0.70</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.72</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>70</ApplicationRevision>
+    <ApplicationRevision>72</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -500,6 +500,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetSoccergoalbyEventID_Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetToTiedMarketbyEventID_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserServiceReference\globaltraders.UserServiceReference.SP_UserMarket_GetToWinTheTossbyEventID_Result.datasource">

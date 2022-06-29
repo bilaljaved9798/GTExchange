@@ -10,6 +10,12 @@
       <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IUserServices_GetFancyResultPostSetting_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFancyResultPostSetting" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetFancyResultPostSetting_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFancyResultPostSettingResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserServices_UpdateFancyResultPostSetting_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateFancyResultPostSetting" />
   </wsdl:message>
@@ -682,6 +688,12 @@
   <wsdl:message name="IUserServices_GetLinevMarketsbyEventIDIN_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLinevMarketsbyEventIDINResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserServices_GetMarketIDbyEventID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketIDbyEventID" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetMarketIDbyEventID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMarketIDbyEventIDResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserServices_GetKalijut_InputMessage">
     <wsdl:part name="parameters" element="tns:GetKalijut" />
   </wsdl:message>
@@ -789,12 +801,6 @@
   </wsdl:message>
   <wsdl:message name="IUserServices_UpdateMarketStatusbyMarketBookID_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMarketStatusbyMarketBookIDResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_GetFancyResultPostSetting_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFancyResultPostSetting" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_GetFancyResultPostSetting_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFancyResultPostSettingResponse" />
   </wsdl:message>
   <wsdl:message name="IUserServices_GetUserbyUsernameandPassword_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserbyUsernameandPassword" />
@@ -1307,6 +1313,10 @@
     <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunners1Response" />
   </wsdl:message>
   <wsdl:portType name="IUserServices">
+    <wsdl:operation name="GetFancyResultPostSetting">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting" message="tns:IUserServices_GetFancyResultPostSetting_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse" message="tns:IUserServices_GetFancyResultPostSetting_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateFancyResultPostSetting">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/UpdateFancyResultPostSetting" message="tns:IUserServices_UpdateFancyResultPostSetting_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/UpdateFancyResultPostSettingResponse" message="tns:IUserServices_UpdateFancyResultPostSetting_OutputMessage" />
@@ -1755,6 +1765,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetLinevMarketsbyEventIDIN" message="tns:IUserServices_GetLinevMarketsbyEventIDIN_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetLinevMarketsbyEventIDINResponse" message="tns:IUserServices_GetLinevMarketsbyEventIDIN_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetMarketIDbyEventID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetMarketIDbyEventID" message="tns:IUserServices_GetMarketIDbyEventID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetMarketIDbyEventIDResponse" message="tns:IUserServices_GetMarketIDbyEventID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetKalijut">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetKalijut" message="tns:IUserServices_GetKalijut_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetKalijutResponse" message="tns:IUserServices_GetKalijut_OutputMessage" />
@@ -1826,10 +1840,6 @@
     <wsdl:operation name="UpdateMarketStatusbyMarketBookID">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID" message="tns:IUserServices_UpdateMarketStatusbyMarketBookID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse" message="tns:IUserServices_UpdateMarketStatusbyMarketBookID_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFancyResultPostSetting">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting" message="tns:IUserServices_GetFancyResultPostSetting_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse" message="tns:IUserServices_GetFancyResultPostSetting_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserbyUsernameandPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword" message="tns:IUserServices_GetUserbyUsernameandPassword_InputMessage" />
@@ -2174,6 +2184,15 @@
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserServices" type="tns:IUserServices">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFancyResultPostSetting">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetFancyResultPostSetting" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateFancyResultPostSetting">
       <soap:operation soapAction="http://tempuri.org/IUserServices/UpdateFancyResultPostSetting" style="document" />
       <wsdl:input>
@@ -3182,6 +3201,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetMarketIDbyEventID">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetMarketIDbyEventID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetKalijut">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetKalijut" style="document" />
       <wsdl:input>
@@ -3337,15 +3365,6 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateMarketStatusbyMarketBookID">
       <soap:operation soapAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFancyResultPostSetting">
-      <soap:operation soapAction="http://tempuri.org/IUserServices/GetFancyResultPostSetting" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

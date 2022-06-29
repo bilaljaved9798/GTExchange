@@ -387,10 +387,11 @@ namespace bfnexchange.Services.Services
         string GetLinevMarketsbyEventID(string EventID, DateTime EventOpenDate, int UserID);
         [OperationContract]
         string KJMarketsbyEventID(string EventID, int UserID);
-        [OperationContract]
-       
+        [OperationContract]     
         string GetLinevMarketsbyEventIDIN(string EventID, DateTime EventOpenDate, int UserID);
         [OperationContract]
+        string GetMarketIDbyEventID(string EventID);
+        [OperationContract]      
         string GetKalijut();
         [OperationContract]
         string GetFigureOdds();

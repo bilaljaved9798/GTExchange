@@ -3981,5 +3981,14 @@ namespace bfnexchange.Services.DBModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UserMarket_GetToTiedMarketbyEventID_Result>("SP_UserMarket_GetToTiedMarketbyEventID", eventIDParameter, eventOpenDateParameter, userIDParameter);
         }
+    
+        public virtual ObjectResult<string> SP_UserMarket_GetDistinctMarketIDByEventID(string eventID)
+        {
+            var eventIDParameter = eventID != null ?
+                new ObjectParameter("EventID", eventID) :
+                new ObjectParameter("EventID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_UserMarket_GetDistinctMarketIDByEventID", eventIDParameter);
+        }
     }
 }

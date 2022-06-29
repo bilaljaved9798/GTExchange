@@ -993,6 +993,9 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
         <Function Name="SP_UserMarket_GetDistinctLinevMarketsbyEventIDIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="EventID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SP_UserMarket_GetDistinctMarketIDByEventID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EventID" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SP_UserMarket_GetDistinctMarketsOpened" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_UserMarket_GetDistinctMarketsOpenedCricketCompletedMatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_UserMarket_GetDistinctMarketsOpenedCricketInningsRuns" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -2886,6 +2889,9 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
             <Parameter Name="EventID" Mode="In" Type="String" />
             <Parameter Name="EventOpenDate" Mode="In" Type="DateTime" />
             <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_UserMarket_GetDistinctMarketIDByEventID" ReturnType="Collection(String)">
+            <Parameter Name="EventID" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword_Result">
@@ -7923,6 +7929,7 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UserMarket_GetDistinctMarketIDByEventID" FunctionName="NExchangeModel.Store.SP_UserMarket_GetDistinctMarketIDByEventID" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

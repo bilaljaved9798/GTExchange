@@ -4,6 +4,18 @@
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:element name="GetFancyResultPostSetting">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFancyResultPostSettingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFancyResultPostSettingResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateFancyResultPostSetting">
     <xs:complexType>
       <xs:sequence>
@@ -627,6 +639,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetToTiedMarketbyEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetToTiedMarketbyEventIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToTiedMarketbyEventIDResult" nillable="true" type="q5:SP_UserMarket_GetToTiedMarketbyEventID_Result" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetSoccergoalbyeventId">
     <xs:complexType>
       <xs:sequence>
@@ -638,7 +665,7 @@
   <xs:element name="GetSoccergoalbyeventIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSoccergoalbyeventIdResult" nillable="true" type="q5:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSoccergoalbyeventIdResult" nillable="true" type="q6:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1248,7 +1275,7 @@
   <xs:element name="GetCommissionaccountIdandBookAccountbyUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetCommissionaccountIdandBookAccountbyUserIDResult" nillable="true" type="q6:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetCommissionaccountIdandBookAccountbyUserIDResult" nillable="true" type="q7:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1262,7 +1289,7 @@
   <xs:element name="GetReferrerRateandIDbyUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRateandIDbyUserIDResult" nillable="true" type="q7:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRateandIDbyUserIDResult" nillable="true" type="q8:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1437,8 +1464,8 @@
   <xs:element name="UpdateMarketAllowedBettingForAllAgents">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserIds" nillable="true" type="q8:ArrayOfint" />
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="lstMarkets" nillable="true" type="q9:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserIds" nillable="true" type="q9:ArrayOfint" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="lstMarkets" nillable="true" type="q10:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1609,7 +1636,7 @@
   <xs:element name="GetEventDetailsbyMarketBookResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetEventDetailsbyMarketBookResult" nillable="true" type="q10:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetEventDetailsbyMarketBookResult" nillable="true" type="q11:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1657,6 +1684,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetLinevMarketsbyEventIDINResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketIDbyEventID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMarketIDbyEventIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMarketIDbyEventIDResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1875,7 +1916,7 @@
   <xs:element name="InsertUserAccountsFancy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="marketbookstatus" nillable="true" type="q11:ArrayOfMarketBook" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="marketbookstatus" nillable="true" type="q12:ArrayOfMarketBook" />
         <xs:element minOccurs="0" name="userID" type="xs:int" />
         <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
@@ -1914,18 +1955,6 @@
   <xs:element name="UpdateMarketStatusbyMarketBookIDResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFancyResultPostSetting">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFancyResultPostSettingResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetFancyResultPostSettingResult" type="xs:boolean" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserbyUsernameandPassword">
@@ -2374,7 +2403,7 @@
   <xs:element name="InsertUserMarket">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="allmarketitems" nillable="true" type="q12:ArrayOfstring" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="allmarketitems" nillable="true" type="q13:ArrayOfstring" />
         <xs:element minOccurs="0" name="userID" type="xs:int" />
         <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
         <xs:element minOccurs="0" name="DeleteOldMarkets" type="xs:boolean" />
@@ -2391,10 +2420,10 @@
   <xs:element name="InsertUserMarketKJ">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kalijutt" nillable="true" type="q13:ArrayOfstring" />
-        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="KaliCatelogIDs" nillable="true" type="q14:ArrayOfstring" />
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q15:ArrayOfstring" />
-        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q16:ArrayOfint" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="kalijutt" nillable="true" type="q14:ArrayOfstring" />
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="KaliCatelogIDs" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q16:ArrayOfstring" />
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q17:ArrayOfint" />
         <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
       </xs:sequence>
@@ -2410,10 +2439,10 @@
   <xs:element name="InsertUserMarketSFig">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SmallFig" nillable="true" type="q17:ArrayOfstring" />
-        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="smallFigCatelogIDs" nillable="true" type="q18:ArrayOfstring" />
-        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q19:ArrayOfstring" />
-        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q20:ArrayOfint" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SmallFig" nillable="true" type="q18:ArrayOfstring" />
+        <xs:element xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="smallFigCatelogIDs" nillable="true" type="q19:ArrayOfstring" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="selections" nillable="true" type="q20:ArrayOfstring" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q21:ArrayOfint" />
         <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
       </xs:sequence>
@@ -2429,11 +2458,11 @@
   <xs:element name="InsertUserMarketFigure">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figure" nillable="true" type="q21:ArrayOfstring" />
-        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureCatelogIDs" nillable="true" type="q22:ArrayOfstring" />
-        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figureselections" nillable="true" type="q23:ArrayOfstring" />
-        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureselectionsName" nillable="true" type="q24:ArrayOfstring" />
-        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q25:ArrayOfint" />
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figure" nillable="true" type="q22:ArrayOfstring" />
+        <xs:element xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureCatelogIDs" nillable="true" type="q23:ArrayOfstring" />
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Figureselections" nillable="true" type="q24:ArrayOfstring" />
+        <xs:element xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FigureselectionsName" nillable="true" type="q25:ArrayOfstring" />
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q26:ArrayOfint" />
         <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="UpdatedbyID" type="xs:int" />
       </xs:sequence>
@@ -2449,9 +2478,9 @@
   <xs:element name="InsertIndainFancy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="allmarkets" nillable="true" type="q26:ArrayOfMarketBookForindianFancy" />
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="runners" nillable="true" type="q27:ArrayOfRunnerForIndianFancy" />
-        <xs:element xmlns:q28="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q28:ArrayOfint" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="allmarkets" nillable="true" type="q27:ArrayOfMarketBookForindianFancy" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="runners" nillable="true" type="q28:ArrayOfRunnerForIndianFancy" />
+        <xs:element xmlns:q29="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="userIDs" nillable="true" type="q29:ArrayOfint" />
         <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       </xs:sequence>
@@ -2793,7 +2822,7 @@
   <xs:element name="GetMaxOddBackandLayResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetMaxOddBackandLayResult" nillable="true" type="q29:SP_Users_GetMaxOddBackandLay_Result" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetMaxOddBackandLayResult" nillable="true" type="q30:SP_Users_GetMaxOddBackandLay_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -2829,7 +2858,7 @@
   <xs:element name="UpdateUserBetMatched">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q30:ArrayOflong" />
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q31:ArrayOflong" />
         <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -2920,7 +2949,7 @@
   <xs:element name="UpdateUserBetUnMatchedStatusTocomplete">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q31:ArrayOflong" />
+        <xs:element xmlns:q32="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ID" nillable="true" type="q32:ArrayOflong" />
         <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -3065,7 +3094,7 @@
   <xs:element name="GetSelectionNamesbyMarketIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSelectionNamesbyMarketIDResult" nillable="true" type="q32:ArrayOfSP_MarketCatalogueSelections_Get_Result" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSelectionNamesbyMarketIDResult" nillable="true" type="q33:ArrayOfSP_MarketCatalogueSelections_Get_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

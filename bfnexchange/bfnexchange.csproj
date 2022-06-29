@@ -1049,6 +1049,8 @@
     <Content Include="Views\DashBoard\Relatedevent.cshtml" />
     <Content Include="Views\UserBet\UserBetsForSamiadmin.cshtml" />
     <Content Include="Views\UserBet\UserBetsForSamiadminAll.cshtml" />
+    <Content Include="Views\Liabality\TodayHorseRace.cshtml" />
+    <Content Include="Views\Liabality\LiabalitybyMarket.cshtml" />
     <None Include="Service References\UsersServiceReference\UserServices.wsdl" />
     <None Include="Service References\UsersServiceReference\UserServices.xsd">
       <SubType>Designer</SubType>
@@ -1068,8 +1070,6 @@
     <None Include="Service References\UsersServiceReference\UserServices5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Liabality\TodayHorseRace.cshtml" />
-    <Content Include="Views\Liabality\LiabalitybyMarket.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

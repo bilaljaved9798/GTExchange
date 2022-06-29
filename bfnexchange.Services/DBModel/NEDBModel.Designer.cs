@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\Web\bfnexchange_Latest25-02-2021\bfnexchange.Services\DBModel\NEDBModel.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\Git Project\GTExchange\bfnexchange.Services\DBModel\NEDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
