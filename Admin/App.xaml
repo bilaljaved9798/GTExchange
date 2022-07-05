@@ -213,6 +213,8 @@
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=Loss}" Value="0">
                     <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Setter Property="FontSize" Value="30"></Setter>
+                    <Setter Property="FontWeight" Value="Black"></Setter>
                 </DataTrigger>
             </Style.Triggers>
         </Style>

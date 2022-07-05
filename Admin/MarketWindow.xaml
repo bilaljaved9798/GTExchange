@@ -826,9 +826,9 @@
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding Selection}"  Style="{StaticResource txtSelectionName}"   />
                                                     <TextBlock><InlineUIContainer>
-                                                            <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"   Foreground="{Binding PL, Converter={StaticResource PLConverter}}"  Style="{StaticResource txtProfit}" />
+                                                            <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" FontSize="16" FontWeight="ExtraBlack"   Foreground="{Binding PL, Converter={StaticResource PLConverter}}"  Style="{StaticResource txtProfit}" />
                                                         </InlineUIContainer><Run Text=" "/><InlineUIContainer>
-                                                            <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss, Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}"  />
+                                                            <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"   HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss, Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}"  />
                                                         </InlineUIContainer></TextBlock>
                                                
                                                 
