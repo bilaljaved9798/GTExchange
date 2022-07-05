@@ -3990,5 +3990,40 @@ namespace bfnexchange.Services.DBModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SP_UserMarket_GetDistinctMarketIDByEventID", eventIDParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> SP_Users_GetAhmadRate(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_Users_GetAhmadRate", userIDParameter);
+        }
+    
+        public virtual int SP_Users_UpdateAhmadRate(Nullable<int> userID, Nullable<int> ahmadRate)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var ahmadRateParameter = ahmadRate.HasValue ?
+                new ObjectParameter("AhmadRate", ahmadRate) :
+                new ObjectParameter("AhmadRate", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Users_UpdateAhmadRate", userIDParameter, ahmadRateParameter);
+        }
+    
+        public virtual int SP_Users_UpdateSuperAgentRate(Nullable<int> userID, Nullable<int> superRate)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var superRateParameter = superRate.HasValue ?
+                new ObjectParameter("SuperRate", superRate) :
+                new ObjectParameter("SuperRate", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Users_UpdateSuperAgentRate", userIDParameter, superRateParameter);
+        }
     }
 }

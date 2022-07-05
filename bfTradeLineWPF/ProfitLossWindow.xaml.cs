@@ -78,7 +78,6 @@ namespace globaltraders
                     lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));
                     List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
 
-
                     var data = JsonConvert.DeserializeObject(objUsersServiceCleint.GetDatabyAgentIDForCommisionandDateRange(Convert.ToInt32(LoggedinUserDetail.GetUserID()), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));
                     ProfitandLossEventType objProfitandLossCommission = new ProfitandLossEventType();
                     objProfitandLossCommission.EventType = "Commission";

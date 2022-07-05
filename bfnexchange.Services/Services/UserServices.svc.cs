@@ -1987,19 +1987,6 @@ namespace bfnexchange.Services.Services
 
             return results.RatePercent.ToString();
         }
-
-
-
-        public int GetSuperRate(int UserID)
-        {
-            return Convert.ToInt32(dbEntities.SP_Users_GetSuperRate(UserID).FirstOrDefault());
-        }
-
-        public int GetSamiadminRate(int UserID)
-        {
-            return Convert.ToInt32(dbEntities.SP_Users_GetSamiadminRate(UserID).FirstOrDefault());
-        }
-
         public void CloseAllClosedMarkets()
         {
             try
@@ -7532,9 +7519,30 @@ namespace bfnexchange.Services.Services
         {
             return dbEntities.SP_Users_GetMaxMaxAgentRate(UserID).FirstOrDefault().Value;
         }
+        public int GetSuperRate(int UserID)
+        {
+            return Convert.ToInt32(dbEntities.SP_Users_GetSuperRate(UserID).FirstOrDefault());
+        }
+        public int GetSamiadminRate(int UserID)
+        {
+            return Convert.ToInt32(dbEntities.SP_Users_GetSamiadminRate(UserID).FirstOrDefault());
+        }
+        public int GetAhmadRate(int UserID)
+        {
+            return dbEntities.SP_Users_GetAhmadRate(UserID).FirstOrDefault().Value;
+        }
         public void UpdateMaxAgentRate(int UserID, int MaxAgentRate)
         {
             dbEntities.SP_Users_UpdateMaxAgentRate(UserID, MaxAgentRate);
+        }
+       
+        public void UpdateAhmadRate(int UserID, int AhmadRate)
+        {
+            dbEntities.SP_Users_UpdateAhmadRate(UserID, AhmadRate);
+        }
+        public void UpdateSuperRate(int UserID, int SuperRate)
+        {
+            dbEntities.SP_Users_UpdateSuperAgentRate(UserID, SuperRate);
         }
         public void UpdateFancySyncONorOFF(int UserId, string EventID, bool isopenenedbyuser)
         {

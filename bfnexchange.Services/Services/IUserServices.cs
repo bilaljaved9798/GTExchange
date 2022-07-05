@@ -513,10 +513,15 @@ namespace bfnexchange.Services.Services
         void UpdateMaxBalanceTransferLimit(int UserID, int MaxBalanceTransferLimit);
         [OperationContract]
         int GetMaxAgentRate(int UserID);
-
+        [OperationContract] 
+        int GetAhmadRate(int UserID);
         [OperationContract]
         void UpdateMaxAgentRate(int UserID, int MaxAgentRate);
         [OperationContract]
+        void UpdateAhmadRate(int UserID, int AhmadRate);
+        [OperationContract]
+        void UpdateSuperRate(int UserID, int SuperRate);
+        [OperationContract] 
         void UpdateFancySyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser);
         [OperationContract]
         void UpdateKJSyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser);

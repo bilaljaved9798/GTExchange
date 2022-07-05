@@ -1225,6 +1225,9 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
         <Function Name="SP_Users_GetAgentRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_Users_GetAhmadRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Users_GetAllCuttingUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Users_GetAllowedMarketsbyUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
@@ -1384,6 +1387,10 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="RatePercent" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SP_Users_UpdateAhmadRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="AhmadRate" Type="int" Mode="In" />
+        </Function>
         <Function Name="SP_Users_UpdateAllowedMarketsbyUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
           <Parameter Name="isCricketMatchOddsAllowedForBet" Type="bit" Mode="In" />
@@ -1474,6 +1481,10 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
         <Function Name="SP_Users_UpdateStartingBalancebyUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="AccountBalance" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SP_Users_UpdateSuperAgentRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="SuperRate" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_Users_UpdateTransferAdminAmount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
@@ -2891,7 +2902,18 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
             <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_UserMarket_GetDistinctMarketIDByEventID" ReturnType="Collection(String)">
-            <Parameter Name="EventID" Mode="In" Type="String" />
+          <Parameter Name="EventID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Users_GetAhmadRate" ReturnType="Collection(Int32)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Users_UpdateAhmadRate">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="AhmadRate" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Users_UpdateSuperAgentRate">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="SuperRate" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword_Result">
@@ -7930,6 +7952,9 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_UserMarket_GetDistinctMarketIDByEventID" FunctionName="NExchangeModel.Store.SP_UserMarket_GetDistinctMarketIDByEventID" />
+          <FunctionImportMapping FunctionImportName="SP_Users_GetAhmadRate" FunctionName="NExchangeModel.Store.SP_Users_GetAhmadRate" />
+          <FunctionImportMapping FunctionImportName="SP_Users_UpdateAhmadRate" FunctionName="NExchangeModel.Store.SP_Users_UpdateAhmadRate" />
+          <FunctionImportMapping FunctionImportName="SP_Users_UpdateSuperAgentRate" FunctionName="NExchangeModel.Store.SP_Users_UpdateSuperAgentRate" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

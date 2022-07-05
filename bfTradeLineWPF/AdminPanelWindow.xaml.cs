@@ -2004,8 +2004,8 @@ namespace globaltraders
                             }
                             string useridHawala = objUsersServiceCleint.AddUser("Hawala", txtPhone.Text, txtEmail.Text, Crypto.Encrypt("Hawala" + txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
                             objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
-
-                        }
+                            objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
+                            }
                         objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + txtUsername.Text.ToString() + ")", "0.00", txtAccountBalance.Text.ToString(), CreatedbyID, "", DateTime.Now, "","", "", "", Newaccountbalance, false, "", "", "", "", "");
                         objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Convert.ToDecimal(txtAccountBalance.Text), LoggedinUserDetail.PasswordForValidate);
 
@@ -2027,6 +2027,7 @@ namespace globaltraders
                         {
                             userid = objUsersServiceCleint.AddUser(txtName.Text, txtPhone.Text, txtEmail.Text, Crypto.Encrypt(txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(cmbUserType.SelectedValue), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
                         }
+
                         if (Convert.ToInt32(cmbUserType.SelectedValue) == 2)
                         {
                             try
@@ -2052,8 +2053,9 @@ namespace globaltraders
                             }
                             string useridHawala = objUsersServiceCleint.AddUser("Hawala", txtPhone.Text, txtEmail.Text, Crypto.Encrypt("Hawala" + txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
                             objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
-                            //  objUsersServiceCleint.UpdateStartBalancebyUserID(Convert.ToInt32(useridHawala), Convert.ToDecimal(txtAccountBalance.Text));
-                        }
+                                objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
+                                //  objUsersServiceCleint.UpdateStartBalancebyUserID(Convert.ToInt32(useridHawala), Convert.ToDecimal(txtAccountBalance.Text));
+                            }
                         else
                         {
                             if (Convert.ToInt32(cmbUserType.SelectedValue) == 8)
