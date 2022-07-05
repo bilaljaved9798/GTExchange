@@ -2048,7 +2048,7 @@ namespace bfnexchange.Controllers
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {       
                      ViewBag.backgrod = "#1D9BF0";
-            ViewBag.color = "white";
+                      ViewBag.color = "white";
                    
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
                         List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
@@ -2061,7 +2061,7 @@ namespace bfnexchange.Controllers
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
                      ViewBag.backgrod = "#1D9BF0";
-            ViewBag.color = "white";
+                     ViewBag.color = "white";
                    
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
                         lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -2074,9 +2074,14 @@ namespace bfnexchange.Controllers
                         lstProfitandlossEventtype.Add(objProfitandLossCommission);
                     }
                     else
-                {       
+                {
+                   
                     lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
-                
+                    var data = JsonConvert.DeserializeObject(objUsersServiceCleint.GetDatabyAgentIDForCommisionandDateRange(Convert.ToInt32(LoggedinUserDetail.GetUserID()), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
+                    ProfitandLossEventType objProfitandLossCommission = new ProfitandLossEventType();
+                    objProfitandLossCommission.EventType = "Commission";
+                    objProfitandLossCommission.NetProfitandLoss = Convert.ToDecimal(data); //lstProfitandlossEventtypeCommission.Sum(item => item.NetProfitandLoss);
+                    lstProfitandlossEventtype.Add(objProfitandLossCommission);
                 }
 
                 if (lstProfitandlossEventtype.Count > 0)
