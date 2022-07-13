@@ -2765,13 +2765,13 @@ function ShowInPlayC() {
 
 			},
 			error: function () {
-				LoadActiveMarketTWT();
+				LoadActiveMarketSoccerGaol();
 			},
 			success: function (data) {
 				setTimeout(function () {
 					LoadActiveMarketSoccerGaol();
 
-				}, 200);
+				}, 5000);
 
 				if (data != "") {
 					AssignDatatoMarketBookSoccerGoal(data);

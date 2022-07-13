@@ -1181,6 +1181,14 @@ namespace globaltraders.UserServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserServiceReference.IUserServices")]
     public interface IUserServices {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse")]
+        bool GetFancyResultPostSetting();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse")]
+        System.IAsyncResult BeginGetFancyResultPostSetting(System.AsyncCallback callback, object asyncState);
+        
+        bool EndGetFancyResultPostSetting(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/UpdateFancyResultPostSettingResponse")]
         void UpdateFancyResultPostSetting(bool fancyresultpost);
         
@@ -1529,6 +1537,14 @@ namespace globaltraders.UserServiceReference {
         
         int EndGetMaxAgentRate(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetAhmadRate", ReplyAction="http://tempuri.org/IUserServices/GetAhmadRateResponse")]
+        int GetAhmadRate(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/GetAhmadRate", ReplyAction="http://tempuri.org/IUserServices/GetAhmadRateResponse")]
+        System.IAsyncResult BeginGetAhmadRate(int UserID, System.AsyncCallback callback, object asyncState);
+        
+        int EndGetAhmadRate(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMaxAgentRate", ReplyAction="http://tempuri.org/IUserServices/UpdateMaxAgentRateResponse")]
         void UpdateMaxAgentRate(int UserID, int MaxAgentRate);
         
@@ -1536,6 +1552,22 @@ namespace globaltraders.UserServiceReference {
         System.IAsyncResult BeginUpdateMaxAgentRate(int UserID, int MaxAgentRate, System.AsyncCallback callback, object asyncState);
         
         void EndUpdateMaxAgentRate(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateAhmadRate", ReplyAction="http://tempuri.org/IUserServices/UpdateAhmadRateResponse")]
+        void UpdateAhmadRate(int UserID, int AhmadRate);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/UpdateAhmadRate", ReplyAction="http://tempuri.org/IUserServices/UpdateAhmadRateResponse")]
+        System.IAsyncResult BeginUpdateAhmadRate(int UserID, int AhmadRate, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateAhmadRate(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateSuperRate", ReplyAction="http://tempuri.org/IUserServices/UpdateSuperRateResponse")]
+        void UpdateSuperRate(int UserID, int SuperRate);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/UpdateSuperRate", ReplyAction="http://tempuri.org/IUserServices/UpdateSuperRateResponse")]
+        System.IAsyncResult BeginUpdateSuperRate(int UserID, int SuperRate, System.AsyncCallback callback, object asyncState);
+        
+        void EndUpdateSuperRate(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateFancySyncONorOFFbyMarketID", ReplyAction="http://tempuri.org/IUserServices/UpdateFancySyncONorOFFbyMarketIDResponse")]
         void UpdateFancySyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser);
@@ -2313,6 +2345,14 @@ namespace globaltraders.UserServiceReference {
         
         string EndGetLinevMarketsbyEventIDIN(System.IAsyncResult result);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetMarketIDbyEventID", ReplyAction="http://tempuri.org/IUserServices/GetMarketIDbyEventIDResponse")]
+        string GetMarketIDbyEventID(string EventID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/GetMarketIDbyEventID", ReplyAction="http://tempuri.org/IUserServices/GetMarketIDbyEventIDResponse")]
+        System.IAsyncResult BeginGetMarketIDbyEventID(string EventID, System.AsyncCallback callback, object asyncState);
+        
+        string EndGetMarketIDbyEventID(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetKalijut", ReplyAction="http://tempuri.org/IUserServices/GetKalijutResponse")]
         string GetKalijut();
         
@@ -2456,14 +2496,6 @@ namespace globaltraders.UserServiceReference {
         System.IAsyncResult BeginUpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus, System.AsyncCallback callback, object asyncState);
         
         void EndUpdateMarketStatusbyMarketBookID(System.IAsyncResult result);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse")]
-        bool GetFancyResultPostSetting();
-        
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse")]
-        System.IAsyncResult BeginGetFancyResultPostSetting(System.AsyncCallback callback, object asyncState);
-        
-        bool EndGetFancyResultPostSetting(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword", ReplyAction="http://tempuri.org/IUserServices/GetUserbyUsernameandPasswordResponse")]
         string GetUserbyUsernameandPassword(string username, string password);
@@ -3337,6 +3369,25 @@ namespace globaltraders.UserServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetFancyResultPostSettingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetFancyResultPostSettingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetCommissionRatebyUserIDFancyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -3722,6 +3773,25 @@ namespace globaltraders.UserServiceReference {
         private object[] results;
         
         public GetMaxAgentRateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetAhmadRateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetAhmadRateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -4629,6 +4699,25 @@ namespace globaltraders.UserServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetMarketIDbyEventIDCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetMarketIDbyEventIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GetKalijutCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
@@ -4805,25 +4894,6 @@ namespace globaltraders.UserServiceReference {
         private object[] results;
         
         public GetIsComAllowbyUserIDCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        public bool Result {
-            get {
-                base.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GetFancyResultPostSettingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        public GetFancyResultPostSettingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5980,6 +6050,12 @@ namespace globaltraders.UserServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class UserServicesClient : System.ServiceModel.ClientBase<globaltraders.UserServiceReference.IUserServices>, globaltraders.UserServiceReference.IUserServices {
         
+        private BeginOperationDelegate onBeginGetFancyResultPostSettingDelegate;
+        
+        private EndOperationDelegate onEndGetFancyResultPostSettingDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetFancyResultPostSettingCompletedDelegate;
+        
         private BeginOperationDelegate onBeginUpdateFancyResultPostSettingDelegate;
         
         private EndOperationDelegate onEndUpdateFancyResultPostSettingDelegate;
@@ -6208,11 +6284,29 @@ namespace globaltraders.UserServiceReference {
         
         private System.Threading.SendOrPostCallback onGetMaxAgentRateCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetAhmadRateDelegate;
+        
+        private EndOperationDelegate onEndGetAhmadRateDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetAhmadRateCompletedDelegate;
+        
         private BeginOperationDelegate onBeginUpdateMaxAgentRateDelegate;
         
         private EndOperationDelegate onEndUpdateMaxAgentRateDelegate;
         
         private System.Threading.SendOrPostCallback onUpdateMaxAgentRateCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateAhmadRateDelegate;
+        
+        private EndOperationDelegate onEndUpdateAhmadRateDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateAhmadRateCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateSuperRateDelegate;
+        
+        private EndOperationDelegate onEndUpdateSuperRateDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateSuperRateCompletedDelegate;
         
         private BeginOperationDelegate onBeginUpdateFancySyncONorOFFbyMarketIDDelegate;
         
@@ -6652,6 +6746,12 @@ namespace globaltraders.UserServiceReference {
         
         private System.Threading.SendOrPostCallback onGetLinevMarketsbyEventIDINCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetMarketIDbyEventIDDelegate;
+        
+        private EndOperationDelegate onEndGetMarketIDbyEventIDDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetMarketIDbyEventIDCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetKalijutDelegate;
         
         private EndOperationDelegate onEndGetKalijutDelegate;
@@ -6759,12 +6859,6 @@ namespace globaltraders.UserServiceReference {
         private EndOperationDelegate onEndUpdateMarketStatusbyMarketBookIDDelegate;
         
         private System.Threading.SendOrPostCallback onUpdateMarketStatusbyMarketBookIDCompletedDelegate;
-        
-        private BeginOperationDelegate onBeginGetFancyResultPostSettingDelegate;
-        
-        private EndOperationDelegate onEndGetFancyResultPostSettingDelegate;
-        
-        private System.Threading.SendOrPostCallback onGetFancyResultPostSettingCompletedDelegate;
         
         private BeginOperationDelegate onBeginGetUserbyUsernameandPasswordDelegate;
         
@@ -7295,6 +7389,8 @@ namespace globaltraders.UserServiceReference {
                 base(binding, remoteAddress) {
         }
         
+        public event System.EventHandler<GetFancyResultPostSettingCompletedEventArgs> GetFancyResultPostSettingCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateFancyResultPostSettingCompleted;
         
         public event System.EventHandler<GetCommissionRatebyUserIDFancyCompletedEventArgs> GetCommissionRatebyUserIDFancyCompleted;
@@ -7371,7 +7467,13 @@ namespace globaltraders.UserServiceReference {
         
         public event System.EventHandler<GetMaxAgentRateCompletedEventArgs> GetMaxAgentRateCompleted;
         
+        public event System.EventHandler<GetAhmadRateCompletedEventArgs> GetAhmadRateCompleted;
+        
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateMaxAgentRateCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateAhmadRateCompleted;
+        
+        public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateSuperRateCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateFancySyncONorOFFbyMarketIDCompleted;
         
@@ -7519,6 +7621,8 @@ namespace globaltraders.UserServiceReference {
         
         public event System.EventHandler<GetLinevMarketsbyEventIDINCompletedEventArgs> GetLinevMarketsbyEventIDINCompleted;
         
+        public event System.EventHandler<GetMarketIDbyEventIDCompletedEventArgs> GetMarketIDbyEventIDCompleted;
+        
         public event System.EventHandler<GetKalijutCompletedEventArgs> GetKalijutCompleted;
         
         public event System.EventHandler<GetFigureOddsCompletedEventArgs> GetFigureOddsCompleted;
@@ -7554,8 +7658,6 @@ namespace globaltraders.UserServiceReference {
         public event System.EventHandler<GetIsComAllowbyUserIDCompletedEventArgs> GetIsComAllowbyUserIDCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> UpdateMarketStatusbyMarketBookIDCompleted;
-        
-        public event System.EventHandler<GetFancyResultPostSettingCompletedEventArgs> GetFancyResultPostSettingCompleted;
         
         public event System.EventHandler<GetUserbyUsernameandPasswordCompletedEventArgs> GetUserbyUsernameandPasswordCompleted;
         
@@ -7726,6 +7828,54 @@ namespace globaltraders.UserServiceReference {
         public event System.EventHandler<GetInPlayMatcheswithRunnersCompletedEventArgs> GetInPlayMatcheswithRunnersCompleted;
         
         public event System.EventHandler<GetInPlayMatcheswithRunners1CompletedEventArgs> GetInPlayMatcheswithRunners1Completed;
+        
+        public bool GetFancyResultPostSetting() {
+            return base.Channel.GetFancyResultPostSetting();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetFancyResultPostSetting(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetFancyResultPostSetting(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public bool EndGetFancyResultPostSetting(System.IAsyncResult result) {
+            return base.Channel.EndGetFancyResultPostSetting(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetFancyResultPostSetting(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginGetFancyResultPostSetting(callback, asyncState);
+        }
+        
+        private object[] OnEndGetFancyResultPostSetting(System.IAsyncResult result) {
+            bool retVal = this.EndGetFancyResultPostSetting(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetFancyResultPostSettingCompleted(object state) {
+            if ((this.GetFancyResultPostSettingCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetFancyResultPostSettingCompleted(this, new GetFancyResultPostSettingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetFancyResultPostSettingAsync() {
+            this.GetFancyResultPostSettingAsync(null);
+        }
+        
+        public void GetFancyResultPostSettingAsync(object userState) {
+            if ((this.onBeginGetFancyResultPostSettingDelegate == null)) {
+                this.onBeginGetFancyResultPostSettingDelegate = new BeginOperationDelegate(this.OnBeginGetFancyResultPostSetting);
+            }
+            if ((this.onEndGetFancyResultPostSettingDelegate == null)) {
+                this.onEndGetFancyResultPostSettingDelegate = new EndOperationDelegate(this.OnEndGetFancyResultPostSetting);
+            }
+            if ((this.onGetFancyResultPostSettingCompletedDelegate == null)) {
+                this.onGetFancyResultPostSettingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFancyResultPostSettingCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetFancyResultPostSettingDelegate, null, this.onEndGetFancyResultPostSettingDelegate, this.onGetFancyResultPostSettingCompletedDelegate, userState);
+        }
         
         public void UpdateFancyResultPostSetting(bool fancyresultpost) {
             base.Channel.UpdateFancyResultPostSetting(fancyresultpost);
@@ -9795,6 +9945,56 @@ namespace globaltraders.UserServiceReference {
                         UserID}, this.onEndGetMaxAgentRateDelegate, this.onGetMaxAgentRateCompletedDelegate, userState);
         }
         
+        public int GetAhmadRate(int UserID) {
+            return base.Channel.GetAhmadRate(UserID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetAhmadRate(int UserID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetAhmadRate(UserID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public int EndGetAhmadRate(System.IAsyncResult result) {
+            return base.Channel.EndGetAhmadRate(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetAhmadRate(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int UserID = ((int)(inValues[0]));
+            return this.BeginGetAhmadRate(UserID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetAhmadRate(System.IAsyncResult result) {
+            int retVal = this.EndGetAhmadRate(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetAhmadRateCompleted(object state) {
+            if ((this.GetAhmadRateCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetAhmadRateCompleted(this, new GetAhmadRateCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetAhmadRateAsync(int UserID) {
+            this.GetAhmadRateAsync(UserID, null);
+        }
+        
+        public void GetAhmadRateAsync(int UserID, object userState) {
+            if ((this.onBeginGetAhmadRateDelegate == null)) {
+                this.onBeginGetAhmadRateDelegate = new BeginOperationDelegate(this.OnBeginGetAhmadRate);
+            }
+            if ((this.onEndGetAhmadRateDelegate == null)) {
+                this.onEndGetAhmadRateDelegate = new EndOperationDelegate(this.OnEndGetAhmadRate);
+            }
+            if ((this.onGetAhmadRateCompletedDelegate == null)) {
+                this.onGetAhmadRateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetAhmadRateCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetAhmadRateDelegate, new object[] {
+                        UserID}, this.onEndGetAhmadRateDelegate, this.onGetAhmadRateCompletedDelegate, userState);
+        }
+        
         public void UpdateMaxAgentRate(int UserID, int MaxAgentRate) {
             base.Channel.UpdateMaxAgentRate(UserID, MaxAgentRate);
         }
@@ -9844,6 +10044,108 @@ namespace globaltraders.UserServiceReference {
             base.InvokeAsync(this.onBeginUpdateMaxAgentRateDelegate, new object[] {
                         UserID,
                         MaxAgentRate}, this.onEndUpdateMaxAgentRateDelegate, this.onUpdateMaxAgentRateCompletedDelegate, userState);
+        }
+        
+        public void UpdateAhmadRate(int UserID, int AhmadRate) {
+            base.Channel.UpdateAhmadRate(UserID, AhmadRate);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateAhmadRate(int UserID, int AhmadRate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateAhmadRate(UserID, AhmadRate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndUpdateAhmadRate(System.IAsyncResult result) {
+            base.Channel.EndUpdateAhmadRate(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateAhmadRate(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int UserID = ((int)(inValues[0]));
+            int AhmadRate = ((int)(inValues[1]));
+            return this.BeginUpdateAhmadRate(UserID, AhmadRate, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateAhmadRate(System.IAsyncResult result) {
+            this.EndUpdateAhmadRate(result);
+            return null;
+        }
+        
+        private void OnUpdateAhmadRateCompleted(object state) {
+            if ((this.UpdateAhmadRateCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateAhmadRateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateAhmadRateAsync(int UserID, int AhmadRate) {
+            this.UpdateAhmadRateAsync(UserID, AhmadRate, null);
+        }
+        
+        public void UpdateAhmadRateAsync(int UserID, int AhmadRate, object userState) {
+            if ((this.onBeginUpdateAhmadRateDelegate == null)) {
+                this.onBeginUpdateAhmadRateDelegate = new BeginOperationDelegate(this.OnBeginUpdateAhmadRate);
+            }
+            if ((this.onEndUpdateAhmadRateDelegate == null)) {
+                this.onEndUpdateAhmadRateDelegate = new EndOperationDelegate(this.OnEndUpdateAhmadRate);
+            }
+            if ((this.onUpdateAhmadRateCompletedDelegate == null)) {
+                this.onUpdateAhmadRateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateAhmadRateCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateAhmadRateDelegate, new object[] {
+                        UserID,
+                        AhmadRate}, this.onEndUpdateAhmadRateDelegate, this.onUpdateAhmadRateCompletedDelegate, userState);
+        }
+        
+        public void UpdateSuperRate(int UserID, int SuperRate) {
+            base.Channel.UpdateSuperRate(UserID, SuperRate);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginUpdateSuperRate(int UserID, int SuperRate, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateSuperRate(UserID, SuperRate, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public void EndUpdateSuperRate(System.IAsyncResult result) {
+            base.Channel.EndUpdateSuperRate(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateSuperRate(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int UserID = ((int)(inValues[0]));
+            int SuperRate = ((int)(inValues[1]));
+            return this.BeginUpdateSuperRate(UserID, SuperRate, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateSuperRate(System.IAsyncResult result) {
+            this.EndUpdateSuperRate(result);
+            return null;
+        }
+        
+        private void OnUpdateSuperRateCompleted(object state) {
+            if ((this.UpdateSuperRateCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateSuperRateCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateSuperRateAsync(int UserID, int SuperRate) {
+            this.UpdateSuperRateAsync(UserID, SuperRate, null);
+        }
+        
+        public void UpdateSuperRateAsync(int UserID, int SuperRate, object userState) {
+            if ((this.onBeginUpdateSuperRateDelegate == null)) {
+                this.onBeginUpdateSuperRateDelegate = new BeginOperationDelegate(this.OnBeginUpdateSuperRate);
+            }
+            if ((this.onEndUpdateSuperRateDelegate == null)) {
+                this.onEndUpdateSuperRateDelegate = new EndOperationDelegate(this.OnEndUpdateSuperRate);
+            }
+            if ((this.onUpdateSuperRateCompletedDelegate == null)) {
+                this.onUpdateSuperRateCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateSuperRateCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateSuperRateDelegate, new object[] {
+                        UserID,
+                        SuperRate}, this.onEndUpdateSuperRateDelegate, this.onUpdateSuperRateCompletedDelegate, userState);
         }
         
         public void UpdateFancySyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser) {
@@ -14099,6 +14401,56 @@ namespace globaltraders.UserServiceReference {
                         UserID}, this.onEndGetLinevMarketsbyEventIDINDelegate, this.onGetLinevMarketsbyEventIDINCompletedDelegate, userState);
         }
         
+        public string GetMarketIDbyEventID(string EventID) {
+            return base.Channel.GetMarketIDbyEventID(EventID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetMarketIDbyEventID(string EventID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetMarketIDbyEventID(EventID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public string EndGetMarketIDbyEventID(System.IAsyncResult result) {
+            return base.Channel.EndGetMarketIDbyEventID(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetMarketIDbyEventID(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string EventID = ((string)(inValues[0]));
+            return this.BeginGetMarketIDbyEventID(EventID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetMarketIDbyEventID(System.IAsyncResult result) {
+            string retVal = this.EndGetMarketIDbyEventID(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetMarketIDbyEventIDCompleted(object state) {
+            if ((this.GetMarketIDbyEventIDCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetMarketIDbyEventIDCompleted(this, new GetMarketIDbyEventIDCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetMarketIDbyEventIDAsync(string EventID) {
+            this.GetMarketIDbyEventIDAsync(EventID, null);
+        }
+        
+        public void GetMarketIDbyEventIDAsync(string EventID, object userState) {
+            if ((this.onBeginGetMarketIDbyEventIDDelegate == null)) {
+                this.onBeginGetMarketIDbyEventIDDelegate = new BeginOperationDelegate(this.OnBeginGetMarketIDbyEventID);
+            }
+            if ((this.onEndGetMarketIDbyEventIDDelegate == null)) {
+                this.onEndGetMarketIDbyEventIDDelegate = new EndOperationDelegate(this.OnEndGetMarketIDbyEventID);
+            }
+            if ((this.onGetMarketIDbyEventIDCompletedDelegate == null)) {
+                this.onGetMarketIDbyEventIDCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetMarketIDbyEventIDCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetMarketIDbyEventIDDelegate, new object[] {
+                        EventID}, this.onEndGetMarketIDbyEventIDDelegate, this.onGetMarketIDbyEventIDCompletedDelegate, userState);
+        }
+        
         public string GetKalijut() {
             return base.Channel.GetKalijut();
         }
@@ -15037,54 +15389,6 @@ namespace globaltraders.UserServiceReference {
             base.InvokeAsync(this.onBeginUpdateMarketStatusbyMarketBookIDDelegate, new object[] {
                         MarketBookID,
                         MarketStatus}, this.onEndUpdateMarketStatusbyMarketBookIDDelegate, this.onUpdateMarketStatusbyMarketBookIDCompletedDelegate, userState);
-        }
-        
-        public bool GetFancyResultPostSetting() {
-            return base.Channel.GetFancyResultPostSetting();
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginGetFancyResultPostSetting(System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetFancyResultPostSetting(callback, asyncState);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public bool EndGetFancyResultPostSetting(System.IAsyncResult result) {
-            return base.Channel.EndGetFancyResultPostSetting(result);
-        }
-        
-        private System.IAsyncResult OnBeginGetFancyResultPostSetting(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            return this.BeginGetFancyResultPostSetting(callback, asyncState);
-        }
-        
-        private object[] OnEndGetFancyResultPostSetting(System.IAsyncResult result) {
-            bool retVal = this.EndGetFancyResultPostSetting(result);
-            return new object[] {
-                    retVal};
-        }
-        
-        private void OnGetFancyResultPostSettingCompleted(object state) {
-            if ((this.GetFancyResultPostSettingCompleted != null)) {
-                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.GetFancyResultPostSettingCompleted(this, new GetFancyResultPostSettingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
-            }
-        }
-        
-        public void GetFancyResultPostSettingAsync() {
-            this.GetFancyResultPostSettingAsync(null);
-        }
-        
-        public void GetFancyResultPostSettingAsync(object userState) {
-            if ((this.onBeginGetFancyResultPostSettingDelegate == null)) {
-                this.onBeginGetFancyResultPostSettingDelegate = new BeginOperationDelegate(this.OnBeginGetFancyResultPostSetting);
-            }
-            if ((this.onEndGetFancyResultPostSettingDelegate == null)) {
-                this.onEndGetFancyResultPostSettingDelegate = new EndOperationDelegate(this.OnEndGetFancyResultPostSetting);
-            }
-            if ((this.onGetFancyResultPostSettingCompletedDelegate == null)) {
-                this.onGetFancyResultPostSettingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetFancyResultPostSettingCompleted);
-            }
-            base.InvokeAsync(this.onBeginGetFancyResultPostSettingDelegate, null, this.onEndGetFancyResultPostSettingDelegate, this.onGetFancyResultPostSettingCompletedDelegate, userState);
         }
         
         public string GetUserbyUsernameandPassword(string username, string password) {

@@ -2753,10 +2753,10 @@ namespace bfnexchange.Services.Services
                         int samiadminID = 0;
                         int AdminID = 0;
                         int CreatedbyID = GetCreatedbyID1(userID);
-                        bool isAgentcom = GetIsComAllowbyUserID(CreatedbyID);                     
+                        //bool isAgentcom = GetIsComAllowbyUserID(CreatedbyID);                     
                         int superID = GetCreatedbyID1(CreatedbyID);
-                        bool isSupercom = GetIsComAllowbyUserID(superID);
-                        bool issamiadmincom = false;
+                        //bool isSupercom = GetIsComAllowbyUserID(superID);
+                       // bool issamiadmincom = false;
                        
                         if (superID == 1)
                         {
@@ -2768,7 +2768,7 @@ namespace bfnexchange.Services.Services
                             if (superID != 1)
                             {
                                 samiadminID = GetCreatedbyID1(superID);
-                                issamiadmincom = GetIsComAllowbyUserID(samiadminID);
+                               // issamiadmincom = GetIsComAllowbyUserID(samiadminID);
                                 if (samiadminID==1)
                                 {
                                     AdminID = 1;
@@ -2881,10 +2881,10 @@ namespace bfnexchange.Services.Services
                                         ComissionAmountSuper = Math.Round((Convert.ToDecimal(superpercentfinal) / 100) * Comissionamount, 2);
                                         objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountSuper.ToString(), "0.00", Convert.ToInt32(superID), item.MarketId, DateTime.Now, agentpercent.ToString(), superpercent.ToString(),samiadminpercent.ToString(), commisionratestr, Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, eventdetails.EventID, eventdetails.EventName, lstUserBets[0].Marketbookname);
 
-                                        if (isSupercom == false)
-                                        {
+                                        //if (isSupercom == false)
+                                        //{
                                             AddCredittoUser(ComissionAmountSuper, Convert.ToInt32(superID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                        }
+                                        //}
                                     }
                                     else
                                     {
@@ -2896,10 +2896,10 @@ namespace bfnexchange.Services.Services
                                         ComissionAmountSamiadin = Math.Round((Convert.ToDecimal(samiadminpercentfinal) / 100) * Comissionamount, 2);
                                         objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountSamiadin.ToString(), "0.00", Convert.ToInt32(samiadminID), item.MarketId, DateTime.Now, agentpercent.ToString(), superpercent.ToString(),samiadminpercent.ToString(), commisionratestr, Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, eventdetails.EventID, eventdetails.EventName, lstUserBets[0].Marketbookname);
 
-                                        if ( issamiadmincom== false)
-                                        {
+                                        //if ( issamiadmincom== false)
+                                        //{
                                             AddCredittoUser(ComissionAmountSamiadin, Convert.ToInt32(superID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                        }
+                                        //}
                                     }
                                     else
                                     {
@@ -2914,10 +2914,10 @@ namespace bfnexchange.Services.Services
                                     AddCredittoUser(Comissionamounadmin, Convert.ToInt32(objCommissionAccountIDandBookAccountID.CommisionAccountID), AdminID, DateTime.Now, 0, false, "", false, Password);
                                     //i am here
                                     objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountAgent.ToString(), "0.00", Convert.ToInt32(CreatedbyID), item.MarketId, DateTime.Now, agentpercent.ToString(), superpercent.ToString(),samiadminpercent.ToString(), commisionratestr, Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, eventdetails.EventID, eventdetails.EventName, lstUserBets[0].Marketbookname);
-                                    if (isAgentcom == false)
-                                    {
+                                    //if (isAgentcom == false)
+                                    //{
                                         AddCredittoUser(ComissionAmountAgent, Convert.ToInt32(CreatedbyID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                    }
+                                    //}
                                 }
                                 else
                                 {
@@ -3629,10 +3629,10 @@ namespace bfnexchange.Services.Services
                     int samiadminID = 0;
                     int AdminID = 0;
                     int CreatedbyID = GetCreatedbyID1(userID);
-                    bool isAgentcom = GetIsComAllowbyUserID(CreatedbyID);
+                    //bool isAgentcom = GetIsComAllowbyUserID(CreatedbyID);
                     int superID = GetCreatedbyID1(CreatedbyID);
-                    bool isSupercom = GetIsComAllowbyUserID(superID);
-                    bool issamiadmincom = false;
+                    //bool isSupercom = GetIsComAllowbyUserID(superID);
+                    //bool issamiadmincom = false;
 
                     if (superID == 1)
                     {
@@ -3644,7 +3644,7 @@ namespace bfnexchange.Services.Services
                         if (superID != 1)
                         {
                             samiadminID = GetCreatedbyID1(superID);
-                            issamiadmincom = GetIsComAllowbyUserID(samiadminID);
+                            //issamiadmincom = GetIsComAllowbyUserID(samiadminID);
                             if (samiadminID == 1)
                             {
                                 AdminID = 1;
@@ -3743,10 +3743,10 @@ namespace bfnexchange.Services.Services
                                     ComissionAmountSuper = Math.Round((Convert.ToDecimal(superpercentfinal) / 100) * Comissionamount, 2);
                                     objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountSuper.ToString(), "0.00", Convert.ToInt32(superID), lstUserBets[0].MarketBookID, DateTime.Now, agentpercent.ToString(), superpercent.ToString(), samiadminpercent.ToString(), GetCommissionRatebyUserIDFancy(userID).ToString(), Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, lstUserBets[0].MarketBookID, lstUserBets[0].Selectionname, lstUserBets[0].Marketbookname);
 
-                                    if (isSupercom == false)
-                                    {
+                                    //if (isSupercom == false)
+                                    //{
                                         AddCredittoUser(ComissionAmountSuper, Convert.ToInt32(superID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                    }
+                                    //}
                                 }
                                 else
                                 {
@@ -3758,10 +3758,10 @@ namespace bfnexchange.Services.Services
                                     ComissionAmountSamiadin = Math.Round((Convert.ToDecimal(samiadminpercentfinal) / 100) * Comissionamount, 2);
                                     objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountSamiadin.ToString(), "0.00", Convert.ToInt32(samiadminID), lstUserBets[0].MarketBookID, DateTime.Now, agentpercent.ToString(), superpercent.ToString(), samiadminpercent.ToString(), GetCommissionRatebyUserIDFancy(userID).ToString(), Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, lstUserBets[0].MarketBookID, lstUserBets[0].Selectionname, lstUserBets[0].Marketbookname);
 
-                                    if (issamiadmincom == false)
-                                    {
+                                    //if (issamiadmincom == false)
+                                    //{
                                         AddCredittoUser(ComissionAmountSamiadin, Convert.ToInt32(superID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                    }
+                                    //}
                                 }
                                 else
                                 {
@@ -3776,10 +3776,10 @@ namespace bfnexchange.Services.Services
                                 AddCredittoUser(Comissionamounadmin, Convert.ToInt32(objCommissionAccountIDandBookAccountID.CommisionAccountID), AdminID, DateTime.Now, 0, false, "", false, Password);
                                 //i am here
                                 objAccountsService.AddtoUsersAccounts("Commission", ComissionAmountAgent.ToString(), "0.00", Convert.ToInt32(CreatedbyID), lstUserBets[0].MarketBookID, DateTime.Now, agentpercent.ToString(), superpercent.ToString(), samiadminpercent.ToString(), GetCommissionRatebyUserIDFancy(userID).ToString(), Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, lstUserBets[0].MarketBookID, lstUserBets[0].Selectionname, lstUserBets[0].Marketbookname);
-                                if (isAgentcom == false)
-                                {
+                                //if (isAgentcom == false)
+                                //{
                                     AddCredittoUser(ComissionAmountAgent, Convert.ToInt32(CreatedbyID), AdminID, DateTime.Now, 0, false, "", false, Password);
-                                }
+                                //}
                             }
                             else
                             {

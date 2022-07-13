@@ -973,11 +973,14 @@ namespace bfnexchange.Controllers
                         // objAccountsService.AddtoUsersAccounts("Amount Credit to your account", User.AccountBalance.ToString(), "0.00", Convert.ToInt32(userid), "", DateTime.Now, Crypto.Encrypt(User.AgentRateC), "", 0);
                         objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + User.UserName.ToString() + ")", "0.00", User.AccountBalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", Newaccountbalance, false, "", "", "", "", "");
                         objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, User.AccountBalance, ConfigurationManager.AppSettings["PasswordForValidate"]);
-
+                        int AhmadRate = objUsersServiceCleint.GetAhmadRate(LoggedinUserDetail.GetUserID());
+                        objUsersServiceCleint.UpdateAhmadRate(Convert.ToInt32(userid), AhmadRate);
+                        objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32((User.AgentRateC)));
                         List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(CreatedbyID));
                         if (lstUserMarket.Count > 0)
                         {
                             List<string> allusersmarket = new List<string>();
+                            lstUserMarket = lstUserMarket.Where(x => x.EventTypeID == "4").ToList();
                             foreach (var usermarket in lstUserMarket)
                             {
                                 var objusermarket = usermarket.EventTypeID.ToString() + "#" + usermarket.EventTypeName.ToString() + "#" + usermarket.CompetitionID.ToString() + "#" + usermarket.CompetitionName.ToString() + "#" + usermarket.EventID.ToString() + "#" + usermarket.EventName.ToString() + "#" + usermarket.MarketCatalogueID.ToString() + "#" + usermarket.MarketCatalogueName + "#NotInsert#" + usermarket.EventOpenDate.ToString();
@@ -1027,8 +1030,13 @@ namespace bfnexchange.Controllers
                         {
                             try
                             {
-
-
+                                string useridHawala = objUsersServiceCleint.AddUser("Hawala", User.PhoneNumber, User.EmailAddress, Crypto.Encrypt("Hawala" + User.UserName.ToLower()), Crypto.Encrypt(User.Password), User.Location, User.AccountBalance, Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(User.AgentRateC), User.BetLowerLimit, User.BetUpperLimit, true, User.BetLowerLimitHorsePlace, User.BetUpperLimitHorsePlace, User.BetLowerLimitGrayHoundWin, User.BetUpperLimitGrayHoundWin, User.BetLowerLimitGrayHoundPlace, User.BetUpperLimitGrayHoundPlace, User.BetLowerLimitMatchOdds, User.BetUpperLimitMatchOdds, User.BetLowerLimitInningRuns, User.BetUpperLimitInningRuns, User.BetLowerLimitCompletedMatch, User.BetUpperLimitCompletedMatch, User.BetLowerLimitMatchOddsSoccer, User.BetUpperLimitMatchOddsSoccer, User.BetLowerLimitMatchOddsTennis, User.BetUpperLimitMatchOddsTennis, User.BetUpperLimitTiedMatch, User.BetLowerLimitTiedMatch, User.BetUpperLimitWinner, User.BetLowerLimitWinner, ConfigurationManager.AppSettings["PasswordForValidate"], 5000, 1000);
+                                objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
+                                objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + User.UserName.ToString() + ")", "0.00", User.AccountBalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", Newaccountbalance, false, "", "", "", "", "");
+                                objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, User.AccountBalance, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                int AhmadRate = objUsersServiceCleint.GetAhmadRate(LoggedinUserDetail.GetUserID());
+                                objUsersServiceCleint.UpdateAhmadRate(Convert.ToInt32(userid), AhmadRate);
+                                objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(User.AgentRateC));
                                 List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(73));
                                 if (lstUserMarket.Count > 0)
                                 {
@@ -1048,12 +1056,7 @@ namespace bfnexchange.Controllers
                             catch (System.Exception ex)
                             {
 
-                            }
-
-                            string useridHawala = objUsersServiceCleint.AddUser("Hawala", User.PhoneNumber, User.EmailAddress, Crypto.Encrypt("Hawala" + User.UserName.ToLower()), Crypto.Encrypt(User.Password), User.Location, User.AccountBalance, Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(User.AgentRateC), User.BetLowerLimit, User.BetUpperLimit, true, User.BetLowerLimitHorsePlace, User.BetUpperLimitHorsePlace, User.BetLowerLimitGrayHoundWin, User.BetUpperLimitGrayHoundWin, User.BetLowerLimitGrayHoundPlace, User.BetUpperLimitGrayHoundPlace, User.BetLowerLimitMatchOdds, User.BetUpperLimitMatchOdds, User.BetLowerLimitInningRuns, User.BetUpperLimitInningRuns, User.BetLowerLimitCompletedMatch, User.BetUpperLimitCompletedMatch, User.BetLowerLimitMatchOddsSoccer, User.BetUpperLimitMatchOddsSoccer, User.BetLowerLimitMatchOddsTennis, User.BetUpperLimitMatchOddsTennis, User.BetUpperLimitTiedMatch, User.BetLowerLimitTiedMatch, User.BetUpperLimitWinner, User.BetLowerLimitWinner, ConfigurationManager.AppSettings["PasswordForValidate"], 5000, 1000);
-                            objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
-                            objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + User.UserName.ToString() + ")", "0.00", User.AccountBalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", Newaccountbalance, false, "", "", "", "", "");
-                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, User.AccountBalance, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                            }                   
                         }
 
                         LoggedinUserDetail.InsertActivityLog(CreatedbyID, "Created new user (" + User.UserName + ")");

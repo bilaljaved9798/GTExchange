@@ -339,11 +339,29 @@ namespace bfnexchange.UsersServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetMaxAgentRate", ReplyAction="http://tempuri.org/IUserServices/GetMaxAgentRateResponse")]
         System.Threading.Tasks.Task<int> GetMaxAgentRateAsync(int UserID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetAhmadRate", ReplyAction="http://tempuri.org/IUserServices/GetAhmadRateResponse")]
+        int GetAhmadRate(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetAhmadRate", ReplyAction="http://tempuri.org/IUserServices/GetAhmadRateResponse")]
+        System.Threading.Tasks.Task<int> GetAhmadRateAsync(int UserID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMaxAgentRate", ReplyAction="http://tempuri.org/IUserServices/UpdateMaxAgentRateResponse")]
         void UpdateMaxAgentRate(int UserID, int MaxAgentRate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMaxAgentRate", ReplyAction="http://tempuri.org/IUserServices/UpdateMaxAgentRateResponse")]
         System.Threading.Tasks.Task UpdateMaxAgentRateAsync(int UserID, int MaxAgentRate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateAhmadRate", ReplyAction="http://tempuri.org/IUserServices/UpdateAhmadRateResponse")]
+        void UpdateAhmadRate(int UserID, int AhmadRate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateAhmadRate", ReplyAction="http://tempuri.org/IUserServices/UpdateAhmadRateResponse")]
+        System.Threading.Tasks.Task UpdateAhmadRateAsync(int UserID, int AhmadRate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateSuperRate", ReplyAction="http://tempuri.org/IUserServices/UpdateSuperRateResponse")]
+        void UpdateSuperRate(int UserID, int SuperRate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateSuperRate", ReplyAction="http://tempuri.org/IUserServices/UpdateSuperRateResponse")]
+        System.Threading.Tasks.Task UpdateSuperRateAsync(int UserID, int SuperRate);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateFancySyncONorOFFbyMarketID", ReplyAction="http://tempuri.org/IUserServices/UpdateFancySyncONorOFFbyMarketIDResponse")]
         void UpdateFancySyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser);
@@ -2113,12 +2131,36 @@ namespace bfnexchange.UsersServiceReference {
             return base.Channel.GetMaxAgentRateAsync(UserID);
         }
         
+        public int GetAhmadRate(int UserID) {
+            return base.Channel.GetAhmadRate(UserID);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetAhmadRateAsync(int UserID) {
+            return base.Channel.GetAhmadRateAsync(UserID);
+        }
+        
         public void UpdateMaxAgentRate(int UserID, int MaxAgentRate) {
             base.Channel.UpdateMaxAgentRate(UserID, MaxAgentRate);
         }
         
         public System.Threading.Tasks.Task UpdateMaxAgentRateAsync(int UserID, int MaxAgentRate) {
             return base.Channel.UpdateMaxAgentRateAsync(UserID, MaxAgentRate);
+        }
+        
+        public void UpdateAhmadRate(int UserID, int AhmadRate) {
+            base.Channel.UpdateAhmadRate(UserID, AhmadRate);
+        }
+        
+        public System.Threading.Tasks.Task UpdateAhmadRateAsync(int UserID, int AhmadRate) {
+            return base.Channel.UpdateAhmadRateAsync(UserID, AhmadRate);
+        }
+        
+        public void UpdateSuperRate(int UserID, int SuperRate) {
+            base.Channel.UpdateSuperRate(UserID, SuperRate);
+        }
+        
+        public System.Threading.Tasks.Task UpdateSuperRateAsync(int UserID, int SuperRate) {
+            return base.Channel.UpdateSuperRateAsync(UserID, SuperRate);
         }
         
         public void UpdateFancySyncONorOFFbyMarketID(int UserId, string MarektID, bool isopenenedbyuser) {

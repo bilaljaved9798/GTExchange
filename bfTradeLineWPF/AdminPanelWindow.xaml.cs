@@ -239,6 +239,7 @@ namespace globaltraders
         List<UserIDandUserType> lstonlysuperAll = new List<UserIDandUserType>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+           
             txtMarquee.Text = objUsersServiceCleint.GetMarqueeText();
 
             var results = JsonConvert.DeserializeObject<UserDetails>(objUsersServiceCleint.GetUserDetailsbyID(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate));
@@ -1863,6 +1864,9 @@ namespace globaltraders
                         // objAccountsService.AddtoUsersAccounts("Amount Credit to your account", User.AccountBalance.ToString(), "0.00", Convert.ToInt32(userid), "", DateTime.Now, Crypto.Encrypt(User.AgentRateC), "", 0);
                         objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + txtUsername.Text + ")", "0.00", txtAccountBalance.Text.ToString(), HawalaID, "", DateTime.Now, "","","", "", Newaccountbalance, false, "", "", "", "", "");
                         objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Convert.ToDecimal(txtAccountBalance.Text), LoggedinUserDetail.PasswordForValidate);
+                        int AhmadRate=objUsersServiceCleint.GetAhmadRate(LoggedinUserDetail.GetUserID());
+                        objUsersServiceCleint.UpdateAhmadRate(Convert.ToInt32(userid), AhmadRate);
+                        objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
                         try
                         {
                             List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(CreatedbyID));
@@ -2004,7 +2008,10 @@ namespace globaltraders
                             }
                             string useridHawala = objUsersServiceCleint.AddUser("Hawala", txtPhone.Text, txtEmail.Text, Crypto.Encrypt("Hawala" + txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
                             objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
-                            objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
+                                int AhmadRate = objUsersServiceCleint.GetAhmadRate(LoggedinUserDetail.GetUserID());
+                                objUsersServiceCleint.UpdateAhmadRate(Convert.ToInt32(userid), AhmadRate);
+                                objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
+                               // objUsersServiceCleint.UpdateSuperRate(Convert.ToInt32(userid), Convert.ToInt32(LoggedinUserDetail.AgentRate));
                             }
                         objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + txtUsername.Text.ToString() + ")", "0.00", txtAccountBalance.Text.ToString(), CreatedbyID, "", DateTime.Now, "","", "", "", Newaccountbalance, false, "", "", "", "", "");
                         objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Convert.ToDecimal(txtAccountBalance.Text), LoggedinUserDetail.PasswordForValidate);
@@ -2054,7 +2061,7 @@ namespace globaltraders
                             string useridHawala = objUsersServiceCleint.AddUser("Hawala", txtPhone.Text, txtEmail.Text, Crypto.Encrypt("Hawala" + txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
                             objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
                                 objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
-                                //  objUsersServiceCleint.UpdateStartBalancebyUserID(Convert.ToInt32(useridHawala), Convert.ToDecimal(txtAccountBalance.Text));
+                                objUsersServiceCleint.UpdateSuperRate(Convert.ToInt32(userid), Convert.ToInt32(txtAgentrate.Text));
                             }
                         else
                         {
