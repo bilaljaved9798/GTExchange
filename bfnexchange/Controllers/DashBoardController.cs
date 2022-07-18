@@ -734,7 +734,6 @@ namespace bfnexchange.Controllers
             {
                 var objuserDetails = getDetails(userID);
                 var result = ConverttoJSONString(objuserDetails);
-
                 return result;
             }
             else
@@ -747,7 +746,6 @@ namespace bfnexchange.Controllers
             try
             {
 
-          
             LoggedinUserDetail.CheckifUserLogin();
             var results = JsonConvert.DeserializeObject<UserDetails>(objUsersServiceCleint.GetUserDetailsbyID(UserID, ConfigurationManager.AppSettings["PasswordForValidate"]));
             UserDetails objuserDetails = new Models.UserDetails();
@@ -758,7 +756,7 @@ namespace bfnexchange.Controllers
 
             if (LoggedinUserDetail.GetUserTypeID() != 1)
             {
-                objuserDetails.Password = "";
+                //objuserDetails.Password = "";
             }
             if (objuserDetails.isBlocked == true)
             {
@@ -807,27 +805,77 @@ namespace bfnexchange.Controllers
        
         public string UpdateUserPasswordandStatus(int UserID, bool IsDeleted, bool isBlocked, string Password, string AgentRate, bool LoggedIn, decimal BetLowerLimit, decimal BetUpperLimit, bool isAllowedGrayHound, bool isAllowedHorse, decimal BetLowerLimitHorsePlace, decimal BetUpperLimitHorsePlace, decimal BetLowerLimitGrayHoundWin, decimal BetUpperLimitGrayHoundWin, decimal BetLowerLimitGrayHoundPlace, decimal BetUpperLimitGrayHoundPlace, decimal BetLowerLimitMatchOdds, decimal BetUpperLimitMatchOdds, decimal BetLowerLimitInningsRunns, decimal BetUpperLimitInningsRunns, decimal BetLowerLimitCompletedMatch, decimal BetUpperLimitCompletedMatch, bool isTennisAllowed, bool isSoccerAllowed, int CommissionRate, decimal BetLowerLimitMatchOddsSoccer, decimal BetUpperLimitMatchOddsSoccer, decimal BetLowerLimitMatchOddsTennis, decimal BetUpperLimitMatchOddsTennis, decimal BetUpperLimitTiedMatch, decimal BetLowerLimitTiedMatch, decimal BetUpperLimitWinner, decimal BetLowerLimitWinner)
         {
-          
-            LoggedinUserDetail.CheckifUserLogin();
+                            
+            UserIDandUserType objSelectedUser =new  UserIDandUserType();
             if (UserID > 0)
             {
+
                 int UpdatedBy = LoggedinUserDetail.GetUserID();
                 if (UpdatedBy > 0)
                 {
                     if (AgentRate == "")
                     {
                         AgentRate = "0";
-                        
+
                     }
                     if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
                     {
-                        if (Convert.ToInt32(AgentRate) > 50)
+                        int CreatedbyID = LoggedinUserDetail.GetUserID();
+                        int MaxagentrateLimit = objUsersServiceCleint.GetMaxAgentRate(CreatedbyID);
+                        if (Convert.ToInt32(AgentRate) > MaxagentrateLimit)
                         {
-                            return "Agent Rate cannot greater than 50 %.";
+                            return "Agent Rate cannot greater than  '"+ MaxagentrateLimit + "' %.";
                         }
                     }
                     AgentRate = Crypto.Encrypt(AgentRate);
                     DateTime updatedtime = DateTime.Now;
+                    
+                        if (LoggedinUserDetail.GetUserTypeID() == 8)
+                        {
+                            var results = objUsersServiceCleint.GetAllUsersbyUserTypeNew(UserID,2, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                            if (results != "")
+                            {
+                                List<UserIDandUserType> lstUsers = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results);
+
+                                foreach (UserIDandUserType objuser in lstUsers)
+                                {
+
+                                    objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser.ID), isBlocked, LoggedinUserDetail.PasswordForValidate);
+                                }
+                                //LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
+                            }
+                        }
+                    if (LoggedinUserDetail.GetUserTypeID() == 9 )
+                    {
+                        var results = objUsersServiceCleint.GetAllUsersbyUserTypeNew(UserID,8, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                        if (results != "")
+                        {
+                            List<UserIDandUserType> lstUsers = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results);
+                            if (isBlocked == true)
+                            {
+                                foreach (UserIDandUserType objuser in lstUsers)
+                                {
+                                    var results2 = objUsersServiceCleint.GetAllUsersbyUserTypeNew(objuser.ID, 2, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                    List<UserIDandUserType> lstUsers2 = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results2);
+                                    foreach (UserIDandUserType objuser2 in lstUsers2)
+                                    {
+                                        objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser2.ID), isBlocked, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                    }
+                                }
+                            }
+                            if(isBlocked == false)
+                            {
+                                foreach (UserIDandUserType objuser in lstUsers)
+                                {
+                                    objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser.ID), isBlocked, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                }
+                                }
+                            //LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
+                        }
+                    }
+                   
+                   
+                    
                     objUsersServiceCleint.SetBlockedStatusofUser(UserID, isBlocked, ConfigurationManager.AppSettings["PasswordForValidate"]);
                     LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
                     if (LoggedinUserDetail.GetUserTypeID() == 1)
@@ -1104,9 +1152,16 @@ namespace bfnexchange.Controllers
                                 {
                                     try
                                     {
+                                    string useridHawala = objUsersServiceCleint.AddUser("Hawala", User.PhoneNumber, User.EmailAddress, Crypto.Encrypt("Hawala" + User.UserName.ToLower()), Crypto.Encrypt(User.Password), User.Location, User.AccountBalance, Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(User.AgentRateC), User.BetLowerLimit, User.BetUpperLimit, true, User.BetLowerLimitHorsePlace, User.BetUpperLimitHorsePlace, User.BetLowerLimitGrayHoundWin, User.BetUpperLimitGrayHoundWin, User.BetLowerLimitGrayHoundPlace, User.BetUpperLimitGrayHoundPlace, User.BetLowerLimitMatchOdds, User.BetUpperLimitMatchOdds, User.BetLowerLimitInningRuns, User.BetUpperLimitInningRuns, User.BetLowerLimitCompletedMatch, User.BetUpperLimitCompletedMatch, User.BetLowerLimitMatchOddsSoccer, User.BetUpperLimitMatchOddsSoccer, User.BetLowerLimitMatchOddsTennis, User.BetUpperLimitMatchOddsTennis, User.BetUpperLimitTiedMatch, User.BetLowerLimitTiedMatch, User.BetUpperLimitWinner, User.BetLowerLimitWinner, ConfigurationManager.AppSettings["PasswordForValidate"], 5000, 1000);
+                                    objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
+                                    objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + User.UserName.ToString() + ")", "0.00", User.AccountBalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", Newaccountbalance, false, "", "", "", "", "");
+                                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, User.AccountBalance, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                    int AhmadRate = objUsersServiceCleint.GetAhmadRate(LoggedinUserDetail.GetUserID());
+                                    objUsersServiceCleint.UpdateAhmadRate(Convert.ToInt32(userid), AhmadRate);
+                                    objUsersServiceCleint.UpdateMaxAgentRate(Convert.ToInt32(userid), Convert.ToInt32(User.AgentRateC));
+                                    objUsersServiceCleint.UpdateSuperRate(Convert.ToInt32(userid), Convert.ToInt32(User.AgentRateC));
 
-
-                                        List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(73));
+                                    List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(73));
                                         if (lstUserMarket.Count > 0)
                                         {
                                             List<string> allusersmarket = new List<string>();
@@ -1124,10 +1179,7 @@ namespace bfnexchange.Controllers
 
                                     }
 
-                                    string useridHawala = objUsersServiceCleint.AddUser("Hawala", User.PhoneNumber, User.EmailAddress, Crypto.Encrypt("Hawala" + User.UserName.ToLower()), Crypto.Encrypt(User.Password), User.Location, User.AccountBalance, Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(User.AgentRateC), User.BetLowerLimit, User.BetUpperLimit, true, User.BetLowerLimitHorsePlace, User.BetUpperLimitHorsePlace, User.BetLowerLimitGrayHoundWin, User.BetUpperLimitGrayHoundWin, User.BetLowerLimitGrayHoundPlace, User.BetUpperLimitGrayHoundPlace, User.BetLowerLimitMatchOdds, User.BetUpperLimitMatchOdds, User.BetLowerLimitInningRuns, User.BetUpperLimitInningRuns, User.BetLowerLimitCompletedMatch, User.BetUpperLimitCompletedMatch, User.BetLowerLimitMatchOddsSoccer, User.BetUpperLimitMatchOddsSoccer, User.BetLowerLimitMatchOddsTennis, User.BetUpperLimitMatchOddsTennis, User.BetUpperLimitTiedMatch, User.BetLowerLimitTiedMatch, User.BetUpperLimitWinner, User.BetLowerLimitWinner, ConfigurationManager.AppSettings["PasswordForValidate"], 5000, 1000);
-                                    objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
-                                    objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + User.UserName.ToString() + ")", "0.00", User.AccountBalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", Newaccountbalance, false, "", "", "", "", "");
-                                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, User.AccountBalance, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                                   
                                 }
 
                                 LoggedinUserDetail.InsertActivityLog(CreatedbyID, "Created new user (" + User.UserName + ")");
@@ -1136,8 +1188,7 @@ namespace bfnexchange.Controllers
 
                                 return "True" + "|" + userid.ToString();
                             }
-                        
-
+                       
                     else
                     {
                         string userid = objUsersServiceCleint.AddUser(User.Name, User.PhoneNumber, User.EmailAddress, Crypto.Encrypt(User.UserName.ToLower()), Crypto.Encrypt(User.Password), User.Location, User.AccountBalance, Convert.ToInt32(User.UserTypeID), CreatedbyID, Crypto.Encrypt(User.AgentRateC), User.BetLowerLimit, User.BetUpperLimit, true, User.BetLowerLimitHorsePlace, User.BetUpperLimitHorsePlace, User.BetLowerLimitGrayHoundWin, User.BetUpperLimitGrayHoundWin, User.BetLowerLimitGrayHoundPlace, User.BetUpperLimitGrayHoundPlace, User.BetLowerLimitMatchOdds, User.BetUpperLimitMatchOdds, User.BetLowerLimitInningRuns, User.BetUpperLimitInningRuns, User.BetLowerLimitCompletedMatch, User.BetUpperLimitCompletedMatch, User.BetLowerLimitMatchOddsSoccer, User.BetUpperLimitMatchOddsSoccer, User.BetLowerLimitMatchOddsTennis, User.BetUpperLimitMatchOddsTennis, User.BetUpperLimitTiedMatch, User.BetLowerLimitTiedMatch, User.BetUpperLimitWinner, User.BetLowerLimitWinner, ConfigurationManager.AppSettings["PasswordForValidate"], 5000, 1000);
@@ -3180,7 +3231,7 @@ namespace bfnexchange.Controllers
         }
          
 
-        public string GetReletedevent(string eventtype)
+        public string GetReletedevent(string eventtype,string marketbookID)
         {
             try
             {
@@ -3190,17 +3241,16 @@ namespace bfnexchange.Controllers
                 }
                 int userid = LoggedinUserDetail.GetUserID();
                 if (userid == 1)
-                {
-                    
-                   
+                {   
                     userid = 73;
                 }
                 var results = objUsersServiceCleint.GetInPlayMatcheswithRunners1(userid);
                 List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
                 lstInPlayMatches = lstInPlayMatches.Where(item => item.EventTypeName == eventtype).ToList();
                 lstInPlayMatches = lstInPlayMatches.GroupBy(car => car.MarketCatalogueID).Select(g => g.First()).ToList();
+                lstInPlayMatches = lstInPlayMatches.Where(x => x.MarketCatalogueID != marketbookID).ToList();
                // var sd = lstInPlayMatches.GroupBy(x=>x.MarketCatalogueID).Select(b=>b.ToList()).ToList();
-              //  lstInPlayMatches2 = dd.Skip(3).ToList();
+               //  lstInPlayMatches2 = dd.Skip(3).ToList();
                 return RenderRazorViewToString("Relatedevent", lstInPlayMatches);
              
                 }

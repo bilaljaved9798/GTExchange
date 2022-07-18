@@ -1170,6 +1170,7 @@ namespace globaltraders
         {
             if (LoggedinUserDetail.GetUserTypeID() != 3)
             {
+                UserIDandUserType objSelectedUser = (UserIDandUserType)cmbUsers.SelectedItem;
                 if (Convert.ToInt32(cmbUsers.SelectedValue) > 0)
                 {
                     int UpdatedBy = LoggedinUserDetail.GetUserID();
@@ -1186,13 +1187,17 @@ namespace globaltraders
                             try
                             {
 
-
                                 objUsersServiceCleint.SetBlockedStatusofUserBMS(Convert.ToInt32(cmbUsers.SelectedValue), chkBlockUserBMS.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
                             }
                             catch (System.Exception ex)
                             {
 
                             }
+                        }
+                        if (LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+                        {
+
+                            
                         }
                         txtAgentRateUpate.Text = Crypto.Encrypt(txtAgentRateUpate.Text);
                         DateTime updatedtime = DateTime.Now;
@@ -1208,10 +1213,7 @@ namespace globaltraders
                         objUsersServiceCleint.SetAgentRateofUser(Convert.ToInt32(cmbUsers.SelectedValue), txtAgentRateUpate.Text, LoggedinUserDetail.PasswordForValidate);
                         LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Set Rate of User " + Convert.ToInt32(cmbUsers.SelectedValue).ToString() + " " + Crypto.Decrypt(txtAgentRateUpate.Text).ToString());
                         objUsersServiceCleint.SetLoggedinStatus(Convert.ToInt32(cmbUsers.SelectedValue), chkLoggedIn.IsChecked.Value);
-                        if (LoggedinUserDetail.GetUserTypeID() == 1)
-                        {
-                           
-                        }
+                        
                         txtAgentRateUpate.Text = Crypto.Decrypt(txtAgentRateUpate.Text);
                         Xceed.Wpf.Toolkit.MessageBox.Show("Updated Successfully");
                         CustomerDetailsLoad();

@@ -141,7 +141,9 @@ namespace bfnexchange.Controllers
                         }
                         //System.Threading.Thread.Sleep(10000);
                         result.PoundRate = result.PoundRate;
-                        LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(result.AccountBalance);                      
+                        LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(result.AccountBalance);
+                        LoggedinUserDetail.IsCom = result.IsCom;
+                        LoggedinUserDetail.isFancyMarketAllowed = result.isFancyMarketAllowed;
                         LoggedinUserDetail.BetPlaceWaitandInterval.CancelBetTime = result.CancelBetTime;
                         LoggedinUserDetail.BetPlaceWaitandInterval.CompletedMatchBetPlaceWait = result.CompletedMatchBetPlaceWait;
                         LoggedinUserDetail.BetPlaceWaitandInterval.CompletedMatchTimerInterval = result.CompletedMatchTimerInterval;
@@ -198,6 +200,8 @@ namespace bfnexchange.Controllers
                     }
                     else
                     {
+                        LoggedinUserDetail.IsCom = result.IsCom;
+                        LoggedinUserDetail.isFancyMarketAllowed = result.isFancyMarketAllowed;
                         LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(result.AccountBalance);
                         LoggedinUserDetail.BetPlaceWaitandInterval.CancelBetTime = result.CancelBetTime;
                         LoggedinUserDetail.BetPlaceWaitandInterval.CompletedMatchBetPlaceWait = result.CompletedMatchBetPlaceWait;
@@ -258,6 +262,8 @@ namespace bfnexchange.Controllers
                 }
                 else
                 {
+                    LoggedinUserDetail.IsCom = result.IsCom;
+                    LoggedinUserDetail.isFancyMarketAllowed = result.isFancyMarketAllowed;
                     LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(result.AccountBalance);
                     LoggedinUserDetail.BetPlaceWaitandInterval.CancelBetTime = result.CancelBetTime;
                     LoggedinUserDetail.BetPlaceWaitandInterval.CompletedMatchBetPlaceWait = result.CompletedMatchBetPlaceWait;

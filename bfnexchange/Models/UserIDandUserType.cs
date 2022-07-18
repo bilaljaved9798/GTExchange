@@ -17,7 +17,7 @@ namespace bfnexchange.Models
         public string Password { get; set; }
         public string PasswordforValidate { get; set; }
         public string PasswordforValidateS { get; set; }
-
+        public bool IsCom { get; set; }
         public string AccountBalance { get; set; }
         public string RatePercent { get; set; }
         public bool Loggedin { get; set; }
@@ -26,6 +26,7 @@ namespace bfnexchange.Models
         public bool CheckConditionsforPlacingBet { get; set; }
         public bool isGrayHoundRaceAllowed { get; set; }
         public bool isHorseRaceAllowed { get; set; }
+        public bool isFancyMarketAllowed { get; set; }
         public decimal BetLowerLimitHorsePlace { get; set; }
         public decimal BetUpperLimitHorsePlace { get; set; }
         public decimal BetUpperLimitGrayHoundPlace { get; set; }
