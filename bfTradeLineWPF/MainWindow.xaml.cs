@@ -5530,15 +5530,21 @@ namespace globaltraders
                                 decimal AgentCommission = 0;
                                 decimal superCommission = 0;
 
-                                try
+                                
+                                    try
+                                    {
+                                        AgentCommission = objUsersServiceCleint.GetTotalAgentCommissionbyAgentID(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate);
+                                    }
+                                    catch (System.Exception ex)
+                                    {
+                                    }
+                                if (LoggedinUserDetail.iscom == true)
                                 {
-                                    AgentCommission = objUsersServiceCleint.GetTotalAgentCommissionbyAgentID(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate);
+                                    txtblockcomm.Visibility = Visibility.Visible;
+                                    txtcomission.Content = AgentCommission;
+                                    AgentCommission = 0;
                                 }
-                                catch (System.Exception ex)
-                                {
-                                }
-
-                                LoggedinUserDetail.NetBalance = (-1 * (TotAdminAmount) + (-1 * TotalAdminAmountWithoutMarkets) + (-1 * (SuperAmount1))) + AgentCommission;
+                                    LoggedinUserDetail.NetBalance = (-1 * (TotAdminAmount) + (-1 * TotalAdminAmountWithoutMarkets) + (-1 * (SuperAmount1))) + AgentCommission;
                                 LoggedinUserDetail.CurrentAvailableBalance = Convert.ToDouble(LoggedinUserDetail.NetBalance) + LoggedinUserDetail.TotalLiabality + Convert.ToDouble(txtStartBalance.Content);
 
                             }

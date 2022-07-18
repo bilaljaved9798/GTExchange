@@ -42,6 +42,8 @@ namespace bfnexchange
         public static BetSlipKeys objBetSlipKeys = new BetSlipKeys();
         public static string PasswordForValidate = "";
         public static string PasswordForValidateS = "";
+        public static bool IsCom = false;
+        public static bool isFancyMarketAllowed = false;
         public static double CurrentAccountBalance = 0;
         public static double CurrentAvailableBalance = 0;
 

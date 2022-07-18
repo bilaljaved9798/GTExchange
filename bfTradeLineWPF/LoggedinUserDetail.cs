@@ -111,6 +111,7 @@ namespace globaltraders
 
         public static decimal PoundRate { get; set; }
         public static int AgentRate { get; set; }
+        public static bool iscom { get; set; }
         public static int UserID { get; set; }
         public static bool isWorkingonBets { get; set; } = false;
         public static UserIDandUserType user { get; set; }

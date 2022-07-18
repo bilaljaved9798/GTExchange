@@ -238,6 +238,7 @@ namespace globaltraders
                             //PoundRates configData = JsonConvert.DeserializeObject<PoundRates>(objAPIConfigCleint.GetPoundRate());
                             LoggedinUserDetail.BetPlaceWaitInterval = JsonConvert.DeserializeObject<SP_BetPlaceWaitandInterval_GetAllData_Result>(objUserServiceClient.GetIntervalandBetPlaceTimings(LoggedinUserDetail.GetUserID()));
                             LoggedinUserDetail.PoundRate = LoggedinUserDetail.BetPlaceWaitInterval.PoundRate.Value;
+                            LoggedinUserDetail.iscom = result.IsCom;
                             button.IsEnabled = true;
                             LoggedinUserDetail.InsertActivityLog(result.ID, "Logged In");
                             Properties.Settings.Default.Username = txtUsername.Text;
@@ -255,6 +256,7 @@ namespace globaltraders
                             LoggedinUserDetail.BetPlaceWaitInterval = JsonConvert.DeserializeObject<SP_BetPlaceWaitandInterval_GetAllData_Result>(objUserServiceClient.GetIntervalandBetPlaceTimings(LoggedinUserDetail.GetUserID()));
                             LoggedinUserDetail.PoundRate = LoggedinUserDetail.BetPlaceWaitInterval.PoundRate.Value;
                             button.IsEnabled = true;
+                            LoggedinUserDetail.iscom = result.IsCom;
                             LoggedinUserDetail.InsertActivityLog(result.ID, "Logged In");
                             Properties.Settings.Default.Username = txtUsername.Text;
                             Properties.Settings.Default.Password = txtPassword.Password;
@@ -273,6 +275,7 @@ namespace globaltraders
 
                         LoggedinUserDetail.PoundRate = Convert.ToDecimal(Crypto.Decrypt(objAPIConfigCleint.GetPoundRate()));
                         button.IsEnabled = true;
+                        LoggedinUserDetail.iscom = result.IsCom;
                         LoggedinUserDetail.InsertActivityLog(result.ID, "Logged In");
                         Properties.Settings.Default.Username = txtUsername.Text;
                         Properties.Settings.Default.Password = txtPassword.Password;

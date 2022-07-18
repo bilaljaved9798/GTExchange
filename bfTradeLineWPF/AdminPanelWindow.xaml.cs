@@ -2186,7 +2186,7 @@ namespace globaltraders
                         try
                         {
                             UserIDandUserType objSelectedUser = (UserIDandUserType)cmbUsers.SelectedItem;
-                            if (objSelectedUser.UserTypeID == 2)
+                            if (objSelectedUser.UserTypeID == 2 || objSelectedUser.UserTypeID == 9 || objSelectedUser.UserTypeID == 8)
                             {
                                 txtblocktransferagentcommision.Visibility = Visibility.Visible;
                                 chkTransferAgentCommision.IsChecked = (bool)objUsersServiceCleint.GetTransferAgnetCommision(Convert.ToInt32(cmbUsers.SelectedValue));
@@ -2197,12 +2197,8 @@ namespace globaltraders
                                     txtblockMaxAgentRate.Visibility = Visibility.Visible;
                                     txtMaxAgentRate.Text = objUsersServiceCleint.GetMaxAgentRate(Convert.ToInt32(cmbUsers.SelectedValue)).ToString();
                                 }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                                 catch (Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                                 {
-
-
                                 }
                             }
                             else
@@ -2301,6 +2297,7 @@ namespace globaltraders
         {
             if (LoggedinUserDetail.GetUserTypeID() != 3)
             {
+                UserIDandUserType objSelectedUser = (UserIDandUserType)cmbUsers.SelectedItem;
                 if (Convert.ToInt32(cmbUsers.SelectedValue) > 0)
                 {
                     int UpdatedBy = LoggedinUserDetail.GetUserID();
@@ -2323,13 +2320,9 @@ namespace globaltraders
                         {
                             try
                             {
-
-
                                 objUsersServiceCleint.SetBlockedStatusofUserBMS(Convert.ToInt32(cmbUsers.SelectedValue), chkBlockUserBMS.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
                             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
                             catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
                             {
 
                             }
@@ -2337,6 +2330,54 @@ namespace globaltraders
                         txtAgentRateUpate.Text = Crypto.Encrypt(txtAgentRateUpate.Text);
                         DateTime updatedtime = DateTime.Now;
 
+                        if(LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 1)
+                        {
+                            if(objSelectedUser.UserTypeID==2)
+                            {
+                                var results = objUsersServiceCleint.GetAllUsersbyUserTypeNew(objSelectedUser.ID, Convert.ToInt32(objSelectedUser.UserTypeID), LoggedinUserDetail.PasswordForValidate);
+                                if (results != "")
+                                {
+                                    List<UserIDandUserType> lstUsers = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results);
+
+                                    foreach (UserIDandUserType objuser in lstUsers)
+                                    {
+
+                                        objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser.ID), true, LoggedinUserDetail.PasswordForValidate);
+                                    }
+                                    //LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
+                                }
+                            }
+                            if (objSelectedUser.UserTypeID == 8)
+                            {
+                                var results = objUsersServiceCleint.GetAllUsersbyUserTypeNew(objSelectedUser.ID, Convert.ToInt32(objSelectedUser.UserTypeID), LoggedinUserDetail.PasswordForValidate);
+                                if (results != "")
+                                {
+                                    List<UserIDandUserType> lstUsers = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results);
+
+                                    foreach (UserIDandUserType objuser in lstUsers)
+                                    {
+
+                                        objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser.ID), true, LoggedinUserDetail.PasswordForValidate);
+                                    }
+                                    //LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
+                                }
+                            }
+                            if (objSelectedUser.UserTypeID == 9)
+                            {
+                                var results = objUsersServiceCleint.GetAllUsersbyUserTypeNew(objSelectedUser.ID, Convert.ToInt32(objSelectedUser.UserTypeID), LoggedinUserDetail.PasswordForValidate);
+                                if (results != "")
+                                {
+                                    List<UserIDandUserType> lstUsers = JsonConvert.DeserializeObject<List<UserIDandUserType>>(results);
+
+                                    foreach (UserIDandUserType objuser in lstUsers)
+                                    {
+
+                                        objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(objuser.ID), true, LoggedinUserDetail.PasswordForValidate);
+                                    }
+                                    //LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
+                                }
+                            }
+                        }
                         objUsersServiceCleint.SetBlockedStatusofUser(Convert.ToInt32(cmbUsers.SelectedValue), chkBlockUser.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
                         LoggedinUserDetail.InsertActivityLog(UpdatedBy, "Update User Block Status");
                         //objUsersServiceCleint.SetDeleteStatusofUser(Convert.ToInt32(cmbUsers.SelectedValue), chk);
