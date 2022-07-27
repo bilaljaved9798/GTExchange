@@ -17,7 +17,7 @@ namespace bfnexchange.Models
         public string AccountBalance { get; set; }
         public bool CanBlockUser { get; set; }
         public bool CanDeleteUser { get; set; }
-        public string CurrentLiabality { get; set; }
+        public  string CurrentLiabality { get; set; }
         public bool CanChangeAgentRate { get; set; }
         public bool CanChangeLoggedIN { get; set; }
         public string StartingBalance { get; set; }

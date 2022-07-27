@@ -1,35 +1,37 @@
 ﻿@model bfnexchange.Models.AccessRightsbyUserType
 
 <div class="col-md-12 no-padding">
-   	
-	<div class="col-lg-4 col-sm-12">		
-		<div class="input-group">
+
+    <div class="col-md-3">
+        Credit:
+       
+       <label>@LoggedinUserDetail.CurrentAccountBalance</label>
+       
+    </div>
+	<div class="col-md-3">	
 			Upline:
-			
-			@if (Convert.ToDouble(@Model.NetBalance) > 0)
+			@if (Convert.ToDouble(@ViewBag.NetBalance) > 0)
 			{
-				<label>@Model.NetBalance</label>
+				<label>@ViewBag.NetBalance</label>
 			}
 			else
 			{
-				<label style="color:red">@Model.NetBalance</label>
-			}
-		</div>
+				<label style="color:red">@ViewBag.NetBalance</label>
+			}		
 	</div>
-
-	<div class="col-lg-5 col-sm-12">
-		
-		<div class="input-group">
-			Avail Balance:<label>@Model.CurrentAvailableBalance</label>
-		</div>
-	</div>
-
-	@*<div class="col-lg-3 col-sm-12">
 	
-		<div class="input-group">
-			Liab:<label>@Model.CurrentLiabality</label>
-		</div>
-	</div>*@
-           
+	<div class="col-md-3">
+			Avail Balance:<label>@LoggedinUserDetail.CurrentAvailableBalance</label>
+	</div>
+	@if (LoggedinUserDetail.IsCom == true)
+	{
+	<div class="col-md-4">
+			Commission:<label>@ViewBag.commission</label>
+	</div>
+	}
+    <div class="col-md-3">
+        Liabality:<label>@ViewBag.CurrentLiabality</label>
+    </div>
 </div>
+
 

@@ -808,7 +808,7 @@
 	<input type="hidden" id="clickedID" value="0" />
 	<input type="hidden" id="activesheetname" value="" />
 </div>
-		<script type="text/javascript">
+<script type="text/javascript">
 
 
 			$("#cancelAll").click(function () {
@@ -2735,7 +2735,7 @@ function ShowInPlayC() {
 				success: function (data) {
 					if (data != "") {
 						$("#marketbooksoccer").show();
-						LoadMarketTypeSoccerGoal();
+						//LoadMarketTypeSoccerGoal();
 					}
 				}
 
@@ -7313,13 +7313,14 @@ function ShowInPlayC() {
 							{
 								mainsportcat1 = "Cricket";
 							}
-							if(mainsportcat1=="Cricket")
+							//@LoggedinUserDetail.isFancyMarketAllowed==True
+							if (mainsportcat1 == "Cricket")
 							{
 					            GetActiveMarketINFancy();
 						        // GetActiveMarketKJ();
 							     //GetActiveMarketSFIg();
 								// GetMarketFigure();
-							 	
+
 						        // CheckForCricketScores();
 							////GetActiveMarketFancy();
 							}
@@ -7353,7 +7354,7 @@ function ShowInPlayC() {
 									}
 								}
 							}
-							//ReletedEvents(mainsportcat1);
+							ReletedEvents(mainsportcat1);
 							//var isallowedtogetscore = $("#marketbookgetscores" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 							//var getupdatesfrom= $("#getmatchupdatesfrom" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 							//if (isallowedtogetscore == "true" && getupdatesfrom=="Other") {
@@ -7369,7 +7370,7 @@ function ShowInPlayC() {
 								mainsportcat = "Cricket";
 								mainsportrunners = 2;
 							}
-							
+
 							if (marketbbokname.indexOf("Match Odds")>=0 && mainsportcat.indexOf("Cricket")>=0 && mainsportrunners=="3" ){
 								$(".checkboxrunnernameavg").show();
 
@@ -7451,12 +7452,14 @@ function ShowInPlayC() {
 			//    });
 			//}
 
-		function ReletedEvents(eventtype) {
+	function ReletedEvents(eventtype) {
+		debugger;
+				var marketbookID = $("#lastloadedmarket").val().toString();
 			$.ajax({
 				type: "GET",
 				url: '/DashBoard/GetReletedevent',
 
-				data: { 'eventtype': eventtype },
+				data: { 'eventtype': eventtype, 'marketbookID': marketbookID },
 				success: function (result) {
 					$("#relatedevent").html(result);
 				}
@@ -7534,7 +7537,7 @@ function ShowInPlayC() {
 			var newamount = 0;
 
 
-		</script>
+</script>
 		<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
 		<script src="~/Scripts/bootstrap-submenu.js"></script>
 		<script src="~/Scripts/DetectChanges.js"></script>

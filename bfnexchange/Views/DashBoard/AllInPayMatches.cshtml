@@ -152,32 +152,40 @@
 			<div class="sporthighlightsuldiv">
 				<ul class="inplaymatchheading">
 					@{
+						var line = Model.AllMarkets.GroupBy(info => info.CategoryName).Select(group => new
+						{
+							Metric = group.Key,
+							Count = group.Count()
+						});
+						
 
 						List<string> eventtypes = Model.AllMarkets.Select(x => x.CategoryName).Distinct().ToList();
+
 						foreach (var item in eventtypes)
 						{
 					<li role="presentation">
 						@if (item == "Cricket")
 						{
 
-							<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink" id="inplaymatchheading@(item.Trim())" style="color:black; font-weight:bold; font-size:14px;">
-								<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
-								@item
-							</a>
+						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink" id="inplaymatchheading@(item.Trim())" style="color:black; font-weight:bold; font-size:14px;">
+							<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
+							@item  (@line.Select(x => x.Count).FirstOrDefault())
+
+						</a>
 						}
-						@if (item == "Horse Racing")
-						{
-							<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink" id="inplaymatchheadingHorse" style="color:black;font-weight:bold; font-size:14px;">
-								<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
-								Horse
-							</a>
+							@if (item == "Horse Racing")
+							{
+					<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink" id="inplaymatchheadingHorse" style="color:black;font-weight:bold; font-size:14px;">
+						<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
+						Horse (@line.Select(x => x.Count).Skip(1).Take(1).FirstOrDefault())
+					</a>
 						}
 						@if (item == "Greyhound Racing")
 						{
-							<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink" id="inplaymatchheadingGreyhound" style="color:black;font-weight:bold; font-size:14px;">
-								<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
-								Greyhound
-							</a>
+					<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink" id="inplaymatchheadingGreyhound" style="color:black;font-weight:bold; font-size:14px;">
+						<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
+						Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+					</a>
 						}
 						@if (item == "Soccer")
 						{

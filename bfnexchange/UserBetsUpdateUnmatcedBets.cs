@@ -1456,12 +1456,19 @@ namespace bfnexchange
                 //if (objMarketbook.Runners.Count() == 1)
                 //{
                     long ProfitandLoss = 0;
-
-                    ExternalAPI.TO.MarketBook CurrentMarketProfitandloss = GetBookPosition(objMarketbook.MarketId, new List<UserBetsForAdmin>(), new List<UserBetsforSuper>(), new List<UserBetsforAgent>(), lstUserBets);
-                    if (CurrentMarketProfitandloss.Runners != null)
-                    {
-                        ProfitandLoss = CurrentMarketProfitandloss.Runners.Min(t => t.ProfitandLoss);
+                lstUserBets = lstUserBets.Where(s => s.location == "9").ToList();
+                var slections = lstUserBets.Select(d => d.SelectionID).Distinct().ToList();
+                foreach (var item2 in slections)
+                {
+                    ExternalAPI.TO.MarketBookForindianFancy CurrentMarketProfitandloss = GetBookPositionIN(objMarketbook.MarketId, item2, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), new List<UserBetsforSamiadmin>(), new List<Models.UserBetsforAgent>(), lstUserBets);
+                    if (CurrentMarketProfitandloss.RunnersForindianFancy != null)
+                    {                     
+                        ProfitandLoss += Convert.ToInt64(CurrentMarketProfitandloss.RunnersForindianFancy.Min(t => t.ProfitandLoss));
                     }
+
+                    CurrentMarketProfitandloss = new ExternalAPI.TO.MarketBookForindianFancy();
+                }
+                    
 
                     LastProfitandLoss = ProfitandLoss;
                 //}

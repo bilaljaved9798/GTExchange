@@ -4252,7 +4252,7 @@ namespace bfnexchange.Controllers
 
                         }
 
-                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks);
+                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(1));
                     }                  
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 2)

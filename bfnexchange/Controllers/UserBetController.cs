@@ -291,8 +291,12 @@ namespace bfnexchange.Controllers
                         List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<Models.UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
                         if (Runnerscount != null)
                         {
-                            TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), Odd, BetType, marketbookID, MarketbookName, MlstUserBets);
-                        }
+                            foreach (var selectionIDitem in SelectionID)
+                            {
+                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, MarketbookName, MlstUserBets);
+                            }
+                         }
+                       
                         TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MarketbookName, lstUserBets);
 
                         decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -302,12 +306,15 @@ namespace bfnexchange.Controllers
                     else
                     {                      
                             lstUserBets = lstUserBets.Where(item => item.isMatched && item.location != "9").ToList();
-                           // lstUserBets = lstUserBets.Where(item => item.isMatched && item.location != "8").ToList();
                         if (Runnerscount != null)
                         {
-                            TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), Odd, BetType, marketbookID, MarketbookName, lstUserBets);
+                            foreach (var selectionIDitem in SelectionID)
+                            {
+                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, MarketbookName, lstUserBets);
+                            }                     
                         }
-                            TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MarketbookName, lstUserBets);
+                      
+                        TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MarketbookName, lstUserBets);
                         
                            fancylab = objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy.Where(item => item.isMatched == true).ToList());
                            decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));

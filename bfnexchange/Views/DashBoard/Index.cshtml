@@ -26,14 +26,16 @@
 			<i class="collapse-icon fa fa-bars"></i>
 		</div>
 
-		<div class="balanceandliabailitynew pull-right">
+      
+
+		<div class="pull-right">
 			<div class="balanceandliabaility">
 
 				<ul class="navmain">
 
 					<li class="dropdown navmainli">
 
-						<a style="color:white;font-weight:500" href="#"> My Account &#9662; </a>
+						<a style="color:white;font-weight:500" href="#" onclick="getlabilty()"> My Account &#9662; </a>
 						<ul class="dropdown-menu" id="" style="display:none; ">
 							<li>
 								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color"><strong>@Model.Username</strong></a>
@@ -45,6 +47,7 @@
 
 							<li>
 								<a class="label navbar-label" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color">Lia: <span id="TotalLiabality" style="color:red;font-weight:700">@Model.CurrentLiabality</span></a>
+                                <button id="btnlabilty">Ref</button>
 							</li>
 							@if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
 							{
@@ -129,6 +132,10 @@
 			</div>
 
 		</div>
+
+        <div class="pull-right" style="margin-top:13px;margin-right:2px">
+            <input type="button" id="getbbb" onclick="getbalancedetail()" style="height:80%" value="B" class="btn-default" />
+        </div>
 	</div>
 
 	<div class="container">
@@ -260,7 +267,6 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		</div>
 	</div>
-
 </div>
 <div id='myModalCompletedMatchedBetsFacny' class='modal'>
 	<div class="modal-dialog">
@@ -275,6 +281,20 @@
 		</div>
 	</div>
 
+</div>
+
+<div id='myModalShowBlanceDetail' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">BlanceDetail </h4>
+        </div>
+        <div id="balancedetailscontent" class="modal-content">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
 </div>
 
 
@@ -300,13 +320,29 @@
             }
 
         });
-        CheckUserStatus();
+        //CheckUserStatus();
 
     });
 
+    function getbalancedetail(){
+        debugger;
+        $.ajax({
+            type: "GET",
+                url: "/DashBoard/GetBalnceDetails",
+               
+            success: function (result) {
+                debugger;
+                $("#myModalShowBlanceDetail").modal('show');
+                $("#balancedetailscontent").html(result);
+
+            }
+
+        });
+    };
+
      function CheckUserStatus(){
             try {
-                debugger;
+               
                 if(@LoggedinUserDetail.GetUserTypeID()==3 || @LoggedinUserDetail.GetUserTypeID()==2 ){
                     $.ajax({
                         type: "POST",
@@ -368,7 +404,7 @@
 
                     data: {  'marektbookID': marketbookID,'selectionID':selectionID },
                     success: function (result) {
-                        //debugger;
+                         debugger;
                         $("#completedmatcedbetscontentFancy").html(result);
                         $("#myModalCompletedMatchedBetsFacny").modal('show');
 
@@ -1207,6 +1243,12 @@
                 }
 
             });
+
+            function  getlabilty()
+            {
+                debugger;
+            }
+            
             HideLoader();
         });
 

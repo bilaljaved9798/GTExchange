@@ -23,8 +23,6 @@ using System.Text.RegularExpressions;
 using bfnexchange.HelperClasses;
 
 
-
-
 //using bfnexchange.Services.DBModel;
 
 namespace bfnexchange.Controllers
@@ -32,6 +30,7 @@ namespace bfnexchange.Controllers
 
     public class DashBoardController : Controller
     {
+        UserBetsUpdateUnmatcedBets objUserBets = new UserBetsUpdateUnmatcedBets();
         UserServicesClient objUsersServiceCleint = new UserServicesClient();
         AccessRightsbyUserType objAccessrightsbyUserType;
         BettingServiceClient client = new BettingServiceClient();
@@ -101,8 +100,9 @@ namespace bfnexchange.Controllers
 
 
                 objAccessrightsbyUserType.CurrentAvailableBalance = LoggedinUserDetail.CurrentAccountBalance + Convert.ToDouble(CurrentLiabality);
+                
 
-                   objAccessrightsbyUserType.Username = LoggedinUserDetail.GetUserName();
+                objAccessrightsbyUserType.Username = LoggedinUserDetail.GetUserName();
 
                 if ((bool)Session["firsttimeload"] == true)
                 {
@@ -123,43 +123,64 @@ namespace bfnexchange.Controllers
 
         public PartialViewResult GetBalnceDetails()
         {
+            //objAccessrightsbyUserType = new AccessRightsbyUserType();
             if (LoggedinUserDetail.GetUserID() > 0)
             {
-                Decimal CurrentAccountBalance = 0;
-                Decimal CurrentLiabality = 0;
+                double CurrentAccountBalance = 0;
+                string CurrentLiabality = "";
                 try
                 {
-                    CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
+                    LoggedinUserDetail.CurrentAccountBalance =Convert.ToDouble(objUsersServiceCleint.GetStartingBalance(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
+
+                    CurrentAccountBalance = Convert.ToDouble(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
                 }
                 catch (System.Exception ex)
                 {
 
                 }
-                List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
-
-                objAccessrightsbyUserType = new AccessRightsbyUserType();
-
-                objAccessrightsbyUserType = JsonConvert.DeserializeObject<AccessRightsbyUserType>(objUsersServiceCleint.GetAccessRightsbyUserType(LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
-                if (LoggedinUserDetail.GetUserTypeID() != 1)
+                if (LoggedinUserDetail.GetUserTypeID() == 3)
                 {
-                    LoggedinUserDetail.ShowTV = objUsersServiceCleint.GetShowTV(LoggedinUserDetail.GetUserID());
-                    List<HelperClasses.LiveTVChannels> lstTVChannels = JsonConvert.DeserializeObject<List<HelperClasses.LiveTVChannels>>(objUsersServiceCleint.GetLiveTVChanels(ConfigurationManager.AppSettings["PasswordForValidate"]));
-                    LoggedinUserDetail.TvChannels = lstTVChannels;
-                    if (lstUserLiabality.Count > 0)
-                    {
-                        CurrentLiabality = Convert.ToDecimal(lstUserLiabality.Sum(item => Convert.ToDecimal((item.Liabality))));
-                        objAccessrightsbyUserType.CurrentLiabality = CurrentLiabality.ToString("F2");
-                    }
-                    else
-                    {
-                        objAccessrightsbyUserType.CurrentLiabality = "0.00";
-                    }
+                    //objAccessrightsbyUserType.CurrentLiabality = "";
+                    double laboddmarket = 0;
+                    double othermarket = 0;
+                    List<UserBets> lstUserBets = JsonConvert.DeserializeObject<List<Models.UserBets>>(objUsersServiceCleint.GetUserbetsbyUserID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
+                    List<UserBets> lstUserBetsF = lstUserBets.Where(x => x.location != "9").ToList();
+                    List<UserBets> lstUserBetsfncy= lstUserBets.Where(x => x.location == "9").ToList();
+                    laboddmarket = objUserBets.GetLiabalityofCurrentUser(LoggedinUserDetail.GetUserID(), lstUserBetsF);
+                    othermarket = objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstUserBetsfncy);
+                    CurrentLiabality = (laboddmarket + othermarket).ToString("F2");
+                    ViewBag.CurrentLiabality = CurrentLiabality;
+
+
+                    LoggedinUserDetail.CurrentAvailableBalance= CurrentAccountBalance+Convert.ToDouble(CurrentLiabality);
+
 
                 }
-                string accountbalance = objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.UserID, ConfigurationManager.AppSettings["PasswordForValidate"]);
-                LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(accountbalance);
+                List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
 
-                objAccessrightsbyUserType.CurrentAvailableBalance = LoggedinUserDetail.CurrentAccountBalance + Convert.ToDouble(CurrentLiabality);
+               
+
+                objAccessrightsbyUserType = JsonConvert.DeserializeObject<AccessRightsbyUserType>(objUsersServiceCleint.GetAccessRightsbyUserType(LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
+                //if (LoggedinUserDetail.GetUserTypeID() != 1)
+                //{
+                //    LoggedinUserDetail.ShowTV = objUsersServiceCleint.GetShowTV(LoggedinUserDetail.GetUserID());
+                //    List<HelperClasses.LiveTVChannels> lstTVChannels = JsonConvert.DeserializeObject<List<HelperClasses.LiveTVChannels>>(objUsersServiceCleint.GetLiveTVChanels(ConfigurationManager.AppSettings["PasswordForValidate"]));
+                //    LoggedinUserDetail.TvChannels = lstTVChannels;
+                //    if (lstUserLiabality.Count > 0)
+                //    {
+                //        CurrentLiabality = Convert.ToDecimal(lstUserLiabality.Sum(item => Convert.ToDecimal((item.Liabality))));
+                //        objAccessrightsbyUserType.CurrentLiabality = CurrentLiabality.ToString("F2");
+                //    }
+                //    else
+                //    {
+                //        objAccessrightsbyUserType.CurrentLiabality = "0.00";
+                //    }
+
+                //}
+                //string accountbalance = objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.UserID, ConfigurationManager.AppSettings["PasswordForValidate"]);
+                //LoggedinUserDetail.CurrentAccountBalance = Convert.ToDouble(accountbalance);
+
+               // objAccessrightsbyUserType.CurrentAvailableBalance = LoggedinUserDetail.CurrentAccountBalance + Convert.ToDouble(CurrentLiabality);
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
                     decimal TotAdminAmount = 0;
@@ -208,9 +229,10 @@ namespace bfnexchange.Controllers
                             }
                         }                   
                     }
-
+                    decimal a = 0;
                     try
                     {
+                       
                         foreach (UserAccounts objuserAccounts in AgentCommission)
                         {
                             int commissionrate = Convert.ToInt32(objuserAccounts.ComissionRate);
@@ -228,15 +250,22 @@ namespace bfnexchange.Controllers
                     catch (System.Exception ex)
                     {
                     }
-                    decimal a = (-1 * (TotAdminAmount) + (-1 * TotAdmincommession));
-
+                    if (LoggedinUserDetail.IsCom == true)
+                    {
+                        a = (-1 * (TotAdminAmount) );
+                        ViewBag.commission = TotAdmincommession;
+                    }
+                    else
+                    {
+                         a = (-1 * (TotAdminAmount) + (-1 * TotAdmincommession));
+                    }
                     objAccessrightsbyUserType.NetBalance = a.ToString();
                   }
                 else
                 {
                     if (LoggedinUserDetail.GetUserTypeID() == 3)
                     {
-                        objAccessrightsbyUserType.NetBalance =  objUsersServiceCleint.GetProfitorLossbyUserID(LoggedinUserDetail.GetUserID(), false, ConfigurationManager.AppSettings["PasswordForValidate"]).ToString();
+                        ViewBag.NetBalance =  objUsersServiceCleint.GetProfitorLossbyUserID(LoggedinUserDetail.GetUserID(), false, ConfigurationManager.AppSettings["PasswordForValidate"]).ToString();
                     }
 
                     else
@@ -302,7 +331,7 @@ namespace bfnexchange.Controllers
                                 }
                             }
                             int createdbyid = objUsersServiceCleint.GetCreatedbyID(LoggedinUserDetail.GetUserID());
-
+                            string a = "";
                             List<UserAccounts> lstAccountsDonebyAdmin = JsonConvert.DeserializeObject<List<UserAccounts>>(objUsersServiceCleint.GetAccountsDataForAdmin(createdbyid, false, ConfigurationManager.AppSettings["PasswordForValidate"]));
                             if (lstAccountsDonebyAdmin.Count > 0)
                             {
@@ -321,8 +350,17 @@ namespace bfnexchange.Controllers
                             catch (System.Exception ex)
                             {
                             }
-                            string a = ((-1 * (TotAdminAmount) + (-1 * TotalAdminAmountWithoutMarkets) + (-1 * (SuperAmount1))) + AgentCommission).ToString();
-                            objAccessrightsbyUserType.NetBalance =  a;   
+                            if (LoggedinUserDetail.IsCom == true)
+                            {
+                                a = ((-1 * (TotAdminAmount) + (-1 * TotalAdminAmountWithoutMarkets) + (-1 * (SuperAmount1))) ).ToString();
+                                ViewBag.commission = AgentCommission;
+                            }
+                            else
+                            {
+                                a = ((-1 * (TotAdminAmount) + (-1 * TotalAdminAmountWithoutMarkets) + (-1 * (SuperAmount1))) + AgentCommission).ToString();
+                            }
+
+                            ViewBag.NetBalance =  a;   
                         }
                         else
                         {
@@ -404,7 +442,7 @@ namespace bfnexchange.Controllers
                                 }
                                 decimal a = (-1 * (TotAdminAmount) + (-1 * TotAdmincommession));
 
-                                objAccessrightsbyUserType.NetBalance = a.ToString();
+                                ViewBag.NetBalance = a.ToString();
                             }
                         }
 

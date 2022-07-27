@@ -17,7 +17,6 @@
         <input type="hidden" id="lblallLiabality" value="@ViewBag.totliabality">
         <div class="unmatched-bets">
             <div class="matched-unmatched-heading">
-
                 <label >Unmatched Bets </label> <label>@lstUnMatchedBets.Count </label>
                 <input type="button" id="btncancelUnmatchedBets" value="Cancel All" />
             </div>
@@ -172,9 +171,6 @@
                         $("#completedmatcedbetscontent").html(data);
                         $("#myModalCompletedMatchedBets").modal('show');
                        
-
-
-
                     }
                 });
                 //$("#completedmatcedbetscontent").html($(".allmatchedbets").html());
