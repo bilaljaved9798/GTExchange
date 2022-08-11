@@ -116,6 +116,11 @@ namespace globaltraders
                 cmbUsersCredit.ItemsSource = lstUsers;
                 cmbUsersCredit.DisplayMemberPath = "UserName";
                 cmbUsersCredit.SelectedValuePath = "ID";
+
+                cmbUsersCreditCom.IsSynchronizedWithCurrentItem = false;
+                cmbUsersCreditCom.ItemsSource = lstUsers;
+                cmbUsersCreditCom.DisplayMemberPath = "UserName";
+                cmbUsersCreditCom.SelectedValuePath = "ID";
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
                     ComboBoxItem matchtype = (ComboBoxItem)comboBox1.SelectedItem;
@@ -2429,357 +2434,7 @@ namespace globaltraders
             CreditUsersLoad();
         }
 
-        private void btnAddCredit_Click(object sender, RoutedEventArgs e)
-        {
-
-            if (txtAccountsTitle.Text.Length == 0)
-            {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Enter Title");
-                return;
-            }
-            if (txtBalanceAdd.Text.Length == 0)
-            {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Enter Balance");
-                return;
-            }
-            btnAddCredit.IsEnabled = false;
-            if (LoggedinUserDetail.GetUserTypeID() != 3 && (Convert.ToInt32(cmbUsersCredit.SelectedValue) > 0))
-            {
-                LoggedinUserDetail.CheckifUserLogin();
-
-                // if (LoggedinUserDetail.GetUserTypeID()==2 && AddedbyID != 73)
-                // {
-                //  HawalaID   = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                // }
-                //else
-                // {
-                //     if (LoggedinUserDetail.GetUserTypeID() == 1)
-                //     {
-                //         HawalaID= objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                //     }
-                // }
-
-                if (LoggedinUserDetail.GetUserTypeID() == 2)
-                {
-                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
-
-
-                    int AddedbyID = LoggedinUserDetail.GetUserID();
-                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID, LoggedinUserDetail.PasswordForValidate));
-                    decimal UserCurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
-
-                    if (chkIsCredit.IsChecked == true)
-                    {
-                        decimal UserStartBalance = Convert.ToDecimal(objUsersServiceCleint.GetStartingBalance(UserID, LoggedinUserDetail.PasswordForValidate));
-
-                        if ((Newaccountbalance + UserStartBalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
-                        {
-                            btnAddCredit.IsEnabled = true;
-                            Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString() + " to credit limit.");
-                            return;
-                        }
-                    }
-                    if ((UserCurrentBalance + Newaccountbalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
-                    {
-                        btnAddCredit.IsEnabled = true;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString());
-                        return;
-                    }
-                    if (Newaccountbalance > CurrentAccountBalance)
-                    {
-                        btnAddCredit.IsEnabled = true;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Account Balance is more than available balance.");
-                        return;
-                    }
-                    else
-                    {
-                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                        if (chkIsCredit.IsChecked == true)
-                        {
-
-                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
-                        }
-
-
-                        objAccountsService.AddtoUsersAccounts("Amount removed from your account ( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", "0.00", Newaccountbalance.ToString(), HawalaID, "", DateTime.Now, "", "", "","", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                        objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-
-                        LoggedinUserDetail.InsertActivityLog(HawalaID, "Added Balance " + Newaccountbalance.ToString() + "  to user ( " + cmbUsersCredit.Text + " )");
-                        btnAddCredit.IsEnabled = true;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
-                        CreditUsersLoad();
-                        txtAccountsTitle.Text = "";
-                        txtBalanceAdd.Text = "";
-                    }
-
-
-                }
-                if (LoggedinUserDetail.GetUserTypeID() == 8)
-                {
-                    LoggedinUserDetail.GetUserID();
-
-                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
-                    int AddedbyID = LoggedinUserDetail.GetUserID();
-                    int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
-                    objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                    if (HawalaID > 0)
-                    {
-                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                    }
-                    if (chkIsCredit.IsChecked == true)
-                    {
-
-                        objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        if (HawalaID > 0)
-                        {
-                            objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        }
-                        //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
-                    }
-                    objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "","", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                    LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
-                    btnAddCredit.IsEnabled = true;
-                    Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
-                    CreditUsersLoad();
-                    txtAccountsTitle.Text = "";
-                    txtBalanceAdd.Text = "";
-                }
-                if (LoggedinUserDetail.GetUserTypeID() == 9)
-                {
-                    LoggedinUserDetail.GetUserID();
-
-                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
-                    int AddedbyID = LoggedinUserDetail.GetUserID();
-                    int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
-                    objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                    if (HawalaID > 0)
-                    {
-                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                    }
-                    if (chkIsCredit.IsChecked == true)
-                    {
-
-                        objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        if (HawalaID > 0)
-                        {
-                            objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        }
-                        //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
-                    }
-                    objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "","", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                    LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
-                    btnAddCredit.IsEnabled = true;
-                    Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
-                    CreditUsersLoad();
-                    txtAccountsTitle.Text = "";
-                    txtBalanceAdd.Text = "";
-                }
-                else
-                {
-                    if (LoggedinUserDetail.GetUserTypeID() == 1)
-                    {
-                        int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
-                        int AddedbyID = LoggedinUserDetail.GetUserID();
-
-
-                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
-                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                        if (HawalaID > 0)
-                        {
-                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                        }
-                        if (chkIsCredit.IsChecked == true)
-                        {
-
-                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            if (HawalaID > 0)
-                            {
-                                objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            }
-                            //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
-                        }
-                        objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "","","", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                        objUsersServiceCleint.UpdateAccountBalacnebyUser(AddedbyID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
-                        btnAddCredit.IsEnabled = true;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
-                        CreditUsersLoad();
-                        txtAccountsTitle.Text = "";
-                        txtBalanceAdd.Text = "";
-                    }
-                }
-            }
-        }
-
-        private void btnRemovecredit_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtAccountsTitle.Text.Length == 0)
-            {
-                MessageBox.Show("Enter Title");
-                return;
-            }
-            if (txtBalanceAdd.Text.Length == 0)
-            {
-                MessageBox.Show("Enter Balance");
-                return;
-            }
-            btnRemovecredit.IsEnabled = false;
-            LoggedinUserDetail.CheckifUserLogin();
-            if (txtBalanceAdd.Text.Length > 0)
-            {
-                if (LoggedinUserDetail.GetUserTypeID() != 3 && (Convert.ToInt32(cmbUsersCredit.SelectedValue) > 0))
-                {
-                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
-                    int AddedbyID = LoggedinUserDetail.GetUserID();
-
-                    if (LoggedinUserDetail.GetUserTypeID() == 2)
-                    {
-                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID, LoggedinUserDetail.PasswordForValidate));
-                        Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
-                        if (Newaccountbalance > AlreadyBalance)
-                        {
-                            btnRemovecredit.IsEnabled = true;
-                            Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
-                            return;
-                        }
-                        objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-
-                        objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "","", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                        objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                        if (chkIsCredit.IsChecked == true)
-                        {
-
-                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
-                        }
-                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
-                        if (LoggedinUserDetail.GetUserTypeID() == 2)
-                        {
-                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            LoggedinUserDetail.InsertActivityLog(HawalaID, "Added Balance " + Newaccountbalance.ToString() + "  to user ( " + LoggedinUserDetail.GetUserName().ToString() + " )");
-                        }
-                        btnRemovecredit.IsEnabled = true;
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Removed");
-                        CreditUsersLoad();
-                        txtAccountsTitle.Text = "";
-                        txtBalanceAdd.Text = "";
-
-                    }
-                    else
-                    {
-                        if (LoggedinUserDetail.GetUserTypeID() == 8)
-                        {
-
-                            int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                            int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
-                            Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                            Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
-                            //  Decimal CurrentAccountBalanceHawala = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID));
-                            Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
-                            if (Newaccountbalance > AlreadyBalance)
-                            {
-                                btnRemovecredit.IsEnabled = true;
-                                Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
-                                return;
-                            }
-                            objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                            objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", Newaccountbalance.ToString(), "0.00", AddedbyID, "", DateTime.Now, "","" ,"", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                            objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            if (HawalaID > 0)
-                            {
-                                objUsersServiceCleint.AddCredittoUser(0, HawalaID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                                // objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "", "", CurrentAccountBalanceHawala, chkIsCredit.Checked, "", "");
-                                objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            }
-                            if (chkIsCredit.IsChecked == true)
-                            {
-
-                                objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                if (HawalaID > 0)
-                                {
-                                    objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                }
-                                // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
-                            }
-                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                            LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
-                            btnRemovecredit.IsEnabled = true;
-                            MessageBox.Show("Successfully Removed");
-                            CreditUsersLoad();
-                            txtAccountsTitle.Text = "";
-                            txtBalanceAdd.Text = "";
-                        }
-                        else
-                        {
-                            if (LoggedinUserDetail.GetUserTypeID() == 1)
-                            {
-                                int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
-                                Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
-                                Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
-                                //  Decimal CurrentAccountBalanceHawala = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID));
-                                Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
-                                if (Newaccountbalance > AlreadyBalance)
-                                {
-                                    btnRemovecredit.IsEnabled = true;
-                                    Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
-                                    return;
-                                }
-                                objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                                objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", Newaccountbalance.ToString(), "0.00", AddedbyID, "", DateTime.Now, "","", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
-                                objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                if (HawalaID > 0)
-                                {
-                                    objUsersServiceCleint.AddCredittoUser(0, HawalaID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
-                                    // objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "", "", CurrentAccountBalanceHawala, chkIsCredit.Checked, "", "");
-                                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                }
-                                if (chkIsCredit.IsChecked == true)
-                                {
-
-                                    objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                    if (HawalaID > 0)
-                                    {
-                                        objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                    }
-                                    // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
-                                }
-                                objUsersServiceCleint.UpdateAccountBalacnebyUser(AddedbyID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
-                                LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
-                                btnRemovecredit.IsEnabled = true;
-                                MessageBox.Show("Successfully Removed");
-                                CreditUsersLoad();
-                                txtAccountsTitle.Text = "";
-                                txtBalanceAdd.Text = "";
-                            }
-                        }
-                    }
-                }
-                else
-                {
-
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("Please enter amount");
-            }
-        }
+       
         public void LoadBalanceofTransferTo()
         {
             try
@@ -5116,6 +4771,551 @@ namespace globaltraders
         {
 
         }
+        private void btnAddCredit_Click(object sender, RoutedEventArgs e)
+        {
 
-       
+            if (txtAccountsTitle.Text.Length == 0)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Enter Title");
+                return;
+            }
+            if (txtBalanceAdd.Text.Length == 0)
+            {
+                Xceed.Wpf.Toolkit.MessageBox.Show("Enter Balance");
+                return;
+            }
+            btnAddCredit.IsEnabled = false;
+            if (LoggedinUserDetail.GetUserTypeID() != 3 && (Convert.ToInt32(cmbUsersCredit.SelectedValue) > 0))
+            {
+                LoggedinUserDetail.CheckifUserLogin();
+
+                // if (LoggedinUserDetail.GetUserTypeID()==2 && AddedbyID != 73)
+                // {
+                //  HawalaID   = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                // }
+                //else
+                // {
+                //     if (LoggedinUserDetail.GetUserTypeID() == 1)
+                //     {
+                //         HawalaID= objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                //     }
+                // }
+
+                if (LoggedinUserDetail.GetUserTypeID() == 2)
+                {
+                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+
+
+                    int AddedbyID = LoggedinUserDetail.GetUserID();
+                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID, LoggedinUserDetail.PasswordForValidate));
+                    decimal UserCurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
+
+                    if (chkIsCredit.IsChecked == true)
+                    {
+                        decimal UserStartBalance = Convert.ToDecimal(objUsersServiceCleint.GetStartingBalance(UserID, LoggedinUserDetail.PasswordForValidate));
+
+                        if ((Newaccountbalance + UserStartBalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
+                        {
+                            btnAddCredit.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString() + " to credit limit.");
+                            return;
+                        }
+                    }
+                    if ((UserCurrentBalance + Newaccountbalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
+                    {
+                        btnAddCredit.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString());
+                        return;
+                    }
+                    if (Newaccountbalance > CurrentAccountBalance)
+                    {
+                        btnAddCredit.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Account Balance is more than available balance.");
+                        return;
+                    }
+                    else
+                    {
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        if (chkIsCredit.IsChecked == true)
+                        {
+
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                        }
+
+
+                        objAccountsService.AddtoUsersAccounts("Amount removed from your account ( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", "0.00", Newaccountbalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                        objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+
+                        LoggedinUserDetail.InsertActivityLog(HawalaID, "Added Balance " + Newaccountbalance.ToString() + "  to user ( " + cmbUsersCredit.Text + " )");
+                        btnAddCredit.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                        CreditUsersLoad();
+                        txtAccountsTitle.Text = "";
+                        txtBalanceAdd.Text = "";
+                    }
+
+
+                }
+                if (LoggedinUserDetail.GetUserTypeID() == 8)
+                {
+                    LoggedinUserDetail.GetUserID();
+
+                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+                    int AddedbyID = LoggedinUserDetail.GetUserID();
+                    int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                    objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                    if (HawalaID > 0)
+                    {
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                    }
+                    if (chkIsCredit.IsChecked == true)
+                    {
+
+                        objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        if (HawalaID > 0)
+                        {
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        }
+                        //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                    }
+                    objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                    LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
+                    btnAddCredit.IsEnabled = true;
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                    CreditUsersLoad();
+                    txtAccountsTitle.Text = "";
+                    txtBalanceAdd.Text = "";
+                }
+                if (LoggedinUserDetail.GetUserTypeID() == 9)
+                {
+                    LoggedinUserDetail.GetUserID();
+
+                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+                    int AddedbyID = LoggedinUserDetail.GetUserID();
+                    int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                    int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                    Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                    Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                    objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                    if (HawalaID > 0)
+                    {
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                    }
+                    if (chkIsCredit.IsChecked == true)
+                    {
+
+                        objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        if (HawalaID > 0)
+                        {
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        }
+                        //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                    }
+                    objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                    LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
+                    btnAddCredit.IsEnabled = true;
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                    CreditUsersLoad();
+                    txtAccountsTitle.Text = "";
+                    txtBalanceAdd.Text = "";
+                }
+                else
+                {
+                    if (LoggedinUserDetail.GetUserTypeID() == 1)
+                    {
+                        int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+                        int AddedbyID = LoggedinUserDetail.GetUserID();
+
+
+                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        if (HawalaID > 0)
+                        {
+                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        }
+                        if (chkIsCredit.IsChecked == true)
+                        {
+
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            if (HawalaID > 0)
+                            {
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            }
+                            //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                        }
+                        objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                        objUsersServiceCleint.UpdateAccountBalacnebyUser(AddedbyID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCredit.Text + " )");
+                        btnAddCredit.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                        CreditUsersLoad();
+                        txtAccountsTitle.Text = "";
+                        txtBalanceAdd.Text = "";
+                    }
+                }
+            }
+        }
+
+
+        private void btnRemovecredit_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtAccountsTitle.Text.Length == 0)
+            {
+                MessageBox.Show("Enter Title");
+                return;
+            }
+            if (txtBalanceAdd.Text.Length == 0)
+            {
+                MessageBox.Show("Enter Balance");
+                return;
+            }
+            btnRemovecredit.IsEnabled = false;
+            LoggedinUserDetail.CheckifUserLogin();
+            if (txtBalanceAdd.Text.Length > 0)
+            {
+                if (LoggedinUserDetail.GetUserTypeID() != 3 && (Convert.ToInt32(cmbUsersCredit.SelectedValue) > 0))
+                {
+                    int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+                    int AddedbyID = LoggedinUserDetail.GetUserID();
+
+                    if (LoggedinUserDetail.GetUserTypeID() == 2)
+                    {
+                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID, LoggedinUserDetail.PasswordForValidate));
+                        Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
+                        if (Newaccountbalance > AlreadyBalance)
+                        {
+                            btnRemovecredit.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
+                            return;
+                        }
+                        objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+
+                        objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                        objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        if (chkIsCredit.IsChecked == true)
+                        {
+
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
+                        }
+                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
+                        if (LoggedinUserDetail.GetUserTypeID() == 2)
+                        {
+                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            LoggedinUserDetail.InsertActivityLog(HawalaID, "Added Balance " + Newaccountbalance.ToString() + "  to user ( " + LoggedinUserDetail.GetUserName().ToString() + " )");
+                        }
+                        btnRemovecredit.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Removed");
+                        CreditUsersLoad();
+                        txtAccountsTitle.Text = "";
+                        txtBalanceAdd.Text = "";
+
+                    }
+                    else
+                    {
+                        if (LoggedinUserDetail.GetUserTypeID() == 8)
+                        {
+
+                            int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                            int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                            Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                            Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
+                            //  Decimal CurrentAccountBalanceHawala = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID));
+                            Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
+                            if (Newaccountbalance > AlreadyBalance)
+                            {
+                                btnRemovecredit.IsEnabled = true;
+                                Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
+                                return;
+                            }
+                            objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                            objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", Newaccountbalance.ToString(), "0.00", AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                            objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            if (HawalaID > 0)
+                            {
+                                objUsersServiceCleint.AddCredittoUser(0, HawalaID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                                // objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "", "", CurrentAccountBalanceHawala, chkIsCredit.Checked, "", "");
+                                objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            }
+                            if (chkIsCredit.IsChecked == true)
+                            {
+
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                if (HawalaID > 0)
+                                {
+                                    objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                }
+                                // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
+                            }
+                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
+                            btnRemovecredit.IsEnabled = true;
+                            MessageBox.Show("Successfully Removed");
+                            CreditUsersLoad();
+                            txtAccountsTitle.Text = "";
+                            txtBalanceAdd.Text = "";
+                        }
+                        else
+                        {
+                            if (LoggedinUserDetail.GetUserTypeID() == 1)
+                            {
+                                int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                                Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                                Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
+                                //  Decimal CurrentAccountBalanceHawala = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID));
+                                Decimal AlreadyBalance = Convert.ToDecimal(lblAccountBalanceAddRemove.Content);
+                                if (Newaccountbalance > AlreadyBalance)
+                                {
+                                    btnRemovecredit.IsEnabled = true;
+                                    Xceed.Wpf.Toolkit.MessageBox.Show("Amount is greater than current balance.");
+                                    return;
+                                }
+                                objUsersServiceCleint.AddCredittoUser(0, UserID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                                objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + "(UserID=" + UserID.ToString() + ") )", Newaccountbalance.ToString(), "0.00", AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCredit.IsChecked.Value, "", "", "", "", "");
+                                objUsersServiceCleint.UpdateAccountBalacnebyUser(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                if (HawalaID > 0)
+                                {
+                                    objUsersServiceCleint.AddCredittoUser(0, HawalaID, AddedbyID, DateTime.Now, Newaccountbalance, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                                    // objAccountsService.AddtoUsersAccounts("Amount Added to your account( " + txtAccountsTitle.Text + " for " + cmbUsersCredit.Text + " )", Newaccountbalance.ToString(), "0.00", HawalaID, "", DateTime.Now, "", "", CurrentAccountBalanceHawala, chkIsCredit.Checked, "", "");
+                                    objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                }
+                                if (chkIsCredit.IsChecked == true)
+                                {
+
+                                    objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                    if (HawalaID > 0)
+                                    {
+                                        objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                    }
+                                    // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID,-1* Newaccountbalance);
+                                }
+                                objUsersServiceCleint.UpdateAccountBalacnebyUser(AddedbyID, -1 * Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                LoggedinUserDetail.InsertActivityLog(AddedbyID, "Removed Balance " + Newaccountbalance.ToString() + "  from user ( " + cmbUsersCredit.Text + " )");
+                                btnRemovecredit.IsEnabled = true;
+                                MessageBox.Show("Successfully Removed");
+                                CreditUsersLoad();
+                                txtAccountsTitle.Text = "";
+                                txtBalanceAdd.Text = "";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please enter amount");
+            }
+        }
+        private void btnAddCreditCom_Click(object sender, RoutedEventArgs e)
+        {            
+
+                if (txtAccountsTitleCom.Text.Length == 0)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Enter Title");
+                    return;
+                }
+                if (txtBalanceAddCom.Text.Length == 0)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Enter Balance");
+                    return;
+                }
+                btnAddCredit.IsEnabled = false;
+                if (LoggedinUserDetail.GetUserTypeID() != 3 && (Convert.ToInt32(cmbUsersCreditCom.SelectedValue) > 0))
+                {
+                    LoggedinUserDetail.CheckifUserLogin();
+
+                    // if (LoggedinUserDetail.GetUserTypeID()==2 && AddedbyID != 73)
+                    // {
+                    //  HawalaID   = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                    // }
+                    //else
+                    // {
+                    //     if (LoggedinUserDetail.GetUserTypeID() == 1)
+                    //     {
+                    //         HawalaID= objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                    //     }
+                    // }
+
+                    if (LoggedinUserDetail.GetUserTypeID() == 2)
+                    {
+                        int UserID = Convert.ToInt32(cmbUsersCreditCom.SelectedValue);
+
+
+                        int AddedbyID = LoggedinUserDetail.GetUserID();
+                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(HawalaID, LoggedinUserDetail.PasswordForValidate));
+                        decimal UserCurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(UserID, LoggedinUserDetail.PasswordForValidate));
+
+                        if (chkIsCreditCom.IsChecked == true)
+                        {
+                            decimal UserStartBalance = Convert.ToDecimal(objUsersServiceCleint.GetStartingBalance(UserID, LoggedinUserDetail.PasswordForValidate));
+
+                            if ((Newaccountbalance + UserStartBalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
+                            {
+                                btnAddCreditCom.IsEnabled = true;
+                                Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString() + " to credit limit.");
+                                return;
+                            }
+                        }
+                        if ((UserCurrentBalance + Newaccountbalance) > LoggedinUserDetail.MaxBalanceTransferLimit && LoggedinUserDetail.GetUserID() != 73)
+                        {
+                            btnAddCreditCom.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("You are not allowed to add more than " + LoggedinUserDetail.MaxBalanceTransferLimit.ToString());
+                            return;
+                        }
+                        if (Newaccountbalance > CurrentAccountBalance)
+                        {
+                            btnAddCreditCom.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Account Balance is more than available balance.");
+                            return;
+                        }
+                        else
+                        {
+                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitle.Text, chkIsCredit.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                            if (chkIsCreditCom.IsChecked == true)
+                            {
+
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                // objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                            }
+
+
+                            objAccountsService.AddtoUsersAccounts("Amount removed from your account ( " + txtAccountsTitleCom.Text + " for " + cmbUsersCreditCom.Text + " )", "0.00", Newaccountbalance.ToString(), HawalaID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCreditCom.IsChecked.Value, "", "", "", "", "");
+                            objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+
+                            LoggedinUserDetail.InsertActivityLog(HawalaID, "Added Balance " + Newaccountbalance.ToString() + "  to user ( " + cmbUsersCreditCom.Text + " )");
+                            btnAddCredit.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                            CreditUsersLoad();
+                            txtAccountsTitleCom.Text = "";
+                            txtBalanceAddCom.Text = "";
+                        }
+
+
+                    }
+                    if (LoggedinUserDetail.GetUserTypeID() == 8)
+                    {
+                        LoggedinUserDetail.GetUserID();
+
+                        int UserID = Convert.ToInt32(cmbUsersCredit.SelectedValue);
+                        int AddedbyID = LoggedinUserDetail.GetUserID();
+                        int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAdd.Text);
+                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        if (HawalaID > 0)
+                        {
+                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        }
+                        if (chkIsCreditCom.IsChecked == true)
+                        {
+
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            if (HawalaID > 0)
+                            {
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            }
+                            //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                        }
+                        objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitleCom.Text + " for " + cmbUsersCreditCom.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCreditCom.IsChecked.Value, "", "", "", "", "");
+                        objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCreditCom.Text + " )");
+                        btnAddCreditCom.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                        CreditUsersLoad();
+                        txtAccountsTitleCom.Text = "";
+                        txtBalanceAddCom.Text = "";
+                    }
+                    if (LoggedinUserDetail.GetUserTypeID() == 9)
+                    {
+                        LoggedinUserDetail.GetUserID();
+
+                        int UserID = Convert.ToInt32(cmbUsersCreditCom.SelectedValue);
+                        int AddedbyID = LoggedinUserDetail.GetUserID();
+                        int HawalaIDSuper = objUsersServiceCleint.GetHawalaAccountIDbyUserID(AddedbyID);
+                        int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                        Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAddCom.Text);
+                        Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                        objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        if (HawalaID > 0)
+                        {
+                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                        }
+                        if (chkIsCreditCom.IsChecked == true)
+                        {
+
+                            objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            if (HawalaID > 0)
+                            {
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            }
+                            //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                        }
+                        objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitleCom.Text + " for " + cmbUsersCreditCom.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCreditCom.IsChecked.Value, "", "", "", "", "");
+                        objUsersServiceCleint.UpdateAccountBalacnebyUser(HawalaIDSuper, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                        LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCreditCom.Text + " )");
+                        btnAddCreditCom.IsEnabled = true;
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                        CreditUsersLoad();
+                        txtAccountsTitleCom.Text = "";
+                        txtBalanceAddCom.Text = "";
+                    }
+                    else
+                    {
+                        if (LoggedinUserDetail.GetUserTypeID() == 1)
+                        {
+                            int UserID = Convert.ToInt32(cmbUsersCreditCom.SelectedValue);
+                            int AddedbyID = LoggedinUserDetail.GetUserID();
+
+
+                            int HawalaID = objUsersServiceCleint.GetHawalaAccountIDbyUserID(UserID);
+                            Decimal Newaccountbalance = Convert.ToDecimal(txtBalanceAddCom.Text);
+                            Decimal CurrentAccountBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(AddedbyID, LoggedinUserDetail.PasswordForValidate));
+                            objUsersServiceCleint.AddCredittoUser(Newaccountbalance, UserID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                            if (HawalaID > 0)
+                            {
+                                objUsersServiceCleint.AddCredittoUser(Newaccountbalance, HawalaID, AddedbyID, DateTime.Now, 0, true, txtAccountsTitleCom.Text, chkIsCreditCom.IsChecked.Value, LoggedinUserDetail.PasswordForValidate);
+                            }
+                            if (chkIsCredit.IsChecked == true)
+                            {
+
+                                objUsersServiceCleint.UpdateStartBalancebyUserID(UserID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                if (HawalaID > 0)
+                                {
+                                    objUsersServiceCleint.UpdateStartBalancebyUserID(HawalaID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                                }
+                                //  objUsersServiceCleint.UpdateAccountsOpeningBalance(UserID, Newaccountbalance);
+                            }
+                            objAccountsService.AddtoUsersAccounts("Amount removed from your account( " + txtAccountsTitleCom.Text + " for " + cmbUsersCreditCom.Text + "(UserID=" + UserID.ToString() + ") )", "0.00", Newaccountbalance.ToString(), AddedbyID, "", DateTime.Now, "", "", "", "", CurrentAccountBalance, chkIsCreditCom.IsChecked.Value, "", "", "", "", "");
+                            objUsersServiceCleint.UpdateAccountBalacnebyUser(AddedbyID, Newaccountbalance, LoggedinUserDetail.PasswordForValidate);
+                            LoggedinUserDetail.InsertActivityLog(AddedbyID, "Added Balance " + Newaccountbalance.ToString() + " to user ( " + cmbUsersCreditCom.Text + " )");
+                            btnAddCreditCom.IsEnabled = true;
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Successfully Added.");
+                            CreditUsersLoad();
+                            txtAccountsTitleCom.Text = "";
+                            txtBalanceAddCom.Text = "";
+                        }
+                    }
+                
+            }
+        }
     } }

@@ -26,81 +26,80 @@
 			<i class="collapse-icon fa fa-bars"></i>
 		</div>
 
-      
 
-		<div class="pull-right">
+
+		<div class="balanceandliabailitynew pull-right">
 			<div class="balanceandliabaility">
 
 				<ul class="navmain">
 
 					<li class="dropdown navmainli">
 
-						<a style="color:white;font-weight:500" href="#" onclick="getlabilty()"> My Account &#9662; </a>
+						<a style="color:white;font-weight:500" href="#"> My Account &#9662; </a>
 						<ul class="dropdown-menu" id="" style="display:none; ">
 							<li>
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color"><strong>@Model.Username</strong></a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White"><strong>@Model.Username</strong></a>
 							</li>
 
 							<li>
-								<a class="label navbar-label" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color">B: <span id="TotalLiabality">@Model.CurrentAvailableBalance</span></a>
+								<a class="label navbar-label" style="font-weight:500;background-color:@ViewBag.backgrod;color:White">B: <span id="TotalLiabality">@Model.CurrentAvailableBalance</span></a>
 							</li>
 
 							<li>
-								<a class="label navbar-label" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color">Lia: <span id="TotalLiabality" style="color:red;font-weight:700">@Model.CurrentLiabality</span></a>
-                                <button id="btnlabilty">Ref</button>
+								<a class="label navbar-label" style="font-weight:500;background-color:@ViewBag.backgrod;color:White">Lia: <span id="TotalLiabality" style="color:red;font-weight:700">@Model.CurrentLiabality</span></a>
 							</li>
 							@if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
 							{
 								<li>
-									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewCreateUser('CreateUser')">Manage User</a>
+									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewCreateUser('CreateUser')">Manage User</a>
 								</li>
 
 							}
 							@if (Model.ViewActivityofUser == true)
 							{
 								<li>
-									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewbyid('ViewActivity')" value="">View Activity</a>
+									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewbyid('ViewActivity')" value="">View Activity</a>
 								</li>
 							}
 							@if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
 							{
 								<li>
-									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewAddCredit('AddCredit')" value="Add/Remove credit">Add/Remove credit</a>
+									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewAddCredit('AddCredit')" value="Add/Remove credit">Add/Remove credit</a>
 
 								</li>
 							}
 							@*@if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8)
-								{
-									<li>
-										<a class="navbar-buttons lilabel" style="color:white;font-weight:700" onclick="LoadPartialViewAddCredit('Ledger')" value="View Ledger">Ledger/Statement</a>
-									</li>
-								}*@
+							{
+								<li>
+									<a class="navbar-buttons lilabel" style="color:white;font-weight:700" onclick="LoadPartialViewAddCredit('Ledger')" value="View Ledger">Ledger/Statement</a>
+								</li>
+							}*@
 
 							@*@if (Model.ViewLedgerofUsers == true)
-								{*@
+							{*@
 							<li>
-								<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewAddCredit('Ledger')" value="View Ledger">Ledger/Statement</a>
+								<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewAddCredit('Ledger')" value="View Ledger">Ledger/Statement</a>
 							</li>
 
 							<li>
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" href="/Accounts/MyBets" target="_blank" value="View Ledger">My Bets</a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" href="/Accounts/MyBets" target="_blank" value="View Ledger">My Bets</a>
 							</li>
 							<li>
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" href="/Accounts/pl" target="_blank" value="View Ledger">Profit & Loss</a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" href="/Accounts/pl" target="_blank" value="View Ledger">Profit & Loss</a>
 
 							</li>
 
 							@if (LoggedinUserDetail.GetUserTypeID() == 1)
 							{
 								<li>
-									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" href="/Accounts/PlusMinusSummery" target="_blank" value="View Ledger">Plus & Minus Summery</a>
+									<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" href="/Accounts/PlusMinusSummery" target="_blank" value="View Ledger">Plus & Minus Summery</a>
 								</li>
 							}
 							@if (LoggedinUserDetail.GetUserTypeID() == 1)
 							{
 
 								<li>
-									<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewbyid('PoundRate')" value="">Set Pound Rate</a>
+									<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewbyid('PoundRate')" value="">Set Pound Rate</a>
 
 								</li>
 							}
@@ -109,20 +108,20 @@
 							@if (LoggedinUserDetail.GetUserTypeID() == 1)
 							{
 								<li>
-									<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="LoadPartialViewbyid('FancysettingsandResultPost')" value="">Fancy Result Post</a>
+									<a class="navbar-buttons " style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="LoadPartialViewbyid('FancysettingsandResultPost')" value="">Fancy Result Post</a>
 
 								</li>
 							}
 							<li>
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="ShowResetPassword()" value="Reset Password">Change Password</a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="ShowResetPassword()" value="Reset Password">Change Password</a>
 
 							</li>
 							<li>
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" href="/Accounts/UserActivites" target="_blank" value="Reset Password">Activity Log</a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" href="/Accounts/UserActivites" target="_blank" value="Reset Password">Activity Log</a>
 
 							</li>
 							<li class="logoutlink">
-								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:@ViewBag.color" onclick="gotosignout()" value="">Log Out</a>
+								<a class="navbar-buttons" style="font-weight:500;background-color:@ViewBag.backgrod;color:White" onclick="gotosignout()" value="">Log Out</a>
 
 							</li>
 						</ul>
@@ -133,9 +132,10 @@
 
 		</div>
 
-        <div class="pull-right" style="margin-top:13px;margin-right:2px">
-            <input type="button" id="getbbb" onclick="getbalancedetail()" style="height:80%" value="B" class="btn-default" />
-        </div>
+		<div class="pull-right" style="margin-top:13px;margin-right:2px">
+			<input type="button" id="getbbb" onclick="getbalancedetail()" style="height:80%" value="B" class="btn-default" />
+		</div>
+
 	</div>
 
 	<div class="container">
@@ -267,6 +267,7 @@
 			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		</div>
 	</div>
+
 </div>
 <div id='myModalCompletedMatchedBetsFacny' class='modal'>
 	<div class="modal-dialog">
@@ -282,19 +283,18 @@
 	</div>
 
 </div>
-
 <div id='myModalShowBlanceDetail' class='modal'>
-    <div class="modal-dialog">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">BlanceDetail </h4>
-        </div>
-        <div id="balancedetailscontent" class="modal-content">
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title">Balance Details</h4>
+		</div>
+		<div id="balancedetailscontent" class="modal-content">
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		</div>
+	</div>
 </div>
 
 
@@ -302,6 +302,7 @@
 
 
     $(document).ready(function () {
+      
 		$(".sidebar-collapse").trigger('click')
 
 		$(".sidebar-collapse").click(function () {
@@ -320,25 +321,25 @@
             }
 
         });
-        //CheckUserStatus();
+        CheckUserStatus();
 
-    });
+	});
 
-    function getbalancedetail(){
-        debugger;
-        $.ajax({
-            type: "GET",
-                url: "/DashBoard/GetBalnceDetails",
-               
-            success: function (result) {
-                debugger;
-                $("#myModalShowBlanceDetail").modal('show');
-                $("#balancedetailscontent").html(result);
+	function getbalancedetail() {
+		debugger;
+		$.ajax({
+			type: "GET",
+			url: "/DashBoard/GetBalnceDetails",
 
-            }
+			success: function (result) {
+				debugger;
+				$("#myModalShowBlanceDetail").modal('show');
+				$("#balancedetailscontent").html(result);
 
-        });
-    };
+			}
+
+		});
+	};
 
      function CheckUserStatus(){
             try {
@@ -404,7 +405,7 @@
 
                     data: {  'marektbookID': marketbookID,'selectionID':selectionID },
                     success: function (result) {
-                         debugger;
+                        //debugger;
                         $("#completedmatcedbetscontentFancy").html(result);
                         $("#myModalCompletedMatchedBetsFacny").modal('show');
 
@@ -496,13 +497,7 @@
     }
 
     $(document).ready(function () {
-
-
        //CheckUserStatus();
-
-
-
-
 
         LoadMarketView('MarketView');
         $("#btnCheckPassword").click(function () {
@@ -1243,12 +1238,6 @@
                 }
 
             });
-
-            function  getlabilty()
-            {
-                debugger;
-            }
-            
             HideLoader();
         });
 

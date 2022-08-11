@@ -37,22 +37,23 @@
 
 		<div class="single-item mainslider" >
 			<div>
-				<img class="sliderimg" src=" ~/Content/Images/banner_middle_home_page_1920x800_2020_11_0.png" />
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 			<div>
-				<img class="sliderimg"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfhrqVBL-0hEtWOj5N9Da6Nh23igvGt_1kKA&usqp=CAU" />
+				@*<img class="sliderimg"  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfhrqVBL-0hEtWOj5N9Da6Nh23igvGt_1kKA&usqp=CAU" />*@
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 			<div>
-				<img class="sliderimg"  src="https://www.androidpolice.com/wp-content/uploads/2020/12/15/Wallpaper-of-the-Week-2020-4-scaled.jpg" />
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 			<div>
-				<img class="sliderimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfhrqVBL-0hEtWOj5N9Da6Nh23igvGt_1kKA&usqp=CAU" />
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 			<div>
-				<img class="sliderimg" src="https://www.androidpolice.com/wp-content/uploads/2020/12/15/Wallpaper-of-the-Week-2020-4-scaled.jpg" />
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 			<div>
-				<img class="sliderimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfhrqVBL-0hEtWOj5N9Da6Nh23igvGt_1kKA&usqp=CAU" />
+				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
 		</div>
 	</div>
@@ -150,6 +151,9 @@
 				</span>
 			</div>
 			<div class="sporthighlightsuldiv">
+
+
+
 				<ul class="inplaymatchheading">
 					@{
 						var line = Model.AllMarkets.GroupBy(info => info.CategoryName).Select(group => new
@@ -157,51 +161,48 @@
 							Metric = group.Key,
 							Count = group.Count()
 						});
-						
 
 						List<string> eventtypes = Model.AllMarkets.Select(x => x.CategoryName).Distinct().ToList();
-
 						foreach (var item in eventtypes)
 						{
 					<li role="presentation">
 						@if (item == "Cricket")
 						{
 
-						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink" id="inplaymatchheading@(item.Trim())" style="color:black; font-weight:bold; font-size:14px;">
+						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())" >
 							<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
-							@item  (@line.Select(x => x.Count).FirstOrDefault())
-
+							@item (@line.Select(x => x.Count).FirstOrDefault())
 						</a>
 						}
-							@if (item == "Horse Racing")
-							{
-					<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink" id="inplaymatchheadingHorse" style="color:black;font-weight:bold; font-size:14px;">
-						<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
-						Horse (@line.Select(x => x.Count).Skip(1).Take(1).FirstOrDefault())
-					</a>
+						@if (item == "Horse Racing")
+						{
+						<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingHorse">
+							<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
+							Horse (@line.Select(x => x.Count).Skip(3).Take(1).FirstOrDefault())
+						</a>
 						}
 						@if (item == "Greyhound Racing")
 						{
-					<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink" id="inplaymatchheadingGreyhound" style="color:black;font-weight:bold; font-size:14px;">
-						<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
-						Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
-					</a>
+						<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingGreyhound">
+							<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
+							Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+						</a>
 						}
 						@if (item == "Soccer")
 						{
-							<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink" id="inplaymatchheading@(item.Trim())" style="color:black; font-weight:bold; font-size:14px;">
-								<i><img src="~/Content/Images/soc.svg" width="30" height="30" /></i>
+						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())" >
+							<i><img src="~/Content/Images/soc.svg" width="30" height="30" /></i>
 
-								@item
-							</a>
+							@item (@line.Select(x => x.Count).Skip(1).Take(1).FirstOrDefault())
+						</a>
 						}
 						@if (item == "Tennis")
 						{
-							<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink" id="inplaymatchheading@(item.Trim())" style="color:black;font-weight:bold;  font-size:14px;">
-								<i><img src="~/Content/Images/tenn.svg" width="30" height="30" /></i>
+						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
+							<i><img src="~/Content/Images/tenn.svg" width="30" height="30" /></i>
 
-								@item
-							</a>
+							@item (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+						</a>
 						}
 
 
@@ -211,7 +212,13 @@
 						}
 					}
 				</ul>
+
+
 				<div class="col-md-12 no-padding">
+
+
+
+
 
 					@{
 						foreach (var item in eventtypes)
@@ -239,7 +246,7 @@
 									foreach (var matchitem in lstMatchesbytype)
 									{
 								<div class="inplaydatarow">
-									
+
 									@if (item == "Horse Racing" || item == "Greyhound Racing")
 									{
 										<div class="inplaymatchname">
@@ -254,13 +261,40 @@
 										</div>
 									}
 
+
 									<div>
-										<span class="inplaydash">
+
+
+										@if (matchitem.MarketStatus == "In Play")
+
+
+										{
+											
+										<label  class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label>
+											
+											
+											
+										}
+										else
+										{
+										<label class="cool" style=" color:maroon; ">
 											@matchitem.MarketStatus
-										</span>
+										</label>
 
-									</div>
 
+											}
+
+
+											@*<span class="inplaydash">
+			@matchitem.MarketStatus
+
+
+
+			<img class="logo-img" src="~/Content/Images/Inplay1.gif" alt="Global Traders" />
+
+		</span>*@
+
+</div>
 
 									<div class="inplaytime">
 										@matchitem.MarketStartTime
@@ -268,19 +302,19 @@
 									</div>
 
 
-									
-										<div class="inplaymatchbackandlay" style="display:none;">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													@matchitem.Runner1Back
-												</div>
-												<div class="inplaylay">
-													@matchitem.Runner1Lay
-												</div>
-											</div>
 
+									<div class="inplaymatchbackandlay">
+										<div class="inplayrunner1">
+											<div class="inplayback">
+												@matchitem.Runner1Back
+											</div>
+											<div class="inplaylay">
+												@matchitem.Runner1Lay
+											</div>
 										</div>
-									<div class="inplaymatchbackandlay1" style="display:none;">
+
+									</div>
+									<div class="inplaymatchbackandlay1">
 										<div class="inplayrunner1">
 											<div class="inplayback">
 												@matchitem.Runner3Back
@@ -291,7 +325,7 @@
 										</div>
 
 									</div>
-									<div class="inplaymatchbackandlay2" style="display:none;">
+									<div class="inplaymatchbackandlay2">
 										<div class="inplayrunner1">
 											<div class="inplayback">
 												@matchitem.Runner2Back

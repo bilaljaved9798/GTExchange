@@ -259,8 +259,8 @@
                             </StackPanel>
                         </TabItem>
                         <TabItem Header="Balance Transfer">
-                            <StackPanel Width="694" HorizontalAlignment="Left" >
-
+                            <StackPanel Orientation="Horizontal" >
+                                <StackPanel Width="694">
                                 <StackPanel Margin="0,5">
                                     <Label Content="Add Remove Credit" FontSize="18" FontWeight="Bold"/>
                                     <TextBlock ><InlineUIContainer>
@@ -325,7 +325,55 @@
                                 </StackPanel>
                                 <TextBox x:Name="txtAccounttitleTransferBalance" Width="694" HorizontalAlignment="Left" FontSize="14"/>
                                 <Button x:Name="btnTransferamount" Height="40" Width="150" Content="Update Trans" FontSize="16" HorizontalAlignment="Right" Margin="0,10,0,0" Click="btnTransferamount_Click"/>
+                                </StackPanel>
+
+                                <StackPanel Width="300">
+                                    <StackPanel Margin="0,5">
+                                        <Label Content="Add Remove Commission" FontSize="18" FontWeight="Bold"/>
+                                        <TextBlock ><InlineUIContainer>
+                                            <Label Content="Customers" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <ComboBox x:Name="cmbUsersCreditCom" Width="229" FontSize="16" SelectedIndex="0" SelectionChanged="cmbUsersCredit_SelectionChanged"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Credit" FontSize="14" FontWeight="Bold" Width="120"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label x:Name="lblCreditCom" FontSize="14" FontWeight="Bold" Content="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                        <TextBlock ><InlineUIContainer>
+                                            <Label Content="Amount" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <TextBox x:Name="txtBalanceAddCom" Width="229" FontSize="16"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Content="Account Balance" FontSize="14" FontWeight="Bold" Width="120"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label x:Name="lblAccountBalanceAddRemoveCom" FontSize="14" FontWeight="Bold" Content="0"/>
+                                        </InlineUIContainer></TextBlock>
+                                        <TextBlock VerticalAlignment="Center" ><InlineUIContainer>
+                                            <Label Content="Title" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            
+                                              <TextBox x:Name="txtAccountsTitleCom" Width="229" Text="Commission" IsReadOnly="True" FontSize="16"/>
+                                            
+                                        </InlineUIContainer></TextBlock>
+                                        <TextBlock VerticalAlignment="Center" ><InlineUIContainer>
+                                            <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <CheckBox x:Name="chkIsCreditCom" Width="229" FontSize="16" Content="is Credit (Awaz / Limit)"/>
+
+                                        </InlineUIContainer></TextBlock>
+                                        <TextBlock VerticalAlignment="Center" Margin="0,10,0,0" ><InlineUIContainer>
+                                            <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Plus" x:Name="btnAddCreditCom" Width="112" Height="40" Background="DarkGreen" FontSize="16" Click="btnAddCreditCom_Click" />
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Button Content="Update Minus" x:Name="btnRemovecreditCom" Width="112" Height="40" Background="LightCoral" FontSize="16" Click="btnRemovecredit_Click" />
+
+                                        </InlineUIContainer></TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+
                             </StackPanel>
+                                                       
                         </TabItem>
                       
                         <TabItem Header="Allowed Markets">

@@ -87,34 +87,34 @@ namespace bftradeline.HelperClasses
                     decimal TotLiabality = 0;
                     
 
-                    if (UnlstUserBets.Count == 1)
-                    {
-                        List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<Models.UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
+                   // if (UnlstUserBets.Count == 1)
+                    //{
+                      //  List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<Models.UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
                       
-                        if (lstrunners.Count > 1)
-                        {
-                            foreach (var selectionIDitem in SelectionID)
-                            {
+                    //    if (lstrunners.Count > 1)
+                    //    {
+                    //        foreach (var selectionIDitem in SelectionID)
+                    //        {
 
-                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, lstUserBets, lstrunners);
-                            }
-                        }
-                        else
-                        {
-                            TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), Odd, BetType, marketbookID, MlstUserBets, lstrunners);
-                        }
+                    //            TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, lstUserBets, lstrunners);
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), Odd, BetType, marketbookID, MlstUserBets, lstrunners);
+                    //    }
 
                        
-                        TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MlstUserBets);
+                    //    TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MlstUserBets);
                      
-                        decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate));
+                    //    decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate));
 
                       
 
-                        TotBalance = CurrentBalance + TotLiabality;
-                    }
-                    else
-                    {
+                    //    TotBalance = CurrentBalance + TotLiabality;
+                    //}
+                    //else
+                    //{
                         List<LiabalitybyMarket> lstLibalitybymraketsfancy = new List<LiabalitybyMarket>();
                         decimal fancylab = 0;
                         decimal fancylabkj = 0;
@@ -137,18 +137,16 @@ namespace bftradeline.HelperClasses
 
                         TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, lstUserBets);
 
-                        fancylab = objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy.Where(item => item.isMatched == true).ToList());
-                       
+                    TotLiabality += objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy.Where(item => item.isMatched == true).ToList());
+
                         decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), LoggedinUserDetail.PasswordForValidate));
 
-                        TotBalance = CurrentBalance + TotLiabality+ (fancylab);
-                    }
-
-                    if (TotBalance >= Convert.ToDecimal(Amount))
-                    {
-                        return "True";
-                    }
-                    else
+                         TotBalance = CurrentBalance + TotLiabality;
+                        if (TotBalance >= Convert.ToDecimal(Amount))
+                        {
+                            return "True";
+                        }
+                        else
                     {
                         return "Available balance is less then your amount";
                         //Fancy

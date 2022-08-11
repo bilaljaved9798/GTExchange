@@ -96,6 +96,10 @@
                                 <Label Foreground="#FF0D1F72" FontWeight="Bold" >Balance: </Label>
                                 <Label x:Name="txtBalance" >0.00</Label>
                                 </TextBlock>
+                                <TextBlock Background="White" Name="txtblockcomm" Visibility="Collapsed">
+                                <Label Foreground="#FF0D1F72" FontWeight="Bold" >Comission: </Label>
+                                <Label x:Name="txtcomission" >0.00</Label>
+                                </TextBlock>
                                 <TextBlock Background="White">
                                 <Label Foreground="#FF0D1F72" FontWeight="Bold" >Available Balance: </Label>
                                 <Label x:Name="txtAvailBalance" >0.00</Label>

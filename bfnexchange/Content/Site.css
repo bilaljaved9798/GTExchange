@@ -12,13 +12,34 @@ body {
 	
 	
 }
+
+.cool {
+	float: right;
+
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.ipshead {
+
+font-weight:600;
+font-size:21px;
+
+
+}
+
 .bh5{
 	
 	margin-left: -8px;
 }
-
+.btntvcard {
+	background: #075E54
+}
+.reletedeventbackground {
+	background: #075E54;
+}
 .love12 {
-	font-size: 18px !important;
+	font-size: 16px !important;
 }
 
  .bh2 {
@@ -26,6 +47,10 @@ body {
     }
 #matchscores {
 	padding:15px;
+}
+.scroll {
+	height: 800px;
+	overflow: scroll
 }
 #matchscoresTen {
 	padding: 0px;
@@ -213,17 +238,15 @@ margin-top:-5px;
 margin-bottom: 1px;
 }
 
-.inplaydash{
-	
-	background: darkgreen !important;
+.inplaydash {
 	color: white !important;
-    
-    font-size: 15px;
-    font-weight: 200;
-    float: left;
-    /* background: white; */
-    padding: 3px;
-	margin-top: 1.5px;
+	font-size: 15px;
+	font-weight: 200;
+	float: right;
+	/* background: white; */
+	padding: 3px;
+	margin-top: -4.5px;
+}
 }
 
 .runner-disabled{
@@ -1045,9 +1068,9 @@ a:hover {
 }
 
 #KJfancymarketbook{
-    width: 48.50%;
+    width: 49.50%;
     background: white;
-    margin-left: 7px;
+    margin-left: 6px;
      float: left;
 	
     margin-top: 15px;  
@@ -1065,9 +1088,9 @@ a:hover {
 
 
 #Figurefancymarketbook{
-    width: 48.50%;
+    width: 49.50%;
     background: white;
-    margin-left: 7px;
+    margin-left: 6px;
      float: left;
 	
     margin-top: 15px !important;  
@@ -1124,7 +1147,7 @@ a:hover {
     border-bottom: 2px solid #f994a9;
 }
 
-#betslipcontent label, #marketbooksoccer label, #fancymarketbook label, #marketbookTWT label {
+#betslipcontent label, #marketbooksoccer label, #fancymarketbook label {
 	margin-bottom: 0px;
 	padding: 0px;
 	width: 100%;
@@ -1134,11 +1157,21 @@ a:hover {
 	/*font-size:16px*/
 }
 
+#marketbookTWT label {
+	margin-bottom: 0px;
+	padding: 0px;
+	width: 100%;
+	font-size: 15px !important;
+	font-weight: 600 !important;
+	font-family: 'Times New Roman', Times, serif !important;
+	/*font-size:16px*/
+}
+
 #marketbook label {
 	margin-bottom: 0px;
 	padding: 0px;
 	width: 100%;
-	font-size: 18px ;
+	font-size: 16px ;
 	font-weight:800;
 	
 	font-family: 'Times New Roman', Times, serif !important;
@@ -1390,9 +1423,9 @@ audio {
     font-weight: bold;*/
     padding: 0px 0px;
     margin: 1px;
-    font-size: 15px;
-    width: 77px;
-    height: 35px;
+    font-size: 17px;
+    width: 23%;
+    height: 40px;
     border-radius:0px;
 
 }
@@ -1485,7 +1518,7 @@ audio {
         width:100%;
     }
 .selectionprice {
-    font-size: 22px !important;
+    font-size: 20px !important;
     font-weight: 900 !important;
     color: black !important;
     font-family:'Times New Roman', Times, serif;
@@ -1695,7 +1728,8 @@ label:hover{
 
 .marketinfo {
     float: left;
-    width: 100%;
+    width: 102% !important;
+	margin-left: -3px !important;
     background-color: white;
     border-radius: 3px;
     box-shadow: 0 0 4px rgba(0, 0, 0, .3); 
@@ -2485,7 +2519,52 @@ label:hover{
     color: red !important;
     font-weight: bold;
     font-size: 12px;
-    margin-top: -20px;
+    margin-top: 0px;
+}
+
+.runnersprofitlossredKali {
+	width: 50% !important;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	height: 20px;
+	/*overflow: hidden;*/
+	white-space: nowrap;
+	float: left;
+	margin-left: 0px;
+	color: red !important;
+	font-weight: bold;
+	font-size: 12px;
+	margin-top: -20px;
+}
+
+.runnersprofitlossredfig {
+	width: 50% !important;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	height: 20px;
+	/*overflow: hidden;*/
+	white-space: nowrap;
+	float: right;
+	margin-left: 0px;
+	color: red !important;
+	font-weight: bold;
+	font-size: 12px;
+	margin-top: 2px;
+}
+
+.runnersprofitlossred23 {
+	width: 50% !important;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	height: 20px;
+	/*overflow: hidden;*/
+	white-space: nowrap;
+	float: right;
+	margin-left: 0px;
+	color: red !important;
+	font-weight: bold;
+	font-size: 12px;
+	margin-top: 0px;
 }
 
 .runnersprofitlossred1 {
@@ -2822,7 +2901,7 @@ a {
 
 .inplaydatarow {
 	float: left;
-	font-size: 19px;
+	font-size: 16px;
 	font-weight: bold;
 	border-bottom: 1px solid #e2e1e1;
 	width: 100%;
@@ -2832,7 +2911,7 @@ a {
 
 .inplaymatchname {
     float: left;
-    width: 95%;
+    width: 60%;
     
     margin-right: 2px;
 }
@@ -2841,15 +2920,16 @@ a {
 	float: left;
 	width: 65%;
 	margin-right: 2px;
+	padding:4px;
 }
 
 
     .inplaymatchname a {
         padding: 5px 0px;
 		margin-left: 4px;
-		font-size: 30px;
+		
         float: left;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
 		color: black;
     }
@@ -2859,18 +2939,18 @@ a {
         }
 
 .inplaymatchbackandlay {
-    float: left;
-    width: 133px;
-	
+	float: left;
+	width: 133px;
+	margin-top: 3px;
 }
 .inplaymatchbackandlay1 {
 	float: left;
-	
+	margin-top: 3px;
 	width: 133px;
 }
 .inplaymatchbackandlay2 {
 	float: left;
-	
+	margin-top: 3px;
 	width: 133px;
 }
 
@@ -3258,6 +3338,99 @@ a {
 
 @media(max-width:768px) {
 
+	.ipshead {
+		font-weight: 600;
+		font-size: 14px;
+	}
+
+
+	.cool {
+		float: left;
+		font-weight:bold;
+		font-size:12px;
+	}
+	.scroll {
+		height:auto;
+	}
+	.betslip-wrapper td.runner, td.oddsH, td.stake, td.profit {
+		 text-align: left !important; 
+	}
+	.betslip-wrapper input[type="text"], .betslip-wrapper input[type="number"] {
+		width: 70px !important;		
+	}
+	.runnersprofitlossgreenkali {
+		width: 40% !important;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		height: 20px;
+		overflow: hidden;
+		white-space: nowrap;
+		float: right !important;
+		margin-left: 0px;
+		color: darkgreen !important;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 0px;
+	}
+
+	.runnersprofitlossredKali {
+		width: 50% !important;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		height: 20px;
+		/*overflow: hidden;*/
+		white-space: nowrap;
+		float: left;
+		margin-left: 0px;
+		color: red !important;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 0px;
+	}
+	
+
+	.inplaydash {
+		color: white !important;
+		font-size: 15px;
+		font-weight: 200;
+		float: left;
+		/* background: white; */
+		padding: 3px;
+		margin-top: -4.5px;
+	}
+
+
+	.runnersprofitlossgreen1 {
+		width: 50% !important;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		height: 20px;
+		overflow: hidden;
+		white-space: nowrap;
+		float: right;
+		margin-left: 0px;
+		color: darkgreen !important;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 23px !important;
+	}
+
+	.runnersprofitlossred1 {
+		width: 50% !important;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		height: 20px;
+		/*overflow: hidden;*/
+		white-space: nowrap;
+		float: right;
+		margin-left: 0px;
+		color: red !important;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 23px;
+	}
+
+
 	.innerbodycontent1 {
 		margin-top: -20px;
 	}
@@ -3314,8 +3487,8 @@ a {
 
 
 	.tvmbl {
-	width: 50%;
-	
+	width: 50.8%;
+	margin-left:-1.5%;
 	
 	}
 
@@ -3355,7 +3528,7 @@ a {
 	#BetSlipSection {
 		text-align: left;
 		float: left;
-		max-height: 86%;
+		max-height: 95%;
 		overflow: hidden;
 		box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
 		margin: 0px 0px;
@@ -3542,6 +3715,21 @@ a {
     font-size: 12px;
     margin-top: 0px;
 }
+
+	.runnersprofitlossgreenKali {
+		width: 50% !important;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		height: 20px;
+		overflow: hidden;
+		white-space: nowrap;
+		float: left !important;
+		margin-left: 0px;
+		color: darkgreen !important;
+		font-weight: bold;
+		font-size: 12px;
+		margin-top: 0px;
+	}
 	
 	.runnersprofitlossgreen {
     width: 40% !important;
@@ -3558,7 +3746,6 @@ a {
     font-size: 12px;
     margin-top: -14px;
 }
-
 	
 	.rule {
     
@@ -3604,10 +3791,11 @@ a {
     margin: 2px;
     font-weight: bold;*/
     padding: 0px 0px;
-    margin: 1px;
-    font-size: 15px;
-    width: 67px;
-    height: 35px;
+    margin-top: 5px;
+	margin-left:1px;
+    font-size: 16px;
+    width: 23%;
+    height: 45px;
     border-radius:0px;
 
     }
@@ -3998,7 +4186,7 @@ a {
 		width: 100%;
 	}
 	#Indianfancymarketbook1, #Figurefancymarketbook, #KJfancymarketbook {
-		margin-top: 0px;
+		margin-top: 13px;
 		float: left;
 		width: 96.5%;
 	}
@@ -4502,7 +4690,7 @@ width: 103% !important;
 }
 
     .pendding {
-    width: 10%;
+    width: 77%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     position: absolute;

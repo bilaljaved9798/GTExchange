@@ -6,9 +6,14 @@
     List<bfnexchange.Models.UserBetsforAgent>
 lstUnMatchedBets = Model.Where(a => a.isMatched == false).ToList();
 
-    <div class="user-betsagents-wrapper">
+    <div class="user-betsagents-wrapper" style="background-color:@ViewBag.backgrod;color:@ViewBag.color">
         <h4 style="color:white">Bets
-		  <button id="Allbet" style="background-color:#030317;color:white">AllBets</button></h4>
+
+
+		  @*<button id="Allbet" style="background-color:#030317;color:white">AllBets</button>*@
+		
+		
+		</h4>
 
         @*@{string totamount = lstMatchedBets.Sum(item1 => Convert.ToDecimal(item1.Liabality)).ToString("F2");*@
         <input type="hidden" id="lbltotLiabality" value="@ViewData["liabality"]">

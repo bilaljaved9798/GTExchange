@@ -12,10 +12,10 @@ namespace ExternalAPI.TO
     public partial class RootSCT
     {
         [JsonProperty("eventId")]
-        public long EventId { get; set; }
+        public long? EventId { get; set; }
 
         [JsonProperty("eventTypeId")]
-        public long EventTypeId { get; set; }
+        public long? EventTypeId { get; set; }
 
         [JsonProperty("marketId")]
         public string MarketId { get; set; }
@@ -24,7 +24,7 @@ namespace ExternalAPI.TO
         public string MarketName { get; set; }
 
         [JsonProperty("relevance")]
-        public long Relevance { get; set; }
+        public long? Relevance { get; set; }
 
         [JsonProperty("eventName")]
         public string EventName { get; set; }
@@ -34,10 +34,10 @@ namespace ExternalAPI.TO
 
         [JsonProperty("competitionId")]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long CompetitionId { get; set; }
+        public long? CompetitionId { get; set; }
 
         [JsonProperty("numberOfRunners")]
-        public long NumberOfRunners { get; set; }
+        public long? NumberOfRunners { get; set; }
 
         [JsonProperty("startTime")]
         public DateTimeOffset StartTime { get; set; }
@@ -79,13 +79,13 @@ namespace ExternalAPI.TO
         public MatchInfo BfLiveVideo { get; set; }
 
         [JsonProperty("isLiveVideoAvailable")]
-        public bool IsLiveVideoAvailable { get; set; }
+        public bool? IsLiveVideoAvailable { get; set; }
 
         [JsonProperty("isDataVisualizationAvailable")]
-        public bool IsDataVisualizationAvailable { get; set; }
+        public bool? IsDataVisualizationAvailable { get; set; }
 
         [JsonProperty("isPaddockViewAvailable")]
-        public bool IsPaddockViewAvailable { get; set; }
+        public bool? IsPaddockViewAvailable { get; set; }
 
         [JsonProperty("channel")]
         public string Channel { get; set; }
@@ -125,37 +125,37 @@ namespace ExternalAPI.TO
         public string DrawName { get; set; }
 
         [JsonProperty("runner1SelectionId")]
-        public long Runner1SelectionId { get; set; }
+        public long? Runner1SelectionId { get; set; }
 
         [JsonProperty("runner2SelectionId")]
-        public long Runner2SelectionId { get; set; }
+        public long? Runner2SelectionId { get; set; }
 
         [JsonProperty("drawSelectionId")]
-        public long DrawSelectionId { get; set; }
+        public long? DrawSelectionId { get; set; }
     }
 
     public partial class State
     {
         [JsonProperty("eventTypeId")]
-        public long EventTypeId { get; set; }
+        public long? EventTypeId { get; set; }
 
         [JsonProperty("eventId")]
-        public long EventId { get; set; }
+        public long? EventId { get; set; }
 
         [JsonProperty("score")]
         public Score Score { get; set; }
 
         [JsonProperty("timeElapsed")]
-        public long TimeElapsed { get; set; }
+        public long? TimeElapsed { get; set; }
 
         [JsonProperty("elapsedRegularTime")]
-        public long ElapsedRegularTime { get; set; }
+        public long? ElapsedRegularTime { get; set; }
 
         [JsonProperty("elapsedAddedTime", NullValueHandling = NullValueHandling.Ignore)]
         public long? ElapsedAddedTime { get; set; }
 
         [JsonProperty("timeElapsedSeconds")]
-        public long TimeElapsedSeconds { get; set; }
+        public long? TimeElapsedSeconds { get; set; }
 
         [JsonProperty("fullTimeElapsed")]
         public FullTimeElapsed FullTimeElapsed { get; set; }
@@ -173,13 +173,13 @@ namespace ExternalAPI.TO
     public partial class FullTimeElapsed
     {
         [JsonProperty("hour")]
-        public long Hour { get; set; }
+        public long? Hour { get; set; }
 
         [JsonProperty("min")]
-        public long Min { get; set; }
+        public long? Min { get; set; }
 
         [JsonProperty("sec")]
-        public long Sec { get; set; }
+        public long? Sec { get; set; }
     }
 
     public partial class Score
@@ -191,16 +191,16 @@ namespace ExternalAPI.TO
         public Away Away { get; set; }
 
         [JsonProperty("numberOfYellowCards")]
-        public long NumberOfYellowCards { get; set; }
+        public long? NumberOfYellowCards { get; set; }
 
         [JsonProperty("numberOfRedCards")]
-        public long NumberOfRedCards { get; set; }
+        public long? NumberOfRedCards { get; set; }
 
         [JsonProperty("numberOfCards")]
-        public long NumberOfCards { get; set; }
+        public long? NumberOfCards { get; set; }
 
         [JsonProperty("numberOfCorners")]
-        public long NumberOfCorners { get; set; }
+        public long? NumberOfCorners { get; set; }
 
         [JsonProperty("gameSequence")]
         [JsonConverter(typeof(DecodeArrayConverter))]
@@ -213,10 +213,10 @@ namespace ExternalAPI.TO
         public long? NumberOfCornersSecondHalf { get; set; }
 
         [JsonProperty("bookingPoints")]
-        public long BookingPoints { get; set; }
+        public long? BookingPoints { get; set; }
 
         [JsonProperty("serviceBreaks")]
-        public long ServiceBreaks { get; set; }
+        public long? ServiceBreaks { get; set; }
     }
 
     public partial class Away
@@ -226,7 +226,7 @@ namespace ExternalAPI.TO
 
         [JsonProperty("score")]
         [JsonConverter(typeof(ParseStringConverter))]
-        public long Score { get; set; }
+        public long? Score { get; set; }
 
         [JsonProperty("halfTimeScore")]
         public string HalfTimeScore { get; set; }
@@ -247,35 +247,35 @@ namespace ExternalAPI.TO
         public string Sets { get; set; }
 
         [JsonProperty("numberOfYellowCards")]
-        public long NumberOfYellowCards { get; set; }
+        public long? NumberOfYellowCards { get; set; }
 
         [JsonProperty("numberOfRedCards")]
-        public long NumberOfRedCards { get; set; }
+        public long? NumberOfRedCards { get; set; }
 
         [JsonProperty("numberOfCards")]
-        public long NumberOfCards { get; set; }
+        public long? NumberOfCards { get; set; }
 
         [JsonProperty("numberOfCorners")]
-        public long NumberOfCorners { get; set; }
+        public long? NumberOfCorners { get; set; }
 
         [JsonProperty("gameSequence")]
         [JsonConverter(typeof(DecodeArrayConverter))]
         public long[] GameSequence { get; set; }
 
         [JsonProperty("numberOfCornersFirstHalf")]
-        public long NumberOfCornersFirstHalf { get; set; }
+        public long? NumberOfCornersFirstHalf { get; set; }
 
         [JsonProperty("numberOfCornersSecondHalf", NullValueHandling = NullValueHandling.Ignore)]
         public long? NumberOfCornersSecondHalf { get; set; }
 
         [JsonProperty("bookingPoints")]
-        public long BookingPoints { get; set; }
+        public long? BookingPoints { get; set; }
 
         [JsonProperty("highlight", NullValueHandling = NullValueHandling.Ignore)]
         public bool? Highlight { get; set; }
 
         [JsonProperty("serviceBreaks")]
-        public long ServiceBreaks { get; set; }
+        public long? ServiceBreaks { get; set; }
     }
     internal class ParseStringConverter : JsonConverter
     {

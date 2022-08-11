@@ -9,8 +9,8 @@
 		<div class="marketstatusrulesandmarkettype" id="markettype">
 			<label class="rule2 active1">
 
-				<span style="float:left">Last Figure Market</span>
-				<span style="float:right;margin-right: 20px;"><i class="far fa-star love"></i></span>
+				<span style="float:left">LAST FIGURE MARKET</span>
+				<span style="float:right;margin-right: 20px;"><i class="far fa-star love" onclick="showmarketrules('Fancy', 'Paki', '1')"></i></span>
 			</label>
 			@*	<label class="marketrules" onclick="showmarketrules('','','1')">Rules</label>*@
 		</div>
@@ -150,7 +150,7 @@
 												}
 												else
 												{
-													<label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossred">
+													<label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossredfig">
 														@runner.ProfitandLoss
 													</label>
 												}
@@ -163,7 +163,7 @@
 												}
 												else
 												{
-													<label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
+													<label id="lblloss@(runner.SelectionId)" class="runnersprofitlossredfig">
 														@runner.Loss
 													</label>
 												}

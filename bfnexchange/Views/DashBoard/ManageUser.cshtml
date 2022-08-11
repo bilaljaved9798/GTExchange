@@ -94,7 +94,7 @@
 		}
 		@if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
 		{
-			<div class="form-group">
+			<div class="form-group" style="display:none">
 				<label class="control-label col-md-3">Agent Rate %</label>
 
 				<div class="col-md-9">
@@ -308,7 +308,7 @@
 		<div class="form-group" >
 			@Html.LabelFor(model => model.ResetPassword, htmlAttributes: new { @class = "control-label col-md-3" })
 			<div class="col-md-9">
-			 @Html.EditorFor(model => model.ResetPassword, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.EditorFor(model => model.ResetPassword, new { htmlAttributes = new { @class = "form-control" } })
 
 			</div>
 		</div>
@@ -368,7 +368,7 @@
                                 complete: function () { },
                                 success: function (data) {
 									data = $.parseJSON(data)
-									
+									debugger;
                                     $('#ddlUsers').find('option[value="1"]').attr('selected', 'selected');
                                     $("#chkBlockUser").prop('checked', data.isBlocked);
                                     $("#chkDeleteUser").prop('checked', data.isDeleted);

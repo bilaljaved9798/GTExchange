@@ -60,7 +60,7 @@ i, span {
     background: #075E54;
     color: #fff;
     transition: all 0.1s;
-	height:770px !important;
+	height:830px !important;
 }
 
 
@@ -220,7 +220,7 @@ a.article, a.article:hover {
     height: 1500px;
     z-index: 999;
     padding: 0px 0 0;
-    margin-top: -10px;
+    margin-top: 10px;
 	min-width:10%;
 	max-width:170px;
 }

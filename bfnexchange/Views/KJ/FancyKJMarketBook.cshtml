@@ -9,8 +9,8 @@
 	<div class="marketstatusrulesandmarkettype" id="markettype">
 		<label class="rule2 active1">
 
-<span style="float:left">Kali Market</span>
-<span style="float:right;margin-right: 20px;"><i class="far fa-star love"></i></span>
+<span style="float:left">KALI MARKET</span>
+<span style="float:right;margin-right: 20px;"><i class="far fa-star love" onclick="showmarketrules('Fancy', 'Paki', '1')"></i></span>
 
 		</label>
 
@@ -144,26 +144,26 @@
                             <div class="runnerprofitandlossdivMobile" style="width:0px; display:inline-block">
                                 @if (runner.ProfitandLoss >= 0)
                                 {
-                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossgreenFancy ">
+                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossgreenKali  ">
                                         @runner.ProfitandLoss
                                     </label>
                                 }
                                 else
                                 {
-                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossred">
+                                    <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossredKali">
                                         @runner.ProfitandLoss
                                     </label>
                                 }
 
                                 @if (runner.Loss >= 0)
                                 {
-                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreenFancy ">
+                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreenKali ">
                                         @runner.Loss
                                     </label>
                                 }
                                 else
                                 {
-                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
+                                    <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossredKali">
                                         @runner.Loss
                                     </label>
                                 }

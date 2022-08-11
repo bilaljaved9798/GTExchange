@@ -110,7 +110,7 @@
 
 
 .oddWrapper {
-    height: 24px;
+    /*height: 24px;*/
     margin: 0 auto;
 }
 .odd-left, .odd-right {
@@ -205,15 +205,15 @@ input[type=checkbox] ~ .text:before, input[type=radio] ~ .text:before {
     transition: all .3s ease
 }
 .delete, .delete a {
-    vertical-align: top;
+  
     color: #AD2826;
-    padding: 4px 0px 0px 2px;
+ 
 }
 .runnername {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    max-width: 110px;
+    max-width: 135px;
     vertical-align: middle;
     min-height: 26px;
     padding: 0px 0px 0px 4px;
@@ -769,14 +769,14 @@ input[type=checkbox].checkbox-slider {
     .betslip-wrapper table {
     border-collapse: separate;
     border-spacing: 0px;
-    font-size: 11px;
+    font-size: 18px;
 }
 
 
 
-    .betslip-wrapper table td span {
-        height: 25px;
-    }
+		.betslip-wrapper table td span {
+			height: 38px;
+		}
 
     .betslip-wrapper thead tr {
     background-color: #E0E6E6;
@@ -812,10 +812,10 @@ td.oddsH, td.stake, td.profit {
 }
 .betslip-wrapper input[type="text"],
 .betslip-wrapper input[type="number"] {
-    width: 47px;
+    width: 50px;
     border: 0px;
     text-align: center;
-    height: 22px;
+    /*height: 40px;*/
 }
 
 

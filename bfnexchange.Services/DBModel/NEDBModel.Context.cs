@@ -3670,19 +3670,6 @@ namespace bfnexchange.Services.DBModel
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UserAccounts_GetDatabyAgentIDForCommisionbyEventtype_Result>("SP_UserAccounts_GetDatabyAgentIDForCommisionbyEventtype", userIDParameter, isCreditAmountParameter, fromParameter, toParameter);
         }
     
-        public virtual ObjectResult<SP_Users_GetUserbyUsernameandPasswordWeb_Result> SP_Users_GetUserbyUsernameandPasswordWeb(string username, string password)
-        {
-            var usernameParameter = username != null ?
-                new ObjectParameter("username", username) :
-                new ObjectParameter("username", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Users_GetUserbyUsernameandPasswordWeb_Result>("SP_Users_GetUserbyUsernameandPasswordWeb", usernameParameter, passwordParameter);
-        }
-    
         public virtual ObjectResult<SP_Users_GetUserbyUsernameandPassword_Result2> SP_Users_GetUserbyUsernameandPassword(string username, string password)
         {
             var usernameParameter = username != null ?
@@ -4024,6 +4011,19 @@ namespace bfnexchange.Services.DBModel
                 new ObjectParameter("SuperRate", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Users_UpdateSuperAgentRate", userIDParameter, superRateParameter);
+        }
+    
+        public virtual ObjectResult<SP_Users_GetUserbyUsernameandPasswordWeb_Result> SP_Users_GetUserbyUsernameandPasswordWeb(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Users_GetUserbyUsernameandPasswordWeb_Result>("SP_Users_GetUserbyUsernameandPasswordWeb", usernameParameter, passwordParameter);
         }
     }
 }

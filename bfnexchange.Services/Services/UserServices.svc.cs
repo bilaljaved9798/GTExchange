@@ -2954,24 +2954,8 @@ namespace bfnexchange.Services.Services
 
                             }
                             if (samiadminpercentfinal>0)
-                            {
-                                //admin hisab
-                              //  AdminAmount = AdminAmount + Comissionamount;
-                               // decimal Comissionamountadmin = Comissionamount - (ComissionAmountAgent + ComissionAmountSuper + ComissionAmountSamiadin);
-                               // AdminAmount = AdminAmount - Comissionamountadmin;
-                                //agent hisab
-                               // decimal ComissionAmountAgent1 = Comissionamount - (ComissionAmountSuper + Comissionamountadmin + ComissionAmountSamiadin);
-                               // AgentAmount = AgentAmount - ComissionAmountAgent1;
-                                //super hisab
-                               // decimal ComissionAmountSuper1 = Comissionamount - (ComissionAmountAgent + Comissionamountadmin + ComissionAmountSuper);
-                               // SuperAmount1 = SuperAmount1 - ComissionAmountSuper1;
-                                //
-                               // decimal ComissionAmountsamiadmin = Comissionamount - (ComissionAmountSuper + Comissionamountadmin + ComissionAmountAgent1);
-                                // SamiadminAmount1 = SamiadminAmount1 - ComissionAmountsamiadmin;
-
-                                SamiadminAmount1 = TotalAmount * (samiadminpercentfinal / 100);
-                               // SamiadminAmount1 = SamiadminAmount1 - ComissionAmountSamiadin;
-                                //decimal AdminAmountforsamiadmin = AdminAmount + AgentAmount + SuperAmount1;
+                            {                               
+                                SamiadminAmount1 = TotalAmount * (samiadminpercentfinal / 100);                              
                                 objAccountsService.AddtoUsersAccounts(lstUserBets[0].Marketbookname + " (" + username + " (" + samiadminpercentfinal.ToString() + "%) )", "0.00", SamiadminAmount1.ToString(), samiadminID, item.MarketId, DateTime.Now, agentpercent.ToString(), superpercent.ToString(),samiadminpercent.ToString(), commisionratestr, Convert.ToDecimal(GetCurrentBalancebyUser(CreatedbyID, Password)), false, EventTypename, Winnername, eventdetails.EventID, eventdetails.EventName, lstUserBets[0].Marketbookname);
                                 AddCredittoUser(-1 * (SamiadminAmount1), samiadminID, AdminID, DateTime.Now, 0, false, "", false, Password);
                                 //AddAdminAmountForSuper(lstUserBets[0].Marketbookname + " (" + username + " (" + agentpercent.ToString() + "%) )", (AdminAmount).ToString(),"", superID, item.MarketId, DateTime.Now, Password);

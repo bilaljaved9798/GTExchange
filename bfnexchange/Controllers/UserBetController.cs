@@ -279,50 +279,28 @@ namespace bfnexchange.Controllers
                 //lstUserBets = lstUserBets.Where(item => item.isMatched && item.location != "9" && item.location != "8").ToList();
                 decimal TotLiabality = 0;
                 decimal fancylab = 0;
-                decimal TotBalance = 0;
+                
                 List<UserBets> UnlstUserBets = lstUserBets.Where(item => item.isMatched == false).ToList();
                 List<UserBets> MlstUserBets = lstUserBets.Where(item => item.isMatched == true && item.location != "9").ToList();
                 List<UserBets> lstuserbetfancy = lstUserBets.Where(item => item.location == "9").ToList();
 
                 if (LoggedinUserDetail.GetUserTypeID() == 3)
                 {
-                    if (UnlstUserBets.Count == 1)
-                    {
-                        List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<Models.UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
+                                   
+                         lstUserBets = lstUserBets.Where(item => item.isMatched && item.location != "9").ToList();
                         if (Runnerscount != null)
                         {
                             foreach (var selectionIDitem in SelectionID)
                             {
-                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, MarketbookName, MlstUserBets);
-                            }
-                         }
-                       
-                        TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MarketbookName, lstUserBets);
-
-                        decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
-
-                        TotBalance = CurrentBalance + TotLiabality;
-                    }
-                    else
-                    {                      
-                            lstUserBets = lstUserBets.Where(item => item.isMatched && item.location != "9").ToList();
-                        if (Runnerscount != null)
-                        {
-                            foreach (var selectionIDitem in SelectionID)
-                            {
-                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, MarketbookName, lstUserBets);
+                                TotLiabality += objUserBets.GetLiabalityofCurrentUserActual(LoggedinUserDetail.GetUserID(), selectionIDitem, BetType, marketbookID, MarketbookName);
                             }                     
                         }
                       
                         TotLiabality += objUserBets.GetLiabalityofCurrentUserActualforOtherMarkets(LoggedinUserDetail.GetUserID(), "", BetType, marketbookID, MarketbookName, lstUserBets);
-                        
-                           fancylab = objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy.Where(item => item.isMatched == true).ToList());
-                           decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
 
-                            TotBalance = CurrentBalance + TotLiabality + (fancylab);
-                    }
-                    
-                    
+                    TotLiabality += objUserBets.GetLiabalityofCurrentUserfancy(LoggedinUserDetail.GetUserID(), lstuserbetfancy.Where(item => item.isMatched == true).ToList());
+                    decimal CurrentBalance = Convert.ToDecimal(objUsersServiceCleint.GetCurrentBalancebyUser(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
+                    decimal TotBalance = CurrentBalance + TotLiabality;
                     if (TotBalance >= Convert.ToDecimal(Amount))
                     {
                         return "True";

@@ -313,8 +313,11 @@ else
                               </div>
                               @foreach (var runner in item.Runners)
                                {
-                                <div id="selection@(runner.SelectionId.Replace(" ",""))" class="col-md-12 pull-left col-sm-12 no-padding runnerswrapper" style="
+                               
+								  <div id="selection@(runner.SelectionId.Replace(" ",""))" class="col-md-12 pull-left col-sm-12 no-padding runnerswrapper" style="
     border-top: 1px black solid";>
+
+									  
 
                                     <div id="nameProfitandlossdiv">
 										<div id="runnernamediv@(runner.SelectionId)" class="no-padding runnernamediv runnerswrapper">
@@ -346,7 +349,7 @@ else
 														@runner.Clothnumber.       @runner.RunnerName
 													</label>
 
-													<label id="lbljockey@(runner.SelectionId)" class=" tooltip jockeyname jockey new112234" style="font-size:15px; font-weight:600 ">
+													<label id="lbljockey@(runner.SelectionId)" class=" tooltip jockeyname jockey new112234" style="font-size:14px; font-weight:200 ">
 														(@runner.StallDraw)	@runner.JockeyName
 														<span class="tooltiptext">@runner.RunnerName <br />  @runner.JockeyName</span>
 													</label>
@@ -392,6 +395,7 @@ else
 															<label id="lblloss@(runner.SelectionId)" class="jockeynameplRed">
 																@runner.Loss
 															</label>
+
 														}
 													}
 

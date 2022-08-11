@@ -44,6 +44,7 @@ namespace bfnexchange.Services.DBModel
         public Nullable<decimal> BetLowerLimitCompletedMatch { get; set; }
         public Nullable<bool> isTennisAllowed { get; set; }
         public Nullable<bool> isSoccerAllowed { get; set; }
+        public bool isFancyMarketAllowed { get; set; }
         public Nullable<decimal> BetUpperLimitMatchOddsSoccer { get; set; }
         public Nullable<decimal> BetLowerLimitMatchOddsSoccer { get; set; }
         public Nullable<decimal> BetUpperLimitMatchOddsTennis { get; set; }
@@ -63,6 +64,7 @@ namespace bfnexchange.Services.DBModel
         public Nullable<bool> isBetSlipKeysAllowed { get; set; }
         public Nullable<bool> isJoriBetAllowed { get; set; }
         public Nullable<bool> GTLogin { get; set; }
+        public Nullable<bool> IsCom { get; set; }
         public Nullable<int> CancelBetTime { get; set; }
         public int CompletedMatchBetPlaceWait { get; set; }
         public int CompletedMatchTimerInterval { get; set; }

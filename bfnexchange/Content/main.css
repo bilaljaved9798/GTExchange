@@ -12,9 +12,9 @@
 		
 		.spani1
 {
-            width: 100%;
+            width: 101%;
            background-color:#075E54;
-		   margin-left:0px;
+		   margin-left:-2px;
 		   
          
         }
@@ -137,9 +137,9 @@
 	
   				.spani1
 {
-            width: 100%;
+            width: 101%;
            background-color: #075E54;
-		     margin-left:0px;
+		     margin-left:-2px;
 			 margin-top:-44px;
 		
 			 height:60px;
@@ -160,14 +160,13 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  				.spani1
-{
-            width: 100%;
-           background-color: #075E54;
-		     margin-top:0px;
-		   height:60px;
-         
-        }
+	.spani1 {
+		width: 102%;
+		background-color: #075E54;
+		margin-left: -3px;
+		margin-top: 0px;
+		height: 60px;
+	}
 
 }
 
@@ -175,9 +174,9 @@
 @media only screen and (min-width: 768px) {
  				.spani1
 {
-            width: 100%;
+            width: 100.3%;
            background-color: #075E54;
-		     margin-left:0px;
+		     margin-left:-1px;
 		     height:60px;
          
         }
@@ -191,9 +190,9 @@
 @media only screen and (min-width: 992px) {
   				.spani1
 {
-            width: 100%;
+            width: 100.3%;
            background-color: #075E54;
-		     margin-left:0px;
+		     margin-left:-1px;
 		     height:60px;
          
         }
@@ -203,9 +202,9 @@
 @media only screen and (min-width: 1200px) {
  				.spani1
 {
-            width: 100%;
+            width: 100.3%;
            background-color: #075E54;
-		     margin-left:0px;
+		     margin-left:-1px;
 		   
            height:60px;
         }

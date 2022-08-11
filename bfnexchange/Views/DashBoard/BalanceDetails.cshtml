@@ -2,36 +2,36 @@
 
 <div class="col-md-12 no-padding">
 
-    <div class="col-md-3">
-        Credit:
-       
-       <label>@LoggedinUserDetail.CurrentAccountBalance</label>
-       
-    </div>
-	<div class="col-md-3">	
-			Upline:
-			@if (Convert.ToDouble(@ViewBag.NetBalance) > 0)
-			{
-				<label>@ViewBag.NetBalance</label>
-			}
-			else
-			{
-				<label style="color:red">@ViewBag.NetBalance</label>
-			}		
-	</div>
-	
 	<div class="col-md-3">
-			Avail Balance:<label>@LoggedinUserDetail.CurrentAvailableBalance</label>
+		Credit:
+
+		<label>@LoggedinUserDetail.CurrentAccountBalance</label>
+
+	</div>
+	<div class="col-md-3">
+		Upline:
+		@if (Convert.ToDouble(@ViewBag.NetBalance) > 0)
+		{
+			<label>@ViewBag.NetBalance</label>
+		}
+		else
+		{
+			<label style="color:red">@ViewBag.NetBalance</label>
+		}
+	</div>
+
+	<div class="col-md-3">
+		Avail Balance:<label>@LoggedinUserDetail.CurrentAvailableBalance</label>
 	</div>
 	@if (LoggedinUserDetail.IsCom == true)
 	{
-	<div class="col-md-4">
+		<div class="col-md-4">
 			Commission:<label>@ViewBag.commission</label>
-	</div>
+		</div>
 	}
-    <div class="col-md-3">
-        Liabality:<label>@ViewBag.CurrentLiabality</label>
-    </div>
+	<div class="col-md-3">
+		Liabality:<label>@ViewBag.CurrentLiabality</label>
+	</div>
 </div>
 
 

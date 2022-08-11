@@ -2808,10 +2808,6 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
             <Parameter Name="From" Mode="In" Type="String" />
             <Parameter Name="To" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SP_Users_GetUserbyUsernameandPasswordWeb" ReturnType="Collection(NExchangeModel.SP_Users_GetUserbyUsernameandPasswordWeb_Result)">
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="password" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="SP_Users_GetUserbyUsernameandPassword" ReturnType="Collection(NExchangeModel.SP_Users_GetUserbyUsernameandPassword_Result2)">
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
@@ -2905,7 +2901,7 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <Parameter Name="EventID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_Users_GetAhmadRate" ReturnType="Collection(Int32)">
-            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SP_Users_UpdateAhmadRate">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -2914,6 +2910,10 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <FunctionImport Name="SP_Users_UpdateSuperAgentRate">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="SuperRate" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Users_GetUserbyUsernameandPasswordWeb" ReturnType="Collection(NExchangeModel.SP_Users_GetUserbyUsernameandPasswordWeb_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword_Result">
@@ -4817,102 +4817,6 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <Property Type="String" Name="MutipleBtn11" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="MutipleBtn12" Nullable="true" MaxLength="20" />
         </ComplexType>
-        <ComplexType Name="SP_Users_GetUserbyUsernameandPasswordWeb_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="UserTypeID" Nullable="true" />
-          <Property Type="Boolean" Name="isBlocked" Nullable="false" />
-          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="AccountBalance" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="RatePercent" Nullable="true" MaxLength="200" />
-          <Property Type="Boolean" Name="Loggedin" Nullable="true" />
-          <Property Type="Decimal" Name="BetLowerLimit" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimit" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Boolean" Name="CheckConditionsforPlacingBet" Nullable="false" />
-          <Property Type="Boolean" Name="isGrayHoundRaceAllowed" Nullable="true" />
-          <Property Type="Boolean" Name="isHorseRaceAllowed" Nullable="true" />
-          <Property Type="Decimal" Name="BetLowerLimitHorsePlace" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitHorsePlace" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitGrayHoundPlace" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitGrayHoundPlace" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitGrayHoundWin" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitGrayHoundWin" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitMatchOdds" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitMatchOdds" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitInningRuns" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitInningRuns" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitCompletedMatch" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitCompletedMatch" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Boolean" Name="isTennisAllowed" Nullable="true" />
-          <Property Type="Boolean" Name="isSoccerAllowed" Nullable="true" />
-          <Property Type="Decimal" Name="BetUpperLimitMatchOddsSoccer" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitMatchOddsSoccer" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitMatchOddsTennis" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitMatchOddsTennis" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitTiedMatch" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitTiedMatch" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitWinner" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetLowerLimitWinner" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="MaxOddBack" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="MaxOddLay" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Boolean" Name="CheckforMaxOddBack" Nullable="true" />
-          <Property Type="Boolean" Name="CheckforMaxOddLay" Nullable="true" />
-          <Property Type="Int64" Name="CurrentLoggedInID" Nullable="true" />
-          <Property Type="Decimal" Name="BetLowerLimitFancy" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="BetUpperLimitFancy" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Boolean" Name="TransferAdminAmount" Nullable="true" />
-          <Property Type="Boolean" Name="isBetSlipKeysAllowed" Nullable="true" />
-          <Property Type="Boolean" Name="isJoriBetAllowed" Nullable="true" />
-          <Property Type="Boolean" Name="GTLogin" Nullable="true" />
-          <Property Type="Int32" Name="CancelBetTime" Nullable="true" />
-          <Property Type="Int32" Name="CompletedMatchBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="CompletedMatchTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="CricketMatchOddsBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="CricketMatchOddsTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="FancyBetPlaceWait" Nullable="true" />
-          <Property Type="Int32" Name="FancyTimerInterval" Nullable="true" />
-          <Property Type="Int32" Name="GrayHoundBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="GrayHoundTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="HorseRaceBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="HorseRaceTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="InningsRunsBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="InningsRunsTimerInterval" Nullable="false" />
-          <Property Type="Decimal" Name="PoundRate" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Int32" Name="RaceMinutesBeforeStart" Nullable="true" />
-          <Property Type="Int32" Name="SoccerBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="SoccerTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="TennisBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="TennisTimerInterval" Nullable="false" />
-          <Property Type="Int32" Name="TiedMatchBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="WinnerBetPlaceWait" Nullable="false" />
-          <Property Type="Int32" Name="WinnerTimerInterval" Nullable="false" />
-          <Property Type="String" Name="SimpleBtn1" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn2" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn3" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn4" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn5" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn6" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn7" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn8" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn9" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn10" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn11" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="SimpleBtn12" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn1" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn2" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn3" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn4" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn5" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn6" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn7" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn8" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn9" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn10" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn11" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="MutipleBtn12" Nullable="true" MaxLength="20" />
-        </ComplexType>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword1_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
@@ -5384,6 +5288,104 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
         <ComplexType Name="SP_UserMarket_GetToTiedMarketbyEventID_Result">
           <Property Type="String" Name="MarketCatalogueID" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="MarketCatalogueName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_Users_GetUserbyUsernameandPasswordWeb_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="UserType" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="UserTypeID" Nullable="true" />
+          <Property Type="Boolean" Name="isBlocked" Nullable="false" />
+          <Property Type="Boolean" Name="isDeleted" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="AccountBalance" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="RatePercent" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Loggedin" Nullable="true" />
+          <Property Type="Decimal" Name="BetLowerLimit" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimit" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="CheckConditionsforPlacingBet" Nullable="false" />
+          <Property Type="Boolean" Name="isGrayHoundRaceAllowed" Nullable="true" />
+          <Property Type="Boolean" Name="isHorseRaceAllowed" Nullable="true" />
+          <Property Type="Decimal" Name="BetLowerLimitHorsePlace" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitHorsePlace" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitGrayHoundPlace" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitGrayHoundPlace" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitGrayHoundWin" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitGrayHoundWin" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitMatchOdds" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitMatchOdds" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitInningRuns" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitInningRuns" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitCompletedMatch" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitCompletedMatch" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="isTennisAllowed" Nullable="true" />
+          <Property Type="Boolean" Name="isSoccerAllowed" Nullable="true" />
+          <Property Type="Boolean" Name="isFancyMarketAllowed" Nullable="false" />
+          <Property Type="Decimal" Name="BetUpperLimitMatchOddsSoccer" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitMatchOddsSoccer" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitMatchOddsTennis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitMatchOddsTennis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitTiedMatch" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitTiedMatch" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitWinner" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetLowerLimitWinner" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="MaxOddBack" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="MaxOddLay" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="CheckforMaxOddBack" Nullable="true" />
+          <Property Type="Boolean" Name="CheckforMaxOddLay" Nullable="true" />
+          <Property Type="Int64" Name="CurrentLoggedInID" Nullable="true" />
+          <Property Type="Decimal" Name="BetLowerLimitFancy" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="BetUpperLimitFancy" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Boolean" Name="TransferAdminAmount" Nullable="true" />
+          <Property Type="Boolean" Name="isBetSlipKeysAllowed" Nullable="true" />
+          <Property Type="Boolean" Name="isJoriBetAllowed" Nullable="true" />
+          <Property Type="Boolean" Name="GTLogin" Nullable="true" />
+          <Property Type="Boolean" Name="IsCom" Nullable="true" />
+          <Property Type="Int32" Name="CancelBetTime" Nullable="true" />
+          <Property Type="Int32" Name="CompletedMatchBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="CompletedMatchTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="CricketMatchOddsBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="CricketMatchOddsTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="FancyBetPlaceWait" Nullable="true" />
+          <Property Type="Int32" Name="FancyTimerInterval" Nullable="true" />
+          <Property Type="Int32" Name="GrayHoundBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="GrayHoundTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="HorseRaceBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="HorseRaceTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="InningsRunsBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="InningsRunsTimerInterval" Nullable="false" />
+          <Property Type="Decimal" Name="PoundRate" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="RaceMinutesBeforeStart" Nullable="true" />
+          <Property Type="Int32" Name="SoccerBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="SoccerTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="TennisBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="TennisTimerInterval" Nullable="false" />
+          <Property Type="Int32" Name="TiedMatchBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="WinnerBetPlaceWait" Nullable="false" />
+          <Property Type="Int32" Name="WinnerTimerInterval" Nullable="false" />
+          <Property Type="String" Name="SimpleBtn1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn4" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn5" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn6" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn7" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn8" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn9" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn10" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn11" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SimpleBtn12" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn3" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn4" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn5" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn6" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn7" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn8" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn9" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn10" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn11" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="MutipleBtn12" Nullable="true" MaxLength="20" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7503,106 +7505,6 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="SP_Users_GetUserbyUsernameandPasswordWeb" FunctionName="NExchangeModel.Store.SP_Users_GetUserbyUsernameandPasswordWeb">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="NExchangeModel.SP_Users_GetUserbyUsernameandPasswordWeb_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
-                <ScalarProperty Name="isBlocked" ColumnName="isBlocked" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
-                <ScalarProperty Name="RatePercent" ColumnName="RatePercent" />
-                <ScalarProperty Name="Loggedin" ColumnName="Loggedin" />
-                <ScalarProperty Name="BetLowerLimit" ColumnName="BetLowerLimit" />
-                <ScalarProperty Name="BetUpperLimit" ColumnName="BetUpperLimit" />
-                <ScalarProperty Name="CheckConditionsforPlacingBet" ColumnName="CheckConditionsforPlacingBet" />
-                <ScalarProperty Name="isGrayHoundRaceAllowed" ColumnName="isGrayHoundRaceAllowed" />
-                <ScalarProperty Name="isHorseRaceAllowed" ColumnName="isHorseRaceAllowed" />
-                <ScalarProperty Name="BetLowerLimitHorsePlace" ColumnName="BetLowerLimitHorsePlace" />
-                <ScalarProperty Name="BetUpperLimitHorsePlace" ColumnName="BetUpperLimitHorsePlace" />
-                <ScalarProperty Name="BetUpperLimitGrayHoundPlace" ColumnName="BetUpperLimitGrayHoundPlace" />
-                <ScalarProperty Name="BetLowerLimitGrayHoundPlace" ColumnName="BetLowerLimitGrayHoundPlace" />
-                <ScalarProperty Name="BetUpperLimitGrayHoundWin" ColumnName="BetUpperLimitGrayHoundWin" />
-                <ScalarProperty Name="BetLowerLimitGrayHoundWin" ColumnName="BetLowerLimitGrayHoundWin" />
-                <ScalarProperty Name="BetUpperLimitMatchOdds" ColumnName="BetUpperLimitMatchOdds" />
-                <ScalarProperty Name="BetLowerLimitMatchOdds" ColumnName="BetLowerLimitMatchOdds" />
-                <ScalarProperty Name="BetUpperLimitInningRuns" ColumnName="BetUpperLimitInningRuns" />
-                <ScalarProperty Name="BetLowerLimitInningRuns" ColumnName="BetLowerLimitInningRuns" />
-                <ScalarProperty Name="BetUpperLimitCompletedMatch" ColumnName="BetUpperLimitCompletedMatch" />
-                <ScalarProperty Name="BetLowerLimitCompletedMatch" ColumnName="BetLowerLimitCompletedMatch" />
-                <ScalarProperty Name="isTennisAllowed" ColumnName="isTennisAllowed" />
-                <ScalarProperty Name="isSoccerAllowed" ColumnName="isSoccerAllowed" />
-                <ScalarProperty Name="BetUpperLimitMatchOddsSoccer" ColumnName="BetUpperLimitMatchOddsSoccer" />
-                <ScalarProperty Name="BetLowerLimitMatchOddsSoccer" ColumnName="BetLowerLimitMatchOddsSoccer" />
-                <ScalarProperty Name="BetUpperLimitMatchOddsTennis" ColumnName="BetUpperLimitMatchOddsTennis" />
-                <ScalarProperty Name="BetLowerLimitMatchOddsTennis" ColumnName="BetLowerLimitMatchOddsTennis" />
-                <ScalarProperty Name="BetUpperLimitTiedMatch" ColumnName="BetUpperLimitTiedMatch" />
-                <ScalarProperty Name="BetLowerLimitTiedMatch" ColumnName="BetLowerLimitTiedMatch" />
-                <ScalarProperty Name="BetUpperLimitWinner" ColumnName="BetUpperLimitWinner" />
-                <ScalarProperty Name="BetLowerLimitWinner" ColumnName="BetLowerLimitWinner" />
-                <ScalarProperty Name="MaxOddBack" ColumnName="MaxOddBack" />
-                <ScalarProperty Name="MaxOddLay" ColumnName="MaxOddLay" />
-                <ScalarProperty Name="CheckforMaxOddBack" ColumnName="CheckforMaxOddBack" />
-                <ScalarProperty Name="CheckforMaxOddLay" ColumnName="CheckforMaxOddLay" />
-                <ScalarProperty Name="CurrentLoggedInID" ColumnName="CurrentLoggedInID" />
-                <ScalarProperty Name="BetLowerLimitFancy" ColumnName="BetLowerLimitFancy" />
-                <ScalarProperty Name="BetUpperLimitFancy" ColumnName="BetUpperLimitFancy" />
-                <ScalarProperty Name="TransferAdminAmount" ColumnName="TransferAdminAmount" />
-                <ScalarProperty Name="isBetSlipKeysAllowed" ColumnName="isBetSlipKeysAllowed" />
-                <ScalarProperty Name="isJoriBetAllowed" ColumnName="isJoriBetAllowed" />
-                <ScalarProperty Name="GTLogin" ColumnName="GTLogin" />
-                <ScalarProperty Name="CancelBetTime" ColumnName="CancelBetTime" />
-                <ScalarProperty Name="CompletedMatchBetPlaceWait" ColumnName="CompletedMatchBetPlaceWait" />
-                <ScalarProperty Name="CompletedMatchTimerInterval" ColumnName="CompletedMatchTimerInterval" />
-                <ScalarProperty Name="CricketMatchOddsBetPlaceWait" ColumnName="CricketMatchOddsBetPlaceWait" />
-                <ScalarProperty Name="CricketMatchOddsTimerInterval" ColumnName="CricketMatchOddsTimerInterval" />
-                <ScalarProperty Name="FancyBetPlaceWait" ColumnName="FancyBetPlaceWait" />
-                <ScalarProperty Name="FancyTimerInterval" ColumnName="FancyTimerInterval" />
-                <ScalarProperty Name="GrayHoundBetPlaceWait" ColumnName="GrayHoundBetPlaceWait" />
-                <ScalarProperty Name="GrayHoundTimerInterval" ColumnName="GrayHoundTimerInterval" />
-                <ScalarProperty Name="HorseRaceBetPlaceWait" ColumnName="HorseRaceBetPlaceWait" />
-                <ScalarProperty Name="HorseRaceTimerInterval" ColumnName="HorseRaceTimerInterval" />
-                <ScalarProperty Name="InningsRunsBetPlaceWait" ColumnName="InningsRunsBetPlaceWait" />
-                <ScalarProperty Name="InningsRunsTimerInterval" ColumnName="InningsRunsTimerInterval" />
-                <ScalarProperty Name="PoundRate" ColumnName="PoundRate" />
-                <ScalarProperty Name="RaceMinutesBeforeStart" ColumnName="RaceMinutesBeforeStart" />
-                <ScalarProperty Name="SoccerBetPlaceWait" ColumnName="SoccerBetPlaceWait" />
-                <ScalarProperty Name="SoccerTimerInterval" ColumnName="SoccerTimerInterval" />
-                <ScalarProperty Name="TennisBetPlaceWait" ColumnName="TennisBetPlaceWait" />
-                <ScalarProperty Name="TennisTimerInterval" ColumnName="TennisTimerInterval" />
-                <ScalarProperty Name="TiedMatchBetPlaceWait" ColumnName="TiedMatchBetPlaceWait" />
-                <ScalarProperty Name="WinnerBetPlaceWait" ColumnName="WinnerBetPlaceWait" />
-                <ScalarProperty Name="WinnerTimerInterval" ColumnName="WinnerTimerInterval" />
-                <ScalarProperty Name="SimpleBtn1" ColumnName="SimpleBtn1" />
-                <ScalarProperty Name="SimpleBtn2" ColumnName="SimpleBtn2" />
-                <ScalarProperty Name="SimpleBtn3" ColumnName="SimpleBtn3" />
-                <ScalarProperty Name="SimpleBtn4" ColumnName="SimpleBtn4" />
-                <ScalarProperty Name="SimpleBtn5" ColumnName="SimpleBtn5" />
-                <ScalarProperty Name="SimpleBtn6" ColumnName="SimpleBtn6" />
-                <ScalarProperty Name="SimpleBtn7" ColumnName="SimpleBtn7" />
-                <ScalarProperty Name="SimpleBtn8" ColumnName="SimpleBtn8" />
-                <ScalarProperty Name="SimpleBtn9" ColumnName="SimpleBtn9" />
-                <ScalarProperty Name="SimpleBtn10" ColumnName="SimpleBtn10" />
-                <ScalarProperty Name="SimpleBtn11" ColumnName="SimpleBtn11" />
-                <ScalarProperty Name="SimpleBtn12" ColumnName="SimpleBtn12" />
-                <ScalarProperty Name="MutipleBtn1" ColumnName="MutipleBtn1" />
-                <ScalarProperty Name="MutipleBtn2" ColumnName="MutipleBtn2" />
-                <ScalarProperty Name="MutipleBtn3" ColumnName="MutipleBtn3" />
-                <ScalarProperty Name="MutipleBtn4" ColumnName="MutipleBtn4" />
-                <ScalarProperty Name="MutipleBtn5" ColumnName="MutipleBtn5" />
-                <ScalarProperty Name="MutipleBtn6" ColumnName="MutipleBtn6" />
-                <ScalarProperty Name="MutipleBtn7" ColumnName="MutipleBtn7" />
-                <ScalarProperty Name="MutipleBtn8" ColumnName="MutipleBtn8" />
-                <ScalarProperty Name="MutipleBtn9" ColumnName="MutipleBtn9" />
-                <ScalarProperty Name="MutipleBtn10" ColumnName="MutipleBtn10" />
-                <ScalarProperty Name="MutipleBtn11" ColumnName="MutipleBtn11" />
-                <ScalarProperty Name="MutipleBtn12" ColumnName="MutipleBtn12" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_Users_GetUserbyUsernameandPassword" FunctionName="NExchangeModel.Store.SP_Users_GetUserbyUsernameandPassword">
             <ResultMapping>
               <ComplexTypeMapping TypeName="NExchangeModel.SP_Users_GetUserbyUsernameandPassword_Result2">
@@ -7955,6 +7857,108 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <FunctionImportMapping FunctionImportName="SP_Users_GetAhmadRate" FunctionName="NExchangeModel.Store.SP_Users_GetAhmadRate" />
           <FunctionImportMapping FunctionImportName="SP_Users_UpdateAhmadRate" FunctionName="NExchangeModel.Store.SP_Users_UpdateAhmadRate" />
           <FunctionImportMapping FunctionImportName="SP_Users_UpdateSuperAgentRate" FunctionName="NExchangeModel.Store.SP_Users_UpdateSuperAgentRate" />
+          <FunctionImportMapping FunctionImportName="SP_Users_GetUserbyUsernameandPasswordWeb" FunctionName="NExchangeModel.Store.SP_Users_GetUserbyUsernameandPasswordWeb">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NExchangeModel.SP_Users_GetUserbyUsernameandPasswordWeb_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+                <ScalarProperty Name="isBlocked" ColumnName="isBlocked" />
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="AccountBalance" ColumnName="AccountBalance" />
+                <ScalarProperty Name="RatePercent" ColumnName="RatePercent" />
+                <ScalarProperty Name="Loggedin" ColumnName="Loggedin" />
+                <ScalarProperty Name="BetLowerLimit" ColumnName="BetLowerLimit" />
+                <ScalarProperty Name="BetUpperLimit" ColumnName="BetUpperLimit" />
+                <ScalarProperty Name="CheckConditionsforPlacingBet" ColumnName="CheckConditionsforPlacingBet" />
+                <ScalarProperty Name="isGrayHoundRaceAllowed" ColumnName="isGrayHoundRaceAllowed" />
+                <ScalarProperty Name="isHorseRaceAllowed" ColumnName="isHorseRaceAllowed" />
+                <ScalarProperty Name="BetLowerLimitHorsePlace" ColumnName="BetLowerLimitHorsePlace" />
+                <ScalarProperty Name="BetUpperLimitHorsePlace" ColumnName="BetUpperLimitHorsePlace" />
+                <ScalarProperty Name="BetUpperLimitGrayHoundPlace" ColumnName="BetUpperLimitGrayHoundPlace" />
+                <ScalarProperty Name="BetLowerLimitGrayHoundPlace" ColumnName="BetLowerLimitGrayHoundPlace" />
+                <ScalarProperty Name="BetUpperLimitGrayHoundWin" ColumnName="BetUpperLimitGrayHoundWin" />
+                <ScalarProperty Name="BetLowerLimitGrayHoundWin" ColumnName="BetLowerLimitGrayHoundWin" />
+                <ScalarProperty Name="BetUpperLimitMatchOdds" ColumnName="BetUpperLimitMatchOdds" />
+                <ScalarProperty Name="BetLowerLimitMatchOdds" ColumnName="BetLowerLimitMatchOdds" />
+                <ScalarProperty Name="BetUpperLimitInningRuns" ColumnName="BetUpperLimitInningRuns" />
+                <ScalarProperty Name="BetLowerLimitInningRuns" ColumnName="BetLowerLimitInningRuns" />
+                <ScalarProperty Name="BetUpperLimitCompletedMatch" ColumnName="BetUpperLimitCompletedMatch" />
+                <ScalarProperty Name="BetLowerLimitCompletedMatch" ColumnName="BetLowerLimitCompletedMatch" />
+                <ScalarProperty Name="isTennisAllowed" ColumnName="isTennisAllowed" />
+                <ScalarProperty Name="isSoccerAllowed" ColumnName="isSoccerAllowed" />
+                <ScalarProperty Name="isFancyMarketAllowed" ColumnName="isFancyMarketAllowed" />
+                <ScalarProperty Name="BetUpperLimitMatchOddsSoccer" ColumnName="BetUpperLimitMatchOddsSoccer" />
+                <ScalarProperty Name="BetLowerLimitMatchOddsSoccer" ColumnName="BetLowerLimitMatchOddsSoccer" />
+                <ScalarProperty Name="BetUpperLimitMatchOddsTennis" ColumnName="BetUpperLimitMatchOddsTennis" />
+                <ScalarProperty Name="BetLowerLimitMatchOddsTennis" ColumnName="BetLowerLimitMatchOddsTennis" />
+                <ScalarProperty Name="BetUpperLimitTiedMatch" ColumnName="BetUpperLimitTiedMatch" />
+                <ScalarProperty Name="BetLowerLimitTiedMatch" ColumnName="BetLowerLimitTiedMatch" />
+                <ScalarProperty Name="BetUpperLimitWinner" ColumnName="BetUpperLimitWinner" />
+                <ScalarProperty Name="BetLowerLimitWinner" ColumnName="BetLowerLimitWinner" />
+                <ScalarProperty Name="MaxOddBack" ColumnName="MaxOddBack" />
+                <ScalarProperty Name="MaxOddLay" ColumnName="MaxOddLay" />
+                <ScalarProperty Name="CheckforMaxOddBack" ColumnName="CheckforMaxOddBack" />
+                <ScalarProperty Name="CheckforMaxOddLay" ColumnName="CheckforMaxOddLay" />
+                <ScalarProperty Name="CurrentLoggedInID" ColumnName="CurrentLoggedInID" />
+                <ScalarProperty Name="BetLowerLimitFancy" ColumnName="BetLowerLimitFancy" />
+                <ScalarProperty Name="BetUpperLimitFancy" ColumnName="BetUpperLimitFancy" />
+                <ScalarProperty Name="TransferAdminAmount" ColumnName="TransferAdminAmount" />
+                <ScalarProperty Name="isBetSlipKeysAllowed" ColumnName="isBetSlipKeysAllowed" />
+                <ScalarProperty Name="isJoriBetAllowed" ColumnName="isJoriBetAllowed" />
+                <ScalarProperty Name="GTLogin" ColumnName="GTLogin" />
+                <ScalarProperty Name="IsCom" ColumnName="IsCom" />
+                <ScalarProperty Name="CancelBetTime" ColumnName="CancelBetTime" />
+                <ScalarProperty Name="CompletedMatchBetPlaceWait" ColumnName="CompletedMatchBetPlaceWait" />
+                <ScalarProperty Name="CompletedMatchTimerInterval" ColumnName="CompletedMatchTimerInterval" />
+                <ScalarProperty Name="CricketMatchOddsBetPlaceWait" ColumnName="CricketMatchOddsBetPlaceWait" />
+                <ScalarProperty Name="CricketMatchOddsTimerInterval" ColumnName="CricketMatchOddsTimerInterval" />
+                <ScalarProperty Name="FancyBetPlaceWait" ColumnName="FancyBetPlaceWait" />
+                <ScalarProperty Name="FancyTimerInterval" ColumnName="FancyTimerInterval" />
+                <ScalarProperty Name="GrayHoundBetPlaceWait" ColumnName="GrayHoundBetPlaceWait" />
+                <ScalarProperty Name="GrayHoundTimerInterval" ColumnName="GrayHoundTimerInterval" />
+                <ScalarProperty Name="HorseRaceBetPlaceWait" ColumnName="HorseRaceBetPlaceWait" />
+                <ScalarProperty Name="HorseRaceTimerInterval" ColumnName="HorseRaceTimerInterval" />
+                <ScalarProperty Name="InningsRunsBetPlaceWait" ColumnName="InningsRunsBetPlaceWait" />
+                <ScalarProperty Name="InningsRunsTimerInterval" ColumnName="InningsRunsTimerInterval" />
+                <ScalarProperty Name="PoundRate" ColumnName="PoundRate" />
+                <ScalarProperty Name="RaceMinutesBeforeStart" ColumnName="RaceMinutesBeforeStart" />
+                <ScalarProperty Name="SoccerBetPlaceWait" ColumnName="SoccerBetPlaceWait" />
+                <ScalarProperty Name="SoccerTimerInterval" ColumnName="SoccerTimerInterval" />
+                <ScalarProperty Name="TennisBetPlaceWait" ColumnName="TennisBetPlaceWait" />
+                <ScalarProperty Name="TennisTimerInterval" ColumnName="TennisTimerInterval" />
+                <ScalarProperty Name="TiedMatchBetPlaceWait" ColumnName="TiedMatchBetPlaceWait" />
+                <ScalarProperty Name="WinnerBetPlaceWait" ColumnName="WinnerBetPlaceWait" />
+                <ScalarProperty Name="WinnerTimerInterval" ColumnName="WinnerTimerInterval" />
+                <ScalarProperty Name="SimpleBtn1" ColumnName="SimpleBtn1" />
+                <ScalarProperty Name="SimpleBtn2" ColumnName="SimpleBtn2" />
+                <ScalarProperty Name="SimpleBtn3" ColumnName="SimpleBtn3" />
+                <ScalarProperty Name="SimpleBtn4" ColumnName="SimpleBtn4" />
+                <ScalarProperty Name="SimpleBtn5" ColumnName="SimpleBtn5" />
+                <ScalarProperty Name="SimpleBtn6" ColumnName="SimpleBtn6" />
+                <ScalarProperty Name="SimpleBtn7" ColumnName="SimpleBtn7" />
+                <ScalarProperty Name="SimpleBtn8" ColumnName="SimpleBtn8" />
+                <ScalarProperty Name="SimpleBtn9" ColumnName="SimpleBtn9" />
+                <ScalarProperty Name="SimpleBtn10" ColumnName="SimpleBtn10" />
+                <ScalarProperty Name="SimpleBtn11" ColumnName="SimpleBtn11" />
+                <ScalarProperty Name="SimpleBtn12" ColumnName="SimpleBtn12" />
+                <ScalarProperty Name="MutipleBtn1" ColumnName="MutipleBtn1" />
+                <ScalarProperty Name="MutipleBtn2" ColumnName="MutipleBtn2" />
+                <ScalarProperty Name="MutipleBtn3" ColumnName="MutipleBtn3" />
+                <ScalarProperty Name="MutipleBtn4" ColumnName="MutipleBtn4" />
+                <ScalarProperty Name="MutipleBtn5" ColumnName="MutipleBtn5" />
+                <ScalarProperty Name="MutipleBtn6" ColumnName="MutipleBtn6" />
+                <ScalarProperty Name="MutipleBtn7" ColumnName="MutipleBtn7" />
+                <ScalarProperty Name="MutipleBtn8" ColumnName="MutipleBtn8" />
+                <ScalarProperty Name="MutipleBtn9" ColumnName="MutipleBtn9" />
+                <ScalarProperty Name="MutipleBtn10" ColumnName="MutipleBtn10" />
+                <ScalarProperty Name="MutipleBtn11" ColumnName="MutipleBtn11" />
+                <ScalarProperty Name="MutipleBtn12" ColumnName="MutipleBtn12" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

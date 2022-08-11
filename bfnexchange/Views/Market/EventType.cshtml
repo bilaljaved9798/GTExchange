@@ -1,8 +1,72 @@
 ﻿@model IEnumerable<bfnexchange.Models.EventType>
+<head>
+	<style>
+		input[type="number"] {
+			-webkit-appearance: textfield;
+			-moz-appearance: textfield;
+			appearance: textfield;
+		}
 
-<div id="sidebar" style="background-color:@ViewBag.backgrod;color:@ViewBag.color" >
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+		}
+
+		.number-input {
+			border: 2px solid #ddd;
+			display: inline-flex;
+		}
+
+			.number-input,
+			.number-input * {
+				box-sizing: border-box;
+			}
+
+				.number-input button {
+					outline: none;
+					-webkit-appearance: none;
+					border: none;
+					align-items: center;
+					justify-content: center;
+					width: 3rem;
+					height: 3rem;
+					cursor: pointer;
+					margin: 0;
+					position: relative;
+				}
+
+					.number-input button:after {
+						display: inline-block;
+						position: absolute;
+						font-family: "Font Awesome 5 Free";
+						font-weight: 900;
+						content: '\f077';
+						transform: translate(-50%, -50%) rotate(180deg);
+					}
+
+					.number-input button.plus:after {
+						transform: translate(-50%, -50%) rotate(0deg);
+					}
+
+				.number-input input[type=number] {
+					font-family: sans-serif;
+					max-width: 10rem;
+					padding: 0rem;
+					width:100% !important;
+					border: solid #ddd;
+					border-width: 0 2px;
+					height: 3rem;
+					font-weight: bold;
+					text-align: center;
+				}
+	</style>
+</head>
+<div id="sidebar" style="background-color:@ViewBag.backgrod;color:@ViewBag.color">
+
+
 
 	<ul class="list-unstyled components">
+
 
 		@*<li>
 			<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowAllMatches()">
@@ -112,7 +176,7 @@
 
 <div id="otherdata"></div>
 <div class="col-md-12 no-padding col-sm-12 col-lg-12" id="marketdataall" style="display:none">
-	<div class="col-md-8 no-padding col-lg-8  col-sm-12" style="height:700px;overflow:scroll" >
+	<div class="col-md-8 no-padding col-lg-8  col-sm-12 scroll"  >
 		<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
 
 			<div id="marketbook">
@@ -138,15 +202,15 @@
 			<div id="Indianfancymarketbook1">
 
 			</div>
-			<div id="KJfancymarketbook">
 
-
-			</div>
 
 			<div id="Figurefancymarketbook">
 
 			</div>
+			<div id="KJfancymarketbook">
 
+
+			</div>
 
 		</div>
 
@@ -206,38 +270,45 @@
 										<table cellspacing="0" width="100%">
 											<thead>
 												<tr>
-													<th width="40%" colspan="2" class="runner">(Bet For)</th>
-													<th width="30%" class="oddsH">Odds</th>
-													<th width="15%" class="stake">Stake</th>
-													<th width="15%" class="profit">Profit or Liability</th>
+													<th width="25%" colspan="1" class="runner">(Bet For)</th>
+													<th width="25%" class="oddsH" >Odds</th>
+													<th width="27%" class="stake">Stake</th>
+													<th width="23%" class="profit">Profit</th>
 												</tr>
 											</thead>
 											<tbody id="betslipcontent">
-												<tr id="b-349" data-handicap="0.000000" data-slip="b">
-													<td class="delete">
-														<a onclick="tremove(this); return false;" href="#">
-															<i class="fa fa-trash-o"></i>
-														</a>
-													</td>
+												<tr id="b-349" style="height:50px" data-handicap="0.000000" data-slip="b">
+													
 													<td>
 														<span class="runnername">
 															<label id="betslipselection"></label>
 														</span>
 													</td>
 													<td class="oddsH">
-														<span>
-															<div class="oddWrapper">
-																<div class="odd-left">
-																	<button id="bdown-349" onclick="decrement(); return false;"><span class="fa fa-minus"></span></button>
-
+														@*<span>*@
+														<div class="oddWrapper">
+															<div class="odd-left">
+																<div class="number-input">
+																	<button id="bdown-349" onclick="decrement(); return false;" class="minus"></button>
 																	<input tabindex="1" type="text" id="betslipodd" max="1000">
-																	<button id="bup-349" onclick="increment(); return false;" style="margin-left:-2px !important"><span class="fa fa-plus"></span></button>
+
+																	<button id="bup-349" onclick="increment(); return false;" class="plus"></button>
 																</div>
 															</div>
-														</span>
+
+														</div>
+														@*</span>*@
 													</td>
-													<td class="stake">
-														<span class="stake"><input id="betslipamount" type="number" onmouseup="calculateamountss()" min="500" max="5000000000" step="1" class="text stake numeric" maxlength="7" onkeyup="calculateamountss()"> </span>
+													<td class="oddsH">
+														<div class="oddWrapper">
+															<div class="odd-left">
+																<div class="number-input">
+																	<input id="betslipamount" type="number" onmouseup="calculateamounts()" min="500" max="5000000000" step="1" maxlength="7" onkeyup="calculateamounts()">
+																</div>
+															</div>
+
+														</div>
+
 													</td>
 													<td class="profit">
 
@@ -260,11 +331,14 @@
 
 
 																<br />
-
-																<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", "")" style=" background:#075E54; color:white" ;>
+																<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+1000" data-value="1000" style=" background:#075E54; color:white" ;/>
+																<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+5000" data-value="5000" style=" background:#075E54; color:white" ;/>
+																<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+50000" data-value="50000" style=" background:#075E54; color:white" ;/>
+																<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+100000" data-value="100000" style=" background:#075E54; color:white" ;/>
+																@*<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", "")" style=" background:#075E54; color:white" ;>
+		<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", "")" style=" background:#075E54; color:white" ;>
+		<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", "")" style=" background:#075E54; color:white" ;>
+		<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", "")" style=" background:#075E54; color:white" ;>*@
 															</div>
 														</center>
 
@@ -274,7 +348,7 @@
 
 												<tr>
 													<td colspan="3">
-														<button id="cancelAll" style="background:linear-gradient(to bottom, #FF0000 56%, #FF0000 85%); color:white; height:27px;  width:97px; font-size:16px"> Clear All   </button>
+														<button id="cancelAll" style="background:linear-gradient(to bottom, #FF0000 56%, #FF0000 85%); color:white; height:27px;  width:97px; font-size:16px"> Close   </button>
 													</td>
 													<td colspan="3" align="right">
 														<input type="button" value="Submit" id="btnBetslipsubmit" style="background:#008000; color:white; height:27px; width:90px; font-size:16px" />
@@ -283,7 +357,7 @@
 											</tfoot>
 										</table>
 										<div class="clear-fix"></div>
-										<div id="pendding" class="pendding bslipl" >
+										<div id="pendding" class="pendding bslipl">
 											;
 											<img src="~/Content/Images/ajax-loader-bigger.gif" alt="loading..." />
 
@@ -300,10 +374,10 @@
 										<table cellspacing="0" width="90%">
 											<thead>
 												<tr>
-													<th width="40%" colspan="2" class="runner">(Bet For)</th>
-													<th width="25%" class="oddsH">Odds</th>
+													<th width="25%" colspan="2" class="runner">(Bet For)</th>
+													<th width="35%" class="oddsH">Odds</th>
 													<th width="15%" class="stake">Stake</th>
-													<th width="20%" class="profit">Profit/Liability</th>
+													<th width="25%" class="profit">Profit</th>
 												</tr>
 											</thead>
 											<tbody id="betslipcontentmultiple">
@@ -334,7 +408,7 @@
 													</td>
 													<td class="">
 														<div class="wrapper">
-															<span style="color:green; font-weight: 600;" class="profit-value">
+															<span style="color:green; font-weight: 600; width:15px;" class="profit-value">
 																<label id="betslipoddlabelmultiple" class="profit-value"></label>
 															</span>
 															<span style="color: red; font-weight: 600;" class="profit-value">
@@ -440,46 +514,76 @@
 									<table cellspacing="0" width="100%">
 										<thead>
 											<tr>
-												<th width="40%" colspan="2" class="runner">(Bet For)</th>
-												<th width="30%" class="oddsH">Odds</th>
-												<th width="15%" class="stake">Stake</th>
-												<th width="15%" class="profit">Profit or Liability</th>
+												
+												<th width="50%"colspan="3" class="oddsH">Odds</th>
+												<th width="50%" colspan="3" class="stake">Stake</th>
+												
 											</tr>
 										</thead>
 										<tbody id="betslipcontentmob">
-											<tr id="b-349" data-handicap="0.000000" data-slip="b">
-												<td class="delete">
-													<a onclick="tremove(this); return false;" href="#">
-														<i class="fa fa-trash-o"></i>
-													</a>
-												</td>
-												<td>
-													<span class="runnername">
-														<label id="betslipselectionmob"></label>
-													</span>
-												</td>
-												<td class="oddsH">
-													<span>
-														<div class="oddWrapper">
-															<div class="odd-left">
-																<button id="bdown-349" onclick="decrement(); return false;"><span class="fa fa-minus"></span></button>
-
+											<tr id="b-349" data-handicap="0.000000" dtata-slip="b">
+												<td colspan="3" class="oddsH" style="height: 60px;">
+													<div>														
+														<div class="odd-left" style="font-size: 15px;">
+															<div class="number-input">
+																<button id="bdown-349" onclick="decrement(); return false;" class="minus"></button>
 																<input tabindex="1" type="text" id="betslipoddmob" max="1000">
-																<button id="bup-349" onclick="increment(); return false;" style="margin-left:-2px !important"><span class="fa fa-plus"></span></button>
+
+																<button id="bup-349" onclick="increment(); return false;" class="plus"></button>
 															</div>
 														</div>
-													</span>
-												</td>
-												<td class="stake">
-													<span class="stake"><input id="betslipamountmob" type="number" onmouseup="calculateamountsmob()" min="500" max="5000000000" step="1" class="text stake numeric" maxlength="7" onkeyup="calculateamountsmob()"> </span>
-												</td>
-												<td class="profit">
-
-													<div class="wrapper">
-														<span style="color:green; font-weight: 600;" class="profit-value"><label id="betslipamountlabelmob"></label></span>
-
 													</div>
 												</td>
+												<td colspan="3" class="stake">
+													<div class="number-input">
+														<input id="betslipamountmob" type="number" onmouseup="calculateamountsmob()" min="500" max="5000000000" step="1" maxlength="7" onkeyup="calculateamountsmob()">
+													</div>
+													@*<span class="stake"><input id="betslipamountmob" type="number" onmouseup="calculateamountsmob()" min="500" max="5000000000" step="1" class="text stake numeric" maxlength="7" onkeyup="calculateamountsmob()"> </span>*@
+												</td>
+
+
+
+											</tr>
+
+
+
+
+
+
+
+											<tr id="b-349" data-handicap="0.000000" dtata-slip="b">
+
+
+												<th width="25%" colspan="2">Bet For:</th>
+
+
+												<td  width="25%" class="profit">
+
+
+													<span class="runnername" style="font-weight: 600;"> <label id="betslipselectionmob" style="
+    font-weight: 1000;
+">  </label></span>
+
+
+												</td>
+												<th width="25%" colspan="2"></th>
+											</tr>
+
+
+											<tr id="b-349" data-handicap="0.000000" dtata-slip="b">
+
+
+												<th width="25%" colspan="2">Profit:</th>
+
+
+												<td width="25%"  class="profit">
+
+
+													<span class="wrapper profit-value" style="color:green; font-weight: 600; width:15px;"> <label id="betslipamountlabelmob">  </label></span>
+
+
+												</td>
+												<th width="25%" colspan="2"></th>
 											</tr>
 											<tr data-parent="b-349" id="btn-b-349 btnBetSlip btn-smBetSlip btn-defaultBetSlip">
 
@@ -493,21 +597,20 @@
 															<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+","")" style=" background:#075E54; color:white" ;>
 
 															<br />
-
-															<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+","")" style=" background:#075E54; color:white" ;>
-															<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+","")" style=" background:#075E54; color:white" ;>
-															<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+","")" style=" background:#075E54; color:white" ;>
-															<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+","")" style=" background:#075E54; color:white" ;>
+															<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+1000" data-value="1000" style=" background:#075E54; color:white" ; />
+															<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+5000" data-value="5000" style=" background:#075E54; color:white" ; />
+															<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+50000" data-value="50000" style=" background:#075E54; color:white" ; />
+															<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="+100000" data-value="100000" style=" background:#075E54; color:white" ; />
 														</div>
 													</center>
 
 												</td>
 											</tr>
-										<tfoot style="height: 40px;">
+<tfoot style="height: 40px;">
 
 											<tr>
 												<td colspan="3">
-													<button id="cancelAll" style="background:linear-gradient(to bottom, #FF0000 56%, #FF0000 85%); color:white; font-size:20px"> Clear All   </button>
+													<button id="cancelAllmop" style="background:linear-gradient(to bottom, #FF0000 56%, #FF0000 85%); color:white; font-size:20px"> Close   </button>
 												</td>
 												<td colspan="3" align="right">
 													<input type="button" value="Submit" id="btnBetslipsubmitmob" style="background:#008000; color:white; font-size:20px" />
@@ -532,10 +635,10 @@
 									<table cellspacing="0" width="100%">
 										<thead>
 											<tr>
-												<th width="40%" colspan="2" class="runner">(Bet For)</th>
-												<th width="25%" class="oddsH">Odds</th>
+												<th width="25%" colspan="2" class="runner">(Bet For)</th>
+												<th width="35%" class="oddsH">Odds</th>
 												<th width="15%" class="stake">Stake</th>
-												<th width="20%" class="profit">Profit/Liability</th>
+												<th width="25%" class="profit">Profit</th>
 											</tr>
 										</thead>
 										<tbody id="betslipcontentmultiple">
@@ -566,7 +669,7 @@
 												</td>
 												<td class="">
 													<div class="wrapper">
-														<span style="color:green; font-weight: 600;" class="profit-value">
+														<span style="color:green; font-weight: 600; width:15px;" class="profit-value">
 															<label id="betslipoddlabelmultiple" class="profit-value"></label>
 														</span>
 														<span style="color: red; font-weight: 600;" class="profit-value">
@@ -753,20 +856,40 @@
 			<div id="userbets">
 
 			</div>
+
+
+
 		</div>
 
-		<div class="col-md-12 no-padding">
-			<button id="btnPlay" class="col-sm-6 pull-left tvmbl" style="background: #075E54;color: white;">Live Video</button>
-			<button id="btnscorecard " class="col-sm-6 pull-left tvmbl" style="background: #075E54;color: white;border-right: 1px white solid;">Score Card</button>
-		</div>
+		<br />
 
-		<div class="col-md-12 no-padding">
-			<iframe style="width:100%; height: 300px ;display:none" id="video" frameborder="0" allowfullscreen></iframe>
-			<iframe style="width:100%; height: 492px; display:none" id="scorecaed" frameborder="0" allowfullscreen></iframe>
-		</div>
+		<button type=submit id="btnPlay" class="col-sm-6  tvmbl btntvcard" style="background-color:@ViewBag.backgrod; color: White ; border-right: 2px white solid;">Live Video</button>
 
 
-		<div id="relatedevent" class="col-md-12 no-padding"   >
+		@*@ViewBag.color*@
+
+
+		<style>
+			button[type=submit]:hover {
+				flex: 1 0 auto;
+				box-shadow: inset 0 0 100px #068b7c;
+				color: white;
+				background-color: #068b7c;
+				text-align: center;
+			}
+		</style>
+
+
+		<button type=submit id="btnscorecard" class="col-sm-6  tvmbl btntvcard" style="background-color:@ViewBag.backgrod; color: white">Score Card</button>
+
+		@*@ViewBag.color*@
+		<br />
+		<iframe style="width:100%; height: 300px ;display:none" id="video" frameborder="0" allowfullscreen></iframe>
+		<iframe style="width:100%; height: 300px; display:none" id="scorecaed" frameborder="0" allowfullscreen></iframe>
+
+
+
+		<div id="relatedevent" class="col-md-12 no-padding">
 
 		</div>
 
@@ -777,7 +900,7 @@
 
 
 	<div id='myModalFancy' class='modal'>
-		<div class="modal-dialog" style="background-color:@ViewBag.backgrod;color:@ViewBag.color">
+		<div class="modal-dialog" style="background-color:@ViewBag.backgrod;">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Market Rules</h4>
@@ -808,13 +931,25 @@
 	<input type="hidden" id="clickedID" value="0" />
 	<input type="hidden" id="activesheetname" value="" />
 </div>
-<script type="text/javascript">
+		<script type="text/javascript">
 
+			
 
 			$("#cancelAll").click(function () {
 				$("#BetSlipMain").hide();
 				$("#simpleBet").hide();
 				$("#betslipcontent").hide();
+				$("#myModalBetslipmob").modal("hide");
+				
+			});
+			
+			$("#cancelAllmop").click(function () {
+				$("#myModalBetslipmob").modal("hide");
+				$("#BetSlipMain").hide();
+				$("#simpleBet").hide();
+				$("#betslipcontent").hide();
+				
+
 			});
 
 			$("#cancelAllJori").click(function () {
@@ -1141,7 +1276,9 @@
 			//    }
 			//}
 
-			function Toggleliabalitiesbymarkets(){
+			function Toggleliabalitiesbymarkets() {
+				debugger;
+
 				$("#libalitybymarket").hide();
 				$("#libalitybymarket").show();
 				if($("#libalitybymarket").css("display")=="none"){
@@ -1356,6 +1493,7 @@ function ShowInPlayC() {
 				}
 			}
 			function Toggleliabalitiesbymarkets1() {
+				debugger;
 				$("#todayhorseraceui").hide();
 				$("#inplayul").hide();
 
@@ -1646,7 +1784,7 @@ function ShowInPlayC() {
 	var bool = false;
 
 		function GetActiveMarketKJ() {
-			debugger;
+			
 		var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 		var orignalopendate = $("#marketbookorignalopendate" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 		$.ajax({
@@ -1818,8 +1956,8 @@ function ShowInPlayC() {
 
 
         function LoadActiveMarketFancyIN()
-				{
-
+		{
+			
 				var eventID=$("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 					// orignalopendate=datearr2[0]+"/"+datearr2[1]+"/"+datearr2[2]+" "+datearr[1];
 					$.ajax({
@@ -1831,13 +1969,15 @@ function ShowInPlayC() {
 						complete: function () {
 						},
 						error:function(){
-							LoadActiveMarketFancyIN();
+							
 						},
 						success: function (data) {
+							//debugger;
 							setTimeout(function () {
 								LoadActiveMarketFancyIN();
 							},2000);
-							if(data !=""){
+							if (data != "") {
+								
 							AssignDatatoMarketBookFancyIN(data);
 							//AssignDatatoMarketBookFancy2(data);
 							}
@@ -1847,10 +1987,10 @@ function ShowInPlayC() {
 				}
 
 		function GetActiveMarketINFancy() {
-
+			
 			var marketbookstatus = $("#marketbookstatus" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 			var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-
+			data = "";
 			$.ajax({
 				url: '/IndianF/GetInFancyMarket/',
 
@@ -1865,7 +2005,6 @@ function ShowInPlayC() {
 				success: function (data) {
 
 					if (data != "") {
-
 						$("#Indianfancymarketbook1").html(data);
 						//LoadActiveMarketFancyIN();
 						setTimeout(function () {
@@ -1882,7 +2021,7 @@ function ShowInPlayC() {
 
 			});
 
-			$(".fancybackandlaydiv").show();
+			//$(".fancybackandlaydiv").show();
 
 		}
 
@@ -1963,7 +2102,7 @@ function ShowInPlayC() {
 
 		if (display == false) {
 			var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-			$("#video")[0].src = "https://orangeexch999.com/jmp/nm3/all.php?eventId= " + eventID + " ";
+			$("#video")[0].src = "https://allsportstv.pro:/LiveApp/play.html?name=241001574412859037980753";
 			$("#video").show();
 			display = true;
 			}
@@ -1975,9 +2114,10 @@ function ShowInPlayC() {
 
 	})
 
-	var Carddisplay = false;
+			var Carddisplay = false;
 
-	$('#btnscorecard').click(function (ev) {
+			$('#btnscorecard').click(function (ev) {			
+				debugger;
 		$("#video").hide();
 		if (display == false) {
 			var eventID = $("#lastloadedmarket").val()
@@ -2260,7 +2400,6 @@ function ShowInPlayC() {
 		}
 
 		function AssignDataToSoccerCard(matchstr) {
-		debugger;
 			if (matchstr == "") {
 				$("#matchscores").hide();
 				return;
@@ -2275,7 +2414,7 @@ function ShowInPlayC() {
 			}
 			if (scorecard.state.timeElapsed != null)
 			{
-				$("#matchscores").hide();
+				$("#matchscores").show();
 				$("#lblteamnameAsoccer").text(scorecard.homeName);
 				$("#lblteamnameBsoccer").text(scorecard.awayName);
 				$("#lbltimes").text(scorecard.state.timeElapsed);
@@ -2297,7 +2436,7 @@ function ShowInPlayC() {
 		}
 
 		function AssignDataToTinnesCard(matchstr) {
-			debugger;
+			
 			var as=$("#marketbookstatus").val();
 		if (matchstr == "") {
 			$("#matchscores").hide();
@@ -2312,11 +2451,12 @@ function ShowInPlayC() {
 					$("#matchscores").hide();
 				return;
 			}
-				if (scorecard.state == null) {
-					$("#matchscores").show();
-					return;
-				}
+				//if (scorecard.state == null) {
+					
+				
+				//}
 				else {
+					$("#matchscores").show();
 					$("#lblteamnameAsoccer").text(scorecard.homeName);
 					$("#lblteamnameBsoccer").text(scorecard.awayName);
 					$("#lbltimes").text(scorecard.state.timeElapsed);
@@ -2330,7 +2470,8 @@ function ShowInPlayC() {
 					$("#lblsoccerYC").text(scorecard.state.score.numberOfYellowCards);
 					$("#lblsoccerYR").text(scorecard.state.score.numberOfRedCards);
 
-				}	}
+				}
+			}
 		}
 	function updatescores()
 			{
@@ -2464,7 +2605,7 @@ function ShowInPlayC() {
 	}
 
 	function updatescoresnewsoccer() {
-		debugger;
+		
 		var getupdatesfrom = $("#getmatchupdatesfrom" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 		var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 
@@ -2489,11 +2630,11 @@ function ShowInPlayC() {
 	}
 
 		function updatescoresnewTinnes() {
-			debugger;
+			
 		var status = $("#marketbookstatus" + $("#lastloadedmarket").val().toString().replace(".", "")).html();
 		var getupdatesfrom = $("#getmatchupdatesfrom" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 		var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-		if (status != "hhhhh") {
+		
 			$.ajax({
 				url: '/CricketScore/CreateSoccerCardNew/',
 				type: 'GET',
@@ -2512,14 +2653,7 @@ function ShowInPlayC() {
 					}, 3000);
 				}
 			});
-		}
-		else {
-			setTimeout(function () {
-				updatescoresnewTinnes();
-
-			}, 1000);
-			$(".mainscorediv").hide();
-		}
+		
 	}
 
 
@@ -2735,7 +2869,7 @@ function ShowInPlayC() {
 				success: function (data) {
 					if (data != "") {
 						$("#marketbooksoccer").show();
-						//LoadMarketTypeSoccerGoal();
+						LoadMarketTypeSoccerGoal();
 					}
 				}
 
@@ -2771,7 +2905,7 @@ function ShowInPlayC() {
 				setTimeout(function () {
 					LoadActiveMarketSoccerGaol();
 
-				}, 5000);
+				}, 3000);
 
 				if (data != "") {
 					AssignDatatoMarketBookSoccerGoal(data);
@@ -2788,8 +2922,6 @@ function ShowInPlayC() {
 					}
 
 				});
-
-
 
 				comparemarketbookTWT();
 
@@ -3318,10 +3450,10 @@ function ShowInPlayC() {
 	         function AssignDatatoMarketBookSoccerGoal(marketbooks) {
 
 		var marketbook1 = JSON.parse(marketbooks);
-		//debugger;
+		
 		for (s = 0; s <= marketbook1.length - 1; s++) {
 
-			//debugger;
+		
 			var marketbook = marketbook1[s];
 			var marketbookID = marketbook.MarketId;//$("#lastloadedmarketTWT").val().toString().replace(".","");
 
@@ -3735,7 +3867,7 @@ function ShowInPlayC() {
 				if (marketbook != null) {
 					var a = $("#clickedlocation").val();
 					if ( marketbook.RunnersForindianFancy[j].StatusStr == "Ball Running" || marketbook.RunnersForindianFancy[j].StatusStr == "Starting soon.") {
-						debugger;
+						
 						if (a == "9") {
 							$('#simpleBet').hide();
 							$('#myModalBetslipmob').modal('hide');
@@ -3768,7 +3900,7 @@ function ShowInPlayC() {
 						try{
 							if((marketbook.Runners[j].ExchangePrices.AvailableToBack[0].Price != null || marketbook.Runners[j].ExchangePrices.AvailableToLay[0].Price != null)){
 								$("#marketbook" + marketbookID).show();
-								debugger;
+								
 								itemfound=1;
 
 									if (marketbook.Runners[j].ExchangePrices.AvailableToBack.length  > 0 && marketbook.Runners[j].ExchangePrices.AvailableToBack.length > 0)
@@ -3829,7 +3961,7 @@ function ShowInPlayC() {
 							$("#marketbook"+marketbookID).hide();
 						}
 					}
-					debugger;
+					
 				}
 				if(itemfound==1){
 					$("Figurefancymarketbook").show();
@@ -4335,7 +4467,7 @@ function ShowInPlayC() {
 
 			}
 	function AddRunnersformultiplebets(id) {
-		debugger;
+	
 				var marketbbokname=$("#marketbookname"+$("#lastloadedmarket").val().toString().replace(".","")).val();
 				var marketbookdID= $("#lastloadedmarket").val().toString().replace(".","");
 				var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarket").val().toString().replace(".","")).val();
@@ -4435,7 +4567,7 @@ function ShowInPlayC() {
 			}
 			var isfirstclick=true;
 	function triggerchangemethod(id, marketbookid) {
-		debugger;
+		
 
 				var check=  $("#marketbook"+marketbookid +" #chkselection"+id).prop("checked");
 				if(check==true){
@@ -4515,7 +4647,7 @@ function ShowInPlayC() {
 
 
 				function LoadMarketTypeandUserBets() {
-					debugger;
+					
 					$.when($.ajax({
 						url: '/Market/MarketBook/',
 
@@ -4584,9 +4716,11 @@ function ShowInPlayC() {
 					if ($(this).val().indexOf('+') >= 0) {
 						var newamount = parseFloat($("#betslipamount").val()) + parseFloat($(this).attr("data-value"));
 						$("#betslipamount").val(newamount);
+						$("#betslipamountmob").val(newamount);
 					}
 					else {
 						$("#betslipamount").val($(this).attr("data-value"));
+						$("#betslipamountmob").val($(this).attr("data-value"));
 					}
 					isfirstclick=false;
 					calculateamounts();
@@ -4675,7 +4809,7 @@ function ShowInPlayC() {
 
 				$("#btnBetslipsubmitmob").click(function ()
 				{
-					debugger;
+					
 					isfirstclick=true;
 					$("#btnBetslipsubmitmob").prop('disabled', true);
 
@@ -4695,7 +4829,7 @@ function ShowInPlayC() {
 
 					var marketbookname= $("#loadedmarketbookname").val();
 					var marketbookrunners=$("#marketbookrunners"+marketbookID).val();
-					//debugger;
+					
 					if (categoryname == "Fancy"){
 						lowerbetlimit=@LoggedinUserDetail.GetBetLowerLimitFancy();
 						betupperlimit=@LoggedinUserDetail.GetBetUpperLimitFancy();
@@ -4810,7 +4944,7 @@ function ShowInPlayC() {
 									$(".pendding").show();
 									var categoryname=$("#marketbookCategory"+marketbookID).val();
 									var counter = 6;
-									debugger;
+									
 									$.ajax({
 										url: '/DashBoard/GetBetPlaceInterval',
 
@@ -4841,7 +4975,7 @@ function ShowInPlayC() {
 													$(".pendding").hide();
 													HideLoader();
 													clearInterval(interval);
-													debugger;
+													
 													if(@LoggedinUserDetail.CheckConditionsforPlaceBet()==0){
 														insertbetslipSimple();
 													}
@@ -4850,7 +4984,7 @@ function ShowInPlayC() {
 													}
 													$('html,body').animate({scrollTop: $("#userbets").offset().top}, 800);
 													//LoadUserBets();
-													Loadliabalitiesbymarkets();
+													//Loadliabalitiesbymarkets();
 													parentID = 0;
 													isInserting = false;
 													$("#btnBetslipsubmitmob").prop('disabled', false);
@@ -4896,7 +5030,7 @@ function ShowInPlayC() {
 									$(".pendding").show();
 									var categoryname=$("#marketbookCategory"+marketbookID).val();
 									var counter = 6;
-									debugger;
+									
 									$.ajax({
 										url: '/DashBoard/GetBetPlaceInterval',
 
@@ -4927,7 +5061,7 @@ function ShowInPlayC() {
 													$(".pendding").hide();
 													HideLoader();
 													clearInterval(interval);
-													debugger;
+													
 													if(@LoggedinUserDetail.CheckConditionsforPlaceBet()==0){
 														insertbetslipSimple();
 													}
@@ -5078,13 +5212,13 @@ function ShowInPlayC() {
 						HideLoader();
 						return;
 					}
-					debugger;
+					
 
 					var selectionIDs1=[];
 					selectionIDs1.push($("#openedbetslipid").val());
 					var betamount=0;
 					if (categoryname == "Fancy"){
-						debugger;
+						
 						var odd1 = $("#clickedbetsize").val();
 						$.ajax({
 							url: '/UserBet/CheckforPlaceBet',
@@ -5106,7 +5240,7 @@ function ShowInPlayC() {
 										categoryname = "Fancy";
 										$(".pendding").hide();
 									}
-									debugger;
+									
 									var counter = 6;
 									////
 									$.ajax({
@@ -5197,7 +5331,7 @@ function ShowInPlayC() {
 										categoryname = "Fancy";
 										$(".pendding").hide();
 									}
-									debugger;
+									
 									var counter = 6;
 									////
 									$.ajax({
@@ -5275,7 +5409,7 @@ function ShowInPlayC() {
 
 				$("#btnBetslipsubmitmultiplemb").click(function () {
 
-					debugger;
+					
 					$("#btnBetslipsubmitmultiplemb").prop('disabled', true);
 					$("#btnBetslipResetmultiplemb").prop('disabled', true);
 					isfirstclick=true;
@@ -5819,7 +5953,8 @@ function ShowInPlayC() {
 					}
 				});
 			}
-			function Loadliabalitiesbymarkets(){
+			function Loadliabalitiesbymarkets() {
+				
 				//  $("#libalitybymarket").html("");
 				//  $("#libalitybymarket").show();
 
@@ -5859,7 +5994,7 @@ function ShowInPlayC() {
 				if(checkNetConnection()==false){
 					return  ;
 				}
-				debugger;
+				
 				var data=$("#clickedbetsize").val()
 				//selectionID =
 				$.ajax({
@@ -5884,7 +6019,7 @@ function ShowInPlayC() {
 				if(checkNetConnection()==false){
 					return  ;
 				}
-				// debugger;
+				
 				selectionID = $("#openedbetslipid").val();
 				$.ajax({
 					url: '/UserBet/InsertUserBetNew',
@@ -5978,7 +6113,7 @@ function ShowInPlayC() {
 				return lowerbetlimit;
 			}
 	function setuserbethiddenfieldsvalue(loadedmarketID, userodd, selectionID, amount, selectionname, betsliptype, marketbookname, betslipsize) {
-		debugger;
+		
 				$("#isBetSlipEdit").val("0");
 				$("#loadedmarketbook").val(loadedmarketID);
 				$("#betslipodd").val(userodd);
@@ -6021,7 +6156,7 @@ function ShowInPlayC() {
 			}
 
 		function calculateamounts() {
-			debugger;
+			
 			var loc = $("#clickedlocation").val();
 
 			var odd = $("#betslipodd").val();
@@ -6039,11 +6174,11 @@ function ShowInPlayC() {
 					$("#betslipamountlabel").html(parseFloat(amount).toFixed(2));
 					$("#betslipamountlabelmob").html(parseFloat(amount).toFixed(2));
 				}
-
+				
 			}
 			else
 			{
-				debugger;
+				
 				var marketbookrunners = $("#marketbookrunners" + $("#loadedmarketbook").val().toString().replace(".", "")).val();
 				$("#betslipoddmob").val(odd);
 				var amount = $("#betslipamount").val();
@@ -6055,7 +6190,7 @@ function ShowInPlayC() {
 				else {
 					$("#betslipoddlabel").html((parseFloat(odd * amount) - parseFloat(amount)).toFixed(2));
 					if ($("#betsliptype").val() == 'lay') {
-						debugger;
+						
 						var betslipamount = $("#betslipamountlabel").html();
 						$("#betslipamountlabel").html($("#betslipoddlabel").html());
 						$("#betslipoddlabel").html(betslipamount);
@@ -6197,14 +6332,12 @@ function ShowInPlayC() {
 				$("#lblSelectionName" + id).text($("#selectionname" + id).val())
 			}
 
-			function showbetslip(id, betsliptype, odd, amount, isEdit, marketbookID, marketbookname, betsize, location, parentID)
+			function showbetslip(id, betsliptype, odd, amount, isEdit, marketbookID, marketbookname, betsize, location, parentID) {
 
-			{
-				debugger;
-				if(isInserting==true){
+				if (isInserting == true) {
 					return;
 				}
-				//debugger;
+				
 				$("#isBetSlipEdit").val(isEdit);
 				$("#loadedmarketbook").val(marketbookID);
 				$("#loadedmarketbookname").val(marketbookname);
@@ -6215,7 +6348,7 @@ function ShowInPlayC() {
 
 				$("#clickedID").val(0);
 
-				if(location==8)
+				if (location == 8  )
 				{
 					$("#bdown-349").hide();
 					$("#bup-349").hide();
@@ -6266,7 +6399,10 @@ function ShowInPlayC() {
 					status = $("#marketbookstatus" + newid).html();
 					var timeofmatch = $("#lbltimer" + newid).text();
 				}
-
+				if (categoryname == "Soccer" || categoryname =="Tennis") {
+					
+					$("#betslipodd").prop("readonly", true);
+				}
 
 				if (categoryname == "Cricket"  ) {
 					$.ajax({
@@ -6322,7 +6458,7 @@ function ShowInPlayC() {
 										if(parseFloat(minutesremaining[0])<0){
 											allowedstatus=true;
 										}
-									}
+									} 
 								}
 								else{
 									if(parseFloat(minutesremaining[0])>=0 && parseFloat(minutesremaining[2]) <= @LoggedinUserDetail.BetPlaceWaitandInterval.RaceMinutesBeforeStart && parseFloat(minutesremaining[1])==0){
@@ -6340,9 +6476,9 @@ function ShowInPlayC() {
 					else
 					{
 
-						//if (status == "IN-PLAY" || status == "IN PLAY" || status == "In Play" || status == "" || status=="GOING LIVE" ){
+						if (status == "IN-PLAY" || status == "IN PLAY" || status == "In Play" || status == "" ){
 							allowedstatus=true;
-					//	}
+						}
 						if (marketbookname.indexOf("Winner")>=0 || marketbookname.indexOf("To Win the Toss")>=0 )
 						{
 							allowedstatus = true;
@@ -6464,6 +6600,7 @@ function ShowInPlayC() {
 						$("#betslipodd").val(parseFloat(odd));
 						$("#betslipoddmob").val(parseFloat(odd));
 						$("#betslipamount").val(setBetslipamountlowerlimit());
+						$("#betslipamountmob").val(setBetslipamountlowerlimit());
 						calculateamounts();
 						if (window.matchMedia('(max-width: 767px)').matches) {
 
@@ -7100,7 +7237,7 @@ function ShowInPlayC() {
 
 					var mainsportcat1=$("#marketbookCategory"+$("#lastloadedmarket").val().toString().replace(".","")).val();
 					if (mainsportcat1 == "Cricket") {
-						GetActiveMarketINFancy();
+						//GetActiveMarketINFancy();
 						GetActiveMarketKJ();
 						GetActiveMarketSFIg();
 						GetMarketFigure();
@@ -7264,7 +7401,7 @@ function ShowInPlayC() {
 	}
 
 			function LoadMarketType(id) {
-				debugger;
+				
 				$("#liscorecard").hide();
 				// $("#lastsavedhtml").val($("#marketbook").html());
 				$("#lastsavedhtml").val($("div[data-marketid='" + $("#lastloadedmarket").val() + "']").html());
@@ -7302,27 +7439,31 @@ function ShowInPlayC() {
 							//SetSelectedRunners();
 							SetFirstItemActive($("#lastloadedmarket").val());
 							$("#activesheetname").val($("#marketbooksheet" + $("#lastloadedmarket").val().replace(".", "")).val());
-							debugger;
+							
 							 LoadUserBets();
 
 							LoadActiveMarket();
 							HideLoader();
-							debugger;
+							
 							var mainsportcat1 = $("#marketbookCategory" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 							if (mainsportcat1 == null || mainsportcat1=="")
 							{
 								mainsportcat1 = "Cricket";
 							}
-							//@LoggedinUserDetail.isFancyMarketAllowed==True
-							if (mainsportcat1 == "Cricket")
+							if(mainsportcat1=="Cricket")
 							{
-					            GetActiveMarketINFancy();
-						        // GetActiveMarketKJ();
-							     //GetActiveMarketSFIg();
-								// GetMarketFigure();
-
-						        // CheckForCricketScores();
-							////GetActiveMarketFancy();
+								debugger;
+							if (@LoggedinUserDetail.UserID !=1396 )
+							{
+							
+										GetActiveMarketINFancy();
+										GetActiveMarketKJ();
+										//GetActiveMarketSFIg();
+										GetMarketFigure();
+										LoadActiveMarketFancyIN();
+										// CheckForCricketScores();
+										//GetActiveMarketFancy();
+							}
 							}
 							else
 							{
@@ -7344,7 +7485,7 @@ function ShowInPlayC() {
 										$("#SFigfancymarketbook").hide();
 										$("#btnscorecard").show()
 										$('#btnPlay').show();
-									}
+							}
 									else {
 										$("#KJfancymarketbook").hide();
 										$("#Indianfancymarketbook1").hide();
@@ -7370,7 +7511,7 @@ function ShowInPlayC() {
 								mainsportcat = "Cricket";
 								mainsportrunners = 2;
 							}
-
+							
 							if (marketbbokname.indexOf("Match Odds")>=0 && mainsportcat.indexOf("Cricket")>=0 && mainsportrunners=="3" ){
 								$(".checkboxrunnernameavg").show();
 
@@ -7452,20 +7593,20 @@ function ShowInPlayC() {
 			//    });
 			//}
 
-	function ReletedEvents(eventtype) {
-		debugger;
+			function ReletedEvents(eventtype) {
+				debugger;
 				var marketbookID = $("#lastloadedmarket").val().toString();
-			$.ajax({
-				type: "GET",
-				url: '/DashBoard/GetReletedevent',
+				$.ajax({
+					type: "GET",
+					url: '/DashBoard/GetReletedevent',
 
-				data: { 'eventtype': eventtype, 'marketbookID': marketbookID },
-				success: function (result) {
-					$("#relatedevent").html(result);
-				}
+					data: { 'eventtype': eventtype, 'marketbookID': marketbookID },
+					success: function (result) {
+						$("#relatedevent").html(result);
+					}
 
-			});
-		}
+				});
+			}
 	function comparemarketbook() {
 
 				var marketbookID=$("#lastloadedmarket").val().toString().replace(".","");
@@ -7537,7 +7678,7 @@ function ShowInPlayC() {
 			var newamount = 0;
 
 
-</script>
+		</script>
 		<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
 		<script src="~/Scripts/bootstrap-submenu.js"></script>
 		<script src="~/Scripts/DetectChanges.js"></script>
