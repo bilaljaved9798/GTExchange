@@ -3674,6 +3674,13 @@ namespace globaltraders
                     Figure.Add("2st Innings Team B 100 Over Figure");
                 }
 
+                if (cmbkalijut.SelectedIndex == 3)
+                {
+                    Figure.Add("1st Innings 50 Ball Figure");
+                    Figure.Add("1st Innings 100 Ball Figure");
+                    Figure.Add("2st Innings 50 Ball Figure");
+                   
+                }
                 List<string> FigureCatelogIDs = new List<string>();
                 if (Figure.Count == 6)
                 {
@@ -3685,6 +3692,13 @@ namespace globaltraders
                     FigureCatelogIDs.Add("3." + (EventID + 55));
 
                 }
+                if (Figure.Count == 3)
+                {
+                    FigureCatelogIDs.Add("3." + (EventID + 05));
+                    FigureCatelogIDs.Add("3." + (EventID + 15));
+                    FigureCatelogIDs.Add("3." + (EventID + 25));                   
+                }
+
                 if (Figure.Count == 18)
                 {
                     FigureCatelogIDs.Add("3." + (EventID + 05));
@@ -4007,9 +4021,21 @@ namespace globaltraders
                     kalijutt.Add("2st Innings Team B 95 Over Kali");
                     kalijutt.Add("2st Innings Team B 100 Over Kali");
                 }
+                if (cmbkalijut.SelectedIndex == 3)
+                {
+                    kalijutt.Add("1st Innings 50 Ball Kali");
+                    kalijutt.Add("1st Innings 100 Ball Kali");                   
+                    kalijutt.Add("2st Innings 50 Ball Kali");                   
+                }
 
                 List<string> KaliCatelogIDs = new List<string>();
 
+                if (kalijutt.Count == 3)
+                {
+                    KaliCatelogIDs.Add("3." + (EventID + 10));
+                    KaliCatelogIDs.Add("3." + (EventID + 20));
+                    KaliCatelogIDs.Add("3." + (EventID + 30));                   
+                }
                 if (kalijutt.Count == 6)
                 {
                     KaliCatelogIDs.Add("3." + (EventID + 10));
@@ -4195,6 +4221,13 @@ namespace globaltraders
                     SmallFig.Add("2st Innings 35 Over 0-to-4");
                     SmallFig.Add("2st Innings 40Over 0-to-4");
                 }
+                if (cmbkalijut.SelectedIndex == 3)
+                {
+                    SmallFig.Add("1st Innings 50 Ball 0-to-4");
+                    SmallFig.Add("1st Innings 100 Ball 0-to-4");
+                    SmallFig.Add("2st Innings 50 Ball 0-to-4");
+                    
+                }
 
                 List<string> smallFigCatelogIDs = new List<string>();
 
@@ -4206,6 +4239,13 @@ namespace globaltraders
                     smallFigCatelogIDs.Add("3." + (EventID + 12));
                     smallFigCatelogIDs.Add("3." + (EventID + 16));
                     smallFigCatelogIDs.Add("3." + (EventID + 19));
+                }
+                if (SmallFig.Count == 3)
+                {
+                    smallFigCatelogIDs.Add("3." + (EventID + 3));
+                    smallFigCatelogIDs.Add("3." + (EventID + 6));
+                    smallFigCatelogIDs.Add("3." + (EventID + 9));
+                   
                 }
                 if (SmallFig.Count == 18)
                 {
@@ -4226,6 +4266,7 @@ namespace globaltraders
                     smallFigCatelogIDs.Add("3." + (EventID + 41));
                     smallFigCatelogIDs.Add("3." + (EventID + 43));
                 }
+
 
 
                 List<string> selections = new List<string>();

@@ -245,98 +245,76 @@
 									List<bfnexchange.HelperClasses.AllMarketsInPlay> lstMatchesbytype = Model.AllMarkets.Where(x => x.CategoryName == item).ToList();
 									foreach (var matchitem in lstMatchesbytype)
 									{
-								<div class="inplaydatarow">
+								       <div class="inplaydatarow">
 
-									@if (item == "Horse Racing" || item == "Greyhound Racing")
-									{
+
+									     @if (item == "Horse Racing" || item == "Greyhound Racing")
+										 {
 										<div class="inplaymatchname">
-											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName<br></a>
+											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName  <br></a>
 										</div>
-									}
-									else
-									{
-										<div class="inplaymatchname">
-											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2<br></a>
+										 }
+										 else
+										 {
+											 if (matchitem.MarketStatus == "In Play")
+											 {
+
+
+											<div class="inplaymatchname">
+												<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <label class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label><br></a>
+
+											</div>
+											 }
+											 else
+											 {
+											<div class="inplaymatchname">
+												<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <br></a>
+
+											</div>
+											 }
+										 }
+
+										<div class="inplaytime">
+											@matchitem.MarketStartTime
 
 										</div>
-									}
-
-
-									<div>
-
-
-										@if (matchitem.MarketStatus == "In Play")
-
-
-										{
-											
-										<label  class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label>
-											
-											
-											
-										}
-										else
-										{
-										<label class="cool" style=" color:maroon; ">
-											@matchitem.MarketStatus
-										</label>
-
-
-											}
-
-
-											@*<span class="inplaydash">
-			@matchitem.MarketStatus
 
 
 
-			<img class="logo-img" src="~/Content/Images/Inplay1.gif" alt="Global Traders" />
+										<div class="inplaymatchbackandlay">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													@matchitem.Runner1Back
+												</div>
+												<div class="inplaylay">
+													@matchitem.Runner1Lay
+												</div>
+											</div>
 
-		</span>*@
+										</div>
+										<div class="inplaymatchbackandlay1">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													@matchitem.Runner3Back
+												</div>
+												<div class="inplaylay">
+													@matchitem.Runner3Lay
+												</div>
+											</div>
 
-</div>
+										</div>
+										<div class="inplaymatchbackandlay2">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													@matchitem.Runner2Back
+												</div>
+												<div class="inplaylay">
+													@matchitem.Runner2Lay
+												</div>
+											</div>
 
-									<div class="inplaytime">
-										@matchitem.MarketStartTime
-
+										</div>
 									</div>
-
-
-
-									<div class="inplaymatchbackandlay">
-										<div class="inplayrunner1">
-											<div class="inplayback">
-												@matchitem.Runner1Back
-											</div>
-											<div class="inplaylay">
-												@matchitem.Runner1Lay
-											</div>
-										</div>
-
-									</div>
-									<div class="inplaymatchbackandlay1">
-										<div class="inplayrunner1">
-											<div class="inplayback">
-												@matchitem.Runner3Back
-											</div>
-											<div class="inplaylay">
-												@matchitem.Runner3Lay
-											</div>
-										</div>
-
-									</div>
-									<div class="inplaymatchbackandlay2">
-										<div class="inplayrunner1">
-											<div class="inplayback">
-												@matchitem.Runner2Back
-											</div>
-											<div class="inplaylay">
-												@matchitem.Runner2Lay
-											</div>
-										</div>
-
-									</div>
-								</div>
 									}
 
 									// }

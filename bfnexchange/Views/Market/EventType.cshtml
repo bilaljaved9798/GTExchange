@@ -540,48 +540,19 @@
 													</div>
 													@*<span class="stake"><input id="betslipamountmob" type="number" onmouseup="calculateamountsmob()" min="500" max="5000000000" step="1" class="text stake numeric" maxlength="7" onkeyup="calculateamountsmob()"> </span>*@
 												</td>
-
-
-
 											</tr>
 
-
-
-
-
-
-
 											<tr id="b-349" data-handicap="0.000000" dtata-slip="b">
-
-
 												<th width="25%" colspan="2">Bet For:</th>
-
-
 												<td  width="25%" class="profit">
-
-
-													<span class="runnername" style="font-weight: 600;"> <label id="betslipselectionmob" style="
-    font-weight: 1000;
-">  </label></span>
-
-
+													<span class="runnername" style="font-weight: 600;"> <label id="betslipselectionmob" style="font-weight: 1000;">  </label></span>
 												</td>
 												<th width="25%" colspan="2"></th>
 											</tr>
-
-
 											<tr id="b-349" data-handicap="0.000000" dtata-slip="b">
-
-
 												<th width="25%" colspan="2">Profit:</th>
-
-
 												<td width="25%"  class="profit">
-
-
 													<span class="wrapper profit-value" style="color:green; font-weight: 600; width:15px;"> <label id="betslipamountlabelmob">  </label></span>
-
-
 												</td>
 												<th width="25%" colspan="2"></th>
 											</tr>
@@ -606,7 +577,7 @@
 
 												</td>
 											</tr>
-<tfoot style="height: 40px;">
+                                  <tfoot style="height: 40px;">
 
 											<tr>
 												<td colspan="3">
@@ -2723,7 +2694,7 @@ function ShowInPlayC() {
 	}
 			//ToWintheToss
 			function CheckForWintTheTossMarket(){
-
+			   
 				var eventid=$("#eventidfor"+$("#lastloadedmarket").val().toString().replace(".","")).val();
 				if(1==1){
 
@@ -2747,107 +2718,112 @@ function ShowInPlayC() {
 
 				}
 			}
+
+
 			function LoadActiveMarketTWT() {
+			    debugger;
+			    var marketstatus=$("#marketbookstatus"+$("#lastloadedmarket").val().toString().replace(".","")).text();
+			    if (marketstatus !="GOING LIVE"){
+			        $("#marketbookTWT").hide();
+			        return;
+			    }
+			   var sdd= $("#lastloadedmarketTWT").val();
+			    var aa=$("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
 
-				var marketstatus=$("#marketbookstatus"+$("#lastloadedmarket").val().toString().replace(".","")).text();
-				if (marketstatus !="GOING LIVE"){
-					$("#marketbookTWT").hide();
-					return;
-				}
-				$("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
+			    dataurl = '/Market/LoadActiveMarket/';
 
+       
 
-				var marketbbokname=$("#marketbookname"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			    var marketbbokname=$("#marketbookname"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
 
-				var orignalopendate=$("#marketbookorignalopendate"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-				if(orignalopendate==undefined){
-					HideLoader();
-					return;
-				}
-				var datearr=orignalopendate.split(" ");
-				var datearr2=datearr[0].split("/");
-				orignalopendate=datearr2[1]+"/"+datearr2[0]+"/"+datearr2[2]+" "+datearr[1] ;
-				//orignalopendate=datearr2[0]+"/"+datearr2[1]+"/"+datearr2[2]+" "+datearr[1] + " "+ datearr[2];
-				var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-				var windowsize = $(window).width();
-				if(windowsize<=680){
-					var heightofidv=0;
-					if(mainsportcat.indexOf("Racing")<0){
-						heightofidv=0;
-					}
+			    var orignalopendate=$("#marketbookorignalopendate"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			    if(orignalopendate==undefined){
+			        HideLoader();
+			        return;
+			    }
+			    var datearr=orignalopendate.split(" ");
+			    var datearr2=datearr[0].split("/");
+			    orignalopendate=datearr2[1]+"/"+datearr2[0]+"/"+datearr2[2]+" "+datearr[1] ;
+			    // orignalopendate=datearr2[0]+"/"+datearr2[1]+"/"+datearr2[2]+" "+datearr[1] + " "+ datearr[2];
+			    var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			    var windowsize = $(window).width();
+			    if(windowsize<=680){
+			        var heightofidv=0;
+			        if(mainsportcat.indexOf("Racing")<0){
+			            heightofidv=0;
+			        }
 
-					$("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .runnerswrapper").each(function(){
-						if($(this).attr("id")!=null){
-							heightofidv+=$(this).height();
-						}
-
-
-					});
-					var totrunnercount=$("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .runnerswrapper").length;
-					if(totrunnercount>2){
-						heightofidv=heightofidv+(1.60* totrunnercount);
-					}
-					orignalopendate
-					$("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .backgroundimageforSuspended").height(heightofidv);
-				}
-				if(marketbbokname == undefined){
-					LoadUserBets();
-					return;
-				}
-				var selectedrunners= $("#selectedrunnersforavg"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-				$.ajax({
-					url: '/Market/LoadActiveMarketTWT/',
-
-					type: 'GET',
-					async: true,
-					data: { 'ID': $("#lastloadedmarketTWT").val(),'sheetname':  marketbbokname,'OrignalOpenDate': orignalopendate ,'MainSportsCategory': mainsportcat,'RunnersForAverage':selectedrunners},
-
-					complete: function () {
-
-					},
-					error:function(){
-						LoadActiveMarketTWT();
-					},
-					success: function (data) {
-						setTimeout(function () {
-							LoadActiveMarketTWT();
-
-						},200);
-
-						if(data !=""){
+			        $("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .runnerswrapper").each(function(){
+			            if($(this).attr("id")!=null){
+			                heightofidv+=$(this).height();
+			            }
 
 
-							AssignDatatoMarketBookTWT(data);
+			        });
+			        var totrunnercount=$("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .runnerswrapper").length;
+			        if(totrunnercount>2){
+			            heightofidv=heightofidv+(1.60* totrunnercount);
+			        }
+            
+			        $("#marketbook"+$("#lastloadedmarketTWT").val().toString().replace(".","")+" .backgroundimageforSuspended").height(heightofidv);
+			    }
+			    if(marketbbokname == undefined){
+			        LoadUserBets();
+			        return;
+			    }
+			    var selectedrunners= $("#selectedrunnersforavg"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			    $.ajax({
+			        url: '/Market/LoadActiveMarketTWT/',
 
-						}
+			        type: 'GET',
+			        async: true,
+			        data: { 'ID': $("#lastloadedmarketTWT").val(),'sheetname':  marketbbokname,'OrignalOpenDate': orignalopendate ,'MainSportsCategory': mainsportcat,'RunnersForAverage':selectedrunners},
 
-						//   $("div[data-marketid='" + $("#lastloadedmarket").val() + "']").html(data);
+			        complete: function () {
+               
+			        },
+			        error:function(){
+			            LoadActiveMarketTWT();
+			        },
+			        success: function (data) {
+			            setTimeout(function () {
+			                LoadActiveMarketTWT();
 
-						if ($("#lastsavedhtmlTWT").val().trim() == "") {
-							$("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
-						}
-						$(".runners").each(function () {
+			            },200);
 
-							var id = $(this).attr("data-value");
-							//LoadRunnername(id);
-
-							if ($("#openedbetslipid").val() == id) {
-
-								SetBackandlayonbetslip(id);
-							}
-
-						});
-
+			            if(data !=""){
 
 
-						comparemarketbookTWT();
+			                AssignDatatoMarketBookTWT(data);
+
+			            }
+
+			            //   $("div[data-marketid='" + $("#lastloadedmarket").val() + "']").html(data);
+
+			            if ($("#lastsavedhtmlTWT").val().trim() == "") {
+			                $("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
+			            }
+			            $(".runners").each(function () {
+
+			                var id = $(this).attr("data-value");
+			                //LoadRunnername(id);
+
+			                if ($("#openedbetslipid").val() == id) {
+
+			                    SetBackandlayonbetslip(id);
+			                }
+
+			            });
 
 
-					}
+           
+			            comparemarketbookTWT();
+          
 
-				});
+			        }
+
+			    });
 			}
-			//
 
 	//Soccergoal
 	function CheckForSoccergoalMarket() {
@@ -3279,8 +3255,22 @@ function ShowInPlayC() {
 					$("#lbltimer"+marketbookID).attr('style', 'color: red  !important','font-weight:bold');
 				}
 			}
-			function AssignDatatoMarketBookTWT(marketbooks){
 
+			function nFormatter(num) {
+				if (num >= 1000000000) {
+					return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
+				}
+				if (num >= 1000000) {
+					return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+				}
+				if (num >= 1000) {
+					return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+				}
+				return num;
+			}
+
+			function AssignDatatoMarketBookTWT(marketbooks){
+			    debugger;
 				var marketbook1= JSON.parse(marketbooks);
 				var marketbook=marketbook1[0];
 				var marketbookID=$("#lastloadedmarketTWT").val().toString().replace(".","");
@@ -3297,7 +3287,7 @@ function ShowInPlayC() {
 
 							$("#marketbook"+marketbookID+" #lblbackprice"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price );
 							$("#marketbook"+marketbookID+" #lblbackprice"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).attr("onclick","showbetslip('"+marketbook.Runners[j].SelectionId.toString() +"','back','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price + "','2000','0','"+marketbook.MarketId+"','"+marketbook.MarketBookName+"','"+marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size+"','"+ i +"','0')");
-							$("#marketbook"+marketbookID+" #lblbacksize"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size);
+							$("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(nFormatter(marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size));
 							$("#marketbook"+marketbookID+" #lblbacksize"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).attr("onclick","showbetslip('"+marketbook.Runners[j].SelectionId.toString() +"','back','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price + "','2000','0','"+marketbook.MarketId+"','"+marketbook.MarketBookName+"','"+marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size+"','"+ i +"','0')");
 						}
 						else{
@@ -3314,7 +3304,7 @@ function ShowInPlayC() {
 
 							$("#marketbook"+marketbookID+" #lbllayprice"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price);
 							$("#marketbook"+marketbookID+" #lbllayprice"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).attr("onclick","showbetslip('"+marketbook.Runners[j].SelectionId.toString() +"','lay','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price + "','2000','0','"+marketbook.MarketId+"','"+marketbook.MarketBookName+"','"+marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size+"','"+ i +"','0')");
-							$("#marketbook"+marketbookID+" #lbllaysize"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size);
+							$("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(nFormatter(marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size=="0"?"":marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size));
 							$("#marketbook"+marketbookID+" #lbllaysize"+i.toString()+ marketbook.Runners[j].SelectionId.toString()).attr("onclick","showbetslip('"+marketbook.Runners[j].SelectionId.toString() +"','lay','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price + "','2000','0','"+marketbook.MarketId+"','"+marketbook.MarketBookName+"','"+marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size+"','"+ i +"','0')");
 						}
 						else{
@@ -4413,7 +4403,10 @@ function ShowInPlayC() {
 
 
 			}
+
+
 			function AddRunnersforaveragecalTWT(id){
+			    debugger;
 				var marketbbokname=$("#marketbookname"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
 				var marketbookdID= $("#lastloadedmarketTWT").val().toString().replace(".","");
 				var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
@@ -6350,8 +6343,8 @@ function ShowInPlayC() {
 
 				if (location == 8  )
 				{
-					$("#bdown-349").hide();
-					$("#bup-349").hide();
+					$("#bdown-349").prop('disabled', true)
+					$("#bup-349").prop('disabled', true)
 					$("#betslipodd").prop("readonly", true);
 				}
 				else
@@ -6399,9 +6392,12 @@ function ShowInPlayC() {
 					status = $("#marketbookstatus" + newid).html();
 					var timeofmatch = $("#lbltimer" + newid).text();
 				}
+				debugger;
 				if (categoryname == "Soccer" || categoryname =="Tennis") {
 					
 					$("#betslipodd").prop("readonly", true);
+					$("#bdown-349").prop('disabled', true)
+					$("#bup-349").prop('disabled', true)
 				}
 
 				if (categoryname == "Cricket"  ) {
@@ -7296,79 +7292,73 @@ function ShowInPlayC() {
 			}
 
 
+			function LoadMarketTypeTWT(id) {
 
-    function LoadMarketTypeTWT(id) {
+        
+      
+			    $("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
+			    $("#lastloadedmarketTWT").val(id);
+       
+			    $.ajax({
+			        url: '/Market/MarketBookToWinTheToss/',
 
+			        type: 'GET',
+			        async: true,
+			        data: { 'ID': id },
 
+			        complete: function () {
+			            HideLoader();
+                
+			        },
+			        success: function (data) {
+			            if(data=="Limit exceed"){
+			                ShowErrorMsg("You already have opened ten markets please close some markets and try again.");
+			                return false;
+			            }
+			            else{
+			                debugger;
+			                $("#marketbookTWT").html(data);
 
-				$("#lastsavedhtmlTWT").val($("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html());
+			                if ($("#lastsavedhtmlTWT").val().trim() == "") {
+			                    $("#lastsavedhtmlTWT").val($("#marketbookTWT").html());
+			                }
+			                // comparemarketbook();
 
+			                //var lastloadedmarket = $("#lastloadedmarket").val().toString();
+			                if ($("#lastloadedmarketTWT").val() == "") {
+			                    $("#lastloadedmarketTWT").val($(".nav-tabs li:last").attr("data-value"));
+			                }
+			                debugger;
+			                LoadActiveMarketTWT();
+                                
+			                var marketbbokname=$("#marketbookname"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			                var marketbookdID= $("#lastloadedmarketTWT").val().toString().replace(".","");
+			                var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			                var mainsportrunners=$("#marketbookrunners"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
+			                $(".checkboxrunnernameavgTWT").slice(0,2).each(function() {
+                       
+			                    $(this).prop("checked",true);
+			                    AddRunnersforaveragecalTWT($(this).attr("data-value"));
+			                });
+                    
+                    
+			            }
 
-				$.ajax({
-					url: '/Market/MarketBookToWinTheToss/',
-
-					type: 'GET',
-					async: true,
-					data: { 'ID': id },
-
-					complete: function () {
-						HideLoader();
-
-					},
-					success: function (data) {
-						if(data=="Limit exceed"){
-							ShowErrorMsg("You already have opened ten markets please close some markets and try again.");
-							return false;
-						}
-						else{
-
-							$("#marketbookTWT").html(data);
-
-							if ($("#lastsavedhtmlTWT").val().trim() == "") {
-								$("#lastsavedhtmlTWT").val($("#marketbookTWT").html());
-							}
-							// comparemarketbook();
-
-							//var lastloadedmarket = $("#lastloadedmarket").val().toString();
-							if ($("#lastloadedmarketTWT").val() == "") {
-								$("#lastloadedmarketTWT").val($(".nav-tabs li:last").attr("data-value"));
-							}
-
-
-
-
-
-							LoadActiveMarketTWT();
-
-
-
-							var marketbbokname=$("#marketbookname"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-							var marketbookdID= $("#lastloadedmarketTWT").val().toString().replace(".","");
-							var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-							var mainsportrunners=$("#marketbookrunners"+$("#lastloadedmarketTWT").val().toString().replace(".","")).val();
-							$(".checkboxrunnernameavgTWT").slice(0,2).each(function() {
-								//debugger;
-								$(this).prop("checked",true);
-								AddRunnersforaveragecalTWT($(this).attr("data-value"));
-							});
-
-
-						}
-
-						//var isCompleted = $("#marketstatus").val();
-						//var isinplay = $("#inplaystatus").val();
-						//if (isinplay == "True" && isCompleted == "OPEN") {
+			            //var isCompleted = $("#marketstatus").val();
+			            //var isinplay = $("#inplaystatus").val();
+			            //if (isinplay == "True" && isCompleted == "OPEN") {
 
 
 
-						//}
+			            //}
 
 
-					}
-				});
+			        }
+			    });
 
 
-	        }
+			}
+   
 
 	function LoadMarketTypeSoccerGoal() {
 
@@ -7452,7 +7442,7 @@ function ShowInPlayC() {
 							}
 							if(mainsportcat1=="Cricket")
 							{
-								debugger;
+								
 							if (@LoggedinUserDetail.UserID !=1396 )
 							{
 							
@@ -7517,6 +7507,7 @@ function ShowInPlayC() {
 
 							}
 							$("#marketbookTWT").hide();
+							debugger;
 							if (marketbbokname.indexOf("Match Odds")>=0 && mainsportcat.indexOf("Cricket")>=0 && parseInt( mainsportrunners)>=2 ){
 								CheckForWintTheTossMarket();
 								$(".checkboxrunnernameavg").slice(0,2).each(function() {
@@ -7644,36 +7635,33 @@ function ShowInPlayC() {
 
 				}
 			}
-			function comparemarketbookTWT() {
-				var marketbookID=$("#lastloadedmarketTWT").val().toString().replace(".","");
-				var oldmarketbook = $("#lastsavedhtmlTWT").val();
-				$("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html()
-				var newmarketbook = $("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html()
-				// var newmarketbook = $("#marketbook").html();
-				//var oldpricesandsize = $(oldmarketbook).find(".priceandsize").find("label");
-				//var newpricesandsize = $(newmarketbook).find(".priceandsize").find("label");
-				var oldpricesandsize = $(oldmarketbook).find(".matchcolors").find("label");
-				var newpricesandsize = $(newmarketbook).find(".matchcolors").find("label");
+	function comparemarketbookTWT() {
+	    var marketbookID=$("#lastloadedmarketTWT").val().toString().replace(".","");
+	    var oldmarketbook = $("#lastsavedhtmlTWT").val();
+	    $("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html()
+	    var newmarketbook = $("div[data-marketid='" + $("#lastloadedmarketTWT").val() + "']").html()
+	    // var newmarketbook = $("#marketbook").html();
+	    //var oldpricesandsize = $(oldmarketbook).find(".priceandsize").find("label");
+	    //var newpricesandsize = $(newmarketbook).find(".priceandsize").find("label");
+	    var oldpricesandsize = $(oldmarketbook).find(".matchcolors").find("label");
+	    var newpricesandsize = $(newmarketbook).find(".matchcolors").find("label");
 
-				for (i = 0; i <= oldpricesandsize.length - 1; i++) {
-					if (i < newpricesandsize.length) {
-						var oldvalue = $(oldpricesandsize[i]).html();
-						var newvalue = $(newpricesandsize[i]).html();
-						if (oldvalue != newvalue) {
-							//debugger;
-							var id = $(newpricesandsize[i]).attr("id");
+	    for (i = 0; i <= oldpricesandsize.length - 1; i++) {
+	        if (i < newpricesandsize.length) {
+	            var oldvalue = $(oldpricesandsize[i]).html();
+	            var newvalue = $(newpricesandsize[i]).html();
+	            if (oldvalue != newvalue) {
 
-							$("#marketbook"+marketbookID+ " #" + id) .addClass("highlighted").delay(50).queue(function () {
-								$(this).removeClass("highlighted").dequeue();
-							});;
-							//    " #backitemval"+i.toString()+ marketbook.Runners[i].SelectionId.toString()).addClass("highlighted").delay(100).queue(function () {
-							//    $(this).removeClass("highlighted").dequeue();
-							//});;
-						}
-					}
+	                var id = $(newpricesandsize[i]).attr("id");
 
-				}
-			}
+	                $("#marketbook"+marketbookID+ " #" + id).addClass("highlighted").delay(100).queue(function () {
+	                    $(this).removeClass("highlighted").dequeue();
+	                });;
+	            }
+	        }
+
+	    }
+	}
 
 			var newamount = 0;
 

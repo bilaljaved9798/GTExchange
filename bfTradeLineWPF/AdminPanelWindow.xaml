@@ -1044,10 +1044,11 @@
                                     
                                     
                                 <InlineUIContainer>
-                                        <ComboBox x:Name="cmbkalijut" Width="560" FontSize="20" SelectedIndex="0">
+                                        <ComboBox x:Name="cmbkalijut" Width="560" FontSize="20" SelectedIndex="0">                                          
                                             <ComboBoxItem Content="T20"/>
                                             <ComboBoxItem Content="ODI"/>
                                              <ComboBoxItem Content="Test"/>
+                                             <ComboBoxItem Content="T10"/>
                                         </ComboBox>
                                     </InlineUIContainer>
 

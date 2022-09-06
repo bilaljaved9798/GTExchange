@@ -1074,7 +1074,11 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
-               
+                if ( LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+                {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
+                }
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4"));
                 lstTodayHorseRacing = lstTodayHorseRacing.Where(a => a.EventName != "Line v Markets").ToList();
              
@@ -1093,7 +1097,12 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
-             
+                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+                {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
+                }
+
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "1"));
                 
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
@@ -1109,6 +1118,12 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
+                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+                {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
+                }
+
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "2"));
       
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
@@ -1125,6 +1140,11 @@ namespace bfnexchange.Controllers
             LoggedinUserDetail.CheckifUserLogin();
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2)
             {
+                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+                {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
+                }
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "7"));
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
             }
@@ -2093,7 +2113,7 @@ namespace bfnexchange.Controllers
                             ViewBag.totliabalityNew = 0;
                         }
 
-                        return ConverttoJSONString(marketbooks);
+                         return ConverttoJSONString(marketbooks);
                     }
                     else
                     {
@@ -2144,9 +2164,10 @@ namespace bfnexchange.Controllers
                             else
                             {
                                 if (marketbooks[0].Runners.Count() == 1)
-                                {
+                                {                         
                                     foreach (var runner in marketbooks[0].Runners)
                                     {
+
                                         runner.ProfitandLoss = Convert.ToInt64(marketbooks[0].DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Debit) - marketbooks[0].DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Credit));
                                         if (runner.ProfitandLoss > 0)
                                         {
