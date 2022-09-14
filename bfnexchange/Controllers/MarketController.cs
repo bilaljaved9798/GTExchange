@@ -1061,24 +1061,18 @@ namespace bfnexchange.Controllers
             }
             else
             {
-
-
                 List<Models.Event> lstClientlist = new List<Models.Event>();
-
                 return PartialView("Events", lstClientlist);
             }
-
 
         }
         public PartialViewResult InPlayMatchesC()
         {
-            if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+            
+            if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                if ( LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
-                {
-                    ViewBag.backgrod = "#1D9BF0";
-                    ViewBag.color = "white";
-                }
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4"));
                 lstTodayHorseRacing = lstTodayHorseRacing.Where(a => a.EventName != "Line v Markets").ToList();
              
@@ -1088,20 +1082,20 @@ namespace bfnexchange.Controllers
             {
           
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4"));
-
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
             }
 
         }
         public PartialViewResult InPlayMatchesF()
         {
+            if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
+            {
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+            }
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
-                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
-                {
-                    ViewBag.backgrod = "#1D9BF0";
-                    ViewBag.color = "white";
-                }
+                
 
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "1"));
                 
@@ -1116,13 +1110,14 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult InPlayMatchesT()
         {
+            if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
+            {
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+            }
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
-                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
-                {
-                    ViewBag.backgrod = "#1D9BF0";
-                    ViewBag.color = "white";
-                }
+               
 
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "2"));
       
@@ -1137,14 +1132,15 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult TodayHorseRacing()
         {
-            LoggedinUserDetail.CheckifUserLogin();
-            if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2)
-            {
-                if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
+             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 ||  LoggedinUserDetail.GetUserTypeID() == 1)
                 {
                     ViewBag.backgrod = "#1D9BF0";
                     ViewBag.color = "white";
                 }
+            LoggedinUserDetail.CheckifUserLogin();
+            if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2)
+            {
+               
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "7"));
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
             }
@@ -1158,6 +1154,11 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult TodayGreyHoundRacing()
         {
+            if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
+            {
+                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.color = "white";
+            }
             LoggedinUserDetail.CheckifUserLogin();
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
