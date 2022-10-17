@@ -1113,7 +1113,7 @@
                                     </InlineUIContainer></TextBlock>
 
                                 <TextBlock Margin="0,5"><InlineUIContainer>
-                                        <Label Content="Events" Width="100"/>
+                                        <Label Content="Fancy" Width="100"/>
                                     </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                                         <ComboBox x:Name="cmbINFancy" Width="764" FontSize="20" SelectedIndex="0" />
                                     </InlineUIContainer></TextBlock>

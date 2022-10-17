@@ -1,0 +1,74 @@
+﻿@model bfnexchange.Models.AddCredit
+<form id="AddCreditForm">
+    <div class="form-horizontal">
+        <div class="col-md-6">
+            <h4>Add Credit to User</h4>
+            <hr />
+            <div id="allusers">
+
+            </div>
+            @*<div class="form-group">
+                <label class="control-label col-md-2">Users</label>
+
+                <div class="col-md-10">
+                    @Html.DropDownList("ddlUsers",
+    new SelectList(ViewBag.AllUsers, "Id", "UserName"),new { @class = "selectpicker", data_live_search = "true" })
+
+
+                </div>
+            </div>*@
+           
+            <div class="form-group">
+                <label class="control-label col-md-2">Balance</label>
+
+                <div class="col-md-10">
+                    <input type="text" id="AccountBalance" class="form-control" />
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Accounts Title</label>
+
+                <div class="col-md-10">
+                    <input type="text" id="AccountsTitle" class="form-control" />
+
+                </div>
+            </div>
+            @*@if (LoggedinUserDetail.GetUserTypeID() == 2)
+            {
+                <div class="form-group">
+                    <label class="control-label col-md-2">Password</label>
+
+                    <div class="col-md-10">
+                        <input type="password" id="Password" class="form-control" />
+
+                    </div>
+                </div>
+               
+            }*@
+            <div class="form-group">
+                <label class="control-label col-md-3"></label>
+                <div class="col-md-9">
+
+                    <input type="checkbox" id="chkisCredit" value="isCredit" class="checkbox-inline" />
+                    <label class="control-label" for="chkisCredit">Is Credit</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" id="btnAddCredit" value="Add Credit" class="btn btn-default" />
+                    <input type="button" id="btnRemoveCredit" value="WithDraw Credit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="UserDetails"></div>
+        </div>
+        </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.selectpicker').selectpicker();
+        });
+    </script>
+</form>

@@ -46,7 +46,7 @@
   <xs:element name="GetRunnersForFancyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetRunnersForFancyResult" nillable="true" type="q4:GetDataFancy" />
+        <xs:element minOccurs="0" name="GetRunnersForFancyResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +61,7 @@
   <xs:element name="GetEventIDFancyMarketResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetEventIDFancyMarketResult" nillable="true" type="q5:ArrayOfLinevMarkets" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetEventIDFancyMarketResult" nillable="true" type="q4:ArrayOfLinevMarkets" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,7 +75,21 @@
   <xs:element name="GetUpdateResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetUpdateResult" nillable="true" type="q6:Home" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetUpdateResult" nillable="true" type="q5:Home" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUpdateNew">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetUpdateNewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="GetUpdateNewResult" nillable="true" type="q6:UpdateNew" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

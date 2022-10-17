@@ -2413,7 +2413,7 @@ namespace bfnexchange.Controllers
             if (LoggedinUserDetail.GetUserID() != 1)
             {
                  ViewBag.backgrod = "#1D9BF0";
-            ViewBag.color = "white";
+                 ViewBag.color = "white";
                    
                 List<UserMarket> lstUserMarket = new List<UserMarket>();
                 lstUserMarket = JsonConvert.DeserializeObject<List<UserMarket>>(objUsersServiceCleint.GetUserMArket(LoggedinUserDetail.GetUserID()));

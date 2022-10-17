@@ -1,0 +1,176 @@
+﻿@model bfnexchange.Services.MatchScoreCard
+
+    @if (Model.CurrentTeamForSelection == "A")
+    {
+        <div class="teamAWrapper">
+
+            <div class="squadA">
+                <div class="playernameandsquadfirst playernameandsquad">
+                    <label class="squadplayername">Name</label>
+                    <label class="squadplayerrole">Roll</label>
+                </div>
+
+                @foreach (var player in Model.Teams[0].Players)
+                {
+                    <div class="playernameandsquad">
+                        <label  class="squadplayername">@player.PlayerName</label>
+                        <label  class="squadplayerrole">@player.PlayerRoll</label>
+                    </div>
+                }
+            </div>
+            <div class="scorecardA">
+                <div class="battingwrapper">
+                    <div class="teamscorebatting">
+                        <label style="font-size:16px;font-weight:bold" >BATTING</label>
+                        <div class="battingname">
+                            <label>Name</label>
+                        </div>
+                        <div class="battingdesc">
+                            <label class="runs">Runs</label>
+                            <label class="fours">4s</label>
+                            <label class="sixes">6s</label>
+                            <label class="sr">SR</label>
+                        </div>
+
+                    </div>
+
+                    @foreach (var player in Model.Teams[0].Players.Where(item => item.PlayerBetting != null).Select(item => item.PlayerBetting).ToList())
+                    {
+                        <div class="teamscorebatting">
+                            <div class="battingname">
+                                <label>@player.PlayerName</label>
+                            </div>
+                            <div class="battingdesc">
+                                <label  class="runs">@player.Runs</label>
+                                <label class="fours">@player.Fours</label>
+                                <label class="sixes">@player.Sixes</label>
+                                <label class="sr">@player.StrikeRate</label>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div class="bowlingwrapper">
+                    <div class="teamscorebatting">
+                        <label style="font-size:16px;font-weight:bold">BOWLING</label>
+                        <div class="bowlingname">
+                            <label>Name</label>
+                        </div>
+                        <div class="bowlingdesc">
+                            <label class="overs">O</label>
+                            <label class="madians">M</label>
+                            <label class="runs">R</label>
+                            <label class="wickets">W</label>
+                            <label class="econ">Econ</label>
+                        </div>
+
+                    </div>
+
+                    @foreach (var player in Model.Teams[1].Players.Where(item => item.PlayerBowling != null).Select(item => item.PlayerBowling).ToList())
+                    {
+                        <div class="teamscorebatting">
+                            <div class="bowlingname">
+                                <label>@player.PlayerName</label>
+                            </div>
+                            <div class="bowlingdesc">
+                                <label class="overs">@player.Overs</label>
+                                <label  class="madians">@player.MaidainOver</label>
+                                <label class="runs">@player.Runs</label>
+                                <label class="wickets">@player.Wickets</label>
+                                <label class="econ">@player.Economy</label>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="teamAWrapper">
+
+            <div class="squadA">
+                <div class="playernameandsquadfirst playernameandsquad">
+                    <label class="squadplayername">Name</label>
+                    <label class="squadplayerrole">Roll</label>
+                </div>
+
+                @foreach (var player in Model.Teams[1].Players)
+                {
+                    <div class="playernameandsquad">
+                        <label class="squadplayername">@player.PlayerName</label>
+                        <label class="squadplayerrole">@player.PlayerRoll</label>
+                    </div>
+                }
+            </div>
+            <div class="scorecardA">
+                <div class="battingwrapper">
+                    <div class="teamscorebatting">
+                        <label style="font-size:16px;font-weight:bold">BATTING</label>
+                        <div class="battingname">
+                            <label>Name</label>
+                        </div>
+                        <div class="battingdesc">
+                            <label class="runs">Runs</label>
+                            <label class="fours">4s</label>
+                            <label class="sixes">6s</label>
+                            <label class="sr">SR</label>
+                        </div>
+
+                    </div>
+
+                    @foreach (var player in Model.Teams[1].Players.Where(item => item.PlayerBetting != null).Select(item => item.PlayerBetting).ToList())
+                    {
+                        <div class="teamscorebatting">
+                            <div class="battingname">
+                                <label>@player.PlayerName</label>
+                            </div>
+                            <div class="battingdesc">
+                                <label class="runs">@player.Runs</label>
+                                <label class="fours">@player.Fours</label>
+                                <label class="sixes">@player.Sixes</label>
+                                <label class="sr">@player.StrikeRate</label>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div class="bowlingwrapper">
+                    <div class="teamscorebatting">
+                        <label style="font-size:16px;font-weight:bold">BOWLING</label>
+                        <div class="bowlingname">
+                            <label>Name</label>
+                        </div>
+                        <div class="bowlingdesc">
+                            <label class="overs">O</label>
+                            <label class="madians">M</label>
+                            <label class="runs">R</label>
+                            <label class="wickets">W</label>
+                            <label class="econ">Econ</label>
+                        </div>
+
+                    </div>
+
+                    @foreach (var player in Model.Teams[0].Players.Where(item => item.PlayerBowling != null).Select(item => item.PlayerBowling).ToList())
+                    {
+                        <div class="teamscorebatting">
+                            <div class="bowlingname">
+                                <label>@player.PlayerName</label>
+                            </div>
+                            <div class="bowlingdesc">
+                                <label class="overs">@player.Overs</label>
+                                <label class="madians">@player.MaidainOver</label>
+                                <label class="runs">@player.Runs</label>
+                                <label class="wickets">@player.Wickets</label>
+                                <label class="econ">@player.Economy</label>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+

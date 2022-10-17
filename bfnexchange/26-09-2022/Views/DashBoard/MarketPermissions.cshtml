@@ -1,0 +1,42 @@
+﻿@model IEnumerable<bfnexchange.Models.EventType>
+
+
+<div class="container">
+   <div class="row">
+       <div id="MarketTreeView">
+           <ul>
+               @foreach(var eventtype in Model)
+               {
+                   <li data-value="@eventtype.ID">
+                      @eventtype.Name
+                       <ul>
+                           @foreach (var competition in eventtype.Competition)
+                           {
+                            <li data-value="@competition.ID">
+                                @competition.Name
+                                <ul>
+                                    @foreach (var events in competition.Event)
+                                    {
+                                        <li data-value="@events.ID">
+                                            @events.Name
+                                            <ul>
+                                                @foreach (var marketcatalogue in events.MarketCatalogue)
+                                                {
+                                                    <li data-value="@marketcatalogue.ID">
+                                                        @marketcatalogue.Name
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                           }
+                       </ul>
+                   </li>
+                
+               }
+           </ul>
+       </div>
+   </div>
+</div>

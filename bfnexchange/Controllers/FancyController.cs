@@ -91,16 +91,13 @@ namespace bfnexchange.Controllers
                         {
                             try
                             {
-                               MarketBook objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).First();
+                                MarketBook objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).First();
                                 LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectLive(objmarketbookBF1, bfobject.MarketCatalogueID, EventOpendate, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed, BettingAllowedoverall));
                             }
                             catch (System.Exception ex)
                             {
 
                             }
-
-
-
                         }
                         //return PartialView("FancyMarketBookNew", LastloadedLinMarkets1);
                         return PartialView("FancyMarketBook", LastloadedLinMarkets1);
@@ -434,7 +431,18 @@ namespace bfnexchange.Controllers
         public string LoadFancyMarket(string MarketBookID, DateTime EventOpendate)
         {
 
-           List<ExternalAPI.TO.LinevMarkets> linevmarkets = (List<ExternalAPI.TO.LinevMarkets>)Session["linevmarkets"];
+            //var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(MarketBookID);
+            //int UserIDforLinevmarkets = 0;
+            //if (LoggedinUserDetail.GetUserTypeID() == 1)
+            //{
+            //    UserIDforLinevmarkets = 73;
+            //}
+            //else
+            //{
+            //    UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+            //}
+            //var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+            List<ExternalAPI.TO.LinevMarkets> linevmarkets = (List<ExternalAPI.TO.LinevMarkets>)Session["linevmarkets"];
             if (Session["linevmarkets"] == null)
             {
                 GetFancyMarket(MarketBookID, EventOpendate);
@@ -447,10 +455,12 @@ namespace bfnexchange.Controllers
             {
                 UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
 
+
                 var list = JsonConvert.DeserializeObject<List<bfnexchange.Services.SampleResponse1>>(objBettingClient.GetAllMarketsBPFancy(marketIds));
 
                 if (list.Count() > 0)
                 {
+
                     MarketController objcontroller = new MarketController();
                     bool BettingAllowedoverall = objcontroller.CheckForAllowedBettingOverAll("Cricket", "Line");
                     List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
@@ -464,10 +474,10 @@ namespace bfnexchange.Controllers
                             if (LoggedinUserDetail.GetUserTypeID() == 3)
                             {
                                 List<Models.UserBets> lstUserBets = (List<Models.UserBets>)Session["userbet"];
-                                CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(),new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
-                              }
-                             else
-                              {
+                                CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
+                            }
+                            else
+                            {
                                 if (LoggedinUserDetail.GetUserTypeID() == 2)
                                 {
                                     List<Models.UserBetsforAgent> lstUserBets = (List<Models.UserBetsforAgent>)Session["userbets"];
@@ -479,6 +489,7 @@ namespace bfnexchange.Controllers
                                     {
                                         List<Models.UserBetsforSuper> lstUserBets = (List<Models.UserBetsforSuper>)Session["userbets"];
                                         CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), lstUserBets, new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
+
                                     }
 
                                     else
@@ -501,6 +512,9 @@ namespace bfnexchange.Controllers
                         {
 
                         }
+
+
+
                     }
                     return LoggedinUserDetail.ConverttoJSONString(LastloadedLinMarkets1);
 
@@ -534,26 +548,27 @@ namespace bfnexchange.Controllers
                                 if (LoggedinUserDetail.GetUserTypeID() == 3)
                                 {
                                     List<Models.UserBets> lstUserBets = (List<Models.UserBets>)Session["userbet"];
-                                    CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(),new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
+                                    CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
                                 }
                                 else
                                 {
                                     if (LoggedinUserDetail.GetUserTypeID() == 2)
                                     {
                                         List<Models.UserBetsforAgent> lstUserBets = (List<Models.UserBetsforAgent>)Session["userbets"];
-                                        CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(),new List<Models.UserBetsforSuper>(), lstUserBets, new List<Models.UserBets>());
+                                        CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), lstUserBets, new List<Models.UserBets>());
                                     }
                                     else
-                                    { 
-                                    if(LoggedinUserDetail.GetUserTypeID() == 8)
                                     {
-                                        List<Models.UserBetsforSuper> lstUserBets = (List<Models.UserBetsforSuper>)Session["userbets"];
-                                        CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), lstUserBets , new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
-                                    }
-                                    else
+                                        if (LoggedinUserDetail.GetUserTypeID() == 8)
+                                        {
+                                            List<Models.UserBetsforSuper> lstUserBets = (List<Models.UserBetsforSuper>)Session["userbets"];
+                                            CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), lstUserBets, new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
+                                        }
+                                        else
                                         {
                                             List<Models.UserBetsForAdmin> lstUserBets = (List<Models.UserBetsForAdmin>)Session["userbets"];
                                             CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, lstUserBets, new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
+
                                         }
                                     }
                                 }
@@ -568,6 +583,9 @@ namespace bfnexchange.Controllers
                             {
 
                             }
+
+
+
                         }
                         return LoggedinUserDetail.ConverttoJSONString(LastloadedLinMarkets1);
 
@@ -594,13 +612,13 @@ namespace bfnexchange.Controllers
                         {
                             try
                             {
-                               ExternalAPI.TO.MarketBookString objmarketbookBF1 = list.Where(item => item.MarketBookId == bfobject.MarketCatalogueID).First();
+                                ExternalAPI.TO.MarketBookString objmarketbookBF1 = list.Where(item => item.MarketBookId == bfobject.MarketCatalogueID).First();
                                 ExternalAPI.TO.MarketBook objnewmarketbook = ConvertJsontoMarketObjectBFNewSource(objmarketbookBF1, bfobject.MarketCatalogueID, EventOpendate, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed, true);
                                 ExternalAPI.TO.MarketBook CurrentMarketProfitandloss = new MarketBook();
                                 if (LoggedinUserDetail.GetUserTypeID() == 3)
                                 {
                                     List<Models.UserBets> lstUserBets = (List<Models.UserBets>)Session["userbet"];
-                                    CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(),new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
+                                    CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforAgent>(), lstUserBets);
                                 }
                                 else
                                 {
@@ -614,7 +632,7 @@ namespace bfnexchange.Controllers
                                         if (LoggedinUserDetail.GetUserTypeID() == 8)
                                         {
                                             List<Models.UserBetsforSuper> lstUserBets = (List<Models.UserBetsforSuper>)Session["userbets"];
-                                            CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(),lstUserBets, new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
+                                            CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), lstUserBets, new List<Models.UserBetsforAgent>(), new List<Models.UserBets>());
                                         }
 
                                         else
@@ -634,7 +652,10 @@ namespace bfnexchange.Controllers
                             catch (System.Exception ex)
                             {
 
-                            }                           
+                            }
+
+
+
                         }
                         return LoggedinUserDetail.ConverttoJSONString(LastloadedLinMarkets1);
 
@@ -644,7 +665,52 @@ namespace bfnexchange.Controllers
                         return "";
                     }
                 }
-              
+                //IList<bfnexchange.wrBF.MarketBook> list;
+
+
+                //wsFancy.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Fancy").FirstOrDefault().URLForData;
+                //list = wsFancy.GD(LoggedinUserDetail.SecurityCode, marketIds, 4);
+                //UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
+                //List<Models.UserBets> lstUserBets = (List<Models.UserBets>)Session["userbet"];
+                //if (list.Count > 0)
+                //{
+
+
+
+                //    List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                //    foreach (var bfobject in linevmarkets)
+                //    {
+                //        try
+                //        {
+                //            wrBF.MarketBook objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).First();
+                //            ExternalAPI.TO.MarketBook objnewmarketbook = ConvertJsontoMarketObjectBF(objmarketbookBF1, bfobject.MarketCatalogueID, EventOpendate, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed, true);
+                //            ExternalAPI.TO.MarketBook CurrentMarketProfitandloss = objUserbets.GetBookPosition(objnewmarketbook.MarketId, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforAgent>(), lstUserBets);
+                //            if (CurrentMarketProfitandloss.Runners != null)
+                //            {
+                //                objnewmarketbook.Runners[0].ProfitandLoss = CurrentMarketProfitandloss.Runners.Min(t => t.ProfitandLoss);
+                //                objnewmarketbook.Runners[0].Loss = CurrentMarketProfitandloss.Runners.Max(t => t.ProfitandLoss);
+                //            }
+                //            LastloadedLinMarkets1.Add(objnewmarketbook);
+
+                //        }
+                //        catch (System.Exception ex)
+                //        {
+
+                //        }
+
+
+
+
+
+
+                //    }
+                //    return LoggedinUserDetail.ConverttoJSONString(LastloadedLinMarkets1);
+
+                //}
+                //else
+                //{
+                //    return "";
+                //}
             }
 
 

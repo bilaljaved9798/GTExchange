@@ -124,9 +124,10 @@ namespace bfnexchange.Controllers
             var results = objUserServiceClient.GetUserbyUsernameandPasswordNew(Crypto.Encrypt(model.Username), Crypto.Encrypt(model.Password));
             if (results != "")
             {
-                var result = JsonConvert.DeserializeObject<UserIDandUserType>(results);               
-                if (result.UserTypeID != 1)
-                {
+                var result = JsonConvert.DeserializeObject<UserIDandUserType>(results);
+                
+                    if (result.UserTypeID != 1)
+                   {
                     if (result.Loggedin == true)
                     {
                         if (result.isBlocked == true)
@@ -321,7 +322,9 @@ namespace bfnexchange.Controllers
                 
                     return RedirectToAction("Index", "DashBoard");
                 }
-            }
+
+               
+             }
             else
             {
                 ModelState.AddModelError("", "Invalid login attempt.");

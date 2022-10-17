@@ -49,8 +49,9 @@ font-size:21px;
 	padding:15px;
 }
 .scroll {
-	height: 800px;
-	overflow: scroll
+	height: 809px;
+	overflow-y: scroll;
+		overflow-x:hidden;
 }
 #matchscoresTen {
 	padding: 0px;
@@ -153,7 +154,7 @@ font-weight:100;
 }
 
 .figselectionheight {
-	height: 45px;
+	height: 44px;
 }
 
 
@@ -299,7 +300,7 @@ textarea {
 }
 
 .logonew {
-    margin-left: 60px;
+    margin-left: 25px;
 
 }
 
@@ -2071,7 +2072,7 @@ label:hover{
 
   .user-betsagents-wrapper .selection {
           width: 35% !important;
-     border-right: 1px solid #eae3e3;
+     border-right: 1px solid white;
 	 color: white !important;
 }
 
@@ -2154,7 +2155,7 @@ label:hover{
 .user-betsagents-wrapper .selection
 {
 	  width: 40% !important;
-         border-right: 1px solid black;
+         border-right: 1px solid white;
 }
 
 .customername {
@@ -2842,7 +2843,7 @@ a {
 	
     float: left;
     width: 100%;
-    max-height: 450px;
+    max-height: 410px;
     overflow: auto;
 }
 
@@ -2871,17 +2872,18 @@ a {
     }
 
 .inplaymatchheading {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-bottom: 3px;
-    margin-left: 0;
-    border: 0;
-    top: 2px;
-    background-color: #eee;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
-    box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-bottom: 3px;
+	margin-left: 0;
+	border: 0;
+	top: 2px;
+	background-color: #eee;
+	
+	-webkit-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 0 4px rgba(0, 0, 0, .3);
+	box-shadow: 0 0 4px rgba(0, 0, 0, .3);
 }
 
     .inplaymatchheading > li > a {
@@ -2889,6 +2891,7 @@ a {
     }
 
 .sporthighlightsuldiv {
+	height:460px;
     padding: 0px;
     /* padding: 16px 12px; */
     position: relative;
@@ -2897,6 +2900,19 @@ a {
     box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
     float: left;
     width: 100%;
+}
+.sporthighlightsuldiv2 {
+	height: 418px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0px;
+	/* padding: 16px 12px; */
+	position: relative;
+	-webkit-box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+	-moz-box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+	box-shadow: 1px 0 10px 1px rgba(0, 0, 0, .3);
+	float: left;
+	width: 100%;
 }
 
 .inplaydatarow {
@@ -2909,17 +2925,21 @@ a {
 	background-color: white;
 }
 
+	.inplaydatarow a:hover {
+		color: red;
+	}
+
 .inplaymatchname {
-    float: left;
-    width: 67%;
-    margin-right: 2px;
+	float: left;
+	width: 67%;
+	margin-right: 2px;
 }
 
 .inplaymatchnamerelated {
 	float: left;
 	width: 65%;
 	margin-right: 2px;
-	padding:4px;
+	padding:7px;
 }
 
 
@@ -3248,10 +3268,10 @@ a {
 
 
 	.inplaytime {
-        float: left;
+    float: left;
    width:190px;
    font:icon;
-   margin-top: 4px;
+   margin-top: 5px;
    margin-left:-200px;
    font-weight:100;
    font-size: 18px;
@@ -3344,9 +3364,10 @@ a {
 
 
 	.cool {
-		
+		margin-left: 0px;
 		font-weight:bold;
-		font-size:12px;
+		font-size:11px;
+		margin-top: -2px;
 	}
 	.scroll {
 		height:auto;
@@ -3883,10 +3904,10 @@ a {
 	
 	
 	.inplaytime {
-    float: right;
+        float: right;
    width:115px;
    font:icon;
-   margin-top: 0px;
+   margin-top: 5px;
    font-weight:normal;
    font-size: 12px;
     }
@@ -4259,7 +4280,7 @@ width:50%
 
 
 	#marketbooksoccer .runnerprofitandlossdivMobile {
-		width: 50% !important;
+		/*width: 50% !important;*/
 		margin-top: 0px;
 	}
 
@@ -4641,7 +4662,7 @@ background: black;
 }
     .inplaymatchname {
     float: left;
-    width: 55%;
+    width: 65%;
   
     margin-right: 2px;
 }

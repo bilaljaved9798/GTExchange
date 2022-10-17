@@ -32,72 +32,12 @@ namespace globaltraders.Service123Reference {
         ExternalAPI.TO.MarketBookForindianFancy EndGetMarketDatabyIDIndianFancy(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService123/GetRunnersForFancy", ReplyAction="http://tempuri.org/IService123/GetRunnersForFancyResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBook[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBook))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.DebitCredit[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.DebitCredit))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.SP_UserMarket_GetDistinctKJMarketsbyEventID_Result[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.SP_UserMarket_GetDistinctKJMarketsbyEventID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.LinevMarkets[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.LinevMarkets))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.LinevMarketsIN[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.LinevMarketsIN))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Runner[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Runner))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.ExchangePrices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.PriceSize[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.PriceSize))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Match[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Match))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Side))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Order[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Order))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.OrderType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.PersistenceType))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.OrderStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.StartingPrices))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RunnerStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketStatus))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBookForindianFancy))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RunnerForIndianFancy[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RunnerForIndianFancy))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Market[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Market))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Events[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Events))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Session[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Session))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Home))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.con))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.cs))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.i1))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.i2))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.t1))]
-        //[System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.t2))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Root))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RootSCT[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RootSCT))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Broadcasts))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MatchInfo))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Radio))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Tv[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Tv))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Runners))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.State))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.FullTimeElapsed))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Score))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.Away))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(System.DateTimeOffset))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(long[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(object[]))]
-        ExternalAPI.TO.GetDataFancy GetRunnersForFancy(string EventID, string MarketBookID);
+        string GetRunnersForFancy(string EventID, string MarketBookID);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService123/GetRunnersForFancy", ReplyAction="http://tempuri.org/IService123/GetRunnersForFancyResponse")]
         System.IAsyncResult BeginGetRunnersForFancy(string EventID, string MarketBookID, System.AsyncCallback callback, object asyncState);
         
-        ExternalAPI.TO.GetDataFancy EndGetRunnersForFancy(System.IAsyncResult result);
+        string EndGetRunnersForFancy(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService123/GetEventIDFancyMarket", ReplyAction="http://tempuri.org/IService123/GetEventIDFancyMarketResponse")]
         ExternalAPI.TO.LinevMarkets[] GetEventIDFancyMarket(string EventID, string MarketBookID);
@@ -114,6 +54,14 @@ namespace globaltraders.Service123Reference {
         System.IAsyncResult BeginGetUpdate(string EventID, System.AsyncCallback callback, object asyncState);
         
         ExternalAPI.TO.Home EndGetUpdate(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService123/GetUpdateNew", ReplyAction="http://tempuri.org/IService123/GetUpdateNewResponse")]
+        ExternalAPI.TO.UpdateNew GetUpdateNew(string EventID);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService123/GetUpdateNew", ReplyAction="http://tempuri.org/IService123/GetUpdateNewResponse")]
+        System.IAsyncResult BeginGetUpdateNew(string EventID, System.AsyncCallback callback, object asyncState);
+        
+        ExternalAPI.TO.UpdateNew EndGetUpdateNew(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService123/GetUpdate2", ReplyAction="http://tempuri.org/IService123/GetUpdate2Response")]
         ExternalAPI.TO.Root GetUpdate2(string EventID);
@@ -217,10 +165,10 @@ namespace globaltraders.Service123Reference {
             this.results = results;
         }
         
-        public ExternalAPI.TO.GetDataFancy Result {
+        public string Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((ExternalAPI.TO.GetDataFancy)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -259,6 +207,25 @@ namespace globaltraders.Service123Reference {
             get {
                 base.RaiseExceptionIfNecessary();
                 return ((ExternalAPI.TO.Home)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetUpdateNewCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetUpdateNewCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public ExternalAPI.TO.UpdateNew Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((ExternalAPI.TO.UpdateNew)(this.results[0]));
             }
         }
     }
@@ -411,6 +378,12 @@ namespace globaltraders.Service123Reference {
         
         private System.Threading.SendOrPostCallback onGetUpdateCompletedDelegate;
         
+        private BeginOperationDelegate onBeginGetUpdateNewDelegate;
+        
+        private EndOperationDelegate onEndGetUpdateNewDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetUpdateNewCompletedDelegate;
+        
         private BeginOperationDelegate onBeginGetUpdate2Delegate;
         
         private EndOperationDelegate onEndGetUpdate2Delegate;
@@ -475,6 +448,8 @@ namespace globaltraders.Service123Reference {
         public event System.EventHandler<GetEventIDFancyMarketCompletedEventArgs> GetEventIDFancyMarketCompleted;
         
         public event System.EventHandler<GetUpdateCompletedEventArgs> GetUpdateCompleted;
+        
+        public event System.EventHandler<GetUpdateNewCompletedEventArgs> GetUpdateNewCompleted;
         
         public event System.EventHandler<GetUpdate2CompletedEventArgs> GetUpdate2Completed;
         
@@ -598,7 +573,7 @@ namespace globaltraders.Service123Reference {
                         MarketBookID}, this.onEndGetMarketDatabyIDIndianFancyDelegate, this.onGetMarketDatabyIDIndianFancyCompletedDelegate, userState);
         }
         
-        public ExternalAPI.TO.GetDataFancy GetRunnersForFancy(string EventID, string MarketBookID) {
+        public string GetRunnersForFancy(string EventID, string MarketBookID) {
             return base.Channel.GetRunnersForFancy(EventID, MarketBookID);
         }
         
@@ -608,7 +583,7 @@ namespace globaltraders.Service123Reference {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public ExternalAPI.TO.GetDataFancy EndGetRunnersForFancy(System.IAsyncResult result) {
+        public string EndGetRunnersForFancy(System.IAsyncResult result) {
             return base.Channel.EndGetRunnersForFancy(result);
         }
         
@@ -619,7 +594,7 @@ namespace globaltraders.Service123Reference {
         }
         
         private object[] OnEndGetRunnersForFancy(System.IAsyncResult result) {
-            ExternalAPI.TO.GetDataFancy retVal = this.EndGetRunnersForFancy(result);
+            string retVal = this.EndGetRunnersForFancy(result);
             return new object[] {
                     retVal};
         }
@@ -750,6 +725,56 @@ namespace globaltraders.Service123Reference {
             }
             base.InvokeAsync(this.onBeginGetUpdateDelegate, new object[] {
                         EventID}, this.onEndGetUpdateDelegate, this.onGetUpdateCompletedDelegate, userState);
+        }
+        
+        public ExternalAPI.TO.UpdateNew GetUpdateNew(string EventID) {
+            return base.Channel.GetUpdateNew(EventID);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetUpdateNew(string EventID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetUpdateNew(EventID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public ExternalAPI.TO.UpdateNew EndGetUpdateNew(System.IAsyncResult result) {
+            return base.Channel.EndGetUpdateNew(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetUpdateNew(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string EventID = ((string)(inValues[0]));
+            return this.BeginGetUpdateNew(EventID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetUpdateNew(System.IAsyncResult result) {
+            ExternalAPI.TO.UpdateNew retVal = this.EndGetUpdateNew(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetUpdateNewCompleted(object state) {
+            if ((this.GetUpdateNewCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetUpdateNewCompleted(this, new GetUpdateNewCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetUpdateNewAsync(string EventID) {
+            this.GetUpdateNewAsync(EventID, null);
+        }
+        
+        public void GetUpdateNewAsync(string EventID, object userState) {
+            if ((this.onBeginGetUpdateNewDelegate == null)) {
+                this.onBeginGetUpdateNewDelegate = new BeginOperationDelegate(this.OnBeginGetUpdateNew);
+            }
+            if ((this.onEndGetUpdateNewDelegate == null)) {
+                this.onEndGetUpdateNewDelegate = new EndOperationDelegate(this.OnEndGetUpdateNew);
+            }
+            if ((this.onGetUpdateNewCompletedDelegate == null)) {
+                this.onGetUpdateNewCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetUpdateNewCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetUpdateNewDelegate, new object[] {
+                        EventID}, this.onEndGetUpdateNewDelegate, this.onGetUpdateNewCompletedDelegate, userState);
         }
         
         public ExternalAPI.TO.Root GetUpdate2(string EventID) {

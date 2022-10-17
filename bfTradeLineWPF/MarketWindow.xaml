@@ -2157,6 +2157,206 @@
             <ScrollViewer x:Name="SVStackpaneltest" Height="450"  >  
                 <StackPanel x:Name="SPSVinside">  
                     
+                     <DataGrid x:Name="DGVMarketFancy" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersFancy}"   RowBackground="#FFFFFFFF" BorderThickness="0"  Background="White"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="#FF463F3D" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,20,0,0" MaxHeight="300" ScrollViewer.VerticalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarket_MouseLeftButtonUp">
+<DataGrid.RowStyle>
+    <Style TargetType="{x:Type DataGridRow}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding isShow}" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</DataGrid.RowStyle>
+                        <DataGrid.Columns>
+
+                           
+                            <DataGridTemplateColumn Width="50" Header="BOOK" MaxWidth="50"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock >
+                                          
+                                                  <TextBlock Text="Book" Width="50" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="white" Background="Red" Padding="10,12" Margin="-1,2,0,0" />
+                                         
+                                           
+                                        </TextBlock>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                                 <DataGridTemplateColumn Width="25" IsReadOnly="True" Header="" Visibility="Collapsed">
+    <DataGridTemplateColumn.CellTemplate>
+        <DataTemplate>
+            <CheckBox IsChecked="{Binding Path=isSelectedForLK}" Checked="CheckBox_Checked" Tag="{Binding SelectionID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top" Unchecked="CheckBox_Unchecked" VerticalContentAlignment="Center" />
+        </DataTemplate>
+    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                 <DataGridTemplateColumn Width="*" Header="" Visibility="Collapsed"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+                                          
+                                                  <TextBlock Text="{Binding Clothnumber}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0" FontSize="14" />
+                                            <TextBlock Text="{Binding StallDraw}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" FontSize="14" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0"   />
+                                         <Image Source="{Binding ImageURL}" Width="22" VerticalAlignment="Center" Margin="0,0,0,0"></Image>
+                                           
+                                        </StackPanel>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*" Header="LINE/FANCY" MinWidth="100"  HeaderStyle="{StaticResource DGSelection}" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock >
+                                            <StackPanel>
+                                                  <TextBlock Text="{Binding Selection}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Top" FontWeight="SemiBold" Padding="0,0,0,3" Foreground="#FF141b31" FontSize="16" />
+                                           <TextBlock>
+                                               
+                                         
+                                                <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding PL,Converter={StaticResource PLConverter}}" FontFamily="Calibri"/>
+                                             <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss,Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}" FontFamily="Calibri" />
+                                             </TextBlock>
+                                           </StackPanel>
+                                           
+                                        </TextBlock>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="" Visibility="Collapsed">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="100" ><InlineUIContainer>
+                                                <StackPanel Width="100">
+                                                   
+                                                      <TextBlock Text="{Binding JockeyName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" FontWeight="Normal" FontSize="10" Style="{StaticResource txtJockeyname}" Foreground="#1D2F65"  Margin="0,15,0,0" />
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="50" Header="LP" Visibility="Collapsed"   >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding Price,Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"   />
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                                  <DataGridTemplateColumn Width="80" Header="Average" Visibility="Collapsed" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="80" ><InlineUIContainer>
+                                                <StackPanel Width="80">
+                                                  <TextBlock Text="{Binding Average}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Style="{StaticResource txtJockeyname}" Foreground="{Binding Average,Converter={StaticResource PLConverter}}"   />
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70"  >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSize2" Style="{StaticResource gridoddchangeblue2}" >
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True}"  TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                      <Border BorderBrush="#76B5D2" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal"  />
+                                                     </Border>
+                                                </StackPanel>
+                                        </TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSize1" Style="{StaticResource gridoddchangeblue1}" ><InlineUIContainer>
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                     <Border BorderBrush="#76B5D2" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal"  />
+                                                     </Border>
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="BACK" MinWidth="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSize" Style="{StaticResource gridoddchangeblue}">
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                    <Border BorderBrush="#4A86A4" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal"  />
+                                                     </Border>
+                                                </StackPanel>
+                                           </TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="LAY" MinWidth="70" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSizeLay" Style="{StaticResource gridoddchangepink}"><InlineUIContainer>
+                                                <StackPanel Width="70" >
+                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                     <Border BorderBrush="#BD687E" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" />
+                                                     </Border>
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSize1Lay" Style="{StaticResource gridoddchangepink1}"><InlineUIContainer>
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                    <Border BorderBrush="#F097A9" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" />
+                                                     </Border>
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="70" x:Name="PriceandSize2Lay" Style="{StaticResource gridoddchangepink2}" ><InlineUIContainer>
+                                                <StackPanel Width="70" >
+                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" />
+                                                    <Border BorderBrush="#F097A9" BorderThickness="0,0,0,2" Margin="0,0,0,0">
+                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal"  />
+                                                     </Border>
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                
+                    
                      <DataGrid x:Name="DGVMarketIndianFancy" Visibility="Collapsed" Margin="0,7,0,0" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersIndianFancy}"    BorderThickness="0"  Background="white"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="Black" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarketIndianFancy_MouseLeftButtonUp_1" HorizontalAlignment="Left"  >
                    
                         <DataGrid.RowStyle>

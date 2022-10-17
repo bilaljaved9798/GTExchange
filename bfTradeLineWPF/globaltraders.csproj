@@ -29,10 +29,10 @@
     <InstallUrl>http://78.110.160.52:6980/</InstallUrl>
     <ProductName>Global Traders</ProductName>
     <PublisherName>Global Traders</PublisherName>
-    <MinimumRequiredVersion>1.0.0.448</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.450</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>449</ApplicationRevision>
+    <ApplicationRevision>450</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -434,6 +434,7 @@
     <None Include="ExternalAPI.TO.MarketCatalogue.datasource" />
     <None Include="ExternalAPI.TO.Root.datasource" />
     <None Include="ExternalAPI.TO.RootSCT.datasource" />
+    <None Include="ExternalAPI.TO.UpdateNew.datasource" />
     <None Include="globaltraders_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

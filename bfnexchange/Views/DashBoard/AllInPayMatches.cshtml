@@ -3,16 +3,16 @@
 	<style>
 
 		.slick-prev {
-		left: -6px !important;
-		
+			left: -6px !important;
 		}
 
 		.slick-next {
 			right: 13px !important;
 		}
-		.slick-prev:before, .slick-next:before {
-			color: red;
-		}
+
+			.slick-prev:before, .slick-next:before {
+				color: red;
+			}
 	</style>
 </head>
 <div class="defaultpage">
@@ -35,7 +35,7 @@
 	</div>
 	<div class="col-md-12 no-padding row" style="text-align:center;margin-bottom:0px; margin-left:1px;">
 
-		<div class="single-item mainslider" >
+		<div class="single-item mainslider">
 			<div>
 				<label class="lblslider">Comming Soon E Gaming...</label>
 			</div>
@@ -57,7 +57,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	@*<div class="col-md-12 inplayhorserace no-padding">
 			<div class="headingdiv">
 				<span class="headingcaption">
@@ -165,50 +165,50 @@
 						List<string> eventtypes = Model.AllMarkets.Select(x => x.CategoryName).Distinct().ToList();
 						foreach (var item in eventtypes)
 						{
-					<li role="presentation">
-						@if (item == "Cricket")
-						{
+							<li role="presentation">
+								@if (item == "Cricket")
+								{
 
-						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())" >
-							<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
-							@item (@line.Select(x => x.Count).FirstOrDefault())
-						</a>
-						}
-						@if (item == "Horse Racing")
-						{
-						<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingHorse">
-							<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
-							Horse (@line.Select(x => x.Count).Skip(3).Take(1).FirstOrDefault())
-						</a>
-						}
-						@if (item == "Greyhound Racing")
-						{
-						<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingGreyhound">
-							<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
-							Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
-						</a>
-						}
-						@if (item == "Soccer")
-						{
-						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())" >
-							<i><img src="~/Content/Images/soc.svg" width="30" height="30" /></i>
+									<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
+										<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
+										@item (@line.Select(x => x.Count).FirstOrDefault())
+									</a>
+								}
+								@if (item == "Horse Racing")
+								{
+									<a onclick="setactiveinplaycategory('Horse')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingHorse">
+										<i><img src="~/Content/Images/2132.svg" width="30" height="30" /></i>
+										Horse (@line.Select(x => x.Count).Skip(3).Take(1).FirstOrDefault())
+									</a>
+								}
+								@if (item == "Greyhound Racing")
+								{
+									<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingGreyhound">
+										<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
+										Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+									</a>
+								}
+								@if (item == "Soccer")
+								{
+									<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
+										<i><img src="~/Content/Images/soc.svg" width="30" height="30" /></i>
 
-							@item (@line.Select(x => x.Count).Skip(1).Take(1).FirstOrDefault())
-						</a>
-						}
-						@if (item == "Tennis")
-						{
-						<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
-							<i><img src="~/Content/Images/tenn.svg" width="30" height="30" /></i>
+										@item (@line.Select(x => x.Count).Skip(1).Take(1).FirstOrDefault())
+									</a>
+								}
+								@if (item == "Tennis")
+								{
+									<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
+										<i><img src="~/Content/Images/tenn.svg" width="30" height="30" /></i>
 
-							@item (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
-						</a>
-						}
-
-
+										@item (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+									</a>
+								}
 
 
-					</li>
+
+
+							</li>
 						}
 					}
 				</ul>
@@ -245,76 +245,72 @@
 									List<bfnexchange.HelperClasses.AllMarketsInPlay> lstMatchesbytype = Model.AllMarkets.Where(x => x.CategoryName == item).ToList();
 									foreach (var matchitem in lstMatchesbytype)
 									{
-								       <div class="inplaydatarow">
+										<div class="inplaydatarow">
 
 
-									     @if (item == "Horse Racing" || item == "Greyhound Racing")
-										 {
-										<div class="inplaymatchname">
-											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName  <br></a>
-										</div>
-										 }
-										 else
-										 {
-											 if (matchitem.MarketStatus == "In Play")
-											 {
-
-
-											<div class="inplaymatchname">
-												<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <label class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label><br></a>
-
-											</div>
-											 }
-											 else
-											 {
-											<div class="inplaymatchname">
-												<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <br></a>
-
-											</div>
-											 }
-										 }
-
-										<div class="inplaytime">
-											@matchitem.MarketStartTime
-
-										</div>
-
-
-
-										<div class="inplaymatchbackandlay">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													@matchitem.Runner1Back
+											@if (item == "Horse Racing" || item == "Greyhound Racing")
+											{
+												<div class="inplaymatchname">
+													<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName</a>
 												</div>
-												<div class="inplaylay">
-													@matchitem.Runner1Lay
-												</div>
+											}
+											else
+											{
+												if (matchitem.MarketStatus == "In Play")
+												{
+
+
+													<div class="inplaymatchname">
+														<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <label class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label></a>
+
+													</div>
+												}
+												else
+												{
+													<div class="inplaymatchname">
+														<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 </a>
+													</div>
+												}
+											}
+
+											<div class="inplaytime">
+												@matchitem.MarketStartTime
 											</div>
 
-										</div>
-										<div class="inplaymatchbackandlay1">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													@matchitem.Runner3Back
+											<div class="inplaymatchbackandlay">
+												<div class="inplayrunner1">
+													<div class="inplayback">
+														@matchitem.Runner1Back
+													</div>
+													<div class="inplaylay">
+														@matchitem.Runner1Lay
+													</div>
 												</div>
-												<div class="inplaylay">
-													@matchitem.Runner3Lay
-												</div>
-											</div>
 
-										</div>
-										<div class="inplaymatchbackandlay2">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													@matchitem.Runner2Back
-												</div>
-												<div class="inplaylay">
-													@matchitem.Runner2Lay
-												</div>
 											</div>
+											<div class="inplaymatchbackandlay1">
+												<div class="inplayrunner1">
+													<div class="inplayback">
+														@matchitem.Runner3Back
+													</div>
+													<div class="inplaylay">
+														@matchitem.Runner3Lay
+													</div>
+												</div>
 
+											</div>
+											<div class="inplaymatchbackandlay2">
+												<div class="inplayrunner1">
+													<div class="inplayback">
+														@matchitem.Runner2Back
+													</div>
+													<div class="inplaylay">
+														@matchitem.Runner2Lay
+													</div>
+												</div>
+
+											</div>
 										</div>
-									</div>
 									}
 
 									// }

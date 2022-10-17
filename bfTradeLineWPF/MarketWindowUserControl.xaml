@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:globaltraders"
+              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
              mc:Ignorable="d" 
@@ -1064,6 +1065,60 @@
             </Border>
             
         </local:DraggablePopup>
+        
+         <local:DraggablePopup x:Name="popupFancyCuttingIN"  Placement="Center"
+		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+		                     >
+            <Border  BorderBrush="#FF243890" BorderThickness="5"  Background="White">
+                   <StackPanel Margin="5" >
+
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5">
+               
+               
+                <StackPanel Orientation="Vertical">
+                    
+                    <Label Content="Runners" HorizontalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="cmbRunnersFancyIN" Width="200" Margin="0,0,0,5" FontSize="14" SelectedIndex="0" KeyDown="cmbRunnersFancyIN_KeyDown"  SelectionChanged="cmbRunnersFancy_SelectionChanged" FontWeight="Bold"></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <Label Content="Size" HorizontalContentAlignment="Center"></Label>
+                    <TextBox x:Name="txtOddFancyIN"  FontSize="12" Width="37" VerticalContentAlignment="Center" Height="22" KeyDown="txtOddFancyIN_KeyDown"/>
+                </StackPanel>
+                
+                 <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <Label Content="Score" HorizontalContentAlignment="Center"></Label>
+                    <TextBox x:Name="txtsizeFancyIN"  FontSize="12" Width="37" VerticalContentAlignment="Center" Height="22" KeyDown="txtsizeFancyIN_KeyDown"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <Label Content="Amount" HorizontalContentAlignment="Center"></Label>
+                    <TextBox x:Name="txtAmountFancyIN"  FontSize="12" Width="85" VerticalContentAlignment="Center"  Height="22" KeyDown="txtAmountFancyIN_KeyDown" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <Label Content="Bet Type" HorizontalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="cmbBetTypeFancyIN" Width="62" Margin="0,0,0,5" FontSize="14"  SelectedIndex="0" KeyDown="cmbBetTypeFancyIN_KeyDown"  SelectionChanged="cmbBetTypeFancyIN_SelectionChanged"  FontWeight="Bold">
+                        <ComboBoxItem Content="back"/>
+                        <ComboBoxItem Content="lay"/></ComboBox>
+                </StackPanel>
+               
+                
+                 <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                    <Label Content="Users" HorizontalContentAlignment="Center"></Label>
+                    <ComboBox x:Name="cmbCuttingUserFancyIN" Width="150" Margin="0,0,0,5" Background="Red" FontSize="14"  SelectedIndex="0" FontWeight="Bold"></ComboBox>  
+                 </StackPanel>
+               
+                <StackPanel Orientation="Vertical" Margin="5,0,0,0" HorizontalAlignment="Right" >
+                    <Button Content="X" Width="30" Height="20" Background="Red" Foreground="White" Margin="0,0,0,5" HorizontalAlignment="Right" Click="Button_Click_23"></Button>
+                    <Button x:Name="btnAddFancyCuttingIN" Content="Add" Width="66.07" Height="20" Click="btnAddFancyCuttingIN_Click"  ></Button>
+
+                </StackPanel>
+            </StackPanel>
+           
+          
+        </StackPanel>
+            </Border>
+            
+        </local:DraggablePopup>
+        
             <local:DraggablePopup x:Name="popupFancyCutting"  Placement="Center"
 		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
 		                     >
@@ -1825,7 +1880,10 @@
                                 <MenuItem Header="Profit/Loss by Agent"  Click="MenuItem_Click">
                                    
                                 </MenuItem>
-                                   <MenuItem Header="Fancy Cutting"   Click="MenuItem_Click_1">
+                                   <MenuItem Header="Indian Fancy Cutting"   Click="MenuItem_Click_15">
+                                   
+                                </MenuItem>
+                                     <MenuItem Header="Fancy Cutting"   Click="MenuItem_Click_1">
                                    
                                 </MenuItem>
                                  <MenuItem Header="Fancy Result Posting"  Click="MenuItem_Click_2">

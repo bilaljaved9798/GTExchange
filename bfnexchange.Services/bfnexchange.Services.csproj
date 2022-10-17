@@ -143,6 +143,7 @@
     <Content Include="Services\BettingServiceHorseRacePlace.svc" />
     <Content Include="Services\BettingServiceHorseWin.svc" />
     <Content Include="Services\BettingServiceRest.svc" />
+    <Content Include="Services\BettingServicesCricketInningsRunLive.svc" />
     <Content Include="Services\BettingServiceSoccer.svc" />
     <Content Include="Services\BettingServiceTennis.svc" />
     <Content Include="Services\BettingServiceWinner.svc" />
@@ -665,6 +666,9 @@
     <Compile Include="Services\BettingServiceRest.svc.cs">
       <DependentUpon>BettingServiceRest.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\BettingServicesCricketInningsRunLive.svc.cs">
+      <DependentUpon>BettingServicesCricketInningsRunLive.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\BettingServiceSoccer.svc.cs">
       <DependentUpon>BettingServiceSoccer.svc</DependentUpon>
     </Compile>
@@ -693,6 +697,7 @@
     <Compile Include="Services\IBettingServiceHorseWin.cs" />
     <Compile Include="Services\IBettingServiceRest.cs" />
     <Compile Include="Services\IBettingServiceRestFancy.cs" />
+    <Compile Include="Services\IBettingServicesCricketInningsRunLive.cs" />
     <Compile Include="Services\IBettingServiceSoccer.cs" />
     <Compile Include="Services\IBettingServiceTennis.cs" />
     <Compile Include="Services\IBettingServiceWinner.cs" />

@@ -385,190 +385,110 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="RunnerForIndianFancy" nillable="true" type="tns:RunnerForIndianFancy" />
-  <xs:complexType name="GetDataFancy">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MarketID" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="commentary" nillable="true" type="xs:anyType" />
-      <xs:element minOccurs="0" name="counter" type="xs:int" />
-      <xs:element minOccurs="0" name="market" nillable="true" type="tns:ArrayOfMarket" />
-      <xs:element minOccurs="0" name="marketId" nillable="true" type="xs:anyType" />
-      <xs:element minOccurs="0" name="score" nillable="true" type="xs:anyType" />
-      <xs:element minOccurs="0" name="session" nillable="true" type="tns:ArrayOfSession" />
-      <xs:element minOccurs="0" name="update_at" nillable="true" type="xs:anyType" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="GetDataFancy" nillable="true" type="tns:GetDataFancy" />
-  <xs:complexType name="ArrayOfMarket">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Market" nillable="true" type="tns:Market" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMarket" nillable="true" type="tns:ArrayOfMarket" />
-  <xs:complexType name="Market">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="events" nillable="true" type="tns:ArrayOfEvents" />
-      <xs:element minOccurs="0" name="inplay" type="xs:boolean" />
-      <xs:element minOccurs="0" name="marketId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="priceStatus" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="totalAvailable" nillable="true" type="xs:anyType" />
-      <xs:element minOccurs="0" name="totalMatched" nillable="true" type="xs:anyType" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Market" nillable="true" type="tns:Market" />
-  <xs:complexType name="ArrayOfEvents">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Events" nillable="true" type="tns:Events" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfEvents" nillable="true" type="tns:ArrayOfEvents" />
-  <xs:complexType name="Events">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BackPrice1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackPrice2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackPrice3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackSize1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackSize2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackSize3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LayPrice1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LayPrice2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LayPrice3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LaySize1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LaySize2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LaySize3" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RunnerName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SelectionId" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Events" nillable="true" type="tns:Events" />
-  <xs:complexType name="ArrayOfSession">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Session" nillable="true" type="tns:Session" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfSession" nillable="true" type="tns:ArrayOfSession" />
-  <xs:complexType name="Session">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BackPrice1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BackSize1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FinalStatus" nillable="true" type="xs:anyType" />
-      <xs:element minOccurs="0" name="GameStatus" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LayPrice1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LaySize1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="RunnerName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SelectionId" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
-      <xs:element minOccurs="0" name="max" type="xs:double" />
-      <xs:element minOccurs="0" name="min" type="xs:double" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Session" nillable="true" type="tns:Session" />
   <xs:complexType name="Home">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Eventid" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ao" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="b1s" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="b2s" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="bw" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="cd" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="con" nillable="true" type="tns:con" />
-      <xs:element minOccurs="0" name="cs" nillable="true" type="tns:cs" />
-      <xs:element minOccurs="0" name="hms" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="i" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="i1" nillable="true" type="tns:i1" />
-      <xs:element minOccurs="0" name="i1b" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="i2" nillable="true" type="tns:i2" />
-      <xs:element minOccurs="0" name="iov" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="lm" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="lw" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="md" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mit" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mk" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="oh" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="os" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="p1" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="p2" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="pb" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="pt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="rt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="sk" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="sn" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ssns" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="t1" nillable="true" type="tns:t1" />
-      <xs:element minOccurs="0" name="t2" nillable="true" type="tns:t2" />
-      <xs:element minOccurs="0" name="tt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ao" type="xs:long" />
+      <xs:element minOccurs="0" name="B1S" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2S" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cd" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Con" nillable="true" type="tns:Con" />
+      <xs:element minOccurs="0" name="Cs" nillable="true" type="tns:Cs" />
+      <xs:element minOccurs="0" name="Day" type="xs:long" />
+      <xs:element minOccurs="0" name="Hms" type="xs:long" />
+      <xs:element minOccurs="0" name="I" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I1" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I1B" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I2" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I3" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="I3B" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="I4" nillable="true" type="tns:I1" />
+      <xs:element minOccurs="0" name="Iov" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Md" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mit" type="xs:long" />
+      <xs:element minOccurs="0" name="Mk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oh" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Os" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pb" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sk" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ssns" type="xs:long" />
+      <xs:element minOccurs="0" name="T1" nillable="true" type="tns:T1" />
+      <xs:element minOccurs="0" name="T2" nillable="true" type="tns:T1" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tt" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Home" nillable="true" type="tns:Home" />
-  <xs:complexType name="con">
+  <xs:complexType name="Con">
     <xs:sequence>
-      <xs:element minOccurs="0" name="g" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="lt" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mf" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mn" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mstus" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="mtm" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ostus" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="sr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="G" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Lt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mf" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mstus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mtm" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ostus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sr" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="con" nillable="true" type="tns:con" />
-  <xs:complexType name="cs">
+  <xs:element name="Con" nillable="true" type="tns:Con" />
+  <xs:complexType name="Cs">
     <xs:sequence>
-      <xs:element minOccurs="0" name="msg" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Msg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ts" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="cs" nillable="true" type="tns:cs" />
-  <xs:complexType name="i1">
+  <xs:element name="Cs" nillable="true" type="tns:Cs" />
+  <xs:complexType name="I1">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ov" type="xs:double" />
-      <xs:element minOccurs="0" name="sc" type="xs:int" />
-      <xs:element minOccurs="0" name="wk" type="xs:int" />
+      <xs:element minOccurs="0" name="Ov" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sc" type="xs:long" />
+      <xs:element minOccurs="0" name="Tr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Wk" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="i1" nillable="true" type="tns:i1" />
-  <xs:complexType name="i2">
+  <xs:element name="I1" nillable="true" type="tns:I1" />
+  <xs:complexType name="T1">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ov" type="xs:double" />
-      <xs:element minOccurs="0" name="sc" type="xs:int" />
-      <xs:element minOccurs="0" name="tr" type="xs:int" />
-      <xs:element minOccurs="0" name="wk" type="xs:int" />
+      <xs:element minOccurs="0" name="F" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="N" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="i2" nillable="true" type="tns:i2" />
-  <xs:complexType name="t1">
+  <xs:element name="T1" nillable="true" type="tns:T1" />
+  <xs:complexType name="UpdateNew">
     <xs:sequence>
-      <xs:element minOccurs="0" name="f" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ic" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="n" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Home" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" type="xs:long" />
+      <xs:element minOccurs="0" name="Tv" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="t1" nillable="true" type="tns:t1" />
-  <xs:complexType name="t2">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="f" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ic" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="n" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="t2" nillable="true" type="tns:t2" />
+  <xs:element name="UpdateNew" nillable="true" type="tns:UpdateNew" />
   <xs:complexType name="Root">
     <xs:sequence>
-      <xs:element minOccurs="0" name="eventid" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="result" nillable="true" type="tns:Result" />
-      <xs:element minOccurs="0" name="status" type="xs:int" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" nillable="true" type="tns:Result" />
+      <xs:element minOccurs="0" name="Status" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Root" nillable="true" type="tns:Root" />
   <xs:complexType name="Result">
     <xs:sequence>
-      <xs:element minOccurs="0" name="home" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="p1" type="xs:int" />
-      <xs:element minOccurs="0" name="p2" type="xs:int" />
-      <xs:element minOccurs="0" name="room" type="xs:int" />
-      <xs:element minOccurs="0" name="tv" type="xs:int" />
-      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Home" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P1" type="xs:long" />
+      <xs:element minOccurs="0" name="P2" type="xs:long" />
+      <xs:element minOccurs="0" name="Room" type="xs:long" />
+      <xs:element minOccurs="0" name="Tv" type="xs:long" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Result" nillable="true" type="tns:Result" />
@@ -582,19 +502,19 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AwayName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Broadcasts" nillable="true" type="tns:Broadcasts" />
-      <xs:element minOccurs="0" name="CompetitionId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompetitionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="CompetitionName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EventId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventTypeId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="HomeName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InPlayBettingStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MarketId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MarketName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchInfo" nillable="true" type="tns:MatchInfo" />
-      <xs:element minOccurs="0" name="NumberOfRunners" type="xs:long" />
-      <xs:element minOccurs="0" name="Relevance" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRunners" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Relevance" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runners" nillable="true" type="tns:Runners" />
       <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartTime" type="q3:DateTimeOffset" />
       <xs:element minOccurs="0" name="State" nillable="true" type="tns:State" />
@@ -605,9 +525,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="BfLiveVideo" nillable="true" type="tns:MatchInfo" />
       <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsDataVisualizationAvailable" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsLiveVideoAvailable" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsPaddockViewAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDataVisualizationAvailable" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLiveVideoAvailable" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPaddockViewAvailable" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Radio" nillable="true" type="tns:Radio" />
       <xs:element minOccurs="0" name="Tv" nillable="true" type="tns:ArrayOfTv" />
     </xs:sequence>
@@ -640,73 +560,73 @@
   <xs:complexType name="Runners">
     <xs:sequence>
       <xs:element minOccurs="0" name="DrawName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DrawSelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="DrawSelectionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runner1Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Runner1SelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner1SelectionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runner2Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Runner2SelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner2SelectionId" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Runners" nillable="true" type="tns:Runners" />
   <xs:complexType name="State">
     <xs:sequence>
       <xs:element minOccurs="0" name="ElapsedAddedTime" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="ElapsedRegularTime" type="xs:long" />
-      <xs:element minOccurs="0" name="EventId" type="xs:long" />
-      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="ElapsedRegularTime" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="EventTypeId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
       <xs:element minOccurs="0" name="HasSets" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MatchStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Score" nillable="true" type="tns:Score" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TimeElapsed" type="xs:long" />
-      <xs:element minOccurs="0" name="TimeElapsedSeconds" type="xs:long" />
+      <xs:element minOccurs="0" name="TimeElapsed" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="TimeElapsedSeconds" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="State" nillable="true" type="tns:State" />
   <xs:complexType name="FullTimeElapsed">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Hour" type="xs:long" />
-      <xs:element minOccurs="0" name="Min" type="xs:long" />
-      <xs:element minOccurs="0" name="Sec" type="xs:long" />
+      <xs:element minOccurs="0" name="Hour" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Min" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Sec" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
   <xs:complexType name="Score">
     <xs:sequence>
       <xs:element minOccurs="0" name="Away" nillable="true" type="tns:Away" />
-      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element minOccurs="0" name="BookingPoints" nillable="true" type="xs:long" />
       <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q6:ArrayOflong" />
       <xs:element minOccurs="0" name="Home" nillable="true" type="tns:Away" />
-      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
-      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Score" nillable="true" type="tns:Score" />
   <xs:complexType name="Away">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element minOccurs="0" name="BookingPoints" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="FullTimeScore" nillable="true" type="xs:string" />
       <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q7:ArrayOflong" />
       <xs:element minOccurs="0" name="Games" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HalfTimeScore" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Highlight" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="PenaltiesScore" nillable="true" type="xs:string" />
       <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PenaltiesSequence" nillable="true" type="q8:ArrayOfanyType" />
-      <xs:element minOccurs="0" name="Score" type="xs:long" />
-      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+      <xs:element minOccurs="0" name="Score" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Sets" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

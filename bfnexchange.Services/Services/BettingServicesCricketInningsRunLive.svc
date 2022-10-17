@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="bfnexchange.Services.Services.BettingServicesCricketInningsRunLive" CodeBehind="BettingServicesCricketInningsRunLive.svc.cs" %>

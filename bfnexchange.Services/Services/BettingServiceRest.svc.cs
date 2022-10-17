@@ -389,8 +389,44 @@ namespace bfnexchange.Services.Services
 
             }
         }
+        public List<ExternalAPI.TO.MarketBookString> GetAllMarketsOthersFancy(string marketID)
+        {
+            string[] marketIDs = marketID.Split(',');
+            List<ExternalAPI.TO.MarketBookString> lstClientMarkes = new List<ExternalAPI.TO.MarketBookString>();
+            if (APIConfig.GetCricketDataFrom == "Other")
 
-        public ExternalAPI.TO.GetDataFancy GetAllMarketsOthersFancy(string marketID)
+            {
+                if (APIConfig.BFMarketBooksOther123 != null)
+                {
+                    //  var admins = APIConfig.BFMarketBooksOther.Where(admin => string.Join(",", marketIDs).Split(',').Contains(admin.MarketId));
+                    try
+                    {
+                        foreach (var marketitem in marketIDs)
+                        {
+                            var marketlist = APIConfig.BFMarketBooksOther123.ToList();
+                            var currmarketbook = marketlist.Where(item => item.MarketBookId == marketitem).FirstOrDefault();
+                            if (currmarketbook != null)
+                            {
+                                lstClientMarkes.Add(currmarketbook);
+                            }
+                            else
+                            {
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        APIConfig.WriteErrorToDB("Get Data from rest fancy " + ex.Message.ToString());
+                    }
+
+                }
+            }
+            return (lstClientMarkes);
+        }
+
+        public ExternalAPI.TO.GetDataFancy GetAllMarketsOthersFancyIN(string marketID)
         {
             
             ExternalAPI.TO.GetDataFancy lstClientMarkes = new ExternalAPI.TO.GetDataFancy();
@@ -403,9 +439,33 @@ namespace bfnexchange.Services.Services
             }
             return (lstClientMarkes);
         }
+        public List<ExternalAPI.TO.MarketBook> GetAllMarketsFancy(string marketID)
+        {
+            string[] marketIDs = marketID.Split(',');
+            List<ExternalAPI.TO.MarketBook> lstClientMarkes = new List<ExternalAPI.TO.MarketBook>();
+
+            if (APIConfig.LiveCricketMarketBooksFancy != null)
+            {
+                // var admins = APIConfig.BFMarketBooks.Where(admin => string.Join(",", marketIDs).Split(',').Contains(admin.MarketId));
+                foreach (var marketitem in marketIDs)
+                {
+                    var currmarketbook = APIConfig.LiveCricketMarketBooksFancy.Where(item => item.MarketId == marketitem).FirstOrDefault();
+                    if (currmarketbook != null)
+                    {
 
 
-        public string GetAllMarketsFancy(string marketID )
+
+                        lstClientMarkes.Add(currmarketbook);
+                    }
+
+                }
+
+            }
+
+            return (lstClientMarkes);
+        }
+
+        public string GetAllMarketsFancyIN(string marketID)
         {
             ExternalAPI.TO.GetDataFancy marketbooks = new ExternalAPI.TO.GetDataFancy();
             try

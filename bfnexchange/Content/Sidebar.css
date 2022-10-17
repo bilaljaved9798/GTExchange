@@ -60,7 +60,7 @@ i, span {
     background: #075E54;
     color: #fff;
     transition: all 0.1s;
-	height:830px !important;
+	height:959.5px !important;
 }
 
 
@@ -211,6 +211,13 @@ a.article, a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 @media (max-width: 768px) {
+
+	p {
+		font-size: 0.8em;
+		font-weight: 300;
+		line-height: 1.7em;
+		color: #999;
+	}
    
 	#sidebar {
     background-color: #075E54;

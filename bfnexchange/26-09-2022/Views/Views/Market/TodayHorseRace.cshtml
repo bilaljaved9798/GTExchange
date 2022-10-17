@@ -1,0 +1,13 @@
+﻿@model IEnumerable<bfnexchange.Models.TodayHorseRacing>
+
+
+@foreach (var item in Model)
+{
+    <li>
+        <a  id="marketcatalogueitemtoday@(item.MarketCatalogueID.Replace(".",""))" class="active secondlevellink" onclick="lastLevelBreadcrumb('@item.MarketCatalogueID.ToString()')">@item.TodayHorseRace-@item.MarketCatalogueName</a>
+
+    </li>
+
+}
+
+

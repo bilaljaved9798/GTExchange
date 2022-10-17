@@ -1,0 +1,94 @@
+﻿@model IEnumerable<bfnexchange.Models.InPlayMatches>
+@{
+    var lstEventTypes = Model.Select(item => new { item.EventTypeID, item.EventTypeName }).Distinct().ToArray();
+
+
+
+
+    foreach (var eventtypeitem in lstEventTypes)
+    {
+        <li class="dropdown-submenu">
+            <a class="secondlevellink">
+                @eventtypeitem.EventTypeName
+
+            </a>
+            <ul class="nav dropdown-menu">
+                @{
+                    var lstCompetitions = Model.Where(item => item.EventTypeID == eventtypeitem.EventTypeID).Select(item => new { item.CompetitionID, item.CompetitionName }).Distinct().ToArray();
+                }
+                @foreach (var competitionitem in lstCompetitions)
+                {
+                    <li class="dropdown-submenu">
+                        <a class="thirdlevellink">
+                            @competitionitem.CompetitionName
+                        </a>
+                        <ul class="dropdown-menu">
+                            @{var lstEvents = Model.Where(item => item.CompetitionID == competitionitem.CompetitionID).Select(item => new { item.EventID, item.EventName }).Distinct().ToArray();
+                            }
+                            @foreach (var eventitem in lstEvents)
+                            {
+                                if (!(eventitem.EventName.Contains("Line v") || eventitem.EventName.Contains("Lines v")))
+                                {
+                                    <li class="dropdown-submenu">
+                                        <a class="fourthlevellink">
+                                            @eventitem.EventName
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            @{  var lstMarketCatalogues = Model.Where(item => item.EventID == eventitem.EventID && item.EventName !="Line v Markets").Select(item => new { item.MarketCatalogueID, item.MarketCatalogueName }).Distinct().ToArray();
+                                            }
+                                            @foreach (var marketcatalogueitem in lstMarketCatalogues)
+                                            {
+                                                <li>
+                                                    <a class="active fifthlevellink" onclick="lastLevelBreadcrumb('@marketcatalogueitem.MarketCatalogueID.ToString()')">@marketcatalogueitem.MarketCatalogueName</a>
+
+                                                </li>
+                                            }
+                                            @{var linevmaketbyEventID = Model.Where(item => item.AssociateEventID == eventitem.EventID && item.EventName =="Line v Markets").Select(item => new { item.MarketCatalogueID, item.MarketCatalogueName }).Distinct().ToArray();
+                                                if (linevmaketbyEventID.Count() > 0)
+                                                {
+                                                    linevmaketbyEventID.OrderBy(item => item.MarketCatalogueName).ToList();
+                                                    <li class="dropdown-submenu">
+                                                        <a class="fifthlevellink">
+                                                            Line v Markets
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            @{  var lstMarketCataloguesFancy = Model.Where(item => item.AssociateEventID == eventitem.EventID && item.EventName =="Line v Markets").Select(item => new { item.MarketCatalogueID, item.MarketCatalogueName }).Distinct().ToArray();
+                                                            }
+                                                            @foreach (var marketcatalogueitem in lstMarketCataloguesFancy)
+                                                            {
+                                                                <li>
+                                                                    <a class="active fifthlevellink" onclick="lastLevelBreadcrumb('@marketcatalogueitem.MarketCatalogueID.ToString()')">@marketcatalogueitem.MarketCatalogueName</a>
+
+                                                                </li>
+                                                            }
+                                                        </ul>
+
+                                                    </li>
+                                                                }
+                                            }
+                                        </ul>
+                                        
+                                    </li>
+                                                    }
+
+                                                }
+
+                        </ul>
+
+                    </li>
+                                            }
+            </ul>
+        </li>
+                                            }
+
+
+
+
+
+}
+
+
+
+
+
+

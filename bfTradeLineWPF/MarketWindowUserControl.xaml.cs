@@ -11352,6 +11352,7 @@ namespace globaltraders
                 cmbAdminBetUsers1.SelectedValuePath = "ID";
                 cmbAdminBetType1.SelectedIndex = 0;
                 cmbAdminBetUsers1.SelectedIndex = 0;
+              
                 lblCurrentPostitionUserPL1.Content = "0";
                 cmbUsersCurrentPosition.SelectedIndex = 0;
 
@@ -12414,64 +12415,7 @@ namespace globaltraders
         {
 
         }
-        //public void ShowaverageSectionByAgentclickFancy()
-        //{
-        //    if (1 == 1)
-        //    {
-
-        //        if (MarketBook.LineVMarkets != null)
-        //        {
-
-        //            popupFancyProffitLossAgent.IsOpen = true;
-
-
-
-        //            //  var results = LastloadedLinMarkets.Where(item => item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 0 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 0).ToList();
-        //            List<ExternalAPI.TO.Runner> lstRunners = new List<ExternalAPI.TO.Runner>();
-        //            foreach (var item in MarketBook.LineVMarkets)
-        //            {
-        //                ExternalAPI.TO.Runner objRunner = new ExternalAPI.TO.Runner();
-        //                objRunner.SelectionId = item.SelectionID + "|" + item.MarketCatalogueID + "|" + item.MarketCatalogueName;
-        //                objRunner.RunnerName = item.MarketCatalogueName;
-        //                lstRunners.Add(objRunner);
-        //            }
-        //            cmbRunnerForProfitandLoss1FAncy.IsSynchronizedWithCurrentItem = false;
-        //            cmbRunnerForProfitandLoss1FAncy.ItemsSource = lstRunners;
-        //            cmbRunnerForProfitandLoss1FAncy.DisplayMemberPath = "RunnerName";
-        //            cmbRunnerForProfitandLoss1FAncy.SelectedValuePath = "SelectionId";
-
-        //        }
-        //    }
-
-        //}
-
-        //private void btnBookbyAgent_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (cmbRunnerForProfitandLoss1FAncy.SelectedIndex >= 0)
-        //    {
-        //        List<UserBetsforAgent> lstSelectedAgentBets = new List<UserBetsforAgent>();
-        //        string userbets = objUsersServiceCleint.GetUserBetsbyAgentIDwithZeroReferer(Convert.ToInt32(cmbAgentsForProfitandLossFAncy.SelectedValue), LoggedinUserDetail.PasswordForValidate);
-        //        var lstUserBetAgent = JsonConvert.DeserializeObject<List<UserBetsforAgent>>(userbets);
-        //        string[] MarketIDandname = cmbRunnerForProfitandLoss1FAncy.SelectedValue.ToString().Split('|');
-        //        foreach (Window win in App.Current.Windows)
-        //        {
-        //            if (win.Name.Contains("BookPositionWinAgent"))
-        //            {
-        //                win.Close();
-        //            }
-        //        }
-        //        BookPosition objbookpostion = new BookPosition();
-        //        objbookpostion.Name = "BookPositionWinAgent" + MarketIDandname[1].Replace(".", "");
-        //        objbookpostion.CurrentUserbetsAgent = lstUserBetAgent;
-        //        objbookpostion.marketBookID = MarketIDandname[1];
-        //        objbookpostion.UserTypeID = 2;
-        //        objbookpostion.isopenedbyselecedagentfromadmin = true;
-        //        objbookpostion.marketbookName = MarketIDandname[2] + "(" + lblMarketName.Content.ToString() + ")";
-        //        objbookpostion.userID = Convert.ToInt32(cmbAgentsForProfitandLossFAncy.SelectedValue);
-        //        objbookpostion.Show();
-
-        //    }
-        //}
+      
 
 
 
@@ -12655,14 +12599,10 @@ namespace globaltraders
             {
                 cmbCuttingUserFancy.Focus();
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
 
             }
-
-
         }
 
         private void cmbCuttingUserFancy_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -12671,14 +12611,10 @@ namespace globaltraders
             {
                 btnAddFancyCutting.Focus();
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
 
             }
-
-
         }
 
         private void cmbCuttingUserFancy_KeyDown(object sender, KeyEventArgs e)
@@ -12716,9 +12652,7 @@ namespace globaltraders
                 }
 
             }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
             catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
             {
                 btnAddFancyCutting.IsEnabled = true;
                 MessageBox.Show("Please enter correct values.");
@@ -15783,7 +15717,161 @@ namespace globaltraders
 
         }
 
-       
+        private void MenuItem_Click_15(object sender, RoutedEventArgs e)
+        {
+
+            popupFancyCuttingIN.IsOpen = true;
+            ShowaverageSectionclickFancyIN();
+           
+        }
+
+        public void ShowaverageSectionclickFancyIN()
+        {
+
+            List<bftradeline.Models.UserBetsForAdmin> lstCurrentBetsAdmin = LoggedinUserDetail.CurrentAdminBets.ToList().Where(item => item.location == "9" && item.isMatched == true && item.MarketBookID==MarketBook.EventID).ToList();
+
+            if (lstCurrentBetsAdmin != null)
+            {
+                //  var results = LastloadedLinMarkets.Where(item => item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 0 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 0).ToList();
+                List<ExternalAPI.TO.RunnerForIndianFancy> lstRunners = new List<ExternalAPI.TO.RunnerForIndianFancy>();
+                foreach (var item in lstCurrentBetsAdmin)
+                {
+                    ExternalAPI.TO.RunnerForIndianFancy objRunner = new ExternalAPI.TO.RunnerForIndianFancy();
+                    objRunner.SelectionId = item.SelectionID;
+                    objRunner.RunnerName = item.SelectionName;
+                    objRunner.MarketBookID = item.MarketBookID;
+                    // txtInningsResultI.Text = item.MarketBookID;
+                    lstRunners.Add(objRunner);
+                }
+
+                cmbRunnersFancyIN.IsSynchronizedWithCurrentItem = false;
+                cmbRunnersFancyIN.ItemsSource = lstRunners;
+                cmbRunnersFancyIN.DisplayMemberPath = "RunnerName";
+                cmbRunnersFancyIN.SelectedValuePath = "SelectionId";              
+                cmbRunnersFancyIN.SelectedIndex = 0;
+
+                List<bftradeline.HelperClasses.CuttingUsers> lstCuttingUsers = JsonConvert.DeserializeObject<List<bftradeline.HelperClasses.CuttingUsers>>(objUsersServiceCleint.GetAllCuttingUsers(LoggedinUserDetail.PasswordForValidate));
+                cmbCuttingUserFancyIN.IsSynchronizedWithCurrentItem = false;
+                cmbCuttingUserFancyIN.ItemsSource = lstCuttingUsers;
+                cmbCuttingUserFancyIN.DisplayMemberPath = "username";
+                cmbCuttingUserFancyIN.SelectedValuePath = "ID";
+                cmbCuttingUserFancyIN.SelectedIndex = 0;
+                cmbBetTypeFancyIN.SelectedIndex = 0;
+
+            }
+        }
+
+        private void cmbCuttingUserFancyIN_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                btnAddFancyCuttingIN.Focus();
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
+
+        private void cmbRunnersFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtOddFancyIN.Focus();
+            }
+        }
+
+        private void txtOddFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+               txtsizeFancyIN.Focus();
+            }
+        }
+
+        private void txtsizeFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                txtAmountFancyIN.Focus();
+            }
+
+        }
+
+        private void txtAmountFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                cmbBetTypeFancyIN.Focus();
+            }
+        }
+
+        private void cmbBetTypeFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                cmbCuttingUserFancyIN.Focus();
+            }
+        }
+
+        private void cmbBetTypeFancyIN_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                cmbCuttingUserFancyIN.Focus();
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+        }
+
+        private void cmbCuttingUserFancyIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnAddFancyCuttingIN.Focus();
+            }
+        }
+
+        private void btnAddFancyCuttingIN_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                btnAddFancyCuttingIN.IsEnabled = false;
+                if (Convert.ToDecimal(txtAmountFancyIN.Text) > 1 && Convert.ToDecimal(txtAmountFancyIN.Text) > 1)
+                {
+                    if (LoggedinUserDetail.GetUserTypeID() == 1)
+                    {
+                        if (cmbRunnersFancyIN.Items.Count > 0)
+                        {
+                            string selectionID = cmbRunnersFancyIN.SelectedValue.ToString();
+                            //string[] selectionIdandmarketbookID = selectionID.Split('|');
+                           objUsersServiceCleint.InsertUserBetAdminAsync(selectionID, Convert.ToInt32(cmbCuttingUserFancyIN.SelectedValue), txtsizeFancyIN.Text, txtAmountFancyIN.Text, cmbBetTypeFancyIN.Text, txtsizeFancyIN.Text, true, "In-Complete", MarketBook.EventID, DateTime.Now, DateTime.Now, cmbRunnersFancyIN.Text, cmbRunnersFancyIN.Text, "0",txtOddFancyIN.Text, 0, "9", 0, LoggedinUserDetail.PasswordForValidate);
+                        }
+
+                    }
+                    btnAddFancyCuttingIN.IsEnabled = true;
+                    txtOddFancyIN.Focus();
+                }
+                else
+                {
+                    btnAddFancyCuttingIN.IsEnabled = true;
+                    MessageBox.Show("Please enter correct values.");
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                btnAddFancyCutting.IsEnabled = true;
+                MessageBox.Show("Please enter correct values.");
+            }
+        }
+
+        private void Button_Click_23(object sender, RoutedEventArgs e)
+        {
+            popupFancyCuttingIN.IsOpen = false;
+        }
     }
     }
 

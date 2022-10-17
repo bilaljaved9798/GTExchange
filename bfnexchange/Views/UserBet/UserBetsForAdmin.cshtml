@@ -16,7 +16,7 @@ lstUnMatchedBets = Model.Where(a => a.isMatched == false).ToList();
         <input type="hidden" id="lbltotLiabality" value="@ViewData["liabality"]">
         <input type="hidden" id="lblallLiabality" value="@ViewData["totliabality"]">
         <div class="unmatched-bets">
-            <div class="matched-unmatched-heading">
+            <div class="matched-unmatched-heading" style="color:black">
 
                 <label>@lstUnMatchedBets.Count Un-Matched Bets</label>
 
@@ -97,7 +97,7 @@ lstUnMatchedBets = Model.Where(a => a.isMatched == false).ToList();
         </div>
 
         <div class="matched-bets">
-            <div class="matched-unmatched-heading">
+            <div class="matched-unmatched-heading" style="color:black">
                 <label>@lstMatchedBets.Count Matched Bets</label>
 				  <input type="button" id="btnShowAllmatchedBets"  value="View All" class="btn-default" />
             </div>

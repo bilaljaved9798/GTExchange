@@ -5358,53 +5358,56 @@ namespace bfnexchange
                             List<Models.UserBets> lstCurrentBets = CurrentUserBets.Where(item => item.MarketBookID == marketBookID && item.isMatched == true).ToList();
                             if (lstCurrentBets.Count > 0)
                             {
-                                lstCurrentBets = lstCurrentBets.OrderBy(item => Convert.ToDouble(item.UserOdd)).ToList();
+
+
+                              
+                                
 
                                 objmarketbook.MarketId = marketBookID;
                                 objmarketbook.MarketBookName = lstCurrentBets[0].MarketBookname;
                                 objmarketbook.Runners = new List<ExternalAPI.TO.Runner>();
-                                for (int i = 1; i <= 500; i++)
-                                {
-                                    ExternalAPI.TO.Runner objRunner1 = new ExternalAPI.TO.Runner();
-                                    objRunner1.SelectionId = (i).ToString();
-                                    objRunner1.Handicap = -1 * i;
-                                    objmarketbook.Runners.Add(objRunner1);
-                                }
-                                //ExternalAPI.TO.Runner objRunner1 = new ExternalAPI.TO.Runner();
-                                //objRunner1.SelectionId = (Convert.ToInt32(lstCurrentBets[0].UserOdd) - 1).ToString();
-                                //objRunner1.Handicap = -1 * (Convert.ToDouble(lstCurrentBets[0].UserOdd) - 1);
-                                //objmarketbook.Runners.Add(objRunner1);
-                                //foreach (var userbet in lstCurrentBets)
+                                //for (int i = 1; i <= 500; i++)
                                 //{
-                                //    if (objmarketbook.Runners != null)
-                                //    {
-                                //        ExternalAPI.TO.Runner objexistingrunner = objmarketbook.Runners.Where(item => item.SelectionId == userbet.UserOdd).FirstOrDefault();
-                                //        if (objexistingrunner == null)
-                                //        {
-                                //            ExternalAPI.TO.Runner objRunner = new ExternalAPI.TO.Runner();
-                                //            objRunner.SelectionId = userbet.UserOdd;
-                                //            objRunner.Handicap = -1 * Convert.ToDouble(userbet.UserOdd);
-
-                                //            objmarketbook.Runners.Add(objRunner);
-                                //        }
-                                //    }
-                                //    else
-                                //    {
-                                //        ExternalAPI.TO.Runner objRunner = new ExternalAPI.TO.Runner();
-                                //        objRunner.SelectionId = userbet.UserOdd;
-                                //        objRunner.Handicap = -1 * Convert.ToDouble(userbet.UserOdd);
-                                //        objmarketbook.Runners = new List<ExternalAPI.TO.Runner>();
-                                //        objmarketbook.Runners.Add(objRunner);
-                                //    }
-
-
-
+                                //    ExternalAPI.TO.Runner objRunner1 = new ExternalAPI.TO.Runner();
+                                //    objRunner1.SelectionId = (i).ToString();
+                                //    objRunner1.Handicap = -1 * i;
+                                //    objmarketbook.Runners.Add(objRunner1);
                                 //}
-                                //ExternalAPI.TO.Runner objRunnerlast = new ExternalAPI.TO.Runner();
-                                //objRunnerlast.SelectionId = (Convert.ToInt32(lstCurrentBets.Last().UserOdd) + 1).ToString();
-                                //objRunnerlast.Handicap = -1 * (Convert.ToDouble(lstCurrentBets.Last().UserOdd) + 1);
-                                //objmarketbook.Runners.Add(objRunnerlast);
-                                ///calculation
+                                ExternalAPI.TO.Runner objRunner1 = new ExternalAPI.TO.Runner();
+                                objRunner1.SelectionId = (Convert.ToInt32(lstCurrentBets[0].UserOdd) - 1).ToString();
+                                objRunner1.Handicap = -1 * (Convert.ToDouble(lstCurrentBets[0].UserOdd) - 1);
+                                objmarketbook.Runners.Add(objRunner1);
+                                foreach (var userbet in lstCurrentBets)
+                                {
+                                    if (objmarketbook.Runners != null)
+                                    {
+                                        ExternalAPI.TO.Runner objexistingrunner = objmarketbook.Runners.Where(item => item.SelectionId == userbet.UserOdd).FirstOrDefault();
+                                        if (objexistingrunner == null)
+                                        {
+                                            ExternalAPI.TO.Runner objRunner = new ExternalAPI.TO.Runner();
+                                            objRunner.SelectionId = userbet.UserOdd;
+                                            objRunner.Handicap = -1 * Convert.ToDouble(userbet.UserOdd);
+
+                                            objmarketbook.Runners.Add(objRunner);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ExternalAPI.TO.Runner objRunner = new ExternalAPI.TO.Runner();
+                                        objRunner.SelectionId = userbet.UserOdd;
+                                        objRunner.Handicap = -1 * Convert.ToDouble(userbet.UserOdd);
+                                        objmarketbook.Runners = new List<ExternalAPI.TO.Runner>();
+                                        objmarketbook.Runners.Add(objRunner);
+                                    }
+
+
+
+                                }
+                                ExternalAPI.TO.Runner objRunnerlast = new ExternalAPI.TO.Runner();
+                                objRunnerlast.SelectionId = (Convert.ToInt32(lstCurrentBets.Last().UserOdd) + 1).ToString();
+                                objRunnerlast.Handicap = -1 * (Convert.ToDouble(lstCurrentBets.Last().UserOdd) + 1);
+                                objmarketbook.Runners.Add(objRunnerlast);
+                                // calculation
                                 foreach (var userbet in lstCurrentBets)
                                 {
 

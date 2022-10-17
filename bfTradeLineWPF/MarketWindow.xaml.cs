@@ -1621,8 +1621,8 @@ namespace globaltraders
 
                     return;
                 }
-                System.Threading.Thread.Sleep(3500);
-                // GetDataForFancy(false);
+                System.Threading.Thread.Sleep(2500);
+                GetDataForFancy(false);
                 GetDataForFancy(MarketBook.EventID, MarketBook.MarketId);
 
             }
@@ -4875,7 +4875,7 @@ namespace globaltraders
         private void TmrUpdateLiabalities_Tick(object sender, EventArgs e)
         {
             //UpdateLiabaliteies();
-            UpdateLineMarketsData(false);
+            UpdateLineMarketsDataIN(false);
         }
 
         CancellationToken cancellationToken;
@@ -8492,7 +8492,8 @@ namespace globaltraders
                 // allmarkets.Clear();
                 try
                 {
-                    GetDataFancy = objBettingClient.GetRunnersForFancy(EventID, MarketBookID);
+                    GetDataFancy = JsonConvert.DeserializeObject <ExternalAPI.TO.GetDataFancy>(objBettingClient.GetRunnersForFancy(EventID, MarketBookID));
+
                     //allmarkets.Add(objBettingClient.GetMarketDatabyIDIndianFancy(EventID, MarketBookID));
                 }
 
@@ -10899,6 +10900,8 @@ namespace globaltraders
                             MarketBook.LineVMarkets = linevmarkets;
 
                             MarketBook.LineVMarkets.FirstOrDefault().AssociateeventID = results.EventID;
+                            GetDataForFancy(true);
+                            DGVMarketFancy.ItemsSource = lstMarketBookRunnersFancy;
                             GetDataForFancy(MarketBook.EventID, MarketBook.MarketId);
                             DGVMarketIndianFancy.ItemsSource = lstMarketBookRunnersFancyin;
                             try
@@ -10992,10 +10995,372 @@ namespace globaltraders
 
             }
         }
+        public void GetDataForFancy(bool isFirstTime)
+        {
+            try
+            {
 
+                if (MarketBook.LineVMarkets != null)
+                {
+
+                    List<string> lstIds = MarketBook.LineVMarkets.Select(item => item.MarketCatalogueID).ToList();
+
+                    string[] marketIds = lstIds.ToArray();
+                    if (LoggedinUserDetail.GetCricketDataFrom == "BP")
+                    {
+
+                        string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataBPFancy/?marketID=" + string.Join(",", marketIds);
+
+                        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                        request.Method = "GET";
+                        request.Proxy = null;
+                        request.Timeout = 5000;
+                        request.KeepAlive = false;
+                        request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                        request.ServicePoint.MaxIdleTime = 5000;
+                        request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                        String test = String.Empty;
+                        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                        {
+                            using (Stream dataStream = response.GetResponseStream())
+                            {
+
+                                System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(string));
+                                test = obj1.ReadObject(dataStream).ToString();
+
+                                dataStream.Close();
+                            }
+
+                        }
+
+                        var list = JsonConvert.DeserializeObject<List<SampleResponse1>>(test);
+
+                        if (list.Count() > 0)
+                        {
+
+
+                            List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                            foreach (var bfobject in MarketBook.LineVMarkets)
+                            {
+                                if (bfobject != null)
+                                {
+                                    try
+                                    {
+                                        SampleResponse1 objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                        if (objmarketbookBF1 != null)
+                                        {
+                                            LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBF123Fancy(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", false, bfobject.BettingAllowed));
+                                        }
+
+
+                                    }
+                                    catch (System.Exception ex)
+                                    {
+
+                                    }
+
+
+                                }
+
+
+
+                            }
+                            LastloadedLinMarkets = LastloadedLinMarkets1;
+                            if (isFirstTime == true)
+                            {
+                                lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                lstMarketBookRunnersFancy.Clear();
+                                foreach (var item in LastloadedLinMarkets)
+                                {
+                                    try
+                                    {
+                                        item.Runners[0].RunnerName = item.MarketBookName;
+
+
+
+                                        if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                        {
+                                            item.Runners[0].isShow = true;
+                                        }
+                                        else
+                                        {
+                                            item.Runners[0].isShow = false;
+                                        }
+                                        GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                    }
+                                    catch (System.Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (LoggedinUserDetail.GetCricketDataFrom == "Live")
+                        {
+
+                            //string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancyStr/?marketID=" + string.Join(",", marketIds);
+                            string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancy/?marketID=" + string.Join(",", marketIds);
+                            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                            request.Method = "GET";
+                            request.Proxy = null;
+                            request.Timeout = 5000;
+                            request.KeepAlive = false;
+                            request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                            request.ServicePoint.MaxIdleTime = 5000;
+                            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                            List<MarketBook> test = new List<MarketBook>();
+                            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                            {
+                                using (Stream dataStream = response.GetResponseStream())
+                                {
+
+                                    System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<MarketBook>));
+                                    test = (List<MarketBook>)obj1.ReadObject(dataStream);
+
+                                    dataStream.Close();
+                                }
+                            }
+
+                            var list1 = test;
+                            if (list1.Count() > 0)
+                            {
+
+
+                                List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                                foreach (var bfobject in MarketBook.LineVMarkets)
+                                {
+                                    if (bfobject != null)
+                                    {
+                                        try
+                                        {
+                                            MarketBook objmarketbookBF1 = list1.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                            if (objmarketbookBF1 != null)
+                                            {
+                                                LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFFancyLive(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
+                                            }
+
+
+                                        }
+                                        catch (System.Exception ex)
+                                        {
+
+                                        }
+
+
+                                    }
+
+
+
+                                }
+                                LastloadedLinMarkets = LastloadedLinMarkets1;
+                                if (isFirstTime == true)
+                                {
+                                    lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                    lstMarketBookRunnersFancy.Clear();
+                                    foreach (var item in LastloadedLinMarkets)
+                                    {
+                                        try
+                                        {
+                                            item.Runners[0].RunnerName = item.MarketBookName;
+
+
+
+                                            if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                            {
+                                                item.Runners[0].isShow = true;
+                                            }
+                                            else
+                                            {
+                                                item.Runners[0].isShow = false;
+                                            }
+                                            GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                        }
+                                        catch (System.Exception ex)
+                                        {
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                        else
+                        {
+
+
+                            if (LoggedinUserDetail.GetCricketDataFrom == "Other")
+                            {
+                                string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataOtherFancy/?marketID=" + string.Join(",", marketIds);
+                                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                                request.Method = "GET";
+                                request.Proxy = null;
+                                request.Timeout = 5000;
+                                request.ReadWriteTimeout = 30000;
+                                request.KeepAlive = false;
+                                request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                                request.ServicePoint.MaxIdleTime = 5000;
+                                request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                                List<ExternalAPI.TO.MarketBookString> test = new List<ExternalAPI.TO.MarketBookString>();
+                                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                                {
+                                    using (Stream dataStream = response.GetResponseStream())
+                                    {
+
+                                        System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<ExternalAPI.TO.MarketBookString>));
+                                        test = (List<ExternalAPI.TO.MarketBookString>)obj1.ReadObject(dataStream);
+
+                                        dataStream.Close();
+                                    }
+
+                                }
+
+                                var list1 = test;
+                                if (list1.Count() > 0)
+                                {
+
+
+                                    List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                                    foreach (var bfobject in MarketBook.LineVMarkets)
+                                    {
+                                        if (bfobject != null)
+                                        {
+                                            try
+                                            {
+                                                ExternalAPI.TO.MarketBookString objmarketbookBF1 = list1.Where(item => item.MarketBookId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                                if (objmarketbookBF1 != null)
+                                                {
+                                                    LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFNewSource(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
+                                                }
+
+
+                                            }
+                                            catch (System.Exception ex)
+                                            {
+
+                                            }
+
+
+                                        }
+
+
+
+                                    }
+                                    LastloadedLinMarkets = LastloadedLinMarkets1;
+                                    if (isFirstTime == true)
+                                    {
+                                        lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                        lstMarketBookRunnersFancy.Clear();
+                                        foreach (var item in LastloadedLinMarkets)
+                                        {
+                                            try
+                                            {
+                                                item.Runners[0].RunnerName = item.MarketBookName;
+
+
+
+                                                if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                                {
+                                                    item.Runners[0].isShow = true;
+                                                }
+                                                else
+                                                {
+                                                    item.Runners[0].isShow = false;
+                                                }
+                                                GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                            }
+                                            catch (System.Exception ex)
+                                            {
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                        return;
+
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+
+        }
+        public void UpdateLineMarketsData(bool isFirstTime)
+        {
+            try
+            {
+
+                if (lstMarketBookRunnersFancy == null && LastloadedLinMarkets.Count > 0)
+                {
+                    GetDataForFancy(true);
+                    DGVMarketFancy.ItemsSource = lstMarketBookRunnersFancy;
+
+
+                }
+                ExternalAPI.TO.MarketBook objFancyMarketBook = new MarketBook();
+                objFancyMarketBook.Runners = new List<ExternalAPI.TO.Runner>();
+                foreach (var item in LastloadedLinMarkets)
+                {
+                    try
+                    {
+                        item.Runners[0].RunnerName = item.MarketBookName;
+                        item.Runners[0].MarketStatusStr = item.MarketStatusstr;
+
+
+
+
+                        if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 0 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 0) && (item.MarketStatusstr == "In Play" || item.MarketStatusstr == "IN-PLAY"))
+                        {
+                            item.Runners[0].isShow = true;
+                        }
+                        else
+                        {
+                            item.Runners[0].isShow = false;
+                        }
+
+                        objFancyMarketBook.Runners.Add(item.Runners[0]);
+                    }
+                    catch (System.Exception ex)
+                    {
+
+                    }
+                }
+                if (objFancyMarketBook.Runners.Count > 0)
+                {
+                    GetRunnersDataSourceFancy(objFancyMarketBook.Runners);
+                    if (objFancyMarketBook.Runners.Where(item => item.isShow == false).Count() > 0)
+                    {
+                        DGVMarketFancy.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        DGVMarketFancy.Visibility = Visibility.Collapsed;
+                    }
+                }
+                else
+                {
+                    DGVMarketFancy.Visibility = Visibility.Collapsed;
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+
+            }
+
+
+        }
 
         ExternalAPI.TO.GetDataFancy test = new ExternalAPI.TO.GetDataFancy();
-        public void UpdateLineMarketsData(bool isFirstTime)
+        public void UpdateLineMarketsDataIN(bool isFirstTime)
         {
             try
             {
@@ -11460,6 +11825,119 @@ namespace globaltraders
             {
                 stkpcricket.Visibility = Visibility.Collapsed;
             }
+
+        }
+        public void GetRunnersDataSourceFancy(List<ExternalAPI.TO.Runner> runners)
+        {
+            if (lstMarketBookRunnersFancy == null || lstMarketBookRunnersFancy.Count == 0)
+            {
+
+
+            }
+            else
+            {
+                foreach (var item in runners)
+                {
+                    MarketBookShow objmarketbookshow = lstMarketBookRunnersFancy.Where(item1 => item1.SelectionID == item.SelectionId && item1.Selection == item.RunnerName.ToUpper()).FirstOrDefault();
+                    if (objmarketbookshow == null)
+                    {
+                        GetDataForFancy(true);
+                        DGVMarketFancy.ItemsSource = lstMarketBookRunnersFancy;
+                        break;
+
+                    }
+
+                    objmarketbookshow.Price = item.LastPriceTraded.ToString();
+                    MarketBook currentmarketsfancyPL = new MarketBook();
+                    if (objmarketbookshow.CurrentMarketBookId != null)
+                    {
+                        currentmarketsfancyPL = GetBookPosition(objmarketbookshow.CurrentMarketBookId);
+                    }
+
+                    double TotalProfit = 0;
+                    double TotalLoss = 0;
+                    if (currentmarketsfancyPL.Runners != null)
+                    {
+                        TotalProfit = currentmarketsfancyPL.Runners.Max(t => t.ProfitandLoss);
+                        TotalLoss = currentmarketsfancyPL.Runners.Min(t => t.ProfitandLoss);
+                    }
+
+                    if (LoggedinUserDetail.GetUserTypeID() == 3)
+                    {
+                        objmarketbookshow.PL = TotalProfit.ToString();
+
+                        objmarketbookshow.Loss = TotalLoss.ToString();
+                    }
+                    else
+                    {
+                        objmarketbookshow.PL = TotalLoss.ToString();
+
+                        objmarketbookshow.Loss = TotalProfit.ToString();
+                    }
+
+                    objmarketbookshow.RunnerStatusstr = item.StatusStr;
+                    objmarketbookshow.Marketstatusstr = item.MarketStatusStr;
+                    objmarketbookshow.isShow = item.isShow;
+                    if (item.ExchangePrices.AvailableToBack.Count == 3)
+                    {
+                        objmarketbookshow.Backprice2 = item.ExchangePrices.AvailableToBack[2].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[2].Price.ToString();
+                        objmarketbookshow.Backprice1 = item.ExchangePrices.AvailableToBack[1].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].Price.ToString();
+                        objmarketbookshow.Backprice0 = item.ExchangePrices.AvailableToBack[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].Price.ToString();
+                        objmarketbookshow.Backsize2 = item.ExchangePrices.AvailableToBack[2].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[2].SizeStr.ToString();
+                        objmarketbookshow.Backsize1 = item.ExchangePrices.AvailableToBack[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].SizeStr.ToString();
+                        objmarketbookshow.Backsize0 = item.ExchangePrices.AvailableToBack[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].SizeStr.ToString();
+                    }
+                    if (item.ExchangePrices.AvailableToBack.Count == 2)
+                    {
+                        objmarketbookshow.Backprice2 = "";
+                        objmarketbookshow.Backsize2 = "";
+                        objmarketbookshow.Backprice1 = item.ExchangePrices.AvailableToBack[1].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].Price.ToString();
+                        objmarketbookshow.Backprice0 = item.ExchangePrices.AvailableToBack[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].Price.ToString();
+                        objmarketbookshow.Backsize1 = item.ExchangePrices.AvailableToBack[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].SizeStr.ToString();
+                        objmarketbookshow.Backsize0 = item.ExchangePrices.AvailableToBack[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].SizeStr.ToString();
+                    }
+                    if (item.ExchangePrices.AvailableToBack.Count == 1)
+                    {
+                        objmarketbookshow.Backprice2 = "";
+                        objmarketbookshow.Backprice1 = "";
+                        objmarketbookshow.Backsize2 = "";
+                        objmarketbookshow.Backsize1 = "";
+                        objmarketbookshow.Backprice0 = item.ExchangePrices.AvailableToBack[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].Price.ToString();
+                        objmarketbookshow.Backsize0 = item.ExchangePrices.AvailableToBack[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].SizeStr.ToString();
+                    }
+                    if (item.ExchangePrices.AvailableToLay.Count == 3)
+                    {
+                        objmarketbookshow.Layprice0 = item.ExchangePrices.AvailableToLay[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].Price.ToString();
+                        objmarketbookshow.Layprice1 = item.ExchangePrices.AvailableToLay[1].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[1].Price.ToString();
+                        objmarketbookshow.Layprice2 = item.ExchangePrices.AvailableToLay[2].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[2].Price.ToString();
+                        objmarketbookshow.Laysize0 = item.ExchangePrices.AvailableToLay[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].SizeStr.ToString();
+                        objmarketbookshow.Laysize1 = item.ExchangePrices.AvailableToLay[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[1].SizeStr.ToString();
+                        objmarketbookshow.Laysize2 = item.ExchangePrices.AvailableToLay[2].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[2].SizeStr.ToString();
+                    }
+                    if (item.ExchangePrices.AvailableToLay.Count == 2)
+                    {
+                        objmarketbookshow.Layprice0 = item.ExchangePrices.AvailableToLay[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].Price.ToString();
+                        objmarketbookshow.Layprice1 = item.ExchangePrices.AvailableToLay[1].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[1].Price.ToString();
+                        objmarketbookshow.Laysize0 = item.ExchangePrices.AvailableToLay[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].SizeStr.ToString();
+                        objmarketbookshow.Laysize1 = item.ExchangePrices.AvailableToLay[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[1].SizeStr.ToString();
+                        objmarketbookshow.Layprice2 = "";
+                        objmarketbookshow.Laysize2 = "";
+
+                    }
+                    if (item.ExchangePrices.AvailableToLay.Count == 1)
+                    {
+                        objmarketbookshow.Layprice0 = item.ExchangePrices.AvailableToLay[0].Price.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].Price.ToString();
+                        objmarketbookshow.Laysize0 = item.ExchangePrices.AvailableToLay[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToLay[0].SizeStr.ToString();
+                        objmarketbookshow.Layprice1 = "";
+                        objmarketbookshow.Layprice2 = "";
+                        objmarketbookshow.Laysize1 = "";
+                        objmarketbookshow.Laysize2 = "";
+
+                    }
+
+                }
+            }
+
 
         }
         public void GetRunnersDataSourceFancy(ExternalAPI.TO.GetDataFancy runners)

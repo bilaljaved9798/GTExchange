@@ -350,6 +350,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\BettingServiceCricketInningsRunsLiveReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\BettingServiceCricketInningsRunsReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -716,6 +721,13 @@
     <None Include="Service References\BettingServiceCricketCompletedMatchReference\BettingServiceCricketCompletedMatch1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\BettingServicesCricketInningsRunLive.wsdl" />
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\BettingServicesCricketInningsRunLive.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\BettingServicesCricketInningsRunLive1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\BettingServiceCricketInningsRunsReference\BettingServiceCricketInningsRuns.wsdl" />
     <None Include="Service References\BettingServiceCricketInningsRunsReference\BettingServiceCricketInningsRuns.xsd">
       <SubType>Designer</SubType>
@@ -799,13 +811,6 @@
     <None Include="Service References\BettingServiceCricketCompletedMatchReference\configuration91.svcinfo" />
     <None Include="Service References\BettingServiceCricketCompletedMatchReference\configuration.svcinfo" />
     <None Include="Service References\BettingServiceCricketCompletedMatchReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\BettingServiceCricketInningsRunsReference\BettingServiceCricketInningsRuns.disco" />
-    <None Include="Service References\BettingServiceCricketInningsRunsReference\configuration91.svcinfo" />
-    <None Include="Service References\BettingServiceCricketInningsRunsReference\configuration.svcinfo" />
-    <None Include="Service References\BettingServiceCricketInningsRunsReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -910,6 +915,20 @@
     <None Include="Service References\UsersServiceReference\configuration91.svcinfo" />
     <None Include="Service References\UsersServiceReference\configuration.svcinfo" />
     <None Include="Service References\UsersServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BettingServiceCricketInningsRunsReference\BettingServiceCricketInningsRuns.disco" />
+    <None Include="Service References\BettingServiceCricketInningsRunsReference\configuration91.svcinfo" />
+    <None Include="Service References\BettingServiceCricketInningsRunsReference\configuration.svcinfo" />
+    <None Include="Service References\BettingServiceCricketInningsRunsReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\BettingServicesCricketInningsRunLive.disco" />
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\configuration91.svcinfo" />
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\configuration.svcinfo" />
+    <None Include="Service References\BettingServiceCricketInningsRunsLiveReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1092,6 +1111,7 @@
     <WCFMetadataStorage Include="Service References\AccountsServiceReference\" />
     <WCFMetadataStorage Include="Service References\APIConfigServiceReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceCricketCompletedMatchReference\" />
+    <WCFMetadataStorage Include="Service References\BettingServiceCricketInningsRunsLiveReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceCricketInningsRunsReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceCricketMatchOddsReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceGrayHoundPlaceReference\" />

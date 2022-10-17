@@ -14,6 +14,6 @@ namespace bfnexchange.Services.Services
         [OperationContract]
         void GetDataFromBetfairReadOnly();
         [OperationContract]
-        void GetCurrentMarketBookCricket(string Password);
+        void GetCurrentMarketBookCricket(string Password);   
     }
 }

@@ -36,19 +36,22 @@ namespace bfnexchange.Services.Services
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataOther/?marketID={marketID}")]
         List<ExternalAPI.TO.MarketBookString> GetAllMarketsOthers(string marketID);
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataOtherFancy/?marketID={marketID}")]
-        //List<ExternalAPI.TO.MarketBookString> GetAllMarketsOthersFancy(string marketID);
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataOtherFancy/?marketID={marketID}")]
-        ExternalAPI.TO.GetDataFancy GetAllMarketsOthersFancy(string marketID);
+        List<ExternalAPI.TO.MarketBookString> GetAllMarketsOthersFancy(string marketID);
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataOtherFancyIN/?marketID={marketID}")]
+        ExternalAPI.TO.GetDataFancy GetAllMarketsOthersFancyIN(string marketID);
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataL/?marketID={marketID}")]
         List<ExternalAPI.TO.MarketBook> GetAllMarkets(string marketID);
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataFancy/?marketID={marketID}")]
+        List<ExternalAPI.TO.MarketBook> GetAllMarketsFancy(string marketID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetMarektDataIndiaFancy/?marketID={marketID}")]
-        string GetAllMarketsFancy(string marketID);      
+        string GetAllMarketsFancyIN(string marketID);      
         [OperationContract]
 
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/GetScoresbyEventID/?EventId={EventId}")]

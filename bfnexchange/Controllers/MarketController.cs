@@ -3071,9 +3071,30 @@ namespace bfnexchange.Controllers
                                 item2.FavoriteLaySize = "0";
                                 item2.FavoriteSelectionName = "";
                                 // 
+                                if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                {
+                                    item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                    var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                    int UserIDforLinevmarkets = 0;
+                                    if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                    {
+                                        UserIDforLinevmarkets = 73;
+                                    }
+                                    else
+                                    {
+                                        UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                    }
+                                    var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
 
-                                
+
+                                    if (linevmarkets.Count() > 0)
+                                    {
+                                        item2.LineVMarkets = linevmarkets;
+                                    }
+                                }
                                 marketbooks.Add(item2);
+
+                               
                             }
                             
                             List<UserBetsforAgent> lstUserBet = JsonConvert.DeserializeObject<List<Models.UserBetsforAgent>>(objUsersServiceCleint.GetUserbetsbyUserIDandAgentID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -3170,8 +3191,30 @@ namespace bfnexchange.Controllers
                                             }
 
                                             // 
+                                            
 
-                                           
+                                            if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                            {
+                                                item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                                var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                                int UserIDforLinevmarkets = 0;
+                                                if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                                {
+                                                    UserIDforLinevmarkets = 73;
+                                                }
+                                                else
+                                                {
+                                                    UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                                }
+                                                var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                                if (linevmarkets.Count() > 0)
+                                                {
+                                                    item2.LineVMarkets = linevmarkets;
+                                                }
+                                            }
+
                                             ////
 
                                         }
@@ -3253,8 +3296,30 @@ namespace bfnexchange.Controllers
                                     item2.FavoriteLaySize = "0";
                                     item2.FavoriteSelectionName = "";
                                     // 
+                                    // 
 
-                                   
+                                    if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                    {
+                                        item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                        var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                        int UserIDforLinevmarkets = 0;
+                                        if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                        {
+                                            UserIDforLinevmarkets = 73;
+                                        }
+                                        else
+                                        {
+                                            UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                        }
+                                        var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                        if (linevmarkets.Count() > 0)
+                                        {
+                                            item2.LineVMarkets = linevmarkets;
+                                        }
+                                    }
+
                                     marketbooks.Add(item2);
                                 }
 
@@ -3348,7 +3413,33 @@ namespace bfnexchange.Controllers
 
                                                         }
                                                     }
-                                                }                                             
+                                                }
+                                                // 
+
+
+                                                if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                                {
+                                                    item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                                    var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                                    int UserIDforLinevmarkets = 0;
+                                                    if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                                    {
+                                                        UserIDforLinevmarkets = 73;
+                                                    }
+                                                    else
+                                                    {
+                                                        UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                                    }
+                                                    var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                                    if (linevmarkets.Count() > 0)
+                                                    {
+                                                        item2.LineVMarkets = linevmarkets;
+                                                    }
+                                                }
+
+                                                ////
 
                                             }
                                         }
@@ -3429,8 +3520,55 @@ namespace bfnexchange.Controllers
                                         item2.FavoriteLaySize = "0";
                                         item2.FavoriteSelectionName = "";
                                         // 
-
                                        
+
+
+                                        if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                        {
+                                            item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                            var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                            int UserIDforLinevmarkets = 0;
+                                            if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                            {
+                                                UserIDforLinevmarkets = 73;
+                                            }
+                                            else
+                                            {
+                                                UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                            }
+                                            var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                            if (linevmarkets.Count() > 0)
+                                            {
+                                                item2.LineVMarkets = linevmarkets;
+                                            }
+                                        }
+
+                                        ////
+
+                                        if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                        {
+                                            item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                            var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                            int UserIDforLinevmarkets = 0;
+                                            if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                            {
+                                                UserIDforLinevmarkets = 73;
+                                            }
+                                            else
+                                            {
+                                                UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                            }
+                                            var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                            if (linevmarkets.Count() > 0)
+                                            {
+                                                item2.LineVMarkets = linevmarkets;
+                                            }
+                                        }
+
                                         marketbooks.Add(item2);
                                     }
 
@@ -3522,6 +3660,32 @@ namespace bfnexchange.Controllers
                                                         }
                                                     }
                                                 }
+                                                // 
+
+
+                                                if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                                {
+                                                    item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                                    var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                                    int UserIDforLinevmarkets = 0;
+                                                    if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                                    {
+                                                        UserIDforLinevmarkets = 73;
+                                                    }
+                                                    else
+                                                    {
+                                                        UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                                    }
+                                                    var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                                    if (linevmarkets.Count() > 0)
+                                                    {
+                                                        item2.LineVMarkets = linevmarkets;
+                                                    }
+                                                }
+
+                                                ////
 
                                             }
                                         }
@@ -3602,8 +3766,33 @@ namespace bfnexchange.Controllers
                                         item2.FavoriteLaySize = "0";
                                         item2.FavoriteSelectionName = "";
                                         // 
+                                        // 
 
-                                       
+
+                                        if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
+                                        {
+                                            item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
+                                            var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
+                                            int UserIDforLinevmarkets = 0;
+                                            if (LoggedinUserDetail.GetUserTypeID() == 1)
+                                            {
+                                                UserIDforLinevmarkets = 73;
+                                            }
+                                            else
+                                            {
+                                                UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
+                                            }
+                                            var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
+
+
+                                            if (linevmarkets.Count() > 0)
+                                            {
+                                                item2.LineVMarkets = linevmarkets;
+                                            }
+                                        }
+
+                                        ////
+
                                         marketbooks.Add(item2);
                                     }
 

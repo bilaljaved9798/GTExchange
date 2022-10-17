@@ -1,0 +1,59 @@
+﻿@model IEnumerable<bfnexchange.Models.Competition>
+  
+                    @foreach (var item in Model)
+                    {
+                        <li class="dropdown-submenu">
+                           
+                            <a id="competitionsItem@(item.ID)" class="thirdlevellink"  onclick="LoadEvents('@item.ID')">@item.Name
+                              
+                               
+                               
+                            </a>
+                            
+                             <ul id="Events@(item.ID)" class="dropdown-menu events" style="display:none">
+
+                            </ul>
+                           
+                        </li>
+
+                    }
+           <script type="text/javascript">
+               function addorremovefromfavouritescompetition(id) {
+                   debugger;
+                   var imgsrc = $("#competitionitemimg" + id).attr("src");
+                   var dataurl = "";
+                   if (imgsrc != "../Content/Images/favoriteChecked.png") {
+                       dataurl = '/Market/AddtoFavoritesCompetition';
+                   }
+                   else {
+                       dataurl='/Market/RemoveFromFavoritesCompetition'
+                   }
+                   $.ajax({
+                       url: dataurl,
+
+                       type: 'POST',
+
+                       data: { 'competitionID': id },
+
+                       complete: function () { },
+                       success: function (data) {
+
+                           if (data == "True") {
+                               if (imgsrc != "../Content/Images/favoriteChecked.png") {
+                                   $("#competitionitemimg" + id).attr({"src":"../Content/Images/favoriteChecked.png","title":"Remvoe from favorites"});
+                               }
+                               else {
+                                   $("#competitionitemimg" + id).attr({"src":"../Content/Images/FavoriteUncheck.png","title":"Add to favorites"});
+                               }
+                               
+                           }
+
+
+                       }
+                   });
+
+               }
+            
+           </script>   
+            
+       

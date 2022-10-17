@@ -315,7 +315,6 @@ namespace bfnexchange.Services
         {
             List<MarketBook> lstClientMarkes = new List<MarketBook>();
             if (APIConfig.GetCricketDataFrom == "Live")
-
             {
                 if (APIConfig.LiveCricketMarketBooksFancy != null)
                 {

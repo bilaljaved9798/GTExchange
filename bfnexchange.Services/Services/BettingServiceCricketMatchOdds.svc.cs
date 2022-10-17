@@ -146,7 +146,13 @@ namespace bfnexchange.Services.Services
                 }
                 if (APIConfig.GetCricketDataFrom == "Live")
                 {
-                    string marketIDs = dbEntities.SP_UserMarket_GetDistinctMarketsOpenedCricketMatchOdds().FirstOrDefault();
+                    string marketIDs = "";
+                    //string marketIDs = dbEntities.SP_UserMarket_GetDistinctMarketsOpenedCricketMatchOdds().FirstOrDefault();
+                    var lstofobjects = OpenMarkets.OpenMarketlst.ToList().Where(item => item.EventTypeID == "4" && (item.MarketCatalogueName == "Match Odds")).Select(item => item.MarketCatalogueID).ToList();
+                    if (lstofobjects.Count > 0)
+                    {
+                        marketIDs = string.Join(", ", lstofobjects);
+                    }
                     if (marketIDs != "")
                     {
                         string[] marketIds = marketIDs.Split(new string[] { ", " }, StringSplitOptions.None);

@@ -39,6 +39,12 @@
   <wsdl:message name="IService123_GetUpdate_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUpdateResponse" />
   </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateNew_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateNew" />
+  </wsdl:message>
+  <wsdl:message name="IService123_GetUpdateNew_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUpdateNewResponse" />
+  </wsdl:message>
   <wsdl:message name="IService123_GetUpdate2_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUpdate2" />
   </wsdl:message>
@@ -95,6 +101,10 @@
     <wsdl:operation name="GetUpdate">
       <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdate" message="tns:IService123_GetUpdate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdateResponse" message="tns:IService123_GetUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateNew">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdateNew" message="tns:IService123_GetUpdateNew_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService123/GetUpdateNewResponse" message="tns:IService123_GetUpdateNew_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUpdate2">
       <wsdl:input wsaw:Action="http://tempuri.org/IService123/GetUpdate2" message="tns:IService123_GetUpdate2_InputMessage" />
@@ -161,6 +171,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUpdate">
       <soap:operation soapAction="http://tempuri.org/IService123/GetUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUpdateNew">
+      <soap:operation soapAction="http://tempuri.org/IService123/GetUpdateNew" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

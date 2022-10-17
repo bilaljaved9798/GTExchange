@@ -32,10 +32,10 @@
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding BetType}" Value="back">
-                                                <Setter Property="Background" Value="Pink"/>
+                                                <Setter Property="Background" Value="#FF8A8E"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding BetType}" Value="lay">
-                                                <Setter Property="Background" Value="LightBlue"/>
+                                                <Setter Property="Background" Value="#72bbef"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -187,15 +187,15 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  >
 
-                            <DataGrid x:Name="DGVMatchedBetsAdminAll" AutoGenerateColumns="False" Margin="0" Height="350" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" Width="600">
+                            <DataGrid x:Name="DGVMatchedBetsAdminAll" AutoGenerateColumns="False" Margin="0" Height="350" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseDoubleClick" Width="600">
                                 <DataGrid.RowStyle>
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding BetType}" Value="back">
-                                                <Setter Property="Background" Value="Pink"/>
+                                                <Setter Property="Background" Value="#FF8A8E"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding BetType}" Value="lay">
-                                                <Setter Property="Background" Value="LightBlue"/>
+                                                <Setter Property="Background" Value="#72bbef"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
