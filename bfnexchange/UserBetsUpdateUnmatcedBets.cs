@@ -3435,7 +3435,7 @@ namespace bfnexchange
                 }
                 return lstDebitCredit;
             }
-
+           
             if (marketbookstatus.Runners[0].Handicap < 0)
             {
                 foreach (var userbet in lstUserbetsbyMarketID)
@@ -3512,7 +3512,7 @@ namespace bfnexchange
 
                 }
                 return lstDebitCredit;
-            }
+            }      
             else
             {
                 if (lstUserbetsbyMarketID.Count() > 0)

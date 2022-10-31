@@ -96,12 +96,10 @@ namespace bfnexchange.Services.Services
 
                         foreach (var item in results)
                         {
-
                             try
                             {
                                 if (1 == 1)
                                 {
-
 
                                     if (APIConfig.LiveCricketMarketBooksFancy != null)
                                     {
@@ -113,15 +111,13 @@ namespace bfnexchange.Services.Services
                                                 var index = APIConfig.LiveCricketMarketBooksFancy.IndexOf(currbpmarket);
 
                                                 if (index != -1)
-                                                    APIConfig.LiveCricketMarketBooksFancy[index] = currbpmarket;
-
-                                                // APIConfig.BFMarketBooks.Remove(currbpmarket);
-
-                                                //  APIConfig.BFMarketBooks.Add(objmarket[0]);
+                                                    APIConfig.LiveCricketMarketBooksFancy[index] = item;
+                                                //APIConfig.LiveCricketMarketBooksFancy[index] = currbpmarket;
+                                                
                                             }
                                             else
                                             {
-                                                APIConfig.LiveCricketMarketBooksFancy.Add(currbpmarket);
+                                                APIConfig.LiveCricketMarketBooksFancy.Add(item);
                                             }
                                         }
                                         else
@@ -129,6 +125,7 @@ namespace bfnexchange.Services.Services
                                             APIConfig.LiveCricketMarketBooksFancy.Add(item);
                                         }
                                     }
+                                   
                                 }
                             }
                             catch (System.Exception ex)
@@ -270,6 +267,17 @@ namespace bfnexchange.Services.Services
         {
             try
             {
+                try
+                {
+                    GetCurrentMarketBookCricketlive(Password);
+                }
+                catch (System.Exception ex)
+                {
+                    //  GetUserSessionForData(ConfigurationManager.AppSettings["UserNameforData"], ConfigurationManager.AppSettings["UserPasswordforData"]);
+                    APIConfig.WriteErrorToDB(ex.Message);
+                    APIConfig.LogError(ex);
+
+                }
                 APIConfig.LinevMarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUserServices.GetLinevMarketsbyEventID2());
 
                 if (APIConfig.isUpdatingBettingAllowed == true)
@@ -283,11 +291,9 @@ namespace bfnexchange.Services.Services
                         ws1.Url = APIConfig.URLsData.Where(item => item.EventType == "Cricket").FirstOrDefault().URLForData;
                         //string marketIDs = dbEntities.SP_UserMarket_GetDistinctMarketsOpenedCricketInningsRuns().FirstOrDefault();
                         string marketIDs = "";
-                string events = "";
-                // var lstofobjects = OpenMarkets.OpenMarketlst.ToList().Where(item => item.EventTypeID == "4" && (item.EventName.Contains("Line v Markets"))).Select(item => item.MarketCatalogueID).ToList();
+                string events = "";                
                 var lstofobjects = OpenMarketsFancy.OpenMarketlstfancy.ToList().Where(item => item.EventTypeID == "4" && (item.MarketCatalogueName == "Match Odds")).ToList();
-                //var lstofobjectsevent = OpenMarketsFancy.OpenMarketlstfancy.ToList().Where(item => item.EventTypeID == "4" && (item.MarketCatalogueName == "Match Odds")).Select(item => item.EventID).ToList();
-
+               
                 if (lstofobjects.Count > 0)
                         {
                             marketIDs = string.Join(", ", lstofobjects);
@@ -297,7 +303,11 @@ namespace bfnexchange.Services.Services
                         {
                             GetDataFromOtherSource objGetData = new GetDataFromOtherSource();
                             objGetData.GetCurrentMarketFancy(lstofobjects);
-                        }                   
+                        }
+
+                
+                
+             
             }
             catch (System.Exception ex)
             {

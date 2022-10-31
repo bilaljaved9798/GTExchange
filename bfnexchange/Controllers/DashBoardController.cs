@@ -3167,32 +3167,32 @@ namespace bfnexchange.Controllers
                  model.WelcomeMessage ="All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
 
                 model.AllMarkets = lstGridMarkets;
-                //model.TodayHorseRacingNew1 = new List<TodayHorseRacingNew1>();
-                //List <TodayHorseRacingNew> markets  = JsonConvert.DeserializeObject<List<Models.TodayHorseRacingNew>>(objUsersServiceCleint.GetTodayHorseRacingNew(LoggedinUserDetail.GetUserID()));
+                    //model.TodayHorseRacing = new List<TodayHorseRacing>();
+                    //List<TodayHorseRacing> markets = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacingNew(LoggedinUserDetail.GetUserID()));
 
-                //model.TodayHorseRacing = markets.Where(item=>item.EventTypeName== "Horse Racing").ToList();
-                //model.TodayGreyRacing = markets.Where(item => item.EventTypeName == "Greyhound Racing").ToList();
-                //foreach (var item in todayhorserace)
-                //{
-                //    TodayHorserace obj = new TodayHorserace();
-                //    obj.MarketBookID = item.MarketCatalogueID;
-                //    obj.RaceName = item.TodayHorseRace;
-                //    model.TodayHorseRacing.Add(obj);
+                    //model.TodayHorseRacing = markets.Where(item=>item.EventTypeName== "Horse Racing").ToList();
+                    //model.TodayGreyRacing = markets.Where(item => item.EventTypeName == "Greyhound Racing").ToList();
+                    //foreach (var item in todayhorserace)
+                    //{
+                    //    TodayHorserace obj = new TodayHorserace();
+                    //    obj.MarketBookID = item.MarketCatalogueID;
+                    //    obj.RaceName = item.TodayHorseRace;
+                    //    model.TodayHorseRacing.Add(obj);
 
-                //}
+                    //}
 
-                // model.TodayGreyRacing = new List<TodayHorserace>();
-                // var todaygreyrace = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4339"));
+                    model.TodayHorseRacing = new List<Models.TodayHorseRacing>();
+                    var todaygreyrace = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4339"));
 
-                // foreach (var item in todaygreyrace.Take(15))
-                // {
-                //     TodayHorserace obj = new TodayHorserace();
-                //     obj.MarketBookID = item.MarketCatalogueID;
-                //     obj.RaceName = item.TodayHorseRace;
-                //     model.TodayGreyRacing.Add(obj);
-                // }
+                    foreach (var item in todaygreyrace.Take(15))
+                    {
+                        Models.TodayHorseRacing obj = new TodayHorseRacing();
+                        obj.MarketCatalogueID = item.MarketCatalogueID;
+                        obj.EventName = item.TodayHorseRace;
+                        model.TodayHorseRacing.Add(obj);
+                    }
 
-                model.ModalContent = new List<string>();
+                    model.ModalContent = new List<string>();
                 string modalli1 = "Dummy text";
                 string modalli2 = "Dummy text";
                 model.ModalContent.Add(modalli1);

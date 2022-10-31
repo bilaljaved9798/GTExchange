@@ -46,7 +46,7 @@ namespace bfnexchange.HelperClasses
         public string Rule { get; set; }      
         public List<string> ModalContent { get; set; }
         public List<AllMarketsInPlay> AllMarkets { get; set; }
-        public List<Models.TodayHorseRacingNew> TodayHorseRacing { get; set; }
+        public List<Models.TodayHorseRacing> TodayHorseRacing { get; set; }
         public List<Models.TodayHorseRacingNew> TodayGreyRacing { get; set; }
         public string ViewType { get; set; }
 

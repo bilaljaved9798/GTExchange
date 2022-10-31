@@ -29,10 +29,10 @@
     <InstallUrl>http://78.110.160.52:6980/</InstallUrl>
     <ProductName>Global Traders</ProductName>
     <PublisherName>Global Traders</PublisherName>
-    <MinimumRequiredVersion>1.0.0.450</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.453</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>450</ApplicationRevision>
+    <ApplicationRevision>454</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -170,6 +170,9 @@
       <DependentUpon>AdminPanelWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="BetPlaceWaitandInterval.cs" />
+    <Compile Include="BookPosition.xaml.cs">
+      <DependentUpon>BookPosition.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookPostionForIN.xaml.cs">
       <DependentUpon>BookPostionForIN.xaml</DependentUpon>
     </Compile>
@@ -312,6 +315,10 @@
     <Page Include="AdminPanelWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BookPosition.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="BookPostionForIN.xaml">
       <SubType>Designer</SubType>

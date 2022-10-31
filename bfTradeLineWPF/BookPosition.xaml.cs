@@ -162,6 +162,7 @@ namespace globaltraders
 
                             foreach (var userbet in lstCurrentBetsbyUser)
                             {
+
                                 var adminamunt = (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100));
                                 // var totamount = (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100));
                                 var totamount = TransferAdinAmount == false ? (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100)) : (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate - TransferAdminpercentage) / 100));

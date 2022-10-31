@@ -579,7 +579,8 @@ namespace globaltraders
                         {
 
                             var adminamunt = (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100));
-                            var totamount = TransferAdinAmount == false ? (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100)) : (adminamunt * transadpercen);
+                            var totamount = TransferAdinAmount == false ? (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100)) : (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate - TransferAdminPercentage) / 100));
+                            //var totamount = TransferAdinAmount == false ? (Convert.ToDecimal(userbet.Amount) * ((100 - agentrate) / 100)) : (adminamunt * transadpercen);
                             var objDebitCredit = new ExternalAPI.TO.DebitCredit();
                             if (userbet.BetType == "back")
                             {
@@ -2440,7 +2441,7 @@ namespace globaltraders
                 if (objFancyMarketBook.Runners.Count > 0)
                 {
                     GetRunnersDataSourceFancy(objFancyMarketBook.Runners);
-                    if (objFancyMarketBook.Runners.Where(item => item.isShow == false).Count() > 0)
+                    if (objFancyMarketBook.Runners.Where(item => item.isShow == true).Count() > 0)
                     {
                         DGVMarketFancy.Visibility = Visibility.Visible;
                     }
@@ -2892,7 +2893,6 @@ namespace globaltraders
                     {
 
                         string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataBPFancy/?marketID=" + string.Join(",", marketIds);
-
                         HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
                         request.Method = "GET";
                         request.Proxy = null;
@@ -3124,12 +3124,7 @@ namespace globaltraders
                                             {
 
                                             }
-
-
                                         }
-
-
-
                                     }
                                     LastloadedLinMarkets = LastloadedLinMarkets1;
                                     if (isFirstTime == true)

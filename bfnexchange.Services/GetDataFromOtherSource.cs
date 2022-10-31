@@ -425,7 +425,7 @@ namespace bfnexchange.Services
                 foreach (var item in markets)
                 {
                     System.Net.ServicePointManager.Expect100Continue = false;
-                    HttpWebRequest WebReq = (HttpWebRequest)WebRequest.Create(string.Format("http://royalold.com/api/MatchOdds/GetOddslite/4/" + item.MarketCatalogueID + "/" + item.EventID + ""));
+                    HttpWebRequest WebReq = (HttpWebRequest)WebRequest.Create(string.Format(ConfigurationManager.AppSettings["Fancyurl"] + item.MarketCatalogueID + "/" + item.EventID + ""));
 
                     WebReq.Method = "GET";
 

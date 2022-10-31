@@ -26,7 +26,6 @@ using bfnexchange.BettingServiceWinnerReference;
 using System.Configuration;
 using Microsoft.ApplicationInsights.Extensibility;
 using System.Web.Hosting;
-using bfnexchange.BettingServiceCricketInningsRunsLiveReference;
 
 namespace bfnexchange
 {
@@ -151,16 +150,6 @@ namespace bfnexchange
                     workerDownloadOddsCricketInningRunns.WorkerSupportsCancellation = true;
                     workerDownloadOddsCricketInningRunns.RunWorkerCompleted += new RunWorkerCompletedEventHandler(WorkerCompletedforworkerDownloadOddsCricketInningRunns);
                     workerDownloadOddsCricketInningRunns.RunWorkerAsync();//we can als
-
-                    //CricketInningRunnslive
-                    BackgroundWorker workerDownloadOddsCricketInningRunnslive = new BackgroundWorker();
-                    workerDownloadOddsCricketInningRunnslive.DoWork += new DoWorkEventHandler(DoWorkforDownloadOddsCricketCricketInningRunnslive);
-                    workerDownloadOddsCricketInningRunnslive.WorkerReportsProgress = false;
-                    workerDownloadOddsCricketInningRunnslive.WorkerSupportsCancellation = true;
-                    workerDownloadOddsCricketInningRunnslive.RunWorkerCompleted += new RunWorkerCompletedEventHandler(WorkerCompletedforworkerDownloadOddsCricketInningRunnslive);
-                    workerDownloadOddsCricketInningRunnslive.RunWorkerAsync();//we can als
-
-
                     // Soccer
                     BackgroundWorker workerDownloadOddsSoccer = new BackgroundWorker();
                     workerDownloadOddsSoccer.DoWork += new DoWorkEventHandler(DoWorkforDownloadOddsSoccer);
@@ -530,10 +519,7 @@ namespace bfnexchange
         {
             objBettingClientCricketInngsRunns.GetCurrentMarketBookCricket(ConfigurationManager.AppSettings["PasswordForValidate"]);
         }
-        private void DoWorkforDownloadOddsCricketCricketInningRunnslive(object sender, DoWorkEventArgs e)
-        {
-            objBettingClientCricketInngsRunnsLive.GetCurrentMarketBookCricketlive(ConfigurationManager.AppSettings["PasswordForValidate"]);
-        }
+       
         
 
         private void WorkerCompletedforworkerDownloadOddsCricketMatchOdds(object sender, RunWorkerCompletedEventArgs e)
@@ -663,7 +649,6 @@ namespace bfnexchange
         public static BettingServiceCricketCompletedMatchClient objBettingClientCricketCompletedMAtch = new BettingServiceCricketCompletedMatchClient();
         public static BettingServiceCricketMatchOddsClient objBettingClientCricketMatchOdds = new BettingServiceCricketMatchOddsClient();
         public static BettingServiceCricketInningsRunsClient objBettingClientCricketInngsRunns = new BettingServiceCricketInningsRunsClient();
-        public static BettingServicesCricketInningsRunLiveClient objBettingClientCricketInngsRunnsLive = new BettingServicesCricketInningsRunLiveClient();
         public static BettingServiceSoccerClient objBettingClientSoccer = new BettingServiceSoccerClient();
         public static BettingServiceTennisClient objBettingClientTennis = new BettingServiceTennisClient();
         public static BettingServiceHorseRacePlaceClient objBettingClientHorseRacePlace = new BettingServiceHorseRacePlaceClient();

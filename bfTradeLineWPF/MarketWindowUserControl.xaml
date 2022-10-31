@@ -2927,6 +2927,315 @@
              <StackPanel x:Name="SPMain" HorizontalAlignment="Right" Height="500" Visibility="Collapsed" Margin="0,5,0,5" >  
             <ScrollViewer x:Name="SVStackpaneltest" Height="430"   >  
                 <StackPanel x:Name="SPSVinside">  
+                      <DataGrid x:Name="DGVMarketFancy" Visibility="Collapsed" Margin="0,7,0,0" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersFancy}"    BorderThickness="0"  Background="white"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="Black" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarket_MouseLeftButtonUp" HorizontalAlignment="Left"  >                                 
+                      <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding isShow}" Value="False">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
+
+
+                            <DataGridTemplateColumn Width="50" Header="BOOK" MaxWidth="50">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                            <InlineUIContainer>                                        
+                                                <TextBlock Text="Book" Width="50" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="white" Background="Gray" Padding="10,12" Margin="-1,2,0,0" />                                                                            
+                                            </InlineUIContainer>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTemplateColumn Width="25" IsReadOnly="True" Header="" Visibility="Collapsed">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox IsChecked="{Binding isSelectedForLK}" Checked="CheckBox_Checked" Tag="{Binding SelectionID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top" Unchecked="CheckBox_Unchecked" VerticalContentAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*" Header="" Visibility="Collapsed"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" >
+
+                                            <TextBlock Text="{Binding Clothnumber}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0" FontSize="14" />
+                                            <TextBlock Text="{Binding StallDraw}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" FontSize="14" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0"   />
+                                            <Image Source="{Binding ImageURL}" Width="22" VerticalAlignment="Center" Margin="0,0,0,0"/>
+
+                                        </StackPanel>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*" Header="LINE/FANCY" MinWidth="100"  HeaderStyle="{StaticResource DGSelection}" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock ><InlineUIContainer>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Selection}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Top" FontWeight="Regular" Padding="0,0,0,3" Foreground="Black" FontSize="18" />
+                                                    <TextBlock><InlineUIContainer>
+                                               
+                                         
+                                                            <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding PL, Converter={StaticResource PLConverter}}" FontFamily="Palatino Linotype" />
+                                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                                            <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss, Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}" FontFamily="Palatino Linotype"  />
+                                                        </InlineUIContainer></TextBlock>
+                                                </StackPanel>
+                                           
+                                            </InlineUIContainer></TextBlock>
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="" Visibility="Collapsed" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="100" ><InlineUIContainer>
+                                                <StackPanel Width="100">
+                                                   
+                                                      <TextBlock Text="{Binding JockeyName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Bottom" FontWeight="Normal" FontSize="10" Style="{StaticResource txtJockeyname}" Foreground="#1D2F65"   />
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="50" Header="LP" Visibility="Collapsed"   >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding Price, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"   />
+
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="80" Header="Average" Visibility="Collapsed" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Width="80" ><InlineUIContainer>
+                                                <StackPanel Width="80">
+                                                  <TextBlock Text="{Binding Average}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Style="{StaticResource txtJockeyname}" Foreground="{Binding Average, Converter={StaticResource PLConverter}}"   />
+                                                     
+                                                </StackPanel>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70"  >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                       <TextBlock Width="70"   x:Name="PriceandSize2" >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="White" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style><InlineUIContainer>
+                                              <Border BorderBrush="Black" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                
+                                                  <StackPanel  Width="70"   >                                                                                                      
+                                                   
+                                                        <TextBlock  Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"/>
+                                                    
+                                                        <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}" />
+                                                  
+                                                </StackPanel>
+                                                   </Border>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+
+                                </DataGridTemplateColumn.CellTemplate>
+
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+ <TextBlock Width="70" x:Name="PriceandSize1">
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="White" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </TextBlock.Style><InlineUIContainer>
+                                              <Border BorderBrush="Black" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                <StackPanel  Width="70"  >
+                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />
+                                                    
+                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}" />
+                                                    
+                                                </StackPanel>
+                                                  </Border>
+                                              </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="BACK" MinWidth="70">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                       <TextBlock Width="70" x:Name="PriceandSize" >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="#8dd2f0" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+
+                                                                </TextBlock.Style><InlineUIContainer>
+                                              <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />    
+                                                    <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}" />
+                                                    
+                                                </StackPanel>
+                                                  </Border>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="70" Header="LAY" MinWidth="70" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                        <TextBlock Width="70" x:Name="PriceandSizeLay" >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="#feafb2" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+
+                                                                </TextBlock.Style><InlineUIContainer>
+                                            <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                <StackPanel Width="70" >
+                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />
+                                                     
+                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"/>
+                                                  
+                                                </StackPanel>
+                                                </Border>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="62" Header="" MinWidth="62" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                        <TextBlock Width="62" x:Name="PriceandSize1Lay" >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="White" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+
+                                                                </TextBlock.Style><InlineUIContainer>
+                                            <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                <StackPanel  Width="70" >
+                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />                                               
+                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"/>
+                                                    
+                                                </StackPanel>
+                                                </Border>
+                                            </InlineUIContainer></TextBlock>
+
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="62" Header="" MinWidth="62" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+
+                                                                               <TextBlock Width="62" x:Name="PriceandSize2Lay"  >
+                                                                <TextBlock.Style>
+                                                                    <Style TargetType="{x:Type TextBlock}">
+                                                                        <Setter Property="Background" Value="White" />
+                                                                        <Style.Triggers>
+                                                                            <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                                                                                <BeginStoryboard HandoffBehavior="Compose">
+                                                                                    <Storyboard Storyboard.TargetProperty="(TextBlock.Background).(SolidColorBrush.Color)" Timeline.DesiredFrameRate="10">
+                                                                                        <ColorAnimation Duration="0:0:0.1"  To="Yellow" AutoReverse="True"/>
+                                                                                    </Storyboard>
+                                                                                </BeginStoryboard>
+                                                                            </EventTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+
+                                                                </TextBlock.Style><InlineUIContainer>
+                                            <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                                <StackPanel Width="70" >
+                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"/>
+                                                    
+                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"/>
+                                                    
+                                                </StackPanel>
+                                                </Border>
+                                            </InlineUIContainer></TextBlock>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+           
+                    
                     <DataGrid x:Name="DGVMarketIndianFancy" Visibility="Collapsed" Margin="0,7,0,0" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersFancyin}"    BorderThickness="0"  Background="white"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="Black" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarketIndianFancy_MouseLeftButtonUp" HorizontalAlignment="Left"  >
                  
                         <DataGrid.ItemContainerStyle>

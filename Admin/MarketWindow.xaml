@@ -1755,8 +1755,9 @@
                     <StackPanel x:Name="SPMain" HorizontalAlignment="Right" Height="400" Visibility="Visible" Margin="0,5,0,5" >
                         <ScrollViewer x:Name="SVStackpaneltest" Height="400"   >
                             <StackPanel x:Name="SPSVinside">
-                                  <DataGrid x:Name="DGVMarketFancy" AutoGenerateColumns="False" Width="auto" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersFancy}"   RowBackground="#FFFFFFFF" BorderThickness="0"  Background="#00FFFFFF"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="#FF463F3D" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="0,15,0,0" MaxHeight="300"  ScrollViewer.VerticalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarket_MouseLeftButtonUp">
-                        <!--<DataGrid.RowStyle>
+                                
+                                 <DataGrid x:Name="DGVMarketFancy" Visibility="Collapsed" Margin="0,7,0,0" AutoGenerateColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalGridLinesBrush="#FF878787" GridLinesVisibility="Horizontal" IsHitTestVisible="True" HeadersVisibility="Column" CanUserAddRows="False" SelectionMode="Single"  ItemsSource="{Binding lstMarketBookRunnersFancy}"    BorderThickness="0"  Background="white"  SelectionUnit="FullRow" IsReadOnly="True"  Foreground="Black" FontSize="12"  ScrollViewer.HorizontalScrollBarVisibility="Auto" MouseLeftButtonUp="DGVMarket_MouseLeftButtonUp" HorizontalAlignment="Left"  >                                 
+                        <DataGrid.RowStyle>
                             <Style TargetType="{x:Type DataGridRow}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding isShow}" Value="False">
@@ -1764,21 +1765,15 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </DataGrid.RowStyle>-->
+                        </DataGrid.RowStyle>
                         <DataGrid.Columns>
-
 
                             <DataGridTemplateColumn Width="50" Header="BOOK" MaxWidth="50"   >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock >
-                                          
-                                                  <TextBlock Text="Book" Width="50" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="white" Background="Red" Padding="10,12" Margin="-1,2,0,0" />
-                                         
-                                           
+                                        <TextBlock >                                          
+                                             <TextBlock Text="Book" Width="50" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Foreground="white" Background="Gray" Padding="10,12" Margin="-1,2,0,0" />                                                                                  
                                         </TextBlock>
-
-
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -1793,34 +1788,25 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" >
-
                                             <TextBlock Text="{Binding Clothnumber}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0" FontSize="14" />
                                             <TextBlock Text="{Binding StallDraw}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Normal" FontSize="14" Style="{StaticResource txtJockeyname}" Margin="0,0,3,0"   />
                                             <Image Source="{Binding ImageURL}" Width="22" VerticalAlignment="Center" Margin="0,0,0,0"></Image>
-
                                         </StackPanel>
-
-
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                            </DataGridTemplateColumn>                       
                             <DataGridTemplateColumn Width="*" Header="LINE/FANCY" MinWidth="100"  HeaderStyle="{StaticResource DGSelection}" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock >
                                             <StackPanel>
                                                   <TextBlock Text="{Binding Selection}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Top" FontWeight="Regular" Padding="0,0,0,3" Foreground="Black" FontSize="18" />
-                                           <TextBlock>
-                                               
-                                         
-                                                <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding PL,Converter={StaticResource PLConverter}}" FontFamily="Palatino Linotype" />
-                                             <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss,Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}" FontFamily="Palatino Linotype"  />
+                                           <TextBlock>                                                                                   
+                                                <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding PL,Converter={StaticResource PLConverter}}" FontFamily="Times New Roman" />
+                                             <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"  FontSize="16" FontWeight="Regular" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss,Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}" FontFamily="Times New Roman"  />
                                              </TextBlock>
-                                           </StackPanel>
-                                           
+                                           </StackPanel>                                          
                                         </TextBlock>
-
-
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -1842,8 +1828,6 @@
                                 <DataGridTemplateColumn.CellTemplate >
                                     <DataTemplate >
                                         <TextBlock  Text="{Binding Price,Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"   />
-
-
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -1852,15 +1836,14 @@
                                     <DataTemplate>
                                         <TextBlock Width="80" ><InlineUIContainer>
                                                 <StackPanel Width="80">
-                                                  <TextBlock Text="{Binding Average}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Style="{StaticResource txtJockeyname}" Foreground="{Binding Average,Converter={StaticResource PLConverter}}"   />
-                                                     
+                                                  <TextBlock Text="{Binding Average}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Style="{StaticResource txtJockeyname}" Foreground="{Binding Average,Converter={StaticResource PLConverter}}"   />                                                     
                                                 </StackPanel>
                                             </InlineUIContainer></TextBlock>
 
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70"  >
+                           <DataGridTemplateColumn Width="70" Header="" MinWidth="70"  >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
 
@@ -1880,16 +1863,13 @@
                                                             </Style>
                                                         </TextBlock.Style>  
                                             <InlineUIContainer>
-                                              <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
-                                                
-                                                  <StackPanel  Width="70"   >                                                                                                      
-                                                   
-                                                        <TextBlock  Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True  }" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black">
-                                                        
-                                                        </TextBlock>
-                                                    
-                                                        <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black" />
-                                                  
+                                              <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">                                                
+                                                 <StackPanel  Width="70"   >                                                                                                      
+                                                                                                                                                                           
+                                                        <TextBlock  Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}" />
+ 
+                                                        <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}"   Style="{StaticResource size}"   />
+                   
                                                 </StackPanel>
                                                    </Border>
                                             </InlineUIContainer>
@@ -1921,12 +1901,12 @@
                                                             </Style>
                                                         </TextBlock.Style>  
                                           <InlineUIContainer>
-                                              <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
-                                                <StackPanel  Width="70"  >
-                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black" />
-                                                    
-                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black" />
-                                                    
+                                              <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
+                                               <StackPanel  Width="70"  >
+                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"  />
+                                                   
+                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />
+                                                   
                                                 </StackPanel>
                                                   </Border>
                                               </InlineUIContainer>
@@ -1935,14 +1915,14 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="70" Header="BACK" MinWidth="70">
+                             <DataGridTemplateColumn Width="70" Header="BACK" MinWidth="70">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
 
                                         <TextBlock Width="70" x:Name="PriceandSize" >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="TextBlock.Background" Value="#78B6E3" />
+                                                                <Setter Property="TextBlock.Background" Value="#72bbef" />
                                                                 <Style.Triggers>
                                                                     <EventTrigger RoutedEvent="Binding.TargetUpdated">
 
@@ -1958,12 +1938,12 @@
 
                                                         </TextBlock.Style>  
                                             <InlineUIContainer>
-                                              <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
+                                              <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70" >
-                                                    <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black" />
+                                                    <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"  />
                                                      
-                                                    <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black" />
-                                                    
+                                                    <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />
+                                                   
                                                 </StackPanel>
                                                   </Border>
                                             </InlineUIContainer>
@@ -1979,7 +1959,7 @@
                                         <TextBlock Width="70" x:Name="PriceandSizeLay" >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="TextBlock.Background" Value="#E098AA" />
+                                                                <Setter Property="TextBlock.Background" Value="#FF8A8E" />
                                                                 <Style.Triggers>
                                                                     <EventTrigger RoutedEvent="Binding.TargetUpdated">
                                                                         <BeginStoryboard HandoffBehavior="Compose">
@@ -1993,12 +1973,12 @@
 
                                                         </TextBlock.Style>  
                                             <InlineUIContainer>
-                                            <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
+                                            <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
-                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black" />
-                                                     
-                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black"/>
-                                                  
+                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay,NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />
+                                                    
+                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" />
+                                                    
                                                 </StackPanel>
                                                 </Border>
                                             </InlineUIContainer></TextBlock>
@@ -2006,11 +1986,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70" >
+                           <DataGridTemplateColumn Width="62" Header="" MinWidth="62" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
 
-                                        <TextBlock Width="70" x:Name="PriceandSize1Lay" >
+                                        <TextBlock Width="62" x:Name="PriceandSize1Lay" >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
                                                                 <Setter Property="TextBlock.Background" Value="White" />
@@ -2027,12 +2007,12 @@
 
                                                         </TextBlock.Style>  
                                             <InlineUIContainer>
-                                            <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
+                                            <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70" >
-                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black" />
+                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay,NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"  />
                                                    
-                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black"/>
-                                                    
+                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" />
+                                                     
                                                 </StackPanel>
                                                 </Border>
                                             </InlineUIContainer></TextBlock>
@@ -2040,11 +2020,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="70" Header="" MinWidth="70" >
+                            <DataGridTemplateColumn Width="62" Header="" MinWidth="62" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
 
-                                        <TextBlock Width="70" x:Name="PriceandSize2Lay"  >
+                                        <TextBlock Width="62" x:Name="PriceandSize2Lay"  >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
                                                                 <Setter Property="TextBlock.Background" Value="White" />
@@ -2061,11 +2041,11 @@
 
                                                         </TextBlock.Style>  
                                             <InlineUIContainer>
-                                            <Border BorderBrush="#850959" BorderThickness="1,1,1,1"  Margin="0,0,0,0">
+                                            <Border BorderBrush="#850959" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
-                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" Foreground="Black"/>
-                                                    
-                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" Foreground="Black"/>
+                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay,NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"  />
+                                                     
+                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay,NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" />
                                                     
                                                 </StackPanel>
                                                 </Border>
