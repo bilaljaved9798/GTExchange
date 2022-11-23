@@ -826,7 +826,7 @@
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding Selection}"  Style="{StaticResource txtSelectionName}"   />
                                                     <TextBlock><InlineUIContainer>
-                                                            <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" FontSize="16" FontWeight="ExtraBlack"   Foreground="{Binding PL, Converter={StaticResource PLConverter}}"  Style="{StaticResource txtProfit}" />
+                                                            <TextBlock Text="{Binding PL, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left" FontSize="18" FontWeight="Regular"   Foreground="{Binding PL, Converter={StaticResource PLConverter}}"  Style="{StaticResource txtProfit}" />
                                                         </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                                                             <TextBlock Text="{Binding Loss, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Left"   HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Loss, Converter={StaticResource PLConverter}}" Style="{StaticResource txtLoss}"  />
                                                         </InlineUIContainer></TextBlock>
@@ -1255,9 +1255,9 @@
                                                 </TextBlock.Style><InlineUIContainer>
                                             <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70" >
-                                                        <TextBlock  Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True}"  TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center"  />
+                                                        <TextBlock  Text="{Binding Backprice2, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}"  />
                                                    
-                                                        <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center"  />                                                                                               
+                                                        <TextBlock Text="{Binding Backsize2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />                                                                                               
                                                 </StackPanel>
                                                 </Border>
                                                 </InlineUIContainer><Run Text="&gt;"/></TextBlock>
@@ -1286,9 +1286,9 @@
                                                 </TextBlock.Style><InlineUIContainer>
                                              <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70" >
-                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center"  />
+                                                    <TextBlock Text="{Binding Backprice1, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}"  />
                                                     
-                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center"  />
+                                                    <TextBlock Text="{Binding Backsize1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"   />
                                                   
                                                 </StackPanel>
                                                  </Border>
@@ -1304,7 +1304,7 @@
                                             <TextBlock Width="70" x:Name="PriceandSize" >
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Background" Value="#a6d8ff" />
+                                                        <Setter Property="Background" Value="#72bbef" />
                                                         <Style.Triggers>
                                                             <EventTrigger RoutedEvent="Binding.TargetUpdated">
                                                                 <BeginStoryboard HandoffBehavior="Compose">
@@ -1318,9 +1318,9 @@
                                                 </TextBlock.Style><InlineUIContainer> 
                                                 <Border BorderBrush="Black" BorderThickness="1,0,0,0"  Margin="0,0,0,0"  Style="{StaticResource HideBorer}">
                                                     <StackPanel  Width="70" >
-                                                        <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular"  HorizontalAlignment="Center" />
+                                                        <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}" />
                                                       
-                                                        <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal"   HorizontalAlignment="Center"  />                                                 
+                                                        <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource size}"  />                                                 
                                                     </StackPanel>
                                                 </Border>
                                             </InlineUIContainer></TextBlock>
@@ -1335,7 +1335,7 @@
                                             <TextBlock Width="70" x:Name="PriceandSizeLay"  >
                                                 <TextBlock.Style>
                                                     <Style TargetType="{x:Type TextBlock}">
-                                                        <Setter Property="Background" Value="#FFC87489" />
+                                                        <Setter Property="Background" Value="#FF8A8E" />
                                                         <Style.Triggers>
                                                             <EventTrigger RoutedEvent="Binding.TargetUpdated">
                                                                 <BeginStoryboard HandoffBehavior="Compose">
@@ -1349,9 +1349,9 @@
                                                 </TextBlock.Style><InlineUIContainer>
                                              <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
-                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular"  HorizontalAlignment="Center"  />
+                                                    <TextBlock Text="{Binding Layprice0, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}"  />
                                                     
-                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal"   HorizontalAlignment="Center" />
+                                                    <TextBlock Text="{Binding Laysize0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />
                                                     
                                                 </StackPanel>
                                                  </Border>
@@ -1381,9 +1381,9 @@
                                                 </TextBlock.Style><InlineUIContainer>
                                             <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70" >
-                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center" />
+                                                    <TextBlock Text="{Binding Layprice1, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}" />
                                                    
-                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center" FontSize="14" FontWeight="Normal" HorizontalAlignment="Center" />
+                                                    <TextBlock Text="{Binding Laysize1, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />
                                                     
                                                 </StackPanel>
                                                 </Border>
@@ -1413,9 +1413,9 @@
                                                 </TextBlock.Style><InlineUIContainer>
                                              <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
-                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="22" FontWeight="Regular" HorizontalAlignment="Center"  />
+                                                    <TextBlock Text="{Binding Layprice2, Mode=OneWay, NotifyOnTargetUpdated=True}"  Style="{StaticResource Price}"  />
                                                    
-                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay, NotifyOnTargetUpdated=True}" TextAlignment="Center"  FontSize="14" FontWeight="Normal" HorizontalAlignment="Center"  />
+                                                    <TextBlock Text="{Binding Laysize2, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"   />
                                                    
                                                 </StackPanel>
                                                  </Border>
@@ -2383,7 +2383,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock Width="70" x:Name="PriceandSize" Background="#8dd2f0" >
+                                                    <TextBlock Width="70" x:Name="PriceandSize" Background="#72bbef" >
                                                                    
                                             <InlineUIContainer>
                                               <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
@@ -2405,14 +2405,14 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock Width="70" x:Name="PriceandSizeLay" Background="#feafb2" >
+                                                    <TextBlock Width="70" x:Name="PriceandSizeLay" Background="#FF8A8E" >
                                             <InlineUIContainer>
                                             <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
                                                     <!--{Binding Layprice0, Mode=OneWay,NotifyOnTargetUpdated=True}-->
                                                     <TextBlock Text="1" Style="{StaticResource Price}" />
                                                      <!--{Binding Laysize0, Mode=OneWay,NotifyOnTargetUpdated=True}-->
-                                                    <TextBlock Text="1025" Style="{StaticResource size}" />
+                                                    <TextBlock Text="102" Style="{StaticResource size}" />
                                                   
                                                 </StackPanel>
                                                 </Border>
@@ -2562,7 +2562,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock Width="70" x:Name="PriceandSize" Background="#8dd2f0">
+                                                    <TextBlock Width="70" x:Name="PriceandSize" Background="#72bbef">
                                                                     
                                             <InlineUIContainer>
                                               <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
@@ -2584,7 +2584,7 @@
                                             <DataGridTemplateColumn.CellTemplate>
                                                 <DataTemplate>
 
-                                                    <TextBlock Width="70" x:Name="PriceandSizeLay" Background="#feafb2">
+                                                    <TextBlock Width="70" x:Name="PriceandSizeLay" Background="#FF8A8E">
                                                                   
                                             <InlineUIContainer>
                                             <Border BorderBrush="#010101" BorderThickness="1,0,0,0"  Margin="0,0,0,0">
@@ -2760,7 +2760,7 @@
                                        <TextBlock Width="70" x:Name="PriceandSize" >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="TextBlock.Background" Value="#8dd2f0" />
+                                                                <Setter Property="TextBlock.Background" Value="#72bbef" />
                                                                 <Style.Triggers>
                                                                     <EventTrigger RoutedEvent="Binding.TargetUpdated">
                                                                         <BeginStoryboard HandoffBehavior="Compose">
@@ -2795,7 +2795,7 @@
                                         <TextBlock Width="70" x:Name="PriceandSizeLay" >
                                                         <TextBlock.Style>
                                                             <Style TargetType="{x:Type TextBlock}">
-                                                                <Setter Property="TextBlock.Background" Value="#feafb2" />
+                                                                <Setter Property="TextBlock.Background" Value="#FF8A8E" />
                                                                 <Style.Triggers>
                                                                     <EventTrigger RoutedEvent="Binding.TargetUpdated">
                                                                         <BeginStoryboard HandoffBehavior="Compose">

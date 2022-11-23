@@ -9641,8 +9641,8 @@ namespace globaltraders
         private void btnFancyPL_Click(object sender, RoutedEventArgs e)
         {
             ProfitLossWindow objPLWin = new ProfitLossWindow();
-            objPLWin.chkOnlyFancy.IsChecked = true;
-            objPLWin.chkByMarketCricket.IsChecked = true;
+            objPLWin.chkByMarket.IsChecked = true;
+            objPLWin.chkOnlyFancySession.IsChecked = true;
             objPLWin.ShowDialog();
         }
 

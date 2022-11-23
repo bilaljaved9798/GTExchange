@@ -213,8 +213,8 @@
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=Loss}" Value="0">
                     <Setter Property="Visibility" Value="Collapsed"></Setter>
-                    <Setter Property="FontSize" Value="30"></Setter>
-                    <Setter Property="FontWeight" Value="Black"></Setter>
+                    <Setter Property="FontSize" Value="18"></Setter>
+                    <Setter Property="FontWeight" Value="Regular"></Setter>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -222,8 +222,8 @@
             <Setter Property="Margin" Value="0,0,10,0"></Setter>
             <Setter Property="VerticalAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-            <Setter Property="FontSize" Value="15"></Setter>
-            <Setter Property="FontWeight" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Regular"></Setter>
             <Setter Property="TextAlignment" Value="Left"></Setter>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=PL}" Value="0">
