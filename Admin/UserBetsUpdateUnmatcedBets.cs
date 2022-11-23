@@ -19,16 +19,7 @@ namespace globaltraders
     public class UserBetsUpdateUnmatcedBets
     {
         UserServicesClient objUsersServiceCleint = new UserServicesClient();
-       
-       
-       
-
-       
-
-      
-      
-      
-
+            
         public long GetLiabalityofCurrentUserActual(int userID, string selectionID, string BetType, string marketbookID, List<UserBets> lstUserBets, List<ExternalAPI.TO.Runner> lstRunners)
         {
             long OverAllLiabality = 0;

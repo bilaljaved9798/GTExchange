@@ -33,9 +33,10 @@ using System.Net;
 using System.IO;
 using bftradeline;
 using bftradeline.Models123;
-using globaltraders.Service123Reference;
+
 using System.Net.Http;
 using RestSharp;
+using globaltraders.Service123Reference;
 
 namespace globaltraders
 {
