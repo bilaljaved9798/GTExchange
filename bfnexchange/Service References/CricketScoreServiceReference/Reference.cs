@@ -9,7 +9,54 @@
 //------------------------------------------------------------------------------
 
 namespace bfnexchange.CricketScoreServiceReference {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CricketData_GetMatchKeys_Result", Namespace="http://schemas.datacontract.org/2004/07/CricketScoreService.DBModel")]
+    [System.SerializableAttribute()]
+    public partial class CricketData_GetMatchKeys_Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CricketMatchKeyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CricketMatchKey {
+            get {
+                return this.CricketMatchKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CricketMatchKeyField, value) != true)) {
+                    this.CricketMatchKeyField = value;
+                    this.RaisePropertyChanged("CricketMatchKey");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CricketScoreServiceReference.IService1")]
@@ -40,10 +87,10 @@ namespace bfnexchange.CricketScoreServiceReference {
         System.Threading.Tasks.Task DeleteMatchbyKeyAsync(string CricketMatchKey, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMatchKeys", ReplyAction="http://tempuri.org/IService1/GetMatchKeysResponse")]
-        globaltraders.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[] GetMatchKeys(string Password);
+        bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[] GetMatchKeys(string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMatchKeys", ReplyAction="http://tempuri.org/IService1/GetMatchKeysResponse")]
-        System.Threading.Tasks.Task<globaltraders.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[]> GetMatchKeysAsync(string Password);
+        System.Threading.Tasks.Task<bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[]> GetMatchKeysAsync(string Password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -105,11 +152,11 @@ namespace bfnexchange.CricketScoreServiceReference {
             return base.Channel.DeleteMatchbyKeyAsync(CricketMatchKey, Password);
         }
         
-        public globaltraders.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[] GetMatchKeys(string Password) {
+        public bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[] GetMatchKeys(string Password) {
             return base.Channel.GetMatchKeys(Password);
         }
         
-        public System.Threading.Tasks.Task<globaltraders.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[]> GetMatchKeysAsync(string Password) {
+        public System.Threading.Tasks.Task<bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result[]> GetMatchKeysAsync(string Password) {
             return base.Channel.GetMatchKeysAsync(Password);
         }
     }

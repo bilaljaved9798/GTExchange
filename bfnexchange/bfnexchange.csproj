@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>bfnexchange</RootNamespace>
     <AssemblyName>bfnexchange</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort>54441</IISExpressSSLPort>
@@ -873,6 +873,9 @@
     <None Include="Service References\BettingServiceWinnerReference\BettingServiceWinner1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\CricketScoreServiceReference\bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\CricketScoreServiceReference\Service1.wsdl" />
     <None Include="Service References\CricketScoreServiceReference\Service1.xsd">
       <SubType>Designer</SubType>
