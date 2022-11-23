@@ -36,7 +36,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Collections.Specialized;
-using Litzscore;
+//using Litzscore;
 using globaltraders.CricketScoreServiceReference;
 using System.IO;
 using System.Xml;
@@ -14695,67 +14695,64 @@ namespace globaltraders
         }
 
 
-        class LitzscoreStorageHandler : ILitzscoreLocalStorage
-        {
-            Dictionary<string, string> store { get; set; }
-            public LitzscoreStorageHandler()
-            {
-                store = new Dictionary<string, string>();
-            }
+        //class LitzscoreStorageHandler : ILitzscoreLocalStorage
+        //{
+        //    Dictionary<string, string> store { get; set; }
+        //    public LitzscoreStorageHandler()
+        //    {
+        //        store = new Dictionary<string, string>();
+        //    }
 
-            public string GetValue(string key)
-            {
-                return store[key];
-            }
+        //    public string GetValue(string key)
+        //    {
+        //        return store[key];
+        //    }
 
-            public void SetValue(string key, string value)
-            {
-                store.Add(key, value);
-            }
+        //    public void SetValue(string key, string value)
+        //    {
+        //        store.Add(key, value);
+        //    }
 
-            public bool HasValue(string key)
-            {
-                return store.ContainsKey(key);
-            }
+        //    public bool HasValue(string key)
+        //    {
+        //        return store.ContainsKey(key);
+        //    }
 
-            public string NewDeviceID()
-            {
-                string val = System.Guid.NewGuid().ToString("B").ToLower().Replace('{', '_').Replace('-', '_').Replace('}', '_');
-                return val.Replace("_", "");
-            }
-        }
-        void pushClientExample(LZApp app)
+        //    public string NewDeviceID()
+        //    {
+        //        string val = System.Guid.NewGuid().ToString("B").ToLower().Replace('{', '_').Replace('-', '_').Replace('}', '_');
+        //        return val.Replace("_", "");
+        //    }
+        //}
+        //void pushClientExample(LZApp app)
+        //{
+        //    app.initPushHandler();
 
-        {
-            app.initPushHandler();
-
-            app.pushHandler.onMatchUpdate = delegate (String card)
-            {
-                dynamic cardObject = JsonConvert.DeserializeObject(card);
-                cardObject = cardObject.args[0];
-                try
-                {
-                    match = cardObject;
+        //    app.pushHandler.onMatchUpdate = delegate (String card)
+        //    {
+        //        dynamic cardObject = JsonConvert.DeserializeObject(card);
+        //        cardObject = cardObject.args[0];
+        //        try
+        //        {
+        //            match = cardObject;
 
 
-                }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
-                catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
-                {
+        //        }
+        //        catch (System.Exception ex)
+        //        {
 
-                }
+        //        }
 
 
 
-            };
+        //    };
 
 
-            app.pushHandler.listenMatch(matchCricketAPIKey);
-            //double d = Convert.ToDouble(app.token.expires);
-            //DateTime expiresat =DateTime.FromOADate(d);
+        //    app.pushHandler.listenMatch(matchCricketAPIKey);
+        //    //double d = Convert.ToDouble(app.token.expires);
+        //    //DateTime expiresat =DateTime.FromOADate(d);
 
-        }
+        //}
 
 
         // List<Sp_GetKalijut_Result> KJ = new List<Sp_GetKalijut_Result>();
