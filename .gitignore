@@ -243,3 +243,4 @@ ModelManifest.xml
 /Admin/Service References/Service123Reference/globaltraders.Service123Reference.MarketBook.datasource
 /bfnexchange/Service References
 /AppForBackGroundTasks/Service References
+/bfnexchange.Services/GetDataFromOtherSourceBase.cs
