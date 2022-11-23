@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ExternalAPI.TO.MarketCatalogue>
+@foreach (var item in Model)
+{
+    var jockeyname = "Not";
+    var wearing = "Not";
+    var waringdesc = "Not";
+    var clothnumber = "Not";
+
+    <li data-value="@(item.MarketId)" data-marketopentime="@(item.Description.MarketTime)">
+        <input type="checkbox" id="marketcatalogueitem@(item.MarketId)" value="@(item.MarketId)" />
+        <label><input type="checkbox" id="marketcatalogueitem@(item.MarketId)" value="@(item.MarketId)" /><span></span></label>
+        <label class="lastlevelspan" for="marketcatalogueitem@(item.MarketId)">@item.MarketName</label>
+       <ul id="selectionitemsfor@(item.MarketId)" style="display:none">
+           @foreach (var runner in item.Runners)
+           {
+               try
+               {
+                   if (runner.Metadata.ContainsKey("JOCKEY_NAME"))
+                   {
+                       jockeyname = runner.Metadata["JOCKEY_NAME"];
+                       wearing = "http://content-cache.betfair.com/feeds_images/Horses/SilkColours/" + runner.Metadata["COLOURS_FILENAME"];
+                       waringdesc = runner.Metadata["COLOURS_DESCRIPTION"];
+                       clothnumber = runner.Metadata["CLOTH_NUMBER"];
+                   }
+               }
+               catch(System.Exception ex)
+               {
+
+               }
+
+            <li data-value="@runner.SelectionId" data-jockeyname="@jockeyname" data-wearing="@wearing" data-wearingdesc="@waringdesc" data-clothnumber="@clothnumber">@runner.RunnerName</li>
+           }
+               
+           
+            
+       </ul>
+       
+        
+      
+
+    </li>
+
+}
+
+
+
+

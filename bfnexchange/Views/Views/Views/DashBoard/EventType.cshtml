@@ -1,0 +1,249 @@
+﻿@model IEnumerable<ExternalAPI.TO.EventTypeResult>
+
+<ul id="eventtypes">
+    @foreach (ExternalAPI.TO.EventTypeResult item in Model)
+    {
+       
+       
+        <li data-value="@(item.EventType.Id)">
+
+            <input type="checkbox" id="eventypeitem@(item.EventType.Id)" title="" value="@item.EventType.Id" />
+            <label><input type="checkbox" id="eventypeitem@(item.EventType.Id)" value="@item.EventType.Id" /><span></span></label>
+            <label for="eventypeitem@(item.EventType.Id)" onclick="LoadCompetitions('@item.EventType.Id')">
+
+                @item.EventType.Name
+            </label>
+
+            <ul id="competition@(item.EventType.Id)">
+
+            </ul>
+
+
+        </li>
+       
+
+    }
+</ul>
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+    function LoadCompetitions(id) {
+        debugger;
+        if ($("#competition" + id + " li").length == 0) {
+
+            ShowLoader();
+            var partialviewname = "/DashBoard/Competiion/" + id;
+            // var partialviewname = "/Market/Competiion/" + id;
+            $.ajax({
+                url: partialviewname,
+
+                type: 'POST',
+
+                async: true,
+
+                complete: function () {
+
+                    //$("#competition" + id + ">li").each(function () {
+
+                    //    var competitionid = $(this).attr("data-value");
+                    //    // LoadEvents($(this).attr("data-value"));
+
+                    //    var partialviewname = "/DashBoard/Events/" + competitionid;
+                    //    $.ajax({
+                    //        url: partialviewname,
+
+                    //        type: 'POST',
+
+                    //        async: false,
+
+                    //        complete: function () {
+
+                    //            $("#Events" + competitionid + ">li").each(function () {
+
+                    //                var eventid = $(this).attr("data-value");
+
+
+                    //                var partialviewname = "/DashBoard/MarketCatalogue/" + eventid;
+                    //                $.ajax({
+                    //                    url: partialviewname,
+
+                    //                    type: 'POST',
+
+                    //                    async: false,
+
+                    //                    complete: function () {
+                                           
+                    //                        CheckSelectedMarket();
+                    //                        HideLoader();
+                    //                    },
+                    //                    success: function (data) {
+                    //                        $("#MarketCatalogue" + eventid).html(data);
+
+                    //                    }
+                    //                });
+                    //            });
+                    //        },
+                    //        success: function (data) {
+                    //            $("#Events" + competitionid).html(data);
+
+                    //        }
+                    //    });
+                    //    return;
+                    //    $("#Events" + competitionid).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+
+
+                    //        if (statusTxt == "success") {
+                    //            ShowLoader();
+                    //            $("#Events" + competitionid + ">li").each(function () {
+
+                    //                var eventid = $(this).attr("data-value");
+
+
+                    //                var partialviewname = "/DashBoard/MarketCatalogue/" + eventid;
+                    //                $("#MarketCatalogue" + eventid).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+
+                    //                    if (statusTxt == "success") {
+
+                    //                    }
+                    //                });
+
+                    //                // LoadMarketCatalogue($(this).attr("data-value"));
+
+                    //            });
+                    //        }
+                    //    });
+
+                    //});
+                },
+                success: function (data) {
+
+                    $("#competition" + id).html(data);
+                    HideLoader();
+
+                }
+            });
+        }
+        else {
+            CheckSelectedMarket();
+            HideLoader();
+        }
+            //$("#competition" + id).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+
+            //    if (statusTxt == "success") {
+
+            //        if ($("#competition" + id + ">li").length > 0) {
+            //            ShowLoader();
+            //            $("#competition" + id + ">li").each(function () {
+            //                var competitionid = $(this).attr("data-value");
+            //                // LoadEvents($(this).attr("data-value"));
+
+            //                var partialviewname = "/DashBoard/Events/" + competitionid;
+
+
+            //                $("#Events" + competitionid).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+
+
+            //                    if (statusTxt == "success") {
+            //                        ShowLoader();
+            //                        $("#Events" + competitionid + ">li").each(function () {
+
+            //                            var eventid = $(this).attr("data-value");
+
+
+            //                            var partialviewname = "/DashBoard/MarketCatalogue/" + eventid;
+            //                            $("#MarketCatalogue" + eventid).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+
+            //                                if (statusTxt == "success") {
+
+            //                                }
+            //                            });
+
+            //                            // LoadMarketCatalogue($(this).attr("data-value"));
+
+            //                        });
+            //                    }
+            //                });
+
+            //            });
+            //            debugger;
+
+            //        }
+            //        else {
+
+            //        }
+            //        //   HideLoader();
+            //    }
+            //});
+        
+
+    }
+    function LoadEvents(id) {
+
+        if ($("#Events" + id + " li").length == 0) {
+
+
+            ShowLoader();
+
+            var partialviewname = "/DashBoard/Events/" + id;
+
+
+            $("#Events" + id).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+                HideLoader();
+
+                //if (statusTxt == "success") {
+                //    HideLoader();
+                //    $("#Events" + id + ">li").each(function () {
+
+
+                //        LoadMarketCatalogue($(this).attr("data-value"));
+
+                //    });
+                //}
+            });
+        }
+    }
+    function LoadMarketCatalogue(id) {
+       
+        if ($("#MarketCatalogue" + id + " li").length == 0) {
+            ShowLoader();
+            var partialviewname = "/DashBoard/MarketCatalogue/" + id;
+            $("#MarketCatalogue" + id).load(partialviewname, function (responseTxt, statusTxt, xhr) {
+                HideLoader();
+                if (statusTxt == "success") {
+                    HideLoader();
+                }
+            });
+        }
+        else {
+    HideLoader();
+        }
+    }
+    function LoadMarketType(id) {
+        var old = id.toString();
+        var newid = old.replace('.', '');
+        var marketcatalogueitemname = $("#marketcatalogueitem" + newid).html();
+
+        var competitionnameandeventname = $("#detailsselecteditem").html().split("<br>");
+
+        if (competitionnameandeventname[2]) {
+
+            marketcatalogueitemname = competitionnameandeventname[0] + "<br/>" + competitionnameandeventname[1] + "<br/><span class='breadcrumbmarkettypename'> > " + marketcatalogueitemname + "</span>";
+            $("#detailsselecteditem").html(marketcatalogueitemname);
+        }
+        else {
+            marketcatalogueitemname = $("#detailsselecteditem").html() + "<br/><span class='breadcrumbmarkettypename'> > " + marketcatalogueitemname + "</span>";
+            $("#detailsselecteditem").html(marketcatalogueitemname);
+        }
+
+    }
+
+</script>
+<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap-submenu.js"></script>

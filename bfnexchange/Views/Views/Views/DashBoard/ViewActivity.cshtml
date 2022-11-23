@@ -1,0 +1,207 @@
+﻿@model IEnumerable<bfnexchange.Models.EventType>
+<div class="container">
+ <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="form-horizontal">
+                <h4>Veiw Activity of User</h4>
+                <hr />
+                <div id="allusers">
+
+                </div>
+                @*<div class="form-group">
+                    <label class="control-label col-md-2">Users</label>
+
+                    <div class="col-md-10">
+                        @Html.DropDownList("ddlUsers",
+    new SelectList(ViewBag.AllUsers, "Id", "UserName"), new { @class = "selectpicker", data_live_search = "true"})
+
+
+                    </div>
+                </div>*@
+            </div>
+            <div class="col-md-12">
+                <div id="UserDetails"></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            @if (LoggedinUserDetail.GetUserTypeID() == 1)
+            {
+                <h4>Assign Market to User</h4>
+                <hr />
+                <div class="col-md-12">
+
+                </div>
+                <div class="col-md-12">
+                    <div id="MarektPermissions">
+                        <div class="container">
+                            <div class="row">
+                                <div id="MarketTreeView" class="acidjs-css3-treeview">
+
+                                    @*<ul>
+                                            @foreach (var eventtype in Model)
+                                            {
+                                                <li data-value="@eventtype.ID">
+                                                    @eventtype.Name
+                                                    <ul>
+                                                        @foreach (var competition in eventtype.Competition)
+                                                        {
+                                                            <li data-value="@competition.ID">
+                                                                @competition.Name
+                                                                <ul>
+                                                                    @foreach (var events in competition.Event)
+                                                                    {
+                                                                        <li data-value="@events.ID">
+                                                                            @events.Name
+                                                                            <ul>
+                                                                                @foreach (var marketcatalogue in events.MarketCatalogue)
+                                                                                {
+                                                                                    <li data-value="@marketcatalogue.ID">
+                                                                                        @marketcatalogue.Name
+                                                                                    </li>
+                                                                                }
+                                                                            </ul>
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </li>
+
+                                            }
+                                        </ul>*@
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+									 <input type="checkbox" id="chkDeleteoldmarkets"  name="chkDeleteoldmarkets" checked="checked"/>
+                                        <label for="chkDeleteoldmarkets">Delete Old Markets</label>
+                                        <input type="button" id="btnUpdateUserMarket" value="Update" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+      
+        ShowLoader();
+        var partialviewname = "/DashBoard/EventType";
+        $("#MarketTreeView").load(partialviewname, function () { });
+        $.ajax({
+            url: '/DashBoard/AllUsers',
+            async: true,
+            type: 'POST',
+         
+
+            complete: function () {
+                $('.selectpicker').selectpicker();
+                $("#ddlUsers").change(function () {
+                    $("#callerfunction").val("updatemarket");
+                    LoadUserDetails();
+
+                });
+                HideLoader();
+            },
+            success: function (data) {
+                $("#allusers").html(data);
+              
+                //// $form.html(data);
+                // $form.removeData('validator');
+                // $form.removeData('unobtrusiveValidation');
+                // $.validator.unobtrusive.parse($form);
+            }
+        });
+       
+        $(".acidjs-css3-treeview").delegate("label:not([for]) input:checkbox", "change", function () {
+           checkstatechange($(this))
+        });
+
+
+       
+       
+        $("#btnUpdateUserMarket").click(function () {
+          
+            if ($("#ddlUsers").val().length > 0) {
+                $("#callerfunction").val("updatemarket");
+                $("#myModalPassword").modal('show');
+                $("#txtAdminPassword").focus();
+            }
+
+        });
+    });
+
+    //    var selected = $('#MarketTreeView').jstree("get_checked"), i, j, parents;
+    //    var allselected = [];
+    //    var eventtypes = [];
+    //    var competitions = [];
+    //    var events = [];
+    //    var marketcatalogue = [];
+    //    for (i = 0; i <= selected.length - 1; i++) {
+    //        var selecteditem = $("#" + selected[i]).attr("data-value");
+    //        parents = $('#MarketTreeView').jstree(true).get_node(selected[i]).parents;
+    //        var parentdata = "";
+
+    //        if (parents.length == 4) {
+    //            marketcatalogue.push(selecteditem);
+    //            for (a = 0; a <= parents.length - 1; a++) {
+    //                if (parents[a] != "#") {
+    //                    if (a == 0) { events.push($("#" + parents[a]).attr("data-value")) }
+    //                    if (a == 1) { competitions.push($("#" + parents[a]).attr("data-value")) }
+    //                    if (a == 2) { eventtypes.push($("#" + parents[a]).attr("data-value")) }
+    //                }
+
+    //            }
+    //        }
+    //        if (parents.length == 3) {
+    //            events.push(selecteditem);
+    //            for (a = 0; a <= parents.length - 1; a++) {
+    //                if (parents[a] != "#") {
+
+    //                    if (a == 0) { competitions.push($("#" + parents[a]).attr("data-value")) }
+    //                    if (a == 1) { eventtypes.push($("#" + parents[a]).attr("data-value")) }
+    //                }
+
+    //            }
+    //        }
+    //        if (parents.length == 2) {
+    //            competitions.push(selecteditem);
+    //            for (a = 0; a <= parents.length - 1; a++) {
+    //                if (parents[a] != "#") {
+    //                    if (a == 0) { eventtypes.push($("#" + parents[a]).attr("data-value")) }
+    //                }
+
+    //            }
+    //        }
+    //        if (parents.length == 1) {
+    //            eventtypes.push(selecteditem);
+    //        }
+
+    //    }
+    //    marketcatalogue = $.vakata.array_unique(marketcatalogue);
+    //    events = $.vakata.array_unique(events);
+    //    competitions = $.vakata.array_unique(competitions);
+    //    eventtypes = $.vakata.array_unique(eventtypes);
+
+
+
+    //
+
+</script>
+
