@@ -36,7 +36,7 @@ using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Collections.Specialized;
-//using Litzscore;
+using Litzscore;
 using globaltraders.CricketScoreServiceReference;
 using System.IO;
 using System.Xml;
@@ -8497,11 +8497,11 @@ namespace globaltraders
                 //MarketBook.LineVMarkets = linevmarkets;
                 lstMarketBookRunnerKalijut = new ObservableCollection<MarketBookShow>();
                 lstMarketBookRunnerKalijut.Clear();
-                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "Kali v Jut").ToList();
-
-                if (KJMarkets.Count() > 0)
+                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "Kali v Jut" && item.EventID==MarketBook.EventID).ToList();
+                var distinct = KJMarkets.GroupBy(x => x.MarketCatalogueID, (key, group) => group.First());
+                if (distinct.Count() > 0)
                 {
-                    foreach (var runners in KJMarkets)
+                    foreach (var runners in distinct)
                     {
                         MarketBookShow objmarketbookshow = new MarketBookShow();
                         objmarketbookshow.Selection = runners.MarketCatalogueName;
@@ -8515,9 +8515,9 @@ namespace globaltraders
                         objmarketbookshow.CurrentMarketBookId = runners.MarketCatalogueID;
 
                         objmarketbookshow.Laysize0 = "102";//KJs.KaliPriceLay.ToString();
-                        objmarketbookshow.Layprice0 = "1";//KJs.KaliSizeLay.ToString();
+                        objmarketbookshow.Layprice0 = "2.02";//KJs.KaliSizeLay.ToString();
                         objmarketbookshow.Backsize0 = "98";//KJs.KaliPriceBack.ToString();
-                        objmarketbookshow.Backprice0 = "1";//KJs.KaliSizeBack.ToString();
+                        objmarketbookshow.Backprice0 = "1.98";//KJs.KaliSizeBack.ToString();
 
                         ExternalAPI.TO.MarketBookForindianFancy currentmarketsfancyPL = new ExternalAPI.TO.MarketBookForindianFancy();
                         ProfitandLoss objProfitandloss = new ProfitandLoss();
@@ -8560,7 +8560,7 @@ namespace globaltraders
                 lstMarketBookRunnerSFigure = new ObservableCollection<MarketBookShow>();
                 lstMarketBookRunnerSFigure.Clear();
 
-                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "SmallFig").ToList();
+                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "SmallFig" && item.EventID==MarketBook.EventID).ToList();
 
                 if (KJMarkets.Count() > 0)
                 {
@@ -14695,64 +14695,67 @@ namespace globaltraders
         }
 
 
-        //class LitzscoreStorageHandler : ILitzscoreLocalStorage
-        //{
-        //    Dictionary<string, string> store { get; set; }
-        //    public LitzscoreStorageHandler()
-        //    {
-        //        store = new Dictionary<string, string>();
-        //    }
+        class LitzscoreStorageHandler : ILitzscoreLocalStorage
+        {
+            Dictionary<string, string> store { get; set; }
+            public LitzscoreStorageHandler()
+            {
+                store = new Dictionary<string, string>();
+            }
 
-        //    public string GetValue(string key)
-        //    {
-        //        return store[key];
-        //    }
+            public string GetValue(string key)
+            {
+                return store[key];
+            }
 
-        //    public void SetValue(string key, string value)
-        //    {
-        //        store.Add(key, value);
-        //    }
+            public void SetValue(string key, string value)
+            {
+                store.Add(key, value);
+            }
 
-        //    public bool HasValue(string key)
-        //    {
-        //        return store.ContainsKey(key);
-        //    }
+            public bool HasValue(string key)
+            {
+                return store.ContainsKey(key);
+            }
 
-        //    public string NewDeviceID()
-        //    {
-        //        string val = System.Guid.NewGuid().ToString("B").ToLower().Replace('{', '_').Replace('-', '_').Replace('}', '_');
-        //        return val.Replace("_", "");
-        //    }
-        //}
-        //void pushClientExample(LZApp app)
-        //{
-        //    app.initPushHandler();
+            public string NewDeviceID()
+            {
+                string val = System.Guid.NewGuid().ToString("B").ToLower().Replace('{', '_').Replace('-', '_').Replace('}', '_');
+                return val.Replace("_", "");
+            }
+        }
+        void pushClientExample(LZApp app)
 
-        //    app.pushHandler.onMatchUpdate = delegate (String card)
-        //    {
-        //        dynamic cardObject = JsonConvert.DeserializeObject(card);
-        //        cardObject = cardObject.args[0];
-        //        try
-        //        {
-        //            match = cardObject;
+        {
+            app.initPushHandler();
 
-
-        //        }
-        //        catch (System.Exception ex)
-        //        {
-
-        //        }
+            app.pushHandler.onMatchUpdate = delegate (String card)
+            {
+                dynamic cardObject = JsonConvert.DeserializeObject(card);
+                cardObject = cardObject.args[0];
+                try
+                {
+                    match = cardObject;
 
 
+                }
+#pragma warning disable CS0168 // The variable 'ex' is declared but never used
+                catch (System.Exception ex)
+#pragma warning restore CS0168 // The variable 'ex' is declared but never used
+                {
 
-        //    };
+                }
 
 
-        //    app.pushHandler.listenMatch(matchCricketAPIKey);
-        //    //double d = Convert.ToDouble(app.token.expires);
-        //    //DateTime expiresat =DateTime.FromOADate(d);
 
-        //}
+            };
+
+
+            app.pushHandler.listenMatch(matchCricketAPIKey);
+            //double d = Convert.ToDouble(app.token.expires);
+            //DateTime expiresat =DateTime.FromOADate(d);
+
+        }
 
 
         // List<Sp_GetKalijut_Result> KJ = new List<Sp_GetKalijut_Result>();

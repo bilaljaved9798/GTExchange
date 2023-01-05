@@ -299,11 +299,11 @@ namespace bfnexchange.Controllers
         {
             try
             {
-                RootSCT root = new RootSCT();
-                rootsct = objBettingClient.GetUpdateSCT("1").ToList();
-                root = rootsct.Where(item => item.EventId == Convert.ToInt32(EventID)).FirstOrDefault();
-                string jsonString;
-                jsonString = JsonConvert.SerializeObject(root);
+              
+                string jsonString = objBettingClient.GetSoccorUpdate(EventID);
+                //root = rootsct.Where(item => item.EventId == Convert.ToInt32(EventID)).FirstOrDefault();
+                //string jsonString;
+                //jsonString = JsonConvert.SerializeObject(root);
                
                 try
                 {

@@ -377,6 +377,10 @@ namespace globaltraders
                         objCuttingUser3.ID = 4;
                         objCuttingUser3.username = "Cutting User";
                         lstCuttingUsers.Add(objCuttingUser3);
+                        CuttingUsers objCuttingUser5 = new CuttingUsers();
+                        objCuttingUser5.ID = 9;
+                        objCuttingUser5.username = "Sami Admin";
+                        lstCuttingUsers.Add(objCuttingUser5);
                         cmbUserType.ItemsSource = lstCuttingUsers;
                         cmbUserType.DisplayMemberPath = "username";
                         cmbUserType.SelectedValuePath = "ID";
@@ -2097,6 +2101,37 @@ namespace globaltraders
                                 objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
                                 //  objUsersServiceCleint.UpdateStartBalancebyUserID(Convert.ToInt32(useridHawala), Convert.ToDecimal(txtAccountBalance.Text));
                             }
+                                else
+                                {
+                                    if (Convert.ToInt32(cmbUserType.SelectedValue) == 9)
+                                    {
+                                        try
+                                        {
+                                            List<AllUserMarkets> lstUserMarket = JsonConvert.DeserializeObject<List<AllUserMarkets>>(objUsersServiceCleint.GetAllUserMarketbyUserID(73));
+                                            if (lstUserMarket.Count > 0)
+                                            {
+                                                List<string> allusersmarket = new List<string>();
+                                                foreach (var usermarket in lstUserMarket)
+                                                {
+                                                    //  var datearr = usermarket.EventOpenDate.ToString().Split(' ');
+                                                    //  var datearr2 = datearr[0].Split('/');
+                                                    //  var orignalopendate = datearr2[1] + "/" + datearr2[0] + "/" + datearr2[2] + " " + datearr[1];
+                                                    var orignalopendate = Convert.ToDateTime(usermarket.EventOpenDate).ToString("s");
+                                                    var objusermarket = usermarket.EventTypeID.ToString() + "#" + usermarket.EventTypeName.ToString() + "#" + usermarket.CompetitionID.ToString() + "#" + usermarket.CompetitionName.ToString() + "#" + usermarket.EventID.ToString() + "#" + usermarket.EventName.ToString() + "#" + usermarket.MarketCatalogueID.ToString() + "#" + usermarket.MarketCatalogueName + "#NotInsert#" + orignalopendate + "#" + usermarket.AssociateEventID + "#" + usermarket.GetMatchUpdatesFrom + "#" + usermarket.TotalOvers + "#" + usermarket.CountryCode;
+                                                    allusersmarket.Add(objusermarket);
+                                                }
+                                                objUsersServiceCleint.InsertUserMarket(allusersmarket.ToArray(), Convert.ToInt32(userid), CreatedbyID, false);
+                                            }
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                        }
+                                        string useridHawala = objUsersServiceCleint.AddUser("Hawala", txtPhone.Text, txtEmail.Text, Crypto.Encrypt("Hawala" + txtUsername.Text.ToLower()), Crypto.Encrypt(txtPasswordAdd.Text), txtLocation.Text, Convert.ToDecimal(txtAccountBalance.Text), Convert.ToInt32(7), CreatedbyID, Crypto.Encrypt(txtAgentrate.Text), 2000, 25000, true, 2000, 25000, 2000, 25000, 2000, 25000, 2000, 500000, 2000, 500000, 2000, 500000, 2000, 25000, 2000, 25000, 500000, 2000, 500000, 2000, LoggedinUserDetail.PasswordForValidate, 5000, 1000);
+                                        objUsersServiceCleint.UpdateHawalaIDbyUserID(Convert.ToInt32(useridHawala), Convert.ToInt32(userid));
+                                        //  objUsersServiceCleint.UpdateStartBalancebyUserID(Convert.ToInt32(useridHawala), Convert.ToDecimal(txtAccountBalance.Text));
+                                    }
+                                }
+
                         }
 
                         objAccountsService.AddtoUsersAccounts("Amount removed from your account (User created " + txtUsername.Text.ToString() + ")", "0.00", txtAccountBalance.Text.ToString(), CreatedbyID, "", DateTime.Now, "", "","", "", Newaccountbalance, false, "", "", "", "", "");
@@ -3555,134 +3590,103 @@ namespace globaltraders
 
                 List<string> allusersmarket = new List<string>();
                 //  List<int> cardValue = lstUSers.ToString().Select().to;
-
+                string[] selectname1 = cmbEvents.Text.Split('v');
+                string[] selectname2 = selectname1[1].Split(' ');
                 string EventID = cmbEvents.SelectedValue.ToString();
                 List<SP_UserMarket_GetUserMarketbyEventID1_Result> lstkalijuttmarket = new List<SP_UserMarket_GetUserMarketbyEventID1_Result>();
                 lstkalijuttmarket = JsonConvert.DeserializeObject<List<SP_UserMarket_GetUserMarketbyEventID1_Result>>(objUsersServiceCleint.GetMarketbyEventID1(cmbEvents.SelectedValue.ToString()));
 
                 List<string> Figure = new List<string>();
 
-                // Add items using Add method      
+                // Add items using Add method
+                // t20
                 if (cmbkalijut.SelectedIndex == 0)
                 {
-                    Figure.Add("1st Innings 5 Over Figure");
-                    Figure.Add("1st Innings 10 Over Figure");
-                    Figure.Add("1st Innings 15 Over Figure");
-                    Figure.Add("1st Innings 20 Over Figure");
-                    Figure.Add("2st Innings 5 Over Figure");
-                    Figure.Add("2st Innings 10 Over Figure");
+                    Figure.Add(selectname1[0]+" 5 Over Figure");
+                    Figure.Add(selectname1[0]+" 10 Over Figure");
+                    Figure.Add(selectname1[0]+" 15 Over Figure");
+                    Figure.Add(selectname1[0]+" 20 Over Figure");
+                    Figure.Add(selectname2[1]+" 5 Over Figure");
+                    Figure.Add(selectname2[1]+" 10 Over Figure");
+                    Figure.Add(selectname2[1]+" 15 Over Figure");
+                    Figure.Add(selectname2[1]+" 20 Over Figure");
                 }
-
+                //t50
                 if (cmbkalijut.SelectedIndex == 1)
                 {
-                    Figure.Add("1st Innings 5 Over Figure");
-                    Figure.Add("1st Innings 10 Over Figure");
-                    Figure.Add("1st Innings 15 Over Figure");
-                    Figure.Add("1st Innings 20 Over Figure");
-                    Figure.Add("1st Innings 25 Over Figure");
-                    Figure.Add("1st Innings 30 Over Figure");
-                    Figure.Add("1st Innings 35 Over Figure");
-                    Figure.Add("1st Innings 40 Over Figure");
-                    Figure.Add("1st Innings 45 Over Figure");
-                    Figure.Add("1st Innings 50 Over Figure");
-                    Figure.Add("2st Innings 5 Over Figure");
-                    Figure.Add("2st Innings 10 Over Figure");
-                    Figure.Add("2st Innings 15 Over Figure");
-                    Figure.Add("2st Innings 20 Over Figure");
-                    Figure.Add("2st Innings 25 Over Figure");
-                    Figure.Add("2st Innings 30 Over Figure");
-                    Figure.Add("2st Innings 35 Over Figure");
-                    Figure.Add("2st Innings 40 Over Figure");
+                    Figure.Add(selectname1[0]+" 5 Over Figure");
+                    Figure.Add(selectname1[0]+" 10 Over Figure");
+                    Figure.Add(selectname1[0]+" 15 Over Figure");
+                    Figure.Add(selectname1[0]+" 20 Over Figure");
+                    Figure.Add(selectname1[0]+" 25 Over Figure");
+                    Figure.Add(selectname1[0]+" 30 Over Figure");
+                    Figure.Add(selectname1[0]+" 35 Over Figure");
+                    Figure.Add(selectname1[0]+" 40 Over Figure");
+                    Figure.Add(selectname2[1]+" 5 Over Figure");
+                    Figure.Add(selectname2[1]+" 10 Over Figure");
+                    Figure.Add(selectname2[1]+" 15 Over Figure");
+                    Figure.Add(selectname2[1]+" 20 Over Figure");
+                    Figure.Add(selectname2[1]+" 25 Over Figure");
+                    Figure.Add(selectname2[1]+" 30 Over Figure");
+                    Figure.Add(selectname2[1]+" 35 Over Figure");
+                    Figure.Add(selectname2[1]+" 40 Over Figure");
                 }
 
+                //oneday
                 if (cmbkalijut.SelectedIndex == 2)
                 {
-                    Figure.Add("1st Innings Team A 10 Over Figure");
-                    Figure.Add("1st Innings Team A 15 Over Figure");
-                    Figure.Add("1st Innings Team A 20 Over Figure");
-                    Figure.Add("1st Innings Team A 25 Over Figure");
-                    Figure.Add("1st Innings Team A 30 Over Figure");
-                    Figure.Add("1st Innings Team A 35 Over Figure");
-                    Figure.Add("1st Innings Team A 40 Over Figure");
-                    Figure.Add("1st Innings Team A 45 Over Figure");
-                    Figure.Add("1st Innings Team A 50 Over Figure");
-                    Figure.Add("1st Innings Team A 55 Over Figure");
-                    Figure.Add("1st Innings Team A 60 Over Figure");
-                    Figure.Add("1st Innings Team A 70 Over Figure");
-                    Figure.Add("1st Innings Team A 75 Over Figure");
-                    Figure.Add("1st Innings Team A 80 Over Figure");
-                    Figure.Add("1st Innings Team A 85 Over Figure");
-                    Figure.Add("1st Innings Team A 90 Over Figure");
-                    Figure.Add("1st Innings Team A 95 Over Figure");
-                    Figure.Add("1st Innings Team A 100 Over Figure");
-                    Figure.Add("1st Innings Team B 10 Over Figure");
-                    Figure.Add("1st Innings Team B 15 Over Figure");
-                    Figure.Add("1st Innings Team B 20 Over Figure");
-                    Figure.Add("1st Innings Team B 25 Over Figure");
-                    Figure.Add("1st Innings Team B 30 Over Figure");
-                    Figure.Add("1st Innings Team B 35 Over Figure");
-                    Figure.Add("1st Innings Team B 40 Over Figure");
-                    Figure.Add("1st Innings Team B 45 Over Figure");
-                    Figure.Add("1st Innings Team B 50 Over Figure");
-                    Figure.Add("1st Innings Team B 55 Over Figure");
-                    Figure.Add("1st Innings Team B 60 Over Figure");
-                    Figure.Add("1st Innings Team B 65 Over Figure");
-                    Figure.Add("1st Innings Team B 70 Over Figure");
-                    Figure.Add("1st Innings Team B 75 Over Figure");
-                    Figure.Add("1st Innings Team B 80 Over Figure");
-                    Figure.Add("1st Innings Team B 85 Over Figure");
-                    Figure.Add("1st Innings Team B 90 Over Figure");
-                    Figure.Add("1st Innings Team B 95 Over Figure");
-                    Figure.Add("1st Innings Team B 100 Over Figure");
-                    Figure.Add("2st Innings Team A 10 Over Figure");
-                    Figure.Add("2st Innings Team A 15 Over Figure");
-                    Figure.Add("2st Innings Team A 20 Over Figure");
-                    Figure.Add("2st Innings Team A 25 Over Figure");
-                    Figure.Add("2st Innings Team A 30 Over Figure");
-                    Figure.Add("2st Innings Team A 35 Over Figure");
-                    Figure.Add("2st Innings Team A 40 Over Figure");
-                    Figure.Add("2st Innings Team A 45 Over Figure");
-                    Figure.Add("2st Innings Team A 50 Over Figure");
-                    Figure.Add("2st Innings Team A 55 Over Figure");
-                    Figure.Add("2st Innings Team A 60 Over Figure");
-                    Figure.Add("2st Innings Team A 65 Over Figure");
-                    Figure.Add("2st Innings Team A 70 Over Figure");
-                    Figure.Add("2st Innings Team A 75 Over Figure");
-                    Figure.Add("2st Innings Team A 80 Over Figure");
-                    Figure.Add("2st Innings Team A 85 Over Figure");
-                    Figure.Add("2st Innings Team A 90 Over Figure");
-                    Figure.Add("2st Innings Team A 95 Over Figure");
-                    Figure.Add("2st Innings Team A 100 Over Figure");
-                    Figure.Add("2st Innings Team B 10 Over Figure");
-                    Figure.Add("2st Innings Team B 15 Over Figure");
-                    Figure.Add("2st Innings Team B 20 Over Figure");
-                    Figure.Add("2st Innings Team B 25 Over Figure");
-                    Figure.Add("2st Innings Team B 30 Over Figure");
-                    Figure.Add("2st Innings Team B 35 Over Figure");
-                    Figure.Add("2st Innings Team B 40 Over Figure");
-                    Figure.Add("2st Innings Team B 45 Over Figure");
-                    Figure.Add("2st Innings Team B 50 Over Figure");
-                    Figure.Add("2st Innings Team B 55 Over Figure");
-                    Figure.Add("2st Innings Team B 60 Over Figure");
-                    Figure.Add("2st Innings Team B 65 Over Figure");
-                    Figure.Add("2st Innings Team B 70 Over Figure");
-                    Figure.Add("2st Innings Team B 75 Over Figure");
-                    Figure.Add("2st Innings Team B 80 Over Figure");
-                    Figure.Add("2st Innings Team B 85 Over Figure");
-                    Figure.Add("2st Innings Team B 90 Over Figure");
-                    Figure.Add("2st Innings Team B 95 Over Figure");
-                    Figure.Add("2st Innings Team B 100 Over Figure");
-                }
+                    Figure.Add(selectname1[0]+" 10 Over Figure");
+                    Figure.Add(selectname1[0] + " 15 Over Figure");
+                    Figure.Add(selectname1[0] + " 20 Over Figure");
+                    Figure.Add(selectname1[0] + " 25 Over Figure");
+                    Figure.Add(selectname1[0] + " 30 Over Figure");
+                    Figure.Add(selectname1[0] + " 35 Over Figure");
+                    Figure.Add(selectname1[0] + " 40 Over Figure");
+                    Figure.Add(selectname1[0] + " 45 Over Figure");
+                    Figure.Add(selectname1[0] + " 50 Over Figure");
+                    Figure.Add(selectname1[0] + " 55 Over Figure");
+                    Figure.Add(selectname1[0] + " 60 Over Figure");
+                    Figure.Add(selectname1[0] + " 65 Over Figure");
+                    Figure.Add(selectname1[0] + " 70 Over Figure");
+                    Figure.Add(selectname1[0] + " 75 Over Figure");
+                    Figure.Add(selectname1[0] + " 80 Over Figure");
+                    Figure.Add(selectname1[0] + " 85 Over Figure");
+                    Figure.Add(selectname1[0] + " 90 Over Figure");
+                    Figure.Add(selectname1[0] + " 95 Over Figure");
+                    Figure.Add(selectname1[0] + " 100 Over Figure");
+                    Figure.Add(selectname2[1] + " 10 Over Figure");
+                    Figure.Add(selectname2[1] + " 15 Over Figure");
+                    Figure.Add(selectname2[1] + " 20 Over Figure");
+                    Figure.Add(selectname2[1] + " 25 Over Figure");
+                    Figure.Add(selectname2[1] + " 30 Over Figure");
+                    Figure.Add(selectname2[1] + " 35 Over Figure");
+                    Figure.Add(selectname2[1] + " 40 Over Figure");
+                    Figure.Add(selectname2[1] + " 45 Over Figure");
+                    Figure.Add(selectname2[1] + " 50 Over Figure");
+                    Figure.Add(selectname2[1] + " 55 Over Figure");
+                    Figure.Add(selectname2[1] + " 60 Over Figure");
+                    Figure.Add(selectname2[1] + " 65 Over Figure");
+                    Figure.Add(selectname2[1] + " 70 Over Figure");
+                    Figure.Add(selectname2[1] + " 75 Over Figure");
+                    Figure.Add(selectname2[1] + " 80 Over Figure");
+                    Figure.Add(selectname2[1] + " 85 Over Figure");
+                    Figure.Add(selectname2[1] + " 90 Over Figure");
+                    Figure.Add(selectname2[1] + " 95 Over Figure");
+                    Figure.Add(selectname2[1] + " 100 Over Figure");
 
+                }
+                //t10
                 if (cmbkalijut.SelectedIndex == 3)
                 {
-                    Figure.Add("1st Innings 50 Ball Figure");
-                    Figure.Add("1st Innings 100 Ball Figure");
-                    Figure.Add("2st Innings 50 Ball Figure");
-                   
+                    Figure.Add(selectname1[0] + " 95 Over Figure");
+                    Figure.Add(selectname1[0] + " 95 Over Figure");
+                    Figure.Add(selectname2[1] + " 50 Over Figure");
+                    Figure.Add(selectname2[1] + " 100 Over Figure");
+
                 }
                 List<string> FigureCatelogIDs = new List<string>();
-                if (Figure.Count == 6)
+                //t20
+                if (cmbkalijut.SelectedIndex == 0)
                 {
                     FigureCatelogIDs.Add("3." + (EventID + 05));
                     FigureCatelogIDs.Add("3." + (EventID + 15));
@@ -3690,16 +3694,21 @@ namespace globaltraders
                     FigureCatelogIDs.Add("3." + (EventID + 35));
                     FigureCatelogIDs.Add("3." + (EventID + 45));
                     FigureCatelogIDs.Add("3." + (EventID + 55));
+                    FigureCatelogIDs.Add("3." + (EventID + 65));
+                    FigureCatelogIDs.Add("3." + (EventID + 75));
 
                 }
-                if (Figure.Count == 3)
+                //t10
+                if (cmbkalijut.SelectedIndex == 3)
                 {
                     FigureCatelogIDs.Add("3." + (EventID + 05));
                     FigureCatelogIDs.Add("3." + (EventID + 15));
-                    FigureCatelogIDs.Add("3." + (EventID + 25));                   
-                }
+                    FigureCatelogIDs.Add("3." + (EventID + 25));
+                    FigureCatelogIDs.Add("3." + (EventID + 35));
 
-                if (Figure.Count == 18)
+                }
+                //t50
+                if (cmbkalijut.SelectedIndex == 1)
                 {
                     FigureCatelogIDs.Add("3." + (EventID + 05));
                     FigureCatelogIDs.Add("3." + (EventID + 15));
@@ -3717,9 +3726,15 @@ namespace globaltraders
                     FigureCatelogIDs.Add("3." + (EventID + 135));
                     FigureCatelogIDs.Add("3." + (EventID + 145));
                     FigureCatelogIDs.Add("3." + (EventID + 155));
+                    FigureCatelogIDs.Add("3." + (EventID + 165));
+                    FigureCatelogIDs.Add("3." + (EventID + 175));
+                    FigureCatelogIDs.Add("3." + (EventID + 185));
+                    FigureCatelogIDs.Add("3." + (EventID + 195));
+                    FigureCatelogIDs.Add("3." + (EventID + 205));
 
                 }
-                if (Figure.Count == 75)
+                //one day
+                if (cmbkalijut.SelectedIndex == 2)
                 {
                     FigureCatelogIDs.Add("3." + (EventID + 05));
                     FigureCatelogIDs.Add("3." + (EventID + 15));
@@ -3762,40 +3777,7 @@ namespace globaltraders
                     FigureCatelogIDs.Add("3." + (EventID + 385));
                     FigureCatelogIDs.Add("3." + (EventID + 395));
                     FigureCatelogIDs.Add("3." + (EventID + 405));
-                    FigureCatelogIDs.Add("3." + (EventID + 415));
-                    FigureCatelogIDs.Add("3." + (EventID + 425));
-                    FigureCatelogIDs.Add("3." + (EventID + 435));
-                    FigureCatelogIDs.Add("3." + (EventID + 445));
-                    FigureCatelogIDs.Add("3." + (EventID + 455));
-                    FigureCatelogIDs.Add("3." + (EventID + 465));
-                    FigureCatelogIDs.Add("3." + (EventID + 475));
-                    FigureCatelogIDs.Add("3." + (EventID + 485));
-                    FigureCatelogIDs.Add("3." + (EventID + 495));
-                    FigureCatelogIDs.Add("3." + (EventID + 505));
-                    FigureCatelogIDs.Add("3." + (EventID + 515));
-                    FigureCatelogIDs.Add("3." + (EventID + 525));
-                    FigureCatelogIDs.Add("3." + (EventID + 535));
-                    FigureCatelogIDs.Add("3." + (EventID + 545));
-                    FigureCatelogIDs.Add("3." + (EventID + 555));
-                    FigureCatelogIDs.Add("3." + (EventID + 565));
-                    FigureCatelogIDs.Add("3." + (EventID + 575));
-                    FigureCatelogIDs.Add("3." + (EventID + 585));
-                    FigureCatelogIDs.Add("3." + (EventID + 595));
-                    FigureCatelogIDs.Add("3." + (EventID + 605));
-                    FigureCatelogIDs.Add("3." + (EventID + 615));
-                    FigureCatelogIDs.Add("3." + (EventID + 625));
-                    FigureCatelogIDs.Add("3." + (EventID + 635));
-                    FigureCatelogIDs.Add("3." + (EventID + 645));
-                    FigureCatelogIDs.Add("3." + (EventID + 655));
-                    FigureCatelogIDs.Add("3." + (EventID + 665));
-                    FigureCatelogIDs.Add("3." + (EventID + 675));
-                    FigureCatelogIDs.Add("3." + (EventID + 685));
-                    FigureCatelogIDs.Add("3." + (EventID + 695));
-                    FigureCatelogIDs.Add("3." + (EventID + 705));
-                    FigureCatelogIDs.Add("3." + (EventID + 715));
-                    FigureCatelogIDs.Add("3." + (EventID + 725));
-                    FigureCatelogIDs.Add("3." + (EventID + 735));
-                    FigureCatelogIDs.Add("3." + (EventID + 745));
+                   
                 }
 
 
@@ -3904,139 +3886,108 @@ namespace globaltraders
 
                 List<string> allusersmarket = new List<string>();
                 //  List<int> cardValue = lstUSers.ToString().Select().to;
-
+          
+                string[] selectname1 = cmbEvents.Text.Split('v');
+                string[] selectname2 = selectname1[1].Split(' ');
+                //string slipt = marketname.Split('v').ToString();
                 string EventID = cmbEvents.SelectedValue.ToString();
                 List<SP_UserMarket_GetUserMarketbyEventID1_Result> lstkalijuttmarket = new List<SP_UserMarket_GetUserMarketbyEventID1_Result>();
                 lstkalijuttmarket = JsonConvert.DeserializeObject<List<SP_UserMarket_GetUserMarketbyEventID1_Result>>(objUsersServiceCleint.GetMarketbyEventID1(cmbEvents.SelectedValue.ToString()));
 
                 List<string> kalijutt = new List<string>();
-                // Add items using Add method      
+                // Add items using Add method
+                // 20
                 if (cmbkalijut.SelectedIndex == 0)
                 {
-                    kalijutt.Add("1st Innings 5 Over Kali");
-                    kalijutt.Add("1st Innings 10 Over Kali");
-                    kalijutt.Add("1st Innings 15 Over Kali");
-                    kalijutt.Add("1st Innings 20 Over Kali");
-                    kalijutt.Add("2st Innings 5 Over Kali");
-                    kalijutt.Add("2st Innings 10 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 5 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 5 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
                 }
-
+                //50
                 if (cmbkalijut.SelectedIndex == 1)
                 {
-                    kalijutt.Add("1st Innings 5 Over Kali");
-                    kalijutt.Add("1st Innings 10 Over Kali");
-                    kalijutt.Add("1st Innings 15 Over Kali");
-                    kalijutt.Add("1st Innings 20 Over Kali");
-                    kalijutt.Add("1st Innings 25 Over Kali");
-                    kalijutt.Add("1st Innings 30 Over Kali");
-                    kalijutt.Add("1st Innings 35 Over Kali");
-                    kalijutt.Add("1st Innings 40 Over Kali");
-                    kalijutt.Add("1st Innings 45 Over Kali");
-                    kalijutt.Add("1st Innings 50 Over Kali");
-                    kalijutt.Add("2st Innings 5 Over Kali");
-                    kalijutt.Add("2st Innings 10 Over Kali");
-                    kalijutt.Add("2st Innings 15 Over Kali");
-                    kalijutt.Add("2st Innings 20Over Kali");
-                    kalijutt.Add("2st Innings 25 Over Kali");
-                    kalijutt.Add("2st Innings 30Over Kali");
-                    kalijutt.Add("2st Innings 35 Over Kali");
-                    kalijutt.Add("2st Innings 40Over Kali");
-                }
+                    kalijutt.Add(selectname1[0]+" 5 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 25 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 30 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 35 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 40 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 45 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 50 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 5 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 25 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 30 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 35 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 40 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 45 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 50 Over Kali");
 
+                }
+                //test
                 if (cmbkalijut.SelectedIndex == 2)
                 {
-                    kalijutt.Add("1st Innings Team A 10 Over Kali");
-                    kalijutt.Add("1st Innings Team A 15 Over Kali");
-                    kalijutt.Add("1st Innings Team A 20 Over Kali");
-                    kalijutt.Add("1st Innings Team A 25 Over Kali");
-                    kalijutt.Add("1st Innings Team A 30 Over Kali");
-                    kalijutt.Add("1st Innings Team A 35 Over Kali");
-                    kalijutt.Add("1st Innings Team A 40 Over Kali");
-                    kalijutt.Add("1st Innings Team A 45 Over Kali");
-                    kalijutt.Add("1st Innings Team A 50 Over Kali");
-                    kalijutt.Add("1st Innings Team A 55 Over Kali");
-                    kalijutt.Add("1st Innings Team A 60 Over Kali");
-                    kalijutt.Add("1st Innings Team A 70 Over Kali");
-                    kalijutt.Add("1st Innings Team A 75 Over Kali");
-                    kalijutt.Add("1st Innings Team A 80 Over Kali");
-                    kalijutt.Add("1st Innings Team A 85 Over Kali");
-                    kalijutt.Add("1st Innings Team A 90 Over Kali");
-                    kalijutt.Add("1st Innings Team A 95 Over Kali");
-                    kalijutt.Add("1st Innings Team A 100 Over Kali");
-                    kalijutt.Add("1st Innings Team B 10 Over Kali");
-                    kalijutt.Add("1st Innings Team B 15 Over Kali");
-                    kalijutt.Add("1st Innings Team B 20 Over Kali");
-                    kalijutt.Add("1st Innings Team B 25 Over Kali");
-                    kalijutt.Add("1st Innings Team B 30 Over Kali");
-                    kalijutt.Add("1st Innings Team B 35 Over Kalie");
-                    kalijutt.Add("1st Innings Team B 40 Over Kali");
-                    kalijutt.Add("1st Innings Team B 45 Over Kali");
-                    kalijutt.Add("1st Innings Team B 50 Over Kali");
-                    kalijutt.Add("1st Innings Team B 55 Over Kali");
-                    kalijutt.Add("1st Innings Team B 60 Over Kali");
-                    kalijutt.Add("1st Innings Team B 65 Over Kali");
-                    kalijutt.Add("1st Innings Team B 70 Over Kali");
-                    kalijutt.Add("1st Innings Team B 75 Over Kali");
-                    kalijutt.Add("1st Innings Team B 80 Over Kali");
-                    kalijutt.Add("1st Innings Team B 85 Over Kali");
-                    kalijutt.Add("1st Innings Team B 90 Over Kali");
-                    kalijutt.Add("1st Innings Team B 95 Over Kali");
-                    kalijutt.Add("1st Innings Team B 100 Over Kali");
-                    kalijutt.Add("2st Innings Team A 10 Over Kali");
-                    kalijutt.Add("2st Innings Team A 15 Over Kali");
-                    kalijutt.Add("2st Innings Team A 20 Over Kali");
-                    kalijutt.Add("2st Innings Team A 25 Over Kali");
-                    kalijutt.Add("2st Innings Team A 30 Over Kali");
-                    kalijutt.Add("2st Innings Team A 35 Over Kali");
-                    kalijutt.Add("2st Innings Team A 40 Over Kali");
-                    kalijutt.Add("2st Innings Team A 45 Over Kali");
-                    kalijutt.Add("2st Innings Team A 50 Over Kali");
-                    kalijutt.Add("2st Innings Team A 55 Over Kali");
-                    kalijutt.Add("2st Innings Team A 60 Over Kalie");
-                    kalijutt.Add("2st Innings Team A 65 Over Kali");
-                    kalijutt.Add("2st Innings Team A 70 Over Kali");
-                    kalijutt.Add("2st Innings Team A 75 Over Kali");
-                    kalijutt.Add("2st Innings Team A 80 Over Kali");
-                    kalijutt.Add("2st Innings Team A 85 Over Kali");
-                    kalijutt.Add("2st Innings Team A 90 Over Kali");
-                    kalijutt.Add("2st Innings Team A 95 Over Kali");
-                    kalijutt.Add("2st Innings Team A 100 Over Kali");
-                    kalijutt.Add("2st Innings Team B 10 Over Kali");
-                    kalijutt.Add("2st Innings Team B 15 Over Kali");
-                    kalijutt.Add("2st Innings Team B 20 Over Kali");
-                    kalijutt.Add("2st Innings Team B 25 Over Kali");
-                    kalijutt.Add("2st Innings Team B 30 Over Kali");
-                    kalijutt.Add("2st Innings Team B 35 Over Kali");
-                    kalijutt.Add("2st Innings Team B 40 Over Kali");
-                    kalijutt.Add("2st Innings Team B 45 Over Kali");
-                    kalijutt.Add("2st Innings Team B 50 Over Kali");
-                    kalijutt.Add("2st Innings Team B 55 Over Kali");
-                    kalijutt.Add("2st Innings Team B 60 Over Kali");
-                    kalijutt.Add("2st Innings Team B 65 Over Kali");
-                    kalijutt.Add("2st Innings Team B 70 Over Kali");
-                    kalijutt.Add("2st Innings Team B 75 Over Kali");
-                    kalijutt.Add("2st Innings Team B 80 Over Kali");
-                    kalijutt.Add("2st Innings Team B 85 Over Kali");
-                    kalijutt.Add("2st Innings Team B 90 Over Kali");
-                    kalijutt.Add("2st Innings Team B 95 Over Kali");
-                    kalijutt.Add("2st Innings Team B 100 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 25 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 30 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 35 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 40 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 45 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 50 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 55 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 60 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 70 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 75 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 80 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 85 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 90 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 95 Over Kali");
+                    kalijutt.Add(selectname1[0]+" 100 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 25 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 30 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 35 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 40 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 45 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 50 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 55 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 60 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 65 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 70 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 75 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 80 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 85 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 90 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 95 Over Kali");
+                    kalijutt.Add(selectname2[1]+" 100 Over Kali");
+                   
                 }
+                //t10
                 if (cmbkalijut.SelectedIndex == 3)
                 {
-                    kalijutt.Add("1st Innings 50 Ball Kali");
-                    kalijutt.Add("1st Innings 100 Ball Kali");                   
-                    kalijutt.Add("2st Innings 50 Ball Kali");                   
+                    kalijutt.Add(selectname1[0]+" 50 Ball Kali");
+                    kalijutt.Add(selectname1[0]+" 100 Ball Kali");                   
+                    kalijutt.Add(selectname2[1]+" 50 Ball Kali");
+                    kalijutt.Add(selectname2[1]+" 100 Ball Kali");
                 }
 
                 List<string> KaliCatelogIDs = new List<string>();
 
-                if (kalijutt.Count == 3)
-                {
-                    KaliCatelogIDs.Add("3." + (EventID + 10));
-                    KaliCatelogIDs.Add("3." + (EventID + 20));
-                    KaliCatelogIDs.Add("3." + (EventID + 30));                   
-                }
-                if (kalijutt.Count == 6)
+               //t20
+                if (cmbkalijut.SelectedIndex == 0)
                 {
                     KaliCatelogIDs.Add("3." + (EventID + 10));
                     KaliCatelogIDs.Add("3." + (EventID + 20));
@@ -4044,8 +3995,11 @@ namespace globaltraders
                     KaliCatelogIDs.Add("3." + (EventID + 40));
                     KaliCatelogIDs.Add("3." + (EventID + 50));
                     KaliCatelogIDs.Add("3." + (EventID + 60));
+                    KaliCatelogIDs.Add("3." + (EventID + 70));
+                    KaliCatelogIDs.Add("3." + (EventID + 80));                   
                 }
-                if (kalijutt.Count == 18)
+                //t50
+                if (cmbkalijut.SelectedIndex == 1)
                 {
                     KaliCatelogIDs.Add("3." + (EventID + 10));
                     KaliCatelogIDs.Add("3." + (EventID + 20));
@@ -4063,8 +4017,13 @@ namespace globaltraders
                     KaliCatelogIDs.Add("3." + (EventID + 140));
                     KaliCatelogIDs.Add("3." + (EventID + 150));
                     KaliCatelogIDs.Add("3." + (EventID + 160));
+                    KaliCatelogIDs.Add("3." + (EventID + 170));
+                    KaliCatelogIDs.Add("3." + (EventID + 180));
+                    KaliCatelogIDs.Add("3." + (EventID + 190));
+                    KaliCatelogIDs.Add("3." + (EventID + 200));
                 }
-                if (kalijutt.Count == 75)
+                //test
+                if (cmbkalijut.SelectedIndex == 2)
                 {
                     KaliCatelogIDs.Add("3." + (EventID + 10));
                     KaliCatelogIDs.Add("3." + (EventID + 20));
@@ -4106,41 +4065,14 @@ namespace globaltraders
                     KaliCatelogIDs.Add("3." + (EventID + 380));
                     KaliCatelogIDs.Add("3." + (EventID + 390));
                     KaliCatelogIDs.Add("3." + (EventID + 400));
-                    KaliCatelogIDs.Add("3." + (EventID + 410));
-                    KaliCatelogIDs.Add("3." + (EventID + 420));
-                    KaliCatelogIDs.Add("3." + (EventID + 330));
-                    KaliCatelogIDs.Add("3." + (EventID + 440));
-                    KaliCatelogIDs.Add("3." + (EventID + 450));
-                    KaliCatelogIDs.Add("3." + (EventID + 460));
-                    KaliCatelogIDs.Add("3." + (EventID + 470));
-                    KaliCatelogIDs.Add("3." + (EventID + 480));
-                    KaliCatelogIDs.Add("3." + (EventID + 490));
-                    KaliCatelogIDs.Add("3." + (EventID + 500));
-                    KaliCatelogIDs.Add("3." + (EventID + 510));
-                    KaliCatelogIDs.Add("3." + (EventID + 520));
-                    KaliCatelogIDs.Add("3." + (EventID + 530));
-                    KaliCatelogIDs.Add("3." + (EventID + 540));
-                    KaliCatelogIDs.Add("3." + (EventID + 550));
-                    KaliCatelogIDs.Add("3." + (EventID + 560));
-                    KaliCatelogIDs.Add("3." + (EventID + 570));
-                    KaliCatelogIDs.Add("3." + (EventID + 580));
-                    KaliCatelogIDs.Add("3." + (EventID + 590));
-                    KaliCatelogIDs.Add("3." + (EventID + 600));
-                    KaliCatelogIDs.Add("3." + (EventID + 610));
-                    KaliCatelogIDs.Add("3." + (EventID + 620));
-                    KaliCatelogIDs.Add("3." + (EventID + 630));
-                    KaliCatelogIDs.Add("3." + (EventID + 640));
-                    KaliCatelogIDs.Add("3." + (EventID + 650));
-                    KaliCatelogIDs.Add("3." + (EventID + 660));
-                    KaliCatelogIDs.Add("3." + (EventID + 670));
-                    KaliCatelogIDs.Add("3." + (EventID + 680));
-                    KaliCatelogIDs.Add("3." + (EventID + 690));
-                    KaliCatelogIDs.Add("3." + (EventID + 700));
-                    KaliCatelogIDs.Add("3." + (EventID + 710));
-                    KaliCatelogIDs.Add("3." + (EventID + 720));
-                    KaliCatelogIDs.Add("3." + (EventID + 730));
-                    KaliCatelogIDs.Add("3." + (EventID + 740));
-                    KaliCatelogIDs.Add("3." + (EventID + 750));
+                   
+                }
+                if (cmbkalijut.SelectedIndex == 3)
+                {
+                    KaliCatelogIDs.Add("3." + (EventID + 10));
+                    KaliCatelogIDs.Add("3." + (EventID + 20));
+                    KaliCatelogIDs.Add("3." + (EventID + 30));
+                    KaliCatelogIDs.Add("3." + (EventID + 40));
                 }
 
                 List<string> selections = new List<string>();

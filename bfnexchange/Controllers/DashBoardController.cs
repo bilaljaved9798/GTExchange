@@ -452,8 +452,20 @@ namespace bfnexchange.Controllers
           
             return PartialView("BalanceDetails", objAccessrightsbyUserType);
         }
+       
+        public PartialViewResult GetRules()
+        {
+            return PartialView("Rules");
+        }
 
-        public int GetBetPlaceInterval(string categoryname, string Marketbookname,string Runnerscount)
+        public PartialViewResult GetCompletedResult()
+        {
+            List<CompletedResult> lstResult = JsonConvert.DeserializeObject<List<CompletedResult>>(objUsersServiceCleint.GetCompletedResult()).ToList();
+            // var  lstResulta = lstResult.GroupBy(u => u.Winnername).Select(grp => grp.ToList()).ToList();
+            Session["CompletedResult"] = lstResult;
+            return PartialView("ResultDetails", lstResult);
+        }
+            public int GetBetPlaceInterval(string categoryname, string Marketbookname,string Runnerscount)
         {
             return LoggedinUserDetail.GetBetPlacewaitTimerandInterval(categoryname, Marketbookname,Runnerscount);
         }
@@ -1770,15 +1782,13 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2)
             {
-                 ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "#1D9BF0";
                 ViewBag.color = "white";
                    
                 LoggedinUserDetail.CheckifUserLogin();
 
                 UserBetsUpdateUnmatcedBets objUserbets = new UserBetsUpdateUnmatcedBets();
-                List<Models.UserBetsforAgent> lstUserBets = JsonConvert.DeserializeObject<List<Models.UserBetsforAgent>>(objUsersServiceCleint.GetUserBetsbyAgentID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
-                
-                
+                List<Models.UserBetsforAgent> lstUserBets = JsonConvert.DeserializeObject<List<Models.UserBetsforAgent>>(objUsersServiceCleint.GetUserBetsbyAgentID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));               
                 ExternalAPI.TO.MarketBookForindianFancy CurrentMarketProfitandloss = objUserbets.GetBookPositionIN(marektbookID, selectionID, new List<Models.UserBetsForAdmin>(), new List<Models.UserBetsforSuper>(), new List<Models.UserBetsforSamiadmin>(), lstUserBets, new List<Models.UserBets>());
                 if (CurrentMarketProfitandloss.RunnersForindianFancy != null)
                 {
