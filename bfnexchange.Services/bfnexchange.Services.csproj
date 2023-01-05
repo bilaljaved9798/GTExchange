@@ -576,7 +576,6 @@
     </Compile>
     <Compile Include="GetData.cs" />
     <Compile Include="GetDataFromOtherSource.cs" />
-    <Compile Include="GetDataFromOtherSourceBase.cs" />
     <Compile Include="MatchScoreCard.cs" />
     <Compile Include="MatchSummary.cs" />
     <Compile Include="OverSummary.cs" />
