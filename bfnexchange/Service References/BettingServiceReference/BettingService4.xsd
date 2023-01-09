@@ -641,19 +641,19 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AwayName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Broadcasts" nillable="true" type="tns:Broadcasts" />
-      <xs:element minOccurs="0" name="CompetitionId" type="xs:long" />
+      <xs:element minOccurs="0" name="CompetitionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="CompetitionName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EventId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="EventTypeId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="HomeName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InPlayBettingStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MarketId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MarketName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchInfo" nillable="true" type="tns:MatchInfo" />
-      <xs:element minOccurs="0" name="NumberOfRunners" type="xs:long" />
-      <xs:element minOccurs="0" name="Relevance" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRunners" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Relevance" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runners" nillable="true" type="tns:Runners" />
       <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="StartTime" type="q4:DateTimeOffset" />
       <xs:element minOccurs="0" name="State" nillable="true" type="tns:State" />
@@ -664,9 +664,9 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="BfLiveVideo" nillable="true" type="tns:MatchInfo" />
       <xs:element minOccurs="0" name="Channel" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsDataVisualizationAvailable" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsLiveVideoAvailable" type="xs:boolean" />
-      <xs:element minOccurs="0" name="IsPaddockViewAvailable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDataVisualizationAvailable" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLiveVideoAvailable" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPaddockViewAvailable" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Radio" nillable="true" type="tns:Radio" />
       <xs:element minOccurs="0" name="Tv" nillable="true" type="tns:ArrayOfTv" />
     </xs:sequence>
@@ -699,73 +699,73 @@
   <xs:complexType name="Runners">
     <xs:sequence>
       <xs:element minOccurs="0" name="DrawName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="DrawSelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="DrawSelectionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runner1Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Runner1SelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner1SelectionId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Runner2Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Runner2SelectionId" type="xs:long" />
+      <xs:element minOccurs="0" name="Runner2SelectionId" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Runners" nillable="true" type="tns:Runners" />
   <xs:complexType name="State">
     <xs:sequence>
       <xs:element minOccurs="0" name="ElapsedAddedTime" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="ElapsedRegularTime" type="xs:long" />
-      <xs:element minOccurs="0" name="EventId" type="xs:long" />
-      <xs:element minOccurs="0" name="EventTypeId" type="xs:long" />
+      <xs:element minOccurs="0" name="ElapsedRegularTime" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="EventId" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="EventTypeId" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
       <xs:element minOccurs="0" name="HasSets" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MatchStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Score" nillable="true" type="tns:Score" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TimeElapsed" type="xs:long" />
-      <xs:element minOccurs="0" name="TimeElapsedSeconds" type="xs:long" />
+      <xs:element minOccurs="0" name="TimeElapsed" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="TimeElapsedSeconds" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="State" nillable="true" type="tns:State" />
   <xs:complexType name="FullTimeElapsed">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Hour" type="xs:long" />
-      <xs:element minOccurs="0" name="Min" type="xs:long" />
-      <xs:element minOccurs="0" name="Sec" type="xs:long" />
+      <xs:element minOccurs="0" name="Hour" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Min" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="Sec" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="FullTimeElapsed" nillable="true" type="tns:FullTimeElapsed" />
   <xs:complexType name="Score">
     <xs:sequence>
       <xs:element minOccurs="0" name="Away" nillable="true" type="tns:Away" />
-      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element minOccurs="0" name="BookingPoints" nillable="true" type="xs:long" />
       <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q7:ArrayOflong" />
       <xs:element minOccurs="0" name="Home" nillable="true" type="tns:Away" />
-      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
-      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" nillable="true" type="xs:long" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Score" nillable="true" type="tns:Score" />
   <xs:complexType name="Away">
     <xs:sequence>
-      <xs:element minOccurs="0" name="BookingPoints" type="xs:long" />
+      <xs:element minOccurs="0" name="BookingPoints" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="FullTimeScore" nillable="true" type="xs:string" />
       <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GameSequence" nillable="true" type="q8:ArrayOflong" />
       <xs:element minOccurs="0" name="Games" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HalfTimeScore" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Highlight" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NumberOfCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCorners" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCorners" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfCornersFirstHalf" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="NumberOfCornersSecondHalf" nillable="true" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfRedCards" type="xs:long" />
-      <xs:element minOccurs="0" name="NumberOfYellowCards" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfRedCards" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="NumberOfYellowCards" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="PenaltiesScore" nillable="true" type="xs:string" />
       <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="PenaltiesSequence" nillable="true" type="q9:ArrayOfanyType" />
-      <xs:element minOccurs="0" name="Score" type="xs:long" />
-      <xs:element minOccurs="0" name="ServiceBreaks" type="xs:long" />
+      <xs:element minOccurs="0" name="Score" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ServiceBreaks" nillable="true" type="xs:long" />
       <xs:element minOccurs="0" name="Sets" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

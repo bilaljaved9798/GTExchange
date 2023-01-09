@@ -1,5 +1,5 @@
 ﻿using bfnexchange.BettingServiceReference;
-using bfnexchange.CricketScoreServiceReference;
+
 using bfnexchange.UsersServiceReference;
 using bftradeline.Models;
 using ExternalAPI.TO;
@@ -24,7 +24,7 @@ namespace bfnexchange.Controllers
         {
             return View();
         }
-        Service1Client objCricketScoreClient = new Service1Client();
+        //Service1Client objCricketScoreClient = new Service1Client();
         UserServicesClient objUserServiceClient = new UserServicesClient();
         BettingServiceClient objBettingClient = new BettingServiceClient();
         public PartialViewResult InitializeScoreCard()
@@ -212,45 +212,45 @@ namespace bfnexchange.Controllers
                 return "";
             }
         }
-        public string CreateScoreCard(string matchCricketAPIKey,string EventId,string GetMatchUpdatesFrom)
-        {
-            try
-            {
-                if (GetMatchUpdatesFrom == "Local")
-                {
-                    var scores = JsonConvert.DeserializeObject<List<MatchScores>>(objUserServiceClient.GetScoresbyEventIDandDate(EventId, DateTime.Now));
+        //public string CreateScoreCard(string matchCricketAPIKey,string EventId,string GetMatchUpdatesFrom)
+        //{
+        //    try
+        //    {
+        //        if (GetMatchUpdatesFrom == "Local")
+        //        {
+        //            var scores = JsonConvert.DeserializeObject<List<MatchScores>>(objUserServiceClient.GetScoresbyEventIDandDate(EventId, DateTime.Now));
 
-                    return UpdateScoresDataNew(scores);
-                }
-                else
-                {
-                    if (GetMatchUpdatesFrom == "Other")
-                    {
-                        var newresult = objCricketScoreClient.GetMatchDatabyKey(matchCricketAPIKey, ConfigurationManager.AppSettings["PasswordForValidate"]);
-                        return newresult;
-                    }
-                    else
-                    {
-                        return "";
-                    }
-                }
+        //            return UpdateScoresDataNew(scores);
+        //        }
+        //        else
+        //        {
+        //            if (GetMatchUpdatesFrom == "Other")
+        //            {
+        //                var newresult = objCricketScoreClient.GetMatchDatabyKey(matchCricketAPIKey, ConfigurationManager.AppSettings["PasswordForValidate"]);
+        //                return newresult;
+        //            }
+        //            else
+        //            {
+        //                return "";
+        //            }
+        //        }
               
-                //var results = JsonConvert.DeserializeObject<Services.MatchScoreCard>(objCricketScoreClient.GetMatchDatabyKey(matchCricketAPIKey, ConfigurationManager.AppSettings["PasswordForValidate"]));
-                //if (results != null)
-                //{
-                //    return RenderRazorViewToString("CricketScores", results);
-                //}
-                //else
-                //{
-                //    return "";
-                //}
-            }
-            catch (System.Exception ex)
-            {
-                return "";
-            }
+        //        //var results = JsonConvert.DeserializeObject<Services.MatchScoreCard>(objCricketScoreClient.GetMatchDatabyKey(matchCricketAPIKey, ConfigurationManager.AppSettings["PasswordForValidate"]));
+        //        //if (results != null)
+        //        //{
+        //        //    return RenderRazorViewToString("CricketScores", results);
+        //        //}
+        //        //else
+        //        //{
+        //        //    return "";
+        //        //}
+        //    }
+        //    catch (System.Exception ex)
+        //    {
+        //        return "";
+        //    }
 
-        }
+        //}
         ExternalAPI.TO.Home root = new ExternalAPI.TO.Home();
         ExternalAPI.TO.UpdateNew rootnew = new ExternalAPI.TO.UpdateNew();
         public string CreateScoreCardNew(string EventId)

@@ -364,6 +364,34 @@ namespace bfnexchange.Services
             }
             return (lstClientMarkes);
         }
+
+        public string GetSoccorUpdate(string Eventtypeid)
+        {
+
+            List<ExternalAPI.TO.RootSCT> myDeserializedClass;
+            
+            string url = "https://ips.betfair.com/inplayservice/v1.0/eventsInPlay?locale=en&regionCode=UK&alt=json&eventTypeIds="+ Eventtypeid + "";
+            //string url2 = " https://ips.betfair.com/inplayservice/v1.0/eventsInPlay?locale=en&regionCode=UK&alt=json&maxResults=500&eventTypeIds=" + 2 + "";
+            //string url = "https://ips.betfair.com/inplayservice/v1/scores?_ak=nzIFcwyWhrlwYMrh&alt=json&eventIds=" + Eventid + "&locale=en_GB&productType=EXCHANGE&regionCode=UK";
+            string JsonResultsArr = "";
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    APIConfigforResults.InitiateAPIConfiguration();
+                    APIConfigforResults.GetSessionFromBeftair();
+                    JsonResultsArr = client.DownloadString(url);
+                   // myDeserializedClass = JsonConvert.DeserializeObject<List<ExternalAPI.TO.RootSCT>>(JsonResultsArr);
+                }
+               
+                return JsonResultsArr;
+            }
+            catch (System.Exception ex)
+            {
+                APIConfig.LogError(ex);       
+                return JsonResultsArr;
+            }
+        }
         bool chk = true;
         public List<ExternalAPI.TO.RootSCT> GetUpdateSCT(string Eventtypeid)
         {

@@ -100,6 +100,12 @@
   <wsdl:message name="IBettingService_GetUpdateSCT_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUpdateSCTResponse" />
   </wsdl:message>
+  <wsdl:message name="IBettingService_GetSoccorUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoccorUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IBettingService_GetSoccorUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSoccorUpdateResponse" />
+  </wsdl:message>
   <wsdl:message name="IBettingService_GetDataFromBetfairReadOnly_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDataFromBetfairReadOnly" />
   </wsdl:message>
@@ -220,6 +226,10 @@
     <wsdl:operation name="GetUpdateSCT">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetUpdateSCT" message="tns:IBettingService_GetUpdateSCT_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetUpdateSCTResponse" message="tns:IBettingService_GetUpdateSCT_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccorUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetSoccorUpdate" message="tns:IBettingService_GetSoccorUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBettingService/GetSoccorUpdateResponse" message="tns:IBettingService_GetSoccorUpdate_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDataFromBetfairReadOnly">
       <wsdl:input wsaw:Action="http://tempuri.org/IBettingService/GetDataFromBetfairReadOnly" message="tns:IBettingService_GetDataFromBetfairReadOnly_InputMessage" />
@@ -392,6 +402,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetUpdateSCT">
       <soap:operation soapAction="http://tempuri.org/IBettingService/GetUpdateSCT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccorUpdate">
+      <soap:operation soapAction="http://tempuri.org/IBettingService/GetSoccorUpdate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

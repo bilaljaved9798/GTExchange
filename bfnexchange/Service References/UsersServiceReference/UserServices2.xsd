@@ -4,6 +4,19 @@
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:element name="UpdateMarketStatusbyMarketBookID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MarketStatus" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateMarketStatusbyMarketBookIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetFancyResultPostSetting">
     <xs:complexType>
       <xs:sequence />
@@ -717,6 +730,20 @@
   <xs:element name="SetMarketOpenedbyuserinAPPResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners1">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners1Response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunners1Result" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetAllMatches">
@@ -1984,19 +2011,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateMarketStatusbyMarketBookID">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="MarketStatus" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UpdateMarketStatusbyMarketBookIDResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetUserbyUsernameandPassword">
     <xs:complexType>
       <xs:sequence>
@@ -2330,6 +2344,18 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetAllUsersbyUserTypeNewResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedResult">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedResultResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCompletedResultResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3331,20 +3357,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetInPlayMatcheswithRunnersResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetInPlayMatcheswithRunners1">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetInPlayMatcheswithRunners1Response">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunners1Result" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

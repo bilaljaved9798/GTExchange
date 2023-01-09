@@ -4025,5 +4025,10 @@ namespace bfnexchange.Services.DBModel
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_Users_GetUserbyUsernameandPasswordWeb_Result>("SP_Users_GetUserbyUsernameandPasswordWeb", usernameParameter, passwordParameter);
         }
+    
+        public virtual ObjectResult<SP_UserBets_GetCompletedResult_Result> SP_UserBets_GetCompletedResult()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UserBets_GetCompletedResult_Result>("SP_UserBets_GetCompletedResult");
+        }
     }
 }

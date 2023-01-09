@@ -80,7 +80,7 @@
           <Property Name="TotalOvers" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'tradeline.dbo.BetPlaceWaitandInterval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'tradline.dbo.BetPlaceWaitandInterval' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BetPlaceWaitandInterval">
           <Key>
             <PropertyRef Name="HorseRaceTimerInterval" />
@@ -129,7 +129,7 @@ warning 6002: The table/view 'tradeline.dbo.BetPlaceWaitandInterval' does not ha
           <Property Name="CancelBetTime" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'tradeline.dbo.BetSlipKeys' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'tradline.dbo.BetSlipKeys' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="BetSlipKeys">
           <Key>
             <PropertyRef Name="UserID" />
@@ -215,7 +215,7 @@ warning 6002: The table/view 'tradeline.dbo.BetSlipKeys' does not have a primary
           <Property Name="Rules" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'tradline.dbo.ResultPostSettings' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ResultPostSettings">
           <Key>
             <PropertyRef Name="AutomaticResultPostFancy" />
@@ -811,6 +811,7 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="MarketbookID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="SP_UserBets_GetCompletedResult" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_UserBets_GetCurrentLiabality" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserID" Type="int" Mode="In" />
         </Function>
@@ -2915,6 +2916,7 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
             <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_UserBets_GetCompletedResult" ReturnType="Collection(NExchangeModel.SP_UserBets_GetCompletedResult_Result)" />
         </EntityContainer>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -5386,6 +5388,12 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
           <Property Type="String" Name="MutipleBtn10" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="MutipleBtn11" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="MutipleBtn12" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="SP_UserBets_GetCompletedResult_Result">
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="MarketBookname" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Winnername" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EventType" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7956,6 +7964,16 @@ warning 6002: The table/view 'tradeline.dbo.ResultPostSettings' does not have a 
                 <ScalarProperty Name="MutipleBtn10" ColumnName="MutipleBtn10" />
                 <ScalarProperty Name="MutipleBtn11" ColumnName="MutipleBtn11" />
                 <ScalarProperty Name="MutipleBtn12" ColumnName="MutipleBtn12" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_UserBets_GetCompletedResult" FunctionName="NExchangeModel.Store.SP_UserBets_GetCompletedResult">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NExchangeModel.SP_UserBets_GetCompletedResult_Result">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MarketBookname" ColumnName="MarketBookname" />
+                <ScalarProperty Name="Winnername" ColumnName="Winnername" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

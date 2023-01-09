@@ -62,6 +62,9 @@ namespace bfnexchange.Services
         List<ExternalAPI.TO.RootSCT> GetUpdateSCT(string Eventtypeid);
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        string GetSoccorUpdate(string Eventtypeid);
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         void GetDataFromBetfairReadOnly();
         [OperationContract]
         void GetBallbyBallSummary();

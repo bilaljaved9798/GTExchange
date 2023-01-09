@@ -295,6 +295,7 @@
     <Compile Include="Models\APIConfigData.cs" />
     <Compile Include="Models\BalanceSheet.cs" />
     <Compile Include="Models\BlockDeleteResetPassword.cs" />
+    <Compile Include="Models\CompletedResult.cs" />
     <Compile Include="Models\CompletedUserBets.cs" />
     <Compile Include="Models\CreateUser.cs" />
     <Compile Include="Models\CricketUpdate.cs" />
@@ -401,11 +402,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\BettingServiceWinnerReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\CricketScoreServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -873,30 +869,10 @@
     <None Include="Service References\BettingServiceWinnerReference\BettingServiceWinner1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\CricketScoreServiceReference\bfnexchange.CricketScoreServiceReference.CricketData_GetMatchKeys_Result1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\CricketScoreServiceReference\Service1.wsdl" />
-    <None Include="Service References\CricketScoreServiceReference\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CricketScoreServiceReference\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CricketScoreServiceReference\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\BettingServiceWinnerReference\BettingServiceWinner.disco" />
     <None Include="Service References\BettingServiceWinnerReference\configuration91.svcinfo" />
     <None Include="Service References\BettingServiceWinnerReference\configuration.svcinfo" />
     <None Include="Service References\BettingServiceWinnerReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\CricketScoreServiceReference\Service1.disco" />
-    <None Include="Service References\CricketScoreServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\CricketScoreServiceReference\configuration.svcinfo" />
-    <None Include="Service References\CricketScoreServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -1125,7 +1101,6 @@
     <WCFMetadataStorage Include="Service References\BettingServiceSoccerReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceTennisReference\" />
     <WCFMetadataStorage Include="Service References\BettingServiceWinnerReference\" />
-    <WCFMetadataStorage Include="Service References\CricketScoreServiceReference\" />
     <WCFMetadataStorage Include="Service References\UsersServiceReference\" />
   </ItemGroup>
   <ItemGroup>

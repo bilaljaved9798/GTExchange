@@ -15,6 +15,12 @@ namespace bfnexchange.UsersServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UsersServiceReference.IUserServices")]
     public interface IUserServices {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID", ReplyAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse")]
+        void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID", ReplyAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse")]
+        System.Threading.Tasks.Task UpdateMarketStatusbyMarketBookIDAsync(string MarketBookID, string MarketStatus);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetFancyResultPostSetting", ReplyAction="http://tempuri.org/IUserServices/GetFancyResultPostSettingResponse")]
         bool GetFancyResultPostSetting();
         
@@ -404,6 +410,12 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPP", ReplyAction="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPPResponse")]
         System.Threading.Tasks.Task SetMarketOpenedbyuserinAPPAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response")]
+        string GetInPlayMatcheswithRunners1(int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response")]
+        System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunners1Async(int userID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetAllMatches", ReplyAction="http://tempuri.org/IUserServices/GetAllMatchesResponse")]
         string GetAllMatches(int userID);
@@ -1079,12 +1091,6 @@ namespace bfnexchange.UsersServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID", ReplyAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse")]
         System.Threading.Tasks.Task<bool> GetIsComAllowbyUserIDAsync(int userID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID", ReplyAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse")]
-        void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID", ReplyAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse")]
-        System.Threading.Tasks.Task UpdateMarketStatusbyMarketBookIDAsync(string MarketBookID, string MarketStatus);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword", ReplyAction="http://tempuri.org/IUserServices/GetUserbyUsernameandPasswordResponse")]
         string GetUserbyUsernameandPassword(string username, string password);
         
@@ -1270,6 +1276,12 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetAllUsersbyUserTypeNew", ReplyAction="http://tempuri.org/IUserServices/GetAllUsersbyUserTypeNewResponse")]
         System.Threading.Tasks.Task<string> GetAllUsersbyUserTypeNewAsync(int userID, int usertypeID, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetCompletedResult", ReplyAction="http://tempuri.org/IUserServices/GetCompletedResultResponse")]
+        string GetCompletedResult();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetCompletedResult", ReplyAction="http://tempuri.org/IUserServices/GetCompletedResultResponse")]
+        System.Threading.Tasks.Task<string> GetCompletedResultAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetUserDetailsbyID", ReplyAction="http://tempuri.org/IUserServices/GetUserDetailsbyIDResponse")]
         string GetUserDetailsbyID(int userID, string Password);
@@ -1750,12 +1762,6 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse")]
         System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response")]
-        string GetInPlayMatcheswithRunners1(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response")]
-        System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunners1Async(int userID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1783,6 +1789,14 @@ namespace bfnexchange.UsersServiceReference {
         
         public UserServicesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus) {
+            base.Channel.UpdateMarketStatusbyMarketBookID(MarketBookID, MarketStatus);
+        }
+        
+        public System.Threading.Tasks.Task UpdateMarketStatusbyMarketBookIDAsync(string MarketBookID, string MarketStatus) {
+            return base.Channel.UpdateMarketStatusbyMarketBookIDAsync(MarketBookID, MarketStatus);
         }
         
         public bool GetFancyResultPostSetting() {
@@ -2217,6 +2231,14 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task SetMarketOpenedbyuserinAPPAsync() {
             return base.Channel.SetMarketOpenedbyuserinAPPAsync();
+        }
+        
+        public string GetInPlayMatcheswithRunners1(int userID) {
+            return base.Channel.GetInPlayMatcheswithRunners1(userID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunners1Async(int userID) {
+            return base.Channel.GetInPlayMatcheswithRunners1Async(userID);
         }
         
         public string GetAllMatches(int userID) {
@@ -3051,14 +3073,6 @@ namespace bfnexchange.UsersServiceReference {
             return base.Channel.GetIsComAllowbyUserIDAsync(userID);
         }
         
-        public void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus) {
-            base.Channel.UpdateMarketStatusbyMarketBookID(MarketBookID, MarketStatus);
-        }
-        
-        public System.Threading.Tasks.Task UpdateMarketStatusbyMarketBookIDAsync(string MarketBookID, string MarketStatus) {
-            return base.Channel.UpdateMarketStatusbyMarketBookIDAsync(MarketBookID, MarketStatus);
-        }
-        
         public string GetUserbyUsernameandPassword(string username, string password) {
             return base.Channel.GetUserbyUsernameandPassword(username, password);
         }
@@ -3281,6 +3295,14 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task<string> GetAllUsersbyUserTypeNewAsync(int userID, int usertypeID, string Password) {
             return base.Channel.GetAllUsersbyUserTypeNewAsync(userID, usertypeID, Password);
+        }
+        
+        public string GetCompletedResult() {
+            return base.Channel.GetCompletedResult();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCompletedResultAsync() {
+            return base.Channel.GetCompletedResultAsync();
         }
         
         public string GetUserDetailsbyID(int userID, string Password) {
@@ -3885,14 +3907,6 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID) {
             return base.Channel.GetInPlayMatcheswithRunnersAsync(userID);
-        }
-        
-        public string GetInPlayMatcheswithRunners1(int userID) {
-            return base.Channel.GetInPlayMatcheswithRunners1(userID);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunners1Async(int userID) {
-            return base.Channel.GetInPlayMatcheswithRunners1Async(userID);
         }
     }
 }

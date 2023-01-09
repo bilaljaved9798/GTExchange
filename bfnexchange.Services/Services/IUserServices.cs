@@ -1,5 +1,4 @@
-﻿
-using bfnexchange.Services.DBModel;
+﻿using bfnexchange.Services.DBModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,6 +68,10 @@ namespace bfnexchange.Services.Services
         string GetAllUsersbyUserTypeNew(int userID, int usertypeID, string Password);
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        string GetCompletedResult();
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        
         string GetUserDetailsbyID(int userID, string Password);
         [OperationContract]
         string GetMarketbyEventID(string EventID);
