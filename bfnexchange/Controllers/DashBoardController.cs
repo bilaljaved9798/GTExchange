@@ -458,12 +458,18 @@ namespace bfnexchange.Controllers
             return PartialView("Rules");
         }
 
-        public PartialViewResult GetCompletedResult()
+        public PartialViewResult GetCompletedResult(string DateFrom, string DateTo, string EventType)
         {
+            
             List<CompletedResult> lstResult = JsonConvert.DeserializeObject<List<CompletedResult>>(objUsersServiceCleint.GetCompletedResult()).ToList();
-            // var  lstResulta = lstResult.GroupBy(u => u.Winnername).Select(grp => grp.ToList()).ToList();
-            Session["CompletedResult"] = lstResult;
-            return PartialView("ResultDetails", lstResult);
+             lstResult = lstResult.GroupBy(x => x.Winnername, (key, g) => g.OrderBy(e => e.CreatedDate).First()).ToList();
+            var groupedCustomerList = lstResult.GroupBy(u => u.Winnername).Select(grp => grp.ToList()).ToList();
+            if (EventType !="All")
+            {
+                lstResult = lstResult.Where(x => x.EventType == EventType && (x.CreatedDate >= Convert.ToDateTime(DateFrom) && x.CreatedDate <= Convert.ToDateTime(DateTo))).ToList();
+            }
+           
+            return PartialView("ResultsCompelete", lstResult);
         }
             public int GetBetPlaceInterval(string categoryname, string Marketbookname,string Runnerscount)
         {
@@ -1664,7 +1670,12 @@ namespace bfnexchange.Controllers
                 return "False";
             }
         }
-        public PartialViewResult Ledger()
+        public PartialViewResult  Ledger()
+        {
+            LoggedinUserDetail.CheckifUserLogin();
+            return PartialView();
+        }
+        public PartialViewResult ResultsDetails()
         {
             LoggedinUserDetail.CheckifUserLogin();
             return PartialView();

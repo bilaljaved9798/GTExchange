@@ -106,107 +106,9 @@
                                 <label style="display:none">
                                     @runner.SelectionId
                                 </label>
-                                @if (item.MainSportsname == "Horse Racing" && runner.JockeyName != "Not")
-                                {<input type="checkbox" id="chkselection@(runner.SelectionId)" class="checkboxrunnername" onchange="AddRunnersformultiplebets('@runner.SelectionId')" />
-                                <div class="clothnumstalldrawimg" id="clothnumstalldrawimg@(runner.SelectionId)" onclick="triggerchangemethod('@runner.SelectionId','@item.MarketId.Replace(".", "")')">
-
-
-                                    <label data-value="@runner.SelectionId" class="runners runnersclothnumber" id="lblSelectionClothnumber@(runner.SelectionId)" title="Cloth number">
-                                        @runner.Clothnumber
-                                    </label>
-                                    <label data-value="@runner.StallDraw" class="runners runnersStallDraw" id="lblSelectionStallDraw@(runner.SelectionId)" title="Stall Draw">
-                                        (@runner.StallDraw)
-                                    </label>
-                                    @{
-                                        runner.WearingURL = runner.WearingURL.ToString().Replace(".betfair.com", ".cdnbf.net");
-                                    }
-                                    <div class="wearingdiv"> <img class="runnerwearing" src="@runner.WearingURL" title="@runner.WearingDesc" onerror="this.onerror = null; this.src = '../Content/images/not-found.png';" /></div>
-                                </div>
-
-                                <label for="chkselection@(runner.SelectionId)" data-value="@runner.SelectionId" class="runners runnersnameHorse" id="lblSelectionName@(runner.SelectionId)">
-                                    @runner.RunnerName
-                                </label>
-
-                                <label id="lbljockey@(runner.SelectionId)" class="jockeyname" title="Jockey name">@runner.JockeyName</label>
-                                <div class="no-padding runnerprofitandlossdivMobile">
-                                    @if (runner.ProfitandLoss >= 0)
-                                    {
-                                        <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossgreen">
-                                            @runner.ProfitandLoss
-                                        </label>
-
-
-                                    }
-                                    else
-                                    {
-                                        <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossred">
-                                            @runner.ProfitandLoss
-                                        </label>
-
-                                    }
-                                    @if (item.MarketBookName.Contains("To Be Placed"))
-                                    {
-                                        if (runner.Loss >= 0)
-                                        {
-                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreen">
-                                                @runner.Loss
-                                            </label>
-                                        }
-                                        else
-                                        {
-                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
-                                                @runner.Loss
-                                            </label>
-                                        }
-                                    }
-
-
-                                </div>
-                                        }
-                                        else
-                                        {
-                                            if (item.MainSportsname.Contains("Racing"))
-                                            {
-                                                <input type="checkbox" id="chkselection@(runner.SelectionId)" class="checkboxrunnername" onchange="AddRunnersformultiplebets('@runner.SelectionId')" />
-                                                <div class="clothnumstalldrawimgempty" id="clothnumstalldrawimg@(runner.SelectionId)" onclick="triggerchangemethod('@runner.SelectionId','@item.MarketId.Replace(".","")')"></div>
-                                                <label for="chkselection@(runner.SelectionId)" data-value="@runner.SelectionId" class="runners runnersname" id="lblSelectionName@(runner.SelectionId)">
-                                                    @runner.RunnerName
-                                                </label>
-                                                <div class="no-padding runnerprofitandlossdivMobile">
-                                                    @if (runner.ProfitandLoss >= 0)
-                                                    {
-                                                        <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossgreen">
-                                                            @runner.ProfitandLoss
-                                                        </label>
-                                                    }
-                                                    else
-                                                    {
-                                                        <label id="lblprofitandloss@(runner.SelectionId)" class="runnersprofitlossred">
-                                                            @runner.ProfitandLoss
-                                                        </label>
-                                                    }
-                                                    @if (item.MarketBookName.Contains("To Be Placed"))
-                                                    {
-                                                        if (runner.Loss >= 0)
-                                                        {
-                                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreen">
-                                                                @runner.Loss
-                                                            </label>
-                                                        }
-                                                        else
-                                                        {
-                                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
-                                                                @runner.Loss
-                                                            </label>
-                                                        }
-                                                    }
-
-
-                                                </div>
-                                            }
-                                            else
-                                            {
-                                                if (item.MainSportsname == "Cricket" && item.MarketBookName.Contains("Match Odds"))
+                                         
+                                            
+                                                @if (item.MainSportsname == "Cricket" && item.MarketBookName.Contains("Match Odds"))
                                                 {
                                                     <input type="checkbox" id="chkselectionforaverage@(runner.SelectionId)" class="checkboxrunnernameavg" onchange="AddRunnersforaveragecal('@runner.SelectionId')" data-value="@runner.SelectionId"  />
                                                 }
@@ -235,27 +137,9 @@
                                                             @runner.Average
                                                         </label>
                                                     }
-                                                    @if (item.MarketBookName.Contains("To Be Placed"))
-                                                    {
-                                                        if (runner.Loss >= 0)
-                                                        {
-                                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossgreen">
-                                                                @runner.Loss
-                                                            </label>
-                                                        }
-                                                        else
-                                                        {
-                                                            <label id="lblloss@(runner.SelectionId)" class="runnersprofitlossred">
-                                                                @runner.Loss
-                                                            </label>
-                                                        }
-                                                    }
-
-
-                                                </div>
-                                            }
-
-                                        }
+                                                    
+                                                </div>                                       
+                                        
 
 
                             </div>

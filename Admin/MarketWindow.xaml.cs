@@ -373,12 +373,12 @@ namespace globaltraders
                 {
                     double fancygridheight = 0;
                     double fancygridheightmain = 0;
-                    if (DGVMarketFancy.Visibility == Visibility.Visible && lstMarketBookRunnersFancy != null)
+                    if (DGVMarketFancy.Visibility == Visibility.Visible && lstMarketBookRunnersFancy != null )
                     {
                         if (lstMarketBookRunnersFancy.Count > 0)
                         {
 
-                            fancygridheightmain = 50;//DGVMarketFancy.ActualHeight;
+                            fancygridheightmain = DGVMarketFancy.ActualHeight;
                         }
                         else
                         {
@@ -3651,7 +3651,7 @@ namespace globaltraders
                     //{
                         tmrUpdateLiabalities.Tick += TmrUpdateLiabalities_Tick;
                         tmrUpdateLiabalities.Interval = TimeSpan.FromMilliseconds(2000);
-                        backgroundWorkerUpdateFigData.RunWorkerAsync();
+                        //backgroundWorkerUpdateFigData.RunWorkerAsync();
                         tmrUpdateLiabalities.Start();
 
                     //}
@@ -5685,12 +5685,12 @@ namespace globaltraders
 
 
                 }
-                backgroundWorkerUpdateFigData.RunWorkerAsync();
+                //backgroundWorkerUpdateFigData.RunWorkerAsync();
 
             }
             catch (System.Exception ex)
             {
-                backgroundWorkerUpdateFigData.Dispose();
+                //backgroundWorkerUpdateFigData.Dispose();
                
 
                // backgroundWorkerUpdateFigData.RunWorkerAsync();

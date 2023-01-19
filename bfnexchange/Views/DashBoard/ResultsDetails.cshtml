@@ -1,0 +1,130 @@
+﻿<div class="ledgerwraper">
+
+	<div class="container">
+		<div class="col-md-12 no-padding form-horizontal">
+			<div class="col-md-12 no-padding">
+
+				<div class="btnacc">
+
+					<button class="glow-on-hover" onclick="GetEvent('Cricket')" type="button">
+						Statements
+					</button>
+
+					<button class="glow-on-hover " href="/Accounts/MyBets" type="button">
+						My Bets
+					</button>
+
+					<button class="glow-on-hover " type="button">
+						<a href="/Accounts/pl"> Profit/Loss</a>
+					</button>
+
+					<button class="glow-on-hover " type="button">
+						<a href="/Accounts/PlusMinusSummery"> P/L-Summry </a>
+					</button>
+
+					<button class="glow-on-hover " type="button">
+						<a href="/Accounts/Stack"> My Button </a>
+					</button>
+
+					<button class="glow-on-hover " type="button">
+						<a href="/Accounts/UserActivites">Activity Log </a>
+					</button>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-5 col-sm-12">
+		<div class="form-group">
+			<label class="control-label col-md-3 col-sm-3">From:</label>
+			<div class="col-md-7 col-sm-6">
+				<input type="text" id="txtDateFrom" class="form-control datepicker" />
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5 col-sm-12">
+		<div class="form-group">
+			<label class="control-label col-md-3"> To:</label>
+			<div class="col-md-7">
+				<input type="text" id="txtDateTo" class="form-control datepicker" />
+			</div>
+		</div>
+	</div>
+
+	<div class="col-lg-5 col-sm-12">
+
+		<div class="form-group">
+			<div class="col-md-offset-3 col-md-2 col-sm-12">
+				<input type="button" value="Load" id="btnLoad" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+</div>
+
+	<div class="col-md-12 no-padding">
+		<div id="resultdetails">
+
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+	
+	$(document).ready(function () {
+		var dateNow = new Date();
+		var newdate = new Date(dateNow).setDate(dateNow.getDate() - 1);
+		$('#txtDateFrom').datetimepicker({
+			format: 'DD-MM-YYYY',
+			defaultDate: newdate
+
+		});
+		$('#txtDateTo').datetimepicker({
+			format: 'DD-MM-YYYY',
+			defaultDate: dateNow
+
+		});
+		var datefrom = $("#txtDateFrom").val();
+		var dateTo = $("#txtDateTo").val();
+		var eventtypr = "All";
+		$.ajax({
+			type: "GET",
+			async: true,
+			data: { 'DateFrom': datefrom, 'DateTo': dateTo, 'EventType': eventtypr },
+			url: "/DashBoard/GetCompletedResult",
+			success: function (result) {
+				debugger;
+				$("#resultdetails").html(result);
+				HideLoader();
+			},
+			complete: function () {
+			}
+
+		});
+		
+		
+	});
+	function GetEvent(eventtype) {
+		debugger;
+		var datefrom = $("#txtDateFrom").val();
+		var dateTo = $("#txtDateTo").val();
+		ShowLoader();
+
+
+		$.ajax({
+			url: '/DashBoard/GetCompletedResult',
+			type: 'POST',
+			data: { 'DateFrom': datefrom, 'DateTo': dateTo, 'EventType': eventtype },
+			complete: function () { },
+			success: function (data) {
+				$("#resultdetails").html(data);
+				HideLoader();
+			},
+			error: function (data) {
+				HideLoader();
+			}
+		});
+	};
+
+</script>
