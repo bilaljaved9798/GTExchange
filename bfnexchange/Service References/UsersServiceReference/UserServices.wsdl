@@ -4,12 +4,24 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
-      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
-      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
+      <xsd:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IUserServices_InsertUserAccountsFancy_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserAccountsFancy" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_InsertUserAccountsFancy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertUserAccountsFancyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetIsComAllowbyUserID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIsComAllowbyUserID" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetIsComAllowbyUserID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIsComAllowbyUserIDResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserServices_UpdateMarketStatusbyMarketBookID_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMarketStatusbyMarketBookID" />
   </wsdl:message>
@@ -316,6 +328,12 @@
   <wsdl:message name="IUserServices_SetMarketOpenedbyuserinAPP_OutputMessage">
     <wsdl:part name="parameters" element="tns:SetMarketOpenedbyuserinAPPResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserServices_GetInPlayMatcheswithRunners_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunners" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetInPlayMatcheswithRunners_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunnersResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserServices_GetInPlayMatcheswithRunners1_InputMessage">
     <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunners1" />
   </wsdl:message>
@@ -471,6 +489,12 @@
   </wsdl:message>
   <wsdl:message name="IUserServices_GetTodayHorseRacingNew_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTodayHorseRacingNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetTvLinks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTvLinks" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetTvLinks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTvLinksResponse" />
   </wsdl:message>
   <wsdl:message name="IUserServices_GetDistinctmarketopened_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDistinctmarketopened" />
@@ -814,18 +838,6 @@
   <wsdl:message name="IUserServices_CheckforMatchCompletedFancyFig_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckforMatchCompletedFancyFigResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserServices_InsertUserAccountsFancy_InputMessage">
-    <wsdl:part name="parameters" element="tns:InsertUserAccountsFancy" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_InsertUserAccountsFancy_OutputMessage">
-    <wsdl:part name="parameters" element="tns:InsertUserAccountsFancyResponse" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_GetIsComAllowbyUserID_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetIsComAllowbyUserID" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_GetIsComAllowbyUserID_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetIsComAllowbyUserIDResponse" />
-  </wsdl:message>
   <wsdl:message name="IUserServices_GetUserbyUsernameandPassword_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserbyUsernameandPassword" />
   </wsdl:message>
@@ -1132,6 +1144,12 @@
   <wsdl:message name="IUserServices_GetUserbetsbyUserIDandMarketID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserbetsbyUserIDandMarketIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserServices_GetBetHistry_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBetHistry" />
+  </wsdl:message>
+  <wsdl:message name="IUserServices_GetBetHistry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBetHistryResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserServices_GetMaxOddBackandLay_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMaxOddBackandLay" />
   </wsdl:message>
@@ -1330,13 +1348,15 @@
   <wsdl:message name="IUserServices_GetInPlayMatches_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetInPlayMatchesResponse" />
   </wsdl:message>
-  <wsdl:message name="IUserServices_GetInPlayMatcheswithRunners_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunners" />
-  </wsdl:message>
-  <wsdl:message name="IUserServices_GetInPlayMatcheswithRunners_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetInPlayMatcheswithRunnersResponse" />
-  </wsdl:message>
   <wsdl:portType name="IUserServices">
+    <wsdl:operation name="InsertUserAccountsFancy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy" message="tns:IUserServices_InsertUserAccountsFancy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse" message="tns:IUserServices_InsertUserAccountsFancy_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIsComAllowbyUserID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID" message="tns:IUserServices_GetIsComAllowbyUserID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse" message="tns:IUserServices_GetIsComAllowbyUserID_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateMarketStatusbyMarketBookID">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID" message="tns:IUserServices_UpdateMarketStatusbyMarketBookID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse" message="tns:IUserServices_UpdateMarketStatusbyMarketBookID_OutputMessage" />
@@ -1541,6 +1561,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPP" message="tns:IUserServices_SetMarketOpenedbyuserinAPP_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPPResponse" message="tns:IUserServices_SetMarketOpenedbyuserinAPP_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetInPlayMatcheswithRunners">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners" message="tns:IUserServices_GetInPlayMatcheswithRunners_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse" message="tns:IUserServices_GetInPlayMatcheswithRunners_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetInPlayMatcheswithRunners1">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1" message="tns:IUserServices_GetInPlayMatcheswithRunners1_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response" message="tns:IUserServices_GetInPlayMatcheswithRunners1_OutputMessage" />
@@ -1644,6 +1668,10 @@
     <wsdl:operation name="GetTodayHorseRacingNew">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetTodayHorseRacingNew" message="tns:IUserServices_GetTodayHorseRacingNew_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetTodayHorseRacingNewResponse" message="tns:IUserServices_GetTodayHorseRacingNew_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTvLinks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetTvLinks" message="tns:IUserServices_GetTvLinks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetTvLinksResponse" message="tns:IUserServices_GetTvLinks_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetDistinctmarketopened">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetDistinctmarketopened" message="tns:IUserServices_GetDistinctmarketopened_InputMessage" />
@@ -1873,14 +1901,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/CheckforMatchCompletedFancyFig" message="tns:IUserServices_CheckforMatchCompletedFancyFig_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/CheckforMatchCompletedFancyFigResponse" message="tns:IUserServices_CheckforMatchCompletedFancyFig_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="InsertUserAccountsFancy">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy" message="tns:IUserServices_InsertUserAccountsFancy_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse" message="tns:IUserServices_InsertUserAccountsFancy_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetIsComAllowbyUserID">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID" message="tns:IUserServices_GetIsComAllowbyUserID_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse" message="tns:IUserServices_GetIsComAllowbyUserID_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetUserbyUsernameandPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword" message="tns:IUserServices_GetUserbyUsernameandPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPasswordResponse" message="tns:IUserServices_GetUserbyUsernameandPassword_OutputMessage" />
@@ -2085,6 +2105,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetUserbetsbyUserIDandMarketID" message="tns:IUserServices_GetUserbetsbyUserIDandMarketID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetUserbetsbyUserIDandMarketIDResponse" message="tns:IUserServices_GetUserbetsbyUserIDandMarketID_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetBetHistry">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetBetHistry" message="tns:IUserServices_GetBetHistry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetBetHistryResponse" message="tns:IUserServices_GetBetHistry_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetMaxOddBackandLay">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetMaxOddBackandLay" message="tns:IUserServices_GetMaxOddBackandLay_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetMaxOddBackandLayResponse" message="tns:IUserServices_GetMaxOddBackandLay_OutputMessage" />
@@ -2217,13 +2241,27 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatches" message="tns:IUserServices_GetInPlayMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatchesResponse" message="tns:IUserServices_GetInPlayMatches_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetInPlayMatcheswithRunners">
-      <wsdl:input wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners" message="tns:IUserServices_GetInPlayMatcheswithRunners_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse" message="tns:IUserServices_GetInPlayMatcheswithRunners_OutputMessage" />
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IUserServices" type="tns:IUserServices">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertUserAccountsFancy">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/InsertUserAccountsFancy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIsComAllowbyUserID">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="UpdateMarketStatusbyMarketBookID">
       <soap:operation soapAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID" style="document" />
       <wsdl:input>
@@ -2683,6 +2721,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetInPlayMatcheswithRunners">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetInPlayMatcheswithRunners1">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1" style="document" />
       <wsdl:input>
@@ -2910,6 +2957,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetTodayHorseRacingNew">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetTodayHorseRacingNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTvLinks">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetTvLinks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -3430,24 +3486,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="InsertUserAccountsFancy">
-      <soap:operation soapAction="http://tempuri.org/IUserServices/InsertUserAccountsFancy" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetIsComAllowbyUserID">
-      <soap:operation soapAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserID" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetUserbyUsernameandPassword">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword" style="document" />
       <wsdl:input>
@@ -3907,6 +3945,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetBetHistry">
+      <soap:operation soapAction="http://tempuri.org/IUserServices/GetBetHistry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetMaxOddBackandLay">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetMaxOddBackandLay" style="document" />
       <wsdl:input>
@@ -4197,15 +4244,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetInPlayMatches">
       <soap:operation soapAction="http://tempuri.org/IUserServices/GetInPlayMatches" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetInPlayMatcheswithRunners">
-      <soap:operation soapAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

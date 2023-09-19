@@ -202,7 +202,7 @@
             <Setter Property="Background" Value="White"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="FontWeight" Value="Black"></Setter>
-            <Setter Property="FontSize" Value="19"></Setter>
+            <Setter Property="FontSize" Value="17"></Setter>
             <Setter Property="Padding" Value="0,0"></Setter>
             <Setter Property="BorderBrush" Value="Black"></Setter>
             <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>

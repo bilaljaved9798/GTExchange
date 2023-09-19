@@ -1,0 +1,23 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:54524/Services/AccountsService.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, AccountsServiceReference"
+    ],
+    "references": [
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\bfnexchange.Services.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\ExternalAPI.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\itextsharp.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\RestSharp.dll",
+      "Microsoft.AspNetCore.Authentication.JwtBearer, {Microsoft.AspNetCore.Authentication.JwtBearer, 3.0.0}"
+    ],
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "Specified"
+  }
+}

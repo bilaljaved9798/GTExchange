@@ -1,0 +1,280 @@
+﻿ .maindiv {
+        width: auto;
+        height: 70px;
+        padding: 5px;
+        border-right: 1px solid black;
+    }
+
+    .horseheading {
+        background: #2B2F35;
+        font-size: 20px;
+        color: #ffff;
+        height: 60px;
+        padding: 10px;
+        margin-bottom: 0px;
+    }
+
+    .mename {
+        font-size: 14px;
+    }
+
+.slick-prev
+{
+    left:0px;
+}
+
+    .RaceCards__header___M-uFV {
+        background-color: #DDDDDD;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        color: black;
+        font-size: 20px;
+        font-weight: 700;
+        height: 35px;
+        line-height: 32px;
+        margin: 0;
+        padding: 0 4px 0 0px;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        z-index: 1000
+    }
+
+    .RaceCards__main___1LtHz {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start;
+        -webkit-align-items: center;
+        align-items: center;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .RaceCards__containerCards--visible___2dYzv {
+        height: auto
+    }
+
+    .RaceCards__containerCards___13Mow {
+        background-color: #FFFFFF;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        overflow-x: hidden;
+        position: relative;
+        transition: height .25s ease-in-out;
+        transition-delay: .7s;
+        will-change: height;
+        width: 100%
+    }
+
+    .RaceCards__containerCard___18XHk {
+        padding: 5px;
+        display: -webkit-flex;
+        display: inline-block;
+        height: 100%;
+        width: 20%;
+        -webkit-flex-shrink: 0;
+        flex-shrink: 100;
+        -webkit-flex-grow: 0;
+        flex-grow: 0
+    }
+
+    .RaceCard__main___3BZd5 {
+        background-color: #FFFFFF;
+        border: 1px solid #808080;
+        cursor: pointer;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .RaceCard__link___xaIHa {
+        font-size: 15px;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        color: black;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        padding: 0 4px
+    }
+
+        .RaceCard__link___xaIHa:hover {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            color: forestgreen;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            padding: 0 4px
+        }
+
+    .imghorse {
+        width: 28px;
+        height: 30px;
+        color: black;
+        fill: #fff;
+        filter: invert(75%) sepia(5%) saturate(1257%) hue-rotate(177deg) brightness(95%) contrast(92%);
+    }
+
+    .inrow {
+        padding-top: 5px;
+    }
+
+    .anchorr {
+        padding-top: 1px;
+        margin: auto;
+        font-size: 14px;
+        border: 1px solid #808080;
+        width: auto;
+        color: black;
+    }
+
+    .incontainer {
+        padding: 0px;
+    }
+
+    .chk11 {
+        border-right: 1px solid #DDDDDD;
+        margin-right: 0px;
+        width: auto;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        line-height: 1;
+    }
+
+    .slick-slide {
+        margin: 0 2px;
+    }
+
+    .slick-list {
+        margin: 0 -2px;
+    }
+	
+		.utctime{
+		
+		font-family: 'Times New Roman', Times, serif;
+		
+	}
+	
+	
+	        .chkmobile {
+               font-size: 18px;
+               font-weight: 200;
+        }
+
+.lblslider {
+	margin-top:150px;
+}
+@media screen and (min-width: 720px) {
+	.chkmobile {
+            font-size: 17px;
+            margin: 0px;
+            padding: 0px;
+			
+			color:white;
+        }
+	
+		.utctime{
+		
+		font-family: 'Times New Roman', Times, serif;
+		
+	}
+	
+	
+	 .slidename {
+        font-size: 16px;
+        font-weight: 550;
+		color:white;
+		font-family: 'Times New Roman', Times, serif;
+		
+    }
+	
+    }
+	
+
+
+    @media screen and (max-width: 480px) {
+        .chkmobile {
+               font-size: 16px;
+               font-weight: 500;
+			   font-family: 'Times New Roman', Times, serif;
+        }
+		.lblslider {
+			margin-top: 60px;
+		}
+			.utctime{
+		
+		font-family: 'Times New Roman', Times, serif;
+		
+	}
+
+        .slider {
+            width: 50%;
+            margin: 100px auto;
+        }
+
+        .slick-slide {
+            margin: 0px 2px;
+        }
+
+        .slick-slide a {
+            width: 100%;
+        }
+		.slidename {
+        font-size: 14px !important;
+        font-weight: 550;
+		color:white;
+		width:75px;
+		text-overflow: ellipsis;
+		overflow:hidden;
+		white-space:nowrap;
+	
+		font-family: 'Times New Roman', Times, serif;
+    }
+	
+
+        .slick-prev:before,
+        .slick-next:before {
+            color: black;
+        }
+
+
+        .slick-slide {
+            transition: all ease-in-out .3s;
+            /*opacity: .2;*/
+        }
+
+        /*.slick-active {
+            opacity: .5;
+        }*/
+
+        .slick-current {
+            opacity: 1;
+        }
+    }
+
+
+    .slidedate {
+        font-size: 18px;
+        font-weight: 700;
+		
+    }
+
+    .slidename {
+        font-size: 18px;
+        font-weight: 200;
+		color:white;
+		font-family: 'Times New Roman', Times, serif;
+		
+    }

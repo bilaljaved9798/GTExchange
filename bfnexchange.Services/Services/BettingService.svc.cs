@@ -370,20 +370,33 @@ namespace bfnexchange.Services
 
             List<ExternalAPI.TO.RootSCT> myDeserializedClass;
             
-            string url = "https://ips.betfair.com/inplayservice/v1.0/eventsInPlay?locale=en&regionCode=UK&alt=json&eventTypeIds="+ Eventtypeid + "";
-            //string url2 = " https://ips.betfair.com/inplayservice/v1.0/eventsInPlay?locale=en&regionCode=UK&alt=json&maxResults=500&eventTypeIds=" + 2 + "";
+            string urltennis = "https://ips.betfair.com/inplayservice/v1.0/eventsInPlay?locale=en&regionCode=UK&alt=json&eventTypeIds="+ Eventtypeid + "";
+            string url = "https://ips.betfair.com/inplayservice/v1/eventTimeline?_ak=nzIFcwyWhrlwYMrh&alt=json&eventId="+Eventtypeid+"&locale=en&productType=EXCHANGE&regionCode=uk";
             //string url = "https://ips.betfair.com/inplayservice/v1/scores?_ak=nzIFcwyWhrlwYMrh&alt=json&eventIds=" + Eventid + "&locale=en_GB&productType=EXCHANGE&regionCode=UK";
             string JsonResultsArr = "";
             try
             {
-                using (var client = new WebClient())
+                if (Eventtypeid == "2")
                 {
-                    APIConfigforResults.InitiateAPIConfiguration();
-                    APIConfigforResults.GetSessionFromBeftair();
-                    JsonResultsArr = client.DownloadString(url);
-                   // myDeserializedClass = JsonConvert.DeserializeObject<List<ExternalAPI.TO.RootSCT>>(JsonResultsArr);
+                    using (var client = new WebClient())
+                    {
+                        APIConfigforResults.InitiateAPIConfiguration();
+                        APIConfigforResults.GetSessionFromBeftair();
+                        JsonResultsArr = client.DownloadString(urltennis);
+                        // myDeserializedClass = JsonConvert.DeserializeObject<List<ExternalAPI.TO.RootSCT>>(JsonResultsArr);
+                    }
                 }
-               
+                else
+                {
+                    using (var client = new WebClient())
+                    {
+                        APIConfigforResults.InitiateAPIConfiguration();
+                        APIConfigforResults.GetSessionFromBeftair();
+                        JsonResultsArr = client.DownloadString(url);
+                        // myDeserializedClass = JsonConvert.DeserializeObject<List<ExternalAPI.TO.RootSCT>>(JsonResultsArr);
+                    }
+                }
+
                 return JsonResultsArr;
             }
             catch (System.Exception ex)

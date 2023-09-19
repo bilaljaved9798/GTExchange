@@ -4030,5 +4030,31 @@ namespace bfnexchange.Services.DBModel
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_UserBets_GetCompletedResult_Result>("SP_UserBets_GetCompletedResult");
         }
+    
+        public virtual ObjectResult<SP_GetTVLinks_Result> SP_GetTVLinks(string eventid)
+        {
+            var eventidParameter = eventid != null ?
+                new ObjectParameter("eventid", eventid) :
+                new ObjectParameter("eventid", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetTVLinks_Result>("SP_GetTVLinks", eventidParameter);
+        }
+    
+        public virtual ObjectResult<SP_GetUserbet_Result> SP_GetUserbet(Nullable<int> userID, string startdate, string enddate)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var startdateParameter = startdate != null ?
+                new ObjectParameter("startdate", startdate) :
+                new ObjectParameter("startdate", typeof(string));
+    
+            var enddateParameter = enddate != null ?
+                new ObjectParameter("enddate", enddate) :
+                new ObjectParameter("enddate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_GetUserbet_Result>("SP_GetUserbet", userIDParameter, startdateParameter, enddateParameter);
+        }
     }
 }

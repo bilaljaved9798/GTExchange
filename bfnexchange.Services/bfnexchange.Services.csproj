@@ -317,6 +317,12 @@
     <Compile Include="DBModel\Sp_GetKalijut_Result.cs">
       <DependentUpon>NEDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\SP_GetTVLinks_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\SP_GetUserbet_Result.cs">
+      <DependentUpon>NEDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModel\SP_LiveTVChanels_GetAlldata_Result.cs">
       <DependentUpon>NEDBModel.tt</DependentUpon>
     </Compile>

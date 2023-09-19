@@ -33,8 +33,8 @@ namespace bfnexchange.Controllers
                 //marketbook3.Clear();
                 //var aaa = objBettingClient.GetRunnersForFancy(EventID, MarketBookID);
                 GetDataFancy = JsonConvert.DeserializeObject<ExternalAPI.TO.GetDataFancy>(objBettingClient.GetRunnersForFancy(EventID, MarketBookID));
-                GetDataFancy.session = GetDataFancy.session.Take(40).OrderBy(s => s.SelectionId).ToList();
-                if (GetDataFancy.session != null)
+               // GetDataFancy.session = GetDataFancy.session.Take(40).OrderBy(s => s.SelectionId).ToList();
+                if (GetDataFancy != null)
                 {
                     foreach (var runners in GetDataFancy.session)
                     {

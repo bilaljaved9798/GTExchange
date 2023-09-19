@@ -376,6 +376,8 @@ namespace bfnexchange
             BackgroundWorker worker = sender as BackgroundWorker;
             if (worker != null)
             {
+
+
                 if (worker.IsBusy == false)
                 {
                     // sleep for 20 secs and again call DoWork to get FxRates..we can increase the time to sleep and make it configurable to the needs

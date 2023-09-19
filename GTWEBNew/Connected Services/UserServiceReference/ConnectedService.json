@@ -1,0 +1,23 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:54524/Services/UserServices.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, UserServiceReference"
+    ],
+    "references": [
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\bfnexchange.Services.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\ExternalAPI.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\itextsharp.dll",
+      "E:\\NewGit\\GTWEBNew\\bin\\Debug\\netcoreapp3.1\\RestSharp.dll",
+      "Newtonsoft.Json, {Newtonsoft.Json, 12.0.1}"
+    ],
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "Specified"
+  }
+}

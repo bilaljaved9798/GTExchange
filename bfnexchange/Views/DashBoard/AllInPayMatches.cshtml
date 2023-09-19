@@ -1,4 +1,9 @@
 ﻿@model bfnexchange.HelperClasses.DefaultPageModel
+
+
+
+
+
 <head>
 	<style>
 
@@ -58,98 +63,31 @@
 		</div>
 	</div>
 
-	@*<div class="col-md-12 inplayhorserace no-padding">
-			<div class="headingdiv">
-				<span class="headingcaption">
-					<strong>Today's horse racing</strong>
-				</span>
-			</div>
-			<div class="bodydata">
-
-				<div class="row " style="margin-left: 21px">
-					<section class="center" style="width:80vw;">
-
-						@foreach (var item in Model.TodayHorseRacing)
-						{
-
-							var marketnameandtype = item.TodayHorseRace.Split(' ');
-
-							<div class="chk11" style="text-align:center; margin:2px;">
-								<a onclick="lastLevelBreadcrumb('@item.MarketCatalogueID.ToString()')" style="color:white; width:auto;">
-									<b class="chkmobile">
-										<span class="slidedate market-time">
-										</span>
-										<span class="d-none utctime" data-format="h:mm A">
-											@marketnameandtype[0].ToString()
-											@marketnameandtype[1].ToString()
-										</span>
-										<br>
-										<span class='slidename'>
-											@marketnameandtype[2].ToString()
-											@marketnameandtype[3].ToString()
-										</span>
-									</b>
-								</a>
-							</div>
-						}
-
-					</section>
-				</div>
-
-
-			</div>
-		</div>
-
-		<div class="col-md-12 inplayhorserace no-padding">
-			<div class="headingdiv">
-				<span class="headingcaption">
-					<strong>Today's Greyhound </strong>
-				</span>
-			</div>
-			<div class="bodydata">
-
-				<div class="row " style="margin-left: 21px">
-					<section class="center" style="width:80vw;">
-
-						@foreach (var item in Model.TodayGreyRacing)
-						{
-							var marketnameandtype = item.TodayHorseRace.Split(' ');
-
-							<div class="chk11" style="text-align:center; margin:2px;">
-								<a onclick="lastLevelBreadcrumb('@item.MarketCatalogueID.ToString()')" style="color:white; width:auto;">
-									<b class="chkmobile">
-										<span class="slidedate market-time">
-										</span>
-										<span class="d-none utctime" data-format="h:mm A">
-											@marketnameandtype[0].ToString()
-											@marketnameandtype[1].ToString()
-										</span>
-										<br>
-										<span class='slidename'>
-											@marketnameandtype[2].ToString()
-											@marketnameandtype[3].ToString()
-										</span>
-									</b>
-								</a>
-							</div>
-						}
-					</section>
-				</div>
-
-			</div>
-		</div>*@
-
-
 
 
 
 	<div class="col-md-12 no-padding">
 		<div class="col-md-12 no-padding">
-			<div class="headingdiv">
-				<span class="headingcaption">
-					<strong>Sport Highlights</strong>
-				</span>
-			</div>
+
+			@if (LoggedinUserDetail.GetUserTypeID() == 3)
+			{
+				<div class=" headingdivagent">
+					<span class="headingcaption">
+						<strong>Sport Highlights</strong>
+					</span>
+				</div>
+			}
+
+			else
+
+			{<div class="headingdiv">
+					<span class="headingcaption">
+						<strong>Sport Highlights</strong>
+					</span>
+				</div>
+
+			}
+
 			<div class="sporthighlightsuldiv">
 
 
@@ -162,16 +100,23 @@
 							Count = group.Count()
 						});
 
+
+
+
 						List<string> eventtypes = Model.AllMarkets.Select(x => x.CategoryName).Distinct().ToList();
 						foreach (var item in eventtypes)
 						{
+
+
+
+
 							<li role="presentation">
 								@if (item == "Cricket")
 								{
 
 									<a onclick="setactiveinplaycategory('@(item.Trim())')" class="inplaymatchheadinglink ipshead" id="inplaymatchheading@(item.Trim())">
 										<i><img src="~/Content/Images/cric.svg" width="30" height="30" /></i>
-										@item (@line.Select(x => x.Count).FirstOrDefault())
+										@item  (@line.Select(x => x.Count).FirstOrDefault())
 									</a>
 								}
 								@if (item == "Horse Racing")
@@ -185,7 +130,7 @@
 								{
 									<a onclick="setactiveinplaycategory('Greyhound')" class="inplaymatchheadinglink ipshead" id="inplaymatchheadingGreyhound">
 										<i><img src="~/Content/Images/gre.svg" width="30" height="30" /></i>
-										Greyhound (@line.Select(x => x.Count).Skip(2).Take(1).FirstOrDefault())
+										Greyhound (@line.Select(x => x.Count).Skip(4).Take(1).FirstOrDefault())
 									</a>
 								}
 								@if (item == "Soccer")
@@ -216,6 +161,26 @@
 
 				<div class="col-md-12 no-padding">
 
+					<div style="background:#075e54; color:white; border-top:1px solid white;">
+						<table>
+							<thead>
+								<tr style="background:#075e54; color:white">
+									<th class="En" style="width:45%">Event Name</th>
+									<th class="od" style="width:20%">Open Date</th>
+
+									<th class="two2">1</th>
+									<th class="two2">X</th>
+									<th class="two2">2</th>
+								</tr>
+
+							</thead>
+
+
+						</table>
+
+
+					</div>
+
 
 
 
@@ -231,7 +196,14 @@
 							if (data == "Greyhound Racing")
 							{
 								data = "Greyhound";
+
+
+
 							}
+
+
+
+
 							<div class="inplaydatabycategory" id="inplaydatafor@(data.Trim())">
 								@{
 									// List<string> lstcompetitions = Model.AllMarkets.Where(x => x.CategoryName == item).Select(x => x.CompetitionName).Distinct().ToList();
@@ -242,75 +214,190 @@
 													@competition
 												</div>
 											</div>*@
+
+
 									List<bfnexchange.HelperClasses.AllMarketsInPlay> lstMatchesbytype = Model.AllMarkets.Where(x => x.CategoryName == item).ToList();
 									foreach (var matchitem in lstMatchesbytype)
 									{
-										<div class="inplaydatarow">
+								<div class="inplaydatarow">
 
+									<i class="fa fa-share-alt" aria-hidden="true" style="float: right;margin-top: 14px;margin-right: 10px;"></i>
 
-											@if (item == "Horse Racing" || item == "Greyhound Racing")
+									@if (item == "Horse Racing" || item == "Greyhound Racing")
+									{
+
+										<div class="inplaymatchname">
+											<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:black; font-size: 25px;"></i>
+											@{
+												string imageUrl = Url.Content("~/Content/images/" + matchitem.CountryCode.ToString() + ".svg");
+											}
+											<img src="@imageUrl" alt="Country Flag" style="height:35px;width:35px;float:left" />
+											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName - @matchitem.MarketBookName</a>
+										</div>
+									}
+									else
+									{
+										if (matchitem.MarketStatus == "In Play")
+										{
+											<div class="inplaymatchname">
+												<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:green; font-size: 25px;"></i>
+												<a style="color:green; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
+
+											</div>
+										}
+										else
+										{
+											if (matchitem.MarketStatus == "Closed")
 											{
 												<div class="inplaymatchname">
-													<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName</a>
+													<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:red; font-size: 25px;"></i>
+													<a style="color:red; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
 												</div>
 											}
 											else
 											{
-												if (matchitem.MarketStatus == "In Play")
-												{
 
-
-													<div class="inplaymatchname">
-														<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 <label class="cool" style=" color:green; animation:blinker 2s linear infinite; ">IN-PLAY</label></a>
-
-													</div>
-												}
-												else
-												{
-													<div class="inplaymatchname">
-														<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 </a>
-													</div>
-												}
+												<div class="inplaymatchname">
+													<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:black; font-size: 25px;"></i>
+													<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')"> @matchitem.Runner1 v @matchitem.Runner2</a>
+												</div>
 											}
+										}
+									}
 
-											<div class="inplaytime">
-												@matchitem.MarketStartTime
-											</div>
 
-											<div class="inplaymatchbackandlay">
-												<div class="inplayrunner1">
-													<div class="inplayback">
+
+
+									<div class="inplaytime">
+										@matchitem.MarketStartTime
+									</div>
+
+									@if (item == "Cricket" || item == "Soccer" || item == "Tennis")
+
+									{
+
+										<div class="inplaymatchbackandlay">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">
 														@matchitem.Runner1Back
-													</div>
-													<div class="inplaylay">
-														@matchitem.Runner1Lay
-													</div>
-												</div>
+													</span>
+													<br />
 
-											</div>
-											<div class="inplaymatchbackandlay1">
-												<div class="inplayrunner1">
-													<div class="inplayback">
-														@matchitem.Runner3Back
-													</div>
-													<div class="inplaylay">
-														@matchitem.Runner3Lay
-													</div>
-												</div>
+													<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner1BackSize</span>
 
-											</div>
-											<div class="inplaymatchbackandlay2">
-												<div class="inplayrunner1">
-													<div class="inplayback">
-														@matchitem.Runner2Back
-													</div>
-													<div class="inplaylay">
-														@matchitem.Runner2Lay
-													</div>
-												</div>
 
+												</div>
+												<div class="inplaylay">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">											@matchitem.Runner1Lay	</span>
+													<br />
+													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner1LaySize </span>
+												</div>
 											</div>
+
 										</div>
+										<div class="inplaymatchbackandlay1">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Back </span>
+													<br />
+													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3BackSize </span>
+												</div>
+												<div class="inplaylay">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Lay</span>
+													<br />
+
+													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3LaySize </span>
+												</div>
+											</div>
+
+										</div>
+										<div class="inplaymatchbackandlay2">
+											<div class="inplayrunner1">
+												<div class="inplayback">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Back </span>
+													<br />
+													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner2BackSize </span>
+												</div>
+												<div class="inplaylay">
+													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Lay </span>
+													<br />
+													<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner2LaySize</span>
+												</div>
+											</div>
+
+										</div>
+
+
+
+									}
+
+
+
+									else
+									{
+
+
+										<div class="moleucule" style="float: right;   margin-right: 10%;" onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.MarketBookID.ToString().Replace("1.2", "")</div>
+
+
+
+										@*<div class="inplaymatchbackandlay">
+				<div class="inplayrunner1">
+					<div class="inplayback">
+						@matchitem.Runner1Back
+						<br />
+
+
+
+
+					</div>
+					<div class="inplaylay">
+						@matchitem.Runner1Lay
+						<br />
+
+					</div>
+				</div>
+
+			</div>
+			<div class="inplaymatchbackandlay1">
+				<div class="inplayrunner1">
+					<div class="inplayback">
+						@matchitem.Runner3Back
+						<br />
+
+					</div>
+					<div class="inplaylay">
+						@matchitem.Runner3Lay
+						<br />
+
+
+					</div>
+				</div>
+
+			</div>
+			<div class="inplaymatchbackandlay2">
+				<div class="inplayrunner1">
+					<div class="inplayback">
+						@matchitem.Runner2Back
+						<br />
+
+					</div>
+					<div class="inplaylay">
+						@matchitem.Runner2Lay
+						<br />
+
+					</div>
+				</div>
+
+			</div>*@
+
+
+									}
+
+
+
+								</div>
 									}
 
 									// }
@@ -320,6 +407,10 @@
 							</div>
 						}
 					}
+
+
+
+
 				</div>
 			</div>
 		</div>

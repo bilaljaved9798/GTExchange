@@ -145,6 +145,9 @@ namespace bfnexchange.Services.Services
         string GetUserbetsbyUserIDandMarketID(int UserID, string MarketID, string Password);
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        string GetBetHistry(int UserID, string frmdate, string todate);
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         SP_Users_GetMaxOddBackandLay_Result GetMaxOddBackandLay(int UserID);
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
@@ -299,6 +302,10 @@ namespace bfnexchange.Services.Services
         string GetTodayHorseRacingNew(int UserID);
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        string GetTvLinks(string eventID);
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        
         string GetDistinctmarketopened();
         [OperationContract]
         void UpdateOddsData(string oddsdata, string Oddtype);

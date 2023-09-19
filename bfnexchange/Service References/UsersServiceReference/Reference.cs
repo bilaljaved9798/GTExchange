@@ -15,6 +15,18 @@ namespace bfnexchange.UsersServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UsersServiceReference.IUserServices")]
     public interface IUserServices {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy", ReplyAction="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse")]
+        bool InsertUserAccountsFancy(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy", ReplyAction="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse")]
+        System.Threading.Tasks.Task<bool> InsertUserAccountsFancyAsync(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID", ReplyAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse")]
+        bool GetIsComAllowbyUserID(int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID", ReplyAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse")]
+        System.Threading.Tasks.Task<bool> GetIsComAllowbyUserIDAsync(int userID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookID", ReplyAction="http://tempuri.org/IUserServices/UpdateMarketStatusbyMarketBookIDResponse")]
         void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus);
         
@@ -232,9 +244,21 @@ namespace bfnexchange.UsersServiceReference {
         System.Threading.Tasks.Task<string> SetBlockedStatusofUserBMSAsync(int UserID, bool isBlocked, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetMatchScoreCard", ReplyAction="http://tempuri.org/IUserServices/GetMatchScoreCardResponse")]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(long[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetTransferAdminAmount_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetToWinTheTossbyEventID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetToTiedMarketbyEventID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetSoccergoalbyEventID_Result[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetSoccergoalbyEventID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetReferrerRateandReferrerIDbyUserID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetMarketForAllowedBetting_Result[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetMarketForAllowedBetting_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetEventDetailsbyMarketID_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetMaxOddBackandLay_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_MarketCatalogueSelections_Get_Result[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_MarketCatalogueSelections_Get_Result))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBook[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBook))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.DebitCredit[]))]
@@ -265,21 +289,9 @@ namespace bfnexchange.UsersServiceReference {
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.MarketBookForindianFancy))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RunnerForIndianFancy[]))]
         [System.ServiceModel.ServiceKnownTypeAttribute(typeof(ExternalAPI.TO.RunnerForIndianFancy))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetTransferAdminAmount_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetToWinTheTossbyEventID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetToTiedMarketbyEventID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetSoccergoalbyEventID_Result[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetSoccergoalbyEventID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetReferrerRateandReferrerIDbyUserID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetMarketForAllowedBetting_Result[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetMarketForAllowedBetting_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_UserMarket_GetEventDetailsbyMarketID_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_Users_GetMaxOddBackandLay_Result))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_MarketCatalogueSelections_Get_Result[]))]
-        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(bfnexchange.Services.DBModel.SP_MarketCatalogueSelections_Get_Result))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(string[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(int[]))]
+        [System.ServiceModel.ServiceKnownTypeAttribute(typeof(long[]))]
         bfnexchange.Services.APIResponse GetMatchScoreCard(string strMatchKey, string Password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetMatchScoreCard", ReplyAction="http://tempuri.org/IUserServices/GetMatchScoreCardResponse")]
@@ -410,6 +422,12 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPP", ReplyAction="http://tempuri.org/IUserServices/SetMarketOpenedbyuserinAPPResponse")]
         System.Threading.Tasks.Task SetMarketOpenedbyuserinAPPAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse")]
+        string GetInPlayMatcheswithRunners(int userID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse")]
+        System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners1Response")]
         string GetInPlayMatcheswithRunners1(int userID);
@@ -628,6 +646,12 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetTodayHorseRacingNew", ReplyAction="http://tempuri.org/IUserServices/GetTodayHorseRacingNewResponse")]
         System.Threading.Tasks.Task<string> GetTodayHorseRacingNewAsync(int UserID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetTvLinks", ReplyAction="http://tempuri.org/IUserServices/GetTvLinksResponse")]
+        string GetTvLinks(string eventID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetTvLinks", ReplyAction="http://tempuri.org/IUserServices/GetTvLinksResponse")]
+        System.Threading.Tasks.Task<string> GetTvLinksAsync(string eventID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetDistinctmarketopened", ReplyAction="http://tempuri.org/IUserServices/GetDistinctmarketopenedResponse")]
         string GetDistinctmarketopened();
@@ -1078,18 +1102,6 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/CheckforMatchCompletedFancyFig", ReplyAction="http://tempuri.org/IUserServices/CheckforMatchCompletedFancyFigResponse")]
         System.Threading.Tasks.Task CheckforMatchCompletedFancyFigAsync(string MarketBookID, int selectionID, int ScoreforThisOver);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy", ReplyAction="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse")]
-        bool InsertUserAccountsFancy(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/InsertUserAccountsFancy", ReplyAction="http://tempuri.org/IUserServices/InsertUserAccountsFancyResponse")]
-        System.Threading.Tasks.Task<bool> InsertUserAccountsFancyAsync(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID", ReplyAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse")]
-        bool GetIsComAllowbyUserID(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetIsComAllowbyUserID", ReplyAction="http://tempuri.org/IUserServices/GetIsComAllowbyUserIDResponse")]
-        System.Threading.Tasks.Task<bool> GetIsComAllowbyUserIDAsync(int userID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetUserbyUsernameandPassword", ReplyAction="http://tempuri.org/IUserServices/GetUserbyUsernameandPasswordResponse")]
         string GetUserbyUsernameandPassword(string username, string password);
@@ -1553,6 +1565,12 @@ namespace bfnexchange.UsersServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetUserbetsbyUserIDandMarketID", ReplyAction="http://tempuri.org/IUserServices/GetUserbetsbyUserIDandMarketIDResponse")]
         System.Threading.Tasks.Task<string> GetUserbetsbyUserIDandMarketIDAsync(int UserID, string MarketID, string Password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetBetHistry", ReplyAction="http://tempuri.org/IUserServices/GetBetHistryResponse")]
+        string GetBetHistry(int UserID, string frmdate, string todate);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetBetHistry", ReplyAction="http://tempuri.org/IUserServices/GetBetHistryResponse")]
+        System.Threading.Tasks.Task<string> GetBetHistryAsync(int UserID, string frmdate, string todate);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetMaxOddBackandLay", ReplyAction="http://tempuri.org/IUserServices/GetMaxOddBackandLayResponse")]
         bfnexchange.Services.DBModel.SP_Users_GetMaxOddBackandLay_Result GetMaxOddBackandLay(int UserID);
         
@@ -1756,12 +1774,6 @@ namespace bfnexchange.UsersServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatches", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatchesResponse")]
         System.Threading.Tasks.Task<string> GetInPlayMatchesAsync(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse")]
-        string GetInPlayMatcheswithRunners(int userID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunners", ReplyAction="http://tempuri.org/IUserServices/GetInPlayMatcheswithRunnersResponse")]
-        System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1789,6 +1801,22 @@ namespace bfnexchange.UsersServiceReference {
         
         public UserServicesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool InsertUserAccountsFancy(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver) {
+            return base.Channel.InsertUserAccountsFancy(marketbookstatus, userID, Password, ScoreforThisOver);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsertUserAccountsFancyAsync(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver) {
+            return base.Channel.InsertUserAccountsFancyAsync(marketbookstatus, userID, Password, ScoreforThisOver);
+        }
+        
+        public bool GetIsComAllowbyUserID(int userID) {
+            return base.Channel.GetIsComAllowbyUserID(userID);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GetIsComAllowbyUserIDAsync(int userID) {
+            return base.Channel.GetIsComAllowbyUserIDAsync(userID);
         }
         
         public void UpdateMarketStatusbyMarketBookID(string MarketBookID, string MarketStatus) {
@@ -2233,6 +2261,14 @@ namespace bfnexchange.UsersServiceReference {
             return base.Channel.SetMarketOpenedbyuserinAPPAsync();
         }
         
+        public string GetInPlayMatcheswithRunners(int userID) {
+            return base.Channel.GetInPlayMatcheswithRunners(userID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID) {
+            return base.Channel.GetInPlayMatcheswithRunnersAsync(userID);
+        }
+        
         public string GetInPlayMatcheswithRunners1(int userID) {
             return base.Channel.GetInPlayMatcheswithRunners1(userID);
         }
@@ -2501,6 +2537,14 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task<string> GetTodayHorseRacingNewAsync(int UserID) {
             return base.Channel.GetTodayHorseRacingNewAsync(UserID);
+        }
+        
+        public string GetTvLinks(string eventID) {
+            return base.Channel.GetTvLinks(eventID);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetTvLinksAsync(string eventID) {
+            return base.Channel.GetTvLinksAsync(eventID);
         }
         
         public string GetDistinctmarketopened() {
@@ -3055,22 +3099,6 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task CheckforMatchCompletedFancyFigAsync(string MarketBookID, int selectionID, int ScoreforThisOver) {
             return base.Channel.CheckforMatchCompletedFancyFigAsync(MarketBookID, selectionID, ScoreforThisOver);
-        }
-        
-        public bool InsertUserAccountsFancy(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver) {
-            return base.Channel.InsertUserAccountsFancy(marketbookstatus, userID, Password, ScoreforThisOver);
-        }
-        
-        public System.Threading.Tasks.Task<bool> InsertUserAccountsFancyAsync(ExternalAPI.TO.MarketBook[] marketbookstatus, int userID, string Password, int ScoreforThisOver) {
-            return base.Channel.InsertUserAccountsFancyAsync(marketbookstatus, userID, Password, ScoreforThisOver);
-        }
-        
-        public bool GetIsComAllowbyUserID(int userID) {
-            return base.Channel.GetIsComAllowbyUserID(userID);
-        }
-        
-        public System.Threading.Tasks.Task<bool> GetIsComAllowbyUserIDAsync(int userID) {
-            return base.Channel.GetIsComAllowbyUserIDAsync(userID);
         }
         
         public string GetUserbyUsernameandPassword(string username, string password) {
@@ -3637,6 +3665,14 @@ namespace bfnexchange.UsersServiceReference {
             return base.Channel.GetUserbetsbyUserIDandMarketIDAsync(UserID, MarketID, Password);
         }
         
+        public string GetBetHistry(int UserID, string frmdate, string todate) {
+            return base.Channel.GetBetHistry(UserID, frmdate, todate);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetBetHistryAsync(int UserID, string frmdate, string todate) {
+            return base.Channel.GetBetHistryAsync(UserID, frmdate, todate);
+        }
+        
         public bfnexchange.Services.DBModel.SP_Users_GetMaxOddBackandLay_Result GetMaxOddBackandLay(int UserID) {
             return base.Channel.GetMaxOddBackandLay(UserID);
         }
@@ -3899,14 +3935,6 @@ namespace bfnexchange.UsersServiceReference {
         
         public System.Threading.Tasks.Task<string> GetInPlayMatchesAsync(int userID) {
             return base.Channel.GetInPlayMatchesAsync(userID);
-        }
-        
-        public string GetInPlayMatcheswithRunners(int userID) {
-            return base.Channel.GetInPlayMatcheswithRunners(userID);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetInPlayMatcheswithRunnersAsync(int userID) {
-            return base.Channel.GetInPlayMatcheswithRunnersAsync(userID);
         }
     }
 }

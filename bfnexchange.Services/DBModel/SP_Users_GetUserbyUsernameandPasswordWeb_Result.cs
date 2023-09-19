@@ -22,6 +22,7 @@ namespace bfnexchange.Services.DBModel
         public string Password { get; set; }
         public string PasswordforValidate { get; set; }
         public string PasswordforValidateS { get; set; }
+        
         public string AccountBalance { get; set; }
         public string RatePercent { get; set; }
         public Nullable<bool> Loggedin { get; set; }

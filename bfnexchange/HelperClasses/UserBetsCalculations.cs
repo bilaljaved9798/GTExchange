@@ -18,12 +18,19 @@ namespace bfnexchange.HelperClasses
         public string Runner1 { get; set; }
         public string Runner2 { get; set; }
         public string Runner3 { get; set; }
+        
         public string Runner1Back { get; set; }
         public string Runner1Lay { get; set; }
         public string Runner2Back { get; set; }
         public string Runner2Lay { get; set; }
         public string Runner3Back { get; set; }
         public string Runner3Lay { get; set; }
+        public string Runner1BackSize { get; set; }
+        public string Runner1LaySize { get; set; }
+        public string Runner2BackSize { get; set; }
+        public string Runner2LaySize { get; set; }
+        public string Runner3BackSize { get; set; }
+        public string Runner3LaySize { get; set; }
         public string Matched { get; set; }
         public string CountryCode { get; set; }
         public string CategoryName { get; set; }

@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
-  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
-  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services" />
+  <xs:import schemaLocation="http://localhost:54524/Services/UserServices.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="InsertUserAccountsFancy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="marketbookstatus" nillable="true" type="q1:ArrayOfMarketBook" />
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertUserAccountsFancyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertUserAccountsFancyResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIsComAllowbyUserID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetIsComAllowbyUserIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetIsComAllowbyUserIDResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateMarketStatusbyMarketBookID">
     <xs:complexType>
       <xs:sequence>
@@ -192,7 +223,7 @@
   <xs:element name="GetTransferAdminAmountResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetTransferAdminAmountResult" nillable="true" type="q1:SP_Users_GetTransferAdminAmount_Result" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetTransferAdminAmountResult" nillable="true" type="q2:SP_Users_GetTransferAdminAmount_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -306,7 +337,7 @@
   <xs:element name="GetReferrerRatesbyUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRatesbyUserIDResult" nillable="true" type="q2:ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRatesbyUserIDResult" nillable="true" type="q3:ArrayOfSP_Referrers_GetReferrerRateandReferrerIDbyUserID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -440,7 +471,7 @@
   <xs:element name="GetMatchScoreCardResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/bfnexchange.Services" minOccurs="0" name="GetMatchScoreCardResult" nillable="true" type="q3:APIResponse" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/bfnexchange.Services" minOccurs="0" name="GetMatchScoreCardResult" nillable="true" type="q4:APIResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -688,7 +719,7 @@
   <xs:element name="GetToWintheTossbyeventIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToWintheTossbyeventIdResult" nillable="true" type="q4:SP_UserMarket_GetToWinTheTossbyEventID_Result" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToWintheTossbyeventIdResult" nillable="true" type="q5:SP_UserMarket_GetToWinTheTossbyEventID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -703,7 +734,7 @@
   <xs:element name="GetToTiedMarketbyEventIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToTiedMarketbyEventIDResult" nillable="true" type="q5:SP_UserMarket_GetToTiedMarketbyEventID_Result" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetToTiedMarketbyEventIDResult" nillable="true" type="q6:SP_UserMarket_GetToTiedMarketbyEventID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -718,7 +749,7 @@
   <xs:element name="GetSoccergoalbyeventIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSoccergoalbyeventIdResult" nillable="true" type="q6:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetSoccergoalbyeventIdResult" nillable="true" type="q7:ArrayOfSP_UserMarket_GetSoccergoalbyEventID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -730,6 +761,20 @@
   <xs:element name="SetMarketOpenedbyuserinAPPResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetInPlayMatcheswithRunnersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunnersResult" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetInPlayMatcheswithRunners1">
@@ -1130,6 +1175,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetTvLinks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="eventID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTvLinksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTvLinksResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetDistinctmarketopened">
     <xs:complexType>
       <xs:sequence />
@@ -1342,7 +1401,7 @@
   <xs:element name="GetCommissionaccountIdandBookAccountbyUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetCommissionaccountIdandBookAccountbyUserIDResult" nillable="true" type="q7:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetCommissionaccountIdandBookAccountbyUserIDResult" nillable="true" type="q8:SP_Users_GetCommissionAccountIDandBookAccountID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1356,7 +1415,7 @@
   <xs:element name="GetReferrerRateandIDbyUserIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRateandIDbyUserIDResult" nillable="true" type="q8:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetReferrerRateandIDbyUserIDResult" nillable="true" type="q9:SP_Users_GetReferrerRateandReferrerIDbyUserID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1531,8 +1590,8 @@
   <xs:element name="UpdateMarketAllowedBettingForAllAgents">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserIds" nillable="true" type="q9:ArrayOfint" />
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="lstMarkets" nillable="true" type="q10:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="UserIds" nillable="true" type="q10:ArrayOfint" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="lstMarkets" nillable="true" type="q11:ArrayOfSP_UserMarket_GetMarketForAllowedBetting_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1703,7 +1762,7 @@
   <xs:element name="GetEventDetailsbyMarketBookResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetEventDetailsbyMarketBookResult" nillable="true" type="q11:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" minOccurs="0" name="GetEventDetailsbyMarketBookResult" nillable="true" type="q12:SP_UserMarket_GetEventDetailsbyMarketID_Result" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -1978,37 +2037,6 @@
   <xs:element name="CheckforMatchCompletedFancyFigResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="InsertUserAccountsFancy">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ExternalAPI.TO" minOccurs="0" name="marketbookstatus" nillable="true" type="q12:ArrayOfMarketBook" />
-        <xs:element minOccurs="0" name="userID" type="xs:int" />
-        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="ScoreforThisOver" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="InsertUserAccountsFancyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="InsertUserAccountsFancyResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetIsComAllowbyUserID">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetIsComAllowbyUserIDResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetIsComAllowbyUserIDResult" type="xs:boolean" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUserbyUsernameandPassword">
@@ -2878,6 +2906,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetBetHistry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" type="xs:int" />
+        <xs:element minOccurs="0" name="frmdate" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="todate" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBetHistryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBetHistryResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetMaxOddBackandLay">
     <xs:complexType>
       <xs:sequence>
@@ -3343,20 +3387,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="GetInPlayMatchesResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetInPlayMatcheswithRunners">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userID" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetInPlayMatcheswithRunnersResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetInPlayMatcheswithRunnersResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

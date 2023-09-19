@@ -1743,7 +1743,17 @@ namespace bfnexchange.Controllers
                                 {
                                     runner.ProfitandLoss = Convert.ToInt64(marketbooks[0].DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Debit));
                                     runner.Loss = Convert.ToInt64(marketbooks[0].DebitCredit.Where(item2 => item2.SelectionID == runner.SelectionId).Sum(item2 => item2.Credit));
+                                    runner.ExchangePrices.AvailableToLay[0].Price = 0;
+                                    runner.ExchangePrices.AvailableToLay[1].Price = 0;
+                                    runner.ExchangePrices.AvailableToLay[2].Price = 0;
+                                    runner.ExchangePrices.AvailableToLay[0].Size = 0;
+                                    runner.ExchangePrices.AvailableToLay[1].Size = 0;
+                                    runner.ExchangePrices.AvailableToLay[2].Size = 0;
+                                    runner.ExchangePrices.AvailableToLay[0].SizeStr = "";
+                                    runner.ExchangePrices.AvailableToLay[1].SizeStr = "";
+                                    runner.ExchangePrices.AvailableToLay[2].SizeStr = "";
                                 }
+                                
                             }
                             else
                             {
@@ -2714,13 +2724,11 @@ namespace bfnexchange.Controllers
                                 {
                                     marketbooks.Add(marketbook[0]);
                                 }
-
                             }
                             else
                             {
 
                             }
-
                         }
 
 
@@ -2744,6 +2752,8 @@ namespace bfnexchange.Controllers
                                     var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                     foreach (var runnermarketitem in runnerdesc)
                                     {
+                                        item2.Runners = item2.Runners.OrderBy(runner => runner.LastPriceTraded == null).ThenBy(runner => runner.LastPriceTraded).ToList();
+                                        
                                         foreach (var runneritem in item2.Runners)
                                         {
                                             if (runnermarketitem.SelectionID == runneritem.SelectionId.Trim())
@@ -2858,6 +2868,9 @@ namespace bfnexchange.Controllers
                                 runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                 item2.Runners.Add(runneritem);
 
+                                item2.Runners = item2.Runners.OrderBy(runner => runner.LastPriceTraded == null).ThenBy(runner => runner.LastPriceTraded).ToList();
+
+                                
 
                             }
                             item2.FavoriteID = "0";
@@ -4484,11 +4497,14 @@ namespace bfnexchange.Controllers
 
                         }
 
-                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(1));
+
+                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(2));
                     }                  
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 2)
                 {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
                     if (results != null)
                     {
@@ -4535,11 +4551,34 @@ namespace bfnexchange.Controllers
                                         var lstUserBet = (List<UserBetsforAgent>)Session["userbets"];
                                         List<UserBetsforAgent> lstUserBets = lstUserBet.Where(item3 => item3.isMatched == true && item3.MarketBookID == item2.MarketId).ToList();
                                         var lstUsers = lstUserBets.Select(item1 => new { item1.UserID }).Distinct().ToArray();
-                                        foreach (var userid in lstUsers)
+                                        if (lstUsers.Length>0) {
+                                            foreach (var userid in lstUsers)
+                                            {
+                                                // var agentrate = 0;
+                                                List<UserBetsforAgent> lstuserbet = lstUserBets.Where(item4 => item4.UserID == Convert.ToInt32(userid.UserID)).ToList();
+                                                item2.DebitCredit = objUserBets.ceckProfitandLossAgent(item2, lstuserbet);
+                                                foreach (var runneritem in item2.Runners)
+                                                {
+                                                    if (runnermarketitem.SelectionID == runneritem.SelectionId)
+                                                    {
+                                                        runneritem.RunnerName = runnermarketitem.SelectionName;
+                                                        runneritem.JockeyName = runnermarketitem.JockeyName;
+                                                        runneritem.WearingURL = runnermarketitem.Wearing;
+                                                        runneritem.WearingDesc = runnermarketitem.WearingDesc;
+                                                        runneritem.Clothnumber = runnermarketitem.ClothNumber;
+                                                        runneritem.StallDraw = runnermarketitem.StallDraw;
+                                                    }
+                                                    long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
+
+                                                    decimal profit = LoggedinUserDetail.GetProfitorlossbyAgentPercentageandTransferRate(lstuserbet[0].AgentOwnBets, lstuserbet[0].TransferAdmin, lstuserbet[0].TransferAgentIDB, lstuserbet[0].CreatedbyID, profitorloss, Convert.ToDecimal(lstuserbet[0].AgentRate));
+                                                    runneritem.ProfitandLoss += Convert.ToInt64(-1 * profit);
+                                                }
+                                            }
+                                        }
+                                        else
                                         {
-                                            // var agentrate = 0;
-                                            List<UserBetsforAgent> lstuserbet = lstUserBets.Where(item4 => item4.UserID == Convert.ToInt32(userid.UserID)).ToList();
-                                            item2.DebitCredit = objUserBets.ceckProfitandLossAgent(item2, lstuserbet);
+                                           // List<UserBetsforAgent> lstuserbet = lstUserBets.Where(item4 => item4.UserID == Convert.ToInt32(userid.UserID)).ToList();
+                                           // item2.DebitCredit = objUserBets.ceckProfitandLossAgent(item2, lstuserbet);
                                             foreach (var runneritem in item2.Runners)
                                             {
                                                 if (runnermarketitem.SelectionID == runneritem.SelectionId)
@@ -4551,19 +4590,19 @@ namespace bfnexchange.Controllers
                                                     runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                     runneritem.StallDraw = runnermarketitem.StallDraw;
                                                 }
-                                                long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
+                                                //long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
 
-                                                //  decimal profit = (Convert.ToDecimal(agentrate) / 100) * profitorloss;
-                                                decimal profit = LoggedinUserDetail.GetProfitorlossbyAgentPercentageandTransferRate(lstuserbet[0].AgentOwnBets, lstuserbet[0].TransferAdmin, lstuserbet[0].TransferAgentIDB, lstuserbet[0].CreatedbyID, profitorloss, Convert.ToDecimal(lstuserbet[0].AgentRate));
+                                                decimal profit = 0;// LoggedinUserDetail.GetProfitorlossbyAgentPercentageandTransferRate(lstuserbet[0].AgentOwnBets, lstuserbet[0].TransferAdmin, lstuserbet[0].TransferAgentIDB, lstuserbet[0].CreatedbyID, profitorloss, Convert.ToDecimal(lstuserbet[0].AgentRate));
                                                 runneritem.ProfitandLoss += Convert.ToInt64(-1 * profit);
                                             }
                                         }
+
                                     }
                                 }
                             }
                         }
 
-                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks);
+                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(2));
                     }
                 }
 
@@ -4571,6 +4610,8 @@ namespace bfnexchange.Controllers
 
                 {
 
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                     if (results != null)
                     {
@@ -4616,13 +4657,6 @@ namespace bfnexchange.Controllers
                                         List<UserBetsForAdmin> lstUserBet = (List<UserBetsForAdmin>)Session["userbets"];
                                         List<UserBetsForAdmin> lstUserBets = lstUserBet.Where(item3 => item3.isMatched == true && item3.MarketBookID == item2.MarketId).ToList();
                                         var lstUsers = lstUserBets.Select(item1 => new { item1.UserID }).Distinct().ToArray();
-                                        foreach (var userid in lstUsers)
-                                        {
-                                            // var agentrate = 0;
-                                            List<UserBetsForAdmin> lstuserbet = lstUserBets.Where(item4 => item4.UserID == Convert.ToInt32(userid.UserID)).ToList();
-                                            var agentrate = lstuserbet[0].AgentRate;
-                                            bool TransferAdminAmount = lstuserbet[0].TransferAdmin;
-                                            item2.DebitCredit = objUserBets.ceckProfitandLossAdmin(item2, lstuserbet);
                                             foreach (var runneritem in item2.Runners)
                                             {
                                                 if (runnermarketitem.SelectionID == runneritem.SelectionId)
@@ -4634,19 +4668,25 @@ namespace bfnexchange.Controllers
                                                     runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                     runneritem.StallDraw = runnermarketitem.StallDraw;
                                                 }
-                                                long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
+                                         
+                                            // var agentrate = 0;
+                                            //List<UserBetsForAdmin> lstuserbet = lstUserBet.Where(item3 => item3.isMatched == true && item3.MarketBookID == item2.MarketId).ToList();
+                                            //var agentrate = lstuserbet[0].AgentRate;
+                                            //bool TransferAdminAmount = lstuserbet[0].TransferAdmin;
+                                            //item2.DebitCredit = objUserBets.ceckProfitandLossAdmin(item2, lstuserbet);
+                                            //long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
 
-                                                decimal adminrate = TransferAdminAmount == false ? 100 - Convert.ToDecimal(agentrate) : 0;
-                                                decimal profit = (adminrate / 100) * profitorloss;
-                                                runneritem.ProfitandLoss += Convert.ToInt64(-1 * profit);
-                                            }
+                                            //decimal adminrate = TransferAdminAmount == false ? 100 - Convert.ToDecimal(agentrate) : 0;
+                                            //decimal profit = (adminrate / 100) * profitorloss;
+                                            //runneritem.ProfitandLoss += Convert.ToInt64(-1 * profit);
+
                                         }
                                     }
 
                                 }
                             }
                         }
-                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks);
+                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(2));
 
                     }
                 }
@@ -4655,6 +4695,8 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 8 )
                 {
+                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                     if (results != null)
                     {
@@ -4755,7 +4797,7 @@ namespace bfnexchange.Controllers
                             }
                         }
 
-                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks);
+                        return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(2));
                     }
                     else
                     {
@@ -4792,6 +4834,21 @@ namespace bfnexchange.Controllers
             string outputToReturn = writer.ToString();
             writer.Close();
             return this.Json(outputToReturn.Trim());
+        }
+
+        public string GetTvLinks(string EventId)
+        {
+            try
+            {
+                string jsonString = objUsersServiceCleint.GetTvLinks(EventId);
+                return jsonString;
+               
+            }
+            catch (System.Exception ex)
+            {
+                return "";
+            }
+
         }
         //public PartialViewResult InPlayMatches()
         //{

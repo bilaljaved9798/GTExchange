@@ -389,8 +389,6 @@ namespace bfnexchange.Services.Services
         {
             try
             {
-
-
                 if (ValidatePassword(Password) == false)
                 {
                     return "";
@@ -471,7 +469,12 @@ namespace bfnexchange.Services.Services
             var results = dbEntities.SP_UserMarket_GetTodaysHorseRacingauto(UserID).ToList<SP_UserMarket_GetTodaysHorseRacingauto_Result>();
             return ConverttoJSONString(results);
         }
-        
+        public string GetTvLinks(string eventID)
+        {
+            var results = dbEntities.SP_GetTVLinks(eventID).ToList<SP_GetTVLinks_Result>();
+            return ConverttoJSONString(results);
+        }
+
 
         public void DownloadAllMarketHorseRace(string Password)
         {
@@ -603,8 +606,8 @@ namespace bfnexchange.Services.Services
                 }
 
                 DownloadAllMarketGrayHoundRace(Password);
-                DownloadAllMarketSoccer(Password);
-                DownloadAllMarketTennis(Password);
+                //DownloadAllMarketSoccer(Password);
+                //DownloadAllMarketTennis(Password);
                 dbEntities.SP_UserMarket_DeleteAllDuplicateRows();
                 dbEntities.SP_UserMarket_DeleteAllMarketsofPreviousDay();
             }
@@ -1908,6 +1911,11 @@ namespace bfnexchange.Services.Services
                 return "";
             }
             var results = dbEntities.SP_UserBets_GetDatabyUserIDandMArketID(UserID, MarketID).ToList<SP_UserBets_GetDatabyUserIDandMArketID_Result>();
+            return ConverttoJSONString(results);
+        }
+        public string GetBetHistry(int UserID, string frmdate, string todate)
+        {          
+            var results = dbEntities.SP_GetUserbet(UserID, frmdate, todate).ToList<SP_GetUserbet_Result>();
             return ConverttoJSONString(results);
         }
         public string GetUserbetsbyUserID(int UserID, string Password)

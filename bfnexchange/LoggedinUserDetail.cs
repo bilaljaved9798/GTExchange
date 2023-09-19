@@ -47,9 +47,6 @@ namespace bfnexchange
         public static double CurrentAccountBalance = 0;
         public static double CurrentAvailableBalance = 0;
 
-        
-
-
         public  static string FormatNumber(uint n)
         {
             if (n < 1000)

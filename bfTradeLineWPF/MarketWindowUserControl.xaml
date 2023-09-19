@@ -1222,11 +1222,11 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                         <Label Content="Innings" HorizontalContentAlignment="Center"></Label>
-                        <TextBox x:Name="txtInningsResultKJ"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" IsReadOnly="True"></TextBox>
+                        <TextBox x:Name="txtInningsResultKJ"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                         <Label Content="Overs" HorizontalContentAlignment="Center"></Label>
-                        <TextBox x:Name="txtOversResultsKJ"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" IsReadOnly="True"></TextBox>
+                        <TextBox x:Name="txtOversResultsKJ"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="5,0,0,0">
                         <Label Content="Scores" HorizontalContentAlignment="Center"></Label>
@@ -1300,11 +1300,11 @@
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                         <Label Content="Innings" HorizontalContentAlignment="Center"></Label>
-                        <TextBox x:Name="txtInningsResultFig"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" IsReadOnly="True"></TextBox>
+                        <TextBox x:Name="txtInningsResultFig"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                         <Label Content="Overs" HorizontalContentAlignment="Center"></Label>
-                        <TextBox x:Name="txtOversResultsFig"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" IsReadOnly="True"></TextBox>
+                        <TextBox x:Name="txtOversResultsFig"  FontSize="12" Text="" Width="37" VerticalContentAlignment="Center" Height="22" ></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="5,0,0,0">
                         <Label Content="Scores" HorizontalContentAlignment="Center"></Label>

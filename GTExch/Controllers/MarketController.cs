@@ -19,38 +19,38 @@ namespace GTExch.Controllers
     {
         UserServicesClient objUsersServiceCleint = new UserServicesClient();
         BettingServiceClient objBettingClient = new BettingServiceClient();
-        //public static wsnew ws1 = new wsnew();
+        public static wsnew ws1 = new wsnew();
 
-        //public static wsnew ws2 = new wsnew();
+        public static wsnew ws2 = new wsnew();
 
-        //public static wsnew ws4 = new wsnew();
+        public static wsnew ws4 = new wsnew();
 
-        //public static wsnew ws7 = new wsnew();
+        public static wsnew ws7 = new wsnew();
 
-        //public static wsnew ws0 = new wsnew();
+        public static wsnew ws0 = new wsnew();
+        //public static wsnew ws0t = new wsnew();
+        public static wsnew ws4339 = new wsnew();
+        public static wsnew wsFancy = new wsnew();
 
-        //public static wsnew ws4339 = new wsnew();
-        //public static wsnew wsFancy = new wsnew();
+        private wsnew wsBFMatch = new wsnew();
 
-        //private wsnew wsBFMatch = new wsnew();
-
-        [HttpGet]
         public void SetURLsData()
         {
-            LoggedinUserDetail.URLsData = JsonConvert.DeserializeObject<List<GTExch.Models.SP_URLsData_GetAllData_Result>>(objUsersServiceCleint.GetURLsData());
-            //ws1.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Soccer").FirstOrDefault().URLForData;
-            //ws2.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Tennis").FirstOrDefault().URLForData;
-            //ws4.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Cricket").FirstOrDefault().URLForData;
-            //ws7.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Horse Racing").FirstOrDefault().URLForData;
-            //ws4339.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "GreyHound Racing").FirstOrDefault().URLForData;
-            //wsFancy.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Fancy").FirstOrDefault().URLForData;
+            LoggedinUserDetail.URLsData = JsonConvert.DeserializeObject<List<SP_URLsData_GetAllData_Result>>(objUsersServiceCleint.GetURLsData());
+            ws1.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Soccer").FirstOrDefault().URLForData;
+            ws2.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Tennis").FirstOrDefault().URLForData;
+            ws4.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Cricket").FirstOrDefault().URLForData;
+            ws7.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Horse Racing").FirstOrDefault().URLForData;
+            ws4339.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "GreyHound Racing").FirstOrDefault().URLForData;
+            wsFancy.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Fancy").FirstOrDefault().URLForData;
 
-            //ws0.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Other").FirstOrDefault().URLForData;
-            // LoggedinUserDetail.SecurityCode = LoggedinUserDetail.URLsData.FirstOrDefault().Scd;
+            ws0.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Other").FirstOrDefault().URLForData;
+            // ws0t.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "BP").FirstOrDefault().URLForData;
+            LoggedinUserDetail.SecurityCode = LoggedinUserDetail.URLsData.FirstOrDefault().Scd;
             LoggedinUserDetail.GetCricketDataFrom = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Cricket").FirstOrDefault().GetDataFrom;
         }
-        public static string strWsMatch = "";
-       
+
+        public static string strWsMatch = "";       
         public MarketBook GetCurrentMarketBook(string marketid, string sheetname, string MainSportsCategory, DateTime marketopendate)
         {
             try

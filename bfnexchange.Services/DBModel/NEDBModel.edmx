@@ -659,6 +659,14 @@ warning 6002: The table/view 'tradline.dbo.ResultPostSettings' does not have a p
         <Function Name="Sp_GetFigureOdds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_GetKalijut" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="Sp_GetKalijutodds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SP_GetTVLinks" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="eventid" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_GetUserbet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="startdate" Type="nvarchar" Mode="In" />
+          <Parameter Name="enddate" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="SP_LiveTVChanels_GetAlldata" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_MarketCatalogueSelections_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MarketCatalogueID" Type="nvarchar" Mode="In" />
@@ -2917,6 +2925,14 @@ warning 6002: The table/view 'tradline.dbo.ResultPostSettings' does not have a p
             <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_UserBets_GetCompletedResult" ReturnType="Collection(NExchangeModel.SP_UserBets_GetCompletedResult_Result)" />
+          <FunctionImport Name="SP_GetTVLinks" ReturnType="Collection(NExchangeModel.SP_GetTVLinks_Result)">
+          <Parameter Name="eventid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_GetUserbet" ReturnType="Collection(NExchangeModel.SP_GetUserbet_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="startdate" Mode="In" Type="String" />
+            <Parameter Name="enddate" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_Users_GetUserbyUsernameandPassword_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
@@ -5394,6 +5410,22 @@ warning 6002: The table/view 'tradline.dbo.ResultPostSettings' does not have a p
           <Property Type="String" Name="MarketBookname" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="Winnername" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="EventType" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="SP_GetTVLinks_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="tvlink" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="scorecard" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="EventID" Nullable="true" MaxLength="15" />
+        </ComplexType>
+        <ComplexType Name="SP_GetUserbet_Result">
+          <Property Type="String" Name="BetType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="UserOdd" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Amount" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="SelectionName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MarketbookName" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="BetSize" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7974,6 +8006,30 @@ warning 6002: The table/view 'tradline.dbo.ResultPostSettings' does not have a p
                 <ScalarProperty Name="MarketBookname" ColumnName="MarketBookname" />
                 <ScalarProperty Name="Winnername" ColumnName="Winnername" />
                 <ScalarProperty Name="EventType" ColumnName="EventType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetTVLinks" FunctionName="NExchangeModel.Store.SP_GetTVLinks">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NExchangeModel.SP_GetTVLinks_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="tvlink" ColumnName="tvlink" />
+                <ScalarProperty Name="scorecard" ColumnName="scorecard" />
+                <ScalarProperty Name="EventID" ColumnName="EventID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetUserbet" FunctionName="NExchangeModel.Store.SP_GetUserbet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NExchangeModel.SP_GetUserbet_Result">
+                <ScalarProperty Name="BetType" ColumnName="BetType" />
+                <ScalarProperty Name="UserOdd" ColumnName="UserOdd" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="SelectionName" ColumnName="SelectionName" />
+                <ScalarProperty Name="MarketbookName" ColumnName="MarketbookName" />
+                <ScalarProperty Name="BetSize" ColumnName="BetSize" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -53,6 +53,7 @@ namespace GTExch.Models
         public string PasswordforValidate { get; set; }
         public string PasswordforValidateS { get; set; }
         public int CreatedbyID { get; set; }
+        public string token { get; set; }
 
     }
 

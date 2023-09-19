@@ -3602,86 +3602,86 @@ namespace globaltraders
                 // t20
                 if (cmbkalijut.SelectedIndex == 0)
                 {
-                    Figure.Add(selectname1[0]+" 5 Over Figure");
-                    Figure.Add(selectname1[0]+" 10 Over Figure");
-                    Figure.Add(selectname1[0]+" 15 Over Figure");
-                    Figure.Add(selectname1[0]+" 20 Over Figure");
-                    Figure.Add(selectname2[1]+" 5 Over Figure");
-                    Figure.Add(selectname2[1]+" 10 Over Figure");
-                    Figure.Add(selectname2[1]+" 15 Over Figure");
-                    Figure.Add(selectname2[1]+" 20 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 5 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 10 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 15 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 20 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 5 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 10 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 15 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 20 Over Figure");
                 }
                 //t50
                 if (cmbkalijut.SelectedIndex == 1)
                 {
-                    Figure.Add(selectname1[0]+" 5 Over Figure");
-                    Figure.Add(selectname1[0]+" 10 Over Figure");
-                    Figure.Add(selectname1[0]+" 15 Over Figure");
-                    Figure.Add(selectname1[0]+" 20 Over Figure");
-                    Figure.Add(selectname1[0]+" 25 Over Figure");
-                    Figure.Add(selectname1[0]+" 30 Over Figure");
-                    Figure.Add(selectname1[0]+" 35 Over Figure");
-                    Figure.Add(selectname1[0]+" 40 Over Figure");
-                    Figure.Add(selectname2[1]+" 5 Over Figure");
-                    Figure.Add(selectname2[1]+" 10 Over Figure");
-                    Figure.Add(selectname2[1]+" 15 Over Figure");
-                    Figure.Add(selectname2[1]+" 20 Over Figure");
-                    Figure.Add(selectname2[1]+" 25 Over Figure");
-                    Figure.Add(selectname2[1]+" 30 Over Figure");
-                    Figure.Add(selectname2[1]+" 35 Over Figure");
-                    Figure.Add(selectname2[1]+" 40 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 5 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 10 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 15 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 20 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 25 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 30 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 35 Over Figure");
+                    Figure.Add(selectname1[0].ToLower()+" 40 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 5 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 10 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 15 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 20 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 25 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 30 Over Figure");
+                    Figure.Add(selectname2[1].ToLower()+" 35 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 40 Over Figure");
                 }
 
                 //oneday
                 if (cmbkalijut.SelectedIndex == 2)
                 {
-                    Figure.Add(selectname1[0]+" 10 Over Figure");
-                    Figure.Add(selectname1[0] + " 15 Over Figure");
-                    Figure.Add(selectname1[0] + " 20 Over Figure");
-                    Figure.Add(selectname1[0] + " 25 Over Figure");
-                    Figure.Add(selectname1[0] + " 30 Over Figure");
-                    Figure.Add(selectname1[0] + " 35 Over Figure");
-                    Figure.Add(selectname1[0] + " 40 Over Figure");
-                    Figure.Add(selectname1[0] + " 45 Over Figure");
-                    Figure.Add(selectname1[0] + " 50 Over Figure");
-                    Figure.Add(selectname1[0] + " 55 Over Figure");
-                    Figure.Add(selectname1[0] + " 60 Over Figure");
-                    Figure.Add(selectname1[0] + " 65 Over Figure");
-                    Figure.Add(selectname1[0] + " 70 Over Figure");
-                    Figure.Add(selectname1[0] + " 75 Over Figure");
-                    Figure.Add(selectname1[0] + " 80 Over Figure");
-                    Figure.Add(selectname1[0] + " 85 Over Figure");
-                    Figure.Add(selectname1[0] + " 90 Over Figure");
-                    Figure.Add(selectname1[0] + " 95 Over Figure");
-                    Figure.Add(selectname1[0] + " 100 Over Figure");
-                    Figure.Add(selectname2[1] + " 10 Over Figure");
-                    Figure.Add(selectname2[1] + " 15 Over Figure");
-                    Figure.Add(selectname2[1] + " 20 Over Figure");
-                    Figure.Add(selectname2[1] + " 25 Over Figure");
-                    Figure.Add(selectname2[1] + " 30 Over Figure");
-                    Figure.Add(selectname2[1] + " 35 Over Figure");
-                    Figure.Add(selectname2[1] + " 40 Over Figure");
-                    Figure.Add(selectname2[1] + " 45 Over Figure");
-                    Figure.Add(selectname2[1] + " 50 Over Figure");
-                    Figure.Add(selectname2[1] + " 55 Over Figure");
-                    Figure.Add(selectname2[1] + " 60 Over Figure");
-                    Figure.Add(selectname2[1] + " 65 Over Figure");
-                    Figure.Add(selectname2[1] + " 70 Over Figure");
-                    Figure.Add(selectname2[1] + " 75 Over Figure");
-                    Figure.Add(selectname2[1] + " 80 Over Figure");
-                    Figure.Add(selectname2[1] + " 85 Over Figure");
-                    Figure.Add(selectname2[1] + " 90 Over Figure");
-                    Figure.Add(selectname2[1] + " 95 Over Figure");
-                    Figure.Add(selectname2[1] + " 100 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() +" 10 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 15 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 20 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 25 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 30 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 35 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 40 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 45 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 50 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 55 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 60 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 65 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 70 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 75 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 80 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 85 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 90 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 95 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 100 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 10 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 15 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 20 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 25 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 30 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 35 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 40 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 45 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 50 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 55 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 60 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 65 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 70 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 75 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 80 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 85 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 90 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 95 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 100 Over Figure");
 
                 }
                 //t10
                 if (cmbkalijut.SelectedIndex == 3)
                 {
-                    Figure.Add(selectname1[0] + " 95 Over Figure");
-                    Figure.Add(selectname1[0] + " 95 Over Figure");
-                    Figure.Add(selectname2[1] + " 50 Over Figure");
-                    Figure.Add(selectname2[1] + " 100 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 95 Over Figure");
+                    Figure.Add(selectname1[0].ToLower() + " 95 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 50 Over Figure");
+                    Figure.Add(selectname2[1].ToLower() + " 100 Over Figure");
 
                 }
                 List<string> FigureCatelogIDs = new List<string>();
@@ -3899,89 +3899,116 @@ namespace globaltraders
                 // 20
                 if (cmbkalijut.SelectedIndex == 0)
                 {
-                    kalijutt.Add(selectname1[0]+" 5 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 5 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 1 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 2 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 3 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 4 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 5 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 6 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 7 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 8 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 9 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 10 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 11 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 12 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 13 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 14 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() +" 15 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() +" 16 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 17 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 18 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 19 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower() + " 20 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 1 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 2 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 3 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 4 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 5 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 6 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 7 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 8 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 9 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 10 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 11 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 12 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 13 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 14 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 15 Over Kali");
                 }
                 //50
                 if (cmbkalijut.SelectedIndex == 1)
                 {
-                    kalijutt.Add(selectname1[0]+" 5 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 25 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 30 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 35 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 40 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 45 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 50 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 5 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 25 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 30 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 35 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 40 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 45 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 50 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 5 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 10 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 15 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 20 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 25 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 30 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 35 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 40 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 45 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 50 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 5 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 10 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 15 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 20 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 25 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 30 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 35 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 40 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 45 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 50 Over Kali");
 
                 }
                 //test
                 if (cmbkalijut.SelectedIndex == 2)
                 {
-                    kalijutt.Add(selectname1[0]+" 10 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 15 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 20 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 25 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 30 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 35 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 40 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 45 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 50 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 55 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 60 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 70 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 75 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 80 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 85 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 90 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 95 Over Kali");
-                    kalijutt.Add(selectname1[0]+" 100 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 10 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 15 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 20 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 25 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 30 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 35 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 40 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 45 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 50 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 55 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 60 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 65 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 70 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 75 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 80 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 85 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 90 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 95 Over Kali");
-                    kalijutt.Add(selectname2[1]+" 100 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 10 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 15 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 20 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 25 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 30 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 35 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 40 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 45 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 50 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 55 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 60 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 70 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 75 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 80 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 85 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 90 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 95 Over Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 100 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 10 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 15 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 20 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 25 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 30 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 35 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 40 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 45 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 50 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 55 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 60 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 65 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 70 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 75 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 80 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 85 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 90 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 95 Over Kali");
+                    kalijutt.Add(selectname2[1].ToLower() + " 100 Over Kali");
                    
                 }
                 //t10
                 if (cmbkalijut.SelectedIndex == 3)
                 {
-                    kalijutt.Add(selectname1[0]+" 50 Ball Kali");
-                    kalijutt.Add(selectname1[0]+" 100 Ball Kali");                   
-                    kalijutt.Add(selectname2[1]+" 50 Ball Kali");
-                    kalijutt.Add(selectname2[1]+" 100 Ball Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 50 Ball Kali");
+                    kalijutt.Add(selectname1[0].ToLower()+" 100 Ball Kali");                   
+                    kalijutt.Add(selectname2[1].ToLower()+" 50 Ball Kali");
+                    kalijutt.Add(selectname2[1].ToLower()+" 100 Ball Kali");
                 }
 
                 List<string> KaliCatelogIDs = new List<string>();
@@ -3996,7 +4023,31 @@ namespace globaltraders
                     KaliCatelogIDs.Add("3." + (EventID + 50));
                     KaliCatelogIDs.Add("3." + (EventID + 60));
                     KaliCatelogIDs.Add("3." + (EventID + 70));
-                    KaliCatelogIDs.Add("3." + (EventID + 80));                   
+                    KaliCatelogIDs.Add("3." + (EventID + 80));
+                    KaliCatelogIDs.Add("3." + (EventID + 90));
+                    KaliCatelogIDs.Add("3." + (EventID + 100));
+                    KaliCatelogIDs.Add("3." + (EventID + 110));
+                    KaliCatelogIDs.Add("3." + (EventID + 120));
+                    KaliCatelogIDs.Add("3." + (EventID + 130));
+                    KaliCatelogIDs.Add("3." + (EventID + 140));
+                    KaliCatelogIDs.Add("3." + (EventID + 150));
+                    KaliCatelogIDs.Add("3." + (EventID + 160));
+                    KaliCatelogIDs.Add("3." + (EventID + 170));
+                    KaliCatelogIDs.Add("3." + (EventID + 180));
+                    KaliCatelogIDs.Add("3." + (EventID + 190));
+                    KaliCatelogIDs.Add("3." + (EventID + 200));
+                    KaliCatelogIDs.Add("3." + (EventID + 210));
+                    KaliCatelogIDs.Add("3." + (EventID + 220));
+                    KaliCatelogIDs.Add("3." + (EventID + 230));
+                    KaliCatelogIDs.Add("3." + (EventID + 240));
+                    KaliCatelogIDs.Add("3." + (EventID + 250));
+                    KaliCatelogIDs.Add("3." + (EventID + 260));
+                    KaliCatelogIDs.Add("3." + (EventID + 270));
+                    KaliCatelogIDs.Add("3." + (EventID + 280));
+                    KaliCatelogIDs.Add("3." + (EventID + 290));
+                    KaliCatelogIDs.Add("3." + (EventID + 300));
+                    KaliCatelogIDs.Add("3." + (EventID + 310));
+                    KaliCatelogIDs.Add("3." + (EventID + 320));
                 }
                 //t50
                 if (cmbkalijut.SelectedIndex == 1)

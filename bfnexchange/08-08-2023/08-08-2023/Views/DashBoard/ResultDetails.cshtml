@@ -1,0 +1,15 @@
+﻿@model List<bfnexchange.Models.CompletedResult>
+
+<div class="col-md-12 no-padding">
+
+	@foreach (var item in Model)
+	{
+		<label style="color:white">@item.MarketBookname</label>
+		<label style="color:white">@item.CreatedDate</label>
+		<label style="color:white">@item.Winnername</label>
+
+	}
+
+</div>
+
+
