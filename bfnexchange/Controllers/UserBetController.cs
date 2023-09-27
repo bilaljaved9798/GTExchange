@@ -38,6 +38,8 @@ namespace bfnexchange.Controllers
                     Session["userbets"] = lstUserBets;
                     List<UserBets> lstAllUserBets = new List<Models.UserBets>();
                     lstAllUserBets.Clear();
+                    List<UserBets> lstAllFancy = lstUserBets.Where(x => x.location == "8").ToList();
+                    lstUserBets.Where(w => w.location == "8" ).ToList().ForEach(i => i.UserOdd = (Convert.ToInt32(i.BetSize)/100).ToString());                    
                     if (Session["linevmarkets"] != null)
                     {
                         List<UserBets> lstUserBetAll = (List<UserBets>)Session["userbet"];
@@ -164,6 +166,7 @@ namespace bfnexchange.Controllers
                 {
 
                     List<UserBets> lstUserBets = (List<UserBets>)Session["userbets"];
+                    lstUserBets.Where(w => w.location == "8").ToList().ForEach(i => i.UserOdd = (Convert.ToInt32(i.BetSize) / 100).ToString());
                     List<UserBets> lstAllUserBets = new List<Models.UserBets>();
                     if (Session["linevmarkets"] != null)
                     {

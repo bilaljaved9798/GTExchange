@@ -2407,15 +2407,13 @@
                                             <InlineUIContainer>
                                               <Border BorderBrush="#010101" BorderThickness="{Binding Price}"  Margin="0,0,0,0">
                                                 <StackPanel  Width="70"  >
-                                                    <TextBlock Text="{Binding Backprice0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource Price}"/>                 
-                                                    <TextBlock Text="{Binding Backsize0, Mode=OneWay, NotifyOnTargetUpdated=True}" Style="{StaticResource size}"  />   
+                                                    <TextBlock Text="1.98" Style="{StaticResource Price}"/>                 
+                                                    <TextBlock Text="0.98" Style="{StaticResource size}"  />   
                                                 </StackPanel>
                                                   </Border>
                                             </InlineUIContainer>
                                         </TextBlock>
                                                     </Grid>
-
-
                                                 </DataTemplate>
                                             </DataGridTemplateColumn.CellTemplate>
                                         </DataGridTemplateColumn>
@@ -2429,16 +2427,13 @@
                                                             <TextBlock.Style>
                                                                 <Style TargetType="{x:Type TextBlock}">
                                                                     <Setter Property="TextBlock.Background" Value="#FF8A8E" />
-
                                                                 </Style>
-
                                                             </TextBlock.Style>  
                                             <InlineUIContainer>
                                             <Border BorderBrush="#010101" BorderThickness="{Binding Price}"  Margin="0,0,0,0">
                                                 <StackPanel Width="70" >
-                                                    <TextBlock Text="1" Style="{StaticResource Price}" />
-                                                     
-                                                    <TextBlock Text="102" Style="{StaticResource size}" />
+                                                    <TextBlock Text="2.02" Style="{StaticResource Price}" />                                                     
+                                                    <TextBlock Text="1.02" Style="{StaticResource size}" />
                                                   
                                                 </StackPanel>
                                                 </Border>
