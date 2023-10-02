@@ -219,185 +219,144 @@
 									List<bfnexchange.HelperClasses.AllMarketsInPlay> lstMatchesbytype = Model.AllMarkets.Where(x => x.CategoryName == item).ToList();
 									foreach (var matchitem in lstMatchesbytype)
 									{
-								<div class="inplaydatarow">
+										<div class="inplaydatarow">
 
-									<i class="fa fa-share-alt" aria-hidden="true" style="float: right;margin-top: 14px;margin-right: 10px;"></i>
+											<i class="fa fa-share-alt" aria-hidden="true" style="float: right;margin-top: 14px;margin-right: 10px;"></i>
 
-									@if (item == "Horse Racing" || item == "Greyhound Racing")
-									{
-
-										<div class="inplaymatchname">
-											<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:black; font-size: 25px;"></i>
-											@{
-												string imageUrl = Url.Content("~/Content/images/" + matchitem.CountryCode.ToString() + ".svg");
-											}
-											<img src="@imageUrl" alt="Country Flag" style="height:35px;width:35px;float:left" />
-											<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName - @matchitem.MarketBookName</a>
-										</div>
-									}
-									else
-									{
-										if (matchitem.MarketStatus == "In Play")
-										{
-											<div class="inplaymatchname">
-												<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:green; font-size: 25px;"></i>
-												<a style="color:green; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
-
-											</div>
-										}
-										else
-										{
-											if (matchitem.MarketStatus == "Closed")
+											@if (item == "Horse Racing" || item == "Greyhound Racing")
 											{
+
 												<div class="inplaymatchname">
-													<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:red; font-size: 25px;"></i>
-													<a style="color:red; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
+													<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:black; font-size: 25px;"></i>
+													@{
+														string imageUrl = Url.Content("~/Content/images/" + matchitem.CountryCode.ToString() + ".svg");
+													}
+													<img src="@imageUrl" alt="Country Flag" style="height:35px;width:35px;float:left" />
+													<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.EventName - @matchitem.MarketBookName</a>
 												</div>
 											}
 											else
 											{
+												if (matchitem.MarketBookName == "Winner" && matchitem.CategoryName == "Cricket")
+												{
+													<div class="inplaymatchname">
+														<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:black; font-size: 25px;"></i>
+														<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')"> @matchitem.EventName</a>
+													</div>
+												}
+												else
+												{
+													if (matchitem.MarketStatus == "In Play")
+													{
+														<div class="inplaymatchname">
+															<i class="fa fa-caret-right" aria-hidden="true" style="    float: left;    margin-top: 1px; color:green; font-size: 25px;"></i>
+															<a style="color:green; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
 
-												<div class="inplaymatchname">
-													<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:black; font-size: 25px;"></i>
-													<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')"> @matchitem.Runner1 v @matchitem.Runner2</a>
-												</div>
+														</div>
+													}
+													else
+													{
+														if (matchitem.MarketStatus == "Closed")
+														{
+															<div class="inplaymatchname">
+																<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:red; font-size: 25px;"></i>
+																<a style="color:red; " onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.Runner1 v @matchitem.Runner2 @*<label class="cool" style=" color:green; animation:blinker 2s linear infinite; "> - IN-PLAY</label>*@</a>
+															</div>
+														}
+														else
+														{
+
+															<div class="inplaymatchname">
+																<i class="fa fa-caret-right" aria-hidden="true" style="float: left;margin-top: 1px; color:black; font-size: 25px;"></i>
+																<a onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')"> @matchitem.Runner1 v @matchitem.Runner2</a>
+															</div>
+														}
+													}
+												}
 											}
-										}
-									}
 
 
 
 
-									<div class="inplaytime">
-										@matchitem.MarketStartTime
-									</div>
-
-									@if (item == "Cricket" || item == "Soccer" || item == "Tennis")
-
-									{
-
-										<div class="inplaymatchbackandlay">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">
-														@matchitem.Runner1Back
-													</span>
-													<br />
-
-													<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner1BackSize</span>
-
-
-												</div>
-												<div class="inplaylay">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">											@matchitem.Runner1Lay	</span>
-													<br />
-													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner1LaySize </span>
-												</div>
+											<div class="inplaytime">
+												@matchitem.MarketStartTime
 											</div>
 
+											@if (item == "Cricket" || item == "Soccer" || item == "Tennis")
+
+											{
+
+												<div class="inplaymatchbackandlay">
+													<div class="inplayrunner1">
+														<div class="inplayback">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">
+																@matchitem.Runner1Back
+															</span>
+															<br />
+
+															<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner1BackSize</span>
+
+
+														</div>
+														<div class="inplaylay">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">											@matchitem.Runner1Lay	</span>
+															<br />
+															<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner1LaySize </span>
+														</div>
+													</div>
+
+												</div>
+												<div class="inplaymatchbackandlay1">
+													<div class="inplayrunner1">
+														<div class="inplayback">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Back </span>
+															<br />
+															<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3BackSize </span>
+														</div>
+														<div class="inplaylay">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Lay</span>
+															<br />
+
+															<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3LaySize </span>
+														</div>
+													</div>
+
+												</div>
+												<div class="inplaymatchbackandlay2">
+													<div class="inplayrunner1">
+														<div class="inplayback">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Back </span>
+															<br />
+															<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner2BackSize </span>
+														</div>
+														<div class="inplaylay">
+															<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Lay </span>
+															<br />
+															<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner2LaySize</span>
+														</div>
+													</div>
+
+												</div>
+
+
+
+											}
+
+
+
+											else
+											{
+
+
+												<div class="moleucule" style="float: right;   margin-right: 10%;" onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.MarketBookID.ToString().Replace("1.2", "")</div>
+
+
+
+											}
+
+
+
 										</div>
-										<div class="inplaymatchbackandlay1">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Back </span>
-													<br />
-													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3BackSize </span>
-												</div>
-												<div class="inplaylay">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner3Lay</span>
-													<br />
-
-													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner3LaySize </span>
-												</div>
-											</div>
-
-										</div>
-										<div class="inplaymatchbackandlay2">
-											<div class="inplayrunner1">
-												<div class="inplayback">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Back </span>
-													<br />
-													<span style="     font-size: 14px;     font-weight: 500; ">		@matchitem.Runner2BackSize </span>
-												</div>
-												<div class="inplaylay">
-													<span style="    font-size: 22px;    font-weight: 800;    /* margin-top: -4px; */">		@matchitem.Runner2Lay </span>
-													<br />
-													<span style="     font-size: 14px;     font-weight: 500; ">	@matchitem.Runner2LaySize</span>
-												</div>
-											</div>
-
-										</div>
-
-
-
-									}
-
-
-
-									else
-									{
-
-
-										<div class="moleucule" style="float: right;   margin-right: 10%;" onclick="lastLevelBreadcrumb('@matchitem.MarketBookID.ToString()')">@matchitem.MarketBookID.ToString().Replace("1.2", "")</div>
-
-
-
-										@*<div class="inplaymatchbackandlay">
-				<div class="inplayrunner1">
-					<div class="inplayback">
-						@matchitem.Runner1Back
-						<br />
-
-
-
-
-					</div>
-					<div class="inplaylay">
-						@matchitem.Runner1Lay
-						<br />
-
-					</div>
-				</div>
-
-			</div>
-			<div class="inplaymatchbackandlay1">
-				<div class="inplayrunner1">
-					<div class="inplayback">
-						@matchitem.Runner3Back
-						<br />
-
-					</div>
-					<div class="inplaylay">
-						@matchitem.Runner3Lay
-						<br />
-
-
-					</div>
-				</div>
-
-			</div>
-			<div class="inplaymatchbackandlay2">
-				<div class="inplayrunner1">
-					<div class="inplayback">
-						@matchitem.Runner2Back
-						<br />
-
-					</div>
-					<div class="inplaylay">
-						@matchitem.Runner2Lay
-						<br />
-
-					</div>
-				</div>
-
-			</div>*@
-
-
-									}
-
-
-
-								</div>
 									}
 
 									// }

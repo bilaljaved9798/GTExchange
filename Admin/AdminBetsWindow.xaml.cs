@@ -198,8 +198,16 @@ namespace globaltraders
                             }
                             else
                             {
-                                lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID, UserID = item.UserID });
+                                if (item.location == "9")
+                                {
+                                    lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID, location = item.location }); ;
+                                }
+                                else
+                                {
+                                    lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.UserOdd, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID, UserID = item.UserID });
+                                }
                             }
+                           
                         }
                     }
                     lblMatchBetsCount.Content = LoggedinUserDetail.CurrentAdminBets.ToList().Where(item => item.isMatched == true).Count().ToString();
@@ -388,16 +396,18 @@ namespace globaltraders
                 {
                     List<UserBetsForAdmin> lstMatchbets = LoggedinUserDetail.CurrentAdminBets.ToList().Where(item => item.isMatched == true).ToList();
                     lstMatchbets = lstMatchbets.OrderByDescending(item => item.ID).ToList();
-                    //if (item.location == "9")
-                    //{
-                    var fata = lstMatchbets.Where(w => w.location == "8").ToList();
+                    
                     lstMatchbets.Where(w => w.location == "8").ToList().ForEach(i =>
                     {
                         i.UserOdd = (Convert.ToDouble(i.BetSize) / 100).ToString();
                         i.LiveOdd = i.LiveOdd;
                     });
-                    // lstCurrentBetsAdmin.Add(new UserBetsForAdmin() { ID = item.ID, SelectionID = item.SelectionID, SelectionName = item.SelectionName, UserOdd = item.BetSize, Amount = item.Amount, LiveOdd = item.LiveOdd, CustomerName = item.CustomerName, DealerName = item.DealerName, BetType = item.BetType, MarketBookID = item.MarketBookID, location = item.location }); ;
-                    //}
+                    lstMatchbets.Where(w => w.location == "9").ToList().ForEach(i =>
+                    {
+                        i.UserOdd = i.BetSize;
+                        i.LiveOdd = i.LiveOdd;                       
+                    });
+
                     DGVMatchedBetsAdminAll.ItemsSource = lstMatchbets;
 
                     lblAllMatchedBets.Content = "Matched Bets " + LoggedinUserDetail.CurrentAdminBets.ToList().Where(item => item.isMatched == true).Count().ToString();
