@@ -3637,7 +3637,14 @@ namespace globaltraders
 
                                 // lblMarketName.Content = MarketBookForProfitandloss.Runners[0].RunnerName.ToString() + "         V         " + MarketBookForProfitandloss.Runners[1].RunnerName.ToString();
                                 //lblMarketName.Content = marketbooknameandtype[1];
-                                lblMarketName.Content = marketbooknameandtype[1].ToUpper() + "   V   " + marketbooknameandtype[2].ToUpper();
+                                try
+                                {
+                                    lblMarketName.Content = marketbooknameandtype[1].ToUpper() + "   V   " + marketbooknameandtype[2].ToUpper();
+                                }
+                                catch (System.Exception ex)
+                                {
+
+                                }
                             }
                             else
                             {

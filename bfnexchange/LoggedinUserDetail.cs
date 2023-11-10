@@ -1255,5 +1255,12 @@ namespace bfnexchange
             }
         }
 
+        public static BetSlipKeys GetBetSlipKeys()
+        {
+            UserServicesClient objUserServiceClient = new UserServicesClient();
+            BetSlipKeys obj = JsonConvert.DeserializeObject<bfnexchange.Models.BetSlipKeys>(objUserServiceClient.GetBetSlipKeys(LoggedinUserDetail.GetUserID()));
+            return obj;
+        }
+
     }
 }

@@ -27,15 +27,6 @@ namespace bfnexchange.Controllers
                 UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
             }
            var Soccergoalmarket = objUsersServiceCleint.GetSoccergoalbyeventId(UserIDforLinevmarkets, EventID);
-
-            //if (Soccergoalmarket != null)
-            //{
-            //    if (Soccergoalmarket.MarketCatalogueID != null)
-            //    {
-            //        Session["SGMarket"] = Soccergoalmarket.MarketCatalogueID;
-            //        return Soccergoalmarket.MarketCatalogueID;
-            //    }
-            //}
             if (Soccergoalmarket != null)
             {
                 foreach (var item in Soccergoalmarket)

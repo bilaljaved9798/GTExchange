@@ -63,37 +63,11 @@
 				}
 	</style>
 
-
-
-
-
-
 </head>
 
-
-
-
-
 <div id="sidebar" style="background-color:@ViewBag.backgrod;color:@ViewBag.color">
-
-
-
 	<ul class="list-unstyled components">
 
-
-		@*<li>
-				<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowAllMatches()">
-					<i> <img src="~/Content/Images/home.png" width="30" height="30" />  Sports </i>
-				</a>
-				<ul id="allsportsul" class="collapse list-unstyled"></ul>
-			</li>*@
-
-		@*<li>
-				<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowAllMatches()">
-					<i> <img src="~/Content/Images/Inplay1.gif" width="30" height="30" /> In-Play Events</i>
-				</a>
-				<ul id="inplayul" class="collapse list-unstyled"></ul>
-			</li>*@
 		<li>
 			<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowInPlayC()">
 				<i> <img src="~/Content/Images/Crick.gif" width="40" height="40" /> Cricket</i>
@@ -197,111 +171,72 @@
 	</ul>
 
 </div>
-<div class="marqueediv col-lg-12 col-md-12 col-sm-12 no-padding" style="background:linear-gradient(to btoom, #0e0e39 56%, #02020e 85%)">
-	<ul class="marqueeui">
-		<li>
-			<i class="fa fa-comments"></i>
-		</li>
-		<li class="marquee">
-			<span id="welcomemsg">  Welcome to global trader </span>
-		</li>
-	</ul>
 
+<ul class="marqueeui">
+	<li style="visibility:hidden">
+		<i class="fa fa-comments"></i>
+	</li>
+	<li class="marquee">
+		<span id="welcomemsg">  Welcome to Global Trader </span>
+	</li>
+</ul>
 
+<div class="upperlinks col-lg-12 col-md-12 col-sm-12 scrollmenu">
+	<a href="/DashBoard/Index"><i class="fa fa-home" style="font-size:17px;"></i></a>
+	<a onclick="LoadDefaultPageInPlay('Inplay')">In-Play<span><label id="marketcount"></label></span></a>
+	<a onclick="LoadDefaultPageInPlay('Cricket')">Cricket</a>
+	<a onclick="LoadDefaultPageInPlay('Soccer')">Soccer</a>
+	<a onclick="LoadDefaultPageInPlay('Tennis')">Tennis</a>
 </div>
-
-@*<div class="upperlinks col-lg-12 col-md-12 col-sm-12">
-		<a href="/DashBoard/Index"><i class="fa fa-home" style="font-size:17px;"></i></a>
-		<a onclick="LoadDefaultPageInPlay('Inplay')">IN-PLAY</a>
-		<a onclick="LoadDefaultPageInPlay('Cricket')">CRICKET</a>
-		<a onclick="LoadDefaultPageInPlay('Soccer')">FOOTBALL</a>
-		<a onclick="LoadDefaultPageInPlay('Tennis')">TENNIS</a>
-	</div>*@
-
 
 <div id="otherdata"> </div>
 <div class="col-md-12 no-padding col-sm-12 col-lg-12" id="marketdataall" style="display:none">
 	<div class="col-md-8 no-padding col-lg-8  col-sm-12 scroll">
 
-
-
 		<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
-
-
-
-
-			<div id="marketbook">
-
-
-			</div>
-
-
-
+			<div id="marketbook"></div>
 		</div>
 
 		<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
 
-			<div id="marketbookTWT">
-
-			</div>
-
-
-
-
+			<div id="marketbookTWT"></div>
 		</div>
-
-
 
 		<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
 			<div id="marketbooksoccer">
 
 			</div>
 		</div>
-
-
-
-
-
 		<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
 
-			@*<div id="fancymarketbook" style="display: none;" >
+			@*<div id="fancymarketbook" style="display: none;" ></div>*@
 
-
-				</div>*@
-
-			<div id="Indianfancymarketbook1">
-
-			</div>
-
-
+			<div id="Indianfancymarketbook1"></div>
 			<div id="Figurefancymarketbook">
 
 			</div>
-			<div id="KJfancymarketbook" style="   display: none;">
-
-
-			</div>
-
+			<div id="KJfancymarketbook" style="   display: none;"></div>
 		</div>
 
 		@*<div class="col-md-12 col-sm-12 col-lg-12 no-padding">
-
-
 				<div id="SFigfancymarketbook">
-
-
 				</div>
 			</div>*@
-
-
 	</div>
-
-
 
 	@*<button id="btnclose" class="liveS " style="display:none; background:red; margin-top:-4px; height:28px;">Close</button>*@
 
 
 	<div class="col-md-4 col-sm-12 col-lg-4 no-padding">
+		@{
+			bfnexchange.Models.BetSlipKeys obj = Session["BetSlipKeys"] as bfnexchange.Models.BetSlipKeys;
+			if (obj == null)
+			{
+				obj = LoggedinUserDetail.GetBetSlipKeys();
+				Session["BetSlipKeys"] = obj;
+			}
+
+		}
 		@if (LoggedinUserDetail.GetUserTypeID() == 3)
 		{
 
@@ -316,7 +251,6 @@
 						</div>
 					</div>
 
-
 					<div class="widget-body" style="padding: 0px; ">
 						<div class="tabbable">
 							<ul class="nav nav-tabs tabs-flat nav-justified" id="myTab9">
@@ -325,7 +259,6 @@
 										Single Bet
 									</a>
 								</li>
-
 
 								<li class="tab-red" id="aJoriBet" style="display: none;">
 									<a data-toggle="tab" href="#joriBet">
@@ -403,39 +336,69 @@
 													</td>
 												</tr>
 
+
+												@*<span class="runnername">
+
+													</span>*@
+
 												<tr data-parent="b-349" id="btn-b-349 btnBetSlip btn-smBetSlip btn-defaultBetSlip">
+
+
+
+
 													<td colspan="5" width="100px">
+
+
+
 														<div class="col-md-12 col-sm-12 no-padding betslipselections">
 															<span id="betslipselection" style="font-weight:bold;float:left;width: 44%;white-space: nowrap;margin-top: 21px;height: 20px;margin-left: 6px; font-family:'Times New Roman', Times, serif"></span>
 															<div class="col-md-3 col-sm-3 no-padding betslipodd" style="margin-left:5%;width: 24%;margin-right: 1px; border-radius:3px;">
+
+
+
 																<label>Back</label>
-																<label id="betslipback" style=" background: #72bbef;font-size:20px;display: block;"></label>
+
+																<label id="betslipback" style=" background: #72bbef;font-size:20px;display: block;">
+
+
+																</label>
 																<label id="betslipsize" style="font-size:14px;background: #72bbef;font-weight:100;display: block;"></label>
+
+
 															</div>
 															<div class="col-md-3 col-sm-3 no-padding betslipodd" style="  width: 24%; border-radius:3px; ">
 																<label>Lay</label>
-																<label id="betsliplay" style="background: #FF8A8E;margin-left: 0px;font-size:20px;display: block;"></label>
+
+																<label id="betsliplay" style="background: #FF8A8E;margin-left: 0px;font-size:20px;display: block;">
+
+
+																</label>
 																<label id="betslipsizelay" style="font-size:14px;background: #FF8A8E;font-weight:100;display: block;"></label>
+
+
 															</div>
 														</div>
+
+
+
 														<center>
 															<div class="amountbutton" style="float: none; height: 125px;margin-right: -4px">
-																<input class=" betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+", "")" style=" border-radius: 6px;">
-																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+", "")" style="  border-radius: 6px;" ;>
-																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+", "")" style="  border-radius: 6px;" ;>
-																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+", "")" style="  border-radius: 6px;" ;>
+																<input class=" betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(obj.SimpleBtn1.Replace("+", ""))" data-value="@obj.SimpleBtn1.Replace("+", "")" style=" border-radius: 6px;">
+																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(obj.SimpleBtn2.Replace("+", ""))" data-value="@obj.SimpleBtn2.Replace("+", "")" style="  border-radius: 6px;" ;>
+																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@( obj.SimpleBtn3.Replace("+", ""))" data-value="@obj.SimpleBtn3.Replace("+", "")" style="  border-radius: 6px;" ;>
+																<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" type="button" value="@(obj.SimpleBtn4.Replace("+", ""))" data-value="@obj.SimpleBtn4.Replace("+", "")" style="  border-radius: 6px;" ;>
 
 
 																<br />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8)" data-value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", ""))" style=" border-radius: 6px;" ; />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn5)" data-value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", ""))" style=" border-radius: 6px;" ; />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn6)" data-value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", ""))" style="  border-radius: 6px;" ; />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn7)" data-value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", ""))" style=" border-radius: 6px;" ; />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(obj.SimpleBtn8)" data-value="@(obj.SimpleBtn8.Replace("+", ""))" style=" border-radius: 6px;" ; />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(obj.SimpleBtn5)" data-value="@(obj.SimpleBtn5.Replace("+", ""))" style=" border-radius: 6px;" ; />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(obj.SimpleBtn6)" data-value="@(obj.SimpleBtn6.Replace("+", ""))" style="  border-radius: 6px;" ; />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip betors" value="@(obj.SimpleBtn7)" data-value="@(obj.SimpleBtn7.Replace("+", ""))" style=" border-radius: 6px;" ; />
 
-																@*<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+", "")" style=" background:#075E54; color:white" ;>
-																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+", "")" style=" background:#075E54; color:white" ;>*@
+																@*<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn5.Replace("+", ""))" data-value="@obj.SimpleBtn5.Replace("+", "")" style=" background:#075E54; color:white" ;>
+																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn6.Replace("+", ""))" data-value="@obj.SimpleBtn6.Replace("+", "")" style=" background:#075E54; color:white" ;>
+																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn7.Replace("+", ""))" data-value="@obj.SimpleBtn7.Replace("+", "")" style=" background:#075E54; color:white" ;>
+																	<input class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(obj.SimpleBtn8.Replace("+", ""))" data-value="@obj.SimpleBtn8.Replace("+", "")" style=" background:#075E54; color:white" ;>*@
 															</div>
 														</center>
 
@@ -536,15 +499,15 @@
 
 														<center>
 															<div class="amountbuttonmultiple">
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn1.Replace("+", ""))" data-value="@obj.MutipleBtn1.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn2.Replace("+", ""))" data-value="@obj.MutipleBtn2.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(obj.MutipleBtn3.Replace("+", ""))" data-value="@obj.MutipleBtn3.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn4.Replace("+", ""))" data-value="@obj.MutipleBtn4.Replace("+", "")" />
 																<br />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+", "")" />
-																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+", ""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(obj.MutipleBtn5.Replace("+", ""))" data-value="@obj.MutipleBtn5.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn6.Replace("+", ""))" data-value="@obj.MutipleBtn6.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(obj.MutipleBtn7.Replace("+", ""))" data-value="@obj.MutipleBtn7.Replace("+", "")" />
+																<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(obj.MutipleBtn8.Replace("+", ""))" data-value="@obj.MutipleBtn8.Replace("+", "")" />
 
 															</div>
 
@@ -720,16 +683,16 @@
 
 												<center>
 													<div class="amountbutton" style="float: none; height: 116px;margin-left: 3px;">
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn1.Replace("+","")" style=" border-radius: 6px;margin-bottom: 4px;">
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn2.Replace("+","")" style="  border-radius: 6px;margin-bottom: 4px;">
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn3.Replace("+","")" style="border-radius: 6px;margin-bottom: 4px;">
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn4.Replace("+","")" style="  border-radius: 6px;margin-bottom: 4px;">
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn1.Replace("+",""))" data-value="@obj.SimpleBtn1.Replace("+","")" style=" border-radius: 6px;margin-bottom: 4px;">
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(obj.SimpleBtn2.Replace("+",""))" data-value="@obj.SimpleBtn2.Replace("+","")" style="  border-radius: 6px;margin-bottom: 4px;">
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(obj.SimpleBtn3.Replace("+",""))" data-value="@obj.SimpleBtn3.Replace("+","")" style="border-radius: 6px;margin-bottom: 4px;">
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn4.Replace("+",""))" data-value="@obj.SimpleBtn4.Replace("+","")" style="  border-radius: 6px;margin-bottom: 4px;">
 
 														<br />
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn8)" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn8.Replace("+","")" style="  border-radius: 6px;" ;>
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( LoggedinUserDetail.objBetSlipKeys.SimpleBtn5)" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn5.Replace("+","")" style="  border-radius: 6px;" ;>
-														<input class=" betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn6)" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn6.Replace("+","")" style="  border-radius: 6px;" ;>
-														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(LoggedinUserDetail.objBetSlipKeys.SimpleBtn7)" data-value="@LoggedinUserDetail.objBetSlipKeys.SimpleBtn7.Replace("+","")" style="  border-radius: 6px;" ;>
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn8)" data-value="@obj.SimpleBtn8.Replace("+","")" style="  border-radius: 6px;" ;>
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@( obj.SimpleBtn5)" data-value="@obj.SimpleBtn5.Replace("+","")" style="  border-radius: 6px;" ;>
+														<input class=" betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(obj.SimpleBtn6)" data-value="@obj.SimpleBtn6.Replace("+","")" style="  border-radius: 6px;" ;>
+														<input class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" type="button" value="@(obj.SimpleBtn7)" data-value="@obj.SimpleBtn7.Replace("+","")" style="  border-radius: 6px;" ;>
 
 
 													</div>
@@ -826,14 +789,14 @@
 
 																				<center>
 																					<div class="amountbuttonmultiple">
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
-																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+",""))))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn1.Replace("+",""))))" data-value="@obj.MutipleBtn1.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn2.Replace("+",""))))" data-value="@obj.MutipleBtn2.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn3.Replace("+",""))))" data-value="@obj.MutipleBtn3.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn4.Replace("+",""))))" data-value="@obj.MutipleBtn4.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn5.Replace("+",""))))" data-value="@obj.MutipleBtn5.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn6.Replace("+",""))))" data-value="@obj.MutipleBtn6.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn7.Replace("+",""))))" data-value="@obj.MutipleBtn7.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
+																						<input type="button" class="btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@(LoggedinUserDetail.FormatNumber(Convert.ToUInt32( obj.MutipleBtn8.Replace("+",""))))" data-value="@obj.MutipleBtn8.Replace("+","")" style=" background:linear-gradient(to bottom, #0e0e39 56%, #02020e 85%); color:white" ; />
 
 																					</div>
 
@@ -915,11 +878,11 @@
 										<label style="text-align:center; font-weight:600 !important"> Total </label>
 									</div>
 									<div class="col-md-3  betslipodd" style="/* border: 1px solid; */padding-right: 0px !important;padding-left: 0px !important;width: 19%;border-radius:2px">
-										<label id="betslipbackmultiplemb" style="background: #72bbef;/* border-radius: 2px; */width: 125%;text-align: center;border: 1px solid;color: black;font-weight:600 !important;border-radius:2px"></label>
+										<label id="betslipbackmultiplemb" style="background: #72bbef;/* border-radius: 2px; */width: 124.5%;text-align: center;border: 1px solid;color: black;font-weight:600 !important;"></label>
 									</div>
 
-									<div class="col-md-3 betslipodd" style="  padding-left: 0px !important;    padding-right: 0px !important;    float: left;    width: 19%;">
-										<label id="betsliplaymultiplemb" style="background: #FF8A8E;/* border-radius: 4px; */width: 126%;text-align: center;border: 1px solid black;margin-left: 25%;font-weight:600 !important;border-radius:2px"></label>
+									<div class="col-md-3 betslipodd" style="  padding-left: 0px !important;    padding-right: 0px !important;    float: left;    width: 18.9%;">
+										<label id="betsliplaymultiplemb" style="background: #FF8A8E;/* border-radius: 4px; */width: 124.5%;text-align: center;border: 1px solid black;margin-left: 24%;font-weight:600 !important;"></label>
 
 									</div>
 
@@ -929,14 +892,14 @@
 								<div class="col-md-12 no-padding amountareamb">
 									<div class="col-md-12 no-padding">
 										<div class="amountbuttonmultiple" style=" margin-left: 9px;margin-right: -2px;">
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn1.Replace("+","")" style="font-size: 17px; border-radius:6px; margin-bottom:4px" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn2.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn3.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn4.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn5.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn6.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn7.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
-											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+",""))" data-value="@LoggedinUserDetail.objBetSlipKeys.MutipleBtn8.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn1.Replace("+",""))" data-value="@obj.MutipleBtn1.Replace("+","")" style="font-size: 17px; border-radius:6px; margin-bottom:4px" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn2.Replace("+",""))" data-value="@obj.MutipleBtn2.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn3.Replace("+",""))" data-value="@obj.MutipleBtn3.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn4.Replace("+",""))" data-value="@obj.MutipleBtn4.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn5.Replace("+",""))" data-value="@obj.MutipleBtn5.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn6.Replace("+",""))" data-value="@obj.MutipleBtn6.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn7.Replace("+",""))" data-value="@obj.MutipleBtn7.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
+											<input type="button" class="betslipbuttons btnBetSlip btn-smBetSlip btn-defaultBetSlip" value="@( obj.MutipleBtn8.Replace("+",""))" data-value="@obj.MutipleBtn8.Replace("+","")" style="font-size: 17px;border-radius:6px;" />
 
 										</div>
 									</div>
@@ -956,9 +919,9 @@
 											</div>
 											<div class="amountsmb">
 
-												<input type="button" style="background-color:orangered; float: left; font-size:20px" class="buttonview" data-dismiss="modal" value="Close" id="btnBetslipClosemultiple" />
+												<input type="button" style="background-color:orangered; float: left; height:35px !important; font-size:20px" class="buttonview" data-dismiss="modal" value="Close" id="btnBetslipClosemultiple" />
 												@*<input type="button" style="background-color:mediumorchid;float: left;margin-left: 2%;padding:12px" class="buttonview" value="Reset" onclick="resetamountmultiple()" id="btnBetslipResetmultiple" />*@
-												<input type="button" class="buttonview" value="Submit" id="btnBetslipsubmitmultiplemb" style="font-size:20px" />
+												<input type="button" class="buttonview" value="Submit" id="btnBetslipsubmitmultiplemb" style="font-size:20px; height:35px !important;" />
 											</div>
 										</div>
 										<div class="clear-fix"></div>
@@ -1050,8 +1013,19 @@
 
 		@*@ViewBag.color*@
 		<br />
-		<iframe style="width:100%; height: 250px ;display:none" id="video" frameborder="0" allowfullscreen> </iframe>
-		<iframe @*is="x-frame-bypass" src="../Content/Images/output-onlinegiftools.gif"*@ height="100" ; width="50" class="cardsscore" id="scorecaed" frameborder="0" allowfullscreen></iframe>
+
+
+		@*<h1>Hls.js demo - basic usage</h1>*@
+		@*<video width="250" id="video" controls></video>*@
+
+
+		<iframe @*src="../Content/Images/123.gif"*@ style="width:100%; height: 250px ;display:none" id="video" frameborder="0" allowfullscreen> </iframe>
+
+
+		<iframe control="0" ;height="100" ; width="100" class="cardsscore" id="scorecaed" frameborder="0" style="text-align:center"></iframe>
+
+
+		@*<iframe is="x-frame-bypass" src="../Content/Images/output-onlinegiftools.gif" height="100" ; width="50" class="cardsscore" id="scorecaed" frameborder="0" allowfullscreen></iframe>*@
 
 
 
@@ -1913,7 +1887,7 @@ function ShowInPlayC() {
 						setTimeout(function () {
 							LoadUserBets();
 
-						},0);
+						},1000);
 
 					}
 				});
@@ -2001,7 +1975,7 @@ function ShowInPlayC() {
 		$.ajax({
 			url: '/KJ/GetFancyMarketKJ/',
 			type: 'GET',
-			async: true,
+			async: false,
 			data: { 'EventID': eventID, 'Bool': bool },
 			complete: function () {
 
@@ -2064,7 +2038,7 @@ function ShowInPlayC() {
 			success: function (data) {
                 setTimeout(function () {
                     GetMarketFigure();
-                }, 11000);
+                }, 5000);
 
                 boolf = true;
                 $("#Figurefancymarketbook").html(data);
@@ -2096,7 +2070,7 @@ function ShowInPlayC() {
 
                 setTimeout(function () {
                     LoadActiveMarketFigure();
-                }, 11000);
+                }, 7000);
                 if (data != "") {
                     AssignDatatoMarketBookFigure(data);
                 }
@@ -2172,12 +2146,9 @@ function ShowInPlayC() {
 
 			var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 
-
-
 					// orignalopendate=datearr2[0]+"/"+datearr2[1]+"/"+datearr2[2]+" "+datearr[1];
 					$.ajax({
 						url: '/FancyStatus/LoadFancyMarketIN/',
-
 						type: 'GET',
 						async: false,
 						data: {'EventID':eventID ,'MarketBookID': $("#lastloadedmarket").val()},
@@ -2190,9 +2161,8 @@ function ShowInPlayC() {
 							//debugger;
 							setTimeout(function () {
 								LoadActiveMarketFancyIN();
-							},2000);
+							},4000);
 							if (data != "") {
-
 								AssignDatatoMarketBookFancyIN(data);
 								//AssignDatatoMarketBookFancy2(data);
 							}
@@ -2204,7 +2174,7 @@ function ShowInPlayC() {
 						}
 
 					});
-	}
+	    }
 
 
 
@@ -2229,13 +2199,14 @@ function ShowInPlayC() {
 				success: function (data) {
 
 					if (data != "") {
+                        $("#Indianfancymarketbook1").show();
 						$("#Indianfancymarketbook1").html(data);
 
 						//LoadActiveMarketFancyIN();
 						setTimeout(function () {
 							GetActiveMarketINFancy();
 							//LoadActiveMarketFancyIN();
-						}, 2000);
+						}, 4000);
 
 					}
 					else
@@ -2347,25 +2318,16 @@ function ShowInPlayC() {
 
 					}, 400);
 					if (data != "") {
-
 						//  $("#fancymarketbook").html(data);
 						//comparemarketbook();
 						AssignDatatoMarketBookFancy(data);
-
 					}
-
-
-
-
-
 				}
 
 			});
 		}
 		else {
 			$("#fancymarketbook").html("");
-
-
 		}
 
 	}
@@ -2389,6 +2351,8 @@ function ShowInPlayC() {
 
 	         }
 	    var display = false;
+
+	debugger;
 
     $('#btnPlay').click(function (ev) {
 
@@ -2422,15 +2386,40 @@ function ShowInPlayC() {
 	});
 
 
+	//var video = document.getElementById('video');
+	//if (Hls.isSupported()) {
+	//	var hls = new Hls({
+	//		debug: true,
+	//	});
+	//	hls.loadSource('https://11342023-directlive88.com/1032/index.m3u8'); // put stream url here
+	//	hls.attachMedia(video);
+	//	hls.on(Hls.Events.MEDIA_ATTACHED, function () {
+	//		video.muted = true;
+	//		video.play();
+	//	});
+	//}
+	// hls.js is not supported on platforms that do not have Media Source Extensions (MSE) enabled.
+	// When the browser has built-in HLS support (check using `canPlayType`), we can provide an HLS manifest (i.e. .m3u8 URL) directly to the video element through the `src` property.
+	// This is using the built-in support of the plain video element, without using hls.js.
+	//else if (video.canPlayType('application/vnd.apple.mpegurl')) {
 
+
+	//	video.src = 'https://11342023-directlive88.com/1032/index.m3u8';  // put stream url here
+
+	//	video.addEventListener('canplay', function () {
+	//		video.play();
+	//	});
+	//}
 
 
 	var Carddisplay = true;
 
+
+
 	$('#btnscorecard').click(function (ev) {
 
 		$("#video").hide();
-
+		debugger;
             var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
             $.ajax({
                 url: '/Market/GetTvLinks',
@@ -2443,16 +2432,17 @@ function ShowInPlayC() {
                     updatescores();
                 },
                 success: function (data) {
-                  debugger
-                    var scorecard = JSON.parse(data);
-                    if (display == true) {
-                        $("#scorecaed")[0].src = scorecard[0].scorecard;
-                        $("#scorecaed").show();
+					debugger;
+					var scorecard = JSON.parse(data);
+					if (display == true && scorecard.length>0) {
+
+						$("#scorecaed")[0].src = scorecard[0].scorecard;
+						$("#scorecaed").show();
                         display = false;
                     }
                     else {
-                        display = true;
-                        $("#scorecaed").show();
+						display = true;
+						$("#scorecaed").hide();
                     }
                 }
             });
@@ -2487,250 +2477,250 @@ function ShowInPlayC() {
 
 
 
-		function AssignDataToScoreCard(matchstr) {
+	//	function AssignDataToScoreCard(matchstr) {
 
 
-			if (matchstr == "") {
-				$("#matchscores").hide();
-				return;
-			}
-			var scorecard = JSON.parse(matchstr);
+	//		if (matchstr == "") {
+	//			$("#matchscores").hide();
+	//			return;
+	//		}
+	//		var scorecard = JSON.parse(matchstr);
 
-			if ( scorecard.cs != null) {
+	//		if ( scorecard.cs != null) {
 
-				$("#matchscores").show();
+	//			$("#matchscores").show();
 
-				var status;
-				if (scorecard.cs.msg == "WD") {
-					status = 'WIDE';
-				}
-				else {
-					if (scorecard.cs.msg == "B") {
-						status = 'Ball';
-					}
-					else {
-						if (scorecard.cs.msg == "OC") {
-							status = 'Over';
-						}
-						else {
-							if (scorecard.cs.msg == "BS") {
-								status = "Bowler Stop";
-							}
+	//			var status;
+	//			if (scorecard.cs.msg == "WD") {
+	//				status = 'WIDE';
+	//			}
+	//			else {
+	//				if (scorecard.cs.msg == "B") {
+	//					status = 'Ball';
+	//				}
+	//				else {
+	//					if (scorecard.cs.msg == "OC") {
+	//						status = 'Over';
+	//					}
+	//					else {
+	//						if (scorecard.cs.msg == "BS") {
+	//							status = "Bowler Stop";
+	//						}
 
-							if  (scorecard.cs.msg == "BR") {
-								status = "Innings Break";
-							}
+	//						if  (scorecard.cs.msg == "BR") {
+	//							status = "Innings Break";
+	//						}
 
-							else {
-								if (scorecard.cs.msg == "DB") {
-									status = "Drinks Break";
-								}
-								else {
+	//						else {
+	//							if (scorecard.cs.msg == "DB") {
+	//								status = "Drinks Break";
+	//							}
+	//							else {
 
-									if (scorecard.cs.msg == "1") {
-										status = "Single";
-									}
+	//								if (scorecard.cs.msg == "1") {
+	//									status = "Single";
+	//								}
 
-									else {
-										if (scorecard.cs.msg == "0") {
-											status = "Zero Run";
-										}
-										else {
-											if (scorecard.cs.msg == "2") {
-												status = "Double";
-											}
-											else {
-												if (scorecard.cs.msg == "3") {
-													status = "Three Runs";
-												}
-												else {
-													if (scorecard.cs.msg == "4") {
-														status = "Four Runs";
-													}
-													else {
+	//								else {
+	//									if (scorecard.cs.msg == "0") {
+	//										status = "Zero Run";
+	//									}
+	//									else {
+	//										if (scorecard.cs.msg == "2") {
+	//											status = "Double";
+	//										}
+	//										else {
+	//											if (scorecard.cs.msg == "3") {
+	//												status = "Three Runs";
+	//											}
+	//											else {
+	//												if (scorecard.cs.msg == "4") {
+	//													status = "Four Runs";
+	//												}
+	//												else {
 
-														if (scorecard.cs.msg == "5") {
-															status = "Five Runs";
-														}
-														else {
-															if (scorecard.cs.msg == "NB+1") {
-																status = "No Ball + 1";
-															}
-															else {
-																if (scorecard.cs.msg == "WK") {
-																	status = "Wicket";
-																}
-																else {
-																	if (scorecard.cs.msg == "6") {
-																		status = "Sixer";
-																	}
-																	else {
+	//													if (scorecard.cs.msg == "5") {
+	//														status = "Five Runs";
+	//													}
+	//													else {
+	//														if (scorecard.cs.msg == "NB+1") {
+	//															status = "No Ball + 1";
+	//														}
+	//														else {
+	//															if (scorecard.cs.msg == "WK") {
+	//																status = "Wicket";
+	//															}
+	//															else {
+	//																if (scorecard.cs.msg == "6") {
+	//																	status = "Sixer";
+	//																}
+	//																else {
 
-																		if (scorecard.cs.msg == "WD+1") {
-																			status = "wide + 1 run";
-																		}
-																		else {
-																			if (scorecard.cs.msg == "C") {
-																				status = "Confirming";
-																			}
+	//																	if (scorecard.cs.msg == "WD+1") {
+	//																		status = "wide + 1 run";
+	//																	}
+	//																	else {
+	//																		if (scorecard.cs.msg == "C") {
+	//																			status = "Confirming";
+	//																		}
 
-																			else {
-																				if (scorecard.cs.msg == "NB") {
-																					status = "NO Ball";
-																				}
+	//																		else {
+	//																			if (scorecard.cs.msg == "NB") {
+	//																				status = "NO Ball";
+	//																			}
 
-																				else {
-																					if (scorecard.cs.msg == "FH") {
-																						status = "Free Hit";
-																					}
-																					else {
-																						if (scorecard.cs.msg == "NO") {
-																							status = "Nor OUt";
-																						}
+	//																			else {
+	//																				if (scorecard.cs.msg == "FH") {
+	//																					status = "Free Hit";
+	//																				}
+	//																				else {
+	//																					if (scorecard.cs.msg == "NO") {
+	//																						status = "Nor OUt";
+	//																					}
 
-																						else {
+	//																					else {
 
-																							if (scorecard.cs.msg == "3U") {
-																								status = "3rd Umpire";
-																							}
+	//																						if (scorecard.cs.msg == "3U") {
+	//																							status = "3rd Umpire";
+	//																						}
 
-																							else {
-																								if (scorecard.cs.msg == "SB") {
-																									status = "Spin Bowler";
-																								}
+	//																						else {
+	//																							if (scorecard.cs.msg == "SB") {
+	//																								status = "Spin Bowler";
+	//																							}
 
-																								else {
-																									if (scorecard.cs.msg == "FB") {
-																										status = "Fast Bowler";
-																									}
-																									else {
+	//																							else {
+	//																								if (scorecard.cs.msg == "FB") {
+	//																									status = "Fast Bowler";
+	//																								}
+	//																								else {
 
-																										if (scorecard.cs.msg == "BS") {
-																											status = "Bowler Stop";
-																										}
+	//																									if (scorecard.cs.msg == "BS") {
+	//																										status = "Bowler Stop";
+	//																									}
 
-																										else {
-																										status = scorecard.cs.msg;
-																										}}
+	//																									else {
+	//																									status = scorecard.cs.msg;
+	//																									}}
 
-																								}
+	//																							}
 
-																							}
+	//																						}
 
-																						}
+	//																					}
 
-																					}
-																				}
+	//																				}
+	//																			}
 
-																			}
-																		}
+	//																		}
+	//																	}
 
-																	}
-																}
+	//																}
+	//															}
 
-															}
-														}
+	//														}
+	//													}
 
-													}
-
-
-
-												}
-
-											}
-
-										}
-
-
-									}
-								}
-
-							}
-						}
-
-					}
-				}
+	//												}
 
 
 
+	//											}
 
-				$("#lbllastball").text(status);
-				if (scorecard.i2.tr == 0) {
-					$("#lblteamA").text(scorecard.t1.n);
-					$("#lblteamAscore").text(scorecard.i1.sc);
-					$("#lblwkt").text(scorecard.i1.wk);
-					$("#lblov").text(scorecard.i1.ov);
+	//										}
 
-					var over = scorecard.i1.ov.toString();
-					var fields = over.split('.');
-					var ovf = fields[0] * 6;
-					var ovs = 0;
-					if (fields.length > 1) {
-						ovs = fields[1];
-					}
-					var tball = ovf + parseInt(ovs);
-					var CR = (scorecard.i1.sc / tball) * 6;
-					$("#lblCRR").text(CR.toFixed(2));
-					//$("#lblRR").text(scorecard.data.spnreqrate1);
-					$("#lblteamB").text(scorecard.t2.n);
-					$("#lblteamBscore").text(scorecard.i2.tr);
+	//									}
 
-				}
-				else {
 
-					$("#lblteamA").text(scorecard.t2.n);
-					$("#lblteamAscore").text(scorecard.i2.sc);
-					$("#lblwkt").text(scorecard.i2.wk);
-					$("#lblov").text(scorecard.i2.ov);
-					var over = scorecard.i2.ov.toString();
-					var fields = over.split('.');
-					var ovf = fields[0] * 6;
-					var ovs = 0;
-					if (fields.length > 1) {
-						ovs = fields[1];
-					}
+	//								}
+	//							}
 
-					var tball = ovf + parseInt(ovs);
-					var CR = (scorecard.i2.sc / tball) * 6;
-					$("#lblCRR").text(CR.toFixed(2));
-					var overs = (scorecard.iov) * 6;
-					var ball = overs - tball;
-					var Rscore = scorecard.i2.tr - scorecard.i2.sc;
-					var RRR = (Rscore / (ball / 6));
-					$("#lblRR").text(RRR.toFixed(2));
-					$("#lblteamB").text(scorecard.t1.n);
-					$("#lblteamBscore").text(scorecard.i2.tr);
-					let str1 = "need ";
-					let str2 = Rscore;
-					let str3 = " from ";
-					let str4 = ball;
-					let res = str1.concat(str2, str3, str4);
-					$("#lblmassgae").text(res);
-				}
+	//						}
+	//					}
 
-				var data = scorecard.pb.substring(scorecard.pb.length - 11);
-				$("#lblballs").text(data);
+	//				}
+	//			}
 
-			}
-			else {
-				$("#matchscores").hide();
-			}
-	}
+
+
+
+	//			$("#lbllastball").text(status);
+	//			if (scorecard.i2.tr == 0) {
+	//				$("#lblteamA").text(scorecard.t1.n);
+	//				$("#lblteamAscore").text(scorecard.i1.sc);
+	//				$("#lblwkt").text(scorecard.i1.wk);
+	//				$("#lblov").text(scorecard.i1.ov);
+
+	//				var over = scorecard.i1.ov.toString();
+	//				var fields = over.split('.');
+	//				var ovf = fields[0] * 6;
+	//				var ovs = 0;
+	//				if (fields.length > 1) {
+	//					ovs = fields[1];
+	//				}
+	//				var tball = ovf + parseInt(ovs);
+	//				var CR = (scorecard.i1.sc / tball) * 6;
+	//				$("#lblCRR").text(CR.toFixed(2));
+	//				//$("#lblRR").text(scorecard.data.spnreqrate1);
+	//				$("#lblteamB").text(scorecard.t2.n);
+	//				$("#lblteamBscore").text(scorecard.i2.tr);
+
+	//			}
+	//			else {
+
+	//				$("#lblteamA").text(scorecard.t2.n);
+	//				$("#lblteamAscore").text(scorecard.i2.sc);
+	//				$("#lblwkt").text(scorecard.i2.wk);
+	//				$("#lblov").text(scorecard.i2.ov);
+	//				var over = scorecard.i2.ov.toString();
+	//				var fields = over.split('.');
+	//				var ovf = fields[0] * 6;
+	//				var ovs = 0;
+	//				if (fields.length > 1) {
+	//					ovs = fields[1];
+	//				}
+
+	//				var tball = ovf + parseInt(ovs);
+	//				var CR = (scorecard.i2.sc / tball) * 6;
+	//				$("#lblCRR").text(CR.toFixed(2));
+	//				var overs = (scorecard.iov) * 6;
+	//				var ball = overs - tball;
+	//				var Rscore = scorecard.i2.tr - scorecard.i2.sc;
+	//				var RRR = (Rscore / (ball / 6));
+	//				$("#lblRR").text(RRR.toFixed(2));
+	//				$("#lblteamB").text(scorecard.t1.n);
+	//				$("#lblteamBscore").text(scorecard.i2.tr);
+	//				let str1 = "need ";
+	//				let str2 = Rscore;
+	//				let str3 = " from ";
+	//				let str4 = ball;
+	//				let res = str1.concat(str2, str3, str4);
+	//				$("#lblmassgae").text(res);
+	//			}
+
+	//			var data = scorecard.pb.substring(scorecard.pb.length - 11);
+	//			$("#lblballs").text(data);
+
+	//		}
+	//		else {
+	//			$("#matchscores").hide();
+	//		}
+	//}
 
 	//debugger;
 
-    function AssignDataToSoccerCard(matchstr) {
+	function AssignDataToSoccerCard(matchstr) {
 
-        if (matchstr == "") {
-            $("#matchscores").hide();
-            return;
-        }
+		if (matchstr == "") {
+			$("#matchscores").hide();
+			return;
+		}
 
-        var status = $("#marketbookstatus" + $("#lastloadedmarket").val().toString().replace(".", "")).html();
-        var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
+		var status = $("#marketbookstatus" + $("#lastloadedmarket").val().toString().replace(".", "")).html();
+		var eventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 		var scorecard = JSON.parse(matchstr);
 
-		if (scorecard.length == 0 || status == "CLOSED" || status == "GOING LIVE" ) {
+		if (scorecard.length == 0 || scorecard.length == 1 || status == "CLOSED" || status == "GOING LIVE" || status == "In-Play" || status == "in-play" || status == "in play") {
 			$("#matchscores").hide();
             return;
 		}
@@ -2782,7 +2772,7 @@ function ShowInPlayC() {
                 var goaltime = goaldataawayFirsthalf[s].matchTime * 2;
 				goaltime = goaltime * 0.1;
 	//debugger
-				htmlstrmb += '<div id="goal1away' + goaldataawayFirsthalf[s] + '" title="' + goaldataawayFirsthalf[s].teamName + ',' + goaldataawayFirsthalf[s].matchTime + '" style="margin-left:' + ((goaldataawayFirsthalf[s].matchTime * 2) + goaltime) + '%;"  class="score-goal-away tooltip" >';
+				htmlstrmb += '<div id="goal1away' + goaldataawayFirsthalf[s] + '" title="' + goaldataawayFirsthalf[s].teamName + ',' + goaldataawayFirsthalf[s].matchTime + '" style="margin-left:' + ((goaldataawayFirsthalf[s].matchTime * 1.5) + goaltime) + '%;"  class="score-goal-away tooltip" >';
 				htmlstrmb += '<i class="fa fa-futbol-o"  style="font-size: 12px;	margin-top: 3px; color:black" ></i>';
 				htmlstrmb += '<div"  class="tooltiptext" >';
 				htmlstrmb += '<b>  ' + goaldataawayFirsthalf[s].matchTime + '<br/>' + goaldataawayFirsthalf[s].teamName + '</b>';
@@ -2901,9 +2891,6 @@ function ShowInPlayC() {
 
     function AssignDataToTinnesCard(matchstr) {
 
-		debugger;
-
-
 			var as = $("#marketbookstatus").val();
 			if (matchstr == "") {
             $("#matchscores").hide();
@@ -2921,7 +2908,7 @@ function ShowInPlayC() {
 			return;
 		}
 		else {
-
+			debugger
 			$("#matchscores").show();
 			$("#lblteamnameAsoccer").text(scorecard[0].shortAwayName);
 			$("#lblteamnameBsoccer").text(scorecard[0].shortHomeName);
@@ -3090,11 +3077,7 @@ function ShowInPlayC() {
 	}
 
 	function updatescoresnewsoccer() {
-
-		var getupdatesfrom = $("#getmatchupdatesfrom" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-
         var EventID = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-
 			$.ajax({
 				url: '/CricketScore/CreateSoccerCardNew/',
 				type: 'GET',
@@ -3110,7 +3093,7 @@ function ShowInPlayC() {
 					AssignDataToSoccerCard(data);
 					setTimeout(function () {
 						updatescoresnewsoccer();
-					}, 7000);
+					}, 1000);
 				}
 			});
 	}
@@ -3169,8 +3152,6 @@ function ShowInPlayC() {
 
 	  function CheckforSoccer() {
 
-		var isallowedtogetscore = $("#marketbookgetscores" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-		var categoryname = $("#marketbookCategory" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
 
 			$.ajax({
 				url: '/CricketScore/InitializeSoccerCard/',
@@ -3189,9 +3170,7 @@ function ShowInPlayC() {
 	   }
 
 	function CheckForTinnes() {
-		var isallowedtogetscore = $("#marketbookgetscores" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-		var categoryname = $("#marketbookCategory" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
-		//debugger;
+		$("#matchscores").hide();
 			$.ajax({
 				url: '/CricketScore/InitializeTinnesCard/',
 				type: 'GET',
@@ -3305,7 +3284,7 @@ function ShowInPlayC() {
 						setTimeout(function () {
 							LoadActiveMarketTWT();
 
-						},200);
+						},2200);
 
 						if(data !=""){
 
@@ -3393,12 +3372,12 @@ function ShowInPlayC() {
 			},
 			error: function () {
 				LoadActiveMarketSoccerGaol();
-			},
+			} ,
 			success: function (data) {
 				setTimeout(function () {
 					LoadActiveMarketSoccerGaol();
 
-				}, 5000);
+				}, 5500);
 
 				if (data != "") {
 					AssignDatatoMarketBookSoccerGoal(data);
@@ -3727,6 +3706,8 @@ function ShowInPlayC() {
 
 
 
+
+
 				if (marketbook.MarketStatusstr == "In Play" || marketbook.MarketStatusstr == "inplay" || marketbook.MarketStatusstr == "In-Play") {
 					if (marketbook.mainsportsname == "horse racing" || marketbook.MainSportsname =="Horse Racing") {
 						//$('#mymodalbetslipmultiple').modal('hide');
@@ -3781,16 +3762,35 @@ function ShowInPlayC() {
 					}
 					else
 					{
-						if (marketbook.MarketStatusstr == "Active")
+
+
+						if (marketbook.MarketStatusstr == "Active" )
 					{
-						$("#marketbookstatus"+marketbookID).text("GOING LIVE");
-						$("#marketbookstatus"+marketbookID).removeClass("inplay");
-						$("#marketbookstatus"+marketbookID).removeClass("completed");
-						$("#marketbookstatus"+marketbookID).removeClass("suspended");
-						$("#marketbookstatus"+marketbookID).addClass("active1");
-						$(".backgroundimageforSuspended").removeClass("backgroundsuspended");
-						$(".backgroundimageforSuspended").removeClass("backgroundclosed");
-						$(".backgroundimageforSuspended").css({"display": "none"});
+
+							if (marketbook.MarketId == "1.160513989") {
+
+
+
+
+								$("#marketbookstatus" + marketbookID).text("OPEN").css({"color":"green"});
+								$("#marketbookstatus" + marketbookID).removeClass("inplay");
+								$("#marketbookstatus" + marketbookID).removeClass("completed");
+								$("#marketbookstatus" + marketbookID).removeClass("suspended");
+								$("#marketbookstatus" + marketbookID).addClass("active1");
+								$(".backgroundimageforSuspended").removeClass("backgroundsuspended");
+								$(".backgroundimageforSuspended").removeClass("backgroundclosed");
+								$(".backgroundimageforSuspended").css({ "display": "none" });
+							}
+
+							else {
+								$("#marketbookstatus" + marketbookID).text("GOING LIVE");
+								$("#marketbookstatus" + marketbookID).removeClass("inplay");
+								$("#marketbookstatus" + marketbookID).removeClass("completed");
+								$("#marketbookstatus" + marketbookID).removeClass("suspended");
+								$("#marketbookstatus" + marketbookID).addClass("active1");
+								$(".backgroundimageforSuspended").removeClass("backgroundsuspended");
+								$(".backgroundimageforSuspended").removeClass("backgroundclosed");
+								$(".backgroundimageforSuspended").css({ "display": "none" });}
 
 					}
 					else{
@@ -3838,9 +3838,135 @@ function ShowInPlayC() {
 					$("#lbltimer"+marketbookID).attr('style', 'color: red  !important','font-weight:bold');
 				}
 
+	}
 
+    function AssignSoccerDatatoMarketBook(marketbooks) {
 
-			}
+        var marketbook1 = JSON.parse(marketbooks);
+        var itemfound = 0;
+        //for (m = 0; m <= marketbook1.length - 1; k++) {
+        debugger
+        for (k = 0; k <= marketbook1.length - 1; k++) {
+            var marketbook = marketbook1[k];
+            var marketbookID = marketbook.MarketId.toString().replace(".", "");
+            for (j = 0; j <= marketbook.Runners.length - 1; j++) {
+                if ($("#marketbook" + marketbookID).length == 0) {
+                    //debugger;
+                    LoadActiveMarketSoccer();
+                    return;
+                }
+                $("#marketbookstatus" + marketbookID).val(marketbook.MarketStatusstr);
+                $("#marketbookTotalMatched" + marketbookID).val(marketbook.TotalMatched.toString());
+                try {
+                    if ((marketbook.Runners[j].ExchangePrices.AvailableToBack[0].Price > 0 || marketbook.Runners[j].ExchangePrices.AvailableToLay[0].Price > 0) && marketbook.MarketStatusstr == "In Play") {
+                        $("#marketbook" + marketbookID).show();
+                        itemfound = 1;
+
+                        for (i = 2; i >= 0; i--) {
+                            if (marketbook.Runners[j].ExchangePrices.AvailableToBack.length - 1 >= i && marketbook.Runners[j].ExchangePrices.AvailableToBack.length > 0) {
+                                if ($("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text() != marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price) {
+                                    $("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).addClass("highlighted").delay(100).queue(function () {
+                                        $(this).removeClass("highlighted").dequeue();
+                                    });;
+                                }
+
+                                $("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price == "0" ? "" : marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price);
+                                $("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "showbetslip('" + marketbook.Runners[j].SelectionId.toString() + "','back','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price + "','2000','0','" + marketbook.MarketId + "','" + marketbook.MarketBookName + "','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size + "','" + i + "','0')");
+                                if ($("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text() != marketbook.Runners[j].ExchangePrices.AvailableToBack[i].SizeStr) {
+                                    $("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).addClass("highlighted").delay(100).queue(function () {
+                                        $(this).removeClass("highlighted").dequeue();
+                                    });;
+                                }
+                                $("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToBack[i].SizeStr == "0" ? "" : marketbook.Runners[j].ExchangePrices.AvailableToBack[i].SizeStr);
+                                $("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "showbetslip('" + marketbook.Runners[j].SelectionId.toString() + "','back','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Price + "','2000','0','" + marketbook.MarketId + "','" + marketbook.MarketBookName + "','" + marketbook.Runners[j].ExchangePrices.AvailableToBack[i].Size + "','" + i + "','0')");
+                            }
+                            else {
+                                $("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text("");
+                                $("#marketbook" + marketbookID + " #lblbackprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "");
+                                $("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text("");
+                                $("#marketbook" + marketbookID + " #lblbacksize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "");
+                            }
+                        }
+                        for (i = 0; i < 3; i++) {
+                            if (marketbook.Runners[j].ExchangePrices.AvailableToLay.length > i && marketbook.Runners[j].ExchangePrices.AvailableToLay.length > 0) {
+                                if ($("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text() != marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price) {
+                                    $("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).addClass("highlighted").delay(100).queue(function () {
+                                        $(this).removeClass("highlighted").dequeue();
+                                    });;
+                                }
+                                $("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price == "0" ? "" : marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price);
+                                $("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "showbetslip('" + marketbook.Runners[j].SelectionId.toString() + "','lay','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price + "','2000','0','" + marketbook.MarketId + "','" + marketbook.MarketBookName + "','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size + "','" + i + "','0')");
+                                if ($("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text() != marketbook.Runners[j].ExchangePrices.AvailableToLay[i].SizeStr) {
+                                    $("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).addClass("highlighted").delay(100).queue(function () {
+                                        $(this).removeClass("highlighted").dequeue();
+                                    });;
+                                }
+                                $("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ExchangePrices.AvailableToLay[i].SizeStr == "0" ? "" : marketbook.Runners[j].ExchangePrices.AvailableToLay[i].SizeStr);
+                                $("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "showbetslip('" + marketbook.Runners[j].SelectionId.toString() + "','lay','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Price + "','2000','0','" + marketbook.MarketId + "','" + marketbook.MarketBookName + "','" + marketbook.Runners[j].ExchangePrices.AvailableToLay[i].Size + "','" + i + "','0')");
+                            }
+                            else {
+                                $("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text("");
+                                $("#marketbook" + marketbookID + " #lbllayprice" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "");
+                                $("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).text("");
+                                $("#marketbook" + marketbookID + " #lbllaysize" + i.toString() + marketbook.Runners[j].SelectionId.toString()).attr("onclick", "");
+                            }
+                        }
+                        $("#marketbook" + marketbookID + " #lblrunnerlastprice" + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].LastPriceTraded);
+                        $("#marketbook" + marketbookID + " #lblrunnertotalmatched" + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].TotalMatchedStr == null ? "" : marketbook.Runners[j].TotalMatchedStr);
+                        $("#marketbook" + marketbookID + " #runnernamediv" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnerfavorite");
+
+                        if (parseInt(marketbook.Runners[j].ProfitandLoss) >= 0) {
+                            $("#marketbook" + marketbookID + " #lblprofitandloss" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersprofitlossgreen");
+                            $("#marketbook" + marketbookID + " #lblprofitandloss" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersprofitlossred");
+                            $("#marketbook" + marketbookID + " #lblaverage" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersaveragegreen");
+                            $("#marketbook" + marketbookID + " #lblaverage" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersaveragered");
+
+                        }
+                        else {
+                            $("#marketbook" + marketbookID + " #lblprofitandloss" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersprofitlossred");
+                            $("#marketbook" + marketbookID + " #lblprofitandloss" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersprofitlossgreen");
+                            $("#marketbook" + marketbookID + " #lblaverage" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersaveragered");
+                            $("#marketbook" + marketbookID + " #lblaverage" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersaveragegreen");
+                        }
+                        if (parseInt(marketbook.Runners[j].Loss) >= 0) {
+                            $("#marketbook" + marketbookID + " #lblloss" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersprofitlossgreen");
+                            $("#marketbook" + marketbookID + " #lblloss" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersprofitlossred");
+                        }
+                        else {
+                            $("#marketbook" + marketbookID + " #lblloss" + marketbook.Runners[j].SelectionId.toString()).addClass("runnersprofitlossred");
+                            $("#marketbook" + marketbookID + " #lblloss" + marketbook.Runners[j].SelectionId.toString()).removeClass("runnersprofitlossgreen");
+                        }
+
+                        $("#marketbook" + marketbookID + " #lblprofitandloss" + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].ProfitandLoss == "0" ? "" : marketbook.Runners[j].ProfitandLoss);
+                        $("#marketbook" + marketbookID + " #lblloss" + marketbook.Runners[j].SelectionId.toString()).text(marketbook.Runners[j].Loss == "0" ? "" : marketbook.Runners[j].Loss);
+
+                    }
+
+                    else {
+                        $("#marketbook" + marketbookID).hide();
+                    }
+                }
+                catch (err) {
+                    $("#marketbook" + marketbookID).hide();
+                }
+            }
+        }
+        //}
+
+        if (itemfound == 1) {
+            $(".fancybackandlaydiv").show();
+        }
+        else {
+            $(".fancybackandlaydiv").hide();
+        }
+        if ($("#marketbookdataforshow").css("display") == "block") {
+            $("#fancymarketbook").show();
+        }
+        else {
+            $("#fancymarketbook").hide();
+        }
+
+    }
 
 			function nFormatter(num) {
 				if (num >= 1000000000) {
@@ -4161,7 +4287,7 @@ function ShowInPlayC() {
 					for(j=0;j<=marketbook.Runners.length-1;j++){
 
 						if($("#marketbook"+marketbookID).length==0){
-							//debugger;
+
 							GetActiveMarketFancy();
 							return;
 						}
@@ -5057,14 +5183,18 @@ function ShowInPlayC() {
 			}
 	function AddRunnersformultiplebets(id) {
 
-				var marketbbokname=$("#marketbookname"+$("#lastloadedmarket").val().toString().replace(".","")).val();
+		var marketbbokname = $("#marketbookname" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
+
 
 				var marketbookdID= $("#lastloadedmarket").val().toString().replace(".","");
-				var mainsportcat=$("#marketbookCategory"+$("#lastloadedmarket").val().toString().replace(".","")).val();
-				if (marketbbokname.indexOf("To Be Placed")>=0 || mainsportcat.indexOf("Racing")< 0){
+		var mainsportcat = $("#marketbookCategory" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
+		if (marketbbokname.indexOf("To Be Placed") >= 0 || mainsportcat.indexOf("Racing") < 0 || marketbbokname.indexOf("(US)") >= 0) {
 					$("#marketbook"+marketbookdID +" #chkselection"+id).prop("checked",false);
 					// $("#marketbook"+marketbookdID +" #clothnumstalldrawimg"+id).css({"background-color":"white"});
-					return;
+			//ShowErrorMsg("US Race Jori Bet Not Allow.");
+			return;
+
+
 				}
 
 				var marketstatus = $("#marketbookstatus" + marketbookdID).text();
@@ -5079,6 +5209,7 @@ function ShowInPlayC() {
         debugger
 		var selectedrunners = $("#selectedrunners" + marketbookdID).val();
 		var selectedClothnumbers = $("#selectedrunnersclothnumber" + marketbookdID).val();
+
 		var totrunnercount = $("#marketbook" + $("#lastloadedmarket").val().toString().replace(".", "") + " .runnerswrapper").length;
 
 
@@ -5135,7 +5266,7 @@ function ShowInPlayC() {
 							var selectedrunnerslength = JSON.parse(selectedrunners);
 
 							if (totrunnercountL > 25 && totrunnercountL < 40 && selectedrunnerslength.length > 5) {
-								ShowErrorMsg("you can select only  runners.");
+								ShowErrorMsg("you can select only 6 runners.");
 								return;
 							}
 
@@ -5259,29 +5390,51 @@ function ShowInPlayC() {
 			var isInserting = false;
 			function LoadDefaultPage() {
 
-				ShowLoader();
+				debugger;
 				var partialviewname = "/DashBoard/GetDefaultPageData";
 				$("#otherdata").load(partialviewname, function () {
+					debugger;
 					$("#marketdataall").hide();
 					$("#otherdata").show();
 					$("#partialviews").show();
-					HideLoader();
+					//HideLoader();
 				});
 				$(".usernameandliablity").removeClass("in");
 				$(".usernameandliablity").addClass("collapse");
 			}
 			function LoadDefaultPageInPlay(viewtype) {
 
-				ShowLoader();
-				var partialviewname = "/DashBoard/GetDefaultPageDataInPlay?ViewType="+viewtype;
-				$("#otherdata").load(partialviewname, function () {
-					$("#marketdataall").hide();
-					$("#otherdata").show();
-					$("#partialviews").show();
-					HideLoader();
-
-
+				//ShowLoader();
+				var partialviewname = "/DashBoard/GetDefaultPageDataInPlay?ViewType=" + viewtype;
+				$.ajax({
+					url: partialviewname,
+					type: 'GET',
+					dataType: 'html',
+					success: function (data) {
+						debugger;
+						$("#otherdata").html(data);
+						var gridMarketsCount = $("#gridMarketsCount").data("count");
+						$("#marketcount").text("("+gridMarketsCount+")");
+						// Perform actions after the content is loaded
+						$("#marketdataall").hide();
+						$("#otherdata").show();
+						$("#partialviews").show();
+						//HideLoader();
+					},
+					error: function (xhr, status, error) {
+						// Handle errors if the content fails to load
+						console.error("Error loading content: " + error);
+					}
 				});
+
+				//$("#otherdata").load(partialviewname, function () {
+				//	$("#marketdataall").hide();
+				//	$("#otherdata").show();
+				//	$("#partialviews").show();
+				//	//HideLoader();
+
+
+				//});
 				$(".usernameandliablity").removeClass("in");
 				$(".usernameandliablity").addClass("collapse");
 			}
@@ -5292,7 +5445,7 @@ function ShowInPlayC() {
 			}
 	$(document).ready(function () {
 
-		if (location.href == 'https://globaltraderexch.com/DashBoard/Index#') {
+		if (location.href == 'http://globaltraderexch.com/DashBoard/Index#') {
 			$("#cdialog").dialog({
 				modal: true,
 				bgiframe: true,
@@ -5707,7 +5860,7 @@ function ShowInPlayC() {
 													$("#myModalBetslipmob").modal("hide");
 												}
 
-											}, timinginterval);
+											});
 									}
 								});
 
@@ -5753,7 +5906,7 @@ function ShowInPlayC() {
 									url: '/DashBoard/GetBetPlaceInterval',
 
 									type: 'GET',
-									async: false,
+									async: true,
 									data: { 'categoryname': categoryname, 'Marketbookname': marketbookname, 'Runnerscount': marketbookrunners },
 
 									complete: function () { },
@@ -5935,7 +6088,7 @@ function ShowInPlayC() {
 					return;
 				}
 
-                debugger;
+
 				var selectionIDs1 = [];
 				selectionIDs1.push($("#openedbetslipid").val());
 				var betamount = 0;
@@ -5973,7 +6126,7 @@ function ShowInPlayC() {
 									url: '/DashBoard/GetBetPlaceInterval',
 
 									type: 'GET',
-									async: false,
+									async: true,
 									data: { 'categoryname': categoryname, 'Marketbookname': marketbookname, 'Runnerscount': marketbookrunners },
 
 									complete: function () { },
@@ -6072,7 +6225,7 @@ function ShowInPlayC() {
 
 
 									type: 'GET',
-									async: false,
+									async: true,
 									data: { 'categoryname': categoryname, 'Marketbookname': marketbookname, 'Runnerscount': marketbookrunners },
 
 									complete: function () { },
@@ -6144,7 +6297,7 @@ function ShowInPlayC() {
 			});
 
 			$("#btnBetslipsubmitmultiplemb").click(function () {
-				debugger;
+
 
 				$("#btnBetslipsubmitmultiplemb").prop('disabled', true);
 				$("#btnBetslipResetmultiplemb").prop('disabled', true);
@@ -6746,7 +6899,7 @@ function ShowInPlayC() {
 			}
 
 	function insertbetslip() {
-				debugger
+				//debugger
 				if(checkNetConnection()==false){
 					return  ;
 				}
@@ -6772,7 +6925,7 @@ function ShowInPlayC() {
 			}
 
 	function insertbetslipmob() {
-		debugger;
+		//debugger;
 				if(checkNetConnection()==false){
 					return  ;
 				}
@@ -7247,15 +7400,12 @@ function ShowInPlayC() {
 				}
 
 
-
-
-
 					if (categoryname == "Cricket") {
 						$.ajax({
 							url: '/userbet/GetBettingAllowedbyMarketIDandUserID',
 
 							type: 'post',
-							async: false,
+							async: true,
 							data: { 'marketbookid': marketbookID },
 
 							complete: function () { },
@@ -7276,9 +7426,6 @@ function ShowInPlayC() {
 						});
 					}
 
-
-				debugger;
-
 				if(betttingallowedmarket=="0" || betttingallowedmarketoverall=="0" )
 				{
 					allowedstatus==false;
@@ -7293,27 +7440,16 @@ function ShowInPlayC() {
 						}
 						else
 						{
-							// ;
-							if (status=="GOING LIVE"){
 
-
-
-
+							if (status == "GOING LIVE") {
 
 								var minutesremaining = timeofmatch.split(":");
+								var numarictime = parseFloat(timeofmatch);
 
-								var checkmins2 = minutesremaining[2];
-								var checkmins0 = minutesremaining[0];
-								var checkmins1 = minutesremaining[1];
-								var checkmins3 = minutesremaining[3];
-								var fromdt = +minutesremaining[0]+ (+minutesremaining[1]) * 60 * 60 + (+minutesremaining[2]) * 60 + (+minutesremaining[3]);
-
-
-
-								// ;
 								if(marketbookname.indexOf("(US)")>=0){
 									if(parseFloat(minutesremaining[0])>=0 && parseFloat(minutesremaining[2]) <= @LoggedinUserDetail.BetPlaceWaitandInterval.RaceMinutesBeforeStart && parseFloat(minutesremaining[1])==0){
 										allowedstatus = true;
+
 									}
 									else{
 										if(parseFloat(minutesremaining[0])<0){
@@ -7330,12 +7466,14 @@ function ShowInPlayC() {
 											allowedstatus = false;
 										}
 
-
-
-
 									}
 								}
 
+								var color = $("#lbltimer" + newid).css('color');
+								if (color == "rgb(255, 0, 0)") {
+									allowedstatus = false;
+
+								}
 
 
 							}
@@ -7354,7 +7492,7 @@ function ShowInPlayC() {
 
 					}
 
-					debugger;
+
 
 					if (  allowedstatus==true) {
 						$("#openedbetslipid").val(id);
@@ -7569,7 +7707,7 @@ function ShowInPlayC() {
 						url: '/UserBet/GetBettingAllowedbyMarketIDandUserID',
 
 						type: 'POST',
-						async: false,
+						async: true,
 						data: { 'MarketBookID': marketbookID },
 
 						complete: function () { },
@@ -7632,6 +7770,14 @@ function ShowInPlayC() {
 										}
 									}
 								}
+
+								var color = $("#lbltimer" + newid).css('color');
+								if (color == "rgb(255, 0, 0)") {
+									allowedstatus = false;
+
+								}
+
+
 							}
 						}
 					}
@@ -8004,39 +8150,39 @@ function ShowInPlayC() {
 
 				}
 			}
-			function addorremovefromfavouriteseventtype(id) {
+			//function addorremovefromfavouriteseventtype(id) {
 
-				var imgsrc = $("#eventtypeitemimg" + id).attr("src");
-				var dataurl = "";
-				if (imgsrc != "../Content/Images/favoriteChecked.png") {
-					dataurl = '/Market/AddtoFavoritesEventType';
-				}
-				else {
-					dataurl = '/Market/RemoveFavoritesEventType'
-				}
-				$.ajax({
-					url: dataurl,
+			//	var imgsrc = $("#eventtypeitemimg" + id).attr("src");
+			//	var dataurl = "";
+			//	if (imgsrc != "../Content/Images/favoriteChecked.png") {
+			//		dataurl = '/Market/AddtoFavoritesEventType';
+			//	}
+			//	else {
+			//		dataurl = '/Market/RemoveFavoritesEventType'
+			//	}
+			//	$.ajax({
+			//		url: dataurl,
 
-					type: 'POST',
+			//		type: 'POST',
 
-					data: { 'eventtypeID': id },
+			//		data: { 'eventtypeID': id },
 
-					complete: function () { },
-					success: function (data) {
+			//		complete: function () { },
+			//		success: function (data) {
 
-						if (data == "True") {
-							if (imgsrc != "../Content/Images/favoriteChecked.png") {
-								$("#eventtypeitemimg" + id).attr({ "src": "../Content/Images/favoriteChecked.png", "title": "Remvoe from favorites" });
-							}
-							else {
-								$("#eventtypeitemimg" + id).attr({ "src": "../Content/Images/FavoriteUncheck.png", "title": "Add to favorites" });
-							}
-						}
+			//			if (data == "True") {
+			//				if (imgsrc != "../Content/Images/favoriteChecked.png") {
+			//					$("#eventtypeitemimg" + id).attr({ "src": "../Content/Images/favoriteChecked.png", "title": "Remvoe from favorites" });
+			//				}
+			//				else {
+			//					$("#eventtypeitemimg" + id).attr({ "src": "../Content/Images/FavoriteUncheck.png", "title": "Add to favorites" });
+			//				}
+			//			}
 
 
-					}
-				});
-			}
+			//		}
+			//	});
+			//}
 
 			function LoadCompetitions(id) {
 
@@ -8114,7 +8260,6 @@ function ShowInPlayC() {
 			}
 	function lastLevelBreadcrumb(id)
 	{
-		//debugger;
 				$(".competitions").hide();
 				$(".eventtypes").hide();
 				// ShowInPlay();
@@ -8131,7 +8276,6 @@ function ShowInPlayC() {
 
 	function SetLastLoadedMarket(id)
 	{
-		//debugger;
 		          LoadUserBets();
 				$("#fancymarketbook").html("");
 				if($(".nav-tabs li").length > 0){
@@ -8160,6 +8304,7 @@ function ShowInPlayC() {
 						}
 						else {
 							if (mainsportcat1 == "Tennis") {
+
 								CheckForTinnes();
 								$("#SFigfancymarketbook").hide();
 								$("#btnscorecard").show()
@@ -8274,7 +8419,31 @@ function ShowInPlayC() {
 				});
 
 
-			}
+	}
+
+    function LoadActiveMarketSoccer() {
+        var eventid = $("#eventidfor" + $("#lastloadedmarket").val().toString().replace(".", "")).val();
+        $.ajax({
+            url: '/Market/GetMarketBooksoccergoal/',
+            type: 'GET',
+            async: true,
+            data: { 'EventID': eventid },
+            complete: function () {
+                HideLoader();
+            },
+            success: function (data) {
+                if (data != "") {
+                    //$("#marketbooksoccer").html(data);
+                    AssignSoccerDatatoMarketBook(data);
+                    setTimeout(function () {
+                        LoadActiveMarketSoccer();
+                    }, 7000
+                    );
+                    //LoadActiveMarketFancyIN();
+                }
+            }
+        });
+    }
 
 	function LoadMarketTypeSoccerGoal() {
 
@@ -8294,13 +8463,13 @@ function ShowInPlayC() {
 
 				if (data != "") {
 					$("#marketbooksoccer").html(data);
+					LoadActiveMarketSoccer();
+					//setTimeout(function () {
+					//	LoadMarketTypeSoccerGoal();
+					//}, 4000
 
-					setTimeout(function () {
-						LoadMarketTypeSoccerGoal();
-					}, 7000
 
-
-					);
+					//);
 					//LoadActiveMarketFancyIN();
 				}
 			}
@@ -8310,7 +8479,10 @@ function ShowInPlayC() {
 	}
 
 			function LoadMarketType(id) {
-
+                $("#KJfancymarketbook").hide();
+				$("#Indianfancymarketbook1").html("");
+				$("#marketbookTWT").html("");
+				//$("#marketbooksoccer").html("");
 				$("#liscorecard").hide();
 				// $("#lastsavedhtml").val($("#marketbook").html());
 				$("#lastsavedhtml").val($("div[data-marketid='" + $("#lastloadedmarket").val() + "']").html());
@@ -8323,10 +8495,10 @@ function ShowInPlayC() {
 					async: true,
 					data: { 'ID': id },
 
-					complete: function () {
-						HideLoader();
+					//complete: function () {
+					//	HideLoader();
 
-					},
+					//},
 					success: function (data) {
 						if(data=="Limit exceed"){
 							ShowErrorMsg("You already have opened ten markets please close some markets and try again.");
@@ -8334,7 +8506,7 @@ function ShowInPlayC() {
 						}
 						else{
 
-                            if (location.href != 'https://globaltraderexch.com/DashBoard/Index#') {
+                            if (location.href != 'http://gtdexch.com/DashBoard/Index#') {
                                 location.href = location.href + '#';
                             }
 
@@ -8365,16 +8537,13 @@ function ShowInPlayC() {
 							//	mainsportcat1 = "Cricket";
 							//}
 
-
-							if (mainsportcat1 == "Cricket") {
-
-
-
-								//GetActiveMarketINFancy();
+							if (mainsportcat1 == "Cricket" ) {
+								GetActiveMarketINFancy();
 								GetActiveMarketKJ();
 								////GetActiveMarketSFIg();
 								GetMarketFigure();
 								$("#btnscorecard").show();
+
 								LoadActiveMarketFancyIN();
 								$('#btnscorecard').click();
 								display = true;
@@ -8386,22 +8555,10 @@ function ShowInPlayC() {
 								//GetActiveMarketFancy();
 								//LoadActiveMarketFancy();
 								$("#Indianfancymarketbook1").length;
-
-
-
-
-
-
-
-
-
-
 								}
-
 							else {
-								if (mainsportcat1 == "Soccer") {
+								if (mainsportcat1 == "Soccer" ) {
 									CheckforSoccer();
-
 									$("#KJfancymarketbook").hide();
 									$("#Figurefancymarketbook").hide();
 									$("#fancymarketbook").hide();
@@ -8410,11 +8567,14 @@ function ShowInPlayC() {
 									$("#btnscorecard").show();
 									$("#btnPlay").show();
 									$('#btnscorecard').click();
+									$("#marketbooksoccer").hide();
 									display = true;
 
 								}
+
+
 								else {
-									if (mainsportcat1 == "Tennis") {
+									if (mainsportcat1 == "Tennis" ) {
 										CheckForTinnes();
 
 										$("#Indianfancymarketbook1").hide();
@@ -8425,6 +8585,8 @@ function ShowInPlayC() {
 										$("#SFigfancymarketbook").hide();
 										$("#btnscorecard").show();
 										$("#btnPlay").show();
+
+
 										$("#btnscorecard").click();
 										display = true;
 									}
@@ -8441,7 +8603,7 @@ function ShowInPlayC() {
 										$("#scorecaed").hide();
 										$("#btnPlay").show();
 										$('#btnPlay').removeClass('col-sm-6');
-
+										$('#btnPlay').css("border-right", "0px");
 										$('#btnPlay').addClass('col-sm-12');
 										$("#btnPlay").css("width", "101%");
 
@@ -8555,6 +8717,7 @@ function ShowInPlayC() {
 				var marketbookID = $("#lastloadedmarket").val().toString();
 				$.ajax({
 					type: "GET",
+
 					url: '/DashBoard/GetReletedevent',
 
 					data: { 'eventtype': eventtype, 'marketbookID': marketbookID },
@@ -8639,9 +8802,9 @@ function ShowInPlayC() {
 
 
 </script>
-<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
-<script src="~/Scripts/bootstrap-submenu.js"></script>
-<script src="~/Scripts/DetectChanges.js"></script>
+@*<link href="~/Content/bootstrap-submenu.css" rel="stylesheet" />
+	<script src="~/Scripts/bootstrap-submenu.js"></script>
+	<script src="~/Scripts/DetectChanges.js"></script>*@
 
 
 

@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 using bfnexchange.HelperClasses;
 using System.Threading.Tasks;
 using ServiceStack.Redis;
+using System.Runtime.Caching;
 
 
 //using bfnexchange.Services.DBModel;
@@ -3552,17 +3553,28 @@ namespace bfnexchange.Controllers
         }
 
         public async Task<List<AllMarketsInPlay>> GetManagers()
-        {
-            var jsonValue = JsonConvert.SerializeObject(Session["marketsData"]);            
-            if (jsonValue !="null")
+        {           
+            ObjectCache cache = MemoryCache.Default;
+            List<AllMarketsInPlay> lstGridMarkets = cache["marketsData"] as List<AllMarketsInPlay>;
+
+            if (lstGridMarkets != null)
             {
-                _ = Task.Run(() => LoadManagers());
-                return JsonConvert.DeserializeObject<List<AllMarketsInPlay>>(jsonValue);
+                return lstGridMarkets;
             }
-            return await LoadManagers();
+            else
+            {
+                // Data is not in the cache, you might want to generate it and add it to the cache.
+                lstGridMarkets =await LoadManagersFromService(); // You can use your method to generate the data.
+                CacheItemPolicy policy = new CacheItemPolicy
+                {
+                    AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(30) // Adjust the expiration time as needed.
+                };
+                cache.Set("marketsData", lstGridMarkets, policy);
+                return lstGridMarkets;
+            }
         }
-            
-        private async Task<List<AllMarketsInPlay>> LoadManagers()
+
+        private async Task<List<AllMarketsInPlay>> LoadManagersFromService()
         {
             int userid = LoggedinUserDetail.GetUserID();
             if (userid == 1)
@@ -3688,283 +3700,105 @@ namespace bfnexchange.Controllers
                 { }
             }
             if (lstGridMarkets == null) lstGridMarkets = new List<AllMarketsInPlay>();
-            Session["marketsData"] = lstGridMarkets;
             return lstGridMarkets;
         }
 
         public PartialViewResult GetDefaultPageData()
         {
-            var data = GetManagers();
-            var model = new DefaultPageModel();
-            
-            model.WelcomeMessage = "Please enjoy the non-stop intriguing betting experience only on www.gt-exch.com. Thanks";
-            model.WelcomeHeading = "Notice";
-            model.Rule = "Rule & Regs";
-            model.WelcomeMessage = "All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
-            model.AllMarkets = data.Result;
-            model.TodayHorseRacing = new List<Models.TodayHorseRacing>();
-            //var todaygreyrace = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4339"));
+            try
+            {
+                int userid = LoggedinUserDetail.GetUserID();
+                if (userid == 1)
+                {
+                    userid = 73;
+                }
+                if (LoggedinUserDetail.GetUserTypeID() == 3)
+                {
+                    var data = GetManagers();
+                    var model = new DefaultPageModel();
 
-            //foreach (var item in todaygreyrace.Take(15))
-            //{
-            //    Models.TodayHorseRacing obj = new TodayHorseRacing();
-            //    obj.MarketCatalogueID = item.MarketCatalogueID;
-            //    obj.EventName = item.TodayHorseRace;
-            //    model.TodayHorseRacing.Add(obj);
-            //}
+                    model.WelcomeMessage = "Please enjoy the non-stop intriguing betting experience only on www.gt-exch.com. Thanks";
+                    model.WelcomeHeading = "Notice";
+                    model.Rule = "Rule & Regs";
+                    model.WelcomeMessage = "All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
+                    model.AllMarkets = data.Result;
+                    model.TodayHorseRacing = new List<Models.TodayHorseRacing>();
 
-            model.ModalContent = new List<string>();
-            string modalli1 = "Dummy text";
-            string modalli2 = "Dummy text";
-            model.ModalContent.Add(modalli1);
-            model.ModalContent.Add(modalli2);
+                    model.ModalContent = new List<string>();
+                    string modalli1 = "Dummy text";
+                    string modalli2 = "Dummy text";
+                    model.ModalContent.Add(modalli1);
+                    model.ModalContent.Add(modalli2);
 
-            return PartialView("AllInPayMatches", model);
+                    return PartialView("AllInPayMatches", model);
+                }
+                else
+                {
+                    var results = objUsersServiceCleint.GetInPlayMatcheswithRunners1(userid);
+                    List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
+                    List<string> lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
+                    ViewBag.backgrod = "#1D9BF0 !important";
+                    ViewBag.color = "white";
+                    foreach (var item in lstIds)
+                    {
+                        try
+                        {
+                            InPlayMatches objMarketLocal = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).FirstOrDefault();
+                            AllMarketsInPlay objGridMarket = new AllMarketsInPlay();
+                            objGridMarket.CategoryName = objMarketLocal.EventTypeName;
+                            objGridMarket.MarketBookID = objMarketLocal.MarketCatalogueID;
+                            objGridMarket.MarketBookName = objMarketLocal.MarketCatalogueName;
+                            objGridMarket.EventName = objMarketLocal.EventName;
+                            objGridMarket.CompetitionName = objMarketLocal.CompetitionName;
+                            objGridMarket.MarketStartTime = objMarketLocal.EventOpenDate.Value.AddHours(5).ToString("dd-MM-yyyy hh:mm tt");
+                            objGridMarket.MarketStatus = objMarketLocal.MarketStatus;
 
-
-
-            //try
-            //{
-            //    int userid = LoggedinUserDetail.GetUserID();
-            //    if (userid == 1)
-            //    {
-            //        userid = 73;
-            //    }
-            //    if (LoggedinUserDetail.GetUserTypeID() == 3)
-            //    {
-            //        var results = objUsersServiceCleint.GetInPlayMatcheswithRunners1(userid);
-            //        List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
-            //        List<string> lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Horse Racing").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Greyhound Racing").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
-
-
-            //        foreach (var item in lstIds)
-            //        {
-            //            try
-            //            {
-            //                InPlayMatches objMarketLocal = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).FirstOrDefault();
-            //                AllMarketsInPlay objGridMarket = new AllMarketsInPlay();
-            //                DateTime EventOpenDate = Convert.ToDateTime(objMarketLocal.EventOpenDate);
-            //                List<string> lstIDs = new List<string>();
-            //                lstIDs.Add(objMarketLocal.MarketCatalogueID);
-            //                if (objMarketLocal.EventTypeID == "4" || objMarketLocal.EventTypeID == "1")
-            //                {
-            //                    if (Convert.ToDateTime(objGridMarket.MarketStartTime) < DateTime.Now && objMarketLocal.EventTypeID == "1")
-            //                    {
-            //                        var marketbooks = GetMarketDatabyID(lstIDs.ToArray(), objMarketLocal.MarketCatalogueName, EventOpenDate, objMarketLocal.EventTypeName);
-
-            //                        if (marketbooks.Count() > 0)
-            //                        {
-
-            //                            objGridMarket.Runner1Back = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                            objGridMarket.Runner1BackSize = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-            //                            objGridMarket.Runner1Lay = marketbooks[0].Runners[0].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                            objGridMarket.Runner1LaySize = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-            //                            objGridMarket.Runner2Lay = marketbooks[0].Runners[1].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                            objGridMarket.Runner2LaySize = marketbooks[0].Runners[1].ExchangePrices.AvailableToLay[0].SizeStr.ToString();
-            //                            objGridMarket.Runner2Back = marketbooks[0].Runners[1].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                            objGridMarket.Runner2BackSize = marketbooks[0].Runners[1].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-            //                            if (marketbooks[0].Runners.Count == 3)
-            //                            {
-            //                                objGridMarket.Runner3Back = marketbooks[0].Runners[2].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                                objGridMarket.Runner3BackSize = marketbooks[0].Runners[2].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-            //                                objGridMarket.Runner3Lay = marketbooks[0].Runners[2].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                                objGridMarket.Runner3LaySize = marketbooks[0].Runners[2].ExchangePrices.AvailableToLay[0].SizeStr.ToString();
-            //                            }
-            //                            else
-            //                            {
-            //                                objGridMarket.Runner3Lay = "-";
-            //                                objGridMarket.Runner3Back = "-";
-            //                            }
-            //                        }
-            //                    }
-            //                    else
-            //                    {
-            //                        var marketbooks = GetMarketDatabyID(lstIDs.ToArray(), objMarketLocal.MarketCatalogueName, EventOpenDate, objMarketLocal.EventTypeName);
-            //                        if (marketbooks.Count() > 0)
-            //                        {
-
-            //                            objGridMarket.Runner1Back = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                            objGridMarket.Runner1BackSize = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-            //                            objGridMarket.Runner1Lay = marketbooks[0].Runners[0].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                            objGridMarket.Runner1LaySize = marketbooks[0].Runners[0].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-            //                            objGridMarket.Runner2Lay = marketbooks[0].Runners[1].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                            objGridMarket.Runner2LaySize = marketbooks[0].Runners[1].ExchangePrices.AvailableToLay[0].SizeStr.ToString();
-            //                            objGridMarket.Runner2Back = marketbooks[0].Runners[1].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                            objGridMarket.Runner2BackSize = marketbooks[0].Runners[1].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-            //                            if (marketbooks[0].Runners.Count == 3)
-            //                            {
-            //                                objGridMarket.Runner3Back = marketbooks[0].Runners[2].ExchangePrices.AvailableToBack[0].Price.ToString();
-            //                                objGridMarket.Runner3BackSize = marketbooks[0].Runners[2].ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-            //                                objGridMarket.Runner3Lay = marketbooks[0].Runners[2].ExchangePrices.AvailableToLay[0].Price.ToString();
-            //                                objGridMarket.Runner3LaySize = marketbooks[0].Runners[2].ExchangePrices.AvailableToLay[0].SizeStr.ToString();
-            //                            }
-            //                            else
-            //                            {
-            //                                objGridMarket.Runner3Lay = "-";
-            //                                objGridMarket.Runner3Back = "-";
-            //                            }
-            //                        }
-            //                    }
-
-            //                }
+                            List<InPlayMatches> lstRunnersID = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).ToList();
+                            try
+                            {
+                                objGridMarket.Runner1 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
+                                objGridMarket.Runner2 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).LastOrDefault().SelectionName;
+                                if (lstRunnersID.Count == 3)
+                                {
+                                    objGridMarket.Runner3 = lstRunnersID.Where(x => x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
+                                }
+                            }
+                            catch (System.Exception ex)
+                            { }
+                            lstGridMarkets.Add(objGridMarket);
+                        }
+                        catch (System.Exception ex)
+                        { }
+                    }
 
 
-            //                objGridMarket.CategoryName = objMarketLocal.EventTypeName;
-            //                objGridMarket.MarketBookID = objMarketLocal.MarketCatalogueID;
-            //                objGridMarket.MarketBookName = objMarketLocal.MarketCatalogueName;
-            //                objGridMarket.EventName = objMarketLocal.EventName;
-            //                objGridMarket.CompetitionName = objMarketLocal.CompetitionName;
-            //                objGridMarket.MarketStartTime = objMarketLocal.EventOpenDate.Value.AddHours(5).ToString("dd-MM-yyyy hh:mm tt");
-            //                if (Convert.ToDateTime(objGridMarket.MarketStartTime) < DateTime.Now && objMarketLocal.MarketStatus == null)
-            //                {
-            //                    objGridMarket.MarketStatus = "In Play";
-            //                }
-            //                else
-            //                {
-            //                    objGridMarket.MarketStatus = objMarketLocal.MarketStatus;
-            //                }
-            //                objGridMarket.CountryCode = objMarketLocal.CountryCode;
+                    var model = new DefaultPageModel();
+
+                    model.WelcomeMessage = "Please enjoy the non-stop intriguing betting experience only on www.gt-exch.com. Thanks";
+                    model.WelcomeHeading = "Notice";
+                    model.Rule = "Rule & Regs";
+                    model.WelcomeMessage = "All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
+
+                    model.AllMarkets = lstGridMarkets;
 
 
-            //                List<InPlayMatches> lstRunnersID = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).ToList();
-            //                try
-            //                {
-            //                    objGridMarket.Runner1 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
-            //                    objGridMarket.Runner2 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).LastOrDefault().SelectionName;
-            //                    if (lstRunnersID.Count == 3)
-            //                    {
-            //                        objGridMarket.Runner3 = lstRunnersID.Where(x => x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
-            //                    }
-            //                }
-            //                catch (System.Exception ex)
-            //                {
+                    model.ModalContent = new List<string>();
+                    string modalli1 = "Dummy text";
+                    string modalli2 = "Dummy text";
+                    model.ModalContent.Add(modalli1);
+                    model.ModalContent.Add(modalli2);
 
-            //                }
-            //                lstGridMarkets.Add(objGridMarket);
-            //            }
-            //            catch (System.Exception ex)
-            //            { }
-            //        }
+                    return PartialView("AllInPayMatches2", model);
+                }
+            }
+            catch (System.Exception ex)
+            {
 
-
-            //        var model = new DefaultPageModel();
-            //        //model.TodayHorseRacing = getmarkets();
-            //        //model.TodayGreyRacing = getmarkets();
-            //        model.WelcomeMessage = "Please enjoy the non-stop intriguing betting experience only on www.gt-exch.com. Thanks";
-            //        model.WelcomeHeading = "Notice";
-            //        model.Rule = "Rule & Regs";
-            //        model.WelcomeMessage = "All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
-
-            //        model.AllMarkets = lstGridMarkets;
-            //        //model.TodayHorseRacing = new List<TodayHorseRacing>();
-            //        //List<TodayHorseRacing> markets = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacingNew(LoggedinUserDetail.GetUserID()));
-
-            //        //model.TodayHorseRacing = markets.Where(item=>item.EventTypeName== "Horse Racing").ToList();
-            //        //model.TodayGreyRacing = markets.Where(item => item.EventTypeName == "Greyhound Racing").ToList();
-            //        //foreach (var item in todayhorserace)
-            //        //{
-            //        //    TodayHorserace obj = new TodayHorserace();
-            //        //    obj.MarketBookID = item.MarketCatalogueID;
-            //        //    obj.RaceName = item.TodayHorseRace;
-            //        //    model.TodayHorseRacing.Add(obj);
-
-            //        //}
-
-            //        model.TodayHorseRacing = new List<Models.TodayHorseRacing>();
-            //        var todaygreyrace = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4339"));
-
-            //        foreach (var item in todaygreyrace.Take(15))
-            //        {
-            //            Models.TodayHorseRacing obj = new TodayHorseRacing();
-            //            obj.MarketCatalogueID = item.MarketCatalogueID;
-            //            obj.EventName = item.TodayHorseRace;
-            //            model.TodayHorseRacing.Add(obj);
-            //        }
-
-            //        model.ModalContent = new List<string>();
-            //        string modalli1 = "Dummy text";
-            //        string modalli2 = "Dummy text";
-            //        model.ModalContent.Add(modalli1);
-            //        model.ModalContent.Add(modalli2);
-
-            //        return PartialView("AllInPayMatches", model);
-            //    }
-            //    else
-            //    {
-            //        var results = objUsersServiceCleint.GetInPlayMatcheswithRunners1(userid);
-            //        List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
-            //        List<string> lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-            //        List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
-            //        ViewBag.backgrod = "#1D9BF0 !important";
-            //        ViewBag.color = "white";
-            //        foreach (var item in lstIds)
-            //        {
-            //            try
-            //            {
-            //                InPlayMatches objMarketLocal = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).FirstOrDefault();
-            //                AllMarketsInPlay objGridMarket = new AllMarketsInPlay();
-            //                objGridMarket.CategoryName = objMarketLocal.EventTypeName;
-            //                objGridMarket.MarketBookID = objMarketLocal.MarketCatalogueID;
-            //                objGridMarket.MarketBookName = objMarketLocal.MarketCatalogueName;
-            //                objGridMarket.EventName = objMarketLocal.EventName;
-            //                objGridMarket.CompetitionName = objMarketLocal.CompetitionName;
-            //                objGridMarket.MarketStartTime = objMarketLocal.EventOpenDate.Value.AddHours(5).ToString("dd-MM-yyyy hh:mm tt");
-            //                objGridMarket.MarketStatus = objMarketLocal.MarketStatus;
-
-            //                List<InPlayMatches> lstRunnersID = lstInPlayMatches.Where(item2 => item2.MarketCatalogueID == item).ToList();
-            //                try
-            //                {
-            //                    objGridMarket.Runner1 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
-            //                    objGridMarket.Runner2 = lstRunnersID.Where(x => !x.SelectionName.Contains("Draw")).LastOrDefault().SelectionName;
-            //                    if (lstRunnersID.Count == 3)
-            //                    {
-            //                        objGridMarket.Runner3 = lstRunnersID.Where(x => x.SelectionName.Contains("Draw")).FirstOrDefault().SelectionName;
-            //                    }
-            //                }
-            //                catch (System.Exception ex)
-            //                { }
-            //                lstGridMarkets.Add(objGridMarket);
-            //            }
-            //            catch (System.Exception ex)
-            //            { }
-            //        }
-
-
-            //        var model = new DefaultPageModel();
-
-            //        model.WelcomeMessage = "Please enjoy the non-stop intriguing betting experience only on www.gt-exch.com. Thanks";
-            //        model.WelcomeHeading = "Notice";
-            //        model.Rule = "Rule & Regs";
-            //        model.WelcomeMessage = "All bets apply to Full Time according to the match officials, plus any stoppage time. Extra - time / penalty shoot - outs are not included.If this market is re - opened for In - Play betting, unmatched bets will be cancelled at kick off and the market turned in play.The market will be suspended if it appears that a goal has been scored, a penalty will be given, or a red card will be shown.With the exception of bets for which the 'keep' option has been selected, unmatched bets will be cancelled in the event of a confirmed goal or sending off.Please note that should our data feeds fail we may be unable to manage this game in-play.Customers should be aware   that:Transmissions described as â€œliveâ€ by some broadcasters may actually be delayed.The extent of any such delay may vary, depending on the set-up through which they are receiving pictures or data.If this market is scheduled to go in-play, but due to unforeseen circumstances we are unable to offer the market in-play, then this market will be re-opened for the half-time interval and suspended again an hour after the scheduled kick-off time.";
-
-            //        model.AllMarkets = lstGridMarkets;
-
-
-            //        model.ModalContent = new List<string>();
-            //        string modalli1 = "Dummy text";
-            //        string modalli2 = "Dummy text";
-            //        model.ModalContent.Add(modalli1);
-            //        model.ModalContent.Add(modalli2);
-
-            //        return PartialView("AllInPayMatches2", model);
-            //    }
-            //}
-            //catch (System.Exception ex)
-            //{
-
-            //    return PartialView("AllInPayMatches", new DefaultPageModel());
-            //}
+                return PartialView("AllInPayMatches", new DefaultPageModel());
+            }
         }
         public string Getinplaymarket()
         {
@@ -4142,9 +3976,11 @@ namespace bfnexchange.Controllers
                 List<string> lstIds = new List<string>();
                 if (ViewType == "Inplay")
                 {
-                    lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket" && item.EventOpenDate.Value.Date == DateTime.Now.Date).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
-                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer" && item.EventOpenDate.Value.Date == DateTime.Now.Date).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis" && item.EventOpenDate.Value.Date == DateTime.Now.Date).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket" && item.EventOpenDate.Value < DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
+                    DateTime currentDateTime = DateTime.Now;
+                    DateTime newDateTime = currentDateTime.AddHours(-8);
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer" &&  item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis" &&  item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                 }
                 else
                 {
@@ -4202,7 +4038,7 @@ namespace bfnexchange.Controllers
                 model.AllMarkets = lstGridMarkets;
                 //model.TodayHorseRacing = new List<TodayHorserace>();
                 model.ViewType = ViewType;
-
+                ViewBag.GridMarketsCount = lstGridMarkets.Count();
                 return PartialView("MatchHighlights", model);
                 //objUsersServiceCleint.GetInPlayMatcheswithRunnersCompleted += ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted;
             }
@@ -4215,10 +4051,7 @@ namespace bfnexchange.Controllers
         //private void ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted(object sender, GetInPlayMatcheswithRunnersCompletedEventArgs e)
         //{
         //    objUsersServiceCleint.GetInPlayMatcheswithRunnersCompleted -= ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted;
-
-
         //}
-
 
     }
 }
