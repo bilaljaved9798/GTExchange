@@ -252,11 +252,10 @@ namespace bfnexchange.Services
         {
             try
             {
-                wsBetEasyNGNew.Url = "http://5.152.223.146/SkyExchange/beteasynewng.asmx";
+
                 //wsBetEasyNGNew.Url = ConfigurationManager.AppSettings["URLForDataother"];
-                //wsBetEasyNGNew.Url = "http://inforeborn.com/SkyExchange/beteasynewng.asmx";
-                //string text = wsBetEasyNGNew.NG(0, 25, "sfs5646", "", ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserPasswordforDataOther"], "7FAISALSHAH2", ConfigurationManager.AppSettings["VendorforDataOther"], "", "");
-                string text = wsBetEasyNGNew.NG(0, 25, "jsllnclhafldhfls", "", ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserPasswordforDataOther"], "7FAISALSHAH1", ConfigurationManager.AppSettings["VendorforDataOther"], "", "");
+                wsBetEasyNGNew.Url = "https://inforeborn.com/UnitedBet/beteasynewng.asmx";
+                string text = wsBetEasyNGNew.NG(0, 25, "sfs5646", "", ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserNameforDataOther"], ConfigurationManager.AppSettings["UserPasswordforDataOther"], "7FAISALSHAH2", ConfigurationManager.AppSettings["VendorforDataOther"], "", "");
                 string[] results = text.Split('~');
                 APIConfig.SessionforOtherdata = results[64].ToString().Trim();
             }
@@ -275,8 +274,7 @@ namespace bfnexchange.Services
                     GetSessionfromothersource();
                 }
                 //wsBetEasyNGNew.Url = ConfigurationManager.AppSettings["URLForDataother"];
-                //wsBetEasyNGNew.Url = "https://inforeborn.com/UnitedBet/beteasynewng.asmx";
-                wsBetEasyNGNew.Url = "http://inforeborn.com/SkyExchange/beteasynewng.asmx";
+                wsBetEasyNGNew.Url = "https://inforeborn.com/UnitedBet/beteasynewng.asmx";
                 wsBetEasyNGNew.UserAgent = ".\".$.avb&.(.*.,..";
                 string[] marketIds = MarketIDs.Split(new string[] { ", " }, StringSplitOptions.None);
                 foreach (var item in marketIds)

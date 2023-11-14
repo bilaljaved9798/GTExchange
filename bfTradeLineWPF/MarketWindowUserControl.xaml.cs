@@ -8207,295 +8207,6 @@ namespace globaltraders
         ExternalAPI.TO.GetDataFancy GetDataFancy = new ExternalAPI.TO.GetDataFancy();
         ExternalAPI.TO.GetDataFancy test = new ExternalAPI.TO.GetDataFancy();
 
-        public void GetDataForFancy(bool isFirstTime)
-        {
-            try
-            {
-
-                if (MarketBook.LineVMarkets != null)
-                {
-
-                    List<string> lstIds = MarketBook.LineVMarkets.Select(item => item.MarketCatalogueID).ToList();
-
-                    string[] marketIds = lstIds.ToArray();
-                    if (LoggedinUserDetail.GetCricketDataFrom == "BP")
-                    {
-
-                        string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataBPFancy/?marketID=" + string.Join(",", marketIds);
-                        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
-                        request.Method = "GET";
-                        request.Proxy = null;
-                        request.Timeout = 5000;
-                        request.KeepAlive = false;
-                        request.ServicePoint.ConnectionLeaseTimeout = 5000;
-                        request.ServicePoint.MaxIdleTime = 5000;
-                        request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                        String test = String.Empty;
-                        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                        {
-                            using (Stream dataStream = response.GetResponseStream())
-                            {
-
-                                System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(string));
-                                test = obj1.ReadObject(dataStream).ToString();
-
-                                dataStream.Close();
-                            }
-
-                        }
-
-                        var list = JsonConvert.DeserializeObject<List<SampleResponse1>>(test);
-
-                        if (list.Count() > 0)
-                        {
-
-
-                            List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
-                            foreach (var bfobject in MarketBook.LineVMarkets)
-                            {
-                                if (bfobject != null)
-                                {
-                                    try
-                                    {
-                                        SampleResponse1 objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
-                                        if (objmarketbookBF1 != null)
-                                        {
-                                            LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBF123Fancy(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", false, bfobject.BettingAllowed));
-                                        }
-
-
-                                    }
-                                    catch (System.Exception ex)
-                                    {
-
-                                    }
-
-
-                                }
-
-
-
-                            }
-                            LastloadedLinMarkets = LastloadedLinMarkets1;
-                            if (isFirstTime == true)
-                            {
-                                lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
-                                lstMarketBookRunnersFancy.Clear();
-                                foreach (var item in LastloadedLinMarkets)
-                                {
-                                    try
-                                    {
-                                        item.Runners[0].RunnerName = item.MarketBookName;
-
-
-
-                                        if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
-                                        {
-                                            item.Runners[0].isShow = true;
-                                        }
-                                        else
-                                        {
-                                            item.Runners[0].isShow = false;
-                                        }
-                                        GetRunnersDataSourceFancyFirstTime(item.Runners, item);
-                                    }
-                                    catch (System.Exception ex)
-                                    {
-
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                    else
-                    {
-                        if (LoggedinUserDetail.GetCricketDataFrom == "Live")
-                        {
-
-                            //string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancyStr/?marketID=" + string.Join(",", marketIds);
-                            string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancy/?marketID=" + string.Join(",", marketIds);
-                            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
-                            request.Method = "GET";
-                            request.Proxy = null;
-                            request.Timeout = 5000;
-                            request.KeepAlive = false;
-                            request.ServicePoint.ConnectionLeaseTimeout = 5000;
-                            request.ServicePoint.MaxIdleTime = 5000;
-                            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                            List<MarketBook> test = new List<MarketBook>();
-                            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                            {
-                                using (Stream dataStream = response.GetResponseStream())
-                                {
-
-                                    System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<MarketBook>));
-                                    test = (List<MarketBook>)obj1.ReadObject(dataStream);
-
-                                    dataStream.Close();
-                                }
-                            }
-
-                            var list1 = test;
-                            if (list1.Count() > 0)
-                            {
-
-
-                                List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
-                                foreach (var bfobject in MarketBook.LineVMarkets)
-                                {
-                                    if (bfobject != null)
-                                    {
-                                        try
-                                        {
-                                            MarketBook objmarketbookBF1 = list1.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
-                                            if (objmarketbookBF1 != null)
-                                            {
-                                                LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFFancyLive(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
-                                            }
-
-
-                                        }
-                                        catch (System.Exception ex)
-                                        {
-
-                                        }
-
-
-                                    }
-
-
-
-                                }
-                                LastloadedLinMarkets = LastloadedLinMarkets1;
-                                if (isFirstTime == true)
-                                {
-                                    lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
-                                    lstMarketBookRunnersFancy.Clear();
-                                    foreach (var item in LastloadedLinMarkets)
-                                    {
-                                        try
-                                        {
-                                            item.Runners[0].RunnerName = item.MarketBookName;
-                                            if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
-                                            {
-                                                item.Runners[0].isShow = true;
-                                            }
-                                            else
-                                            {
-                                                item.Runners[0].isShow = false;
-                                            }
-                                            GetRunnersDataSourceFancyFirstTime(item.Runners, item);
-                                        }
-                                        catch (System.Exception ex)
-                                        {
-
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                        else
-                        {
-
-
-                            if (LoggedinUserDetail.GetCricketDataFrom == "Other")
-                            {
-                                string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataOtherFancy/?marketID=" + string.Join(",", marketIds);
-                                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
-                                request.Method = "GET";
-                                request.Proxy = null;
-                                request.Timeout = 5000;
-                                request.ReadWriteTimeout = 30000;
-                                request.KeepAlive = false;
-                                request.ServicePoint.ConnectionLeaseTimeout = 5000;
-                                request.ServicePoint.MaxIdleTime = 5000;
-                                request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
-                                List<ExternalAPI.TO.MarketBookString> test = new List<ExternalAPI.TO.MarketBookString>();
-                                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                                {
-                                    using (Stream dataStream = response.GetResponseStream())
-                                    {
-
-                                        System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<ExternalAPI.TO.MarketBookString>));
-                                        test = (List<ExternalAPI.TO.MarketBookString>)obj1.ReadObject(dataStream);
-
-                                        dataStream.Close();
-                                    }
-
-                                }
-
-                                var list1 = test;
-                                if (list1.Count() > 0)
-                                {
-
-
-                                    List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
-                                    foreach (var bfobject in MarketBook.LineVMarkets)
-                                    {
-                                        if (bfobject != null)
-                                        {
-                                            try
-                                            {
-                                                ExternalAPI.TO.MarketBookString objmarketbookBF1 = list1.Where(item => item.MarketBookId == bfobject.MarketCatalogueID).FirstOrDefault();
-                                                if (objmarketbookBF1 != null)
-                                                {
-                                                    LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFNewSource(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
-                                                }
-
-
-                                            }
-                                            catch (System.Exception ex)
-                                            {
-
-                                            }
-                                        }
-                                    }
-                                    LastloadedLinMarkets = LastloadedLinMarkets1;
-                                    if (isFirstTime == true)
-                                    {
-                                        lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
-                                        lstMarketBookRunnersFancy.Clear();
-                                        foreach (var item in LastloadedLinMarkets)
-                                        {
-                                            try
-                                            {
-                                                item.Runners[0].RunnerName = item.MarketBookName;
-
-
-
-                                                if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
-                                                {
-                                                    item.Runners[0].isShow = true;
-                                                }
-                                                else
-                                                {
-                                                    item.Runners[0].isShow = false;
-                                                }
-                                                GetRunnersDataSourceFancyFirstTime(item.Runners, item);
-                                            }
-                                            catch (System.Exception ex)
-                                            {
-
-                                            }
-                                        }
-                                    }
-                                }
-
-                            }
-                        }
-                        return;
-
-                    }
-                }
-            }
-            catch (System.Exception ex)
-            {
-
-            }
-
-        }
         public void GetDataForFancy(string EventID, string marketIds)
         {
             try
@@ -8786,11 +8497,11 @@ namespace globaltraders
                 //MarketBook.LineVMarkets = linevmarkets;
                 lstMarketBookRunnerKalijut = new ObservableCollection<MarketBookShow>();
                 lstMarketBookRunnerKalijut.Clear();
-                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "Kali v Jut" && item.EventID==MarketBook.EventID).ToList();
-                var distinct = KJMarkets.GroupBy(x => x.MarketCatalogueID, (key, group) => group.First());
-                if (distinct.Count() > 0)
+                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "Kali v Jut").ToList();
+
+                if (KJMarkets.Count() > 0)
                 {
-                    foreach (var runners in distinct)
+                    foreach (var runners in KJMarkets)
                     {
                         MarketBookShow objmarketbookshow = new MarketBookShow();
                         objmarketbookshow.Selection = runners.MarketCatalogueName;
@@ -8804,9 +8515,9 @@ namespace globaltraders
                         objmarketbookshow.CurrentMarketBookId = runners.MarketCatalogueID;
 
                         objmarketbookshow.Laysize0 = "102";//KJs.KaliPriceLay.ToString();
-                        objmarketbookshow.Layprice0 = "2.02";//KJs.KaliSizeLay.ToString();
+                        objmarketbookshow.Layprice0 = "1";//KJs.KaliSizeLay.ToString();
                         objmarketbookshow.Backsize0 = "98";//KJs.KaliPriceBack.ToString();
-                        objmarketbookshow.Backprice0 = "1.98";//KJs.KaliSizeBack.ToString();
+                        objmarketbookshow.Backprice0 = "1";//KJs.KaliSizeBack.ToString();
 
                         ExternalAPI.TO.MarketBookForindianFancy currentmarketsfancyPL = new ExternalAPI.TO.MarketBookForindianFancy();
                         ProfitandLoss objProfitandloss = new ProfitandLoss();
@@ -8849,7 +8560,7 @@ namespace globaltraders
                 lstMarketBookRunnerSFigure = new ObservableCollection<MarketBookShow>();
                 lstMarketBookRunnerSFigure.Clear();
 
-                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "SmallFig" && item.EventID==MarketBook.EventID).ToList();
+                var KJMarkets = test.LinevMarkets.Where(item => item.isOpenedbyUser == true && item.EventName == "SmallFig").ToList();
 
                 if (KJMarkets.Count() > 0)
                 {
@@ -8917,7 +8628,7 @@ namespace globaltraders
             lstMarketBookRunnersFigure.Clear();
 
             var FigureMarkets = test.LinevMarkets.GroupBy(item => item.MarketCatalogueName).Select(g => g.First()).Where(item2 => item2.EventName == "Figure").ToList(); //MarketBook.LineVMarkets.Where(item => item.isOpenedbyUser == true && item.EventName== "Figure").ToList();
-            FigureMarkets = FigureMarkets.Where(item => item.isOpenedbyUser == true && item.EventID==MarketBook.EventID).ToList();
+            FigureMarkets = FigureMarkets.Where(item => item.isOpenedbyUser == true).ToList();
             if (FigureMarkets.Count > 0)
             {
                 foreach (var bfobject in FigureMarkets)
@@ -10284,7 +9995,7 @@ namespace globaltraders
                                     dgvSFigSyncONOFF.ItemsSource = linevmarkets.Where(item => item.EventName == "SmallFig").ToList();
                                     dgvFGSyncONOFF.ItemsSource = linevmarkets.GroupBy(item => item.MarketCatalogueName).Select(g => g.First()).Where(item2 => item2.EventName == "Figure").ToList();
                                 }
-                                GetDataForFancy(true);
+                                //GetDataForFancy(true);
                                 //DGVMarketFancy.ItemsSource = lstMarketBookRunnersFancy;
                                 GetDataForFancy(MarketBook.EventID, MarketBook.MarketId);
                                 DGVMarketIndianFancy.ItemsSource = lstMarketBookRunnersFancyin;
@@ -10317,7 +10028,295 @@ namespace globaltraders
             }
         }
 
-        
+        public void GetDataForFancy(bool isFirstTime)
+        {
+            try
+            {
+
+                if (MarketBook.LineVMarkets != null)
+                {
+
+                    List<string> lstIds = MarketBook.LineVMarkets.Select(item => item.MarketCatalogueID).ToList();
+
+                    string[] marketIds = lstIds.ToArray();
+                    if (LoggedinUserDetail.GetCricketDataFrom == "BP")
+                    {
+
+                        string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataBPFancy/?marketID=" + string.Join(",", marketIds);
+                        HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                        request.Method = "GET";
+                        request.Proxy = null;
+                        request.Timeout = 5000;
+                        request.KeepAlive = false;
+                        request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                        request.ServicePoint.MaxIdleTime = 5000;
+                        request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                        String test = String.Empty;
+                        using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                        {
+                            using (Stream dataStream = response.GetResponseStream())
+                            {
+
+                                System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(string));
+                                test = obj1.ReadObject(dataStream).ToString();
+
+                                dataStream.Close();
+                            }
+
+                        }
+
+                        var list = JsonConvert.DeserializeObject<List<SampleResponse1>>(test);
+
+                        if (list.Count() > 0)
+                        {
+
+
+                            List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                            foreach (var bfobject in MarketBook.LineVMarkets)
+                            {
+                                if (bfobject != null)
+                                {
+                                    try
+                                    {
+                                        SampleResponse1 objmarketbookBF1 = list.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                        if (objmarketbookBF1 != null)
+                                        {
+                                            LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBF123Fancy(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", false, bfobject.BettingAllowed));
+                                        }
+
+
+                                    }
+                                    catch (System.Exception ex)
+                                    {
+
+                                    }
+
+
+                                }
+
+
+
+                            }
+                            LastloadedLinMarkets = LastloadedLinMarkets1;
+                            if (isFirstTime == true)
+                            {
+                                lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                lstMarketBookRunnersFancy.Clear();
+                                foreach (var item in LastloadedLinMarkets)
+                                {
+                                    try
+                                    {
+                                        item.Runners[0].RunnerName = item.MarketBookName;
+
+
+
+                                        if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                        {
+                                            item.Runners[0].isShow = true;
+                                        }
+                                        else
+                                        {
+                                            item.Runners[0].isShow = false;
+                                        }
+                                        GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                    }
+                                    catch (System.Exception ex)
+                                    {
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        if (LoggedinUserDetail.GetCricketDataFrom == "Live")
+                        {
+
+                            //string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancyStr/?marketID=" + string.Join(",", marketIds);
+                            string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataFancy/?marketID=" + string.Join(",", marketIds);
+                            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                            request.Method = "GET";
+                            request.Proxy = null;
+                            request.Timeout = 5000;
+                            request.KeepAlive = false;
+                            request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                            request.ServicePoint.MaxIdleTime = 5000;
+                            request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                            List<MarketBook> test = new List<MarketBook>();
+                            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                            {
+                                using (Stream dataStream = response.GetResponseStream())
+                                {
+
+                                    System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<MarketBook>));
+                                    test = (List<MarketBook>)obj1.ReadObject(dataStream);
+
+                                    dataStream.Close();
+                                }
+                            }
+
+                            var list1 = test;
+                            if (list1.Count() > 0)
+                            {
+
+
+                                List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                                foreach (var bfobject in MarketBook.LineVMarkets)
+                                {
+                                    if (bfobject != null)
+                                    {
+                                        try
+                                        {
+                                            MarketBook objmarketbookBF1 = list1.Where(item => item.MarketId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                            if (objmarketbookBF1 != null)
+                                            {
+                                                LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFFancyLive(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
+                                            }
+
+
+                                        }
+                                        catch (System.Exception ex)
+                                        {
+
+                                        }
+
+
+                                    }
+
+
+
+                                }
+                                LastloadedLinMarkets = LastloadedLinMarkets1;
+                                if (isFirstTime == true)
+                                {
+                                    lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                    lstMarketBookRunnersFancy.Clear();
+                                    foreach (var item in LastloadedLinMarkets)
+                                    {
+                                        try
+                                        {
+                                            item.Runners[0].RunnerName = item.MarketBookName;
+                                            if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                            {
+                                                item.Runners[0].isShow = true;
+                                            }
+                                            else
+                                            {
+                                                item.Runners[0].isShow = false;
+                                            }
+                                            GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                        }
+                                        catch (System.Exception ex)
+                                        {
+
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                        else
+                        {
+
+
+                            if (LoggedinUserDetail.GetCricketDataFrom == "Other")
+                            {
+                                string RestAPIPath1 = ConfigurationManager.AppSettings["RestAPIPath"] + "Services/BettingServiceRest.svc/GetMarektDataOtherFancy/?marketID=" + string.Join(",", marketIds);
+                                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(RestAPIPath1);
+                                request.Method = "GET";
+                                request.Proxy = null;
+                                request.Timeout = 5000;
+                                request.ReadWriteTimeout = 30000;
+                                request.KeepAlive = false;
+                                request.ServicePoint.ConnectionLeaseTimeout = 5000;
+                                request.ServicePoint.MaxIdleTime = 5000;
+                                request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
+                                List<ExternalAPI.TO.MarketBookString> test = new List<ExternalAPI.TO.MarketBookString>();
+                                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                                {
+                                    using (Stream dataStream = response.GetResponseStream())
+                                    {
+
+                                        System.Runtime.Serialization.Json.DataContractJsonSerializer obj1 = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(List<ExternalAPI.TO.MarketBookString>));
+                                        test = (List<ExternalAPI.TO.MarketBookString>)obj1.ReadObject(dataStream);
+
+                                        dataStream.Close();
+                                    }
+
+                                }
+
+                                var list1 = test;
+                                if (list1.Count() > 0)
+                                {
+
+
+                                    List<ExternalAPI.TO.MarketBook> LastloadedLinMarkets1 = new List<ExternalAPI.TO.MarketBook>();
+                                    foreach (var bfobject in MarketBook.LineVMarkets)
+                                    {
+                                        if (bfobject != null)
+                                        {
+                                            try
+                                            {
+                                                ExternalAPI.TO.MarketBookString objmarketbookBF1 = list1.Where(item => item.MarketBookId == bfobject.MarketCatalogueID).FirstOrDefault();
+                                                if (objmarketbookBF1 != null)
+                                                {
+                                                    LastloadedLinMarkets1.Add(ConvertJsontoMarketObjectBFNewSource(objmarketbookBF1, bfobject.MarketCatalogueID, MarketBook.OrignalOpenDate.Value, bfobject.MarketCatalogueName, "Cricket", bfobject.BettingAllowed));
+                                                }
+
+
+                                            }
+                                            catch (System.Exception ex)
+                                            {
+
+                                            }
+                                        }
+                                    }
+                                    LastloadedLinMarkets = LastloadedLinMarkets1;
+                                    if (isFirstTime == true)
+                                    {
+                                        lstMarketBookRunnersFancy = new ObservableCollection<MarketBookShow>();
+                                        lstMarketBookRunnersFancy.Clear();
+                                        foreach (var item in LastloadedLinMarkets)
+                                        {
+                                            try
+                                            {
+                                                item.Runners[0].RunnerName = item.MarketBookName;
+
+
+
+                                                if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 20 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 20) && item.MarketStatusstr == "In Play")
+                                                {
+                                                    item.Runners[0].isShow = true;
+                                                }
+                                                else
+                                                {
+                                                    item.Runners[0].isShow = false;
+                                                }
+                                                GetRunnersDataSourceFancyFirstTime(item.Runners, item);
+                                            }
+                                            catch (System.Exception ex)
+                                            {
+
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                        return;
+
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+            }
+
+        }
         public void GetTowWinTheTossMarket()
         {
             try
@@ -13277,9 +13276,9 @@ namespace globaltraders
                     var matchscores = "";//JsonConvert.DeserializeObject<ScoresForResultPosting>(objUsersServiceCleint.GetScorebyEventIDandInningsandOvers(eventdetails.associateeventID, eventdetails.EventOpenDate.Value, Convert.ToInt32(innings), Convert.ToInt32(over)));
                     if (matchscores != "")
                     {
-                        //txtScoresResultsFig.Text = matchscores.Scores.Value.ToString();
-                        //txtOversResultsFig.Text = matchscores.Overs.Value.ToString();
-                        //txtInningsResultFig.Text = matchscores.Innings.Value.ToString();
+                        //txtScoresResults.Text = matchscores.Scores.Value.ToString();
+                        //txtOversResults.Text = matchscores.Overs.Value.ToString();
+                        //txtInningsResult.Text = matchscores.Innings.Value.ToString();
                         //lblTeamname.Content = matchscores.TeamName.ToString();
                     }
                     else
