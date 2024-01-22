@@ -3938,7 +3938,7 @@ namespace bfnexchange.Controllers
                 lstInPlayMatches = lstInPlayMatches.Where(x => x.MarketCatalogueID != marketbookID).ToList();
                 // var sd = lstInPlayMatches.GroupBy(x=>x.MarketCatalogueID).Select(b=>b.ToList()).ToList();
                 //  lstInPlayMatches2 = dd.Skip(3).ToList();
-                return RenderRazorViewToString("Relatedevent", lstInPlayMatches.Take(5));
+                return RenderRazorViewToString("Relatedevent", lstInPlayMatches);
 
             }
 
