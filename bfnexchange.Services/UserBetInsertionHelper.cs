@@ -102,6 +102,7 @@ namespace bfnexchange.Services
                     string eventtypename = objUsersServiceCleint.GetEventTypeNamebyMarketID(marketbookId);
 
                     var marketbooks = objBettingClient.GetMarketDatabyIDLive(lstIDs.ToArray(), Marketbookname, DateTime.Now, eventtypename, Password, ConfigurationManager.AppSettings["PasswordForValidateS"]);
+                    //var marketbooks = objBettingClient.GetMarketDatabyID(lstIDs.ToArray(), Marketbookname, DateTime.Now, eventtypename, ConfigurationManager.AppSettings["PasswordForValidateS"]);
 
                     if (marketbooks.Count == 0)
                     {

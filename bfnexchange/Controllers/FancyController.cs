@@ -26,7 +26,7 @@ namespace bfnexchange.Controllers
             int UserIDforLinevmarkets = 0;
             if (LoggedinUserDetail.GetUserTypeID() != 3 )
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
                 UserIDforLinevmarkets = 73;
             }

@@ -270,9 +270,6 @@ namespace bfnexchange.Services
                         var currmarketbook = APIConfig.BFMarketBooksOther123.Where(item => item.MarketBookId == marketitem).FirstOrDefault();
                         if (currmarketbook != null)
                         {
-
-
-
                             lstClientMarkes.Add(currmarketbook);
                         }
                         else
@@ -285,6 +282,7 @@ namespace bfnexchange.Services
             }
             return (lstClientMarkes);
         }
+       
         public List<ExternalAPI.TO.MarketBookString> GetAllMarketsOthersFancy(string[] marketIDs)
         {
             List<ExternalAPI.TO.MarketBookString> lstClientMarkes = new List<ExternalAPI.TO.MarketBookString>();

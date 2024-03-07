@@ -993,9 +993,11 @@ namespace bfnexchange.Controllers
 
             if (LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
             }
+            else
+                ViewBag.backgrod = "-webkit-linear-gradient(top,#35c483,#000000) !important;";
 
             LoggedinUserDetail.CheckifUserLogin();
             var marketFilter = new MarketFilter();
@@ -1003,19 +1005,13 @@ namespace bfnexchange.Controllers
             if (LoggedinUserDetail.GetUserTypeID() != 1)
             {
                 List<Models.EventType> lstClientlist = JsonConvert.DeserializeObject<List<Models.EventType>>(objUsersServiceCleint.GetEventTypeIDs(LoggedinUserDetail.GetUserID()));
-
                 return PartialView("EventType", lstClientlist);
             }
             else
             {
                 List<Models.EventType> lstClientlist = new List<Models.EventType>();
-
-
                 return PartialView("EventType", lstClientlist);
             }
-
-
-
         }
 
         public PartialViewResult Competiion(string ID)
@@ -1071,11 +1067,10 @@ namespace bfnexchange.Controllers
 
             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
                 List<Models.TodayHorseRacing> lstTodayHorseRacing = JsonConvert.DeserializeObject<List<Models.TodayHorseRacing>>(objUsersServiceCleint.GetTodayHorseRacing(LoggedinUserDetail.GetUserID(), "4"));
                 lstTodayHorseRacing = lstTodayHorseRacing.Where(a => a.EventName != "Line v Markets").ToList();
-
                 return PartialView("TodayHorseRace", lstTodayHorseRacing);
             }
             else
@@ -1090,7 +1085,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
             }
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
@@ -1112,7 +1107,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
             }
             if (LoggedinUserDetail.GetUserTypeID() == 3 || LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
@@ -1134,7 +1129,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
             }
             LoggedinUserDetail.CheckifUserLogin();
@@ -1156,7 +1151,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9 || LoggedinUserDetail.GetUserTypeID() == 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
             }
             LoggedinUserDetail.CheckifUserLogin();
@@ -2698,12 +2693,9 @@ namespace bfnexchange.Controllers
         {
             try
             {
-
                 Session["TWT"] = "";
                 Session["TM"] = "";
                 UserBetsUpdateUnmatcedBets objUserBets = new UserBetsUpdateUnmatcedBets();
-
-                //  return RenderRazorViewToString("MarketBook", marketbooks1);
                 LoggedinUserDetail.CheckifUserLogin();
                 if (LoggedinUserDetail.GetUserTypeID() != 1)
                 {
@@ -2721,14 +2713,12 @@ namespace bfnexchange.Controllers
                 }
                 if (ID != "" && LoggedinUserDetail.GetUserTypeID() == 1 || LoggedinUserDetail.GetUserTypeID() == 8 || LoggedinUserDetail.GetUserTypeID() == 9)
                 {
-
                     objUsersServiceCleint.SetMarketBookOpenbyUSer(73, ID);
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 3)
                 {
                     Session["Eventid"] = null;
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
-                    //  System.Threading.Thread.Sleep(500);
                     if (results != null)
                     {
                         results = results.Where(item => item.ID == ID).ToList();
@@ -2737,11 +2727,9 @@ namespace bfnexchange.Controllers
                         foreach (var item in results)
                         {
                             lstIDs = new List<string>();
-
                             lstIDs.Add(item.ID);
                             var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                             if (marketbook.Count() > 0)
-
                             {
                                 if (marketbook[0].Runners != null)
                                 {
@@ -2749,11 +2737,8 @@ namespace bfnexchange.Controllers
                                 }
                             }
                             else
-                            {
-
-                            }
+                            { }
                         }
-
 
                         foreach (var item in results)
                         {
@@ -2770,8 +2755,6 @@ namespace bfnexchange.Controllers
                                     item2.GetMatchUpdatesFrom = item.GetMatchUpdatesFrom;
                                     item2.EventID = item.EventID;
                                     Session["Eventid"] = item.EventID;
-
-
                                     var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                     foreach (var runnermarketitem in runnerdesc)
                                     {
@@ -2787,14 +2770,9 @@ namespace bfnexchange.Controllers
                                                 runneritem.WearingDesc = runnermarketitem.WearingDesc;
                                                 runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                 runneritem.StallDraw = runnermarketitem.StallDraw;
-
-
                                             }
                                         }
-
                                     }
-
-                                    // 
 
                                     if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                     {
@@ -2802,23 +2780,15 @@ namespace bfnexchange.Controllers
                                         var resultslinev = objUsersServiceCleint.GetEventDetailsbyMarketBook(item2.MarketId);
                                         int UserIDforLinevmarkets = 0;
                                         if (LoggedinUserDetail.GetUserTypeID() == 1)
-                                        {
                                             UserIDforLinevmarkets = 73;
-                                        }
                                         else
-                                        {
                                             UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
-                                        }
+
                                         var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
-
-
                                         if (linevmarkets.Count() > 0)
-                                        {
                                             item2.LineVMarkets = linevmarkets;
-                                        }
-                                    }
-                                    ////
 
+                                    }
                                 }
                             }
 
@@ -2869,11 +2839,8 @@ namespace bfnexchange.Controllers
                                 for (int i = 0; i < 3; i++)
                                 {
                                     var pricesize = new PriceSize();
-
                                     pricesize.Size = 0;
-
                                     pricesize.Price = 0;
-
                                     lstpricelist.Add(pricesize);
                                 }
                                 runneritem.ExchangePrices.AvailableToBack = lstpricelist;
@@ -2881,20 +2848,14 @@ namespace bfnexchange.Controllers
                                 for (int i = 0; i < 3; i++)
                                 {
                                     var pricesize = new PriceSize();
-
                                     pricesize.Size = 0;
-
                                     pricesize.Price = 0;
-
                                     lstpricelist.Add(pricesize);
                                 }
                                 runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                 item2.Runners.Add(runneritem);
 
                                 item2.Runners = item2.Runners.OrderBy(runner => runner.LastPriceTraded == null).ThenBy(runner => runner.LastPriceTraded).ToList();
-
-
-
                             }
                             item2.FavoriteID = "0";
                             item2.FavoriteBack = "0";
@@ -2957,7 +2918,7 @@ namespace bfnexchange.Controllers
                 {
                     if (LoggedinUserDetail.GetUserTypeID() == 2)
                     {
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
                         var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
                         if (results != null)
@@ -2968,25 +2929,16 @@ namespace bfnexchange.Controllers
                             foreach (var item in results)
                             {
                                 lstIDs = new List<string>();
-
                                 lstIDs.Add(item.ID);
                                 var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                                 if (marketbook.Count() > 0)
-
                                 {
                                     if (marketbook[0].Runners != null)
                                     {
                                         marketbooks.Add(marketbook[0]);
                                     }
-
-                                }
-                                else
-                                {
-
-                                }
-
+                                }                               
                             }
-
 
                             foreach (var item in results)
                             {
@@ -3004,7 +2956,6 @@ namespace bfnexchange.Controllers
                                         item2.EventID = item.EventID;
                                         Session["Eventid"] = item.EventID;
 
-
                                         var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                         foreach (var runnermarketitem in runnerdesc)
                                         {
@@ -3018,13 +2969,9 @@ namespace bfnexchange.Controllers
                                                     runneritem.WearingDesc = runnermarketitem.WearingDesc;
                                                     runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                     runneritem.StallDraw = runnermarketitem.StallDraw;
-
                                                 }
                                             }
-
                                         }
-
-                                        // 
 
                                         if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                         {
@@ -3040,18 +2987,13 @@ namespace bfnexchange.Controllers
                                                 UserIDforLinevmarkets = LoggedinUserDetail.GetUserID();
                                             }
                                             var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
-
-
                                             if (linevmarkets.Count() > 0)
                                             {
                                                 item2.LineVMarkets = linevmarkets;
                                             }
                                         }
-
-
                                     }
                                 }
-
                             }
                             if (marketbooks.Count == 0)
                             {
@@ -3097,11 +3039,8 @@ namespace bfnexchange.Controllers
                                     for (int i = 0; i < 3; i++)
                                     {
                                         var pricesize = new PriceSize();
-
                                         pricesize.Size = 0;
-
                                         pricesize.Price = 0;
-
                                         lstpricelist.Add(pricesize);
                                     }
                                     runneritem.ExchangePrices.AvailableToBack = lstpricelist;
@@ -3109,17 +3048,12 @@ namespace bfnexchange.Controllers
                                     for (int i = 0; i < 3; i++)
                                     {
                                         var pricesize = new PriceSize();
-
                                         pricesize.Size = 0;
-
                                         pricesize.Price = 0;
-
                                         lstpricelist.Add(pricesize);
                                     }
                                     runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                     item2.Runners.Add(runneritem);
-
-
                                 }
                                 item2.FavoriteID = "0";
                                 item2.FavoriteBack = "0";
@@ -3150,8 +3084,6 @@ namespace bfnexchange.Controllers
                                     }
                                 }
                                 marketbooks.Add(item2);
-
-
                             }
 
                             List<UserBetsforAgent> lstUserBet = JsonConvert.DeserializeObject<List<Models.UserBetsforAgent>>(objUsersServiceCleint.GetUserbetsbyUserIDandAgentID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -3181,7 +3113,7 @@ namespace bfnexchange.Controllers
                     {
                         if (LoggedinUserDetail.GetUserTypeID() == 1)
                         {
-                            ViewBag.backgrod = "#1D9BF0";
+                            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                             ViewBag.color = "white";
                             var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                             if (results != null)
@@ -3192,7 +3124,6 @@ namespace bfnexchange.Controllers
                                 foreach (var item in results)
                                 {
                                     lstIDs = new List<string>();
-
                                     lstIDs.Add(item.ID);
                                     var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                                     if (marketbook.Count() > 0)
@@ -3202,13 +3133,7 @@ namespace bfnexchange.Controllers
                                         {
                                             marketbooks.Add(marketbook[0]);
                                         }
-
-                                    }
-                                    else
-                                    {
-
-                                    }
-
+                                    }                                 
                                 }
 
                                 foreach (var item in results)
@@ -3244,11 +3169,7 @@ namespace bfnexchange.Controllers
 
                                                     }
                                                 }
-
                                             }
-
-                                            // 
-
 
                                             if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                             {
@@ -3271,9 +3192,6 @@ namespace bfnexchange.Controllers
                                                     item2.LineVMarkets = linevmarkets;
                                                 }
                                             }
-
-                                            ////
-
                                         }
                                     }
 
@@ -3343,8 +3261,6 @@ namespace bfnexchange.Controllers
                                         }
                                         runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                         item2.Runners.Add(runneritem);
-
-
                                     }
                                     item2.FavoriteID = "0";
                                     item2.FavoriteBack = "0";
@@ -3352,9 +3268,7 @@ namespace bfnexchange.Controllers
                                     item2.FavoriteLay = "0";
                                     item2.FavoriteLaySize = "0";
                                     item2.FavoriteSelectionName = "";
-                                    // 
-                                    // 
-
+            
                                     if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                     {
                                         item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
@@ -3376,7 +3290,6 @@ namespace bfnexchange.Controllers
                                             item2.LineVMarkets = linevmarkets;
                                         }
                                     }
-
                                     marketbooks.Add(item2);
                                 }
 
@@ -3404,14 +3317,12 @@ namespace bfnexchange.Controllers
                                 var marketbooks = new List<ExternalAPI.TO.MarketBook>();
                                 return RenderRazorViewToString("MarketBook", marketbooks);
                             }
-
                         }
-
                         else
                         {
                             if (LoggedinUserDetail.GetUserTypeID() == 8)
                             {
-                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                                 ViewBag.color = "white";
                                 var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                                 if (results != null)
@@ -3425,17 +3336,12 @@ namespace bfnexchange.Controllers
                                         lstIDs.Add(item.ID);
                                         var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                                         if (marketbook.Count() > 0)
-
                                         {
                                             if (marketbook[0].Runners != null)
                                             {
                                                 marketbooks.Add(marketbook[0]);
                                             }
-                                        }
-                                        else
-                                        {
-
-                                        }
+                                        }                                       
                                     }
 
                                     foreach (var item in results)
@@ -3453,7 +3359,6 @@ namespace bfnexchange.Controllers
                                                 item2.EventID = item.EventID;
                                                 Session["Eventid"] = item.EventID;
 
-
                                                 var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                                 foreach (var runnermarketitem in runnerdesc)
                                                 {
@@ -3467,13 +3372,10 @@ namespace bfnexchange.Controllers
                                                             runneritem.WearingDesc = runnermarketitem.WearingDesc;
                                                             runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                             runneritem.StallDraw = runnermarketitem.StallDraw;
-
                                                         }
                                                     }
                                                 }
-                                                // 
-
-
+                                                
                                                 if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                                 {
                                                     item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
@@ -3489,15 +3391,11 @@ namespace bfnexchange.Controllers
                                                     }
                                                     var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
 
-
                                                     if (linevmarkets.Count() > 0)
                                                     {
                                                         item2.LineVMarkets = linevmarkets;
                                                     }
                                                 }
-
-                                                ////
-
                                             }
                                         }
 
@@ -3567,8 +3465,6 @@ namespace bfnexchange.Controllers
                                             }
                                             runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                             item2.Runners.Add(runneritem);
-
-
                                         }
                                         item2.FavoriteID = "0";
                                         item2.FavoriteBack = "0";
@@ -3576,10 +3472,7 @@ namespace bfnexchange.Controllers
                                         item2.FavoriteLay = "0";
                                         item2.FavoriteLaySize = "0";
                                         item2.FavoriteSelectionName = "";
-                                        // 
-
-
-
+                                        
                                         if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                         {
                                             item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
@@ -3602,8 +3495,6 @@ namespace bfnexchange.Controllers
                                             }
                                         }
 
-                                        ////
-
                                         if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                         {
                                             item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
@@ -3619,13 +3510,11 @@ namespace bfnexchange.Controllers
                                             }
                                             var linevmarkets = JsonConvert.DeserializeObject<List<ExternalAPI.TO.LinevMarkets>>(objUsersServiceCleint.GetLinevMarketsbyEventID(resultslinev.EventID, resultslinev.EventOpenDate.Value, UserIDforLinevmarkets));
 
-
                                             if (linevmarkets.Count() > 0)
                                             {
                                                 item2.LineVMarkets = linevmarkets;
                                             }
                                         }
-
                                         marketbooks.Add(item2);
                                     }
 
@@ -3657,7 +3546,7 @@ namespace bfnexchange.Controllers
                             }
                             if (LoggedinUserDetail.GetUserTypeID() == 9)
                             {
-                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                                 ViewBag.color = "white";
                                 var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                                 if (results != null)
@@ -3677,11 +3566,7 @@ namespace bfnexchange.Controllers
                                             {
                                                 marketbooks.Add(marketbook[0]);
                                             }
-                                        }
-                                        else
-                                        {
-
-                                        }
+                                        }                                     
                                     }
 
                                     foreach (var item in results)
@@ -3698,7 +3583,6 @@ namespace bfnexchange.Controllers
                                                 item2.GetMatchUpdatesFrom = item.GetMatchUpdatesFrom;
                                                 item2.EventID = item.EventID;
                                                 Session["Eventid"] = item.EventID;
-
 
                                                 var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                                 foreach (var runnermarketitem in runnerdesc)
@@ -3741,9 +3625,6 @@ namespace bfnexchange.Controllers
                                                         item2.LineVMarkets = linevmarkets;
                                                     }
                                                 }
-
-                                                ////
-
                                             }
                                         }
 
@@ -3822,10 +3703,7 @@ namespace bfnexchange.Controllers
                                         item2.FavoriteLay = "0";
                                         item2.FavoriteLaySize = "0";
                                         item2.FavoriteSelectionName = "";
-                                        // 
-                                        // 
-
-
+                                       
                                         if (item2.MarketBookName.Contains("Match Odds") && item2.MainSportsname == "Cricket" && item2.MarketStatusstr != "Closed")
                                         {
                                             item2.CricketMatchKey = objUsersServiceCleint.GetCricketMatchKey(item2.MarketId);
@@ -3847,8 +3725,6 @@ namespace bfnexchange.Controllers
                                                 item2.LineVMarkets = linevmarkets;
                                             }
                                         }
-
-                                        ////
 
                                         marketbooks.Add(item2);
                                     }
@@ -3877,9 +3753,7 @@ namespace bfnexchange.Controllers
                                     var marketbooks = new List<ExternalAPI.TO.MarketBook>();
                                     return RenderRazorViewToString("MarketBook", marketbooks);
                                 }
-
                             }
-
                             else
                             {
                                 var marketbooks = new List<ExternalAPI.TO.MarketBook>();
@@ -3902,29 +3776,21 @@ namespace bfnexchange.Controllers
         {
             try
             {
-
-
                 UserBetsUpdateUnmatcedBets objUserBets = new UserBetsUpdateUnmatcedBets();
-
                 //  return RenderRazorViewToString("MarketBook", marketbooks1);
                 LoggedinUserDetail.CheckifUserLogin();
 
-
                 if (ID != "" && LoggedinUserDetail.GetUserTypeID() != 1)
                 {
-
                     objUsersServiceCleint.SetMarketBookOpenbyUSer(LoggedinUserDetail.GetUserID(), ID);
                 }
                 if (ID != "" && LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-
                     objUsersServiceCleint.SetMarketBookOpenbyUSer(73, ID);
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 3)
                 {
-
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
-
                     if (results != null)
                     {
                         results = results.Where(item => item.ID == ID).ToList();
@@ -3943,13 +3809,7 @@ namespace bfnexchange.Controllers
                                 {
                                     marketbooks.Add(marketbook[0]);
                                 }
-
-                            }
-                            else
-                            {
-
-                            }
-
+                            }                         
                         }
 
 
@@ -3982,15 +3842,11 @@ namespace bfnexchange.Controllers
                                                 runneritem.WearingDesc = runnermarketitem.WearingDesc;
                                                 runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                 runneritem.StallDraw = runnermarketitem.StallDraw;
-
                                             }
                                         }
-
                                     }
-
                                 }
                             }
-
                         }
                         if (marketbooks.Count == 0)
                         {
@@ -4067,13 +3923,10 @@ namespace bfnexchange.Controllers
 
                             marketbooks.Add(item2);
                         }
-
-
                         return RenderRazorViewToString("MarketBookToWinTheToss", marketbooks);
                     }
                     else
                     {
-
                         var marketbooks = new List<ExternalAPI.TO.MarketBook>();
                         return RenderRazorViewToString("MarketBookToWinTheToss", marketbooks);
                     }
@@ -4102,15 +3955,8 @@ namespace bfnexchange.Controllers
                                     {
                                         marketbooks.Add(marketbook[0]);
                                     }
-
-                                }
-                                else
-                                {
-
-                                }
-
+                                }                               
                             }
-
 
                             foreach (var item in results)
                             {
@@ -4144,13 +3990,9 @@ namespace bfnexchange.Controllers
 
                                                 }
                                             }
-
                                         }
-
-
                                     }
                                 }
-
                             }
                             if (marketbooks.Count == 0)
                             {
@@ -4259,21 +4101,13 @@ namespace bfnexchange.Controllers
                                     lstIDs.Add(item.ID);
                                     var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                                     if (marketbook.Count() > 0)
-
                                     {
                                         if (marketbook[0].Runners != null)
                                         {
                                             marketbooks.Add(marketbook[0]);
                                         }
-
-                                    }
-                                    else
-                                    {
-
-                                    }
-
+                                    }                                  
                                 }
-
 
                                 foreach (var item in results)
                                 {
@@ -4307,12 +4141,9 @@ namespace bfnexchange.Controllers
 
                                                     }
                                                 }
-
                                             }
-
                                         }
                                     }
-
                                 }
                                 if (marketbooks.Count == 0)
                                 {
@@ -4379,8 +4210,6 @@ namespace bfnexchange.Controllers
                                         }
                                         runneritem.ExchangePrices.AvailableToLay = lstpricelist;
                                         item2.Runners.Add(runneritem);
-
-
                                     }
                                     item2.FavoriteID = "0";
                                     item2.FavoriteBack = "0";
@@ -4388,12 +4217,9 @@ namespace bfnexchange.Controllers
                                     item2.FavoriteLay = "0";
                                     item2.FavoriteLaySize = "0";
                                     item2.FavoriteSelectionName = "";
-                                    // 
-
+        
                                     marketbooks.Add(item2);
                                 }
-
-
                                 return RenderRazorViewToString("MarketBookToWinTheToss", marketbooks);
                             }
                             else
@@ -4401,7 +4227,6 @@ namespace bfnexchange.Controllers
                                 var marketbooks = new List<ExternalAPI.TO.MarketBook>();
                                 return RenderRazorViewToString("MarketBookToWinTheToss", marketbooks);
                             }
-
                         }
                         else
                         {
@@ -4409,8 +4234,6 @@ namespace bfnexchange.Controllers
                             return RenderRazorViewToString("MarketBookToWinTheToss", marketbooks);
 
                         }
-
-
                     }
                 }
             }
@@ -4470,10 +4293,7 @@ namespace bfnexchange.Controllers
                                     marketbooks.Add(marketbook[0]);
                                 }
                             }
-                            else
-                            {
-
-                            }
+                           
                         }
 
                         foreach (var item in results)
@@ -4525,7 +4345,7 @@ namespace bfnexchange.Controllers
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 2)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(LoggedinUserDetail.GetUserID()));
                     if (results != null)
@@ -4632,7 +4452,7 @@ namespace bfnexchange.Controllers
 
                 {
 
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                     if (results != null)
@@ -4643,7 +4463,6 @@ namespace bfnexchange.Controllers
                         foreach (var item in results)
                         {
                             lstIDs = new List<string>();
-
                             lstIDs.Add(item.ID);
                             var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                             if (marketbook.Count() > 0)
@@ -4653,11 +4472,7 @@ namespace bfnexchange.Controllers
                                 {
                                     marketbooks.Add(marketbook[0]);
                                 }
-                            }
-                            else
-                            {
-
-                            }
+                            }                          
                         }
                         foreach (var item in results)
                         {
@@ -4690,31 +4505,17 @@ namespace bfnexchange.Controllers
                                                 runneritem.Clothnumber = runnermarketitem.ClothNumber;
                                                 runneritem.StallDraw = runnermarketitem.StallDraw;
                                             }
-
-                                            // var agentrate = 0;
-                                            //List<UserBetsForAdmin> lstuserbet = lstUserBet.Where(item3 => item3.isMatched == true && item3.MarketBookID == item2.MarketId).ToList();
-                                            //var agentrate = lstuserbet[0].AgentRate;
-                                            //bool TransferAdminAmount = lstuserbet[0].TransferAdmin;
-                                            //item2.DebitCredit = objUserBets.ceckProfitandLossAdmin(item2, lstuserbet);
-                                            //long profitorloss = Convert.ToInt64(item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Debit) - item2.DebitCredit.Where(item5 => item5.SelectionID == runneritem.SelectionId).Sum(item5 => item5.Credit));
-
-                                            //decimal adminrate = TransferAdminAmount == false ? 100 - Convert.ToDecimal(agentrate) : 0;
-                                            //decimal profit = (adminrate / 100) * profitorloss;
-                                            //runneritem.ProfitandLoss += Convert.ToInt64(-1 * profit);
-
                                         }
                                     }
-
                                 }
                             }
                         }
                         return RenderRazorViewToString("MarketBookSoccerGoal", marketbooks.Take(2));
-
                     }
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
                     var results = JsonConvert.DeserializeObject<List<Models.MarketCatalgoue>>(objUsersServiceCleint.GetMarketsOpenedbyUser(73));
                     if (results != null)
@@ -4725,7 +4526,6 @@ namespace bfnexchange.Controllers
                         foreach (var item in results)
                         {
                             lstIDs = new List<string>();
-
                             lstIDs.Add(item.ID);
                             var marketbook = GetMarketDatabyID(lstIDs.ToArray(), item.Name, item.EventOpenDate, item.EventTypeName);
                             if (marketbook.Count() > 0)
@@ -4735,11 +4535,7 @@ namespace bfnexchange.Controllers
                                 {
                                     marketbooks.Add(marketbook[0]);
                                 }
-                            }
-                            else
-                            {
-
-                            }
+                            }                           
                         }
                         foreach (var item in results)
                         {
@@ -4758,8 +4554,6 @@ namespace bfnexchange.Controllers
                                     var runnerdesc = objUsersServiceCleint.GetSelectionNamesbyMarketID(item2.MarketId);
                                     foreach (var runnermarketitem in runnerdesc)
                                     {
-
-
                                         string userbets = objUsersServiceCleint.GetUserBetsbySuperID(LoggedinUserDetail.GetUserID(), ConfigurationManager.AppSettings["PasswordForValidate"]);
                                         var lstUserBet = JsonConvert.DeserializeObject<List<Models.UserBetsforSuper>>(userbets);
                                         List<UserBetsforSuper> lstUserBets = lstUserBet.Where(item3 => item3.isMatched == true && item3.MarketBookID == marketbooks[0].MarketId).ToList();
@@ -4767,7 +4561,6 @@ namespace bfnexchange.Controllers
                                         var lstUsers = lstUserBets.Select(item1 => new { item1.UserID }).Distinct().ToArray();
                                         foreach (var userid in lstUsers)
                                         {
-
                                             List<UserBetsforSuper> lstuserbet = lstUserBets.Where(item4 => item4.UserID == Convert.ToInt32(userid.UserID)).ToList();
                                             var agentrate = lstuserbet[0].AgentRate;
                                             var supertrate = lstuserbet[0].SuperAgentRateB;
@@ -5219,8 +5012,6 @@ namespace bfnexchange.Controllers
             if (LoggedinUserDetail.GetUserTypeID() == 3)
             {
                 objUsersServiceCleint.SetMarketBookClosedbyUser(LoggedinUserDetail.GetUserID(), marketbookID);
-
-
             }
             return "True";
             //else

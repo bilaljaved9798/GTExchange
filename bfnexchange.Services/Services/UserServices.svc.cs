@@ -360,9 +360,6 @@ namespace bfnexchange.Services.Services
         {
             if (ValidatePassword(Password) == true)
             {
-
-
-
                 if (AddtoUserAccounts == true)
                 {
                     if (Amount > 0)
@@ -1991,8 +1988,6 @@ namespace bfnexchange.Services.Services
         {
             try
             {
-
-
                 string marketIDsDB = dbEntities.SP_UserMarket_GetDistinctMarketsOpened().FirstOrDefault();
                 if (marketIDsDB != "")
                 {
@@ -5526,15 +5521,12 @@ namespace bfnexchange.Services.Services
         {
             if (ValidatePassword(Password) == true)
             {
-
-
                 dbEntities.SP_Users_UpdateAllowedMarketsbyUserID(UserID, isCricketMatchOddsAllowedForBet, isCricketTiedMatchAllowedForBet, isCricketCompletedMatchAllowedForBet, isCricketInningsRunsAllowedForBet, isSoccerAllowedForBet, isTennisAllowedForBet, isHorseRaceWinAllowedForBet, isHorseRacePlaceAllowedForBet, isGrayHoundRaceWinAllowedForBet, isGrayHoundRacePlaceAllowedForBet, isWinnerMarketAllowedForBet, isFancyAllowed);
             }
         }
         public SP_Users_GetCommissionAccountIDandBookAccountID_Result GetCommissionaccountIdandBookAccountbyUserID(int UserID)
         {
             return dbEntities.SP_Users_GetCommissionAccountIDandBookAccountID(UserID).FirstOrDefault<SP_Users_GetCommissionAccountIDandBookAccountID_Result>();
-
         }
         public SP_Users_GetReferrerRateandReferrerIDbyUserID_Result GetReferrerRateandIDbyUserID(int UserID)
         {

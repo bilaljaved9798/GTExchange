@@ -14,7 +14,7 @@ namespace bfnexchange.Controllers
         UserServicesClient objUsersServiceCleint = new UserServicesClient();            
         public List<string> CheckforSoccergoalMarket(string EventID)
         {
-            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
             ViewBag.color = "white";
             List<string> data = new List<string>();
             int UserIDforLinevmarkets = 0;

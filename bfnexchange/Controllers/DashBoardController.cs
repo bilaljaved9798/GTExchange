@@ -47,6 +47,8 @@ namespace bfnexchange.Controllers
             {
                 Session["userbets"] = new List<UserBets>();
                 Session["userbet"] = new List<UserBets>();
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom,#35c483,#000000) !important;";
+                ViewBag.color = "white";
             }
             else
             {
@@ -54,7 +56,7 @@ namespace bfnexchange.Controllers
                 {
                     Session["userbets"] = new List<UserBetsforAgent>();
                     Session["userbet"] = new List<UserBetsforAgent>();
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                 }
@@ -64,7 +66,7 @@ namespace bfnexchange.Controllers
                     {
                         Session["userbets"] = new List<UserBetsforSuper>();
                         Session["userbet"] = new List<UserBetsforSuper>();
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
                     }
 
@@ -74,14 +76,14 @@ namespace bfnexchange.Controllers
                         {
                             Session["userbets"] = new List<UserBetsforSamiadmin>();
                             Session["userbet"] = new List<UserBetsforSamiadmin>();
-                            ViewBag.backgrod = "#1D9BF0";
+                            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                             ViewBag.color = "white";
                         }
                         else
                         {
                             Session["userbets"] = new List<UserBetsForAdmin>();
                             Session["userbet"] = new List<UserBetsForAdmin>();
-                            ViewBag.backgrod = "#1D9BF0";
+                            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                             ViewBag.color = "white";
                         }
                     }
@@ -97,14 +99,14 @@ namespace bfnexchange.Controllers
                 Decimal CurrentLiabality = 0;
 
 
-                objAccessrightsbyUserType = new AccessRightsbyUserType();         
+                objAccessrightsbyUserType = new AccessRightsbyUserType();
                 objAccessrightsbyUserType.CurrentAvailableBalance = LoggedinUserDetail.CurrentAccountBalance + Convert.ToDouble(CurrentLiabality);
                 objAccessrightsbyUserType.Username = LoggedinUserDetail.GetUserName();
 
                 if ((bool)Session["firsttimeload"] == true)
                 {
                     Session["firsttimeload"] = false;
-                    LoggedinUserDetail.UpdateCurrentLoggedInID();                  
+                    LoggedinUserDetail.UpdateCurrentLoggedInID();
                 }
                 Session["linevmarkets"] = null;
                 return View(objAccessrightsbyUserType);
@@ -117,7 +119,7 @@ namespace bfnexchange.Controllers
         }
 
         public PartialViewResult GetBalnceDetails()
-        {    
+        {
             if (LoggedinUserDetail.GetUserID() > 0)
             {
                 double CurrentAccountBalance = 0;
@@ -145,7 +147,7 @@ namespace bfnexchange.Controllers
                 }
                 List<UserLiabality> lstUserLiabality = JsonConvert.DeserializeObject<List<UserLiabality>>(objUsersServiceCleint.GetCurrentLiabality(LoggedinUserDetail.GetUserID()));
 
-                objAccessrightsbyUserType = JsonConvert.DeserializeObject<AccessRightsbyUserType>(objUsersServiceCleint.GetAccessRightsbyUserType(LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"])); 
+                objAccessrightsbyUserType = JsonConvert.DeserializeObject<AccessRightsbyUserType>(objUsersServiceCleint.GetAccessRightsbyUserType(LoggedinUserDetail.GetUserTypeID(), ConfigurationManager.AppSettings["PasswordForValidate"]));
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
                     decimal TotAdminAmount = 0;
@@ -207,7 +209,7 @@ namespace bfnexchange.Controllers
                             decimal SuperAmount = Math.Round((Convert.ToDecimal(superpercent) / 100) * ActualAmount, 2);
                             decimal AgentAmount = Math.Round((Convert.ToDecimal(AgentRate) / 100) * ActualAmount, 2);
                             TotAdmincommession += ActualAmount - AgentAmount - SuperAmount;
-                        }                        
+                        }
                     }
                     catch (System.Exception ex)
                     {
@@ -234,8 +236,8 @@ namespace bfnexchange.Controllers
                     {
                         if (LoggedinUserDetail.GetUserTypeID() == 2)
                         {
-                            ViewBag.backgrod = "#1D9BF0";
-                            ViewBag.color = "white";                           
+                            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
+                            ViewBag.color = "white";
                             decimal TotAdminAmount = 0;
                             decimal TotalAdminAmountWithoutMarkets = 0;
                             decimal SuperAmount = 0;
@@ -325,7 +327,7 @@ namespace bfnexchange.Controllers
                         {
                             if (LoggedinUserDetail.GetUserTypeID() == 9)
                             {
-                                ViewBag.backgrod = "#1D9BF0";
+                                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                                 ViewBag.color = "white";
                                 decimal TotAdminAmount = 0;
                                 decimal TotAdmincommession = 0;
@@ -393,7 +395,7 @@ namespace bfnexchange.Controllers
                                         decimal SamiadminAmount = Math.Round((Convert.ToDecimal(samiadminpercent) / 100) * ActualAmount, 2);
                                         TotAdmincommession += ActualAmount - AgentAmount - SuperAmount - SamiadminAmount;
                                     }
-                                   }
+                                }
                                 catch (System.Exception ex)
                                 {
                                 }
@@ -1589,7 +1591,7 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult UserBetsbyAgent()
         {
-            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
             ViewBag.color = "white";
 
             if (LoggedinUserDetail.GetUserTypeID() != 3)
@@ -1646,7 +1648,7 @@ namespace bfnexchange.Controllers
         }
         public PartialViewResult showcompleteduserbets(string userid, string marektbookID)
         {
-            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
             ViewBag.color = "white";
 
             LoggedinUserDetail.CheckifUserLogin();
@@ -1664,7 +1666,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
 
                 LoggedinUserDetail.CheckifUserLogin();
@@ -1693,7 +1695,7 @@ namespace bfnexchange.Controllers
             {
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     LoggedinUserDetail.CheckifUserLogin();
@@ -1751,7 +1753,7 @@ namespace bfnexchange.Controllers
         {
             if (LoggedinUserDetail.GetUserTypeID() == 2)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
 
                 LoggedinUserDetail.CheckifUserLogin();
@@ -1777,7 +1779,7 @@ namespace bfnexchange.Controllers
             {
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     LoggedinUserDetail.CheckifUserLogin();
@@ -1804,7 +1806,7 @@ namespace bfnexchange.Controllers
                 {
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
 
                         LoggedinUserDetail.CheckifUserLogin();
@@ -1930,7 +1932,7 @@ namespace bfnexchange.Controllers
                 List<Services.DBModel.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result> results = new List<Services.DBModel.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result>();
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     results = objAccountsService.GetAccountsDatabyUserIdDateRangeandEventType(Convert.ToInt32(useridd), DateFrom, DateTo, false, eventtype).ToList();
@@ -2103,7 +2105,7 @@ namespace bfnexchange.Controllers
                 List<ProfitandLossEventType> lstProfitandlossEventtype = new List<ProfitandLossEventType>();
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
@@ -2118,7 +2120,7 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(LoggedinUserDetail.GetUserID(), DateFrom, DateTo, ConfigurationManager.AppSettings["PasswordForValidate"]));
@@ -2131,7 +2133,7 @@ namespace bfnexchange.Controllers
                 }
                 if (LoggedinUserDetail.GetUserTypeID() == 9)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
@@ -2188,7 +2190,7 @@ namespace bfnexchange.Controllers
                     List<ProfitandLossEventType> lstProfitandlossEventtype = new List<ProfitandLossEventType>();
                     if (LoggedinUserDetail.GetUserTypeID() == 1)
                     {
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
 
                         Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
@@ -2206,7 +2208,7 @@ namespace bfnexchange.Controllers
 
                     if (LoggedinUserDetail.GetUserTypeID() == 8)
                     {
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
 
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
@@ -2223,7 +2225,7 @@ namespace bfnexchange.Controllers
                     }
                     if (LoggedinUserDetail.GetUserTypeID() == 9)
                     {
-                        ViewBag.backgrod = "#1D9BF0";
+                        ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                         ViewBag.color = "white";
 
                         //Services.DBModel.SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
@@ -2391,7 +2393,7 @@ namespace bfnexchange.Controllers
             //return PartialView("EventType", lstClientlist);
             if (LoggedinUserDetail.GetUserID() != 1)
             {
-                ViewBag.backgrod = "#1D9BF0";
+                ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                 ViewBag.color = "white";
 
                 List<UserMarket> lstUserMarket = new List<UserMarket>();
@@ -2785,7 +2787,7 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 8)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     List<BalanceSheet> objBalanceSheetforsuper = new List<Models.BalanceSheet>();
@@ -2903,7 +2905,7 @@ namespace bfnexchange.Controllers
 
                 if (LoggedinUserDetail.GetUserTypeID() == 9)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
 
                     List<BalanceSheet> objBalanceSheetforsuper = new List<Models.BalanceSheet>();
@@ -3249,9 +3251,6 @@ namespace bfnexchange.Controllers
         {
             try
             {
-
-
-
                 if (1 == 1)
                 {
                     var marketbook = new MarketBook();
@@ -3277,10 +3276,8 @@ namespace bfnexchange.Controllers
                     {
                         marketbook.OpenDate = (-1 * remainingdays.Days).ToString() + ":" + (-1 * remainingdays.Hours).ToString() + ":" + (-1 * remainingdays.Minutes).ToString() + ":" + (-1 * remainingdays.Seconds).ToString();
                     }
-
                     if (BFMarketbook.IsInplay == true && BFMarketbook.Status.ToString() == "OPEN")
                     {
-
                         marketbook.MarketStatusstr = "In Play";
                     }
                     else
@@ -3299,9 +3296,7 @@ namespace bfnexchange.Controllers
                             {
                                 marketbook.MarketStatusstr = "Active";
                             }
-
                         }
-
                     }
 
                     List<ExternalAPI.TO.Runner> lstRunners = new List<ExternalAPI.TO.Runner>();
@@ -3319,18 +3314,13 @@ namespace bfnexchange.Controllers
                             {
                                 try
                                 {
-
-
                                     if (runneritem.ExchangePrices.AvailableToBack[0].Price.ToString().Contains("."))
                                     {
                                         foreach (var backitems in runneritem.ExchangePrices.AvailableToLay)
                                         {
                                             var pricesize = new PriceSize();
-
                                             pricesize.Size = Convert.ToInt64(backitems.Size * Convert.ToDouble(marketbook.PoundRate));
-
                                             pricesize.Price = Convert.ToDouble((backitems.Price + 0.5).ToString("F2"));
-
                                             lstpricelist.Add(pricesize);
                                         }
                                     }
@@ -3358,15 +3348,11 @@ namespace bfnexchange.Controllers
                                 foreach (var backitems in runneritem.ExchangePrices.AvailableToBack)
                                 {
                                     var pricesize = new PriceSize();
-
                                     pricesize.Size = Convert.ToInt64(backitems.Size * Convert.ToDouble(marketbook.PoundRate));
-
                                     pricesize.Price = backitems.Price;
-
                                     lstpricelist.Add(pricesize);
                                 }
                             }
-
                         }
                         else
                         {
@@ -3449,15 +3435,12 @@ namespace bfnexchange.Controllers
                         lstRunners.Add(runner);
                     }
                     marketbook.Runners = new List<ExternalAPI.TO.Runner>(lstRunners);
-
                     double lastback = 0;
                     double lastbackSize = 0;
                     double lastLaySize = 0;
                     double lastlay = 0;
-
                     if (marketbook.MarketStatusstr != "Suspended")
                     {
-
                         double favBack = marketbook.Runners[0].ExchangePrices.AvailableToBack[0].Price;
                         string selectionIDfav = marketbook.Runners[0].SelectionId;
                         foreach (var favoriteitem in marketbook.Runners)
@@ -3479,7 +3462,6 @@ namespace bfnexchange.Controllers
                                         selectionIDfav = favoriteitem.SelectionId;
                                     }
                                 }
-
                         }
                         if (marketbook.MarketStatusstr == "Closed")
                         {
@@ -3488,26 +3470,18 @@ namespace bfnexchange.Controllers
                             {
                                 selectionIDfav = resultsfav.FirstOrDefault().SelectionId;
                             }
-
                         }
                         var favoriteteam = marketbook.Runners.Where(ii => ii.SelectionId == selectionIDfav).FirstOrDefault();
-
-
-
                         string selectionname = favoriteteam.RunnerName;
                         if (favoriteteam.ExchangePrices.AvailableToBack.Count > 0)
                         {
                             lastback = favoriteteam.ExchangePrices.AvailableToBack[0].Price;
                             lastbackSize = favoriteteam.ExchangePrices.AvailableToBack[0].Size;
-
-
                         }
                         if (favoriteteam.ExchangePrices.AvailableToLay.Count > 0)
                         {
-
                             lastLaySize = favoriteteam.ExchangePrices.AvailableToLay[0].Size;
                             lastlay = favoriteteam.ExchangePrices.AvailableToLay[0].Price;
-
                         }
                         marketbook.FavoriteBack = (lastback - 1).ToString("F2");
                         marketbook.FavoriteLay = (lastlay - 1).ToString("F2");
@@ -3515,7 +3489,6 @@ namespace bfnexchange.Controllers
                         marketbook.FavoriteBackSize = lastbackSize.ToString();
                         marketbook.FavoriteLaySize = lastLaySize.ToString();
                         marketbook.FavoriteID = selectionIDfav;
-
                     }
                     else
                     {
@@ -3537,7 +3510,6 @@ namespace bfnexchange.Controllers
                         marketbook.FavoriteLaySize = "0";
                     }
                     return marketbook;
-
                 }
                 else
                 {
@@ -3549,11 +3521,10 @@ namespace bfnexchange.Controllers
                 APIConfig.LogError(ex);
                 return new MarketBook();
             }
-
         }
 
         public async Task<List<AllMarketsInPlay>> GetManagers()
-        {           
+        {
             ObjectCache cache = MemoryCache.Default;
             List<AllMarketsInPlay> lstGridMarkets = cache["marketsData"] as List<AllMarketsInPlay>;
 
@@ -3564,7 +3535,7 @@ namespace bfnexchange.Controllers
             else
             {
                 // Data is not in the cache, you might want to generate it and add it to the cache.
-                lstGridMarkets =await LoadManagersFromService(); // You can use your method to generate the data.
+                lstGridMarkets = await LoadManagersFromService(); // You can use your method to generate the data.
                 CacheItemPolicy policy = new CacheItemPolicy
                 {
                     AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(30) // Adjust the expiration time as needed.
@@ -3740,7 +3711,7 @@ namespace bfnexchange.Controllers
                     lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                     lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis").Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                     List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
-                    ViewBag.backgrod = "#1D9BF0 !important";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
                     foreach (var item in lstIds)
                     {
@@ -3921,9 +3892,14 @@ namespace bfnexchange.Controllers
         {
             try
             {
-                if (LoggedinUserDetail.GetUserTypeID() != 3)
+                if (LoggedinUserDetail.GetUserTypeID() == 3)
                 {
-                    ViewBag.backgrod = "#1D9BF0";
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom,#35c483,#000000) !important;";
+                    ViewBag.color = "white";
+                }
+                else
+                {
+                    ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
                     ViewBag.color = "white";
                 }
                 int userid = LoggedinUserDetail.GetUserID();
@@ -3941,12 +3917,9 @@ namespace bfnexchange.Controllers
                 return RenderRazorViewToString("Relatedevent", lstInPlayMatches);
 
             }
-
-
             catch (System.Exception ex)
             {
                 return RenderRazorViewToString("Relatedevent", new InPlayMatches());
-
             }
         }
         public string RenderRazorViewToString(string viewName, object model)
@@ -3968,9 +3941,6 @@ namespace bfnexchange.Controllers
         {
             try
             {
-                //DGVInPlaymarketsall.ItemsSource = new;
-                //DGVInPlaymarketsall.Items.Refresh();
-
                 var results = objUsersServiceCleint.GetInPlayMatcheswithRunners(LoggedinUserDetail.GetUserID());
                 List<InPlayMatches> lstInPlayMatches = JsonConvert.DeserializeObject<List<InPlayMatches>>(results);
                 List<string> lstIds = new List<string>();
@@ -3979,18 +3949,14 @@ namespace bfnexchange.Controllers
                     lstIds = lstInPlayMatches.Where(item => item.EventTypeName == "Cricket" && item.EventOpenDate.Value < DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
                     DateTime currentDateTime = DateTime.Now;
                     DateTime newDateTime = currentDateTime.AddHours(-8);
-                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer" &&  item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
-                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis" &&  item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Soccer" && item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
+                    lstIds.AddRange(lstInPlayMatches.Where(item => item.EventTypeName == "Tennis" && item.EventOpenDate.Value > newDateTime && item.EventOpenDate.Value <= DateTime.Now.AddHours(-5)).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList());
                 }
                 else
                 {
                     lstIds = lstInPlayMatches.Where(item => item.EventTypeName == ViewType).Distinct().Select(item => item.MarketCatalogueID).Distinct().ToList();
                 }
-
-
                 List<AllMarketsInPlay> lstGridMarkets = new List<AllMarketsInPlay>();
-
-
                 foreach (var item in lstIds)
                 {
                     try
@@ -4047,11 +4013,9 @@ namespace bfnexchange.Controllers
                 return PartialView("MatchHighlights", new DefaultPageModel());
             }
         }
-
         //private void ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted(object sender, GetInPlayMatcheswithRunnersCompletedEventArgs e)
         //{
         //    objUsersServiceCleint.GetInPlayMatcheswithRunnersCompleted -= ObjUsersServiceCleint_GetInPlayMatcheswithRunnersCompleted;
         //}
-
     }
 }

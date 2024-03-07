@@ -121,6 +121,7 @@ namespace bfnexchange.Controllers
                 return View(model);
             }
             BetSlipKeys obj = new BetSlipKeys();
+            LoggedinUserDetail.objBetSlipKeys = obj;
             var results = objUserServiceClient.GetUserbyUsernameandPasswordNew(Crypto.Encrypt(model.Username), Crypto.Encrypt(model.Password));
             if (results != "")
             {
@@ -167,7 +168,7 @@ namespace bfnexchange.Controllers
                         LoggedinUserDetail.BetPlaceWaitandInterval.TiedMatchTimerInterval = result.TiedMatchBetPlaceWait;
                         LoggedinUserDetail.BetPlaceWaitandInterval.WinnerBetPlaceWait = result.WinnerBetPlaceWait;
                         LoggedinUserDetail.BetPlaceWaitandInterval.WinnerTimerInterval = result.WinnerTimerInterval;
-                        
+
                         obj.MutipleBtn1 = result.MutipleBtn1;                       
                         obj.MutipleBtn2 = result.MutipleBtn2;
                         obj.MutipleBtn3 = result.MutipleBtn3;
@@ -194,7 +195,7 @@ namespace bfnexchange.Controllers
                         obj.SimpleBtn11 = result.SimpleBtn11;
                         obj.SimpleBtn12 = result.SimpleBtn12;
                         obj.UserID = result.ID;
-
+                        LoggedinUserDetail.objBetSlipKeys = obj;
                         Session["BetSlipKeys"]=obj;
                         Session["User"] = result;                                       
                         Session["Runnserdata"] =null;                  
@@ -254,6 +255,7 @@ namespace bfnexchange.Controllers
                         obj.SimpleBtn11 = result.SimpleBtn11;
                         obj.SimpleBtn12 = result.SimpleBtn12;
                         obj.UserID = result.ID;
+                        LoggedinUserDetail.objBetSlipKeys = obj;
                         //ViewBag["color"] = "Red";
                         ViewBag.color = "Red";
                         Session["Runnserdata"] =null;
@@ -317,16 +319,14 @@ namespace bfnexchange.Controllers
                     obj.SimpleBtn11 = result.SimpleBtn11;
                     obj.SimpleBtn12 = result.SimpleBtn12;
                     obj.UserID = result.ID;
+                    LoggedinUserDetail.objBetSlipKeys = obj;
                     Session["Runnserdata"] = null;
                     result.PoundRate = result.PoundRate;
                     Session["BetSlipKeys"] = obj;
                     Session["User"] = result;                
                     Session["firsttimeload"] = true;
-                   
-                
                     return RedirectToAction("Index", "DashBoard");
                 }
-
                
              }
             else

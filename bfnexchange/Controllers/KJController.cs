@@ -19,7 +19,7 @@ namespace bfnexchange.Controllers
         // GET: KJ
         public ActionResult Index()
         {
-            ViewBag.backgrod = "#1D9BF0";
+            ViewBag.backgrod = "-webkit-linear-gradient(bottom, #1D9BF0, #0a0a0a) !important;";
             ViewBag.color = "white";
             return View();
         }
