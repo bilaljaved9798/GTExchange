@@ -9,43 +9,24 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-
-
 using globaltraders.UserServiceReference;
-using System.Windows.Media.Animation;
-using globaltraders.HelperClasses;
 using bftradeline.Models;
 using System.Text.RegularExpressions;
-
 using System.Runtime.InteropServices;
 using WinInterop = System.Windows.Interop;
 using bftradeline.HelperClasses;
 using System.Threading;
-using RestSharp;
-using Newtonsoft.Json.Linq;
 using System.Net;
-using System.Collections.Specialized;
 using globaltraders.CricketScoreServiceReference;
 using System.IO;
-
-
 namespace globaltraders
 {
-    /// <summary>
-    /// Interaction logic for MarketWindow.xaml
-    /// </summary>
     public partial class MarketWindow : Window, INotifyPropertyChanged
     {
         WindowResizer ob;
@@ -53,7 +34,6 @@ namespace globaltraders
         {
             isMaximizedWindow = false;
             ob.resizeWindow(sender);
-
         }
 
         private void DisplayResizeCursor(object sender, MouseEventArgs e)
@@ -2420,9 +2400,6 @@ namespace globaltraders
                         item.Runners[0].RunnerName = item.MarketBookName;
                         item.Runners[0].MarketStatusStr = item.MarketStatusstr;
 
-
-
-
                         if ((item.Runners[0].ExchangePrices.AvailableToBack[0].Price > 0 || item.Runners[0].ExchangePrices.AvailableToLay[0].Price > 0) && (item.MarketStatusstr == "In Play" || item.MarketStatusstr == "IN-PLAY"))
                         {
                             item.Runners[0].isShow = true;
@@ -2560,7 +2537,7 @@ namespace globaltraders
                     {
 
                         MarketBookShow objmarketbookshow = new MarketBookShow();
-                        objmarketbookshow.Selection = item.RunnerName.ToString().ToUpper();
+                        objmarketbookshow.Selection = item.RunnerName.ToString();
                         objmarketbookshow.SelectionID = item.SelectionId;
                         objmarketbookshow.Price = item.LastPriceTraded.ToString();
                         objmarketbookshow.PL = item.ProfitandLoss.ToString();
@@ -2643,15 +2620,13 @@ namespace globaltraders
                             lstMarketBookRunnersToWintheToss[i].isSelectedForLK = true;
                         }
                     }
-
-
                 }
                 else
                 {
                     if (MarketBookWintheToss.MarketStatusstr.ToUpper() != "CLOSED")
                     {
                         stkpnlTowintheToss.Visibility = Visibility.Visible;
-
+                        DGVMarketToWintheToss.Columns[3].Header = "TOSS MARKET";
                     }
                     foreach (var item in runners)
                     {
@@ -2659,11 +2634,8 @@ namespace globaltraders
 
                         try
                         {
-
                             if (MarketBookWintheToss.MarketStatusstr.ToUpper() != "CLOSED" && MarketBookWintheToss.MarketStatusstr.ToUpper() != "SUSPENDED")
                             {
-
-
                                 if (objmarketbookshow.SelectionID == MarketBook.FavoriteID)
                                 {
                                     objmarketbookshow.isFav = true;
@@ -2671,7 +2643,6 @@ namespace globaltraders
                                 else
                                 {
                                     objmarketbookshow.isFav = false;
-
                                 }
                             }
                             else
@@ -2694,8 +2665,6 @@ namespace globaltraders
                         }
                         try
                         {
-
-
                             objmarketbookshow.PL = CurrentMarketProfitandLossToWinTheToss[0].Runners.Where(item1 => item1.SelectionId == item.SelectionId).FirstOrDefault().ProfitandLoss.ToString();
                             objmarketbookshow.Loss = CurrentMarketProfitandLossToWinTheToss[0].Runners.Where(item1 => item1.SelectionId == item.SelectionId).FirstOrDefault().Loss.ToString();
                         }
@@ -3490,14 +3459,8 @@ namespace globaltraders
         public ExternalAPI.TO.MarketBook MarketBookForProfitandlossAgent = new ExternalAPI.TO.MarketBook();
         public ExternalAPI.TO.MarketBook MarketBookForProfitandlossToWinTheToss = new ExternalAPI.TO.MarketBook();
 
-
-
-
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
                 if (isMaximizedWindow == true)
@@ -3512,18 +3475,13 @@ namespace globaltraders
                     {
                         this.Height = 400;
                     }
-
                     this.Width = 676;
-
-
                 }
-
 
                 time = false;
                 //    wsFancy.Url = LoggedinUserDetail.URLsData.Where(item => item.EventType == "Fancy").FirstOrDefault().URLForData;
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-
                     AssignUserstoCombobox();
                 }
                 if (MarketBookForProfitandloss.Runners != null)
@@ -3588,7 +3546,6 @@ namespace globaltraders
                     {
                         DGVMarket.Columns[1].Visibility = Visibility.Collapsed;
                     }
-
                 }
                 else
                 {
@@ -3608,12 +3565,12 @@ namespace globaltraders
 
                 }
 
-
                 string[] marketbooknameandtype = MarketBook.MarketBookName.Split('/', 'v');
                 if (MarketBook.MainSportsname == "Horse Racing")
                 {
-                    marketimg.Source = new BitmapImage(new Uri("ws7.png", UriKind.Relative));
-                    marketType.Content = "Horse Race".ToUpper();
+                    //marketimg.Source = new BitmapImage(new Uri("ws7.png", UriKind.Relative));
+                    //marketType.Content = "Horse Race".ToUpper();
+                    DGVMarket.Columns[3].Header = "Horse Race".ToUpper();
                     lblMarketName.Content = MarketBook.MarketBookName;
                 }
                 else
@@ -3621,25 +3578,24 @@ namespace globaltraders
 
                     if (MarketBook.MainSportsname == "Greyhound Racing")
                     {
-                        marketimg.Source = new BitmapImage(new Uri("ws4339.png", UriKind.Relative));
-                        marketType.Content = "Greyhound Race".ToUpper();
+                        //marketimg.Source = new BitmapImage(new Uri("ws4339.png", UriKind.Relative));
+                        //marketType.Content = "Greyhound Race".ToUpper();
+                        DGVMarket.Columns[3].Header = "Greyhound Race".ToUpper();
                         lblMarketName.Content = MarketBook.MarketBookName;
                     }
                     else
                     {
                         if (MarketBook.MainSportsname == "Cricket")
                         {
-                            marketimg.Source = new BitmapImage(new Uri("ws4.png", UriKind.Relative));
+                            //marketimg.Source = new BitmapImage(new Uri("ws4.png", UriKind.Relative));
 
                             if (MarketBook.Runners.Count > 1)
                             {
-                                marketType.Content = marketbooknameandtype[0].ToUpper();
-
-                                // lblMarketName.Content = MarketBookForProfitandloss.Runners[0].RunnerName.ToString() + "         V         " + MarketBookForProfitandloss.Runners[1].RunnerName.ToString();
-                                //lblMarketName.Content = marketbooknameandtype[1];
+                                //marketType.Content = marketbooknameandtype[0].ToUpper();
+                                DGVMarket.Columns[3].Header = marketbooknameandtype[0].ToUpper();
                                 try
                                 {
-                                    lblMarketName.Content = marketbooknameandtype[1].ToUpper() + "   V   " + marketbooknameandtype[2].ToUpper();
+                                    lblMarketName.Content = marketbooknameandtype[1].ToUpper() + " V " + marketbooknameandtype[2].ToUpper();
                                 }
                                 catch (System.Exception ex)
                                 {
@@ -3648,7 +3604,8 @@ namespace globaltraders
                             }
                             else
                             {
-                                marketType.Content = "Line Market".ToUpper();
+                                //marketType.Content = "Line Market".ToUpper();
+                                DGVMarket.Columns[3].Header = "Line Market".ToUpper();
                                 lblMarketName.Content = MarketBook.MarketBookName;
                             }
 
@@ -3657,9 +3614,10 @@ namespace globaltraders
                         {
                             if (MarketBook.MainSportsname == "Soccer")
                             {
-                                marketimg.Source = new BitmapImage(new Uri("ws1.png", UriKind.Relative));
-                                marketType.Content = "Match Odds".ToUpper();
-                                lblMarketName.Content = marketbooknameandtype[1].ToUpper() + "   V   " + marketbooknameandtype[2].ToUpper();
+                                //marketimg.Source = new BitmapImage(new Uri("ws1.png", UriKind.Relative));
+                                //marketType.Content = "Match Odds".ToUpper();
+                                DGVMarket.Columns[3].Header = "Match Odds".ToUpper();
+                                lblMarketName.Content = marketbooknameandtype[1].ToUpper() + " V " + marketbooknameandtype[2].ToUpper();
                                 //lblMarketName.Content = MarketBookForProfitandloss.Runners[0].RunnerName.ToString() + "         V         " + MarketBookForProfitandloss.Runners[1].RunnerName.ToString();
                                 GetToSoccerGoalMarket();
                             }
@@ -3667,9 +3625,10 @@ namespace globaltraders
                             {
                                 if (MarketBook.MainSportsname == "Tennis")
                                 {
-                                    marketimg.Source = new BitmapImage(new Uri("ws2.png", UriKind.Relative));
-                                    marketType.Content = "Match Odds".ToUpper();
-                                    lblMarketName.Content = marketbooknameandtype[1].ToUpper() + "   V   " + marketbooknameandtype[2].ToUpper();
+                                    //marketimg.Source = new BitmapImage(new Uri("ws2.png", UriKind.Relative));
+                                    //marketType.Content = "Match Odds".ToUpper();
+                                    DGVMarket.Columns[3].Header = "Match Odds".ToUpper();
+                                    lblMarketName.Content = marketbooknameandtype[1].ToUpper() + " V " + marketbooknameandtype[2].ToUpper();
                                     //lblMarketName.Content = MarketBookForProfitandloss.Runners[0].RunnerName.ToString() + "         V         " + MarketBookForProfitandloss.Runners[1].RunnerName.ToString();
                                 }
                             }
@@ -5777,13 +5736,8 @@ namespace globaltraders
 
         }
 
-
-
         bool bgdata = true;
         bool getfancy = true;
-
-
-
 
         public void UpdateAllData()
         {
@@ -5849,15 +5803,12 @@ namespace globaltraders
             {
                 if (lstMarketBookRunners == null)
                 {
-
                     lstMarketBookRunners = new ObservableCollection<MarketBookShow>();
                     lstMarketBookRunners.Clear();
-
-
                     foreach (var item in runners)
                     {
                         MarketBookShow objmarketbookshow = new MarketBookShow();
-                        objmarketbookshow.Selection = item.RunnerName.ToString().ToUpper();
+                        objmarketbookshow.Selection = item.RunnerName.ToString();
                         objmarketbookshow.SelectionID = item.SelectionId;
                         objmarketbookshow.Price = item.LastPriceTraded.ToString();
                         objmarketbookshow.PL = item.ProfitandLoss.ToString();
@@ -5873,8 +5824,6 @@ namespace globaltraders
                             DGVMarket.Columns[4].Header = "JOCKEY";
                             objmarketbookshow.JockeyHeading = "JOCKEY";
                         }
-
-
                         objmarketbookshow.CategoryName = objMarketBook.MainSportsname;
                         objmarketbookshow.MarketbooknameBet = objMarketBook.MarketBookName;
                         objmarketbookshow.Marketstatusstr = objMarketBook.MarketStatusstr;
@@ -5882,13 +5831,10 @@ namespace globaltraders
                         objmarketbookshow.OpenDate = objMarketBook.OpenDate;
                         objmarketbookshow.runnerscount = objMarketBook.Runners.Count.ToString();
                         objmarketbookshow.CurrentMarketBookId = objMarketBook.MarketId;
-
-
                         if (objmarketbookshow.StallDraw != "Not" && objmarketbookshow.StallDraw != "" && objmarketbookshow.StallDraw != null)
                         {
                             objmarketbookshow.StallDraw = "(" + objmarketbookshow.StallDraw + ")";
                         }
-
 
                         if (item.ExchangePrices.AvailableToBack.Count == 3)
                         {
@@ -5898,8 +5844,6 @@ namespace globaltraders
                             objmarketbookshow.Backsize2 = item.ExchangePrices.AvailableToBack[2].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[2].SizeStr.ToString();
                             objmarketbookshow.Backsize1 = item.ExchangePrices.AvailableToBack[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].SizeStr.ToString();
                             objmarketbookshow.Backsize0 = item.ExchangePrices.AvailableToBack[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-
                         }
                         if (item.ExchangePrices.AvailableToBack.Count == 2)
                         {
@@ -5952,8 +5896,6 @@ namespace globaltraders
 
                         }
                         lstMarketBookRunners.Add(objmarketbookshow);
-
-
                     }
                     if (MarketBook.Runners.Count > 1)
                     {
@@ -5962,38 +5904,23 @@ namespace globaltraders
                             lstMarketBookRunners[i].isSelectedForLK = true;
                         }
                     }
-
-
                 }
                 else
                 {
                     foreach (var item in runners)
                     {
                         MarketBookShow objmarketbookshow = lstMarketBookRunners.Where(item1 => item1.SelectionID == item.SelectionId).FirstOrDefault();
-
-
                         try
                         {
-
-
                             if (MarketBook.MarketStatusstr != "CLOSED" && MarketBook.MarketStatusstr != "SUSPENDED")
                             {
-
-
                                 if (objmarketbookshow.SelectionID == MarketBook.FavoriteID)
-                                {
                                     objmarketbookshow.isFav = true;
-                                }
                                 else
-                                {
                                     objmarketbookshow.isFav = false;
-
-                                }
                             }
                             else
-                            {
                                 objmarketbookshow.isFav = false;
-                            }
                         }
                         catch (System.Exception ex)
                         {
@@ -6011,8 +5938,6 @@ namespace globaltraders
 
                         try
                         {
-
-
                             objmarketbookshow.PL = CurrentMarketProfitandLoss[0].Runners.Where(item1 => item1.SelectionId == item.SelectionId).FirstOrDefault().ProfitandLoss.ToString();
                             objmarketbookshow.Loss = CurrentMarketProfitandLoss[0].Runners.Where(item1 => item1.SelectionId == item.SelectionId).FirstOrDefault().Loss.ToString();
                         }
@@ -6034,8 +5959,6 @@ namespace globaltraders
                             objmarketbookshow.Backsize2 = item.ExchangePrices.AvailableToBack[2].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[2].SizeStr.ToString();
                             objmarketbookshow.Backsize1 = item.ExchangePrices.AvailableToBack[1].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[1].SizeStr.ToString();
                             objmarketbookshow.Backsize0 = item.ExchangePrices.AvailableToBack[0].Size.ToString() == "0" ? "" : item.ExchangePrices.AvailableToBack[0].SizeStr.ToString();
-
-
                         }
                         if (item.ExchangePrices.AvailableToBack.Count == 2)
                         {
@@ -6084,22 +6007,16 @@ namespace globaltraders
                             objmarketbookshow.Laysize2 = "";
 
                         }
-
                     }
-
                 }
-
             }
             catch (System.Exception ex)
             {
 
             }
-;
         }
         public void GetRunnersDataSourceFancyFirstTime(List<ExternalAPI.TO.Runner> runners, MarketBook objMarketBook)
         {
-
-
             foreach (var item in runners)
             {
                 MarketBookShow objmarketbookshow = new MarketBookShow();
@@ -6224,7 +6141,7 @@ namespace globaltraders
                             objmarketbookshow.JockeyName = "SUSPE";
                             objmarketbookshow.JockeyHeading = "NDED";
                             objmarketbookshow.StallDraw = "Visible";
-                            objmarketbookshow.Price = "0,0,0,0";
+                            objmarketbookshow.Price = "0,1,0,0";
                         }
                         else
                         {
@@ -6235,7 +6152,7 @@ namespace globaltraders
                                 objmarketbookshow.JockeyName = "BALLRU";
                                 objmarketbookshow.JockeyHeading = "NNING";
                                 objmarketbookshow.StallDraw = "Visible";
-                                objmarketbookshow.Price = "0,0,0,0";
+                                objmarketbookshow.Price = "0,1,0,0";
                             }
                             else
                             {
@@ -6245,7 +6162,7 @@ namespace globaltraders
                                 objmarketbookshow.Backsize0 = item.BackSize1.ToString();
                                 objmarketbookshow.Backprice0 = item.BackPrice1.ToString();
                                 objmarketbookshow.StatusStr = "Visible";
-                                objmarketbookshow.Price = "1,0,0,0";
+                                objmarketbookshow.Price = "1,1,0,0";
                                 objmarketbookshow.isShow = true;
                             }
                         }
@@ -6425,19 +6342,19 @@ namespace globaltraders
 
             }
             SetWindowHeight();
-
         }
 
-        private void TextBlock_MouseLeftButtonUp_2(object sender, MouseButtonEventArgs e)
-        {
+        //private void TextBlock_MouseLeftButtonUp_2(object sender, MouseButtonEventArgs e)
+        //{
 
-            this.Close();
+        //    this.Close();
 
-        }
+        //}
         public void Resizewindow()
         {
 
             DGVMarket.Columns[4].Visibility = Visibility.Collapsed;
+            DGVMarket.Columns[1].Visibility = Visibility.Collapsed;
             if ((this.Width < 683) || (this.Width < 684))
             {
                 DGVMarket.Columns[7].Visibility = Visibility.Collapsed;
@@ -6499,7 +6416,7 @@ namespace globaltraders
                     DGVMarketToWintheToss.Columns[8].Visibility = Visibility.Visible;
                     DGVMarketToWintheToss.Columns[11].Visibility = Visibility.Visible;
                     DGVMarketToWintheToss.Columns[12].Visibility = Visibility.Visible;
-                    DGVMarketToWintheToss.Columns[0].Visibility = Visibility.Visible;
+                    DGVMarketToWintheToss.Columns[0].Visibility = Visibility.Collapsed;
 
                     DGVMarketFancy.Columns[7].Visibility = Visibility.Visible;
                     DGVMarketFancy.Columns[8].Visibility = Visibility.Visible;
@@ -6554,9 +6471,9 @@ namespace globaltraders
 
                     if (LoggedinUserDetail.GetUserTypeID() == 1)
                     {
-                        stkpnlmarketname.Width = this.Width - 290;
+                        stkpnlmarketname.Width = this.Width - 240;
                         stkpnlmarketname.Margin = new Thickness(0, 0, 20, 0);
-                        txtBlockMarkettimeandstatus.Width = this.Width - 314;
+                        //txtBlockMarkettimeandstatus.Width = this.Width - 314;
 
                         txtToBePlaced.Width = this.Width - 70;
                         if (LoggedinUserDetail.GetUserTypeID() == 1)
@@ -6577,12 +6494,10 @@ namespace globaltraders
 
                         stkpnlmarketname.Width = this.Width - 195;
                         stkpnlmarketname.Margin = new Thickness(80, 0, 0, 0);
-                        txtBlockMarkettimeandstatus.Width = this.Width - 284;
+                        //txtBlockMarkettimeandstatus.Width = this.Width - 284;
                         //stkpnlbetsandmenuheading.Width = this.Width - 157;
                         txtToBePlaced.Width = this.Width - 30;
                     }
-
-
 
                     if (MarketBook.MainSportsname.Contains("Racing"))
                     {
@@ -6596,36 +6511,19 @@ namespace globaltraders
                             DGVMarket.Height = 750;
 
                         }
-
-
                     }
-                    else
-                    {
-
-                    }
-
-
                 }
             }
             catch (System.Exception ex)
             {
 
             }
-
-
-
             if (isMaximizedWindow == true)
-            {
-
-
-            }
+            { }
             else
             {
                 if (this.WindowState == WindowState.Normal)
-                {
-
-                }
-
+                { }
             }
 
             DGVMarket.Columns[7].Visibility = Visibility.Visible;
@@ -6633,7 +6531,7 @@ namespace globaltraders
             DGVMarket.Columns[11].Visibility = Visibility.Visible;
             DGVMarket.Columns[12].Visibility = Visibility.Visible;
             DGVMarket.Columns[0].Visibility = Visibility.Collapsed;
-            DGVMarket.Columns[1].Visibility = Visibility.Visible;
+            DGVMarket.Columns[1].Visibility = Visibility.Collapsed;
             DGVMarket.Columns[2].Visibility = Visibility.Collapsed;
             //DGVMarket.Columns[3].Visibility = Visibility.Visible;
 
@@ -6646,7 +6544,7 @@ namespace globaltraders
             DGVMarketToWintheToss.Columns[8].Visibility = Visibility.Visible;
             DGVMarketToWintheToss.Columns[11].Visibility = Visibility.Visible;
             DGVMarketToWintheToss.Columns[12].Visibility = Visibility.Visible;
-            DGVMarketToWintheToss.Columns[0].Visibility = Visibility.Visible;
+            DGVMarketToWintheToss.Columns[0].Visibility = Visibility.Collapsed;
 
             DGVMarketFancy.Columns[7].Visibility = Visibility.Visible;
             DGVMarketFancy.Columns[8].Visibility = Visibility.Visible;
@@ -6660,14 +6558,7 @@ namespace globaltraders
             stkpnlMarketGrid.Width = this.Width - 12;
             DGVMarket.Width = this.Width - 12;
             DGVMarketToWintheToss.Width = this.Width - 12;
-            try
-            {
 
-            }
-            catch (System.Exception ex)
-            {
-
-            }
         }
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -6714,9 +6605,6 @@ namespace globaltraders
         {
 
         }
-
-
-
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             tmrUpdateMarket.Stop();
@@ -6964,12 +6852,9 @@ namespace globaltraders
             {
                 if (DGVMarket.Items.Count > 0)
                 {
-
-
                     DataGrid objSender = (DataGrid)sender;
                     MarketBookShow objSelectedRow = (MarketBookShow)objSender.SelectedItem;
                     int currcellindx = objSender.CurrentCell.Column.DisplayIndex;
-
                     CategoryName = objSelectedRow.CategoryName;
                     MarketbooknameBet = objSelectedRow.MarketbooknameBet;
                     Marketstatusstr = objSelectedRow.Marketstatusstr;
@@ -6979,23 +6864,16 @@ namespace globaltraders
                     CurrentMarketBookId = objSelectedRow.CurrentMarketBookId;
                     if (currcellindx == 0 && runnerscount == "1")
                     {
-
                         foreach (Window win in App.Current.Windows)
                         {
                             if (win.Name == "BookPositionWin" + CurrentMarketBookId.Replace(".", ""))
-                            {
-
                                 win.Close();
-
-                            }
                         }
                         BookPosition objbookpostion = new BookPosition();
                         objbookpostion.Name = "BookPositionWin" + CurrentMarketBookId.Replace(".", "");
                         if (LoggedinUserDetail.GetUserTypeID() == 1)
-                        {
                             objbookpostion.CurrentUserbetsAdmin = LoggedinUserDetail.CurrentAdminBets.ToList();
 
-                        }
 
                         objbookpostion.marketBookID = CurrentMarketBookId;
                         objbookpostion.marketbookName = MarketbooknameBet + "(" + lblMarketName.Content.ToString() + ")";
@@ -9283,26 +9161,26 @@ namespace globaltraders
         [DllImport("User32")]
         internal static extern IntPtr MonitorFromWindow(IntPtr handle, int flags);
 
-        private void TextBlock_MouseLeftButtonUp_3(object sender, MouseButtonEventArgs e)
-        {
-            if (txtTopMost.Tag.ToString() == "0")
-            {
-                txtTopMost.Tag = "1";
-                this.Topmost = true;
-                RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
+        //private void TextBlock_MouseLeftButtonUp_3(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (txtTopMost.Tag.ToString() == "0")
+        //    {
+        //        txtTopMost.Tag = "1";
+        //        this.Topmost = true;
+        //        RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
 
 
-                pinTopMost.RenderTransform = rotateTransform;
-            }
-            else
-            {
-                txtTopMost.Tag = "0";
-                this.Topmost = false;
-                RotateTransform rotateTransform = new RotateTransform(90, 0.5, 0.5);
+        //        pinTopMost.RenderTransform = rotateTransform;
+        //    }
+        //    else
+        //    {
+        //        txtTopMost.Tag = "0";
+        //        this.Topmost = false;
+        //        RotateTransform rotateTransform = new RotateTransform(90, 0.5, 0.5);
 
-                pinTopMost.RenderTransform = rotateTransform;
-            }
-        }
+        //        pinTopMost.RenderTransform = rotateTransform;
+        //    }
+        //}
         VideoWindow objVideo = new VideoWindow();
         private void imgShowTV_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -9614,7 +9492,6 @@ namespace globaltraders
                 {
                     windowfound = true;
                     win.Activate();
-
                 }
             }
             if (windowfound == false)
@@ -9624,8 +9501,6 @@ namespace globaltraders
                 objWind.Left = this.Width - objWind.Width;
                 objWind.Show();
             }
-
-
         }
         // AccountsReceiveableWindow objAccReceWind = new AccountsReceiveableWindow();
         //private void MenuItem_Click_5(object sender, RoutedEventArgs e)
@@ -9853,150 +9728,13 @@ namespace globaltraders
                     if (this.Left + this.Width > width)
                         this.Left = width - this.Width;
                 }
-
             }
             catch (System.Exception ex)
             {
 
 
             }
-
-
         }
-
-        private void DGVMarketIndianFancy_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
-        {
-
-            try
-            {
-                if (DGVMarketIndianFancy.Items.Count > 0)
-                {
-                    DataGrid objSender = (DataGrid)sender;
-                    MarketBookShow objSelectedRow = (MarketBookShow)objSender.SelectedItem;
-                    int currcellindx = objSender.CurrentCell.Column.DisplayIndex;
-                    //marketcategory
-                    CategoryName = objSelectedRow.CategoryName;
-                    MarketbooknameBet = objSelectedRow.MarketbooknameBet;
-                    Marketstatusstr = objSelectedRow.Marketstatusstr;
-                    BettingAllowed = objSelectedRow.BettingAllowed;
-                    OpenDate = objSelectedRow.OpenDate;
-                    runnerscount = objSelectedRow.runnerscount;
-                    CurrentMarketBookId = objSelectedRow.CurrentMarketBookId;
-                    //Clickedlocationin = 9;
-                    if (currcellindx == 0)
-                    {
-                        foreach (Window win in App.Current.Windows)
-                        {
-                            if (win.Name == "BookPostionForINwin" + CurrentMarketBookId.Replace(".", ""))
-                            {
-                                win.Close();
-                            }
-                        }
-                        BookPostionForIN objbookpostion = new BookPostionForIN();
-                        //objbookpostion.Name = "BookPostionForINwin" + CurrentMarketBookId.Replace(".", "");
-                        objbookpostion.selectionID = objSelectedRow.SelectionID;
-
-                        if (LoggedinUserDetail.GetUserTypeID() == 1)
-                        {
-                            objbookpostion.CurrentUserbetsAdmin = LoggedinUserDetail.CurrentAdminBets.ToList();
-                        }
-                        else
-                        {
-                            if (LoggedinUserDetail.GetUserTypeID() == 2)
-                            {
-                                objbookpostion.CurrentUserbetsAgent = LoggedinUserDetail.CurrentAgentBets;
-                            }
-                            else
-                            {
-                                objbookpostion.CurrentUserbets = LoggedinUserDetail.CurrentUserBets;
-                            }
-                        }
-                        objbookpostion.marketBookID = objSelectedRow.CurrentMarketBookId;
-                        objbookpostion.eventID = objSelectedRow.SelectionID;
-                        objbookpostion.marketbookName = MarketbooknameBet + "(" + lblMarketName.Content.ToString() + ")";
-                        objbookpostion.UserTypeID = LoggedinUserDetail.GetUserTypeID();
-                        objbookpostion.userID = LoggedinUserDetail.GetUserID();
-                        objbookpostion.Show();
-                        return;
-                    }
-                    if (objSelectedRow.Backprice0 == "0" || objSelectedRow.Layprice0 == "0")
-                    {
-                        return;
-                    }
-                    if (objSelectedRow.RunnerStatusstr == "SUSPENDED" || objSelectedRow.RunnerStatusstr == "Ball Running")
-                    {
-                        return;
-                    }
-
-                    if ((currcellindx >= 6 && currcellindx <= 12))
-                    {
-                        //if (Allowedbetting(BettingAllowed, Marketstatusstr, MarketbooknameBet, CategoryName, OpenDate, runnerscount, CurrentMarketBookId, true) == true)
-                        //{
-                        if (LoggedinUserDetail.GetUserTypeID() == 3 && LoggedinUserDetail.isInserting == false)
-                        {
-                            loadedlocation = -1;
-                            clickedbetsize = -1;
-                            clickedodd = 0;
-                            ParentID = 0;
-                            SelectionID = objSelectedRow.SelectionID;
-                            Selectionname = objSelectedRow.Selection;
-                            if (objSelectedRow.Clothnumber != null && objSelectedRow.Clothnumber != "Not")
-                            {
-                                Selectionname = objSelectedRow.Clothnumber + "-" + Selectionname;
-                            }
-
-
-
-                        }
-
-                        //}
-                        //else
-                        //{
-                        //    PlayMessage("Betting is not allowed");
-                        //    Xceed.Wpf.Toolkit.MessageBox.Show("Betting is not allowed.", "Global Traders", MessageBoxButton.OK);
-                        //    //    MessageBox.Show(this, "Betting is not allowed.");
-                        //}
-
-                    }
-
-                    if ((currcellindx < 5 && currcellindx > 0))
-                    {
-                        // bool chkvalue = (bool)(grid[intRow, 1]);
-                        if (Marketstatusstr == "Closed" || Marketstatusstr == "Suspended")
-                        {
-                            // grid[intRow, colSel] = false;
-                            return;
-                        }
-                        if (!MarketBook.MainSportsname.Contains("Racing"))
-                        {
-                            // grid[intRow, colSel] = false;
-                            return;
-                        }
-                        if (objSelectedRow.isSelected == true)
-                        {
-                            objSelectedRow.isSelected = false;
-                        }
-
-                        else
-                        {
-                            objSelectedRow.isSelected = true;
-                        }
-                    }
-                    else
-                    {
-
-                    }
-
-                }
-            }
-#pragma warning disable CS0168 // The variable 'ex' is declared but never used
-            catch (System.Exception ex)
-#pragma warning restore CS0168 // The variable 'ex' is declared but never used
-            {
-
-            }
-        }
-
 
         bool sethieght = false;
         private void CheckBox_Checked_4(object sender, RoutedEventArgs e)
@@ -10006,15 +9744,145 @@ namespace globaltraders
             lstMarketBookRunnersFancyin.Clear();
             SPMain.Visibility = Visibility.Collapsed;
             SetWindowHeight();
+            BookMarket objmainwindow = new BookMarket();
+            objmainwindow.marketBookID = MarketBook.MarketId;
+            objmainwindow.eventID = MarketBook.EventID;
+            objmainwindow.marketbookName = MarketbooknameBet + "(" + lblMarketName.Content.ToString() + ")";
+            objmainwindow.UserTypeID = LoggedinUserDetail.GetUserTypeID();
+            objmainwindow.userID = LoggedinUserDetail.GetUserID();
+            objmainwindow.Show();
         }
 
         private void CheckBox_Unchecked_3(object sender, RoutedEventArgs e)
         {
+            BookMarket objmainwindow = new BookMarket();
+            objmainwindow.Close();
             sethieght = false;
             tmrUpdateLiabalities.Start();
-            //lstMarketBookRunnersFancyin.Clear();
             SPMain.Visibility = Visibility.Visible;
             SetWindowHeight();
+            
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+     
+        private void DGVMarketIndianFancy_MouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {             
+                if (DGVMarketIndianFancy.Items.Count > 0)
+                {
+                    if (sender is Button btn && btn.DataContext is MarketBookShow item)
+                    {
+                        string selection = item.Selection;                       
+                        int currcellindx = 1;
+                        CategoryName = item.CategoryName;
+                        MarketbooknameBet = item.MarketbooknameBet;
+                        Marketstatusstr = item.Marketstatusstr;
+                        BettingAllowed = item.BettingAllowed;
+                        OpenDate = item.OpenDate;
+                        runnerscount = item.runnerscount;
+                        CurrentMarketBookId = item.CurrentMarketBookId;
+                        if (currcellindx == 1)
+                        {
+                            foreach (Window win in App.Current.Windows)
+                            {
+                                if (win.Name == "BookPostionForINwin" + CurrentMarketBookId.Replace(".", ""))
+                                {
+                                    win.Close();
+                                }
+                            }
+                            BookPostionForIN objbookpostion = new BookPostionForIN();
+                            objbookpostion.selectionID = item.SelectionID;
+
+                            if (LoggedinUserDetail.GetUserTypeID() == 1)
+                            {
+                                objbookpostion.CurrentUserbetsAdmin = LoggedinUserDetail.CurrentAdminBets.ToList();
+                            }
+                            else
+                            {
+                                if (LoggedinUserDetail.GetUserTypeID() == 2)
+                                {
+                                    objbookpostion.CurrentUserbetsAgent = LoggedinUserDetail.CurrentAgentBets;
+                                }
+                                else
+                                {
+                                    objbookpostion.CurrentUserbets = LoggedinUserDetail.CurrentUserBets;
+                                }
+                            }
+                            objbookpostion.marketBookID = item.CurrentMarketBookId;
+                            objbookpostion.eventID = item.SelectionID;
+                            objbookpostion.marketbookName = MarketbooknameBet + "(" + lblMarketName.Content.ToString() + ")";
+                            objbookpostion.UserTypeID = LoggedinUserDetail.GetUserTypeID();
+                            objbookpostion.userID = LoggedinUserDetail.GetUserID();
+                            objbookpostion.Show();
+                            return;
+                        }
+                        if (item.Backprice0 == "0" || item.Layprice0 == "0")
+                        {
+                            return;
+                        }
+                        if (item.RunnerStatusstr == "SUSPENDED" || item.RunnerStatusstr == "Ball Running")
+                        {
+                            return;
+                        }
+
+                        if ((currcellindx >= 6 && currcellindx <= 12))
+                        {
+                            if (LoggedinUserDetail.GetUserTypeID() == 3 && LoggedinUserDetail.isInserting == false)
+                            {
+                                loadedlocation = -1;
+                                clickedbetsize = -1;
+                                clickedodd = 0;
+                                ParentID = 0;
+                                SelectionID = item.SelectionID;
+                                Selectionname = item.Selection;
+                                if (item.Clothnumber != null && item.Clothnumber != "Not")
+                                {
+                                    Selectionname = item.Clothnumber + "-" + Selectionname;
+                                }
+                            }
+                        }
+
+                        if ((currcellindx < 5 && currcellindx > 0))
+                        {
+                            if (Marketstatusstr == "Closed" || Marketstatusstr == "Suspended")
+                            {
+                                return;
+                            }
+                            if (!MarketBook.MainSportsname.Contains("Racing"))
+                            {
+                                return;
+                            }
+                            if (item.isSelected == true)
+                            {
+                                item.isSelected = false;
+                            }
+
+                            else
+                            {
+                                item.isSelected = true;
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+            }
         }
     }
 }

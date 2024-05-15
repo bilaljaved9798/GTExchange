@@ -51,9 +51,6 @@
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <CheckBox x:Name="chkSelectAll" Content="Select All" VerticalContentAlignment="Center" Foreground="White" Margin="0,0,5,0" Height="23.675" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked" IsChecked="True"></CheckBox>
                 <Button Content="Refresh" Width="80" Background="#ccc" Foreground="#FF243875" Margin="0"  FontWeight="Bold" FontSize="16" Height="27.154" Click="Button_Click" Visibility="Collapsed"></Button>
-
-
-
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="0">
                 <DataGrid x:Name="dgvProfitandLoss" AutoGenerateColumns="False"  Margin="1,0,1,5"  IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FFC9C9C9" VerticalGridLinesBrush="#FFC5C5C5"  Height="360" MouseLeftButtonUp="dgvProfitandLoss_MouseLeftButtonUp" FontSize="14" FontWeight="Bold" ScrollViewer.CanContentScroll="False" VirtualizingStackPanel.IsVirtualizing="False">

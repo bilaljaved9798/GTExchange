@@ -93,40 +93,34 @@
         
            
         </Style>
-      
-       
-       
-       
-        
+          
         <Style TargetType="Border" x:Key="HideBorer">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding Path=RunnerStatusstr}" Value="REMOVED">
                     <Setter Property="Visibility" Value="Hidden"/>
-
                 </DataTrigger>
-              
             </Style.Triggers>
         </Style>
-        
-        
+               
         <Style x:Key="size" TargetType="TextBlock">
             <Setter Property="FontSize" Value="12"></Setter>
-            <Setter Property="Margin" Value="0,1" />
             <Setter Property="FontWeight" Value="Normal"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
 
         <Style x:Key="Price" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"></Setter>
-            <Setter Property="FontWeight" Value="Black"></Setter>
-            <Setter Property="Margin" Value="0,0" />
+            <Setter Property="FontWeight" Value="Medium"></Setter>
+            <Setter Property="FontFamily" Value="Montserrat" />
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         </Style>
+        
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"></Setter>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>
         </Style>
+        
         <Style TargetType="{x:Type DataGridCell}">
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="True">
@@ -147,6 +141,7 @@
               
             </Style.Triggers>
         </Style>
+        
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" >
                 <Setter.Value>
@@ -174,24 +169,23 @@
             
         </Style>
 
-
-
         <Style TargetType="DataGridColumnHeader">
-            <Setter Property="Background" Value="White"></Setter>
-            <Setter Property="Foreground" Value="Black"></Setter>
-            <Setter Property="FontWeight" Value="Black"></Setter>
+            <Setter Property="Background" Value="#282b38"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontWeight" Value="DemiBold"></Setter>
             <Setter Property="FontSize" Value="15"></Setter>
             <Setter Property="BorderBrush" Value="Black"></Setter>
-            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
-            <Setter Property="Padding" Value="0,8"></Setter>
+            <!--<Setter Property="BorderThickness" Value="0,0,0,1"></Setter>-->
+            <!--<Setter Property="Padding" Value="0,2"></Setter>-->
             <Setter Property="HorizontalContentAlignment" Value="Center" />
-
         </Style>
+        
         <Style TargetType="DataGridColumnHeader" x:Key="headerwithlines">
             <Setter Property="Background" Value=" #5b7d8f"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="FontWeight" Value="Black"></Setter>
-            <Setter Property="FontSize" Value="13"></Setter>
+            <Setter Property="FontWeight" Value="Normal"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="FontFamily" Value="Montserrat"></Setter>
             <Setter Property="Padding" Value="0,5"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="BorderBrush" Value="White"/>
@@ -291,10 +285,9 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="txtSelectionName" TargetType="TextBlock">
-            <!--<Setter Property="FontFamily" Value="Times New Roman" ></Setter>-->
-            <Setter Property="FontWeight" Value="SemiBold"></Setter>
-            <Setter Property="FontSize" Value="15"></Setter>
-            <Setter Property="Padding" Value="0,0,0,0"></Setter>
+            <Setter Property="FontFamily" Value="Montserrat" ></Setter>
+            <Setter Property="FontWeight" Value="DemiBold"></Setter>
+            <Setter Property="FontSize" Value="14"></Setter>
             <Setter Property="Margin" Value="0,3,0,0"></Setter>
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
@@ -386,13 +379,10 @@
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=RunnerStatusstr}" Value="REMOVED_VACANT">
                     <Setter Property="Visibility" Value="Visible"/>
-
                 </DataTrigger>
                 <DataTrigger Binding="{Binding Path=RunnerStatusstr}" Value="REMOVED">
                     <Setter Property="Visibility" Value="Visible"/>
-
                 </DataTrigger>
-
             </Style.Triggers>
         </Style>
         <Style TargetType="{x:Type wpfTool:MessageBox}">
@@ -401,9 +391,6 @@
                     <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
                         <GradientStop Color="#FF000000" Offset="1"/>
                         <GradientStop Color="#FF243875" Offset="-1"/>
-
-
-
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -412,9 +399,6 @@
                     <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
                         <GradientStop Color="#FF000000" Offset="1"/>
                         <GradientStop Color="#FF243875" Offset="-1"/>
-
-
-
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -425,9 +409,6 @@
                     <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
                         <GradientStop Color="#FF000000" Offset="1"/>
                         <GradientStop Color="#FF243875" Offset="-1"/>
-
-
-
                     </LinearGradientBrush>
                 </Setter.Value>
             </Setter>
@@ -436,9 +417,8 @@
             <Setter Property="WindowOpacity" Value="1" />
             <Setter Property="Foreground" Value="White"/>
             
-
         </Style>
-     
-       
+
+
     </Application.Resources>
 </Application>

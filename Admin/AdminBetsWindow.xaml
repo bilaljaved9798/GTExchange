@@ -11,13 +11,10 @@
         <local:TextAmounttoNumber x:Key="PLConverter"></local:TextAmounttoNumber>
         <local:TextAmounttoNumber x:Key="TxtToNumber"></local:TextAmounttoNumber>
     </Window.Resources>
-    <Grid>
-        <local:DraggablePopup x:Name="popupCuttingBets"  Placement="Custom"
-		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-                              
-		                     >
-            <Border  BorderBrush="#FF243890" BorderThickness="5" 
 
+    <Grid>
+        <local:DraggablePopup x:Name="popupCuttingBets"  Placement="Custom" PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}" >
+            <Border  BorderBrush="#FF243890" BorderThickness="5" 
                 Background="White">
                 <StackPanel Margin="0" >
 
@@ -156,8 +153,8 @@
                             <ComboBox x:Name="Runner2" Width="180" Height="25" FontSize="14"  FontWeight="Bold"></ComboBox>
 
                         </StackPanel>
-                       
-                      
+
+
                         <StackPanel Width="130"  Margin="0,0,0,0" HorizontalAlignment="Right">
                             <Button Content="X" Foreground="White" Background="Red" Margin="0,0,0,10" Height="19" Width="22.93" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Click="Button_Click_11"></Button>
                             <Label x:Name="lblProfitorLossRunnerAgent1"  Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="0,0,0,5" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></Label>
@@ -277,30 +274,94 @@
 
         </local:DraggablePopup>
         <StackPanel>
-            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Background="#FF243875" Margin="0,0,0,0" Visibility="Collapsed">
+            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Background="#010101" Margin="0,0,0,0" Visibility="Collapsed">
                 <StackPanel x:Name="stkpnlmarketname" HorizontalAlignment="Left" Width="445" MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown"  Margin="0">
                     <Label x:Name="lblMarketName" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="16" FontWeight="Bold" >Admin Bets</Label>
 
                 </StackPanel>
-
-
             </StackPanel>
-            <StackPanel x:Name="stkpnlBets"  Margin="0,0,0,0"  >
-                <TextBlock  FontSize="16" Margin="5,5,5,5" Background="#8cded2">
 
-                    <!--<TextBlock.Background>
-                        <LinearGradientBrush EndPoint="0,1"  StartPoint="0,0.5">
-                            <GradientStop Color="#FF000000" Offset="1"/>
-                            <GradientStop Color="#FF243875" Offset="-1"/>
-
-                        </LinearGradientBrush>
-                    </TextBlock.Background>-->
-                    
-                    
+            
+                <StackPanel x:Name="stkpnlBets"  Margin="0,0,0,0"  >
+                <Border CornerRadius="12">
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Free_Sample_By_Wix.jpg" Stretch="Fill"/>
+                    </Border.Background>
+                    <Border CornerRadius="10" BorderThickness="2" Opacity="0.95">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Color="#462AD8" Offset="0"/>
+                                <GradientStop Color="#DA34AE" Offset="0.75"/>
+                                <GradientStop Color="#8A16C1" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                        <!-- ContentPresenter here if you want to have content inside the Border -->
+                    </Border>
+                </Border>
+                <Grid Grid.Row="0" Background="#010101" MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+                    <TextBlock Text="UnMatched Bets" Foreground="Wheat" FontSize="10" FontFamily="Montserrat" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <Label x:Name="lblUnMatchBetsCount"  Foreground="Wheat" Margin="20,0,0,3" Width="352" Content="0"/>
+                        <Button x:Name="btnMinimize" BorderThickness="0" Content="-" Foreground="White" FontSize="16" FontFamily="Montserrat" Cursor="Hand" Grid.Column="1" Click="btnMinimize_Click" >
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#278BEF"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18" CornerRadius="9" Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button x:Name="btnClose"                          
+            BorderThickness="0"
+            Content="X"
+            Foreground="White"
+            FontSize="12"
+            FontFamily="Montserrat"
+            Cursor="Hand"
+            Grid.Column="2"
+            Click="btnClose_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="#DA34AE"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#C62DAE"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
+                        CornerRadius="9"
+                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                    <!--<TextBlock  FontSize="16" Margin="5,5,5,5" Background="#FF243875">                  
                     <InlineUIContainer>
-                            <Label  Foreground="Black" Margin="0,0,0,3" Content="UnMatched Bets"  MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown"/>
+                            <Label  Foreground="Wheat" Margin="0,0,0,3" Content="UnMatched Bets"  MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown"/>
                         </InlineUIContainer><Run Text=" "/><InlineUIContainer>
-                            <Label x:Name="lblUnMatchBetsCount"  Foreground="Black" Margin="0,0,0,3" Width="352" Content="0"/>
+                            <Label x:Name="lblUnMatchBetsCount"  Foreground="Wheat" Margin="0,0,0,3" Width="352" Content="0"/>
                         </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                          <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center"  Orientation="Horizontal">
 
@@ -322,107 +383,96 @@
 
                 </StackPanel>
                         </InlineUIContainer>
-                </TextBlock>
+                </TextBlock>-->
 
 
 
-                <DataGrid x:Name="DGVUnMatchedAdmin" AutoGenerateColumns="False" Margin="5,0,5,5" Height="80" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="None" HorizontalGridLinesBrush="black" VerticalGridLinesBrush="Black" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}">
-                    <DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding BetType}" Value="back">
-                                    <Setter Property="Background" Value="#FF8A8E"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding BetType}" Value="lay">
-                                    <Setter Property="Background" Value="#72bbef"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
+                    <DataGrid x:Name="DGVUnMatchedAdmin" AutoGenerateColumns="False" Margin="5,0,5,5" Height="80" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="None" HorizontalGridLinesBrush="black" VerticalGridLinesBrush="Black" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding BetType}" Value="back">
+                                        <Setter Property="Background" Value="#FF8A8E"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                        <Setter Property="Background" Value="#72bbef"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
 
-                        <DataGridTextColumn  Visibility="Hidden" Binding="{Binding ID}"/>
+                            <DataGridTextColumn  Visibility="Hidden" Binding="{Binding ID}"/>
 
-                        <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="120">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Padding="1" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="50" Header="Odd" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  ><InlineUIContainer>
+                            <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Padding="1" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="50" Header="Odd" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  ><InlineUIContainer>
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding UserOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Center" Padding="2" Width="45"/>
                                                      
                                                 </StackPanel>
                                             </InlineUIContainer></TextBlock>
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="100" Header="Amount" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"  Padding="2"  />
+                            <DataGridTemplateColumn Width="100" Header="Amount" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"  Padding="2"  />
 
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  ><InlineUIContainer>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  ><InlineUIContainer>
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding LiveOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Width="48" Padding="2"/>
                                                      
                                                 </StackPanel>
                                             </InlineUIContainer></TextBlock>
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="100" Header="Customer" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="Customer" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
 
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="100" Header="Dealer" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
-
-
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <TextBlock FontSize="16" Margin="5,5,5,5" Background="#8cded2">
-
-                   
-                    
-                    
-                    <InlineUIContainer>
-                        
-                    <Label  Foreground="Black" Margin="0,0,0,3" Content="Matched Bets" VerticalAlignment="Top"/>
-                    
-                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>
-                    
-                        <Label x:Name="lblMatchBetsCount"  Foreground="Black" Margin="0,0,0,3" Width="267" Content="0"/>
-                     
-                    </InlineUIContainer><Run Text=" "/>
-                    
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="100" Header="Dealer" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Padding="2"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                <TextBlock FontSize="16" Margin="5,5,5,5" Background="#010101">
+                    <InlineUIContainer>                        
+                    <Label  Foreground="Wheat" Margin="0,0,0,3" Content="Matched Bets" VerticalAlignment="Top"/>                    
+                    </InlineUIContainer><Run Text=" "/><InlineUIContainer>                    
+                        <Label x:Name="lblMatchBetsCount"  Foreground="Wheat" Margin="0,0,0,3" Width="267" Content="0"/>                     
+                    </InlineUIContainer><Run Text=" "/>                
                       <InlineUIContainer>
-                      <Button Content="Cutt Bets" x:Name="btnCuttingBets" Background="Gray"  Width="75" Height="25" Visibility="Visible" Click="btnCuttingBets_Click" Margin="0,0,0,3" BorderBrush="White" BorderThickness="1" FontWeight="Normal">
+                      <Button Content="Cutt Bets" x:Name="btnCuttingBets" Background="Wheat" Foreground="Black"  Width="75" Height="25" Visibility="Visible" Click="btnCuttingBets_Click" Margin="0,0,0,3" BorderBrush="White" BorderThickness="1" FontWeight="Normal">
                            <Button.Template>
    <ControlTemplate TargetType="{x:Type Button}">
    <Border BorderThickness="{TemplateBinding BorderThickness}"
@@ -445,7 +495,7 @@
                     
                     <InlineUIContainer>
                     
-                        <Button Content="All Bets" x:Name="btnAllBets" Background="Gray"  Width="80" Height="25" Visibility="Visible"  Click="btnAllBets_Click" VerticalAlignment="Center" Margin="0,3" BorderBrush="White" >
+                        <Button Content="All Bets" x:Name="btnAllBets" Background="Wheat" Foreground="Black"  Width="80" Height="25" Visibility="Visible"  Click="btnAllBets_Click" VerticalAlignment="Center" Margin="0,3" BorderBrush="White" >
                             <Button.Template>
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border BorderThickness="{TemplateBinding BorderThickness}"
@@ -466,89 +516,89 @@
                
                     </InlineUIContainer></TextBlock>
 
-                <!--<DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5">-->
-                <DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" MouseLeftButtonDown="DGVMatchedBetsAdmin_MouseDoubleClick"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5">
-                    <DataGrid.RowStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding BetType}" Value="back">
-                                    <Setter Property="Background" Value="#FF8A8E"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding BetType}" Value="lay">
-                                    <Setter Property="Background" Value="#72bbef"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.RowStyle>
-                    <DataGrid.Columns>
+                    <!--<DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5">-->
+                    <DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" MouseLeftButtonDown="DGVMatchedBetsAdmin_MouseDoubleClick"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" >
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding BetType}" Value="back">
+                                    <Setter Property="Background" Value="#DA34AE"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding BetType}" Value="lay">
+                                    <Setter Property="Background" Value="#28AEED"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.Columns>
 
 
 
-                        <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="122">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="14"  />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="50" Header="Odd" MinWidth="50" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  ><InlineUIContainer>
+                            <DataGridTemplateColumn Width="*" Header="Selection" MinWidth="122">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SelectionName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="14"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="50" Header="Odd" MinWidth="50" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  ><InlineUIContainer>
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding UserOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Stretch" Width="45" VerticalAlignment="Center" Padding="2"/>
                                                      
                                                 </StackPanel>
                                             </InlineUIContainer></TextBlock>
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
-                        <DataGridTemplateColumn Width="*" Header="Amount" MinWidth="100" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"   />
+                            <DataGridTemplateColumn Width="*" Header="Amount" MinWidth="100" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding Amount,Converter={StaticResource PLConverter}}"  TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"   />
 
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  ><InlineUIContainer>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="50" Header="Live" MinWidth="50" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  ><InlineUIContainer>
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding LiveOdd, Mode=OneWay, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"  FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Padding="2"/>
                                                      
                                                 </StackPanel>
                                             </InlineUIContainer></TextBlock>
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="*" Header="Customer" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*" Header="Customer" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding CustomerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"  />
 
 
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Width="*" Header="Dealer" >
-                            <DataGridTemplateColumn.CellTemplate >
-                                <DataTemplate >
-                                    <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"  />
-
-
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="*" Header="Dealer" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate >
+                                        <TextBlock  Text="{Binding DealerName, NotifyOnTargetUpdated=True}" TextAlignment="Left" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="SemiBold" Padding="2"  />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+                    
         </StackPanel>
+    
 
     </Grid>
 </Window>

@@ -56,8 +56,6 @@ namespace globaltraders
                 BackgroundWorker worker = sender as BackgroundWorker;
                 if (worker.CancellationPending == true)
                 {
-
-
                     return;
                 }
                 backgroundWorkerUpdateData.RunWorkerAsync();
@@ -265,26 +263,26 @@ namespace globaltraders
             }
         }
 
-        private void TextBlock_MouseLeftButtonUp_3(object sender, MouseButtonEventArgs e)
-        {
-            if (txtTopMost.Tag.ToString() == "0")
-            {
-                txtTopMost.Tag = "1";
-                this.Topmost = true;
-                RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
+        //private void TextBlock_MouseLeftButtonUp_3(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (txtTopMost.Tag.ToString() == "0")
+        //    {
+        //        txtTopMost.Tag = "1";
+        //        this.Topmost = true;
+        //        RotateTransform rotateTransform = new RotateTransform(0, 0.5, 0.5);
 
 
-                pinTopMost.RenderTransform = rotateTransform;
-            }
-            else
-            {
-                txtTopMost.Tag = "0";
-                this.Topmost = false;
-                RotateTransform rotateTransform = new RotateTransform(90, 0.5, 0.5);
+        //        pinTopMost.RenderTransform = rotateTransform;
+        //    }
+        //    else
+        //    {
+        //        txtTopMost.Tag = "0";
+        //        this.Topmost = false;
+        //        RotateTransform rotateTransform = new RotateTransform(90, 0.5, 0.5);
 
-                pinTopMost.RenderTransform = rotateTransform;
-            }
-        }
+        //        pinTopMost.RenderTransform = rotateTransform;
+        //    }
+        //}
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -686,6 +684,16 @@ namespace globaltraders
                 }
 
             }
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
     }
     }

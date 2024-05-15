@@ -60,18 +60,12 @@ namespace globaltraders
         {
             try
             {
-
-
                 InitializeComponent();
-
-
                 var timer = new System.Timers.Timer();
                 timer.Interval = 1000 * 60 * 1;
                 //timer.Interval = 1000;
                 timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
                 timer.Start();
-
-
                 LoggedinUserDetail.MarketBooks = new List<ExternalAPI.TO.MarketBook>();
                 LoggedinUserDetail.OpenMarkets = new List<string>();
                 BackgroundWorker backgroundworkerloaddata = new BackgroundWorker();
@@ -113,9 +107,6 @@ namespace globaltraders
         {
             try
             {
-
-
-
                 if (showpendingamountlabel == true)
                 {
                     lblShowPaymentPending.Visibility = Visibility.Visible;
@@ -175,31 +166,24 @@ namespace globaltraders
             try
             {
                 backgroundWorkerGetBets.RunWorkerAsync();
-
             }
             catch (System.Exception ex)
             {
 
             }
-
         }
         System.Net.WebClient RESTProxy = new System.Net.WebClient();
         public void GetBetsData()
         {
             try
             {
-
                 if (LoggedinUserDetail.GetUserTypeID() == 1)
                 {
-
                     LoggedinUserDetail.CurrentAdminBets = JsonConvert.DeserializeObject<List<UserBetsForAdmin>>(objUsersServiceCleint.GetUserbetsForAdmin(LoggedinUserDetail.PasswordForValidate));
                 }
-
-
             }
             catch (System.Exception ex)
             {
-
             }
         }
 
@@ -210,11 +194,8 @@ namespace globaltraders
                 System.IO.Stream stream = new System.IO.MemoryStream(e.Result);
                 System.Runtime.Serialization.Json.DataContractJsonSerializer obj = new System.Runtime.Serialization.Json.DataContractJsonSerializer(typeof(string));
                 string userbets = obj.ReadObject(stream).ToString();
-
                 List<UserBetsForAdmin> lstUserBet = JsonConvert.DeserializeObject<List<UserBetsForAdmin>>(userbets);
-
                 LoggedinUserDetail.CurrentAdminBets = lstUserBet;
-
             }
             catch (System.Exception ex)
             {
@@ -225,7 +206,6 @@ namespace globaltraders
         private void ObjUsersServiceCleint_GetUserBetsbyAgentIDCompleted(object sender, GetUserBetsbyAgentIDCompletedEventArgs e)
         {
             objUsersServiceCleint.GetUserBetsbyAgentIDCompleted -= ObjUsersServiceCleint_GetUserBetsbyAgentIDCompleted;
-
         }
 
         private void ObjUsersServiceCleint_GetUserbetsbyUserIDCompleted(object sender, GetUserbetsbyUserIDCompletedEventArgs e)
@@ -3092,7 +3072,7 @@ namespace globaltraders
 
                             objUsersServiceCleint.SetMarketBookOpenbyUSerandGetAsync(UserIDforLoadMarket, ID);
                             objUsersServiceCleint.SetMarketBookOpenbyUSerandGetCompleted += ObjUsersServiceCleint_SetMarketBookOpenbyUSerandGetCompleted;
-
+                            
                         }
 
                     }

@@ -102,7 +102,6 @@ namespace globaltraders
             if(chkOnlyFancy.IsChecked.Value==true && chkOnlyFancySession.IsChecked.Value == true)
             {
                 Getdataforfancybysession();
-              //  GetDistinctMatchesfromResults();
                 return;
             }
             if (chkByMarket.IsChecked.Value == false)
@@ -110,19 +109,16 @@ namespace globaltraders
                 string DateFrom = dtpFrom.SelectedDate.Value.ToString("yyyy-MM-dd");
                 string DateTo = dtpTo.SelectedDate.Value.ToString("yyyy-MM-dd");
                 List<ProfitandLossEventType> lstProfitandlossEventtype = new List<ProfitandLossEventType>();
-                if (LoggedinUserDetail.GetUserTypeID() == 1)
-                {
-                   SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
-                    lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.BookAccountID), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));
-                    List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
-                    lstProfitandlossEventtypeCommission = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.CommisionAccountID), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));
-                  ProfitandLossEventType objProfitandLossCommission = new ProfitandLossEventType();
+
+                SP_Users_GetCommissionAccountIDandBookAccountID_Result objCommissionandBookAccountID = objUsersServiceCleint.GetCommissionaccountIdandBookAccountbyUserID(LoggedinUserDetail.GetUserID());
+                lstProfitandlossEventtype = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.BookAccountID), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));       
+                List<ProfitandLossEventType> lstProfitandlossEventtypeCommission = new List<ProfitandLossEventType>();
+                lstProfitandlossEventtypeCommission = JsonConvert.DeserializeObject<List<ProfitandLossEventType>>(objUsersServiceCleint.GetAccountsDatabyEventtypeuserIDandDateRange(Convert.ToInt32(objCommissionandBookAccountID.CommisionAccountID), DateFrom, DateTo, LoggedinUserDetail.PasswordForValidate));
+                ProfitandLossEventType objProfitandLossCommission = new ProfitandLossEventType();
                     objProfitandLossCommission.EventType = "Commission";
                     objProfitandLossCommission.NetProfitandLoss = lstProfitandlossEventtypeCommission.Sum(item => item.NetProfitandLoss);
                     lstProfitandlossEventtype.Add(objProfitandLossCommission);
-                }
-               
-
+              
 
                 if (lstProfitandlossEventtype.Count > 0)
                 {
@@ -249,24 +245,7 @@ namespace globaltraders
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void cmbAllMAtchesbyEventType_ItemSelectionChanged(object sender, Xceed.Wpf.Toolkit.Primitives.ItemSelectionChangedEventArgs e)
-        {
-            try
-            {
-             
-            }
-            catch(System.Exception ex)
-            {
-
-            }
-        }
-
-        private void cmbAllEventsType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        }      
         public void GetTotalofAll()
         {
             try
@@ -282,7 +261,7 @@ namespace globaltraders
                 else
                 {
                     txtTotProfiltandLoss.Background = Brushes.Red;
-                    txtTotProfiltandLoss.Foreground = Brushes.White;
+                  txtTotProfiltandLoss.Foreground = Brushes.White;
                 }
             }
             catch (System.Exception ex)
@@ -294,15 +273,18 @@ namespace globaltraders
         {
             try
             {
-                foreach(var item in lstProfitandLossAll)
+                if (dgvProfitandLoss != null)
                 {
-                    item.isCheckedforTotal = true;
+                    foreach (var item in lstProfitandLossAll)
+                    {
+                        item.isCheckedforTotal = true;
+                    }
+                    dgvProfitandLoss.ItemsSource = null;
+                    dgvProfitandLoss.ItemsSource = lstProfitandLossAll;
+                    GetTotalofAll();
                 }
-                dgvProfitandLoss.ItemsSource = null;
-                dgvProfitandLoss.ItemsSource = lstProfitandLossAll;
-                GetTotalofAll();
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
 
             }
@@ -312,13 +294,16 @@ namespace globaltraders
         {
             try
             {
-                foreach (var item in lstProfitandLossAll)
+                if (dgvProfitandLoss != null)
                 {
-                    item.isCheckedforTotal = false;
+                    foreach (var item in lstProfitandLossAll)
+                    {
+                        item.isCheckedforTotal = false;
+                    }
+                    dgvProfitandLoss.ItemsSource = null;
+                    dgvProfitandLoss.ItemsSource = lstProfitandLossAll;
+                    GetTotalofAll();
                 }
-                dgvProfitandLoss.ItemsSource = null;
-                dgvProfitandLoss.ItemsSource = lstProfitandLossAll;
-                GetTotalofAll();
             }
             catch (System.Exception ex)
             {
@@ -369,6 +354,5 @@ namespace globaltraders
             }
         }
 
-       
     }
 }
