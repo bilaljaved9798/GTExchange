@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/bfnexchange.Services.DBModel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfSP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" nillable="true" type="tns:SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" nillable="true" type="tns:ArrayOfSP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" />
+  <xs:complexType name="SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountsTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgentRate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Credit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Debit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MarketBookID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpeningBalance" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" nillable="true" type="tns:SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result" />
+  <xs:complexType name="ArrayOfSP_UserAccounts_GetDistinctEventTypes_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_UserAccounts_GetDistinctEventTypes_Result" nillable="true" type="tns:SP_UserAccounts_GetDistinctEventTypes_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_UserAccounts_GetDistinctEventTypes_Result" nillable="true" type="tns:ArrayOfSP_UserAccounts_GetDistinctEventTypes_Result" />
+  <xs:complexType name="SP_UserAccounts_GetDistinctEventTypes_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Eventtype" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserAccounts_GetDistinctEventTypes_Result" nillable="true" type="tns:SP_UserAccounts_GetDistinctEventTypes_Result" />
+  <xs:complexType name="SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TotCredit" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TotDebit" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result" nillable="true" type="tns:SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result" />
+</xs:schema>

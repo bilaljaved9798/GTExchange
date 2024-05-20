@@ -1,0 +1,1079 @@
+﻿<Window x:Class="globaltraders.AdminPanelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Admin Panel" Height="700" Width="1230" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" FontFamily="Trebuchet MS" Loaded="Window_Loaded" >
+    <Grid>
+        <StackPanel>
+            <TextBlock>
+                <Label Content="Admin Panel" Width="1190" MouseDown="Label_MouseDown" MouseLeftButtonDown="Label_MouseLeftButtonDown"></Label>
+                 <Button Content="X" Background="Red" Foreground="White" Padding="10" Width="30" Height="25" Margin="0,5,0,0" FontSize="20" Click="Button_Click_12"></Button>
+            </TextBlock>
+            <TabControl x:Name="tabControlAdminpanel" BorderThickness="0">
+                <TabItem Header="Profile" Margin="0,-6,0,0" Height="18.933" VerticalAlignment="Top">
+                    <TabItem.Background>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FF000000" Offset="1"/>
+                            <GradientStop Color="#FF243875" Offset="-1"/>
+                        </LinearGradientBrush>
+                    </TabItem.Background>
+                    <StackPanel Margin="0,5,0,0">
+                        <TextBlock>
+                            <Label Content="Name" Width="62"></Label>
+                            <TextBox Text="" x:Name="txtUsernameupdate" Width="227" IsReadOnly="True" Padding="5"></TextBox>
+                        </TextBlock>
+                        <TextBlock Margin="0,5">
+                            <Label Content="Phone" Width="62"></Label>
+                            <TextBox Text="" x:Name="txtUserPhoneUpdate" Width="227" Padding="5"/>
+                        </TextBlock>
+                        <TextBlock>
+                            <Label Content="Password" Width="62"></Label>
+                          
+                            <TextBox Text="" x:Name="txtPassword" Width="227"  Padding="5"></TextBox>
+                        </TextBlock>
+                        <TextBlock Margin="65,10,0,0">
+                          <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateProfile" Click="btnUpdateProfile_Click" Background="#FF02032B"></Button>
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Customer Maintenance" Margin="0,-4.5,0,4.5">
+                    <TabControl x:Name="tabControl2" Loaded="tabControl2_Loaded" BorderThickness="0" Margin="5">
+                        <TabItem Header="New Customer">
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock>
+                            <Label Content="Name" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtName" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                            <Label Content="Phone" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtPhone" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                            <Label Content="Email" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtEmail" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                            <Label Content="User Name" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtUsername" Width="227"  Padding="5" Margin="0,5,0,0"></TextBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                            <Label Content="Password" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtPasswordAdd" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                            <Label Content="Location" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtLocation" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                            <Label Content="Account Balance" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtAccountBalance" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                            <Label Content="Agent %" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtAgentrate" Width="227"  Padding="5"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                                     <Label Content="User Type" Width="100"></Label>
+                                    <ComboBox x:Name="cmbUserType" Width="224"></ComboBox>
+                                </TextBlock>
+                                <TextBlock Margin="103,10,0,0">
+                          <Button Content="Create" Width="100" Height="30" x:Name="btnCreateUser" Click="btnCreateUser_Click"></Button>
+                                </TextBlock>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Customer Details">
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                <StackPanel Margin="0,0,5,0">
+
+
+                                    <TextBlock>
+                                     <Label Content="Customers" Width="100"></Label>
+                                    <ComboBox x:Name="cmbUsers" Width="224" SelectionChanged="cmbUsers_SelectionChanged" SelectedIndex="0"></ComboBox>
+                                    </TextBlock>
+                                    <TextBlock x:Name="txtblocktransferagentcommision" Visibility="Collapsed" Margin="5,0,0,0" >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkTransferAgentCommision" Content="Transfer Agent Commision" VerticalContentAlignment="Center"></CheckBox>
+ <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateTransferAgentCommision" Click="btnUpdateTransferAgentCommision_Click"></Button>
+</TextBlock>
+                                  
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkBlockUser" Content="Block User" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkBlockUserBMS" Content="Block BMS" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkLoggedIn" Content="Logged In" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkGrayHoundRacing" Content="GreyHound Racing" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkHorseRacing" Content="Horse Racing" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkTennis" Content="Tennis" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock >
+                                <Label Content="" Width="100"></Label>
+                                <CheckBox x:Name="chkSoccer" Content="Soccer" VerticalContentAlignment="Center"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock x:Name="txtblockMaxBalanceTransferLimit" Visibility="Collapsed" Margin="5,0,0,0" >
+                                <Label Content="Max Transfer Limit" Width="100"></Label>
+                                    <TextBox Text="" x:Name="txtMaxBalanceTransferLimit" Width="150"  Padding="5"></TextBox>     
+                              
+ <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateMaxBalanceTransferLimit" Click="btnUpdateMaxBalanceTransferLimit_Click"></Button>
+                                    </TextBlock>
+                                    <TextBlock x:Name="txtblockMaxAgentRate" Visibility="Collapsed" Margin="5,0,0,0" >
+                                <Label Content="Max Agent Rate Limit" Width="100"></Label>
+                                    <TextBox Text="" x:Name="txtMaxAgentRate" Width="150"  Padding="5"></TextBox>     
+                              
+ <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateMaxAgentRate" Click="btnUpdateMaxAgentRate_Click"></Button>
+                                    </TextBlock>
+                                    <TextBlock>
+                            <Label Content="Agent %" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtAgentRateUpate" Width="150"  Padding="5" Margin="0,5"></TextBox>
+                                    </TextBlock>
+                                    <TextBlock>
+                            <Label Content="Password" Width="100"></Label>
+                            <TextBox Text="" x:Name="txtPasswordUpdate" Width="150"  Padding="5"></TextBox>
+                                    </TextBlock>
+                                    <TextBlock Margin="103,10,0,0">
+                          <Button Content="Update" Width="100" Height="30" x:Name="btnUpdateUser" Click="btnUpdateUser_Click"></Button>
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel>
+                                    <TextBlock>
+                                        <Label Content="Name" Width="130"></Label>
+                                        <Label Content="Name" x:Name="lblName"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Username" Width="130"></Label>
+                                        <Label Content="Username" x:Name="lblUserName"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Phone" Width="130"></Label>
+                                        <Label Content="Phone" x:Name="lblPhone"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Account Balance" Width="130"></Label>
+                                        <Label Content="AC" x:Name="lblAccountBalance"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Last Login Time" Width="130"></Label>
+                                        <Label Content="LG" x:Name="lblLastLoginTime"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Status" Width="130"></Label>
+                                        <Label Content="Status" x:Name="lblStatus"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Profit/Loss" Width="130"></Label>
+                                        <Label Content="PL" x:Name="lblProfitandLoss"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Last Amount Added" Width="130"></Label>
+                                        <Label Content="LA" x:Name="lblLastAmoundAdd"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Last Amount Removed" Width="130"></Label>
+                                        <Label Content="LR" x:Name="lblLastAmountRemoved"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Agent Rate %" Width="130"></Label>
+                                        <Label Content="AR" x:Name="lblAgentRate"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Comission %" Width="130"></Label>
+                                        <Label Content="AC" x:Name="lblcommissionRate"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Last Location" Width="130"></Label>
+                                        <Label Content="LL" x:Name="lblLastLocation"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Last IP Address" Width="130"></Label>
+                                        <Label Content="LIP" x:Name="lblIpAddress"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Created By" Width="130"></Label>
+                                        <Label Content="PL" x:Name="lblCreatedBy"></Label>
+                                    </TextBlock>
+                                    <TextBlock>
+                                        <Label Content="Created Date" Width="130"></Label>
+                                        <Label Content="LA" x:Name="lblCreatedDateDetails"></Label>
+                                         
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Balance Transfer">
+                            <StackPanel Width="694" HorizontalAlignment="Left" >
+
+                                <StackPanel Margin="0,5">
+                                    <Label Content="Add Remove Credit" FontSize="18" FontWeight="Bold"></Label>
+                                    <TextBlock >
+                                    <Label Content="Customers" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"></Label>
+                                    <ComboBox x:Name="cmbUsersCredit" Width="229" FontSize="16" SelectedIndex="0" SelectionChanged="cmbUsersCredit_SelectionChanged"></ComboBox>
+                                     <Label Content="Credit" FontSize="14" FontWeight="Bold" Width="120"></Label>
+                                    <Label x:Name="lblCredit" FontSize="14" FontWeight="Bold" Content="0"></Label>
+                                    </TextBlock>
+                                    <TextBlock >
+                                    <Label Content="Amount" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"></Label>
+                                    <TextBox x:Name="txtBalanceAdd" Width="229" FontSize="16"></TextBox>
+                                     <Label Content="Account Balance" FontSize="14" FontWeight="Bold" Width="120"></Label>
+                                    <Label x:Name="lblAccountBalanceAddRemove" FontSize="14" FontWeight="Bold" Content="0"></Label>
+                                    </TextBlock>
+                                    <TextBlock VerticalAlignment="Center" >
+                                    <Label Content="Title" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"></Label>
+                                    <!--<TextBox x:Name="txtAccountsTitle" Width="229" FontSize="16"></TextBox>-->
+<ComboBox x:Name="txtAccountsTitle" Width="229" FontSize="16" IsTextSearchEnabled="True" IsDropDownOpen="True" IsEditable="True" >
+                                             
+                                              <ComboBoxItem Content="Cash Received"/>
+                                              <ComboBoxItem Content="Cash Paid"/>
+                                             </ComboBox>
+                                    </TextBlock>
+                                    <TextBlock VerticalAlignment="Center" >
+                                    <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"></Label>
+                                    <CheckBox x:Name="chkIsCredit" Width="229" FontSize="16" Content="is Credit (Awaz / Limit)"></CheckBox>
+
+                                    </TextBlock>
+                                    <TextBlock VerticalAlignment="Center" Margin="0,10,0,0" >
+                                    <Label Content="" FontSize="14" FontWeight="Bold" Width="80" VerticalAlignment="Center"></Label>
+                                    <Button Content="Update Plus" x:Name="btnAddCredit" Width="112" Height="40" Background="DarkGreen" FontSize="16" Click="btnAddCredit_Click" ></Button>
+                                     <Button Content="Update Minus" x:Name="btnRemovecredit" Width="112" Height="40" Background="LightCoral" FontSize="16" Click="btnRemovecredit_Click" ></Button>
+
+                                    </TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Width="694" HorizontalAlignment="Left">
+                                    <StackPanel Width="229" Margin="0,0,10,0">
+                                        <Label Content="Plus Party" FontSize="14" FontWeight="Bold" ></Label>
+                                        <ComboBox x:Name="cmbTransferBalanceTo" SelectionChanged="cmbTransferBalanceTo_SelectionChanged"></ComboBox>
+                                        <Label x:Name="lblCurrentBalanceTo" Content="0" FontSize="14" FontWeight="Bold" ></Label>
+                                    </StackPanel>
+                                    <StackPanel Width="210" Margin="0,0,10,0">
+                                        <Label Content="Amount" FontSize="14" FontWeight="Bold" Width="210" HorizontalContentAlignment="Center" ></Label>
+                                        <TextBox x:Name="txtAmountTransfer" FontSize="14" ></TextBox>
+                                        <Label Content="Description" FontSize="14" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+                                    </StackPanel>
+                                    <StackPanel Width="229" Margin="0,0,10,0">
+                                        <Label Content="Minus Party" FontSize="14" FontWeight="Bold"/>
+                                        <ComboBox x:Name="cmbTransferBalanceFrom" SelectionChanged="cmbTransferBalanceFrom_SelectionChanged"></ComboBox>
+                                        <Label x:Name="lblCurrentbalanceFrom" Content="0" FontSize="14" FontWeight="Bold" ></Label>
+                                    </StackPanel>
+                                </StackPanel>
+                                <TextBox x:Name="txtAccounttitleTransferBalance" Width="694" HorizontalAlignment="Left" FontSize="14"></TextBox>
+                                <Button x:Name="btnTransferamount" Height="40" Width="150" Content="Update Trans" FontSize="16" HorizontalAlignment="Right" Margin="0,10,0,0" Click="btnTransferamount_Click"></Button>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Allowed Markets">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel >
+
+                                    <TextBlock FontSize="14">
+                                        <Label Content="Customers">
+                                          
+                                        </Label>
+                                       <xctk:CheckComboBox Width="250"  x:Name="cmbCustomerAllowedMarketsNew" 
+                             HorizontalAlignment="Center" 
+                             VerticalAlignment="Center" 
+                             DisplayMemberPath="UserName"
+                             ValueMemberPath="ID"
+                             SelectedValue="{Binding SelectedValue}" SelectedItem="{Binding SelectedItem}" ItemSelectionChanged="cmbCustomerAllowedMarketsNew_ItemSelectionChanged"
+                              />
+                                      
+                                          <ComboBox x:Name="cmbCustomerAllowedMarkets" Width="249" SelectionChanged="cmbCustomerAllowedMarkets_SelectionChanged">
+                                           
+                                          </ComboBox>
+                                    </TextBlock>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Width="219">
+                                            <TextBlock>
+                                        <Label Content="Allowed Markets" FontSize="16" FontWeight="Bold"></Label>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Match Odds" x:Name="chkAllowedCricketOdds" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Innings Runs" x:Name="chkAllowedInningsRuns" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Completed Match" x:Name="chkCompletedMatchAllowed" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Tied Match" x:Name="chkTiedMatchAllowed" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="GreyHound Racing Win" x:Name="chkGrayHoundAllowedWin" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="GreyHound Racing Place" x:Name="chkGrayHoundPlaceAllowed" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Horse Racing Win" x:Name="chkAllowdHorseWin" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Horse Racing Place" x:Name="chkHorseRacePlaceAllowed" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Tennis" x:Name="chkAllowedTenis" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Soccer" x:Name="chkAllowdSoccer" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Winner" x:Name="chkWinnerForAllowedBet" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock Margin="0,0,0,3">
+                                        <CheckBox Content="Fancy" x:Name="chkFancyForAllowedBet" VerticalContentAlignment="Center"></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Button Content="Update" Width="100" Height="30"  FontSize="16" Click="Button_Click_1"></Button>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock>
+                                        <Label Content="Checks For Max Odds" FontSize="16" FontWeight="Bold"></Label>
+                                            </TextBlock>
+                                            <TextBlock Background="LightSkyBlue" Padding="5">
+                                        <CheckBox Content="Check for Max Odd Back" x:Name="chkCheckforMaxOddBack" VerticalContentAlignment="Center" ></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Label Content="Max Odd Back"></Label>
+                                                <TextBox x:Name="txtMaxOddBack" Width="75" FontSize="16"></TextBox>
+                                            </TextBlock>
+                                            <TextBlock Background="LightPink" Padding="5" Margin="0,5,0,0">
+                                        <CheckBox Content="Check for Max Odd Lay" x:Name="chkCheckForMaxOddLay" VerticalContentAlignment="Center" ></CheckBox>
+                                            </TextBlock>
+                                            <TextBlock>
+                                                <Label Content="Max Odd Lay" Width="85"></Label>
+                                                <TextBox x:Name="txtMaxOddLay" Width="75" FontSize="16"></TextBox>
+                                            </TextBlock>
+                                        </StackPanel>
+
+                                    </StackPanel>
+
+                                </StackPanel>
+                                <StackPanel Margin="10,0,0,0">
+                                    <TextBlock FontSize="14" Padding="0,0,0,5">
+                                        <Label Content="Event Type">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="comboBox1" Width="249" SelectedIndex="1" SelectionChanged="comboBox1_SelectionChanged">
+                                              <ComboBoxItem Content="Please Select"/>
+                                              <ComboBoxItem Content="Cricket"/>
+                                              <ComboBoxItem Content="Tennis"/>
+                                              <ComboBoxItem Content="Soccer"/>
+                                              <ComboBoxItem Content="Horse Racing"/>
+                                              <ComboBoxItem Content="Greyhound Racing"/></ComboBox>
+                                        <CheckBox x:Name="chkDateFilter" Content="From Today" Checked="chkDateFilter_Checked" Unchecked="chkDateFilter_Unchecked"></CheckBox>
+                                    </TextBlock>
+                                    <TextBlock FontSize="14" Padding="0,0,0,5">
+                                        <Label Content="Event Name">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbEventsforMarketAllowed" Width="249" SelectionChanged="cmbEventsforMarketAllowed_SelectionChanged">
+                                             </ComboBox>
+                                       
+                                    </TextBlock>
+                                    <DataGrid x:Name="dgvAllowedMarkets" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="420" Width="500" SelectedIndex="0" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False"  >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Binding="{Binding MarketCatalogueID}" Visibility="Collapsed"></DataGridTextColumn>
+                                            <DataGridTemplateColumn Width="25" IsReadOnly="True" Header="Betting Open">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding Path=BettingAllowed}"  Tag="{Binding MarketCatalogueID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                            <DataGridTemplateColumn Width="*" Header="Event Name" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Market}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <TextBlock HorizontalAlignment="Right" Margin="0,5,0,0">
+                                          <CheckBox x:Name="chkSTartFancySyncAllowed" Content="Fancy Sync ON/OFF"></CheckBox>
+                                                <Button Content="Update" Width="100" Height="30"  FontSize="16" Click="Button_Click_2"></Button>
+                                     <Image x:Name="stkpnlLoaderHorse" gif:ImageBehavior.RepeatBehavior="Forever"
+           gif:ImageBehavior.AnimatedSource="45.gif" Panel.ZIndex="10" Height="24" Margin="0,0,0,0" Visibility="Collapsed" />
+                                    </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Limits">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock FontSize="14">
+                                        <Label Content="Customers">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbCustomersForLimits" Width="169" SelectionChanged="cmbCustomersForLimits_SelectionChanged"></ComboBox>
+                                        <Label Content="Hisa"></Label>
+                                        <TextBox x:Name="txtReferreRate" Width="59" FontSize="16"></TextBox>
+                                         <Label Content="%"></Label>
+                                        <Label Content="Punter">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbReferrerUser" Width="229"></ComboBox>
+                                        <Button Content="Add to List" Width="100" Height="30" Click="Button_Click_4"></Button>
+                                    </TextBlock>
+                                    <StackPanel>
+                                        <TextBlock>
+                                               <Label Content="Commision Rate %" Width="142"></Label>
+                                            <TextBox x:Name="txtCommissionRateUpdate" FontSize="16" Width="139"></TextBox>
+                                        </TextBlock>
+                                        <TextBlock>
+                                               <Label Content="Commision Rate Fancy %" Width="142"></Label>
+                                            <TextBox x:Name="txtCommissionRateFancyUpdate" FontSize="16" Width="139"></TextBox>
+                                        </TextBlock>
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Width="284">
+                                                <Label Content="Cricket" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Match Odds Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtMatchOddsLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Match Odds Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtMatchOddsUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Completed Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtCompletedLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Completed Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtCompletedUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Tied Match Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtTiedMatchLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Tied Match Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtTiedMatchUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Innings Runs Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtInnsRunsLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Innings Runs Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtInnsRunsUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Winner Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtWinnerLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Winner Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtWinnerUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Fancy Lower Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtFancyLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Fancy Upper Limit" Width="145"></Label>
+                                                    <TextBox x:Name="txtFancyUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="Horse Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Win Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtHorseWinLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+
+                                                
+                                                <TextBlock>
+                                                    <Label Content="Win Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtHorseWinUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Place Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtHorsePlaceLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Place Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtHorsePlaceUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                     <Label Content="" Width="80"></Label>
+                                                    <CheckBox x:Name="chkHorseRaceAllowedForViewMarket" FontSize="12" Width="130" Content="Horse Race for View" VerticalContentAlignment="Center"></CheckBox>
+                                                </TextBlock>
+                                                <Label Content="Soccer" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtSoccerLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtSoccerUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                     <Label Content="" Width="80"></Label>
+                                                    <CheckBox x:Name="chkSoccerForView" FontSize="12" Width="130" Content="Soccer for View" VerticalContentAlignment="Center"></CheckBox>
+                                                </TextBlock>
+                                                <Button Content="Update" Height="30" FontSize="16" Margin="72.5,20,25,0" Click="Button_Click_3"/>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="GreyHound Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Win Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtGrayHoundWinLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Win Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtGrayHoundWinUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Place Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtGrayHoundPlaceLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Place Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtGrayHoundPlaceUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                     <Label Content="" Width="61"></Label>
+                                                    <CheckBox x:Name="chkGrayHoundForView" FontSize="12" Width="171" Content="Gray Hound Racing for View" VerticalContentAlignment="Center"></CheckBox>
+                                                </TextBlock>
+                                                <Label Content="Tennis" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Lower Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtTennisLower" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Upper Limit" Width="110"></Label>
+                                                    <TextBox x:Name="txtTennisUpper" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                     <Label Content="" Width="91"></Label>
+                                                    <CheckBox x:Name="chkTennisForView" FontSize="12" Width="130" Content="Tennis for View" VerticalContentAlignment="Center"></CheckBox>
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel>
+                                    <DataGrid x:Name="DGVHisaPunters" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="220" Width="421" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" MouseLeftButtonUp="DGVHisaPunters_MouseLeftButtonUp">
+                                        <DataGrid.Columns>
+
+                                            <DataGridTextColumn x:Name="BetID" Visibility="Hidden" Binding="{Binding ReferrerID}">
+
+                                            </DataGridTextColumn>
+
+                                            <DataGridTemplateColumn Width="*" Header="Punter Name" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding RefferrerName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Hisa" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding ReferrerRate}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Delete" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="Delete" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Background="Red" Foreground="White" ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button Content="Update" Height="30" FontSize="16" Margin="10" Width="156" Click="Button_Click_5"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Block/UnBlock Users">
+                            <StackPanel Margin="0,10,0,0">
+                                <TextBlock>
+                                    <Button x:Name="btnBlockAllUsers" Content="Block All Users" Height="30" FontSize="16" Width="134" Click="btnBlockAllUsers_Click" />
+                                      <Button  Content="Logged Out All Users" Height="30" FontSize="16" Width="184" Margin="10,0,0,0" Click="Button_Click_6" />
+                                      <Button x:Name="btnRefresh" Content="Refresh" Height="30" FontSize="16" Width="104" Margin="10,0,0,0" Click="btnRefresh_Click" />
+                                </TextBlock>
+                                <TextBlock VerticalAlignment="Top">
+                                          <StackPanel HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" >
+                                    <DataGrid x:Name="dgvUnBlockUsers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="377.133" Width="749" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                                           <DataGrid.Columns>
+
+                                            <DataGridTemplateColumn Width="50" IsReadOnly="True" Header="Blocked">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding Path=isBlocked}" Tag="{Binding ID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Checked="CheckBox_Checked_1" Unchecked="CheckBox_Unchecked_1" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+ <DataGridTemplateColumn Width="50" IsReadOnly="True" Header="Logged In">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    
+                                                    
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding Path=Loggedin}"  Tag="{Binding ID}"  Margin="2,2,2,0" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" Unchecked="CheckBox_Unchecked_2" Checked="CheckBox_Checked_2" />
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="*" Header="Username" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding UserName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                        
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                   
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Top" Height="375.734">
+                                    <Button  Content="Update Block Status" Height="45.733" FontSize="16" Width="197" Margin="10,0,0,20" VerticalContentAlignment="Top" VerticalAlignment="Top" Click="Button_Click_7" />
+                                    <Button  Content="Update Logged In Status" Height="50" FontSize="16" Width="197.383" Margin="10,0,0,0" VerticalContentAlignment="Top" VerticalAlignment="Top" Click="Button_Click_8" />
+                                </StackPanel>
+                                </TextBlock>
+
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Timer Markets">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel>
+                                    <TextBlock FontSize="14">
+                                        <Label Content="Customers">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbCustomersForTimers" Width="214" SelectionChanged="cmbCustomersForTimers_SelectionChanged"></ComboBox>
+                                        <Label Content="Marquee Text"></Label>
+                                        <TextBox x:Name="txtMarquee" Width="549" FontSize="16"></TextBox>
+                                        
+                                      
+                                        
+                                        <Button Content="Update" Width="100" Height="30" Click="Button_Click_11"></Button>
+                                    </TextBlock>
+                                    <StackPanel>
+                                        <TextBlock Padding="0,5">
+                                             
+                                            <TextBlock Padding="0,5">
+                                               
+                                               
+                                            </TextBlock>
+                                           
+                                           
+                                        </TextBlock>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel Width="284">
+                                                <Label Content="Cricket" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Match Odds Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtMatchOddsInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Match Odds Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtMatchOddsBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Completed Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtCompletedBetInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Completed Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtCompletedBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Tied Match Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtTiedMatchInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Tied Match Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtTiedMatchBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Innings Runs Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtInnsrunsInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Innings Runs Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtInnsRunsBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Winner Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtWinnerInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Winner Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtWinnerBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Fancy Interval" Width="130"></Label>
+                                                    <TextBox x:Name="txtFancyInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Fancy Bet Place" Width="130"></Label>
+                                                    <TextBox x:Name="txtFancyBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="Horse Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Interval" Width="70"></Label>
+                                                    <TextBox x:Name="txtHorseRacingInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Bet Place" Width="70"></Label>
+                                                    <TextBox x:Name="txtHorseRacingBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+
+
+                                                <Label Content="Soccer" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Interval" Width="70"></Label>
+                                                    <TextBox x:Name="txtSoccerInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Bet Place" Width="70"></Label>
+                                                    <TextBox x:Name="txtSoccerBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <Label Content="Race Allowed Before Minute" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Time" Width="70"></Label>
+                                                    <TextBox x:Name="txtRaceBeforeAllowedMinute" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <Label Content="Cancel Bet Time" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Bet Place" Width="70"></Label>
+                                                    <TextBox x:Name="txtCancelBetTime" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <Button Content="Update" Height="30" FontSize="16" Margin="72.5,20,25,0" Click="Button_Click_10"/>
+                                            </StackPanel>
+                                            <StackPanel Width="245">
+                                                <Label Content="GreyHound Racing" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Interval" Width="70"></Label>
+                                                    <TextBox x:Name="txtGrayHoundInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Bet Place" Width="70"></Label>
+                                                    <TextBox x:Name="txtGrayHoundBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+
+
+                                                <Label Content="Tennis" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                    <Label Content="Interval" Width="70"></Label>
+                                                    <TextBox x:Name="txtTennisInterval" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                    <Label Content="Bet Place" Width="70"></Label>
+                                                    <TextBox x:Name="txtTennisBetPlace" FontSize="16" Width="125"></TextBox>
+                                                </TextBlock>
+
+                                            </StackPanel>
+                                            <StackPanel>
+                                                <Label Content="Transer Admin" HorizontalContentAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
+                                                <TextBlock>
+                                                          <Label Content="Pound Rate" Width="74"></Label>
+                                            <TextBox x:Name="txtPoundRateUser" FontSize="16" Width="139"></TextBox>
+                                                </TextBlock>
+                                                <TextBlock Margin="0,5">
+                                                    <Label Content="Agent" Width="74"></Label>
+                                                          <ComboBox x:Name="cmbAgentForTransferAdmin" Width="172" ></ComboBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                           <CheckBox x:Name="chkTrsnferAdminamount" Content="Transfer Admin Cricket" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+
+                                                </TextBlock>
+                                                <TextBlock>
+                                                       <CheckBox x:Name="chkTrsnferAdminamountSoccer" Content="Transfer Admin Soccer" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                       <CheckBox x:Name="chkTrsnferAdminamountTennis" Content="Transfer Admin Tennis" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                       <CheckBox x:Name="chkTrsnferAdminamountHorse" Content="Transfer Admin Horse" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                       <CheckBox x:Name="chkTrsnferAdminamountGreyHound" Content="Transfer Admin Greyhound" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+                                                </TextBlock>
+                                                <TextBlock>
+                                                          <CheckBox x:Name="chkShowTV" Content="Show TV" VerticalContentAlignment="Center" Height="22.965" Margin="10,0"></CheckBox>
+                                     
+                                                </TextBlock>
+                                                <Button Content="Update" Width="100" Height="30" Click="Button_Click_9"></Button>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Assign Fancy">
+                            <StackPanel Margin="0,5,0,0">
+                                <TextBlock>
+                                    <Label Content="Line v Markets" Width="100"></Label>
+                                    <ComboBox x:Name="cmbLinevMarkets" Width="764" FontSize="20" SelectedIndex="0"></ComboBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                                    <Label Content="Events" Width="100"></Label>
+                                    <ComboBox x:Name="cmbEvents" Width="764" FontSize="20" SelectedIndex="0"></ComboBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                                    <Label Content="Cricket API Key" Width="100"></Label>
+                                    <ComboBox x:Name="cmbCricketAPIKeys" Width="764" FontSize="20" SelectedIndex="0"></ComboBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                                    <Label Content="Get Match Score" Width="100"></Label>
+                                    <ComboBox x:Name="cmbGetUpdateFrom" Width="200" FontSize="20" SelectedIndex="0">
+                                        <ComboBoxItem Content="Local"></ComboBoxItem>
+                                         <ComboBoxItem Content="Other"></ComboBoxItem>
+                                    </ComboBox>
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                                    <Label Content="Total Overs" Width="100"></Label>
+                                  <TextBox x:Name="txtTotalOvers" Width="100" FontSize="20"></TextBox>
+                                </TextBlock>
+                                <TextBlock>
+                                    <CheckBox x:Name="chkSTartFancySync" Content="Fancy Sync ON/OFF"></CheckBox>
+                                     <Button Content="Start Fancy Sync ON/OFF" Padding="10" Width="256" Height="30" FontSize="16" Click="Button_Click_24" ></Button>
+                                </TextBlock>
+                                <TextBlock Padding="0,5,0,0">
+                                      <Label Content="" Width="100"></Label>
+                                    <Button Content="Update Line/Fancy" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_13"></Button>
+                                    <Button Content="Update Cricket API Key" Padding="10" Width="170" Height="30" FontSize="16" Click="Button_Click_23"  ></Button>
+                                    <Button Content="Update Total Overs" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_21" ></Button>
+ <Button Content="Update Get Match Updates From" Padding="10" Width="256" Height="30" FontSize="16" Click="Button_Click_22" ></Button>
+                                   
+                                </TextBlock>
+                                <TextBlock Margin="0,5">
+                                    <Label Content="" Width="100"></Label>
+                                  <CheckBox x:Name="chkAutomaticResultPostFancy" Content="Automatic Result Post Fancy" FontSize="20" VerticalContentAlignment="Center"></CheckBox>
+                                </TextBlock>
+                                <TextBlock Padding="0,5,0,0">
+                                      <Label Content="" Width="100"></Label>
+                                    <Button Content="Update" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_14"></Button>
+
+                                </TextBlock>
+                            </StackPanel>
+                        </TabItem>
+                        <TabItem Header="Update Results" Loaded="TabItem_Loaded_1">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel Margin="0,5,0,0">
+                                    <Label Content="Load Markets From User Bets" FontSize="18" HorizontalContentAlignment="Center"></Label>
+                                    <TextBlock>
+                    <Label Content="From"   FontSize="12" FontWeight="Medium" Width="65"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpFromBets"
+
+            VerticalAlignment="Top" Width="115" />
+                                          <Label Content="To"   FontSize="12" FontWeight="Medium"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpToBets"
+
+            VerticalAlignment="Top" Width="115" />
+                                         <Button Content="Load" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_15"></Button>
+                                    </TextBlock>
+                                    <TextBlock>
+
+                                    </TextBlock>
+                                    <TextBlock Margin="0,0,0,5">
+                                    <Label Content="Markets" Width="65"></Label>
+                                    <ComboBox x:Name="cmbMarketsbyBets" Width="415" FontSize="20" SelectedIndex="0"></ComboBox>
+                                    </TextBlock>
+                                    <TextBlock>
+                                         <Label Content="Customers">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbCustomersForUpdateResultsBets" Width="214" SelectedIndex="0" ></ComboBox>
+                                    </TextBlock>
+
+                                    <TextBlock Padding="0,5,0,0">
+                                      <Label Content="" Width="65"></Label>
+                                    <Button Content="UnPost Results" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_17"></Button>
+                                         <Button Content="Update Bets Status" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_18"></Button>
+
+                                    </TextBlock>
+
+
+                                </StackPanel>
+                                <StackPanel Margin="20,5,0,0">
+                                    <Label Content="Load Markets From UserAccounts" FontSize="18" HorizontalContentAlignment="Center" Margin="0"></Label>
+                                    <TextBlock>
+                    <Label Content="From"   FontSize="12" FontWeight="Medium" Width="66.383"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpFromAccounts"
+
+            VerticalAlignment="Top" Width="115" />
+                                          <Label Content="To"   FontSize="12" FontWeight="Medium"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpToAccounts"
+
+            VerticalAlignment="Top" Width="115" />
+                                         <Button Content="Load" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_16"></Button>
+                                    </TextBlock>
+                                    <TextBlock>
+
+                                    </TextBlock>
+                                    <TextBlock Margin="0,0,0,5">
+                                    <Label Content="Markets" Width="65"></Label>
+                                    <ComboBox x:Name="cmbMarketsbyAccounts" Width="540" FontSize="20" SelectedIndex="0"></ComboBox>
+                                    </TextBlock>
+                                    <TextBlock>
+                                         <Label Content="Customers">
+                                          
+                                        </Label>
+                                          <ComboBox x:Name="cmbCustomersForUpdateResultsAccounts" Width="214" SelectedIndex="0" ></ComboBox>
+                                    </TextBlock>
+                                    <TextBlock Padding="0,5,0,0">
+                                      <Label Content="" Width="65"></Label>
+                                    <Button Content="UnPost Results" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_19" ></Button>
+                                        <Button Content="Update Bets Status" Padding="10" Width="150" Height="30" FontSize="16" Click="Button_Click_20"></Button>
+
+                                    </TextBlock>
+
+
+                                </StackPanel>
+                            </StackPanel>
+
+                        </TabItem>
+                    </TabControl>
+                </TabItem>
+                <TabItem Header="Balance Sheet" Loaded="TabItem_Loaded">
+                    <StackPanel>
+                        <TextBlock FontSize="14"><InlineUIContainer>
+                                <Label Content="Users" x:Name="lblBalanceSheet"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <ComboBox x:Name="cmbUsersforBalanceSheet" Width="217" Height="26.19"/>
+                                       
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                       
+                                <Button Content="Load" x:Name="btnLoadBalanceSheet" Width="100" Height="30" Click="btnLoadBalanceSheet_Click"/>
+                            </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                <Button Content="Export to PDF" Width="100" Height="30" Click="Button_Click"/>
+                            </InlineUIContainer></TextBlock>
+                        <TextBlock Margin="0,5,0,0">
+                            <DataGrid x:Name="DGVPlusCustomers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="515" Width="445" MouseLeftButtonUp="DGVPlusCustomers_MouseLeftButtonUp" HorizontalScrollBarVisibility="Visible" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False">
+                                        <DataGrid.Columns>
+
+                                          
+
+                                            <DataGridTemplateColumn Width="*" Header="Customer" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Plus" MinWidth="120">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Profit}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="DarkGreen" ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Starting Balance" MinWidth="120">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding StartingBalance}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                              <DataGrid x:Name="dgvMinusCustomers" AutoGenerateColumns="False"  SelectionMode="Single" HeadersVisibility="Column" Height="515" Width="445" MouseLeftButtonUp="dgvMinusCustomers_MouseLeftButtonUp" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserSortColumns="False" CanUserDeleteRows="False" CanUserAddRows="False">
+                                        <DataGrid.Columns>
+
+                                          
+
+                                            <DataGridTemplateColumn Width="*" Header="Customer" MinWidth="100">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Username}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Minus" MinWidth="120">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding Loss}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2" Foreground="Red" ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+                                            <DataGridTemplateColumn Width="100" Header="Starting Balance" MinWidth="120">
+                                                <DataGridTemplateColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding StartingBalance}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="2"  ></TextBlock>
+                                                    </DataTemplate>
+                                                </DataGridTemplateColumn.CellTemplate>
+                                            </DataGridTemplateColumn>
+
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                        </TextBlock>
+                        <TextBlock>
+                            <Label Content="Total" Width="262" HorizontalContentAlignment="Right">
+                                
+                            </Label>
+                            <TextBox x:Name="txtTotalPlus" Foreground="Green" Width="177" FontSize="16" FontWeight="Bold"></TextBox>
+                             <Label Content="Total" Width="262" HorizontalContentAlignment="Right">
+                                
+                            </Label>
+                            <TextBox x:Name="txtTotalMinus" Foreground="Red" Width="177" FontSize="16" FontWeight="Bold"></TextBox>
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
+                <TabItem Header="Cash Received/Paid">
+                    <StackPanel HorizontalAlignment="Left">
+                        <TextBlock>
+                    <Label Content="From"  FontSize="12" FontWeight="Medium" Width="40"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpFromCash"
+
+            VerticalAlignment="Top" Width="115" />
+                     
+                        </TextBlock>
+                        <TextBlock>
+                    <Label Content="To"   FontSize="12" FontWeight="Medium" Width="40"></Label>
+                   <DatePicker Height="25" HorizontalAlignment="Left"  Name="dtpToCash"
+
+            VerticalAlignment="Top" Width="115" />
+                     <Button Content="Load" Width="80"  Margin="0" Click="btnGetDatabyCashRecieved_Click" FontWeight="Bold" FontSize="16" Height="27.154"></Button>
+                        </TextBlock>
+                        
+                        <TextBlock Margin="0,5,0,0">
+                            <Label Content="Total Cash Received" Width="158" HorizontalContentAlignment="Right" FontSize="16">
+                                
+                            </Label>
+                            <TextBox x:Name="txtTotalCashReceived" Foreground="Green" Width="228" FontSize="25" FontWeight="Bold"/>
+                             <Label Content="Total Cash Paid" Width="130" HorizontalContentAlignment="Right" FontSize="16">
+                                
+                            </Label>
+                            <TextBox x:Name="txtTotalCashPaid" Foreground="Red" Width="228" FontSize="25" FontWeight="Bold"></TextBox>
+                        </TextBlock>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,176 @@
+﻿<Window x:Class="globaltraders.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:globaltraders"
+         xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
+         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        
+        mc:Ignorable="d"
+        Title="Global Trader" Height="700" Width="285"  Foreground="White" Background="#FF243875" Opacity="0.9"  Loaded="Window_Loaded" WindowStyle="None"  ResizeMode="CanMinimize" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Trebuchet MS" Closing="Window_Closing" x:Name="mainwindow" Unloaded="mainwindow_Unloaded" BorderBrush="Black" BorderThickness="1,1,1,1">
+    <Window.Resources>
+        <Storyboard x:Key="OnMouseLeftButtonDown1"/>
+        <Storyboard x:Key="OnMouseLeftButtonUp1"/>
+    </Window.Resources>
+    <Window.BindingGroup>
+        <BindingGroup/>
+    </Window.BindingGroup>
+    <Grid Margin="5,5,5,0">
+        <wpfTool:BusyIndicator  x:Name="bsyindicator" DisplayAfter="0" Foreground="Black" IsBusy="False"  >
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel  x:Name="pnlEvents" Width="270">
+
+
+                    <Border BorderThickness="0,0,0,0" BorderBrush="Black" Width="270" x:Name="pnlEventsBorder" >
+                        <StackPanel Margin="2,5,-2,5">
+                            <StackPanel Background="#E6E7E8" Margin="0,-5,0,10" Orientation="Horizontal"  >
+                                <TextBlock Width="209" Height="35" HorizontalAlignment="Left" Padding="0" MouseDown="mainwindow_MouseLeftButtonDown" Margin="5,5,0,5"><Run Text=" "/><InlineUIContainer>                                                                                                             
+                                    </InlineUIContainer><InlineUIContainer>                                   
+                                        <TextBlock Width="130" ><InlineUIContainer >
+                                                <Image gif:ImageBehavior.AnimatedSource="globaltraderblue.gif"  Width="101.383" Height="30"/>
+                                            </InlineUIContainer></TextBlock>
+                                    </InlineUIContainer></TextBlock>
+                                <StackPanel>
+                                    <TextBlock  FontSize="24" Padding="0,0,0,0" VerticalAlignment="Top">                                   
+                             <TextBlock Text="_" FontSize="26" Foreground="Black" Margin="20,-19,0,0" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="15" TextAlignment="Center"  Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" ></TextBlock>                          
+                             <TextBlock Text="x" FontSize="20"    Foreground="Red" Margin="-3,-10,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" TextAlignment="Center" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp_1" ></TextBlock>                           
+                        </TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <Button x:Name="btnInPlayEvents" HorizontalContentAlignment="center"  HorizontalAlignment="Center" Width="268" Margin="0,0,0,5" Click="btnInPlayEvents_Click" >
+                                <TextBlock x:Name="tbInPlayEvents" FontSize="18" Margin="0,2,0,2" Background="#E6E7E8" Foreground="Black"  Cursor="Hand" Width="263"><InlineUIContainer>                  
+                                            <Label x:Name="plusminusInPlay" Foreground="Black" Content="+"/>
+                                        </InlineUIContainer><Run Text=" "/><InlineUIContainer>
+                                            <Label Foreground="Black" FontSize="18" FontFamily="Calibri" Padding="3" Content="InPlay Events" />
+                                        </InlineUIContainer></TextBlock>
+
+
+
+                            </Button>
+                            <StackPanel x:Name="stkpnlInPlayEvents"   MaxHeight="500">
+
+                            </StackPanel>
+
+                            <Button x:Name="btnAllSports" HorizontalContentAlignment="Left"  HorizontalAlignment="Center" Width="268" Margin="0,0,0,5" Click="btnAllSports_Click" >
+                                <Button.Content>
+
+                                    <TextBlock FontSize="18" Margin="0,2,0,2" Background="#E6E7E8" Foreground="White" Cursor="Hand" Width="263">
+                   
+                    <Label x:Name="plusminusAllSports" Foreground="Black">+</Label>
+                     <Label Foreground="Black" FontSize="18" FontFamily="Calibri" >Sports</Label>
+                                    </TextBlock>
+                                </Button.Content>
+                            </Button>
+                            <StackPanel x:Name="stkpnlSports" MaxHeight="500">
+
+                            </StackPanel>
+                            <Button HorizontalContentAlignment="Left"  HorizontalAlignment="Center" Width="268" Margin="0,0,0,3" Click="Button_Click" >
+                                <Button.Content>
+
+                                    <TextBlock  FontSize="18" Margin="2,2,2,2" Background="#E6E7E8" Foreground="White" Cursor="Hand" Width="268">
+                   
+                    <Label x:Name="plusminusHorseRace" Foreground="Black">+</Label>
+                                   
+                    
+                                        <Label Foreground="Black" FontSize="18" FontFamily="Calibri" Content="HORSE RACING" />
+                           <Image x:Name="stkpnlLoaderHorse" gif:ImageBehavior.RepeatBehavior="Forever"
+           gif:ImageBehavior.AnimatedSource="3.gif" Panel.ZIndex="10" Visibility="Collapsed" Height="30" Margin="0,0,0,0" />
+
+                                    </TextBlock>
+                                </Button.Content>
+                            </Button>
+                            <StackPanel x:Name="stkpnlHorseRace" MaxHeight="200" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+
+                            </StackPanel>
+
+                            <Button HorizontalContentAlignment="Left"  HorizontalAlignment="Center" Width="268" Margin="0,2,0,3" Click="Button_Click_2" >
+                                <Button.Content>
+
+                                    <TextBlock FontSize="18" Margin="2,2,2,2" Background="#E6E7E8" Foreground="Black" Cursor="Hand" Width="268">
+                   
+                    <Label x:Name="plusminusGrayhound" Foreground="Black">+</Label>
+                                      
+                     <InlineUIContainer>
+                                        <Label Foreground="Black" FontSize="18" FontFamily="Calibri" Content="GREYHOUND RACING" />
+                                    </InlineUIContainer>
+                                    </TextBlock>
+                                </Button.Content>
+                            </Button>
+                            <StackPanel x:Name="stkpnlGreyHoundRace" MaxHeight="500">
+
+                            </StackPanel>
+
+                            <Button x:Name="btnLiabalites" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" Margin="0,2,0,3" Click="btnLiabalites_Click" >
+                                <Button.Content>
+
+                                    <TextBlock x:Name="tbLiabaliteies" FontSize="18" Margin="2,2,2,2" Background="#E6E7E8" Foreground="White" Cursor="Hand" Width="269">
+                   
+                    <Label x:Name="plusminusLiabaliteies" Foreground="Black">+</Label>
+                     <Label Foreground="Black" FontSize="18" FontFamily="Calibri">Liabalities</Label>
+                                    </TextBlock>
+                                </Button.Content>
+                            </Button>
+                            <StackPanel  x:Name="pnlBets" Width="270" HorizontalAlignment="Left" Visibility="Collapsed">
+                                <Border BorderThickness="0,0,0,0" BorderBrush="#850959"  >
+
+                                    <StackPanel>
+
+                                        <TabControl  x:Name="tbctrlLiabalities" Background="Transparent">
+                                            <TabItem Header="Markets">
+                                                <StackPanel>
+                                                    <DataGrid x:Name="DGVMarketOpenbyUser" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" RowDetailsVisibilityMode="Collapsed"  GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#000" VerticalGridLinesBrush="Black" MouseLeftButtonUp="DGVMarketOpenbyUser_MouseLeftButtonUp">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Visibility="Hidden" Binding="{Binding ID}"></DataGridTextColumn>
+                                                            <DataGridTemplateColumn Header="Market Name">
+                                                                <DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock  Text="{Binding Name}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="5" ></TextBlock>
+
+                                                                    </DataTemplate>
+                                                                </DataGridTemplateColumn.CellTemplate>
+                                                            </DataGridTemplateColumn>
+
+
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </TabItem>
+                                            <TabItem Header="Liabalities" FontSize="14" Padding="6,2">
+                                                <StackPanel>
+                                                    <Button Content="Refresh" x:Name="btnRefreshLiabalites" Width="150" Height="30" FontSize="16" Click="btnRefreshLiabalites_Click" Margin="0,5"></Button>
+                                                    <DataGrid x:Name="DGVLiabalites" AutoGenerateColumns="False" IsReadOnly="True" HeadersVisibility="Column" RowDetailsVisibilityMode="Collapsed" MouseLeftButtonUp="DGVLiabalites_MouseLeftButtonUp" GridLinesVisibility="Horizontal" HorizontalGridLinesBrush="#ccc">
+                                                        <DataGrid.Columns>
+                                                            <DataGridTextColumn Visibility="Hidden" Binding="{Binding MarketBookID}"></DataGridTextColumn>
+                                                            <DataGridTemplateColumn Header="Market" Width="*">
+                                                                <DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock  Text="{Binding MarketBookName}" HorizontalAlignment="Left" TextAlignment="Left" VerticalAlignment="Center" Padding="5" TextWrapping="Wrap" ></TextBlock>
+
+                                                                    </DataTemplate>
+                                                                </DataGridTemplateColumn.CellTemplate>
+                                                            </DataGridTemplateColumn>
+
+                                                            <DataGridTemplateColumn Width="100" Header="Liabality">
+                                                                <DataGridTemplateColumn.CellTemplate>
+                                                                    <DataTemplate>
+                                                                        <TextBlock Width="95" Text="{Binding Liabality}" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="Red" Padding="5" ></TextBlock>
+                                                                    </DataTemplate>
+                                                                </DataGridTemplateColumn.CellTemplate>
+                                                            </DataGridTemplateColumn>
+                                                        </DataGrid.Columns>
+                                                    </DataGrid>
+                                                </StackPanel>
+                                            </TabItem>
+                                        </TabControl>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            <TextBlock Text="Some Amounts are to be received Today" Width="300" x:Name="lblShowPaymentPending" TextWrapping="Wrap" FontSize="18" Foreground="Red" TextAlignment="Center" Margin="0,10,0,0" Cursor="Hand" MouseLeftButtonUp="lblShowPaymentPending_MouseLeftButtonUp" Visibility="Collapsed" ></TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </wpfTool:BusyIndicator>
+    </Grid>
+</Window>
