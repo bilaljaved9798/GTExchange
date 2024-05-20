@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AppForBackGroundTasks</RootNamespace>
     <AssemblyName>AppForBackGroundTasks</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -151,6 +154,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
@@ -171,6 +175,12 @@
     </None>
     <None Include="Service References\AccountsServiceReference\AccountsService2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountsServiceReference\AppForBackGroundTasks.AccountsServiceReference.SP_UserAccounts_GetDatabyCashRecivedorPaidandDateRange_Result3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AccountsServiceReference\AppForBackGroundTasks.AccountsServiceReference.SP_UserAccounts_GetDatabyUserIDandDateRangeandEventType_Result3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\AccountsServiceReference\AppForBackGroundTasks.AccountsServiceReference.SP_UserAccounts_GetDistinctEventTypes_Result.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -231,6 +241,9 @@
     <None Include="Service References\BettingServiceHorseWinReference\BettingServiceHorseWin1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\BettingServiceReference\AppForBackGroundTasks.BettingServiceReference.MarketCatalogue3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\BettingServiceReference\BettingService.wsdl" />
     <None Include="Service References\BettingServiceReference\BettingService.xsd">
       <SubType>Designer</SubType>
@@ -267,6 +280,9 @@
     </None>
     <None Include="Service References\BettingServiceWinnerReference\BettingServiceWinner1.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\UserServicesReference\AppForBackGroundTasks.UserServicesReference.SP_Users_GetCommissionAccountIDandBookAccountID_Result3.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\UserServicesReference\UserServices.wsdl" />
     <None Include="Service References\UserServicesReference\UserServices.xsd">
