@@ -7,22 +7,25 @@
         xmlns:local="clr-namespace:globaltraders"
          xmlns:wpfTool="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Login" Height="400" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" FontSize="17" FontFamily="Times New Roman" AutomationProperties.IsRowHeader="True" Background="White" Loaded="Window_Loaded" BorderThickness="1" BorderBrush="#FF243875" >
+      
+        Title="Welcome"  Height="550" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Loaded="Window_Loaded" >
+  
+    
+    
     <Window.Resources>
+        
+        
         <Style TargetType="{x:Type PasswordBox}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
-                        <Border Name="MainBorder"
-                     Background="{TemplateBinding Background}"
-                     BorderBrush="{TemplateBinding BorderBrush}"
-                     BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Name="MainBorder" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
                                 <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" Margin="1" />
                                 <TextBlock x:Name="PlaceHolder"
-                                Text="{TemplateBinding local:PlaceHolderHelper.PlaceHolderText}"
-                                Foreground="#FF243875" IsHitTestVisible="False"
-                                HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                             Text="{TemplateBinding local:PlaceHolderHelper.PlaceHolderText}"
+                             Foreground="#FF243875" IsHitTestVisible="False"
+                             HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0"/>
                             </Grid>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -34,120 +37,238 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
-        <SolidColorBrush x:Key="brushWatermarkForeground" Color="#FF243875" />
-        <SolidColorBrush x:Key="brushWatermarkBorder" Color="#FF243875" />
-
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
-
-
-        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="20,0" />
-        </Style>
-
     </Window.Resources>
-    <Grid Margin="0,0,0,0" >
 
-        <wpfTool:BusyIndicator x:Name="bsyindicator"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,10,0" Width="330" Panel.ZIndex="1205" VerticalAlignment="Center" VerticalContentAlignment="Center" BusyContent="Please wait ......">
-            <wpfTool:BusyIndicator.BusyContentTemplate>
-                <DataTemplate>
-                    <StackPanel Margin="5">
-                        <Image gif:ImageBehavior.AnimatedSource="ajax-loader.gif" Width="100" Height="100" />
-                    </StackPanel>
-                </DataTemplate>
-            </wpfTool:BusyIndicator.BusyContentTemplate>
-            <wpfTool:BusyIndicator.OverlayStyle>
-                <Style TargetType="Rectangle">
-                    <Setter Property="Fill" Value="#00FDFDFD"/>
-                </Style>
-            </wpfTool:BusyIndicator.OverlayStyle>
-            <wpfTool:BusyIndicator.ProgressBarStyle>
-                <Style TargetType="ProgressBar">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                </Style>
-            </wpfTool:BusyIndicator.ProgressBarStyle>
-        </wpfTool:BusyIndicator>
+    <Border CornerRadius="12">
+        <Border.Background>
+            <ImageBrush ImageSource="/Free_Sample_By_Wix.jpg" 
+                        Stretch="Fill"/>
+        </Border.Background>
+        <Border CornerRadius="0"                    
+            BorderThickness="2"
+            Opacity="0.95">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#462AD8" Offset="0"/>
+                    <GradientStop Color="#DA34AE" Offset="0.75"/>
+                    <GradientStop Color="#8A16C1" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                    <GradientStop Color="#282b38" Offset="0"/>
+                    <GradientStop Color="#1B1448" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text=""
+                               Foreground="DarkGray"
+                               FontSize="10"
+                               FontFamily="Montserrat"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+                    <Button x:Name="btnMinimize"                           
+                            BorderThickness="0"
+                            Content="-"
+                            Foreground="White"
+                            FontSize="16"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="1"
+                            >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#28AEED"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#278BEF"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <Button x:Name="btnClose"                          
+                            BorderThickness="0"
+                            Content="X"
+                            Foreground="White"
+                            FontSize="12"
+                            FontFamily="Montserrat"
+                            Cursor="Hand"
+                            Grid.Column="2"
+                            Click="button1_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#DA34AE"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#C62DAE"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </Grid>
 
-
-        <StackPanel Background="#8cded2" Orientation="Horizontal" VerticalAlignment="Top" >
-            <TextBlock  FontSize="24" Width="500" Margin="0,5" >
+                <StackPanel Width="220"
+                            Grid.Row="1"
+                            Orientation="Vertical"
+                            Margin="0,35,0,0">
+                    <TextBlock Text="GT"
+                               FontSize="70"
+                                FontWeight="Medium"
+                               FontFamily="georgian"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
                                
-                            <TextBlock x:Name="txtMarketHeading" Width="230" Padding="15,0,0,0" FontSize="20" Foreground="Black" FontFamily="Times New Roman" TextAlignment="Left" Margin="2,-3,0,0">
-                                <Image gif:ImageBehavior.AnimatedSource="GT-LOGO .png"  Width="193" Height="49"/> 
-                            </TextBlock>
-                  
-                           
-                          
-                          
-                             <Button x:Name="button1" Content="X" Margin="170,-50,0,0" VerticalAlignment="Top" HorizontalAlignment="Right"  FontFamily="Times New Roman" Width="28.87" Click="button1_Click" Background="{x:Null}" RenderTransformOrigin="-0.316,0.634" Foreground="Red"/>
-           
-                       
-                            </TextBlock>
+                         />
+                    <TextBlock Text="Global Tradar"
+                               Foreground="White"
+                               FontSize="25"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text=""
+                               Foreground="LightGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Margin="0,5,0,0"/>
+                    <TextBlock Text="Username"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"                             
+                               Margin="0,35,0,0"/>
+                    <TextBox x:Name="txtUsername"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                        <TextBox.Background>
+                            <ImageBrush ImageSource="/icons-user.png"
+                                        Stretch="None"
+                                        AlignmentX="Left"/>
+                        </TextBox.Background>
+                    </TextBox>
+                    <TextBlock Text="Password"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"                             
+                               Margin="0,15,0,0"/>
+                    <PasswordBox x:Name="txtPassword"
+                             FontSize="13"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"                            
+                             Foreground="White"
+                             CaretBrush="LightGray"
+                             BorderBrush="DarkGray"
+                             BorderThickness="0,0,0,2"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             Margin="0,5,0,0"
+                             Padding="20,0,0,0">
+                        <PasswordBox.Background>
+                            <ImageBrush ImageSource="/icons-lock.png"
+                                        Stretch="None"                                       
+                                        AlignmentX="Left"/>
+                        </PasswordBox.Background>
+                    </PasswordBox>
+                    <Button x:Name="button"  BorderThickness="0" Content="LOG IN" Foreground="White" FontSize="12" FontFamily="Montserrat" Cursor="Hand" Margin="0,50,0,0" Click="button_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" Width="150" Height="40" CornerRadius="20" Background="{TemplateBinding Background}">
+                                    <Grid>
+                                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        <Image x:Name="spinner" Source="ajax-loader.gif" Visibility="Collapsed"/>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter TargetName="border" Property="Background" Value="#28AEED"/>
+                                        <Setter TargetName="spinner" Property="Visibility" Value="Visible"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
 
 
-
-        </StackPanel>
-        <StackPanel x:Name="stkpnlmaincontent" HorizontalAlignment="Center" Margin="35,55,35,37"   Visibility="Visible" Width="428">
-            <StackPanel HorizontalAlignment="Center">
-
-
-                <TextBlock x:Name="lblError" Text="Unable to login.&#x0a; Please verify username or password." HorizontalAlignment="Center" FontSize="14" FontWeight="Light" Margin="0,0,0,10" Width="292.68" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FFF30808" Visibility="Hidden"/>
-                <TextBlock Text="Please enter your login name and password" HorizontalAlignment="Center" FontSize="14" FontStyle="Italic" FontWeight="Light" Margin="0,0,0,10"></TextBlock>
-
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Center">
-                <Grid Grid.Row="0"  Style="{StaticResource EntryFieldStyle}" Background="White" >
-                    <TextBlock Margin="5,2" Text="Username" Foreground="{StaticResource brushWatermarkForeground}"
-                       Visibility="{Binding ElementName=txtUsername,  Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" TextAlignment="Center" VerticalAlignment="Center" Background="White" />
-
-                    <TextBox x:Name="txtUsername" TextWrapping="Wrap" FontStyle="Normal" FontWeight="Black" Text="" Width="350" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,5" Height="40" HorizontalContentAlignment="Center"   VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"/>
-                </Grid>
-                <Grid Grid.Row="1" Background="White"  Style="{StaticResource EntryFieldStyle}" Margin="20,10,20,0" >
-
-                    <PasswordBox x:Name="txtPassword"  Width="350" HorizontalAlignment="Center"  Padding="0,5" Height="40" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="0,0,0,0"  />
-                </Grid>
-
-
-
-            </StackPanel>
-            <!--Background="#FF243875"-->
-            <StackPanel>
-
-                <StackPanel Width="350" Height="40" Margin="0,20,0,0">
-                    <Border 
-  x:Name="TopAndLeft" 
-  BorderThickness="3,3,0,0" 
-  BorderBrush="{x:Static SystemColors.ControlLightBrush}">
-                        <Border 
-  x:Name="BottomAndRight" 
-  BorderThickness="0,0,3,3" 
-  BorderBrush="{x:Static SystemColors.ControlDarkBrush}">
-
-
-                            <Button x:Name="button" Content="LOGIN" Width="350"  Foreground="Black" Margin="0,0,0,0" Height="40" FontSize="25" FontWeight="Bold" Background="#8cded2" Click="button_Click" IsDefault="True" ></Button>
-                        </Border>
-                    </Border>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="0,15,0,0">
+                        <TextBlock Text="Forgot Password?"
+                               Foreground="DarkGray"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"/>
+                        <TextBlock Text="Reset"
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium"
+                               FontFamily="Montserrat"
+                               Cursor="Hand"
+                               Margin="8,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock x:Name="lblError" Text="Unable to login.&#x0a; Please verify username or password." HorizontalAlignment="Center" FontSize="14" FontWeight="Light" Margin="0,0,0,10" Width="292.68" TextWrapping="Wrap" VerticalAlignment="Center" TextAlignment="Center" Foreground="#FFF30808" Visibility="Hidden"/>
+                        <TextBlock Text="Please enter your login name and password" HorizontalAlignment="Center" FontSize="14" FontStyle="Italic" FontWeight="Light" Margin="0,0,0,10"></TextBlock>
+                    </StackPanel>
                 </StackPanel>
-                <CheckBox x:Name="checkBox" Content="Remember Username ?"  Width="250"  Margin="0,10,0,0" IsChecked="True" FontSize="14"/>
-            </StackPanel>
+            </Grid>
+        </Border>
 
-            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0">
-                <Label x:Name="lblFooter1" Content="Powered By" FontSize="14" Width="85" Height="42" ></Label>
-                <Image Source="betfair-logo.png" Height="50" Cursor="Hand" />
-            </TextBlock>
-
-
-
-
-        </StackPanel>
-        <StackPanel VerticalAlignment="Bottom">
-            <Label x:Name="lblFooter" Content="Global Traders @ 2021" Background="#FFF7F7F7" FontSize="10" Padding="5,10"></Label>
-        </StackPanel>
-        <MediaElement x:Name="MediaPlayer" MediaEnded="MediaPlayer_MediaEnded" UnloadedBehavior="Manual" HorizontalAlignment="Left" Margin="57,108,0,190" Width="233" Source="Loader.gif" Panel.ZIndex="10" Stretch="Fill" Visibility="Collapsed" />
-        <Image x:Name="stkpnlLoader" gif:ImageBehavior.RepeatBehavior="Forever"
-           gif:ImageBehavior.AnimatedSource="Loader.gif" Height="368.962" Panel.ZIndex="10" Visibility="Collapsed" />
-    </Grid>
+    </Border>
+   
 </Window>

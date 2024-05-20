@@ -8,7 +8,7 @@
          xmlns:gif="http://wpfanimatedgif.codeplex.com"
         
         mc:Ignorable="d"
-        Title="Global Trader" Height="700" Width="285"  Foreground="White" Background="#E6E7E8"   Loaded="Window_Loaded" WindowStyle="None"  ResizeMode="CanMinimize" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Trebuchet MS" Closing="Window_Closing" x:Name="mainwindow" Unloaded="mainwindow_Unloaded" BorderBrush="Black" BorderThickness="1,1,1,1">
+        Title="Global Trader" Height="700" Width="285"  Foreground="White" Background="#FF243875" Opacity="0.9"  Loaded="Window_Loaded" WindowStyle="None"  ResizeMode="CanMinimize" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Trebuchet MS" Closing="Window_Closing" x:Name="mainwindow" Unloaded="mainwindow_Unloaded" BorderBrush="Black" BorderThickness="1,1,1,1">
     <Window.Resources>
         <Storyboard x:Key="OnMouseLeftButtonDown1"/>
         <Storyboard x:Key="OnMouseLeftButtonUp1"/>
@@ -18,52 +18,39 @@
     </Window.BindingGroup>
     <Grid Margin="5,5,5,0">
         <wpfTool:BusyIndicator  x:Name="bsyindicator" DisplayAfter="0" Foreground="Black" IsBusy="False"  >
-
-
             <StackPanel Orientation="Horizontal" >
-
                 <StackPanel  x:Name="pnlEvents" Width="270">
+                    
+                    
                     <Border BorderThickness="0,0,0,0" BorderBrush="Black" Width="270" x:Name="pnlEventsBorder" >
                         <StackPanel Margin="2,5,-2,5">
-
-
                             <StackPanel Background="#E6E7E8" Margin="0,-5,0,10" Orientation="Horizontal"  >
-                                <TextBlock Width="209" Height="35" HorizontalAlignment="Left" Padding="0" MouseDown="mainwindow_MouseLeftButtonDown" Margin="5,5,0,5"><!--<Image gif:ImageBehavior.AnimatedSource="globaltraderwhite.gif" Width="100" Height="30" />--><Run Text=" "/><InlineUIContainer>
-                                    
-                                        
-                                    
-                                    </InlineUIContainer><InlineUIContainer>
-                                    
+                                <TextBlock Width="209" Height="35" HorizontalAlignment="Left" Padding="0" MouseDown="mainwindow_MouseLeftButtonDown" Margin="5,5,0,5"><Run Text=" "/><InlineUIContainer>                                                                                                             
+                                    </InlineUIContainer><InlineUIContainer>                                   
                                         <TextBlock Width="130" ><InlineUIContainer >
-
                                                 <Image gif:ImageBehavior.AnimatedSource="globaltraderblue.gif"  Width="101.383" Height="30"/>
                                             </InlineUIContainer></TextBlock>
                                     </InlineUIContainer></TextBlock>
                                 <StackPanel>
-                                    <TextBlock  FontSize="24" Padding="0,0,0,0" VerticalAlignment="Top">
-                                   
-                             <TextBlock Text="_" FontSize="26" Foreground="Black" Margin="20,-19,0,0" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="15" TextAlignment="Center"  Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" ></TextBlock>
-                           
-                             <TextBlock Text="x" FontSize="20"    Foreground="Red" Margin="-3,-10,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" TextAlignment="Center" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp_1" ></TextBlock>
-                           
+                                    <TextBlock  FontSize="24" Padding="0,0,0,0" VerticalAlignment="Top">                                   
+                             <TextBlock Text="_" FontSize="26" Foreground="Black" Margin="20,-19,0,0" VerticalAlignment="Center"  HorizontalAlignment="Center" Width="15" TextAlignment="Center"  Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" ></TextBlock>                          
+                             <TextBlock Text="x" FontSize="20"    Foreground="Red" Margin="-3,-10,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15" TextAlignment="Center" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp_1" ></TextBlock>                           
                         </TextBlock>
                                 </StackPanel>
-
-
                             </StackPanel>
-                            
-                           
                             <Button x:Name="btnInPlayEvents" HorizontalContentAlignment="center"  HorizontalAlignment="Center" Width="268" Margin="0,0,0,5" Click="btnInPlayEvents_Click" >
-                                <TextBlock x:Name="tbInPlayEvents" FontSize="18" Margin="0,2,0,2" Background="#E6E7E8" Foreground="Black"  Cursor="Hand" Width="263"><InlineUIContainer>
-                   
+                                <TextBlock x:Name="tbInPlayEvents" FontSize="18" Margin="0,2,0,2" Background="#E6E7E8" Foreground="Black"  Cursor="Hand" Width="263"><InlineUIContainer>                  
                                             <Label x:Name="plusminusInPlay" Foreground="Black" Content="+"/>
                                         </InlineUIContainer><Run Text=" "/><InlineUIContainer>
                                             <Label Foreground="Black" FontSize="18" FontFamily="Calibri" Padding="3" Content="InPlay Events" />
                                         </InlineUIContainer></TextBlock>
+                                
+                                
+                                
                             </Button>
                             <StackPanel x:Name="stkpnlInPlayEvents"   MaxHeight="500">
-                               
-                                </StackPanel>
+
+                            </StackPanel>
 
                             <Button x:Name="btnAllSports" HorizontalContentAlignment="Left"  HorizontalAlignment="Center" Width="268" Margin="0,0,0,5" Click="btnAllSports_Click" >
                                 <Button.Content>
@@ -94,7 +81,7 @@
                                 </Button.Content>
                             </Button>
                             <StackPanel x:Name="stkpnlHorseRace" MaxHeight="200" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
-                               
+
                             </StackPanel>
 
                             <Button HorizontalContentAlignment="Left"  HorizontalAlignment="Center" Width="268" Margin="0,2,0,3" Click="Button_Click_2" >
@@ -113,7 +100,7 @@
                             <StackPanel x:Name="stkpnlGreyHoundRace" MaxHeight="500">
 
                             </StackPanel>
-                           
+
                             <Button x:Name="btnLiabalites" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" Margin="0,2,0,3" Click="btnLiabalites_Click" >
                                 <Button.Content>
 
@@ -175,20 +162,14 @@
                                                     </DataGrid>
                                                 </StackPanel>
                                             </TabItem>
-
-
                                         </TabControl>
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
                             <TextBlock Text="Some Amounts are to be received Today" Width="300" x:Name="lblShowPaymentPending" TextWrapping="Wrap" FontSize="18" Foreground="Red" TextAlignment="Center" Margin="0,10,0,0" Cursor="Hand" MouseLeftButtonUp="lblShowPaymentPending_MouseLeftButtonUp" Visibility="Collapsed" ></TextBlock>
-
-
                         </StackPanel>
                     </Border>
                 </StackPanel>
-
-          
             </StackPanel>
         </wpfTool:BusyIndicator>
     </Grid>
