@@ -131,43 +131,52 @@
 
         </local:DraggablePopup>
 
-        <local:DraggablePopup x:Name="popupProffitLossAgent"  Placement="Center" 
-		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
-		                     >
-            <Border  BorderBrush="#FF243890" BorderThickness="5"  Background="White">
-                <StackPanel Margin="5" >
+        <local:DraggablePopup x:Name="popupProffitLossAgent" Placement="Center"
+                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}">
+            <Border BorderBrush="#FF243890" BorderThickness="5" Background="White">
+                <StackPanel Margin="10">
+                    <Grid Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5">
-                        <StackPanel >
-                            <!--<ComboBox x:Name="cmbAgentsForProfitandLoss" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" SelectionChanged="cmbAgentsForProfitandLoss_SelectionChanged"></ComboBox>-->
-                            <Label Name="user" Visibility="Collapsed" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" ></Label>
-                            <!--<ComboBox x:Name="cmbRunnerForProfitandLoss1" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold"></ComboBox>-->
-                            <!--<Label Name="Runner0" Visibility="Collapsed"></Label>
-                            <Label Name="Runner0name" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold"></Label>
-                            <Label Name="Runner1" Visibility="Collapsed"></Label>
-                            <Label Name="Runner1name" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold"></Label>
-                            <Label Name="Runner2" Visibility="Collapsed"></Label>-->
-                            <Label Name="Runner2name" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold"></Label>
-                            <ComboBox x:Name="Runner0" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold"></ComboBox>
-                            <ComboBox x:Name="Runner1" Width="180" Height="25" FontSize="14" Margin="0,0,0,5" FontWeight="Bold"></ComboBox>
-                            <ComboBox x:Name="Runner2" Width="180" Height="25" FontSize="14"  FontWeight="Bold"></ComboBox>
+                        <!-- Runner Labels and ComboBoxes -->
+                        <Label Grid.Row="0" Grid.Column="0" Name="lblusername" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" />
+                        <Label Grid.Row="1" Grid.Column="0" Name="Runner2name" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold" />
+                        <ComboBox Grid.Row="2" Grid.Column="0" x:Name="Runner0" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold" />
+                        <ComboBox Grid.Row="3" Grid.Column="0" x:Name="Runner1" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold" />
+                        <ComboBox Grid.Row="4" Grid.Column="0" x:Name="Runner2" Width="180" Height="25" Margin="0,0,0,5" FontSize="14" FontWeight="Bold" />
 
-                        </StackPanel>
+                        <!-- Average Amount Labels -->
+                        <Label Grid.Row="2" Grid.Column="1" x:Name="txtAverageAmountbyAgnet1" BorderBrush="#010101" BorderThickness="1" Background="#ccc" Content="0.00" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,5" Height="25" />
+                        <Label Grid.Row="3" Grid.Column="1" x:Name="txtAverageAmountbyAgent2" BorderBrush="#010101" BorderThickness="1" Background="#ccc" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,0" Height="25" />
 
+                        <!-- Average by Agent Labels -->
+                        <Label Grid.Row="2" Grid.Column="2" x:Name="lblAveragebyAgent1" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,5" Height="25" HorizontalContentAlignment="Center" />
+                        <Label Grid.Row="3" Grid.Column="2" x:Name="lblAveragebyAgent2" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,0" Height="25" HorizontalContentAlignment="Center" />
 
-                        <StackPanel Width="130"  Margin="0,0,0,0" HorizontalAlignment="Right">
-                            <Button Content="X" Foreground="White" Background="Red" Margin="0,0,0,10" Height="19" Width="22.93" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Click="Button_Click_11"></Button>
-                            <Label x:Name="lblProfitorLossRunnerAgent1"  Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="0,0,0,5" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></Label>
-                            <Label x:Name="lblProfitandLossRunnerbyAgent2"   Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="0,0,0,5" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></Label>
-                            <Label x:Name="lblProfitandLossRunnerbyAgent3"   Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="0,0,0,0" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></Label>
-                        </StackPanel>
+                        <!-- Profit/Loss Labels -->
+                        <Label Grid.Row="2" Grid.Column="3" x:Name="lblProfitorLossRunnerAgent1" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,5" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                        <Label Grid.Row="3" Grid.Column="3" x:Name="lblProfitandLossRunnerbyAgent2" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,5" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                        <Label Grid.Row="4" Grid.Column="3" x:Name="lblProfitandLossRunnerbyAgent3" Content="" FontSize="18" FontWeight="Bold" Padding="5,0" Margin="5,0,0,0" Height="25" Width="130" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
 
-                    </StackPanel>
-
+                        <!-- Close Button -->
+                        <Button Grid.Row="0" Grid.Column="3" Content="X" Foreground="White" Background="Red" Margin="5,0,0,10" Height="19" Width="22.93" HorizontalContentAlignment="Center" VerticalAlignment="Top" Click="Button_Click_11" />
+                    </Grid>
                 </StackPanel>
             </Border>
-
         </local:DraggablePopup>
+
+
         <local:DraggablePopup x:Name="popupAllBets"  Placement="Center"
 		                      PlacementTarget="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
 		                     >
@@ -184,7 +193,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal"  >
 
-                            <DataGrid x:Name="DGVMatchedBetsAdminAll" AutoGenerateColumns="False" Margin="0" Height="350" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseDoubleClick" Width="600">
+                            <DataGrid x:Name="DGVMatchedBetsAdminAll" AutoGenerateColumns="False" Margin="0" Height="350" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp"  Width="600">
                                 <DataGrid.RowStyle>
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <Style.Triggers>
@@ -298,15 +307,15 @@
                         <!-- ContentPresenter here if you want to have content inside the Border -->
                     </Border>
                 </Border>
-                <Grid Grid.Row="0" Background="#010101" MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown">
+                <Grid Grid.Row="0" Background="#282b38" MouseLeftButtonDown="stkpnlmarketname_MouseLeftButtonDown" MouseDown="stkpnlmarketname_MouseDown">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="25"/>
                             <ColumnDefinition Width="25"/>
                             <ColumnDefinition Width="5"/>
                         </Grid.ColumnDefinitions>
-                    <TextBlock Text="UnMatched Bets" Foreground="Wheat" FontSize="10" FontFamily="Montserrat" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        <Label x:Name="lblUnMatchBetsCount"  Foreground="Wheat" Margin="20,0,0,3" Width="352" Content="0"/>
+                    <TextBlock Text="UnMatched Bets" Foreground="Wheat" FontSize="16" FontFamily="Montserrat" Grid.Column="0" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Label x:Name="lblUnMatchBetsCount" Margin="100,0,0,0" Foreground="Wheat"  Width="352" FontSize="16" Content="0"/>
                         <Button x:Name="btnMinimize" BorderThickness="0" Content="-" Foreground="White" FontSize="16" FontFamily="Montserrat" Cursor="Hand" Grid.Column="1" Click="btnMinimize_Click" >
                             <Button.Style>
                                 <Style TargetType="Button">
@@ -465,7 +474,7 @@
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
-                <TextBlock FontSize="16" Margin="5,5,5,5" Background="#010101">
+                <TextBlock FontSize="16" Margin="5,5,5,5" Background="#282b38">
                     <InlineUIContainer>                        
                     <Label  Foreground="Wheat" Margin="0,0,0,3" Content="Matched Bets" VerticalAlignment="Top"/>                    
                     </InlineUIContainer><Run Text=" "/><InlineUIContainer>                    
@@ -517,7 +526,7 @@
                     </InlineUIContainer></TextBlock>
 
                     <!--<DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="#FF666666" VerticalGridLinesBrush="#FF666666" MouseLeftButtonUp="DGVMatchedBetsAdmin_MouseLeftButtonUp" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5">-->
-                    <DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" MouseLeftButtonDown="DGVMatchedBetsAdmin_MouseDoubleClick"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" >
+                <DataGrid x:Name="DGVMatchedBetsAdmin" AutoGenerateColumns="False" Margin="5,5,5,5" Height="135" IsReadOnly="True" SelectionMode="Single" RowDetailsVisibilityMode="Collapsed" HeadersVisibility="Column" HorizontalGridLinesBrush="Black" VerticalGridLinesBrush="Black" MouseLeftButtonDown="DGVMatchedBetsAdmin_MouseLeftButtonUp"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible"  ItemsSource="{Binding}" ColumnHeaderStyle="{DynamicResource headerwithlines}" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" >
                         <DataGrid.RowStyle>
                             <Style TargetType="{x:Type DataGridRow}">
                                 <Style.Triggers>

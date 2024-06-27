@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ccb7c083-2626-4fde-906c-8f2cb0793017" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="ccb7c083-2626-4fde-906c-8f2cb0793017" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,14 +22,14 @@
     <MetadataSource Address="http://localhost:54524/Services/BettingService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BettingService.xsd" MetadataType="Schema" ID="02aba9d5-6b31-493b-b031-dff99b9ab720" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd1" />
-    <MetadataFile FileName="BettingService1.xsd" MetadataType="Schema" ID="8d13d38c-2eea-4f76-8e91-4054e755507b" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd5" />
     <MetadataFile FileName="BettingService2.xsd" MetadataType="Schema" ID="d07c38ca-aca8-4a63-9d82-b2eb69f5f3ef" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd4" />
-    <MetadataFile FileName="BettingService3.xsd" MetadataType="Schema" ID="c67c544e-a51f-4fc0-a9da-731b1b1a3c89" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd2" />
     <MetadataFile FileName="BettingService.disco" MetadataType="Disco" ID="e77fc440-45e4-4c95-9e09-c4c64aef81b3" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?disco" />
-    <MetadataFile FileName="BettingService4.xsd" MetadataType="Schema" ID="aa80891b-e0b8-4f23-8ae4-c7dd93a785f9" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd3" />
-    <MetadataFile FileName="BettingService.wsdl" MetadataType="Wsdl" ID="681a138c-02b0-4bc5-9671-c6aba30b94c5" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?wsdl" />
     <MetadataFile FileName="BettingService5.xsd" MetadataType="Schema" ID="b34f62fc-e1bd-4fed-a361-4efcdc912876" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BettingService.xsd" MetadataType="Schema" ID="02aba9d5-6b31-493b-b031-dff99b9ab720" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BettingService3.xsd" MetadataType="Schema" ID="c67c544e-a51f-4fc0-a9da-731b1b1a3c89" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BettingService4.xsd" MetadataType="Schema" ID="aa80891b-e0b8-4f23-8ae4-c7dd93a785f9" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BettingService1.xsd" MetadataType="Schema" ID="8d13d38c-2eea-4f76-8e91-4054e755507b" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?xsd=xsd5" />
+    <MetadataFile FileName="BettingService.wsdl" MetadataType="Wsdl" ID="681a138c-02b0-4bc5-9671-c6aba30b94c5" SourceId="1" SourceUrl="http://localhost:54524/Services/BettingService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

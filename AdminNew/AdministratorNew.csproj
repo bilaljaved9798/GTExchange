@@ -29,10 +29,10 @@
     <InstallUrl>http://78.110.160.52:6068/</InstallUrl>
     <ProductName>AdministratorNew</ProductName>
     <PublisherName>Global Traders</PublisherName>
-    <MinimumRequiredVersion>1.0.0.2</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.6</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -66,7 +66,7 @@
     </CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>DALLE2024-06-0422.56.30-AnelegantandboldlogofeaturingtheletterAforadesktopsoftwareicon.Thedesignshould %281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>globaltraders.App</StartupObject>
@@ -165,6 +165,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="KaliMarket.xaml.cs">
+      <DependentUpon>KaliMarket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FigureMarket.xaml.cs">
+      <DependentUpon>FigureMarket.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookMarket.xaml.cs">
       <DependentUpon>BookMarket.xaml</DependentUpon>
     </Compile>
@@ -302,6 +308,14 @@
     <Compile Include="wrBF\RunnerStatus.cs" />
     <Compile Include="wrBF\Side.cs" />
     <Compile Include="wrBF\StartingPrices.cs" />
+    <Page Include="KaliMarket.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FigureMarket.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="BookMarket.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -1088,6 +1102,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Global traders 5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DALLE2024-06-0422.56.30-AnelegantandboldlogofeaturingtheletterAforadesktopsoftwareicon.Thedesignshould %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="118919_edit_cut_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

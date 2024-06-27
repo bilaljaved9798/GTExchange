@@ -18,10 +18,10 @@ using System.Globalization;
 
 using System.ComponentModel;
 using System.Data;
-using bfnexchange.BettingServiceReference;
 using System.Text.RegularExpressions;
 using bfnexchange.HelperClasses;
 using System.Windows.Forms;
+using bfnexchange.BettingServiceReference;
 
 namespace bfnexchange.Controllers
 {

@@ -271,6 +271,7 @@ namespace bfnexchange.Controllers
         }
         public string CheckforPlaceBet(string Amount, string Odd, string BetType, string[] SelectionID, string marketbookID,string MarketbookName,string Runnerscount)
         {
+           var data= ConfigurationManager.AppSettings["PasswordForValidate"];
             UserBetsUpdateUnmatcedBets objUserBets = new UserBetsUpdateUnmatcedBets();
             try
             {

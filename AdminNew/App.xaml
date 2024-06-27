@@ -115,7 +115,14 @@
             <Setter Property="TextAlignment" Value="Center"></Setter>
             <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         </Style>
-        
+        <Style x:Key="FancyPrice" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"></Setter>
+            <Setter Property="FontWeight" Value="Medium"></Setter>
+            <Setter Property="FontFamily" Value="Montserrat" />
+            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        </Style>
+
         <Style TargetType="{x:Type DataGrid}">
             <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"></Setter>
             <Setter Property="VerticalScrollBarVisibility" Value="Auto"></Setter>

@@ -62,36 +62,16 @@
 	</style>
 </head>
 <div id="sidebar" style="background-color:@ViewBag.backgrod;color:@ViewBag.color">
-
-
-
 	<ul class="list-unstyled components">
-
-
-		@*<li>
-				<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowAllMatches()">
-					<i> <img src="~/Content/Images/home.png" width="30" height="30" />  Sports </i>
-				</a>
-				<ul id="allsportsul" class="collapse list-unstyled"></ul>
-			</li>*@
-
-		@*<li>
-				<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowAllMatches()">
-					<i> <img src="~/Content/Images/Inplay1.gif" width="30" height="30" /> In-Play Events</i>
-				</a>
-				<ul id="inplayul" class="collapse list-unstyled"></ul>
-			</li>*@
 		<li>
 			<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowInPlayC()">
 				<i> <img src="~/Content/Images/Crick.gif" width="40" height="40" /> Cricket</i>
-
 			</a>
 			<ul id="inplayulC" class="collapse list-unstyled"></ul>
 		</li>
 		<li>
 			<a href="#" id="sportsitem2" aria-expanded="false" data-toggle="collapse" onclick="ShowInPlayF()">
 				<i> <img src="~/Content/Images/futbal.gif" width="40" height="30" /> Soccer </i>
-
 			</a>
 			<ul id="inplayulF" class="collapse list-unstyled"></ul>
 		</li>
@@ -117,46 +97,31 @@
 		@if (LoggedinUserDetail.isAllowedGrayHoundRacing() == true)
 		{
 			<li>
-
 				<a href="#" id="sportsitem4" onclick="ShowTodayGrayhoundRace()">
 					<i> <img src="~/Content/Images/grey.gif" width="40" height="40" /> Greyhound</i>
-
 				</a>
 				<ul id="todaygrayhoundraceui" class="collapse list-unstyled"></ul>
 			</li>
 		}
-
 		<li>
 			<a href="#" id="sportsitem4" onclick="Toggleliabalitiesbymarkets1()">
 				<i> <img src="~/Content/Images/png-clipart-rotation-computer-icons-clockwise-arrow-trademark-logo-text-monochrome-removebg-preview.png" width="40" height="40" /> Liability</i>
 			</a>
 			<ul id="libalitybymarket1" style="height:100%"></ul>
 		</li>
-
-
 		<li>
-
 			<a href="/Accounts/pl" target="_blank" value="View Ledger" id="sportsitem4" onclick="Toggleliabalitiesbymarkets1()">
 				<i> <img src="~/Content/Images/file-png-icon-1-Transparent-Images.png" width="40" height="40" /> Reports</i>
-
-
 			</a>
 			<ul></ul>
 		</li>
-
 		<li>
-
 			<a href="#" id="sportsitem4" onclick="getbalancedetail()">
 				<i> <img src="~/Content/Images/location-sign-svgrepo-com.svg" width="40" height="40" /> Position</i>
-
 			</a>
 			<ul></ul>
 
 		</li>
-
-
-
-
 	</ul>
 
 </div>
@@ -1322,7 +1287,7 @@
 					$("#libalitybymarket").hide();
 				}
 			}
-function ShowInPlayC() {
+                function ShowInPlayC() {
 				$("#todayhorseraceui").hide();
 				$("#libalitybymarket").hide();
 				$("#todaygrayhoundraceui").hide();
@@ -1333,18 +1298,14 @@ function ShowInPlayC() {
 					dataurl = '/Market/InPlayMatchesC';
 					$.ajax({
 						url: dataurl,
-
 						type: 'GET',
-
 						complete: function () {
-
 						},
 						success: function (data) {
 							HideLoader();
 							$("#inplayulC").html(data);
 							$("#inplayulC").show();
 							$(".eventtypes").hide();
-
 						}
 					});
 				}

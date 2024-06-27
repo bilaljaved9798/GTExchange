@@ -18,9 +18,9 @@ using System.Globalization;
 using bfnexchange.AccountsServiceReference;
 using System.ComponentModel;
 using System.Data;
-using bfnexchange.BettingServiceReference;
 using System.Text.RegularExpressions;
 using bfnexchange.HelperClasses;
+using bfnexchange.BettingServiceReference;
 
 
 //using bfnexchange.Services.DBModel;

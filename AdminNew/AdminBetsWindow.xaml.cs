@@ -49,8 +49,6 @@ namespace globaltraders
         {
             try
             {
-
-
                 UpdateUserBetsData();
                 UpdateUserBetsDataUnMatched();
                 BackgroundWorker worker = sender as BackgroundWorker;
@@ -146,8 +144,6 @@ namespace globaltraders
         {
             try
             {
-
-
                 UpdateUserBetsData();
                 UpdateUserBetsDataUnMatched();
             }
@@ -324,51 +320,44 @@ namespace globaltraders
         }
 
 
-        private void DGVMatchedBetsAdmin_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
+        //private void DGVMatchedBetsAdmin_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        //{
 
 
-            try
-            {
+        //    try
+        //    {
 
-                if (LoggedinUserDetail.GetUserTypeID() == 1)
-                {
-                    DataGrid objSender = (DataGrid)sender;
-                    if (objSender.Items.Count > 0)
-                    {
+        //        if (LoggedinUserDetail.GetUserTypeID() == 1)
+        //        {
+        //            DataGrid objSender = (DataGrid)sender;
+        //            if (objSender.Items.Count > 0)
+        //            {
 
-                        UserBetsForAdmin objselectedmarket = (UserBetsForAdmin)objSender.SelectedItem;
-
-
-                        foreach (Window win in App.Current.Windows)
-                        {
-
-                            if (win.Name == "mainwindow")
-                            {
-                                MainWindow window = win as MainWindow;
-                                window.bsyindicator.IsBusy = true;
-
-                                window.MarketBook(objselectedmarket.MarketBookID);
-                                return;
-
-                            }
-
-                        }
-                    }
-
-                }
+        //                UserBetsForAdmin objselectedmarket = (UserBetsForAdmin)objSender.SelectedItem;
 
 
-            }
-            catch (System.Exception ex)
-            {
+        //                foreach (Window win in App.Current.Windows)
+        //                {
 
-            }
+        //                    if (win.Name == "mainwindow")
+        //                    {
+        //                        MainWindow window = win as MainWindow;
+        //                        window.bsyindicator.IsBusy = true;
 
-        }
+        //                        window.MarketBook(objselectedmarket.MarketBookID);
+        //                        return;
 
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (System.Exception ex)
+        //    {
 
+        //    }
 
+        //}
 
         private void Button_Click_18(object sender, RoutedEventArgs e)
         {
@@ -465,16 +454,14 @@ namespace globaltraders
         private void Button_Click_11(object sender, RoutedEventArgs e)
         {
             popupProffitLossAgent.IsOpen = false;
-            //  isProfitLossbyAgentShown = false;
         }
         public Service123Client objBettingClient = new Service123Client();
-        private void DGVMatchedBetsAdmin_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+       
+        private void DGVMatchedBetsAdmin_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             try
-            {
-
-                if (LoggedinUserDetail.GetUserTypeID() == 1)
-                {
+            {              
                     DataGrid objSender = (DataGrid)sender;
                     int currcellindx = objSender.CurrentCell.Column.DisplayIndex;
                     if (currcellindx == 0)
@@ -517,56 +504,51 @@ namespace globaltraders
                      {
                     objselectedmarket.MarketBookID
                      };
-
-                        var marketbook = objBettingClient.GetMarketDatabyID(marketIds, newmarkettobeopened.SheetName, newmarkettobeopened.EventOpenDate, "Cricket", LoggedinUserDetail.PasswordForValidate);
-                        mb = marketbook[0];
-                        user.Content = objselectedmarket.UserID;
-                       // Runner0.Content = mb.Runners[0].SelectionId;
-                        //Runner1.Content = mb.Runners[1].SelectionId;
-                        //if (mb.Runners.Count == 3)
-                        //{
-                        //    Runner2.Content = mb.Runners[2].SelectionId;
-                        //}
-                        popupProffitLossAgent.IsOpen = true;
-                        var results2 = objUsersServiceCleint.GetSelectionNamesbyMarketID(objselectedmarket.MarketBookID);
-
-
-                        Runner0.ItemsSource = results2;
-                        Runner0.DisplayMemberPath = "SelectionName";
-                        Runner0.SelectedValuePath = "SelectionID";
-
-                        Runner0.IsSynchronizedWithCurrentItem = false;
-                        Runner0.SelectedIndex = 0;
-
-                        //List<ExternalAPI.TO.Runner> lstRunners = new List<ExternalAPI.TO.Runner>();
-                        //lstRunners = lastloadedmarket.Runners;
-                        Runner1.ItemsSource = results2;
-                        Runner1.DisplayMemberPath = "SelectionName";
-                        Runner1.SelectedValuePath = "SelectionID";
-                        Runner1.SelectedIndex = 1;
-
-                        if (results2.Count() == 3)
+                        if (newmarkettobeopened == null)
                         {
-
-                            Runner2.IsSynchronizedWithCurrentItem = false;
-                            Runner2.ItemsSource = results2;
-                            Runner2.DisplayMemberPath = "SelectionName";
-                            Runner2.SelectedValuePath = "SelectionID";
-                            Runner2.SelectedIndex = 2;
-                            lblProfitandLossRunnerbyAgent3.Content = "0";
+                            MessageBox.Show("Please first open selected markets.");
                         }
                         else
                         {
-                            Runner2.Visibility = Visibility.Collapsed;
-                            lblProfitandLossRunnerbyAgent3.Visibility = Visibility.Collapsed;
+                            var marketbook = objBettingClient.GetMarketDatabyID(marketIds, newmarkettobeopened.SheetName, newmarkettobeopened.EventOpenDate, "Cricket", LoggedinUserDetail.PasswordForValidate);
+                            mb = marketbook[0];
+                            lblusername.Content = objselectedmarket.CustomerName;
+                            popupProffitLossAgent.IsOpen = true;
+                            var results2 = objUsersServiceCleint.GetSelectionNamesbyMarketID(objselectedmarket.MarketBookID);
+
+                            Runner0.ItemsSource = results2;
+                            Runner0.DisplayMemberPath = "SelectionName";
+                            Runner0.SelectedValuePath = "SelectionID";
+
+                            Runner0.IsSynchronizedWithCurrentItem = false;
+                            Runner0.SelectedIndex = 0;
+
+                            //List<ExternalAPI.TO.Runner> lstRunners = new List<ExternalAPI.TO.Runner>();
+                            //lstRunners = lastloadedmarket.Runners;
+                            Runner1.ItemsSource = results2;
+                            Runner1.DisplayMemberPath = "SelectionName";
+                            Runner1.SelectedValuePath = "SelectionID";
+                            Runner1.SelectedIndex = 1;
+
+                            if (results2.Count() == 3)
+                            {
+
+                                Runner2.IsSynchronizedWithCurrentItem = false;
+                                Runner2.ItemsSource = results2;
+                                Runner2.DisplayMemberPath = "SelectionName";
+                                Runner2.SelectedValuePath = "SelectionID";
+                                Runner2.SelectedIndex = 2;
+                                lblProfitandLossRunnerbyAgent3.Content = "0";
+                            }
+                            else
+                            {
+                                Runner2.Visibility = Visibility.Collapsed;
+                                lblProfitandLossRunnerbyAgent3.Visibility = Visibility.Collapsed;
+                            }
                         }
+                        GetProfitLossAvargeSelectedUser(objselectedmarket.UserID.Value);
                     }
-                    
-                    data();
-
-                }
-
-
+                
             }
             catch (System.Exception ex)
             {
@@ -574,12 +556,10 @@ namespace globaltraders
             }
         }
         MarketBook mb = new MarketBook();
-        public void data()
+        public void GetProfitLossAvargeSelectedUser(int userId)
         {
-            if (LoggedinUserDetail.GetUserTypeID() == 1)
-            {
-
-                string userbets = objUsersServiceCleint.GetUserbetsbyUserID(Convert.ToInt32(user.Content), LoggedinUserDetail.PasswordForValidate);
+                           
+                string userbets = objUsersServiceCleint.GetUserbetsbyUserID(Convert.ToInt32(userId), LoggedinUserDetail.PasswordForValidate);
                 List<UserBets> lstUserBets = JsonConvert.DeserializeObject<List<UserBets>>(userbets);
                 if (lstUserBets.Count > 0)
                 {
@@ -626,7 +606,6 @@ namespace globaltraders
                         runner2profit = runner2.ProfitandLoss;
                         if (lblProfitandLossRunnerbyAgent2.Content.ToString() != runner2profit.ToString("N0"))
                         {
-                            //Runner1name.Content = currentusermarketbook.Runners[1].RunnerName;
                             lblProfitandLossRunnerbyAgent2.Content = runner2profit.ToString("N0");
                         }
 
@@ -646,7 +625,125 @@ namespace globaltraders
                             }
 
                         }
+                        if ((runner1profit > 0 && runner2profit > 0))
+                        {
+                            if (txtAverageAmountbyAgnet1.Content.ToString() != "0.00")
+                            {
+                                txtAverageAmountbyAgnet1.Content = "0.00";
+                            }
+                            if (txtAverageAmountbyAgent2.Content.ToString() != "0.00")
+                            {
+                                txtAverageAmountbyAgent2.Content = "0.00";
+                            }
 
+                            return;
+                        }
+                        if ((runner1profit < 0 && runner2profit < 0))
+                        {
+                            if (txtAverageAmountbyAgnet1.Content.ToString() != "-0.00")
+                            {
+                                txtAverageAmountbyAgnet1.Content = "-0.00";
+                            }
+                            if (txtAverageAmountbyAgent2.Content.ToString() != "-0.00")
+                            {
+                                txtAverageAmountbyAgent2.Content = "-0.00";
+                            }
+
+                            return;
+                        }
+                        if (runner1profit > 0)
+                        {
+                            if (lblAveragebyAgent1.Content.ToString() != "L")
+                            {
+                                lblAveragebyAgent1.Content = "L";
+                            }
+                            if (lblAveragebyAgent2.Content.ToString() != "K")
+                            {
+                                lblAveragebyAgent2.Content = "K";
+                            }
+                            if (lblAveragebyAgent1.Foreground != Brushes.DarkGreen)
+                            {
+                                lblAveragebyAgent1.Foreground = Brushes.DarkGreen;
+
+                            }
+                            if (lblAveragebyAgent2.Foreground != Brushes.Red)
+                            {
+                                lblAveragebyAgent2.Foreground = Brushes.Red;
+                            }
+                        }
+                        else
+                        {
+                            if (lblProfitorLossRunnerAgent1.Foreground != Brushes.Red)
+                            {
+                                lblProfitorLossRunnerAgent1.Foreground = Brushes.Red;
+                            }
+
+                            if (runner2profit > 0)
+                            {
+                                if (lblAveragebyAgent1.Content.ToString() != "K")
+                                {
+                                    lblAveragebyAgent1.Content = "K";
+                                }
+                                if (lblAveragebyAgent2.Content.ToString() != "L")
+                                {
+                                    lblAveragebyAgent2.Content = "L";
+                                }
+
+
+                                if (lblAveragebyAgent1.Foreground != Brushes.Red)
+                                {
+                                    lblAveragebyAgent1.Foreground = Brushes.Red;
+
+                                }
+                                if (lblAveragebyAgent2.Foreground != Brushes.DarkGreen)
+                                {
+                                    lblAveragebyAgent2.Foreground = Brushes.DarkGreen;
+                                }
+
+                            }
+
+                        }
+
+                        if (runner1profit < 0) { runner1profit = runner1profit * -1; }
+                        if (runner2profit < 0) { runner2profit = runner2profit * -1; }
+                        if (runner1profit > 0 && runner2profit > 0)
+                        {
+                            double result = runner1profit / runner2profit;
+                            double result2 = runner2profit / runner1profit;
+                            if (txtAverageAmountbyAgnet1.Content.ToString() != result.ToString("F2"))
+                            {
+                                txtAverageAmountbyAgnet1.Content = result.ToString("F2");
+                            }
+                            if (txtAverageAmountbyAgent2.Content.ToString() != result2.ToString("F2"))
+                            {
+                                txtAverageAmountbyAgent2.Content = result2.ToString("F2");
+                            }
+
+                        }
+                        if (runner1profit == 0)
+                        {
+                            if (txtAverageAmountbyAgnet1.Content.ToString() != "0.00")
+                            {
+                                txtAverageAmountbyAgnet1.Content = "0.00";
+                            }
+                            if (lblAveragebyAgent1.Content.ToString() != "")
+                            {
+                                lblAveragebyAgent1.Content = "";
+                            }
+
+                        }
+                        if (runner2profit == 0)
+                        {
+                            if (txtAverageAmountbyAgent2.Content.ToString() != "0.00")
+                            {
+                                txtAverageAmountbyAgent2.Content = "0.00";
+                            }
+                            if (lblAveragebyAgent2.Content.ToString() != "")
+                            {
+                                lblAveragebyAgent2.Content = "";
+                            }
+
+                        }
                     }
                     if (currentusermarketbook.Runners.Count == 3)
                     {
@@ -682,8 +779,6 @@ namespace globaltraders
                 {
                     //lblCurrentPostitionUserPL1.Content = "0";
                 }
-
-            }
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -695,6 +790,8 @@ namespace globaltraders
         {
             this.WindowState = WindowState.Minimized;
         }
+
+       
     }
     }
 
